@@ -96,7 +96,7 @@
                 <tbody>
                     <tr>
                         <th scope="row">Impuestos</th>
-                        <td>{{ $currencyValue }} {{ $this->amountImpuesto() }}</td>
+                        <td>{{ $currencyValue }} {{ $this->getImpuestoIVA() }}</td>
                     </tr>
                     @if($currencyValue == '$')
                     <tr>

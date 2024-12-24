@@ -26,7 +26,7 @@ class Cart extends AdminComponent
     public $pedido = [];
 
     public $IGTF = 0;
-    public $impuesto = 0;
+    public $impuesto = 10;
     public $subtotal = 0;
 
     protected $listeners = [
@@ -45,9 +45,61 @@ class Cart extends AdminComponent
         $this->currencyValue = $request->cookie('currency');
     }
 
+    public function convertir($value)
+    {
+        if(request()->cookie('currency') == 'Bs')
+        {
+            $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->first();
+            if(!$tasaValues){
+                $tasa = 1;
+            }else{
+                $tasa = $tasaValues->tasa;
+            }
+
+            $subtotal = round($value*$tasa, 2);
+            return $subtotal;
+
+        }else{
+            return $value;
+        }
+    }
+
     public function getTotal()
     {
         return round($this->subtotal + $this->impuesto + $this->IGTF, 2);
+    }
+
+    public function getImpuestoIVA()
+    {
+        if(request()->cookie('currency') == 'Bs')
+        {
+            $subtotal = \Cart::getTotal();
+
+            $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->first();
+            if(!$tasaValues){
+                $tasa = 1;
+            }else{
+                $tasa = $tasaValues->tasa;
+            }
+
+            $settingComercio = SettingComercio::where('comercio_id', $this->comercio_id)->first();
+
+            if($settingComercio->in_impuesto == 'SI'){
+                $impuesto = Impuesto::where('comercio_id', $this->comercio_id)->where('name', 'IVA')->first();
+                if($impuesto){
+                    $this->impuesto = $tasa * $subtotal * $impuesto->amount/100;
+                }else{
+                    $this->impuesto = 0;
+                }
+            }else{
+                $this->impuesto = 0;
+            }
+
+            return round($this->impuesto, 2) ;
+        }else{
+            $this->impuesto = 0;
+            return 0;
+        }        
     }
 
     public function getSubTotal($comercio_id = 1)
@@ -56,77 +108,31 @@ class Cart extends AdminComponent
 
         $tasaValues = Tasa::where('comercio_id', $comercio_id)->first();
 
+        $settingComercio = SettingComercio::where('comercio_id', $comercio_id)->first();
+
         if(!$tasaValues){
             $tasa = 1;
         }else{
             $tasa = $tasaValues->tasa;
-        }
+        }        
+
         switch ($this->currencyValue) {
             case 'Bs':
-                $subtotal = round($subtotal*$tasa, 2) - $this->amountImpuesto();
+                
+                $this->impuesto = $this->getImpuestoIVA();
+
+                $subtotal = round($subtotal*$tasa, 2) - $this->impuesto;
                 break;
+
             case '$':
-                $subtotal = round($subtotal, 2) - $this->amountImpuesto();
+                $subtotal = round($subtotal, 2);
                 break;            
         }
 
         $this->subtotal = $subtotal;
 
         return $subtotal;
-    }
 
-    public function amountImpuesto($comercio_id = 1)
-    {
-        $totalProducts = \Cart::getTotal();
-        $settingComercio = SettingComercio::where('comercio_id', $comercio_id)->first();
-
-        $tasaValues = Tasa::where('comercio_id', $comercio_id)->first();
-
-        if(!$tasaValues){
-            $tasa = 1;
-        }else{
-            $tasa = $tasaValues->tasa;
-        }
-
-        
-        //realiza cambio monetario para sacar el impuesto
-        switch ($this->currencyValue) {
-            case 'Bs':
-                if($settingComercio->in_impuesto == 'SI'){
-                    $impuesto = Impuesto::where('comercio_id', $comercio_id)->where('name', 'IVA')->first();
-                    if($impuesto){
-                        $result = $tasa * $totalProducts - $tasa * $totalProducts*$impuesto->amount/100;
-                        $this->impuesto = $result;
-                    }else{
-                        $this->impuesto = 0;
-                        return '0,00';
-                    }
-                }else{
-                    $this->impuesto = 0;
-                    return '0,00';
-                }
-                return round($result, 2);
-                break;            
-            case '$':
-                
-                if($settingComercio->in_impuesto == 'SI'){
-                    $impuesto = Impuesto::where('comercio_id', $comercio_id)->where('name', 'IVA')->first();
-                    if($impuesto){
-                        $result = $tasa * $totalProducts*$impuesto->amount/100;
-                        $this->impuesto = $result;
-                    }else{
-                        $this->impuesto = 0;
-                        return '0,00';
-                    }
-                }else{
-                    $this->impuesto = 0;
-                    return '0,00';
-                }
-                return round($result, 2);
-                break;            
-        }
-        // fin de cambio
-        
     }
 
     public function amountIGTF($comercio_id = 1)

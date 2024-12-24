@@ -80,10 +80,9 @@ class Pasarela extends Component
                     // Hacer conversion
                     $this->amount = $this->convertir($this->pedido->coste, $this->pedido->comercio_id);
                     $this->currency = '1';
+                }else{
+                    $this->currency = '2';
                 }
-                
-                $this->currency = $this->pedido->currency;
-                $this->currencyValue = $this->searchCurrency($this->pedido->currency);
                 
                 $cliente = $this->pedido->client;            
                 $this->email = $cliente->email;

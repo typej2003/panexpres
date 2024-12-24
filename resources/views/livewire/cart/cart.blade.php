@@ -39,7 +39,7 @@
                         </td>
                         <td><strong>{{ $item->attributes->comercio_id }}</strong></td>
                         <td><strong>{{ $item->name }}</strong></td>
-                        <td>{{ $item->price }} {{ $currencyValue }}</td>
+                        <td>{{ $this->convertir($item->price) }} {{ $currencyValue }}</td>
                         <td>
                             <div class="col-md-12 d-flex justify-content-between">
                                 <div class="input-group input-number-group">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td>{{ \Cart::get($item->id)->getPriceSum() }} {{ $currencyValue }} </td>
+                        <td>{{ $this->convertir(\Cart::get($item->id)->getPriceSum()) }} {{ $currencyValue }} </td>
                         <td>
                             <form action="{{ route('cart.remove') }}"   method="POST">
                                 {{ csrf_field() }}
@@ -96,7 +96,7 @@
                 <tbody>
                     <tr>
                         <th scope="row">Impuestos</th>
-                        <td>{{ $currencyValue }} {{ $this->amountImpuesto() }}</td>
+                        <td>{{ $currencyValue }} {{ $this->getImpuestoIVA() }}</td>
                     </tr>
                     @if($currencyValue == '$')
                     <tr class="d-none">

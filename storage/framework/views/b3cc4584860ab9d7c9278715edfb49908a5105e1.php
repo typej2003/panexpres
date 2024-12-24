@@ -39,7 +39,7 @@
                         </td>
                         <td><strong><?php echo e($item->attributes->comercio_id); ?></strong></td>
                         <td><strong><?php echo e($item->name); ?></strong></td>
-                        <td><?php echo e($item->price); ?> <?php echo e($currencyValue); ?></td>
+                        <td><?php echo e($this->convertir($item->price)); ?> <?php echo e($currencyValue); ?></td>
                         <td>
                             <div class="col-md-12 d-flex justify-content-between">
                                 <div class="input-group input-number-group">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td><?php echo e(\Cart::get($item->id)->getPriceSum()); ?> <?php echo e($currencyValue); ?> </td>
+                        <td><?php echo e($this->convertir(\Cart::get($item->id)->getPriceSum())); ?> <?php echo e($currencyValue); ?> </td>
                         <td>
                             <form action="<?php echo e(route('cart.remove')); ?>"   method="POST">
                                 <?php echo e(csrf_field()); ?>
@@ -98,7 +98,7 @@
                 <tbody>
                     <tr>
                         <th scope="row">Impuestos</th>
-                        <td><?php echo e($currencyValue); ?> <?php echo e($this->amountImpuesto()); ?></td>
+                        <td><?php echo e($currencyValue); ?> <?php echo e($this->getImpuestoIVA()); ?></td>
                     </tr>
                     <?php if($currencyValue == '$'): ?>
                     <tr class="d-none">
