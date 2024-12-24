@@ -54,7 +54,7 @@
             {!! $infocentro !!} 
         </div>
         <div class="col-md-6">
-            <form class="formPickup" action="{{ route('pasarela') }}" method="get">
+            <form class="formPickup" action="" method="get">
                 @csrf
                 <input wire:model.defer="state.metodoentrega" type="text" name="metodoentrega" id="metodoentrega" >
                 <input wire:model.defer="state.nropedido" type="text" name="nropedido" id="nropedido" >

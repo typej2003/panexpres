@@ -7,7 +7,7 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
                     <div class="overlay-header">
-                        <img class="logo-responsive" src="/img/logo_repuestos.png" alt="">
+                        <img class="logo-responsive" src="/img/{{ $comercio->avatar_url }}" alt="">
                         <div class="currency-responsive">
                             @livewire('components.currency')
                         </div>
@@ -147,7 +147,7 @@
             <div class="header-main fixed-top ">
                 <div class="header">
                     <div class="logo">
-                        <a href="/"><img src="/img/logo_repuestos.png" alt=""></a>
+                        <a href="/"><img class="logo-responsive" src="{{ $comercio->avatar_url }}" alt=""></a>
                     </div>
                     <!-- The form -->
                     <div class="search">
@@ -246,7 +246,7 @@
                     <div class="menu-responsive">
                         <div class="menu-responsive">
                             <!-- Menu horizontal -->
-                            <img class="logo-responsive" src="/img/logo_repuestos.png" alt="">
+                            <img class="logo-movil" src="{{ $comercio->avatar_url }}" alt="">
                             <div class="button-search"><img src="/img/icon_buscar.png" alt=""></div>
                             <div><a href=""><img class="icon" src="/img/icon_miperfil.png" alt=""></a></div>
                             <div class="d-none"><a href=""><img class="icon" src="/img/icon_heart.png" alt=""></a></div>

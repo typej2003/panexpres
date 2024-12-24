@@ -25,6 +25,8 @@ Route::get('/shipping/{nropedido}', Shipping::class)->name('shipping')->middlewa
 
 Route::get('/checkout/shipping/{nropedido}', [WelcomeController::class, 'checkoutShipping'])->name('checkout.shipping'); 
 
+Route::get('/checkout/pasarela/{nropedido}/{comercioId}', [WelcomeController::class, 'checkoutPasarela'])->name('checkout.pasarela'); 
+
 
 // Route::get('/checkout/shipping/{nropedido}', function($nropedido){
 //     return view('externalviews.checkout', [

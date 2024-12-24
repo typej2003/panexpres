@@ -53,13 +53,13 @@ class Pasarela extends Component
         'emitCurrency' => 'emitCurrency'
     ];
 
-    public function mount(Request $request, $nropedido = '', $comercioId = 1, )
+    public function mount($nropedido = '', $comercioId = 1, )
 	{
-            $this->pedido = PedidoTemporal::where('nropedido', $request->get('nropedido'))->first();
+            $this->pedido = PedidoTemporal::where('nropedido', $nropedido)->first();
             $this->comercio_id = $comercioId;
             
             //guardar variables de entrega
-            $this->metodoentrega = $request->get('metodoentrega');
+            $this->metodoentrega = $this->pedido->metodoentrega;
 
             $this->autenticarComercio($comercioId, $this->pedido->comercio_id);  
             
@@ -82,7 +82,6 @@ class Pasarela extends Component
                 $this->identificationNumber = $cliente->identificationNumber;
                 $this->comercio = Comercio::find($this->pedido->comercio_id);
             }
-
             $this->currencyValue = request()->cookie('currency');
        
         
@@ -224,6 +223,7 @@ class Pasarela extends Component
         $pedidoTemporal->update([
             'reference' => $operacion['reference'],
             'metodo' => $operacion['metodo'],
+            'currency' => $operacion['currency'],
         ]);
 
         $pedido = $pedidoTemporal->toArray();

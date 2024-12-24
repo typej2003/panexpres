@@ -98,9 +98,14 @@ a {text-decoration: none; }
 
 .logo-responsive {
   /* Arriba | Derecha | Abajo | Izquierda */
+  margin: 15px 2px 0 5px !important;
+  width: 150px !important;
+}
+
+.logo-movil {
+  /* Arriba | Derecha | Abajo | Izquierda */
   margin: 2px 2px 0 5px !important;
-  width: 20% !important;
-  
+  width: 145px !important;
 }
 
 .div-search {position: absolute; top: 50px; right: 0px; z-index: 10;}
@@ -117,7 +122,7 @@ a {text-decoration: none; }
   .nav-overlay {margin-left: 2px; margin-top: 0; width: auto !important;}
   .wordMenu {display: none;}
   .w-full{display: none!important; }
-  .menu {display: flex !important; justify-content:space-between !important; /*background-color: black;*/}
+  .menu {background-color: white;  display: flex !important; justify-content:space-between !important; /*background-color: black;*/}
   body, html{ margin:0; padding:0; /*background-color: burlywood;*/}
   .header{display: none;}
   .wrapper{ padding-top:0px; margin-top: 45px; }

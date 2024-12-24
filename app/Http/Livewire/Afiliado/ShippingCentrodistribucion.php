@@ -46,7 +46,7 @@ class ShippingCentrodistribucion extends AdminComponent
 
     public function siguientePickup()
     {
-
+        
         $pedido = PedidoTemporal::where('nropedido', $this->state['nropedido'])->first();
 
         $validatedData['identificationNac'] = auth()->user()->identificationNac;
@@ -77,7 +77,7 @@ class ShippingCentrodistribucion extends AdminComponent
         $this->dispatchBrowserEvent('enviarFormularioPickup');
 
 		
-        //return redirect()->route('pasarela', ['nropedido' => $pedido->pedido, 'comercioId' => $pedido->comercio_id]);
+        return redirect()->route('checkout.pasarela', ['nropedido' => $pedido->nropedido, 'comercioId' => $pedido->comercio_id]);
 
     }
 

@@ -175,7 +175,7 @@ class DatosFacturacionCliente extends AdminComponent
 
     public function siguiente()
     {
-
+        
         $validatedData = Validator::make($this->state, [
             'identificationNac' => 'required|not_in:0',
 			'identificationNumber' => 'required',
@@ -226,7 +226,7 @@ class DatosFacturacionCliente extends AdminComponent
 
 		$this->dispatchBrowserEvent('hide-form', ['message' => 'Datos de facturacion actualizado satisfactoriamente!']);
 
-        // return redirect()->route('pasarela', ['nropedido' => $pedido->pedido, 'comercioId' => $pedido->comercio_id]);
+        return redirect()->route('checkout.pasarela', ['nropedido' => $pedido->nropedido, 'comercioId' => $pedido->comercio_id]);
 
     }
 

@@ -1553,7 +1553,7 @@ function controlZelle() {
 function enviarPagoMovil(){
     if(controlPagoMovil()){
         let objeto= {'metodo': 'pagomovil'}
-        objeto['currency'] = 1
+        objeto['currency'] = currency
         objeto['cliente_id'] = cliente_id
         objeto['comercio_id'] = comercio_id
         objeto['nropedido'] = nropedido
@@ -1580,7 +1580,7 @@ function enviarTransferencia(){
     if(controlTransferencia()){
         let objeto= {'metodo': 'transferencia'}
         objeto['cliente_id'] = cliente_id
-        objeto['currency'] = 1
+        objeto['currency'] = currency
         objeto['comercio_id'] = comercio_id
         objeto['nropedido'] = nropedido
 
@@ -1604,7 +1604,7 @@ function enviarZelle(){
     if(controlZelle()){
         let objeto= {'metodo': 'zelle'}
         objeto['cliente_id'] = cliente_id
-        objeto['currency'] = 1
+        objeto['currency'] = 2
         objeto['comercio_id'] = comercio_id
         objeto['title'] = title
         objeto['description'] = description

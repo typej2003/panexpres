@@ -260,9 +260,16 @@ class WelcomeController extends Controller
 
     public function checkoutShipping($nropedido)
     {
-
         return view('externalviews.checkout', [
             'nropedido' => $nropedido,
+        ]);
+    }
+
+    public function checkoutPasarela($nropedido, $comercioId)
+    {
+        return view('externalviews.checkoutpasarela', [
+            'nropedido' => $nropedido,
+            'comercioId' => $comercioId,
         ]);
     }
 

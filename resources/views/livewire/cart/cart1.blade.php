@@ -177,13 +177,13 @@
                                                 <div class="accordion-body">
                                                     <form action="{{ route('registrarse') }}" method="post">           
                                                         @csrf
-                                                        <input type="hidden" value="cliente" id="role" name="role">
-                                                        
+                                                        <input type="hidden" value="cliente" id="role" name="role" value="{{old('role')}}">
+
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-xs-6 col-md-4 col-sm-4 col-4">
                                                                     <label for="identificationNac">Nac </label>
-                                                                    <select class="form-control @error('identificationNac') is-invalid @enderror" name="identificationNac" id="identificationNac" placeholder="Tipo">
+                                                                    <select class="form-control @error('identificationNac') is-invalid @enderror" name="identificationNac" id="identificationNac" placeholder="Tipo" value="{{old('identificationNac')}}">
                                                                         <option value="J">J-</option>
                                                                         <option value="E">E-</option>
                                                                         <option value="G">G-</option>
@@ -193,7 +193,7 @@
                                                                 </div>
                                                                 <div class="col-xs-6 col-md-8 col=sm-8 col-8">
                                                                     <label for="identificationNumber">Documento</label>
-                                                                    <input type="text" class="form-control @error('identificationNumber') is-invalid @enderror" name="identificationNumber" id="identificationNumber" placeholder="Documento">
+                                                                    <input type="text" class="form-control @error('identificationNumber') is-invalid @enderror" name="identificationNumber" id="identificationNumber" placeholder="Documento" value="{{old('identificationNumber')}}">
                                                                 </div>
                                                                 @error('identificationNumber')
                                                                 <span class="text-danger">{{ $message }}</span>
@@ -204,7 +204,7 @@
                                                         <div class="form-group">
                                                             <label for="name">Usuario <span class="text-danger">*</span></label>
                                                             <div class="input-group mb-3">                
-                                                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Usuario">
+                                                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Usuario" value="{{old('name')}}">
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <span class="fas fa-envelope"></span>
@@ -219,7 +219,7 @@
                                                         <div class="form-group">
                                                             <label for="names">Nombres <span class="text-danger">*</span></label>
                                                             <div class="input-group mb-3">                
-                                                                <input type="text" name="names" class="form-control" placeholder="Nombre completo">
+                                                                <input type="text" name="names" class="form-control" placeholder="Nombre completo" value="{{old('names')}}">
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <span class="fas fa-envelope"></span>
@@ -234,7 +234,7 @@
                                                         <div class="form-group">
                                                             <label for="surnames">Apellidos <span class="text-danger">*</span></label>
                                                             <div class="input-group mb-3">                
-                                                                <input type="text" name="surnames" class="form-control" placeholder="Apellidos">
+                                                                <input type="text" name="surnames" class="form-control" placeholder="Apellidos" value="{{old('surnames')}}">
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <span class="fas fa-envelope"></span>
@@ -249,7 +249,7 @@
                                                         <div class="form-group">
                                                             <label for="documento">Email <span class="text-danger">*</span></label>            
                                                             <div class="input-group mb-3">
-                                                                <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{old('email')}}">
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <span class="fas fa-envelope"></span>
@@ -264,7 +264,7 @@
                                                         <div class="form-group">
                                                             <label for="documento">Contraseña <span class="text-danger">*</span></label>            
                                                             <div class="input-group mb-3">
-                                                                <input type="password" name="password" class="form-control" placeholder="Password" value="12345678">
+                                                                <input type="password" name="password" class="form-control" placeholder="Password" value="12345678" value="{{old('password')}}">
                                                                 <div class="input-group-append">
                                                                 <div class="input-group-text">
                                                                         <span class="fas fa-lock"></span>
@@ -295,7 +295,7 @@
                                                             <label for="documento">Teléfono </label>        
                                                             <div class="row ">
                                                                 <div class="col-xs-6 col-md-5 col-sm-4 col-4">
-                                                                    <select class="form-control @error('cellphone') is-invalid @enderror" name="cellphonecode" id="cellphonecode"> 
+                                                                    <select class="form-control @error('cellphone') is-invalid @enderror" name="cellphonecode" id="cellphonecode" value="{{old('cellphonecode')}}"> 
                                                                         <option value="0">Seleccione</option>
                                                                         <option value="0412">0412</option>
                                                                         <option value="0414">0414</option>
@@ -305,7 +305,7 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-xs-6 col-md-7 col-sm-8 col-8">
-                                                                    <input type="text" class="form-control @error('cellphone') is-invalid @enderror" name="cellphone" id="cellphone">
+                                                                    <input type="text" class="form-control @error('cellphone') is-invalid @enderror" name="cellphone" id="cellphone" value="{{old('cellphone')}}">
                                                                 </div>
                                                             </div>   
                                                             @error('cellphonecode')
