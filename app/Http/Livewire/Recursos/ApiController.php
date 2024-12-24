@@ -6,6 +6,8 @@ use Livewire\Component;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\CartController;
+
 class ApiController extends Component
 {
     public $cedula = '13053081';
@@ -180,6 +182,11 @@ class ApiController extends Component
                'reference' => $datos->transactionId,
                'confirmed' => 1,
              ]);
+
+			 $cart = new CartController;
+
+        	$cart->onlyClear();
+
         }
     
         return view('externalviews.procesado', ['id_suc' => $token, 'success' => $datos->success] );
