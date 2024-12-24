@@ -65,7 +65,15 @@ class MetodoPagoSeeder extends Seeder
         DB::table('metodo_pagos')->insert([
             'metodopago' => 'PAGO ONLINE',
             'metodo' => 'pagoonline',
-            'descripcion' => 'PAYPAL',
+            'descripcion' => 'zelle',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('metodo_pagos')->insert([
+            'metodopago' => 'PAGO ONLINE',
+            'metodo' => 'pagoonline',
+            'descripcion' => 'paypal',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);

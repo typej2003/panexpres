@@ -17,7 +17,7 @@ class SupplierSeeder extends Seeder
         DB::table('suppliers')->insert([
             'name' => 'PROVEEDOR 1',
             'rif' => 'J-20111222',
-            'email' => 'luis@gmail.com',
+            'email' => 'proveedor1@gmail.com',
             'address' => 'CARACAS VENEZUELA',
             'phone' => '04165080408',
             'area_id' => 2,

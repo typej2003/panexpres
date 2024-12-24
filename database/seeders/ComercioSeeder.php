@@ -60,28 +60,7 @@ class ComercioSeeder extends Seeder
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
-        DB::table('comercios')->insert([
-            'area_id' => '2',
-            'user_id' => '3',
-            'keyword' => 'comercio3',
-            'name' => 'Comercio 3',
-            'avatar' => '',
-            'banner' => '',
-            'contactcellphone' => '04163333333',
-            'contactphone'  => '0212-333-33-33',
-            'horario'  => 'Lunes a Domingo hora: 6:30 am a 8:00 pm',
-            'email'  => 'comercio3@gmail.com',
-            'youtube'  => 'https://www.youtube.com/@ddrsistemas',
-            'twitter'  => 'https://www.youtube.com/@ddrsistemas',
-            'facebook'  => 'https://www.youtube.com/@ddrsistemas',
-            'dominio' => 'http://www.repuestoexpres.com',
-            'address'  => 'Caracas, Venezuela',
-            'rifLetter' => 'J',
-            'rifNumber' => '33333333-8',
-            // 'dominio' => 'http://www.repuestoexpres.com',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
+        
     }
 }
 

@@ -16,8 +16,8 @@ class MenuSeeder extends Seeder
     public function run()
     {
         DB::table('menus')->insert([
-            'texto' => 'Carro',
-            'ruta' => 'Carro',
+            'texto' => 'Panaderías',
+            'ruta' => 'Panaderia',
             'origen' => 'categories', // view or categories
             'menu' => 1,
             'posicion' => 1,
@@ -27,8 +27,8 @@ class MenuSeeder extends Seeder
         ]);
 
         DB::table('menus')->insert([
-            'texto' => 'Moto',
-            'ruta' => 'Moto',
+            'texto' => 'Pastelerías',
+            'ruta' => 'Pasteleria',
             'origen' => 'categories', // view or categories
             'menu' => 1,
             'posicion' => 2,
@@ -38,8 +38,8 @@ class MenuSeeder extends Seeder
         ]);
 
         DB::table('menus')->insert([
-            'texto' => 'Aceites',
-            'ruta' => 'Aceites y líquidos',
+            'texto' => 'Bebidas',
+            'ruta' => 'Bebidas',
             'origen' => 'categories', // view or categories
             'menu' => 1,
             'posicion' => 3,
@@ -49,8 +49,8 @@ class MenuSeeder extends Seeder
         ]);
 
         DB::table('menus')->insert([
-            'texto' => 'Baterias',
-            'ruta' => 'baterias',
+            'texto' => 'Comidas y vívenes',
+            'ruta' => 'comidas y vivenes',
             'origen' => 'categories', // view or categories
             'menu' => 1,
             'posicion' => 4,
@@ -60,8 +60,8 @@ class MenuSeeder extends Seeder
         ]);
 
         DB::table('menus')->insert([
-            'texto' => 'Frenos',
-            'ruta' => 'frenos',
+            'texto' => 'Desayunos',
+            'ruta' => 'desayuno',
             'origen' => 'categories', // view or categories
             'menu' => 1,
             'posicion' => 5,
