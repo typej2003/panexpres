@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="shortcut icon" type="x-icon" href="/img/logo_repuestos.png" />
+    <link rel="shortcut icon" type="x-icon" href="/img/panexpres_logo.png.png" />
     <title>{{ setting('site_title') }} | {{ setting('site_name') }}</title>
 
     <!-- Bootstrap CSS -->
