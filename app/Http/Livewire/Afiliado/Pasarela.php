@@ -17,6 +17,7 @@ use App\Models\Transaccion;
 use App\Models\Pedido;
 use App\Models\PedidoTemporal;
 use App\Models\MetodoPagoC;
+use App\Models\Tasa;
 
 class Pasarela extends Component
 {
@@ -57,6 +58,8 @@ class Pasarela extends Component
 	{
             $this->pedido = PedidoTemporal::where('nropedido', $nropedido)->first();
             $this->comercio_id = $comercioId;
+
+            $this->currencyValue = request()->cookie('currency');
             
             //guardar variables de entrega
             $this->metodoentrega = $this->pedido->metodoentrega;
@@ -71,6 +74,14 @@ class Pasarela extends Component
                 $this->description = $this->pedido->description;
                 $this->clienteId = $this->pedido->user_id;
                 $this->amount = $this->pedido->coste;
+
+                if($this->currencyValue == 'Bs')
+                {
+                    // Hacer conversion
+                    $this->amount = $this->convertir($this->pedido->coste, $this->pedido->comercio_id);
+                    $this->currency = '1';
+                }
+                
                 $this->currency = $this->pedido->currency;
                 $this->currencyValue = $this->searchCurrency($this->pedido->currency);
                 
@@ -82,7 +93,7 @@ class Pasarela extends Component
                 $this->identificationNumber = $cliente->identificationNumber;
                 $this->comercio = Comercio::find($this->pedido->comercio_id);
             }
-            $this->currencyValue = request()->cookie('currency');
+            
        
         
 	}
@@ -110,14 +121,20 @@ class Pasarela extends Component
         $this->title = 'Compra';
         $this->description = $description;
         
-        $this->amount = $cart->total();
+        
 
         $this->currencyValue = request()->cookie('currency');
 
+        dd($this->currencyValue);
+
         if($this->currencyValue == 'Bs')
         {
+            // Hacer conversion
+            $this->amount = $this->convertir($cart->total());
+
             $this->currency = '1';
         }else{
+            $this->amount = $cart->total();
             $this->currency = '2';
         }
 
@@ -158,6 +175,28 @@ class Pasarela extends Component
         //     'description' => $this->description,
         //     'description' => $this->description,
         // ]);
+    }
+
+    public function convertir($amount, $comercio_id)
+    {
+        $tasaValues = Tasa::where('comercio_id', $comercio_id)->first();
+
+        if(!$tasaValues){
+            $tasa = 1;
+        }else{
+            $tasa = $tasaValues->tasa;
+            
+        }
+        switch ($this->currencyValue) {
+            case 'Bs':
+                $subtotal = round($amount*$tasa, 2);
+                break;
+            case '$':
+                $subtotal = round($amount, 2);
+                break;            
+        }
+
+        return $subtotal;
     }
 
 
