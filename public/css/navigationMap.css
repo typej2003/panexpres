@@ -1,0 +1,16 @@
+.navigationMap{
+    background-color: #201E1F;
+    width: 100%;
+    height: auto;
+    color: #fff;
+    bottom: 0;
+}
+
+.logoNM {
+    display: flex;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+}
