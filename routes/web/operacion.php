@@ -14,6 +14,7 @@ use App\Http\Livewire\Components\MenuComponent;
 
 use App\Http\Livewire\Afiliado\Pasarela;
 use App\Http\Livewire\Afiliado\Shipping;
+use App\Http\Livewire\Carrito\Procesado;
 
 use App\Http\Livewire\Recursos\ImportExportExcel;
 
@@ -26,6 +27,10 @@ Route::get('/shipping/{nropedido}', Shipping::class)->name('shipping')->middlewa
 Route::get('/checkout/shipping/{nropedido}', [WelcomeController::class, 'checkoutShipping'])->name('checkout.shipping'); 
 
 Route::get('/checkout/pasarela/{nropedido}/{comercioId}', [WelcomeController::class, 'checkoutPasarela'])->name('checkout.pasarela'); 
+
+Route::get('/procesado', function(){
+    return view('externalviews.procesado');
+})->name('procesado'); 
 
 
 // Route::get('/checkout/shipping/{nropedido}', function($nropedido){

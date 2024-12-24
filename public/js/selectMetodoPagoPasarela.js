@@ -1644,7 +1644,7 @@ function enviarDatos(datos){
             if(data.state == 'ok'){
                 console.log('operación exitosa!')
                 //window.location.href = "{{ route('listPedidosCliente')}}";
-                window.location.href = "/listPedidosCliente";
+                window.location.href = "/procesado";
             }else{
                 console.log('operación fallida!')
             }

@@ -1,12 +1,4 @@
 <div>
-    <style>
-        .font-costo{
-            font-size: xx-large; font-weight: bold;
-        }
-        .font-total{
-            font-size: x-large; font-weight: bold;   
-        }
-    </style>
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
