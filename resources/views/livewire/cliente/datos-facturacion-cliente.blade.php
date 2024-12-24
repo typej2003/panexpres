@@ -235,7 +235,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="zipcode" class="">Código Postal <span class="text-danger">*</span></label>
+                        <label for="zipcode" class="">Código Postal </label>
                         <input type="text" wire:model.defer="state.zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror" id="zipcode" placeholder="Código Postal" {{$class}} {{$class1}}>
                         @error('zipcode')
                         <div class="invalid-feedback">
@@ -270,7 +270,7 @@
                             </div>
                         </div>
 
-                        <div class="row border border-top my-4">
+                        <div class="row border border-top my-4 d-none">
                             <div class="col-md-12">
                                 <div class="row my-3" >
                                     <div class="col-md-1">

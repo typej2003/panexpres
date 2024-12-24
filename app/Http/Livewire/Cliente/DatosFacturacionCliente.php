@@ -24,7 +24,7 @@ class DatosFacturacionCliente extends AdminComponent
     public $deliveryArea = '';
 
     public $country = 237;
-    public $province;
+    public $province = 24;
     public $city;
     public $zona;
     public $countries = [], $provinces = [], $cities = [], $zonas = [];
@@ -39,7 +39,6 @@ class DatosFacturacionCliente extends AdminComponent
 
     protected $messages = [
         'required' => 'Valor requerido',
-        'zipcode.required' => 'Valor requerido',
     ];
     
     public function mount($nropedido)
@@ -51,6 +50,7 @@ class DatosFacturacionCliente extends AdminComponent
 
         $this->countries = Country::all();
         $this->provinces = Estado::where('country_id', 237)->get();
+        $this->cities = Cities::where('state_id', 24)->get();
 
         $datosfacturacion = DatosFacturacion::where('user_id', auth()->user()->id)->first();
 
@@ -114,7 +114,7 @@ class DatosFacturacionCliente extends AdminComponent
             'cellphonecode' => 'required|not_in:0',
             'cellphone' => 'required',
             'address' => 'required',
-            'zipcode' => 'required',
+            'zipcode' => 'nullable',
 		])->validate();
 
 		$this->datosfacturacion->update($validatedData);
@@ -184,7 +184,7 @@ class DatosFacturacionCliente extends AdminComponent
             'cellphonecode' => 'required|not_in:0',
             'cellphone' => 'required',
             'address' => 'required',
-            'zipcode' => 'required',
+            'zipcode' => 'nullable',
             'metodoenvio'=> 'required|in:enviodelivery,envionacional',
             'metodoentrega'=> 'required|not_in:0' ,
 		],  [

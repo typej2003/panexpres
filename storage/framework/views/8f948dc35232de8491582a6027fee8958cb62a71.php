@@ -19,7 +19,7 @@
     
     <div class="row d-none">
         <div class="col-lg-12">
-            <a href="/"><img style="width: 100%; height: 110px;"  src="{{ $comercio->banner_url }}" alt=""></a>
+            <a href="/"><img style="width: 100%; height: 110px;"  src="<?php echo e($comercio->banner_url); ?>" alt=""></a>
         </div>
     </div>
 
@@ -28,50 +28,50 @@
             <span class="negrita">Información:</span>
             <div class="row">
                 <div class="col-md-3">
-                    <span>clienteId: <span>{{ $clienteId }}</span></span>
+                    <span>clienteId: <span><?php echo e($clienteId); ?></span></span>
                 </div>
                 <div class="col-md-3">
-                    <span>identificationNac: <span>{{ $identificationNac }}</span>
+                    <span>identificationNac: <span><?php echo e($identificationNac); ?></span>
                 </div>
                 <div class="col-md-3">
-                    <span>identificationNumber: <span>{{ $identificationNumber }}</span>
+                    <span>identificationNumber: <span><?php echo e($identificationNumber); ?></span>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-3">
-                    <span>email: <span>{{ $email }}</span></span>
+                    <span>email: <span><?php echo e($email); ?></span></span>
                 </div>
                 <div class="col-md-3">
-                    <span>cellphone: <span>{{ $cellphone }}</span></span>
+                    <span>cellphone: <span><?php echo e($cellphone); ?></span></span>
                 </div>
                 <div class="col-md-3">
-                    <span>rifLetter: <span>{{ $rifLetter }}</span></span>
+                    <span>rifLetter: <span><?php echo e($rifLetter); ?></span></span>
                 </div>
                 <div class="col-md-3">
-                    <span>rifNumber: <span>{{ $rifNumber }}</span></span>
+                    <span>rifNumber: <span><?php echo e($rifNumber); ?></span></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <span>reference: <span>{{ $reference }}</span> // Pedido a pagar</span>
+                    <span>reference: <span><?php echo e($reference); ?></span> // Pedido a pagar</span>
                 </div>
                 <div class="col-md-2">
-                    <span>currency: <span>{{ $currency }}</span></span>
+                    <span>currency: <span><?php echo e($currency); ?></span></span>
                 </div>
                 <div class="col-md-2">
-                    <span>currencyValue: <span>{{ $currencyValue }}</span></span>
+                    <span>currencyValue: <span><?php echo e($currencyValue); ?></span></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    <span>amount: <span>{{ $amount }}</span> //monto</span>
+                    <span>amount: <span><?php echo e($amount); ?></span> //monto</span>
                 </div>
                 <div class="col-md-5">
-                    <span>title: <span>{{ $title }}</span></span>
+                    <span>title: <span><?php echo e($title); ?></span></span>
                 </div>
                 <div class="col-md-5">
-                    <span>description: <span>{{ $description }}</span></span>
+                    <span>description: <span><?php echo e($description); ?></span></span>
                 </div>
             </div>            
         </div>
@@ -99,27 +99,27 @@
 
 <script>
     document.addEventListener('livewire:load', function () {
-        var nropedido = @this.nropedido 
-        var reference = @this.reference 
-        var title = @this.title 
-        var description  = @this.description 
-        var clienteId = @this.clienteId 
-        var amount = @this.amount
-        var currency = @this.currency 
-        var currencyValue  = @this.currencyValue 
-        var email = @this.email 
-        var cellphone = @this.cellphone 
-        var cellphonecode = @this.cellphonecode 
-        var identificationNac = @this.identificationNac
-        var identificationNumber = @this.identificationNumber
+        var nropedido = window.livewire.find('<?php echo e($_instance->id); ?>').nropedido 
+        var reference = window.livewire.find('<?php echo e($_instance->id); ?>').reference 
+        var title = window.livewire.find('<?php echo e($_instance->id); ?>').title 
+        var description  = window.livewire.find('<?php echo e($_instance->id); ?>').description 
+        var clienteId = window.livewire.find('<?php echo e($_instance->id); ?>').clienteId 
+        var amount = window.livewire.find('<?php echo e($_instance->id); ?>').amount
+        var currency = window.livewire.find('<?php echo e($_instance->id); ?>').currency 
+        var currencyValue  = window.livewire.find('<?php echo e($_instance->id); ?>').currencyValue 
+        var email = window.livewire.find('<?php echo e($_instance->id); ?>').email 
+        var cellphone = window.livewire.find('<?php echo e($_instance->id); ?>').cellphone 
+        var cellphonecode = window.livewire.find('<?php echo e($_instance->id); ?>').cellphonecode 
+        var identificationNac = window.livewire.find('<?php echo e($_instance->id); ?>').identificationNac
+        var identificationNumber = window.livewire.find('<?php echo e($_instance->id); ?>').identificationNumber
         var rifLetter = 'J';
         var rifNumber = ''; // J G
 
-        var pagosmoviles = @this.pagosmoviles;
-        var transferencias = @this.transferencias;
-        var zelles = @this.zelles;
+        var pagosmoviles = window.livewire.find('<?php echo e($_instance->id); ?>').pagosmoviles;
+        var transferencias = window.livewire.find('<?php echo e($_instance->id); ?>').transferencias;
+        var zelles = window.livewire.find('<?php echo e($_instance->id); ?>').zelles;
 
-        var comercio_id = @this.comercio_id;
+        var comercio_id = window.livewire.find('<?php echo e($_instance->id); ?>').comercio_id;
         
         console.log(transferencias)
 
@@ -139,3 +139,4 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </div>
+<?php /**PATH C:\Users\typej\Documents\git\panexpres\resources\views/livewire/afiliado/pasarela.blade.php ENDPATH**/ ?>
