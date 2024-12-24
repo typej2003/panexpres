@@ -4,7 +4,7 @@
 @livewire('layouts.navbar-checkout')
 
 <div class="container-fluid">
-    @livewire('afiliado.shipping')
+    @livewire('afiliado.shipping', ['nropedido' => $nropedido])
 </div>
 
 <script src="/js/app.js"></script>

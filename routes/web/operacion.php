@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\WelcomeController;
+
 use App\Http\Livewire\Operacion\MakePayment;
 
 use App\Http\Livewire\Recursos\Selectul;
@@ -21,9 +23,15 @@ Route::get('/enviarDataPasarela', [Pasarela::class, 'enviarDataPasarela'])->name
 
 Route::get('/shipping/{nropedido}', Shipping::class)->name('shipping')->middleware('auth');
 
-Route::get('/checkout/shipping', function(){
-    return view('externalviews.checkout');
-})->name('checkout.shipping')->middleware('auth');
+Route::get('/checkout/shipping/{nropedido}', [WelcomeController::class, 'checkoutShipping'])->name('checkout.shipping'); 
+
+
+// Route::get('/checkout/shipping/{nropedido}', function($nropedido){
+//     return view('externalviews.checkout', [
+//         'nropedido' => $nropedido,
+//     ]);
+// })->name('checkout.shipping')->middleware('auth');
+
 
 // extras
 

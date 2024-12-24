@@ -6,8 +6,8 @@ use App\Http\Livewire\Admin\AdminComponent;
 use Illuminate\Http\Request;
 
 use App\Models\Setting;
-use App\Models\Pedido;
-use App\Models\PedidoDetalles;
+use App\Models\PedidoTemporal;
+use App\Models\PedidoDetallesTemporal;
 use App\Models\Tasa;
 use App\Models\Impuesto;
 use App\Models\SettingComercio;
@@ -39,7 +39,6 @@ class Cart1 extends AdminComponent
     public function emitCurrency($currencyValue, Request $request)
     {
         $this->currencyValue = $request->cookie('currency');
-
     }
 
     
@@ -63,13 +62,12 @@ class Cart1 extends AdminComponent
         
         $pedidoref = auth()->user()->identificationNumber . '-' . str_replace("-", "", date("Y-m-d")) . str_replace(":", "", date("H:i:s"));
 
-        $pedido = Pedido::create([
-            'pedido' => $pedidoref,
+        $pedido = PedidoTemporal::create([
+            'nropedido' => $pedidoref,
             'title' => $title,
             'description' => $descripcion,
             'comercio_id' => $this->comercio_id,
             'user_id' => auth()->user()->id,
-            'description' => '',
             'coste' => $cart->total(),
             'currency' => 1,
             'in_delivery' => 0,
@@ -82,9 +80,9 @@ class Cart1 extends AdminComponent
 
         foreach($contenido as $elemento)
         {
-            $pedido = PedidoDetalles::create([
+            $pedido = PedidoDetallesTemporal::create([
                 'pedido_id' => $pedido_id,
-                'pedido' => $pedido->pedido,                
+                'nropedido' => $pedido->nropedido,                
                 'comercio_id' => $this->comercio_id,
                 'user_id' => auth()->user()->id,
                 'product_id' => $elemento->id,
@@ -92,11 +90,19 @@ class Cart1 extends AdminComponent
                 'price1' => $elemento->price,
                 'quantity' => $elemento->quantity,
             ]);
+
+            \Cart::update($elemento->id,
+                            array(
+                                'nropedido' => array(
+                                    'relative' => false,
+                                    'value' => $pedido->nropedido,
+                                ),
+                        ));
         }
 
-        $cart->onlyClear();
-
-        return redirect()->route('shipping', ['nropedido' => $pedido->pedido]);
+        //$cart->onlyClear();
+        // return redirect()->route('checkout.shipping');
+        return redirect()->route('checkout.shipping', ['nropedido' => $pedido->nropedido]);
         // return redirect()->route('pasarela', ['pedido' => $pedido->pedido, 'comercioId' => $this->comercio_id]);
     }
     

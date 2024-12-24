@@ -34,11 +34,39 @@
                             <div class="tab-content">
 
                                 <div class="tab-pane" :class="currentTab === 'changeEnvio' ? 'active' : ''" id="changeEnvio" wire:ignore.self>
-                                    @livewire('afiliado.shipping-envio', ['nropedido' => $nropedido])
+                                    <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('afiliado.shipping-envio', ['nropedido' => $nropedido])->html();
+} elseif ($_instance->childHasBeenRendered('l4008510082-0')) {
+    $componentId = $_instance->getRenderedChildComponentId('l4008510082-0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l4008510082-0');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l4008510082-0');
+} else {
+    $response = \Livewire\Livewire::mount('afiliado.shipping-envio', ['nropedido' => $nropedido]);
+    $html = $response->html();
+    $_instance->logRenderedChild('l4008510082-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                                 </div>
 
                                 <div class="tab-pane" :class="currentTab === 'changePickup' ? 'active' : ''" id="changePickup" wire:ignore.self>
-                                    @livewire('afiliado.shipping-centrodistribucion', ['nropedido' => $nropedido])
+                                    <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('afiliado.shipping-centrodistribucion', ['nropedido' => $nropedido])->html();
+} elseif ($_instance->childHasBeenRendered('l4008510082-1')) {
+    $componentId = $_instance->getRenderedChildComponentId('l4008510082-1');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l4008510082-1');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l4008510082-1');
+} else {
+    $response = \Livewire\Livewire::mount('afiliado.shipping-centrodistribucion', ['nropedido' => $nropedido]);
+    $html = $response->html();
+    $_instance->logRenderedChild('l4008510082-1', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                                 </div>
                                 <!-- /.tab-pane -->
                             </div>
@@ -56,15 +84,15 @@
 
 </div>
 
-@push('styles')
-@endpush
+<?php $__env->startPush('styles'); ?>
+<?php $__env->stopPush(); ?>
 
-@push('alpine-plugins')
+<?php $__env->startPush('alpine-plugins'); ?>
 <!-- Alpine Plugins -->
 <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@push('js')
+<?php $__env->startPush('js'); ?>
 <script>
     $(document).ready(function () {
         Livewire.on('nameChanged', (changedName) => {
@@ -72,4 +100,5 @@
         })
     });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php /**PATH C:\Users\typej\Documents\git\panexpres\resources\views/livewire/afiliado/shipping.blade.php ENDPATH**/ ?>

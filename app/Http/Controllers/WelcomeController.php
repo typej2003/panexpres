@@ -258,6 +258,12 @@ class WelcomeController extends Controller
     //    $this->dispatchBrowserEvent('sendCategories', ['categories' => $this->categories, 'message' => 'variables enviadas satisfactoriamente!']);
     }
 
-    
+    public function checkoutShipping($nropedido)
+    {
+
+        return view('externalviews.checkout', [
+            'nropedido' => $nropedido,
+        ]);
+    }
 
 }

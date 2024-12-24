@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\DatosBasicos;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -90,8 +91,6 @@ class AuthController extends Controller
 		//], $this->messages);
         ], $this->messages)->validate();
 
-
-
 		$validatedData['password'] = bcrypt($validatedData['password']);
         
         $user = User::create($validatedData);
@@ -100,6 +99,19 @@ class AuthController extends Controller
             'user_id' => $user->id,
             'cellphonecode' => $request->post('cellphonecode'),
             'cellphone' => $request->post('cellphone'),
+        ]);
+
+        $cart = new CartController;
+        $contenido = $cart->contenido();
+
+        foreach($contenido as $elemento)
+        {   
+            $comercio_id = $elemento->attributes->comercio_id;
+        }
+
+        Client::create([
+            'user_id' => $user->id,
+            'comercio_id' => 1,
         ]);
         
         //Login de usuario

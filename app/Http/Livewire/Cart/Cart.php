@@ -368,7 +368,8 @@ class Cart extends AdminComponent
 
         //$cart->onlyClear();
         // return redirect()->route('checkout.shipping');
-        return redirect()->route('shipping', ['nropedido' => $pedido->nropedido]);
+        
+        return redirect()->route('checkout.shipping', ['nropedido' => $pedido->nropedido]);
         // return redirect()->route('pasarela', ['pedido' => $pedido->pedido, 'comercioId' => $this->comercio_id]);
     }
 
