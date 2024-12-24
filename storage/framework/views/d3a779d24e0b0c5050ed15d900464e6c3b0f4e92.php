@@ -98,7 +98,7 @@
                 <tbody>
                     <tr>
                         <th scope="row">Impuestos</th>
-                        <td><?php echo e($currencyValue); ?> <?php echo e($this->amountImpuesto()); ?></td>
+                        <td><?php echo e($currencyValue); ?> <?php echo e($this->getImpuestoIVA()); ?></td>
                     </tr>
                     <?php if($currencyValue == '$'): ?>
                     <tr>

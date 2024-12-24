@@ -154,29 +154,35 @@ class Cart1 extends AdminComponent
 
     public function getImpuestoIVA()
     {
-        $subtotal = \Cart::getTotal();
+        if(request()->cookie('currency') == 'Bs')
+        {
+            $subtotal = \Cart::getTotal();
 
-        $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->first();
-        if(!$tasaValues){
-            $tasa = 1;
-        }else{
-            $tasa = $tasaValues->tasa;
-        }
+            $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->first();
+            if(!$tasaValues){
+                $tasa = 1;
+            }else{
+                $tasa = $tasaValues->tasa;
+            }
 
-        $settingComercio = SettingComercio::where('comercio_id', $this->comercio_id)->first();
+            $settingComercio = SettingComercio::where('comercio_id', $this->comercio_id)->first();
 
-        if($settingComercio->in_impuesto == 'SI'){
-            $impuesto = Impuesto::where('comercio_id', $this->comercio_id)->where('name', 'IVA')->first();
-            if($impuesto){
-                $this->impuesto = $tasa * $subtotal * $impuesto->amount/100;
+            if($settingComercio->in_impuesto == 'SI'){
+                $impuesto = Impuesto::where('comercio_id', $this->comercio_id)->where('name', 'IVA')->first();
+                if($impuesto){
+                    $this->impuesto = $tasa * $subtotal * $impuesto->amount/100;
+                }else{
+                    $this->impuesto = 0;
+                }
             }else{
                 $this->impuesto = 0;
             }
+
+            return round($this->impuesto, 2) ;
         }else{
             $this->impuesto = 0;
-        }
-
-        return round($this->impuesto, 2) ;
+            return 0;
+        }        
     }
 
     public function getSubTotal($comercio_id = 1)
