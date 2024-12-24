@@ -6,7 +6,7 @@
     <link rel="shortcut icon" type="x-icon" href="/img/logo_repuestos.png" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ setting('site_title') }} | {{ setting('site_name') }}</title>
+    <title>PanExpres</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style-welcome.css">
