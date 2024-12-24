@@ -24,11 +24,11 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 4.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
-            'price_mayor' => 3, //precio al mayor
+            'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
-            'price_offer' => 3, //precio de oferta
+            'price_offer' => 1, //precio de oferta
             'profit_offer' => 12, // porcentaje de ganancia
             'price_divisa' => 41, //precio del dolar cuando se adquirió
             'in_delivery' => '1', 

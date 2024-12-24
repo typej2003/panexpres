@@ -7,7 +7,7 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
                     <div class="overlay-header">
-                        <img class="logo-responsive" src="/img/{{ $comercio->avatar_url }}" alt="">
+                        <img class="logo-responsive" src="{{ $comercio->avatar_url }}" alt="">
                         <div class="currency-responsive">
                             @livewire('components.currency')
                         </div>

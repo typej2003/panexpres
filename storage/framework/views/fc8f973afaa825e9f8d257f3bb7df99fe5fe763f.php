@@ -7,7 +7,7 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
                     <div class="overlay-header">
-                        <img class="logo-responsive" src="/img/<?php echo e($comercio->avatar_url); ?>" alt="">
+                        <img class="logo-responsive" src="<?php echo e($comercio->avatar_url); ?>" alt="">
                         <div class="currency-responsive">
                             <?php
 if (! isset($_instance)) {

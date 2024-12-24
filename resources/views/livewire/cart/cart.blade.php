@@ -99,7 +99,7 @@
                         <td>{{ $currencyValue }} {{ $this->amountImpuesto() }}</td>
                     </tr>
                     @if($currencyValue == '$')
-                    <tr>
+                    <tr class="d-none">
                         <th scope="row">IGTF</th>
                         <td>{{ $currencyValue }} {{ $this->amountIGTF() }}</td>
                     </tr>

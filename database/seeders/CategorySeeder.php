@@ -31,8 +31,8 @@ class CategorySeeder extends Seeder
             'avatar' => '',
             'user_id' => '1',
             'comercio_id' => '1',
-            'itemMenu' => '1',
-            'itemSubmenu' => '1',
+            'itemMenu' => '0',
+            'itemSubmenu' => '0',
             'posicionMenu' => 2,
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
@@ -43,8 +43,8 @@ class CategorySeeder extends Seeder
             'avatar' => '',
             'user_id' => '1',
             'comercio_id' => '1',
-            'itemMenu' => '1',
-            'itemSubmenu' => '1',
+            'itemMenu' => '0',
+            'itemSubmenu' => '0',
             'posicionMenu' => 3,
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'

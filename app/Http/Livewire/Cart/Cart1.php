@@ -233,6 +233,8 @@ class Cart1 extends AdminComponent
 
     public function amountIGTF($comercio_id = 1)
     {
+        return 0;
+        
         $totalProducts = \Cart::getTotal();
         $settingComercio = SettingComercio::where('comercio_id', $comercio_id)->first();
 

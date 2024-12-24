@@ -30,7 +30,7 @@ class MenuSeeder extends Seeder
             'texto' => 'Pastelerías',
             'ruta' => 'Pasteleria',
             'origen' => 'categories', // view or categories
-            'menu' => 1,
+            'menu' => 0,
             'posicion' => 2,
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -41,7 +41,7 @@ class MenuSeeder extends Seeder
             'texto' => 'Bebidas',
             'ruta' => 'Bebidas',
             'origen' => 'categories', // view or categories
-            'menu' => 1,
+            'menu' => 0,
             'posicion' => 3,
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -52,7 +52,7 @@ class MenuSeeder extends Seeder
             'texto' => 'Comidas y vívenes',
             'ruta' => 'comidas y vivenes',
             'origen' => 'categories', // view or categories
-            'menu' => 1,
+            'menu' => 0,
             'posicion' => 4,
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -63,7 +63,7 @@ class MenuSeeder extends Seeder
             'texto' => 'Desayunos',
             'ruta' => 'desayuno',
             'origen' => 'categories', // view or categories
-            'menu' => 1,
+            'menu' => 0,
             'posicion' => 5,
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
