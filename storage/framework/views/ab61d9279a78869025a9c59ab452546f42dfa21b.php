@@ -4,7 +4,7 @@
     </style>
                 <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="dropdownM">
-                        <a class="dropbtnM"><?php echo e($menu->texto); ?></a>
+                        <a class="dropbtnM text-white"><?php echo e($menu->texto); ?></a>
                         <?php if( $menu->origen == 'categories'): ?>
                             <div class="dropdownM-content">
                                 <?php if($menu->subcategories() != null): ?>

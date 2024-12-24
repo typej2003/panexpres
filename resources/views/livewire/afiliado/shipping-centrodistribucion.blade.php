@@ -56,8 +56,8 @@
         <div class="col-md-6">
             <form class="formPickup" action="" method="get">
                 @csrf
-                <input wire:model.defer="state.metodoentrega" type="text" name="metodoentrega" id="metodoentrega" >
-                <input wire:model.defer="state.nropedido" type="text" name="nropedido" id="nropedido" >
+                <input wire:model.defer="state.metodoentrega" type="hidden" name="metodoentrega" id="metodoentrega" >
+                <input wire:model.defer="state.nropedido" type="hidden" name="nropedido" id="nropedido" >
                 <button class='btn btn-success {{$class}}' wire:click.prevent="siguientePickup">Siguiente</button>
             </form>
         </div>

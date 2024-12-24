@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Afiliado;
 
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -56,6 +57,7 @@ class Pasarela extends Component
 
     public function mount($nropedido = '', $comercioId = 1, )
 	{
+        
             $this->pedido = PedidoTemporal::where('nropedido', $nropedido)->first();
             $this->comercio_id = $comercioId;
 
@@ -283,8 +285,23 @@ class Pasarela extends Component
 
     }
 
+    public function redirection()
+    {
+        
+        return Redirect::to('listUsers');
+    }
+
     public function render()
     {
+        if(  \Cart::getTotalQuantity() == 0)
+        {
+            $this->description = 'No puede ejecutar back en el navegador';
+            return view('livewire.error.show-error', [
+                'error' => '144',
+                'description' => 'No puede ejecutar back en el navegador',
+            ]);
+        }
+
         $this->pagosmoviles = MetodoPagoC::select(['id', 'metodo','cellphonecode','cellphone','identificationNumber','banco', 'codigo'])->where('comercio_id', $this->comercio_id)->where('metodo','pagomovil')->get()->toArray();
         
         $this->transferencias = MetodoPagoC::select(['id', 'metodo','banco', 'codigo', 'titular','identificationNumber','nrocuenta'])->where('comercio_id', $this->comercio_id)->where('metodo','transferencia')->get()->toArray();

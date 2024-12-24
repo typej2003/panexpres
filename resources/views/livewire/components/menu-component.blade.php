@@ -4,7 +4,7 @@
     </style>
                 @foreach($menus as $menu)
                     <div class="dropdownM">
-                        <a class="dropbtnM">{{ $menu->texto }}</a>
+                        <a class="dropbtnM text-white">{{ $menu->texto }}</a>
                         @if( $menu->origen == 'categories')
                             <div class="dropdownM-content">
                                 @if($menu->subcategories() != null)

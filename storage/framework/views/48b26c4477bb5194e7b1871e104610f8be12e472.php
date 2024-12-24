@@ -24,7 +24,7 @@ echo $html;
 					<span>V1.0.0 PV2</span>
 				</div>
 				<div class="col-12 col-md-6 my-1">
-					<span><img class="img-fluid footer-img2" src="/img/LOGO_BANCO.png" alt=""></span>
+					<span><img class="img-fluid footer-img2" src="/img/pie.png" alt=""></span>
 				</div>
 		</div>
 	</div>

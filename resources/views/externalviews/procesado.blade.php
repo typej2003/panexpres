@@ -56,6 +56,7 @@
 
 <script src="/js/app.js"></script>
 <script src="/js/backend.js"></script>
+
 <!-- <script src="/js/bootstrap.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/jquery-3.6.4.min.js"></script> -->
@@ -68,3 +69,10 @@
 @stack('alpine-plugins')
 <!-- Alpine Core -->
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+@push('js')
+
+@endpush
+
+<SCRIPT LANGUAGE="JavaScript">
+// history.forward()
+</SCRIPT>

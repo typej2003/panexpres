@@ -97,8 +97,8 @@ unset($__errorArgs, $__bag); ?>" aria-labelledby="headingOne" data-bs-parent="#a
                     <hr>
                     <div class="form-group">
 
-                        <input wire:model.defer="state.nropedido" type="text" name="nropedido" id="nropedido" >
-                        <input wire:model.defer="state.metodoentrega" type="text" name="metodoentrega" id="metodoentrega" >
+                        <input wire:model.defer="state.nropedido" type="hidden" name="nropedido" id="nropedido" >
+                        <input wire:model.defer="state.metodoentrega" type="hidden" name="metodoentrega" id="metodoentrega" >
 
                         <div class="row">
                             <div class="col-xs-6 col-md-4 col-sm-4 col-4">
@@ -534,8 +534,7 @@ unset($__errorArgs, $__bag); ?>
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        
+                    <div class="modal-body">                        
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-6 col-md-4 col-sm-4 col-4">

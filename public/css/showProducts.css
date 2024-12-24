@@ -12,16 +12,18 @@
     width: 20rem!important;
     height: 23rem!important;
     border-radius: 15px;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4); */
+    box-shadow: 0 3px 3px val(--main-btn-color);
     flex: auto;
   }
   
   .showProductCard:hover {
     box-shadow: 0 3px 3px var(--main-bg-color);
+    box-shadow: 0 3px 3px #FC5E27;
   }
   
   .showProductCard img{
-    width: 120px!important;
+    width: 100% !important;
     height: 150px!important;
     text-align: center!important;
     align-items: center;

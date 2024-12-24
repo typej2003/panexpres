@@ -230,13 +230,15 @@
 
                 <div class="menu" style="z-index: 6!important">
                     <div class="menu-left" onclick="openNav()">&#9776; <span class="wordMenu">MENÚ</span></div> 
-                    <div class="menu-center w-full d-flex justify-content-around">                        
+                    <div class="menu-center w-full ">
+                        <div class="d-flex justify-content-around bg-dark ">
                         @livewire('components.menu-component',[
                             'comercioId' => 1,
                             'manufacturer_id' => $manufacturer_id,
                             'modelo_id' => $modelo_id,
                             'motor_id' => $motor_id,
                         ])
+                        </div>
                         
                     </div>
                     <div class="button-search w-full" style="display: none; cursor: pointer;"><img src="/img/icon_buscar.png" alt=""></div>
