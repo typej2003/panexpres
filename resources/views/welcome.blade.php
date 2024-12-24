@@ -55,20 +55,6 @@
                 <section class="">
                     <div class="my-2"></div>                    
                     @if($words == '')    
-                        <div class="row">
-                            <div class="col-xl-6 col-md-6 col-sm-6">
-                                @livewire('components.component-search', [
-                                    'comercioId' => 1,
-                                    'manufacturer_id' => $manufacturer_id,
-                                    'modelo_id' => $modelo_id,
-                                    'motor_id' => $motor_id,
-                                    ])
-                            </div>
-                            <div class="col-xl-6 col-md-6 col-sm-6">
-                                @livewire('components.carousel-offer')
-                            </div>
-                        </div>
-                    
                         <div class="my-2"></div>
                         @livewire('components.show-products', ['comercioId' => $comercio_id, 'currencyValue' => $currencyValue])
                     @endif

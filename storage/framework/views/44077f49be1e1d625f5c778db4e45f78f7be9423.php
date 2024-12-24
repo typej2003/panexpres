@@ -29,7 +29,7 @@
     <div class="container-fluid showProductsP">
         <div class="row negrita">
             <div class="col-12">
-                <img class="mx-3" width="45px" src="/img/icon-motor.png" alt=""><span class="h3 text-dark">Motor</span>
+                <span class="h3 text-dark">Productos</span>
             </div>
         </div>
         <div class="row">
