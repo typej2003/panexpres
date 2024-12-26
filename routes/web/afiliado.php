@@ -30,6 +30,7 @@ use App\Http\Livewire\Afiliado\Repuestoexpres\ListUsersComercio;
 use App\Models\Comercio;
 use App\Models\Product;
 use App\Models\Setting;
+use App\Models\SettingComercio;
 
 Route::get('/listComercios/{userId}', ListComercios::class)->name('listComercios')->middleware('auth');
 
@@ -52,10 +53,16 @@ Route::get('/routedetails/{comercioId}/{productId}', function($comercioId, $prod
         return redirect()->route('viewdetails', ['comercioId' => $comercioId, 'productId' => $productId]);
     }
     else{
+        
         $product = Product::find($productId);
         $comercio = Comercio::find($comercioId);
-        $setting = Setting::find($comercioId)->first();
-
+        $setting = SettingComercio::where('comercio_id', $comercioId)->first();
+        
+        if($setting == null)
+        {
+            $setting = SettingComercio::where('comercio_id', 1)->first();
+        }        
+        
         return view('externalviews.view-details', [
             'comercio' => $comercio, 
             'productId' => $product->id,

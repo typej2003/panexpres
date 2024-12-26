@@ -16,7 +16,7 @@ class ManufacturersSeeder extends Seeder
     {
         DB::table('manufacturers')->insert([
             'name' => 'Vollmer Bakery',
-            'avatar' => 'vollmerbakery.png',
+            'avatar' => 'logovollmer.png',
             'mercado' => 'original',
             'area_id' => '1',
             'user_id' => '1',
