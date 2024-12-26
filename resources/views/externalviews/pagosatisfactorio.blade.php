@@ -39,6 +39,12 @@
                                 <p>
                                     <button class="btn btn-success" id="salir">Salir</button>
                                 </p>
+                                <p>
+                                    <a target="_parent" href="/">Hacia el /</a>
+                                </p>
+                                <p>
+                                    <a target="_parent" href="https://www.panexpres.com">www.panexpres.com</a>
+                                </p>
                             </div>
                             <div class="card-footer d-flex justify-content-end">
                                 
@@ -56,8 +62,7 @@
         <script>
             let boton = document.getElementById('salir')
             boton.addEventListener('click', function(){
-                alert('salir')
-                location.href = 'https://www.panexpres.com';
+                window.parent.location.href= "https://www.panexpres.com";
             })
         </script>
 
