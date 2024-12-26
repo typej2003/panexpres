@@ -88,8 +88,8 @@ class ApiController extends Component
 		//$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
 
 		// $Payment->urlToReturn= "http://http://192.168.1.4:8000/pagosatisfactorio/{ID}";
-		// $Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
-		$Payment->urlToReturn= "https://panexpres.com/receive/{ID}";
+		$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
+		// $Payment->urlToReturn= "https://panexpres.com/receive/{ID}";
 		
 
 		// actualizado

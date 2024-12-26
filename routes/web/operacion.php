@@ -50,6 +50,12 @@ Route::get('/receiveBDV/{toke}', [WelcomeController::class, 'receiveBDV'])->name
 
 // extras
 
+Route::get('/pagosatisfactorio/{id}', function ( $id ) {
+    $id_suc = $id;
+    return view('pagosatisfactorio', compact('id_suc') );
+});
+
+
 Route::get('/showCurrency', Currency::class,)->name('showCurrency');
 
 Route::get('/menu', MenuComponent::class,)->name('menu');
