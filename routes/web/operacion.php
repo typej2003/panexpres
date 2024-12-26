@@ -43,6 +43,8 @@ Route::get('/pagosatisfactorio/{token}', function($token){
     return view('externalviews.procesado');
 });
 
+Route::get('/sendProcesado', [Pasarela::class, 'sendProcesado']);
+
 
 // Route::get('/checkout/shipping/{nropedido}', function($nropedido){
 //     return view('externalviews.checkout', [
