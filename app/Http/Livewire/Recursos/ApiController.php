@@ -87,8 +87,8 @@ class ApiController extends Component
 		//$Payment->urlToReturn= "https://ddrsistemas.com/pasarelape/procesado.php";
 		//$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
 
-		$Payment->urlToReturn= "http://http://192.168.1.4:8000/pagosatisfactorio/{ID}";
-		//$Payment->urlToReturn= "https://repuestoexpres.com/pagosatisfactorio/{ID}";
+		// $Payment->urlToReturn= "http://http://192.168.1.4:8000/pagosatisfactorio/{ID}";
+		$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
 
 		$Payment->rifLetter= $request->get('rifLetter') ?? ''; //Letra de la cédula - V, E o P
 		$Payment->rifNumber= $request->get('rifNumber') ?? ''; //Número de cédula
