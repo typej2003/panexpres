@@ -132,7 +132,7 @@
 
 <script>    
     window.addEventListener('sendWelcome', function (event) {
-        alert('ok')
+        
         location.href = '/';
     });
 </script>
