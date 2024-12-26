@@ -16,6 +16,8 @@ use App\Http\Livewire\Afiliado\Pasarela;
 use App\Http\Livewire\Afiliado\Shipping;
 use App\Http\Livewire\Carrito\Procesado;
 
+use App\Http\Livewire\Recursos\ApiController;
+
 use App\Http\Livewire\Recursos\ImportExportExcel;
 
 // Route::get('/pasarela/{nropedido}/{comercioId}', Pasarela::class)->name('pasarela')->middleware('auth');
@@ -31,6 +33,12 @@ Route::get('/checkout/pasarela/{nropedido}/{comercioId}', [WelcomeController::cl
 Route::get('/procesado', function(){
     return view('externalviews.procesado');
 })->name('procesado'); 
+
+Route::get('/procesado', function(){
+    return view('externalviews.procesado');
+})->name('procesado');
+
+Route::get('/pagosatisfactorio', ApiController::class)->name('pagosatisfactorio')->middleware('auth');
 
 
 // Route::get('/checkout/shipping/{nropedido}', function($nropedido){
