@@ -39,12 +39,7 @@ Route::get('/procesado', function(){
 })->name('procesado');
 
 // Route::get('/pagosatisfactorio/{token}', [ApiController::class, 'pagosatisfactorio'])->name('pagosatisfactorio')->middleware('auth');
-Route::get('/pagosatisfactorio/{token}', function($token){
-    return view('externalviews.procesado');
-});
-
-Route::get('/sendProcesado', [Pasarela::class, 'sendProcesado']);
-
+Route::get('/receiveBDV/{toke}', [WelcomeController::class, 'receiveBDV'])->name('receiveBDV'); 
 
 // Route::get('/checkout/shipping/{nropedido}', function($nropedido){
 //     return view('externalviews.checkout', [

@@ -273,4 +273,12 @@ class WelcomeController extends Controller
         ]);
     }
 
+    public function receiveBDV($toke)
+    {
+        return view('externalviews.procesado', [
+            'nropedido' => $toke,
+            'comercioId' => '1',
+        ]);
+    }
+
 }
