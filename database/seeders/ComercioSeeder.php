@@ -22,7 +22,7 @@ class ComercioSeeder extends Seeder
             'name' => 'PanExpres',
             'avatar' => 'panexpres_logo.png',
             'banner' => 'panexpres_banner.png',
-            'contactcellphone' => '04165800403',
+            'contactcellphone' => '04265173538',
             'contactphone'  => '0212-578-44-68',
             'horario'  => 'Lunes a Domingo hora: 6:30 am a 8:00 pm',
             'email'  => 'ddrsistemas@gmail.com',

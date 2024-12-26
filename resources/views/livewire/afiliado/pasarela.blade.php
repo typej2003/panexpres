@@ -137,7 +137,7 @@
     });
 
     window.addEventListener('sendProcesado', function (event) {
-        
+        alert('sendProcesado');
         location.href = '/procesado';
     });
     

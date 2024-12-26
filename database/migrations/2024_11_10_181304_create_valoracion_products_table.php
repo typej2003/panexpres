@@ -15,16 +15,8 @@ class CreateValoracionProductsTable extends Migration
     {
         Schema::create('valoracion_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')
-                ->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')
-                ->on('products')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->bigInteger('user_id');
+            $table->bigInteger('product_id');
             $table->integer('ca_valoracion')->default(0);
             $table->string('class')->nullable()->default('star');
             $table->string('comment')->nullable();
