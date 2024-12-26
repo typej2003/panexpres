@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             ContainerSeeder::class,
             ProductsSeeder::class,
+            ValoracionProductsSeeder::class,
             MenuSeeder::class,
             MetodoPagoComercioSeeder::class,
         ]);

@@ -51,8 +51,7 @@ echo $html;
                             <?php endif; ?>
                             <?php if(auth()->guard()->check()): ?>
                                 <div class="set">
-                                    <a href="#" style="font-weight: bold; font-size: 1.5rem;">
-                                        <?php echo e(auth()->user()->name); ?>
+                                    <a href="#" style="font-weight: bold; font-size: 1.5rem;">Hola, <?php echo e(auth()->user()->name); ?>
 
                                     </a>
                                     <div class="content">
@@ -183,7 +182,7 @@ echo $html;
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item dropdown">
                                         <a class="nav-link active dropdown-toggle botonera" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span class="ml-1" x-ref="username"><?php echo e(auth()->user()->name); ?></span>
+                                            <span class="ml-1" x-ref="username">Hola, <?php echo e(auth()->user()->name); ?></span>
                                         </a>
                                         <div class="dropdown-menu p-4" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="<?php echo e(route('admin.dashboard')); ?>" x-ref="profileLink">Escritorio</a>

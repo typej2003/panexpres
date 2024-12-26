@@ -89,7 +89,7 @@ a {text-decoration: none; }
 .overlay a:hover, .overlay a:focus { color: #000000; font-size: 1.2rem;}
 .overlay .closebtn { position: absolute; top: 1px; right: 5px; font-size: 2rem; color: #000; z-index: 1;}
 .overlay .closebtn:hover { font-size: 2.2rem; color: #000;}
-.overlay .overlay-header {display: flex; justify-content: space-between; background-color: rgb(216, 214, 214); align-items: center;}
+.overlay .overlay-header {display: flex; justify-content: space-between; background-color: rgb(216, 214, 214); align-items: center; height: auto; padding-bottom: 10px;}
 .overlay-header img { width: 65%;}
 .overlay-header div { width: 20%; margin-right: 35px;}
 

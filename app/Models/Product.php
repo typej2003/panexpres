@@ -170,7 +170,7 @@ class Product extends Model
         // }        
         $currency = request()->cookie('currency');
         
-        $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->first();
+        $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->where('status', 'activo')->first();
 
         if(!$tasaValues){
             $tasa = 1;
@@ -309,9 +309,9 @@ class Product extends Model
 
     public function getPrice_offer()
     {
-        $settings = Setting::where('user_id', $this->user_id)->first();
+        $settings = SettingComercio::where('user_id', $this->user_id)->first();
 
-        $tasaValues = Tasa::where('user_id', $this->user_id)->first();
+        $tasaValues = Tasa::where('user_id', $this->user_id)->where('status', 'activo')->first();
 
         if(!$tasaValues){
             $tasa = 1;

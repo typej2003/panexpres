@@ -180,7 +180,7 @@ class Pasarela extends Component
 
     public function convertir($amount, $comercio_id)
     {
-        $tasaValues = Tasa::where('comercio_id', $comercio_id)->first();
+        $tasaValues = Tasa::where('comercio_id', $comercio_id)->where('status', 'activo')->first();
 
         if(!$tasaValues){
             $tasa = 1;

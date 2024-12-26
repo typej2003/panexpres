@@ -24,7 +24,7 @@ class CartDrop extends Component
     {
         $currency = request()->cookie('currency');
         
-        $tasaValues = Tasa::where('comercio_id', $comercio_id)->first();
+        $tasaValues = Tasa::where('comercio_id', $comercio_id)->where('status', 'activo')->first();
 
         if(!$tasaValues){
             $tasa = 1;

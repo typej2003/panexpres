@@ -92,7 +92,8 @@
                 <thead>
                     <tr>
                         <th scope="col">Precio total artículos</th>
-                        <th scope="col"><?php echo e($currencyValue); ?> <?php echo e($this->getSubTotal()); ?></th>
+                        <!-- <th scope="col"><?php echo e($currencyValue); ?> <?php echo e($this->getSubTotal()); ?></th> -->
+                         <th scope="col"><?php echo e($currencyValue); ?> <?php echo e($this->getTotal()); ?></th>
                     </tr>
                 </thead>
                 <tbody>

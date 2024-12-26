@@ -68,6 +68,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Comercio</th>
                                         <th scope="col">
                                             Nombre
                                             <span wire:click="sortBy('name')" class="float-right text-sm" style="cursor: pointer;">
@@ -85,6 +86,7 @@
                                     @forelse ($products as $index => $product)
                                     <tr>
                                         <th scope="row">{{ $products->firstItem() + $index }}</th>
+                                        <td>{{ $product->comercio->name }}</td>
                                         <td>
                                             <img src="{{ $product->image1_url }}" style="width: 50px;" class="img img-circle mr-1" alt="">
                                             {{ $product->name }}
@@ -116,7 +118,7 @@
                                     </tr>
                                     @empty
                                     <tr class="text-center">
-                                        <td colspan="5">
+                                        <td colspan="6">
                                             <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/v2/assets/empty.svg" alt="No results found">
                                             <p class="mt-2">No se encontro resultados</p>
                                         </td>

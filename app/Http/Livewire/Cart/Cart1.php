@@ -158,7 +158,7 @@ class Cart1 extends AdminComponent
         {
             $subtotal = \Cart::getTotal();
 
-            $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->first();
+            $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->where('status', 'activo')->first();
             if(!$tasaValues){
                 $tasa = 1;
             }else{
@@ -189,7 +189,7 @@ class Cart1 extends AdminComponent
     {
         $subtotal = \Cart::getTotal();
 
-        $tasaValues = Tasa::where('comercio_id', $comercio_id)->first();
+        $tasaValues = Tasa::where('comercio_id', $comercio_id)->where('status', 'activo')->first();
 
         $settingComercio = SettingComercio::where('comercio_id', $comercio_id)->first();
 
@@ -225,7 +225,7 @@ class Cart1 extends AdminComponent
         $totalProducts = \Cart::getTotal();
         $settingComercio = SettingComercio::where('comercio_id', $comercio_id)->first();
 
-        $tasaValues = Tasa::where('comercio_id', $comercio_id)->first();
+        $tasaValues = Tasa::where('comercio_id', $comercio_id)->where('status', 'activo')->first();
 
         if(!$tasaValues){
             $tasa = 1;

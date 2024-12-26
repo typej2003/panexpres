@@ -366,7 +366,7 @@ class ListProducts extends AdminComponent
 
     public function render()
     {
-        if($this->comercio_id > 0 ){
+        if($this->comercio_id > 1 ){
             $products = Product::query()
                 ->where('comercio_id', $this->comercio_id);
         }else{

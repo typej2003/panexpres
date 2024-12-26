@@ -79,6 +79,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Comercio</th>
                                         <th scope="col">
                                             Nombre
                                             <span wire:click="sortBy('name')" class="float-right text-sm" style="cursor: pointer;">
@@ -96,6 +97,7 @@
                                     <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
                                         <th scope="row"><?php echo e($products->firstItem() + $index); ?></th>
+                                        <td><?php echo e($product->comercio->name); ?></td>
                                         <td>
                                             <img src="<?php echo e($product->image1_url); ?>" style="width: 50px;" class="img img-circle mr-1" alt="">
                                             <?php echo e($product->name); ?>
@@ -128,7 +130,7 @@
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                     <tr class="text-center">
-                                        <td colspan="5">
+                                        <td colspan="6">
                                             <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/v2/assets/empty.svg" alt="No results found">
                                             <p class="mt-2">No se encontro resultados</p>
                                         </td>

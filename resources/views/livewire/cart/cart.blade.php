@@ -91,7 +91,7 @@
                     <tr>
                         <th scope="col">Precio total artículos</th>
                         <!-- <th scope="col">{{ $currencyValue }} {{$this->getSubTotal() }}</th> -->
-                         <th scope="col">{{ $this->getTotal() }} {{$this->getSubTotal() }}</th>
+                         <th scope="col">{{ $currencyValue }} {{ $this->getTotal() }}</th>
                     </tr>
                 </thead>
                 <tbody>
