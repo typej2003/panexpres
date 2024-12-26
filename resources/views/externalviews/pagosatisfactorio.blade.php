@@ -31,10 +31,10 @@
                             <div class="card-body text-center">
                                 <h1>Operación procesada con éxito, qué desea hacer ahora?</h1>
                                 <p>
-                                    <a class="h5 text-titulo" href="/">Seguir comprando</a>
+                                    <a target="_parent" class="h5 text-titulo" href="/">Seguir comprando</a>
                                 </p>
                                 <p >
-                                    <a class="h5 text-titulo" href="/listPedidosCliente">Mis Pedidos</a>
+                                    <a target="_parent" class="h5 text-titulo" href="/listPedidosCliente">Mis Pedidos</a>
                                 </p>
                                 <p>
                                     <button class="btn btn-success" id="salir">Salir</button>
