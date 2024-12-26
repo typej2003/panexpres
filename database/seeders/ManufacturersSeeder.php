@@ -25,7 +25,93 @@ class ManufacturersSeeder extends Seeder
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
-        
+        DB::table('manufacturers')->insert([
+            'name' => 'Cafetown',
+            'avatar' => 'logo_cafetown.png',
+            'mercado' => 'original',
+            'area_id' => '1',
+            'user_id' => '1',
+            'comercio_id' => '1',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('manufacturers')->insert([
+            'name' => 'Doralta',
+            'avatar' => 'logo_doralta.png',
+            'mercado' => 'original',
+            'area_id' => '1',
+            'user_id' => '1',
+            'comercio_id' => '1',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('manufacturers')->insert([
+            'name' => 'Olandey',
+            'avatar' => 'logos_olandely_01.png',
+            'mercado' => 'original',
+            'area_id' => '1',
+            'user_id' => '1',
+            'comercio_id' => '1',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('manufacturers')->insert([
+            'name' => 'Candelaria',
+            'avatar' => 'logos_panaderiacandelaria_01.png',
+            'mercado' => 'original',
+            'area_id' => '1',
+            'user_id' => '1',
+            'comercio_id' => '1',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('manufacturers')->insert([
+            'name' => 'Titanium',
+            'avatar' => 'logos_panaderiatitanium_01.png',
+            'mercado' => 'original',
+            'area_id' => '1',
+            'user_id' => '1',
+            'comercio_id' => '1',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('manufacturers')->insert([
+            'name' => 'Rio',
+            'avatar' => 'logos_rio_01.png',
+            'mercado' => 'original',
+            'area_id' => '1',
+            'user_id' => '1',
+            'comercio_id' => '1',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('manufacturers')->insert([
+            'name' => 'Rio',
+            'avatar' => 'nickpanaderia.png',
+            'mercado' => 'original',
+            'area_id' => '1',
+            'user_id' => '1',
+            'comercio_id' => '1',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('manufacturers')->insert([
+            'name' => 'Rio',
+            'avatar' => 'logos_gama.png',
+            'mercado' => 'original',
+            'area_id' => '1',
+            'user_id' => '1',
+            'comercio_id' => '1',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
 
     }
 }

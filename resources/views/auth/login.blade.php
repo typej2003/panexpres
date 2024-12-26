@@ -22,7 +22,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12 titulo c-a text-center">
-                    <a href="/"><img class="img_logo mx-auto" src="./img/logo_repuestos.png" alt=""></a>
+                    <a href="/"><img class="logo-responsive mx-auto" src="/img/panexpres_logo.png" alt=""></a>
                 </div>
             </div>
             <div class="row">
