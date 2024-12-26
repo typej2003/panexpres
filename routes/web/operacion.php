@@ -38,7 +38,7 @@ Route::get('/procesado', function(){
     return view('externalviews.procesado');
 })->name('procesado');
 
-Route::get('/pagosatisfactorio', ApiController::class)->name('pagosatisfactorio')->middleware('auth');
+Route::get('/pagosatisfactorio/{token}', ApiController::class)->name('pagosatisfactorio')->middleware('auth');
 
 
 // Route::get('/checkout/shipping/{nropedido}', function($nropedido){

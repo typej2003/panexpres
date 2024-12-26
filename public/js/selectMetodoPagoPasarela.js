@@ -336,7 +336,7 @@ function crearFormPagoTarjeja(){
 
         </div>
 
-            <img src="/images/botondepago.png" alt="App Logo" height="50px" width="100px" />
+            <img src="/Images/botondepago.png" alt="App Logo" height="50px" width="100px" />
 
         <div class="row mb-2 mt-3">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
