@@ -29,7 +29,7 @@
                     <div class="col-lg-12">
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
-                                <h1>Operación procesada con éxito</h1>
+                                <h1>Operación procesada con éxito, qué desea hacer ahora?</h1>
                                 <p>
                                     <a class="h5 text-titulo" href="/">Seguir comprando</a>
                                 </p>
