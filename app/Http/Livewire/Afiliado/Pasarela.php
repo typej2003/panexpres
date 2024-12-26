@@ -291,6 +291,11 @@ class Pasarela extends Component
         return Redirect::to('listUsers');
     }
 
+    public function sendProcesado()
+	{
+		$this->dispatchBrowserEvent('sendProcesado');
+	}
+
     public function render()
     {
         if(  \Cart::getTotalQuantity() == 0)
