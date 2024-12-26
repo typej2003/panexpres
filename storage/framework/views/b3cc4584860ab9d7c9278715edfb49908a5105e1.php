@@ -96,7 +96,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="d-none">
                         <th scope="row">Impuestos</th>
                         <td><?php echo e($currencyValue); ?> <?php echo e($this->getImpuestoIVA()); ?></td>
                     </tr>
