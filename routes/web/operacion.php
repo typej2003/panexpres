@@ -52,7 +52,7 @@ Route::get('/receiveBDV/{toke}', [WelcomeController::class, 'receiveBDV'])->name
 
 Route::get('/pagosatisfactorio/{id}', function ( $id ) {
     $id_suc = $id;
-    return view('externalviews.procesado', compact('id_suc') );
+    return view('externalviews.pagosatisfactorio', compact('id_suc') );
 });
 
 
