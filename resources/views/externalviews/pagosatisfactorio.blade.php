@@ -56,6 +56,7 @@
         <script>
             let boton = document.getElementById('salir')
             boton.addEventListener('click', function(){
+                alert('salir')
                 location.href = 'https://www.panexpres.com';
             })
         </script>
