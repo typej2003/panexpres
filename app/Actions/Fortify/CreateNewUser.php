@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Actions\Fortify;
-
+use App\Http\Livewire\Notificacion\EmailController;
 use App\Models\User;
 use App\Models\DatosBasicos;
 use App\Models\Afiliados;
@@ -59,6 +59,10 @@ class CreateNewUser implements CreatesNewUsers
             'cellphonecode' => $input['cellphonecode'],
             'cellphone' => $input['cellphone'],
         ]);
+
+        $emailwelcome = new EmailController();
+
+        $emailwelcome->sendEmail('welcome', $user);
         
         return $user;
         

@@ -30,6 +30,18 @@ class EmailController extends Component
         }        
     }
 
+    public function sendEmail($operacion, $user)
+    {
+        switch ($operacion) {
+            case 'welcome':
+                $this->sendMailWelcome($user);
+                break;
+            
+            default:
+                return view('livewire.notificacion.email-controller');
+                break;
+        }        
+    }
 
     public function sendMailWithAttachment($user, $title = '', $body = '')
     {
