@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\CartController;
 
+use App\Models\Pedido;
+use App\Models\Transaccion;
+
 class ApiController extends Component
 {
     public $cedula = '13053081';
@@ -217,11 +220,11 @@ class ApiController extends Component
           //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
     
           //$pedido = Pedido::find($pedido_id);
-		  $pedido = Pedido::where('pedido', $reference)->first();
+		  $pedido = Pedido::where('nropedido', $reference)->first();
     
           $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
     
-          $transaccion = Transacciones::create([
+          $transaccion = Transaccion::create([
            'token' => $token,
            'paymentId' => auth()->user()->id,
            'comercio_id' => 1,
@@ -233,7 +236,7 @@ class ApiController extends Component
            'title' => $datos->title,
            'description' => $datos->description,
            'status' => 1,
-		   'pedido' => $datos->reference,
+		   'nropedido' => $datos->reference,
           ]);
     
            $pedido->update(
@@ -246,7 +249,7 @@ class ApiController extends Component
 
         	$cart->onlyClear();
 
-            return 'exito';
+            return $token;
 
         }
     }
