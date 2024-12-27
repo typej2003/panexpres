@@ -195,6 +195,54 @@ class ApiController extends Component
     
         return view('externalviews.procesado', ['id_suc' => $token, 'success' => $datos->success] );
     }
+	
+	public function registrarReferencia($id)
+    {
+        $token = $id;
+
+		$datos = IpgBdv2::checkPayment($token);
+        //$datos = $this->SearchPayment($token);
+    
+        if($datos->success == 'true')
+        {
+          $reference = $datos->reference;
+    
+          //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
+    
+          //$pedido = Pedido::find($pedido_id);
+		  $pedido = Pedido::where('pedido', $reference)->first();
+    
+          $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
+    
+          $transaccion = Transacciones::create([
+           'token' => $token,
+           'paymentId' => auth()->user()->id,
+           'comercio_id' => 1,
+           'identificationNumber' => $datos->idNumber,
+           'id_transaccion' => $datos->transactionId,
+           'reference' => $datos->reference,
+           'totalbs' => $datos->amount,
+           'fechaPago' => $paymentDate,
+           'title' => $datos->title,
+           'description' => $datos->description,
+           'status' => 1,
+		   'pedido' => $datos->reference,
+          ]);
+    
+           $pedido->update(
+             [
+               'reference' => $datos->transactionId,
+               'confirmed' => 1,
+             ]);
+
+			$cart = new CartController;
+
+        	$cart->onlyClear();
+
+            return 'exito';
+
+        }
+    }
 }
 
 class IpgBdv2
