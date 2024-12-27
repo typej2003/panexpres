@@ -55,14 +55,7 @@ Route::get('/receiveBDV/{toke}', [WelcomeController::class, 'receiveBDV'])->name
 // extras
 
 Route::get('/pagosatisfactorio/{id}', function ( $id ) {
-    $id_suc = $id;
-    //$pasarela = Pasarela();
-    registrarReferencia($id);
-    return view('externalviews.pagosatisfactorio', compact('id_suc') );
-});
-
-function registrarReferencia($id)
-{
+    
     $token = $id;
 
     $datos = IpgBdv2::checkPayment($token);
@@ -106,6 +99,12 @@ function registrarReferencia($id)
 
         return 'exito';
     }
+    return view('externalviews.pagosatisfactorio', compact('id_suc') );
+});
+
+function registrarReferencia($id)
+{
+    
 }
 
 
