@@ -115,15 +115,25 @@ class EmailController extends Component
                 $notificacion->file_url,
             ];
         }
-  
-        Mail::send('emails.welcome-panexpres', $data, function($message) use ($data, $files) {
-            $message->to($data["email"])
-                    ->subject($data["title"]);
- 
-            foreach ($files as $file){
-                $message->attach($file);
-            }            
-        });
+        
+        if($file !== null)
+        {
+            Mail::send('emails.welcome-panexpres', $data, function($message) use ($data, $files) {
+                $message->to($data["email"])
+                        ->subject($data["title"]);
+     
+                foreach ($files as $file){
+                    $message->attach($file);
+                }            
+            });
+        }else{
+            Mail::send('emails.welcome-panexpres', $data, function($message) use ($data) {
+                $message->to($data["email"])
+                        ->subject($data["title"]);
+     
+            });
+        }
+        
 
     }
 }
