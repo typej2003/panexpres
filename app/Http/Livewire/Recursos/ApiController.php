@@ -226,8 +226,8 @@ class ApiController extends Component
     
           $transaccion = Transaccion::create([
            'token' => $token,
-           'paymentId' => auth()->user()->id,
-           'comercio_id' => 1,
+           'paymentId' => $pedido->user_id,
+           'comercio_id' => $pedido->comercio_id,
            'identificationNumber' => $datos->idNumber,
            'id_transaccion' => $datos->transactionId,
            'reference' => $datos->reference,
