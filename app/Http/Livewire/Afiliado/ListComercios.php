@@ -33,7 +33,7 @@ class ListComercios extends AdminComponent
 
     public $sortDirection = 'desc';
 
-    public $userId = 0;
+    public $user_id = 0;
 
 	public $photo;
 
@@ -45,7 +45,7 @@ class ListComercios extends AdminComponent
 
     public function mount($userId = 0)
     {
-        $this->userId = $userId;
+        $this->user_id = $userId;
     }
 
 	public function changeRole(Comercio $comercio, $status)
@@ -64,11 +64,11 @@ class ListComercios extends AdminComponent
 
 	public function addNew()
 	{   
-        $userId = $this->userId;
+        $user_id = $this->user_id;
 
 		$this->reset();
 
-        $this->userId = $userId;
+        $this->user_id = $user_id;
 
 		$this->showEditModal = false;
 
@@ -109,7 +109,7 @@ class ListComercios extends AdminComponent
 
 		// resize image
 
-        $validatedData['user_id'] = $this->userId;
+        $validatedData['user_id'] = $this->user_id;
 
 		$validatedData['keyword'] = $this->state['keyword'];
 
@@ -124,11 +124,11 @@ class ListComercios extends AdminComponent
 
 	public function edit(Comercio $comercio)
 	{
-		$userId = $this->userId;
+		$user_id = $this->user_id;
 
 		$this->reset();
 
-        $this->userId = $userId;
+        $this->user_id = $user_id;
 
 		$this->showEditModal = true;
 
@@ -261,11 +261,11 @@ class ListComercios extends AdminComponent
 
     public function render()
     {
-        if($this->userId == 0 ){
+        if($this->user_id == 1 ){
             $comercios = Comercio::query();
         }else{
             $comercios = Comercio::query()
-                ->where('user_id', $this->userId);
+                ->where('user_id', $this->user_id);
         }
         
     	$comercios = $comercios
@@ -275,7 +275,7 @@ class ListComercios extends AdminComponent
     		->orderBy($this->sortColumnName, $this->sortDirection)
             ->paginate(15);
         
-        $user = User::find($this->userId);
+        $user = User::find($this->user_id);
 
 		$areas = Area::all();
 		

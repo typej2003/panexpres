@@ -43,7 +43,7 @@ class ComercioSeeder extends Seeder
             'user_id' => '2',
             'keyword' => 'panaderiaexpreso',
             'name' => 'Panaderia expreso',
-            'avatar' => 'logo_expreso.jpg',
+            'avatar' => 'panexpres_logo.png',
             'banner' => 'nickpanaderia.png',
             'contactcellphone' => '04162222222',
             'contactphone'  => '0212-222-22-22',
@@ -231,6 +231,30 @@ class ComercioSeeder extends Seeder
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
+        // id 10
+        DB::table('comercios')->insert([
+            'area_id' => '1',
+            'user_id' => '2',
+            'keyword' => 'vollmerbakery',
+            'name' => 'Vollmer Bakery',
+            'avatar' => 'logo_vollmer.jpg',
+            'banner' => 'logo_vollmer.jpg',
+            'contactcellphone' => '04162222222',
+            'contactphone'  => '0212-222-22-22',
+            'horario'  => 'Lunes a Domingo hora: 6:30 am a 8:00 pm',
+            'email'  => 'panaderiaexpreso@gmail.com',
+            'youtube'  => 'https://www.youtube.com/@ddrsistemas',
+            'twitter'  => 'https://www.youtube.com/@ddrsistemas',
+            'facebook'  => 'https://www.youtube.com/@ddrsistemas',
+            'dominio' => 'http://www.repuestoexpres.com',
+            'instagram' => 'https://www.instagram.com/coffeetown.ccs/?hl=es',
+            'address'  => 'Caracas, Venezuela',
+            'rifLetter' => 'J',
+            'rifNumber' => '22222222-8',
+            // 'dominio' => 'http://www.repuestoexpres.com',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
         
     }
 }

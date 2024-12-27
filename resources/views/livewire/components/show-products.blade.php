@@ -165,7 +165,7 @@
             dots: true,
             infinite: true,
             slidesToShow: findSlides(),
-            slidesToScroll: findSlides(),
+            slidesToScroll: 1,
             autoplay: false,
             });
         }
