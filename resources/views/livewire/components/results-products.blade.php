@@ -36,12 +36,12 @@
                                             <input name="name" type="hidden" value="{{ $product->name }}">
                                             <input name="price1" type="hidden" value="{{ $product->price1 }}">
 
-                                            <div class="col-md-2 d-flex">
+                                            <div class="col-md-2 col-12 d-flex">
                                                 <img class="mx-auto" style="width:150px;" src="{{ $product->image1_url }}" alt="">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 col-12">
                                                 <div class="row">
-                                                    <div class="col-md-12 centrarFlex">
+                                                    <div class="col-md-12 col-12 centrarFlex">
                                                         <div class="centrar">
                                                             <span class="h6">{{ $product->name }}</span>
                                                         </div>
@@ -52,7 +52,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row my-3">
-                                                    <div class="col-md-12 centrarFlex">
+                                                    <div class="col-md-12 col-12 centrarFlex">
                                                         <div class="centrar">
                                                             <a class="btn btn-view centrar" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
                                                         </div>
@@ -61,12 +61,12 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="row">
-                                                    <div class="col-md-12 d-flex">
+                                                    <div class="col-md-12 col-12 d-flex">
                                                         <span class="mx-auto h4">${{ $product->getPrice1() }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-12 d-flex justify-content-between">
+                                                    <div class="col-md-12 col-12 d-flex justify-content-between">
                                                         <div class="input-group input-number-group">
                                                             <div class="input-group-button">
                                                                 <span class="input-number-decrement">-</span>
@@ -80,7 +80,7 @@
                                                     
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12 col-12">
                                                         <div class="centrar">
                                                         <button class="btn btn-sale w-25 h-100"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
                                                         </div>
