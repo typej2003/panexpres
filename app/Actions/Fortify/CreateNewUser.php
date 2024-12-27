@@ -60,6 +60,11 @@ class CreateNewUser implements CreatesNewUsers
             'cellphone' => $input['cellphone'],
         ]);
 
+        Client::create([
+            'user_id' => $user->id,
+            'comercio_id' => 1,
+        ]);
+
         $emailwelcome = new EmailController();
 
         $emailwelcome->sendEmail('welcome', $user);
