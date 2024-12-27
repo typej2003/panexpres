@@ -14,6 +14,7 @@ class Transaccion extends Model
     const STATUS_NOTCONFIRMED = 'notconfirmed';
 
     protected $fillable = [
+        
         'user_id',
         'comercio_id',
         'cliente_id',

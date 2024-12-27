@@ -1780,6 +1780,7 @@ function showFormGrupoPaypal()
             </div>
         </div>
         `
+        
     return formGrupo
 }
 
