@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 
 use App\Models\Pedido;
+use App\Models\PedidoTemporal;
 use App\Models\Transaccion;
 
 class ApiController extends Component
@@ -220,14 +221,14 @@ class ApiController extends Component
           //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
     
           //$pedido = Pedido::find($pedido_id);
-		  $pedido = Pedido::where('nropedido', $reference)->first();
+		  $pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
     
           $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
     
           $transaccion = Transaccion::create([
            'token' => $token,
-           'paymentId' => $pedido->user_id,
-           'comercio_id' => $pedido->comercio_id,
+           'paymentId' => $pedidotemporal->user_id,
+           'comercio_id' => $pedidotemporal->comercio_id,
            'identificationNumber' => $datos->idNumber,
            'id_transaccion' => $datos->transactionId,
            'reference' => $datos->reference,
@@ -239,11 +240,15 @@ class ApiController extends Component
 		   'nropedido' => $datos->reference,
           ]);
     
-           $pedido->update(
-             [
-               'reference' => $datos->transactionId,
-               'confirmed' => 1,
-             ]);
+           $pedidotemporal->updatetemporal(
+			[
+			'reference' => $datos->transactionId,
+			'confirmed' => 1,
+			]);
+
+			$pedido = $pedidoTemporal->toArray();
+
+        	Pedido::create($pedido);
 
 			$cart = new CartController;
 
