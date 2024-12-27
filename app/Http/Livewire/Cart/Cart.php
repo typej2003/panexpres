@@ -26,7 +26,7 @@ class Cart extends AdminComponent
     public $pedido = [];
 
     public $IGTF = 0;
-    public $impuesto = 10;
+    public $impuesto = 0;
     public $subtotal = 0;
 
     protected $listeners = [
