@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             ValoracionProductsSeeder::class,
             MenuSeeder::class,
             MetodoPagoComercioSeeder::class,
+            PromocionSeeder::class,
         ]);
     }
 }

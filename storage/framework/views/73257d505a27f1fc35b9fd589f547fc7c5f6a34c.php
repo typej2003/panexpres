@@ -23,15 +23,14 @@
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/panaderia_expreso_compressed.jpg" alt="First slide"></a>
+                            <a href="/viewdetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->product_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
                         </div>
-                        
+                        <?php $__currentLoopData = $promociones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $clave => $promocion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="carousel-item">
-                            <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/banner_candelaria_02-compressed-compressed.jpg" alt="Two slide"></a>
+                            <a href="/viewdetails/<?php echo e($promocion->comercio_id); ?>/<?php echo e($promocion->product_id); ?>"><img class="img1Promocion" src="<?php echo e($promocion->avatar_url); ?>" alt="<?php echo e($clave); ?> slide"></a>
                         </div>
-                        <div class="carousel-item">
-                            <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/bannercoffetown-compressed-compressed.jpg" alt="Three slide"></a>
-                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -65,7 +65,7 @@
                 </div><!-- /.row -->
                 <div class="row mb-2">
                     <div class="col-md-4">
-                        <img style="width:80%; height: 80%;" src="<?php echo e($product->image1_url); ?>" alt="">
+                        <img style="width:100%; height: 80%;" src="<?php echo e($product->image1_url); ?>" alt="">
                     </div><!-- /.col -->
                     <div class="col-md-8">
                         <div class="row">

@@ -23,15 +23,14 @@
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/panaderia_expreso_compressed.jpg" alt="First slide"></a>
+                            <a href="/viewdetails/{{ $promocionFirst->comercio_id }}/{{ $promocionFirst->product_id }}"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
                         </div>
-                        
+                        @foreach($promociones as $clave => $promocion)
                         <div class="carousel-item">
-                            <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/banner_candelaria_02-compressed-compressed.jpg" alt="Two slide"></a>
+                            <a href="/viewdetails/{{ $promocion->comercio_id }}/{{ $promocion->product_id }}"><img class="img1Promocion" src="{{ $promocion->avatar_url }}" alt="{{$clave}} slide"></a>
                         </div>
-                        <div class="carousel-item">
-                            <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/bannercoffetown-compressed-compressed.jpg" alt="Three slide"></a>
-                        </div>
+                        @endforeach
+
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

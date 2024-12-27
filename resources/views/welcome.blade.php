@@ -45,7 +45,7 @@
                         ])
 
                 @if($in_sliderprincipal > 0)
-                    @include('livewire.components.promociones')
+                    @livewire('components.promociones')
                 @endif
 
                 @if($in_marcasproductos > 0)
