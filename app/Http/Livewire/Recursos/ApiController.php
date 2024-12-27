@@ -242,13 +242,13 @@ class ApiController extends Component
 		   'nropedido' => $datos->reference,
           ]);
     
-           $pedidotemporal->update(
-			[
+           $pedidotemporal->update([
 			'reference' => $datos->transactionId,
+			'metodo' => 'tarjeta',
 			'confirmed' => 1,
 			]);
 
-			$pedido = $pedidoTemporal->toArray();
+			$pedido = $pedidotemporal->toArray();
 
         	Pedido::create($pedido);
 
