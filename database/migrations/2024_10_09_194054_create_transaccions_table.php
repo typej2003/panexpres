@@ -30,6 +30,7 @@ class CreateTransaccionsTable extends Migration
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('email')->nullable();
+            $table->string('emailO')->nullable();
             $table->string('identificationNac')->nullable();
             $table->string('identificationNumber')->nullable();
             $table->string('cellphonecode')->nullable();

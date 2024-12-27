@@ -29,6 +29,7 @@ class Transaccion extends Model
         'title',
         'description',
         'email',
+        'emailO',
         'identificationNac',
         'identificationNumber',
         'cellphonecode',

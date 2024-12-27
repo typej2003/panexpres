@@ -1490,6 +1490,11 @@ function showFormGrupoZelle()
         </div>
 
         <div class="row">
+            <div class="col-lg-12 text-justity pt-3 negrita">Email desde donde reportaste el pago</div>
+            <input type="email" class="form-control inputForm" name="emailOZelle" id="emailOZelle" placeholder="Email de Reporte"/>
+        </div>
+
+        <div class="row">
             <div class="col-lg-12 text-justity pt-3 negrita">Email hacia donde realizaste el pago</div>
         </div>
 
@@ -1720,6 +1725,11 @@ function showFormGrupoPaypal()
     <div class="formPaypal">
         <div class="row">
             <div class="col-lg-12 text-justity pt-3 negrita">Ingresa los datos de tu pago</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-justity pt-3 negrita">Email desde donde reportaste el pago</div>
+            <input type="email" class="form-control inputForm" name="emailOPaypal" id="emailOPaypal" placeholder="Email de Reporte"/>
         </div>
 
         <div class="row">
