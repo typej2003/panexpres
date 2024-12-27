@@ -200,9 +200,14 @@ class ApiController extends Component
     {
         $token = $id;
 
-		$instancia = new IpgBdv2();
+		$demo = "NO";
+		if( $demo == "SI" ){                
+			$PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
+		} else {
+			$PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
+		}
 		
-		$datos = $instancia->checkPayment($token);
+		$datos = $PaymentProcess->checkPayment($token);
         //$datos = $this->SearchPayment($token);
     
         if($datos->success == 'true')
