@@ -10,7 +10,5 @@
      
     <p>Gracias,</p>
     {{ config('app.name') }}<br>
-
-
 </body>
 </html>

@@ -25,11 +25,12 @@
                         <div class="carousel-item active">
                             <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/panaderia_expreso_compressed.jpg" alt="First slide"></a>
                         </div>
+                        
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="..." alt="Second slide">
+                            <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/banner_candelaria_02-compressed-compressed.jpg" alt="Two slide"></a>
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="..." alt="Third slide">
+                            <a href="/viewdetails/2/2"><img class="img1Promocion" src="/img/promociones/bannercoffetown-compressed-compressed.jpg" alt="Three slide"></a>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

@@ -151,6 +151,16 @@
                     </p>
                   </a>
                 </li>
+
+                <li class="nav-item">
+                  <a href="/listPromociones" class="nav-link {{ request()->is('listPromociones') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-comments"></i>
+                    <p>
+                      Promociones
+                    </p>
+                  </a>
+                </li>
+
               </ul>
             </li>
             <!-- fin arbol -->

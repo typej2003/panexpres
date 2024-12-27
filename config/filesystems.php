@@ -108,6 +108,13 @@ return [
             'visibility' => 'public',
         ],        
 
+        'avatarspromociones' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/avatarspromociones'),
+            'url' => env('APP_URL').'/storage/avatarspromociones',
+            'visibility' => 'public',
+        ],        
+
     ],
 
     /*
@@ -131,6 +138,7 @@ return [
         public_path('storage/avatarsproducts') => storage_path('app/public/avatarsproducts'),
         public_path('storage/avatarsmanufacturers') => storage_path('app/public/avatarsmanufacturers'),
         public_path('storage/filesnotificaciones') => storage_path('app/public/filesnotificaciones'),
+        public_path('storage/avatarspromociones') => storage_path('app/public/avatarspromociones'),
         
     ],
 
