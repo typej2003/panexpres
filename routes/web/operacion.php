@@ -22,7 +22,7 @@ use App\Http\Livewire\Recursos\ImportExportExcel;
 
 use App\Models\Pedido;
 use App\Models\Transaccion;
-use App\Http\Controlles\CartController;
+use App\Http\Controllers\CartController;
 
 // Route::get('/pasarela/{nropedido}/{comercioId}', Pasarela::class)->name('pasarela')->middleware('auth');
 Route::get('/pasarela', Pasarela::class)->name('pasarela')->middleware('auth');
@@ -60,7 +60,7 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
     $result = new ApiController();
     $result->registrarReferencia($id);
     
-    $cart = new CartController;
+    $cart = new CartController();
 
     $cart->onlyClear();
 

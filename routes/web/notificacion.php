@@ -6,10 +6,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Notificacion\EmailExample;
 use App\Http\Livewire\Notificacion\EmailFile;
+use App\Http\Livewire\Notificacion\EmailController;
 
 use App\Http\Controllers\SmsTwilioController;
 
 use App\Http\Livewire\Notificacion\ListNotificaciones;
+
+Route::get('/sendemail/{index}', EmailController::class)->name('sendemail');
 
 Route::get('/emailexample', EmailExample::class)->name('emailexample');
 
