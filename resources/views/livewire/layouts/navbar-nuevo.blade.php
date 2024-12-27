@@ -37,7 +37,9 @@
                             @endguest
                             @auth
                                 <div class="set">
-                                    <a href="#" style="font-weight: bold; font-size: 1.5rem;">Hola, {{ auth()->user()->name }}
+                                    <a href="#" style="font-weight: bold; font-size: 1.5rem;">
+                                        <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
+                                        Hola, {{ auth()->user()->name }}
                                     </a>
                                     <div class="content">
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
@@ -164,7 +166,8 @@
                             <li class="nav-item p-3 py-md-1">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link active dropdown-toggle botonera" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
                                             <span class="ml-1" x-ref="username">Hola, {{ auth()->user()->name }}</span>
                                         </a>
                                         <div class="dropdown-menu p-4" aria-labelledby="navbarDropdown">
@@ -249,9 +252,26 @@
                             <!-- Menu horizontal -->
                             <img class="logo-movil" src="{{ $comercio->avatar_url }}" alt="">
                             <div class="button-search"><img src="/img/icon_buscar.png" alt=""></div>
-                            <div><a href=""><img class="icon" src="/img/icon_miperfil.png" alt=""></a></div>
-                            <div class="d-none"><a href=""><img class="icon" src="/img/icon_heart.png" alt=""></a></div>
-                            <div><a href=""><img class="icon" src="/img/icon_carrito.png" alt=""></a></div>
+                            @auth
+                                <div><a href="">
+                                        <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
+                                        <span class="ml-1" x-ref="username">Hola, {{ auth()->user()->name }}</span>
+                                    </a>
+                                </div>
+                                
+                            @else
+                                <div><a href=""><img class="icon" src="/img/icon_miperfil.png" alt=""></a></div>
+                            @endauth
+                            <div class="d-none"><a href="">XXX<img class="icon" src="/img/icon_heart.png" alt=""></a></div>
+                            
+                            <div>
+                                <a class="d-flex justify-content-between" href="/goCart">
+                                    <img class="icon" src="/img/icon_carrito.png" style="cursor:pointer;">
+                                    <span class="text-dark">({{$totalQuantityCart}})</span>
+                                    <!-- <span class="text-dark">({{\Cart::getTotalQuantity()}})</span> -->
+                                </a>
+                                @livewire('carrito.cart-drop')
+                            </div>
                         </div>                                
                         
                         <div class="div-search d-none w-100">

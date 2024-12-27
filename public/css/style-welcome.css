@@ -215,11 +215,13 @@ a {text-decoration: none; }
     margin-top: 0px !important;
     margin-right: 5px !important;
   }
-  .set > a.active{
-    
+  
+  .logo-responsiveNM {
+    width: 100px !important;
   }
-  .content{
-    
+
+  .footer-img {
+    width: 100px !important;
   }
     
 }

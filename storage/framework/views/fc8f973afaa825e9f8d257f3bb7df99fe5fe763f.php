@@ -51,7 +51,9 @@ echo $html;
                             <?php endif; ?>
                             <?php if(auth()->guard()->check()): ?>
                                 <div class="set">
-                                    <a href="#" style="font-weight: bold; font-size: 1.5rem;">Hola, <?php echo e(auth()->user()->name); ?>
+                                    <a href="#" style="font-weight: bold; font-size: 1.5rem;">
+                                        <img src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
+                                        Hola, <?php echo e(auth()->user()->name); ?>
 
                                     </a>
                                     <div class="content">
@@ -181,7 +183,8 @@ echo $html;
                             <li class="nav-item p-3 py-md-1">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link active dropdown-toggle botonera" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
                                             <span class="ml-1" x-ref="username">Hola, <?php echo e(auth()->user()->name); ?></span>
                                         </a>
                                         <div class="dropdown-menu p-4" aria-labelledby="navbarDropdown">
@@ -313,9 +316,40 @@ echo $html;
                             <!-- Menu horizontal -->
                             <img class="logo-movil" src="<?php echo e($comercio->avatar_url); ?>" alt="">
                             <div class="button-search"><img src="/img/icon_buscar.png" alt=""></div>
-                            <div><a href=""><img class="icon" src="/img/icon_miperfil.png" alt=""></a></div>
-                            <div class="d-none"><a href=""><img class="icon" src="/img/icon_heart.png" alt=""></a></div>
-                            <div><a href=""><img class="icon" src="/img/icon_carrito.png" alt=""></a></div>
+                            <?php if(auth()->guard()->check()): ?>
+                                <div><a href="">
+                                        <img src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
+                                        <span class="ml-1" x-ref="username">Hola, <?php echo e(auth()->user()->name); ?></span>
+                                    </a>
+                                </div>
+                                
+                            <?php else: ?>
+                                <div><a href=""><img class="icon" src="/img/icon_miperfil.png" alt=""></a></div>
+                            <?php endif; ?>
+                            <div class="d-none"><a href="">XXX<img class="icon" src="/img/icon_heart.png" alt=""></a></div>
+                            
+                            <div>
+                                <a class="d-flex justify-content-between" href="/goCart">
+                                    <img class="icon" src="/img/icon_carrito.png" style="cursor:pointer;">
+                                    <span class="text-dark">(<?php echo e($totalQuantityCart); ?>)</span>
+                                    <!-- <span class="text-dark">(<?php echo e(\Cart::getTotalQuantity()); ?>)</span> -->
+                                </a>
+                                <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('carrito.cart-drop')->html();
+} elseif ($_instance->childHasBeenRendered('l271160491-4')) {
+    $componentId = $_instance->getRenderedChildComponentId('l271160491-4');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l271160491-4');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l271160491-4');
+} else {
+    $response = \Livewire\Livewire::mount('carrito.cart-drop');
+    $html = $response->html();
+    $_instance->logRenderedChild('l271160491-4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
+                            </div>
                         </div>                                
                         
                         <div class="div-search d-none w-100">

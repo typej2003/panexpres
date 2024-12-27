@@ -328,6 +328,14 @@
       margin: 2px 2px 0 5px !important;
       width: 150px !important;
     }   
+
+    .logo-responsiveNM {
+      width: 100px !important;
+    }
+  
+    .footer-img {
+      width: 100px !important;
+    }
   } 
   .text-titulo {
     color: #FC5E27 !important;
