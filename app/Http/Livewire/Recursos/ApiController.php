@@ -242,7 +242,7 @@ class ApiController extends Component
 		   'nropedido' => $datos->reference,
           ]);
     
-           $pedidotemporal->updatetemporal(
+           $pedidotemporal->update(
 			[
 			'reference' => $datos->transactionId,
 			'confirmed' => 1,
