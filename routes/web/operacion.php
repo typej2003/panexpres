@@ -60,6 +60,10 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
     $result = new ApiController();
     $result->registrarReferencia($id);
     
+    $cart = new CartController;
+
+    $cart->onlyClear();
+
     return view('externalviews.pagosatisfactorio', compact('id_suc') );
 });
 
