@@ -12,6 +12,8 @@ class ResultsProducts extends AdminComponent
 
     public $informacion = '';
 
+    public $currencyValue;
+
     public $productsRecibidos;
 
     public $comercio_id;
@@ -40,6 +42,8 @@ class ResultsProducts extends AdminComponent
         $this->modelo_id = $modelo_id;
 
         $this->motor_id = $motor_id;
+
+        $this->currencyValue = request()->cookie('currency');
         
     }
 

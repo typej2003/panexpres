@@ -62,7 +62,7 @@
                                             <div class="col-md-4">
                                                 <div class="row">
                                                     <div class="col-md-12 col-12 d-flex">
-                                                        <span class="mx-auto h4">${{ $product->getPrice1() }}</span>
+                                                        <span class="mx-auto h4">{{$currencyValue}}. {{ $product->getPrice1() }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="row">
