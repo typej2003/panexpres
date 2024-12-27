@@ -13,6 +13,7 @@ class ResultsProducts extends AdminComponent
     public $informacion = '';
 
     public $currencyValue;
+    
 
     public $productsRecibidos;
 
