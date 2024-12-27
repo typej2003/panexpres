@@ -47,9 +47,11 @@ class Pasarela extends Component
 
     public $metodoentrega;
 
+    public $bancos;
     public $pagosmoviles;
     public $transferencias;
     public $zelles;
+    public $paypals;
 
     protected $listeners = [
         'emitCurrency' => 'emitCurrency'
@@ -355,11 +357,15 @@ class Pasarela extends Component
             ]);
         }
 
+        $this->bancos = Banco::all()->toArray();
+
         $this->pagosmoviles = MetodoPagoC::select(['id', 'metodo','cellphonecode','cellphone','identificationNumber','banco', 'codigo'])->where('comercio_id', $this->comercio_id)->where('metodo','pagomovil')->get()->toArray();
         
         $this->transferencias = MetodoPagoC::select(['id', 'metodo','banco', 'codigo', 'titular','identificationNumber','nrocuenta'])->where('comercio_id', $this->comercio_id)->where('metodo','transferencia')->get()->toArray();
 
         $this->zelles = MetodoPagoC::select(['id', 'metodo', 'cellphonecode','cellphone','identificationNumber','pagoonline', 'email'])->where('comercio_id', $this->comercio_id)->where('pagoonline','zelle')->get()->toArray();
+
+        $this->paypals = MetodoPagoC::select(['id', 'metodo', 'cellphonecode','cellphone','identificationNumber','pagoonline', 'email'])->where('comercio_id', $this->comercio_id)->where('pagoonline','paypal')->get()->toArray();
         
         return view('livewire.afiliado.pasarela');
     }

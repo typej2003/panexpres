@@ -4,15 +4,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('layouts.navbar-checkout')->html();
-} elseif ($_instance->childHasBeenRendered('hO8c1Wv')) {
-    $componentId = $_instance->getRenderedChildComponentId('hO8c1Wv');
-    $componentTag = $_instance->getRenderedChildComponentTagName('hO8c1Wv');
+} elseif ($_instance->childHasBeenRendered('yUKJI7l')) {
+    $componentId = $_instance->getRenderedChildComponentId('yUKJI7l');
+    $componentTag = $_instance->getRenderedChildComponentTagName('yUKJI7l');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('hO8c1Wv');
+    $_instance->preserveRenderedChild('yUKJI7l');
 } else {
     $response = \Livewire\Livewire::mount('layouts.navbar-checkout');
     $html = $response->html();
-    $_instance->logRenderedChild('hO8c1Wv', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('yUKJI7l', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -28,7 +28,7 @@ echo $html;
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/admin/dashboard">Escritorio</a></li>
-                            <li class="breadcrumb-item active"><a href="/listPedidosCliente/<?php echo e(auth()->user()->id); ?>">Mis Pedidos</a></li>
+                            <li class="breadcrumb-item active"><a href="/listPedidosCliente">Mis Pedidos</a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->

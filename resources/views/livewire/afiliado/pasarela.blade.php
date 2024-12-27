@@ -17,11 +17,7 @@
         
     </head> 
     
-    <div class="row d-none">
-        <div class="col-lg-12">
-            <a href="/"><img style="width: 100%; height: 110px;"  src="{{ $comercio->banner_url }}" alt=""></a>
-        </div>
-    </div>
+    
 
     <div class="row d-none">
         <div class="col-md-12 mx-3">
@@ -115,16 +111,18 @@
         var rifLetter = 'J';
         var rifNumber = ''; // J G
 
+        var bancos = @this.bancos;
         var pagosmoviles = @this.pagosmoviles;
         var transferencias = @this.transferencias;
         var zelles = @this.zelles;
+        var paypals = @this.paypals;
 
         var comercio_id = @this.comercio_id;
         
-        console.log(transferencias)
+        //console.log(bancos)
 
         let divPrincipal = document.getElementById('divPrincipal')
-        divPrincipal.appendChild(selectMetodoPago(0, comercio_id, nropedido, reference, title, description, clienteId,amount,currency,currencyValue,email,cellphonecode, cellphone, identificationNac, identificationNumber,rifLetter, rifNumber, pagosmoviles, transferencias, zelles))  
+        divPrincipal.appendChild(selectMetodoPago(0, comercio_id, nropedido, reference, title, description, clienteId,amount,currency,currencyValue,email,cellphonecode, cellphone, identificationNac, identificationNumber,rifLetter, rifNumber, bancos, pagosmoviles, transferencias, zelles, paypals))  
     })
     
 </script>

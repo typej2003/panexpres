@@ -112,7 +112,7 @@
                         <th scope="row" colspan = "2">
                             @if(count($cartCollection)>0)
                                 @auth
-                                <button wire:click.prevent="finalizarCompra" class="form-control btn btn-danger">Finalizar la compra</button>
+                                <button wire:click.prevent="finalizarCompra" class="form-control btn btn-success">Comprar</button>
                                 @else
                                 <div class="row">
                                     <div class="accordion" id="accordionExample">

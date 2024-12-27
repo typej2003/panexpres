@@ -14,11 +14,13 @@ var identificationNac
 var identificationNumber
 var rifLetter
 var rifNumber
+var bancos
 var pagosmoviles
 var transferencias
 var zelles
+var paypals
 
-function selectMetodoPago(index1 = 0, comercio_idP, nropedidoP, referenceP, titleP, descriptionP, clienteIdP,amountP,currencyP,currencyValueP,emailP, cellphonecodeP, cellphoneP, identificationNacP, identificationNumberP,rifLetterP, rifNumberP, pagosmovilesP, transferenciasP, zellesP)
+function selectMetodoPago(index1 = 0, comercio_idP, nropedidoP, referenceP, titleP, descriptionP, clienteIdP,amountP,currencyP,currencyValueP,emailP, cellphonecodeP, cellphoneP, identificationNacP, identificationNumberP,rifLetterP, rifNumberP, bancosP, pagosmovilesP, transferenciasP, zellesP, paypalsP)
 {
     comercio_id = comercio_idP
     nropedido = nropedidoP
@@ -37,9 +39,11 @@ function selectMetodoPago(index1 = 0, comercio_idP, nropedidoP, referenceP, titl
     rifLetter = rifLetterP;
     rifNumber = rifNumberP; // J G
 
+    bancos = bancosP
     pagosmoviles = pagosmovilesP
     transferencias = transferenciasP
     zelles = zellesP
+    paypals = paypalsP
     
     let index = index1
     let bloque = document.createElement('div')
@@ -96,6 +100,11 @@ function selectMetodoPago(index1 = 0, comercio_idP, nropedidoP, referenceP, titl
             option4.innerHTML = "ZELLE"
             select.appendChild(option0)
             select.appendChild(option4)
+            let option5 = document.createElement('option')
+            option5.classList.add('optionModoPago')
+            option5.value="paypal"
+            option5.innerHTML = "PAYPAL"
+            select.appendChild(option5)
             break;
     }
     
@@ -206,16 +215,24 @@ function selectModo(e) {
                 document.getElementById('identificationNumberPM').value = identificationNumber
                 document.getElementById('cellphonecodePM').value = cellphonecode
                 document.getElementById('cellphonePM').value = cellphone
+                document.querySelector('#amountPM').value = amount
                 break;
 
             case 'transferencia':
                 bloque[0].appendChild(crearPantallaTransferencia(pantalla))
                 document.getElementById('identificationNacT').value = identificationNac
                 document.getElementById('identificationNumberT').value = identificationNumber
+                document.querySelector('#amountT').value = amount
                 break;
 
             case 'zelle':
                 bloque[0].appendChild(crearPantallaZelle(pantalla))
+                document.querySelector('#amountZelle').value = amount
+                break;
+
+            case 'paypal':
+                bloque[0].appendChild(crearPantallaPaypal(pantalla))
+                document.querySelector('#amountPaypal').value = amount
                 break;
 
             default:
@@ -573,6 +590,28 @@ function showFormGrupoPagoMovil ()
                     <input type="text" class="form-control inputForm" id="cellphonePM">
                 </div>
             </div>
+
+                <div class="row">
+            <div class="col-lg-12 text-justity pt-3 negrita">Banco de origen del PagoMovil</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <select class="form-control inputForm" name="" id="codigoBOPM">
+                    <option value="0">Seleccione una Cuenta</option>
+                    `
+                    let optionT = ''
+                    bancos.forEach(element => {
+                        optionT += `
+                            <option value="${element.codigo}">${element.name}</option>
+                        `
+                    });
+    formGrupo += optionT
+
+    formGrupo += `
+                </select>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-lg-12 text-justity pt-3 negrita">Cuenta Comercio</div>
@@ -1229,6 +1268,28 @@ function showFormGrupoTransferencia()
         </div>
 
         <div class="row">
+            <div class="col-lg-12 text-justity pt-3 negrita">Banco de origen de la transferencia</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <select class="form-control inputForm" name="" id="codigoBOT">
+                    <option value="0">Seleccione una Cuenta</option>
+                    `
+                    let optionT = ''
+                    bancos.forEach(element => {
+                        optionT += `
+                            <option value="${element.codigo}">${element.name}</option>
+                        `
+                    });
+    formGrupo += optionT
+
+    formGrupo += `
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-lg-12 text-justity pt-3 negrita">Banco hacia donde realizaste la transferencia</div>
         </div>
 
@@ -1454,7 +1515,7 @@ function showFormGrupoZelle()
             <div class="row">
                 <div class="col-xs-12 col-lg-12 col-sm-12 col-md-12">
                     <label for="amountZelle">Monto cancelado</label>
-                    <input type="number" class="form-control inputForm" name="amountZelle" id="amountZelle" placeholder="Monto cancelado"/>
+                    <input type="number" class="form-control inputForm" name="amountZelle" id="amountZelle" placeholder="Monto cancelado" value="${amount}"/>
                 </div>
             </div>
         </div>
@@ -1549,6 +1610,239 @@ function controlZelle() {
     return true;
 }
 
+/**** PAYPAL *******/
+function crearPantallaPaypal(pantalla)
+{
+    var bloqueP= document.createElement('div')
+    bloqueP.classList.add('sub-' + pantalla) //para agregar el footer al final
+
+    let montopagar = document.createElement('div')
+
+    let spanR = document.createElement('div')
+    spanR.innerText = "Realiza la transferencia con los datos presentados a continuación"
+    spanR.classList.add('textInfo', 'my-2', 'negrita')
+
+    bloqueP.appendChild(spanR)
+
+    bancoasociadoPaypal = document.createElement('select')
+    bancoasociadoPaypal.classList.add('form-control', 'inputForm', 'my-2', 'noradiance')
+    bancoasociadoPaypal.id = "bancoasociadoPaypal"
+
+    let option = document.createElement('option')
+    option.value='0'
+    option.innerHTML = 'Seleccione un Cuenta Paypal'
+    bancoasociadoPaypal.appendChild(option)
+    //Llena el select bancoasociado
+    paypals.forEach(element => {
+        let option = document.createElement('option')
+        option.value = element.email
+        option.innerHTML = element.email
+        bancoasociadoPaypal.appendChild(option)
+    });
+
+    bloqueP.appendChild(bancoasociadoPaypal)
+
+    var spanGroup = document.createElement('div')
+    spanGroup.classList.add('d-none')
+    spanGroup.id = 'spanGroup'
+    spanGroup.innerHTML = ""
+    bloqueP.appendChild(spanGroup)
+
+    bancoasociadoPaypal.addEventListener('change', function(){
+        var spanDP = document.createElement('div')
+        spanDP.classList.add('textInfo', 'divInfo', 'text-center', 'font-weight-bold')
+        var spanGroupBotones = document.createElement('div')
+        spanGroup.innerHTML = ""
+        spanGroup.appendChild(spanDP)
+        //transaccion.banco = e.target.options[index].text
+        var codigo = this.value
+        var cuentapaypal;
+
+        if(codigo === '0'){
+            spanDP.innerHTML = ``
+            spanGroup.classList.add('d-none')
+            return 0
+        }else{
+            var banco = paypals.some(function(buscar){
+                if(buscar.email === codigo)
+                {
+                    cuentapaypal = buscar
+                }
+            });
+
+            spanGroup.classList.remove('d-none')
+            // spanDP.innerHTML = `
+            //                 <div class='negrita'>EMAIL A DONDE REALIZAR EL PAGO</div><div>${cuentazelle.email}</div>
+            // `
+            spanGroup.innerHTML = infoPaypal(cuentapaypal.email)
+
+            let formulario = document.createElement('div')
+            formulario.innerHTML = showFormGrupoPaypal()
+            bloqueP.appendChild(formulario)
+        }
+    })
+
+    let bottopP = document.createElement('div')
+    bottopP.classList.add('bottopP', 'negrita1')
+    bloqueP.appendChild(bottopP)
+
+    let a = document.createElement('a')
+    a.src = "#"
+    a.index = pantalla
+    a.classList.add('titulo')
+    a.innerHTML = "Agregar"
+    let span = document.createElement('span')
+    span.innerText = 'Método de Pago Múltiple'
+    span.classList.add('textInfo', 'negrita')
+    a.classList.add('c-a', 'mx-1')
+    if(pantalla == 'p-0'){
+        //bottopP.appendChild(span)
+        //bottopP.appendChild(a)
+    }
+    a.addEventListener('click', nuevoBloque)
+    let a1 = document.createElement('a')
+    a1.src = "#"
+    a1.classList.add('enlaceEliminar')
+    a1.innerHTML = "¿Eliminar Pantalla?"
+    a1.index = pantalla
+    a1.addEventListener('click', eliminarBloque)
+    if(pantalla !== 'p-0'){
+        //bottopP.appendChild(a1)
+    }
+
+    return bloqueP
+}
+
+function showFormGrupoPaypal()
+{
+
+    let formGrupo = `
+    <div class="formPaypal">
+        <div class="row">
+            <div class="col-lg-12 text-justity pt-3 negrita">Ingresa los datos de tu pago</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-justity pt-3 negrita">Email hacia donde realizaste el pago</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <select class="form-control inputForm" name="" id="emailPaypal">
+                    <option value="0">Seleccione una dirección Paypal</option>
+                    `
+                    let option = ''
+                    zelles.forEach(element => {
+                        option += `
+                            <option value="${element.email}">${element.email}</option>
+                        `
+                    });
+    formGrupo += option
+
+    formGrupo += `
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group pt-3">
+            <div class="row">
+                <div class="col-xs-12 col-lg-12 col-sm-12 col-md-12">
+                    <label for="amountPaypal">Monto cancelado</label>
+                    <input type="number" class="form-control inputForm" name="amountPaypal" id="amountPaypal" placeholder="Monto cancelado" value="${amount}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group pt-3">
+            <div class="row">
+                <div class="col-xs-12 col-lg-12 col-sm-12 col-md-12">
+                    <label for="referencePaypal">Registra el código enviado a su correo</label>
+                    <input type="text" class="form-control inputForm" name="referencePaypal" id="referencePaypal" placeholder="Registra el código del pago"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row mx-auto my-3 p-3">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <button id="enviarPaypal" class="btn boton1 w-100" onClick="enviarPaypal()">Reporta el código</button>
+                </div>
+            </div>
+        </div>
+        `
+    return formGrupo
+}
+
+function infoPaypal(email){
+    let content = `
+        <div class="row">
+            <div class="col-md-12 position-relative">
+                
+                    <div class="card cardPasos">
+                        <span class="tituloPasos text-center negrita">Sigue los pasos</span>
+                        <div class="row my-5">
+                            <div class="col-md-12 text-center">
+                                <span class="negrita">Confirma </span><span>el monto a transferir en dolares</span>
+                                <div class="border-punteada mx-auto">
+                                    <span class="mx-auto text-secundary">Monto a pagar</span>
+                                    <div class="cuadroDolar mx-auto w-50">${currencyValue}${amount}</div>
+                                    <div class="mx-auto d-flex justify-content-between">
+                                        <img class=" mx-2 exclamation-solid" src="/fontawesome/exclamation-solid.svg" alt="" style="width:25px;height:45px;">
+                                        <span class="fontSize p-1">EL MONTO DEBE SER EXACTO PARA QUE SE PUEDA PROCESAR EL PAGO CORRECTO</span>
+                                    </div>
+                                </div>
+                                <div class="mx-auto marco my-3"><span>Desde tu app Paypal realiza el pago a este correo</div>
+                                <div class="cuadroDolar mx-auto w-75 my-3">${email}</div>
+                                <div class="mx-auto marco my-3">Para realizar tu pago usa el código mostrando en letras naranjas</div>
+                                <div class="naranja negrita my-3"><span>N34712</div>
+                                <div class="w-75 border-azulado mx-auto my-3">
+                                    <div class="azulado mx-auto negrita">Ingresa el codigo en letras moradas</div>
+                                    <div class="fontSize p-1">En el campo comentario de tu banco (message, reference, code, description, comment, note)</div>
+                                </div>
+                                <div class="w-75 border-azulado mx-auto my-3">
+                                    <div class="mx-auto">El código debe registrarse de forma corrida sin
+                                        puntos, ni guiones, palabras adicionales ni espacios
+                                        en blancos. <span class="azulado negrita">El código es único</span>, no se puede repetir y
+                                        garantiza la identificación de tu pago.</div>
+                                </div>
+                                <img class=" mx-auto my-3" src="/fontawesome/exclamacion.png" alt="">
+                                <div class="mx-auto w-85 negrita my-3">Si el monto no es el correcto y/o el código no fue registrado correctamente el pago no se podrá procesar</div>
+                                <div class="mx-auto w-85 negrita my-3">Recuerda reportar tu pago <span class="marco azulado negrita">el mismo día</span> de la transacción</div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    `
+    return content
+}
+
+function controlPaypal() {
+
+    if (document.getElementById('emailPaypal') == null
+        || document.getElementById('emailPaypal').value == "0") {
+        alert("El email no puede estar vacío.");
+        document.getElementById('emailPaypal').focus();
+        return false;
+    }
+    if ((document.getElementById('amountPaypal') == null
+        || document.getElementById('amountPaypal').value == "") || parseFloat(document.getElementById('amountPaypal').value) == "0") {
+        alert("El monto no puede estar vacío o ser cero.");
+        document.getElementById('amountPaypal').focus();
+        return false;
+    }
+
+    if (document.getElementById('referencePaypal') == null
+        || document.getElementById('referencePaypal').value == "") {
+        alert("El código no puede estar vacío.");
+        document.getElementById('referencePaypal').focus();
+        return false;
+    }
+
+    return true;
+}
+
 // Enviar datos
 function enviarPagoMovil(){
     if(controlPagoMovil()){
@@ -1621,6 +1915,33 @@ function enviarZelle(){
             let name = input.id
             //let nuevaData = objeto.push({name: input.value})
             objeto[name.replace('Zelle', '')] = input.value
+        });
+
+        enviarDatos(objeto)
+    }
+}
+
+function enviarPaypal(){
+    if(controlPaypal()){
+        let objeto= {'metodo': 'paypal'}
+        objeto['cliente_id'] = cliente_id
+        objeto['currency'] = 2
+        objeto['comercio_id'] = comercio_id
+        objeto['title'] = title
+        objeto['description'] = description
+        objeto['codigo'] = ''
+        objeto['nropedido'] = nropedido
+
+        document.querySelectorAll('.formPaypal input').forEach((input, i) => {
+            let name = input.id + ''
+            //let nuevaData = objeto.push({`${name}`: input.value})
+            objeto[name.replace('Paypal', '')] = input.value
+        });
+
+        document.querySelectorAll('.formPaypal select').forEach((input, i) => {
+            let name = input.id
+            //let nuevaData = objeto.push({name: input.value})
+            objeto[name.replace('Paypal', '')] = input.value
         });
 
         enviarDatos(objeto)

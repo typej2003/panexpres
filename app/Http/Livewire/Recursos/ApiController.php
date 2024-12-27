@@ -187,7 +187,7 @@ class ApiController extends Component
                'confirmed' => 1,
              ]);
 
-			 $cart = new CartController;
+			$cart = new CartController;
 
         	$cart->onlyClear();
 

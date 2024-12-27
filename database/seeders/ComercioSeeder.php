@@ -25,7 +25,7 @@ class ComercioSeeder extends Seeder
             'contactcellphone' => '04265173538',
             'contactphone'  => '0212-578-44-68',
             'horario'  => 'Lunes a Domingo hora: 6:30 am a 8:00 pm',
-            'email'  => 'ddrsistemas@gmail.com',
+            'email'  => 'panexpres1@gmail.com',
             'youtube'  => 'https://www.youtube.com/@ddrsistemas',
             'twitter'  => 'https://www.youtube.com/@ddrsistemas',
             'facebook'  => 'https://www.youtube.com/@ddrsistemas',

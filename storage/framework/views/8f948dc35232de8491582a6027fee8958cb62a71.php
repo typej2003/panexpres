@@ -17,11 +17,7 @@
         
     </head> 
     
-    <div class="row d-none">
-        <div class="col-lg-12">
-            <a href="/"><img style="width: 100%; height: 110px;"  src="<?php echo e($comercio->banner_url); ?>" alt=""></a>
-        </div>
-    </div>
+    
 
     <div class="row d-none">
         <div class="col-md-12 mx-3">
@@ -115,16 +111,18 @@
         var rifLetter = 'J';
         var rifNumber = ''; // J G
 
+        var bancos = window.livewire.find('<?php echo e($_instance->id); ?>').bancos;
         var pagosmoviles = window.livewire.find('<?php echo e($_instance->id); ?>').pagosmoviles;
         var transferencias = window.livewire.find('<?php echo e($_instance->id); ?>').transferencias;
         var zelles = window.livewire.find('<?php echo e($_instance->id); ?>').zelles;
+        var paypals = window.livewire.find('<?php echo e($_instance->id); ?>').paypals;
 
         var comercio_id = window.livewire.find('<?php echo e($_instance->id); ?>').comercio_id;
         
-        console.log(transferencias)
+        //console.log(bancos)
 
         let divPrincipal = document.getElementById('divPrincipal')
-        divPrincipal.appendChild(selectMetodoPago(0, comercio_id, nropedido, reference, title, description, clienteId,amount,currency,currencyValue,email,cellphonecode, cellphone, identificationNac, identificationNumber,rifLetter, rifNumber, pagosmoviles, transferencias, zelles))  
+        divPrincipal.appendChild(selectMetodoPago(0, comercio_id, nropedido, reference, title, description, clienteId,amount,currency,currencyValue,email,cellphonecode, cellphone, identificationNac, identificationNumber,rifLetter, rifNumber, bancos, pagosmoviles, transferencias, zelles, paypals))  
     })
     
 </script>
@@ -135,6 +133,12 @@
         
         location.href = '/';
     });
+
+    window.addEventListener('sendProcesado', function (event) {
+        alert('sendProcesado');
+        location.href = '/procesado';
+    });
+    
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
