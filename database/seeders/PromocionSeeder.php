@@ -16,7 +16,7 @@ class PromocionSeeder extends Seeder
     {
         DB::table('promocions')->insert([   
             'product_id' => 2,
-            'comercio_id' => 1,
+            'comercio_id' => 2,
             'title' => 'combo Expreso',
             'avatar' => 'banner_combo_expreso.jpg',
             'order' => 1,
@@ -59,7 +59,7 @@ class PromocionSeeder extends Seeder
         ]);
 
         DB::table('promocions')->insert([   
-            'product_id' => 2,
+            'product_id' => 14,
             'comercio_id' => 8,
             'title' => 'combo Gama',
             'avatar' => 'banner_combo_gama.jpg',

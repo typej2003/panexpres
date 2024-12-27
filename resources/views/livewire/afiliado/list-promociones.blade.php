@@ -107,6 +107,36 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <label for="comercio" class="">Comercio <span class="text-danger">*</span></label>
+                            <select wire:model="comercio" class="form-control @error('comercio') is-invalid @enderror" id="comercio">
+                                <option value="0">Seleccione una opción</option>
+                                @foreach($comercios as $com)
+                                    <option value="{{ $com->id }}" selected>{{ $com->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('comercio')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="product" class="">Productos </label>
+                            <select wire:model="product" class="form-control @error('product') is-invalid @enderror" id="product">
+                                @if(count($products)> 0)
+                                <option value="0">Seleccione una opción</option>
+                                @endif
+                                @foreach($products as $prod)
+                                    <option value="{{ $prod->id }}">{{ $prod->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('product')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="title">Titulo</label>
                             <input type="text" wire:model.defer="state.title" id="title" autofocus class="form-control @error('title') is-invalid @enderror">
                             @error('title')

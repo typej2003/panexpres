@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Afiliado;
 use App\Http\Livewire\Admin\AdminComponent;
 use App\Models\Promocion;
 use App\Models\Comercio;
+use App\Models\Product;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -16,6 +17,15 @@ class ListPromociones extends AdminComponent
 	use WithFileUploads;
 
 	public $state = [];
+
+	public $comercio;
+    public $product;
+    public $comercios = [], $products = [];
+
+	protected $rules = [
+        'comercio' => 'required|not_in:0',
+        'product' => 'required|not_in:0',
+    ];
 
 	public $promocion;
 
@@ -33,6 +43,12 @@ class ListPromociones extends AdminComponent
 
     public $photo;
 
+	public function updatedComercio($value)
+	{
+		$this->products = Product::where('comercio_id', $value)->get();
+		$this->product = $this->products->first()->id ?? null;
+	}
+
     public function mount()
     {
     }
@@ -40,7 +56,11 @@ class ListPromociones extends AdminComponent
     public function addNew()
 	{
 		$this->reset();
-	
+
+		$this->comercios = Comercio::all();
+
+		$this->products = collect();
+        
 		$this->showEditModal = false;
 
         $this->state['active'] = 'active';
@@ -58,8 +78,10 @@ class ListPromociones extends AdminComponent
 
         if ($this->photo) {
 			$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');
-            
 		}
+
+		$validatedData['comercio_id'] = $this->comercio_id;
+		$validatedData['product_id'] = $this->product_id;
 
 		Promocion::create($validatedData);
 
@@ -70,6 +92,7 @@ class ListPromociones extends AdminComponent
 
 	public function edit(Promocion $promocion)
 	{
+		
 		$this->reset();
 		
 		$this->showEditModal = true;
@@ -78,6 +101,11 @@ class ListPromociones extends AdminComponent
 
 		$this->state = $promocion->toArray();
 
+		$this->comercios = Comercio::all();
+        $this->comercio = $this->state['comercio_id'];        
+        $this->product = $this->state['product_id'];
+
+		$this->products = Product::where('comercio_id', $this->comercio)->get();
 
 		$this->dispatchBrowserEvent('show-form');
 	}

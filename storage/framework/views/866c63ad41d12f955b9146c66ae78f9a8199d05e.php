@@ -8,53 +8,82 @@
                     <div class="row">
                         <!-- Sección de categoría -->
                         <div class="col-md-12 col-12">
-                            @livewire('components.section-catalogo', ['comercioId' => 1, 'parametro' => $parametro])
+                            <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('components.section-catalogo', ['comercioId' => 1, 'parametro' => $parametro])->html();
+} elseif ($_instance->childHasBeenRendered('l676631579-0')) {
+    $componentId = $_instance->getRenderedChildComponentId('l676631579-0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l676631579-0');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l676631579-0');
+} else {
+    $response = \Livewire\Livewire::mount('components.section-catalogo', ['comercioId' => 1, 'parametro' => $parametro]);
+    $html = $response->html();
+    $_instance->logRenderedChild('l676631579-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                         </div>        
                     </div>
 
                     <div class="row">
                         <!-- Sección de categoría -->
                         <div class="col-md-12 col-12">
-                            @livewire('components.section-manufacturers', ['comercioId' => 1, 'parametro' => $parametro])
+                            <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('components.section-manufacturers', ['comercioId' => 1, 'parametro' => $parametro])->html();
+} elseif ($_instance->childHasBeenRendered('l676631579-1')) {
+    $componentId = $_instance->getRenderedChildComponentId('l676631579-1');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l676631579-1');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l676631579-1');
+} else {
+    $response = \Livewire\Livewire::mount('components.section-manufacturers', ['comercioId' => 1, 'parametro' => $parametro]);
+    $html = $response->html();
+    $_instance->logRenderedChild('l676631579-1', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                         </div>        
                     </div>
 
                     <!-- Sección de Resultados -->
                     <div class="row bg">
                         <div class="col-md-12 col-12">
-                            <span class="h4 mx-4">Resultado de: {{$parametro}} </span>  
+                            <span class="h4 mx-4">Resultado de: <?php echo e($parametro); ?> </span>  
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 col-12">
-                            @if($parametro)
-                                @forelse ($products as $index => $product)
+                            <?php if($parametro): ?>
+                                <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <div class="row  border border-1 ">
                                         <form class="d-flex" action="/add" method="post">
-                                            @csrf
-                                            <input name="product_id" type="hidden" value="{{ $product->id }}">
-                                            <input name="name" type="hidden" value="{{ $product->name }}">
-                                            <input name="price1" type="hidden" value="{{ $product->price1 }}">
+                                            <?php echo csrf_field(); ?>
+                                            <input name="product_id" type="hidden" value="<?php echo e($product->id); ?>">
+                                            <input name="name" type="hidden" value="<?php echo e($product->name); ?>">
+                                            <input name="price1" type="hidden" value="<?php echo e($product->price1); ?>">
 
                                             <div class="col-md-2 d-flex">
-                                                <img class="mx-auto" style="width:150px;" src="{{ $product->image1_url }}" alt="">
+                                                <img class="mx-auto" style="width:150px;" src="<?php echo e($product->image1_url); ?>" alt="">
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="row">
                                                     <div class="col-md-12 centrarFlex">
                                                         <div class="centrar">
-                                                            <span class="h6">{{ $product->name }}</span>
+                                                            <span class="h6"><?php echo e($product->name); ?></span>
                                                         </div>
                                                         <br>
                                                         <div class="centrar">
-                                                            {{ $product->description }}
+                                                            <?php echo e($product->description); ?>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row my-3">
                                                     <div class="col-md-12 centrarFlex">
                                                         <div class="centrar">
-                                                            <a class="btn btn-view centrar" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
+                                                            <a class="btn btn-view centrar" href="/routedetails/<?php echo e($product->comercio_id); ?>/<?php echo e($product->id); ?>">Ver</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -62,7 +91,7 @@
                                             <div class="col-md-4">
                                                 <div class="row">
                                                     <div class="col-md-12 d-flex">
-                                                        <span class="mx-auto h4">${{ $product->getPrice1() }}</span>
+                                                        <span class="mx-auto h4">$<?php echo e($product->getPrice1()); ?></span>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -91,7 +120,7 @@
                                         </form>
                                     </div>
                                     
-                                @empty
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                     <div class="card showProductCard mx-auto text-center">
                                         <card-body>
                                             <span>No tiene Productos Disponibles</span>
@@ -99,8 +128,8 @@
                                         <card-footer>                    
                                         </card-footer>                    
                                     </div>
-                                @endforelse
-                            @endif
+                                <?php endif; ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                     
@@ -122,4 +151,4 @@
             }
         })
 
-    </script>
+    </script><?php /**PATH C:\Users\typej\Documents\git\panexpres\resources\views/livewire/components/results-products.blade.php ENDPATH**/ ?>

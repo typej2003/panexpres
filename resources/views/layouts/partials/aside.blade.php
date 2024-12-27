@@ -21,7 +21,7 @@
 
     <!-- Sidebar Menu -->
      
-    <nav class="mt-2 overflowul">
+    <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
           <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">

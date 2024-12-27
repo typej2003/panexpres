@@ -165,7 +165,7 @@ echo $html;
             <div class="header-main fixed-top ">
                 <div class="header">
                     <div class="logo">
-                        <a href="/"><img class="logo-responsive" src="<?php echo e($comercio->avatar_url); ?>" alt=""></a>
+                        <a href="/"><img class="main-sidebar-img" src="<?php echo e($comercio->avatar_url); ?>" alt=""></a>
                     </div>
                     <!-- The form -->
                     <div class="search">

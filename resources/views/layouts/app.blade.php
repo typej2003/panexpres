@@ -27,14 +27,8 @@
     
     <body class="hold-transition sidebar-mini {{ setting('sidebar_collapse') ? 'sidebar-collapse' : '' }}">
     <div class="wrapper">
-@auth
-        <!-- Navbar -->
-        @guest
-        @livewire('layouts.navbar')
-        @endguest
-        @auth
+    @auth
         @livewire('layouts.navbar-in')
-        @endauth
          <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -63,7 +57,7 @@
     </body>
 
     <!-- ./wrapper -->
-@endauth
+    @endauth
     
 
 </html>

@@ -23,11 +23,11 @@
             <div class="row">
                 <!-- /.col -->
                 <div class="col-md-12">
-                    <div class="card" x-data="{ currentTab: $persist('changeEnvio') }">
+                    <div class="card" x-data="{ currentTab: $persist('changePickup') }">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills" wire:ignore>
-                                <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Envío</a></li>
-                                <li @click.prevent="currentTab = 'changePickup'" class="nav-item"><a class="nav-link" :class="currentTab === 'changePickup' ? 'active' : ''" href="#changePickup" data-toggle="tab"><img src="/img/envio_pickup_i.png" alt=""> Pickup</a></li>
+                                <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Envío</a></li>
+                                <li @click.prevent="currentTab = 'changePickup'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changePickup' ? 'active' : ''" href="#changePickup" data-toggle="tab"><img style="width: 20px;" src="/img/envio_pickup_i.png" alt=""> Pickup</a></li>
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">

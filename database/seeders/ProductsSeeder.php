@@ -476,7 +476,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 11.0, //precio al detal
+            'price1' => 14.95, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia

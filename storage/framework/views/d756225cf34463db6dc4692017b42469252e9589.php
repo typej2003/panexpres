@@ -28,42 +28,22 @@
     
     <body class="hold-transition sidebar-mini <?php echo e(setting('sidebar_collapse') ? 'sidebar-collapse' : ''); ?>">
     <div class="wrapper">
-<?php if(auth()->guard()->check()): ?>
-        <!-- Navbar -->
-        <?php if(auth()->guard()->guest()): ?>
-        <?php
-if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('layouts.navbar')->html();
-} elseif ($_instance->childHasBeenRendered('70v3Tsa')) {
-    $componentId = $_instance->getRenderedChildComponentId('70v3Tsa');
-    $componentTag = $_instance->getRenderedChildComponentTagName('70v3Tsa');
-    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('70v3Tsa');
-} else {
-    $response = \Livewire\Livewire::mount('layouts.navbar');
-    $html = $response->html();
-    $_instance->logRenderedChild('70v3Tsa', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
-}
-echo $html;
-?>
-        <?php endif; ?>
-        <?php if(auth()->guard()->check()): ?>
+    <?php if(auth()->guard()->check()): ?>
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('layouts.navbar-in')->html();
-} elseif ($_instance->childHasBeenRendered('mb2G1tA')) {
-    $componentId = $_instance->getRenderedChildComponentId('mb2G1tA');
-    $componentTag = $_instance->getRenderedChildComponentTagName('mb2G1tA');
+} elseif ($_instance->childHasBeenRendered('vYvUnGz')) {
+    $componentId = $_instance->getRenderedChildComponentId('vYvUnGz');
+    $componentTag = $_instance->getRenderedChildComponentTagName('vYvUnGz');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('mb2G1tA');
+    $_instance->preserveRenderedChild('vYvUnGz');
 } else {
     $response = \Livewire\Livewire::mount('layouts.navbar-in');
     $html = $response->html();
-    $_instance->logRenderedChild('mb2G1tA', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('vYvUnGz', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
-        <?php endif; ?>
          <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -91,15 +71,15 @@ echo $html;
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('layouts.footer')->html();
-} elseif ($_instance->childHasBeenRendered('cWyQUOp')) {
-    $componentId = $_instance->getRenderedChildComponentId('cWyQUOp');
-    $componentTag = $_instance->getRenderedChildComponentTagName('cWyQUOp');
+} elseif ($_instance->childHasBeenRendered('uEYBCgv')) {
+    $componentId = $_instance->getRenderedChildComponentId('uEYBCgv');
+    $componentTag = $_instance->getRenderedChildComponentTagName('uEYBCgv');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('cWyQUOp');
+    $_instance->preserveRenderedChild('uEYBCgv');
 } else {
     $response = \Livewire\Livewire::mount('layouts.footer');
     $html = $response->html();
-    $_instance->logRenderedChild('cWyQUOp', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('uEYBCgv', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -107,7 +87,7 @@ echo $html;
     </body>
 
     <!-- ./wrapper -->
-<?php endif; ?>
+    <?php endif; ?>
     
 
 </html>

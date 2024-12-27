@@ -148,7 +148,7 @@
             <div class="header-main fixed-top ">
                 <div class="header">
                     <div class="logo">
-                        <a href="/"><img class="logo-responsive" src="{{ $comercio->avatar_url }}" alt=""></a>
+                        <a href="/"><img class="main-sidebar-img" src="{{ $comercio->avatar_url }}" alt=""></a>
                     </div>
                     <!-- The form -->
                     <div class="search">
