@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Mail\TestMail;
 use App\Models\Notificacion;
 use Mail;
+use App\Models\User;
 
 class EmailController extends Component
 {
@@ -30,7 +31,7 @@ class EmailController extends Component
         }        
     }
 
-    public function sendEmail($operacion, $user)
+    public function sendEmail($operacion, User $user)
     {
         switch ($operacion) {
             case 'welcome':
@@ -100,11 +101,13 @@ class EmailController extends Component
 
     }
 
-    public function sendMailWelcome($user, $file = null)
+    public function sendMailWelcome(User $user, $file = null)
     {
         // Laravel 8
 
         $data["user"] = $user;
+        $data["names"] = $user->names;
+        $data["surnames"] = $user->surnames;
         $data["email"] = $user->email;
         $data["title"] = 'Bienvenid(@) a PanExpres.com';
         $data["body"] = 'Te damos la bienvenida';
