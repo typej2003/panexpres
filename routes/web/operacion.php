@@ -52,8 +52,8 @@ Route::get('/receiveBDV/{toke}', [WelcomeController::class, 'receiveBDV'])->name
 
 Route::get('/pagosatisfactorio/{id}', function ( $id ) {
     $id_suc = $id;
-    $pasarela = Pasarela();
-    $pasarela->$registrarReferencia($id);
+    //$pasarela = Pasarela();
+    //$pasarela->$registrarReferencia($id);
     return view('externalviews.pagosatisfactorio', compact('id_suc') );
 });
 
