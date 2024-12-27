@@ -89,7 +89,7 @@ class valoracionProductsSeeder extends Seeder
             'product_id' => '8',
             'ca_valoracion' => '5',
             'class'  => 'five',
-            'comment'  => 'Excelente Producto',
+            'comment'  => 'Excelente Producto, recomendado',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
