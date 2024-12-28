@@ -13,6 +13,9 @@
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
                                 <h1>Operación procesada con éxito</h1>
+                                <p>
+                                    Su pago esta siendo validado por nuestro equipo de venta
+                                </p>
                                 <h3>¿Qué desea hacer ahora?</h3>
                                 <p>
                                     <a target="_parent" class="h5 text-titulo" href="/">Seguir comprando</a>

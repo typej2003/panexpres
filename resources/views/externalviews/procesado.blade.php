@@ -31,6 +31,9 @@
                             <div class="card-body text-center">
                                 <h1>Operación procesada con éxito</h1>
                                 <p>
+                                    Su pago esta siendo validado por nuestro equipo de venta
+                                </p>
+                                <p>
                                     <a class="h5 text-titulo" href="/">Seguir comprando</a>
                                 </p>
                                 <p >

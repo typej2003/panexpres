@@ -37,6 +37,9 @@ class EmailController extends Component
             case 'welcome':
                 $this->sendMailWelcome($user);
                 break;
+            case 'compraRealizada':
+                $this->sendMailWelcome($user);
+                break;
             
             default:
                 return view('livewire.notificacion.email-controller');
