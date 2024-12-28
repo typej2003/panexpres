@@ -44,16 +44,21 @@ class ListPedidos extends AdminComponent
 		Validator::make(['confirmed' => $confirmed], [
 			'confirmed' => [
 				'required',
-				Rule::in(Pedido::CONFIRMED, Pedido::NOTCONFIRMED),
+				Rule::in(Pedido::CONFIRMED, Pedido::NOTCONFIRMED, Pedido::CONFIRMEDFAILED),
 			],
 		])->validate();
 
 		$pedido->update(['confirmed' => $confirmed]);
 
 		switch ($confirmed) {
+			case '2':
+				$confirmed = 'Confirmado Fallida';
+				$this->sendNotificacion($pedido, 'confirmacionFallida');
+				break;
+			
 			case '1':
 				$confirmed = 'Confirmado';
-				$this->sendNotificacion($pedido);
+				$this->sendNotificacion($pedido, 'confirmacionPago');
 				break;
 			
 			case '0':
@@ -64,11 +69,11 @@ class ListPedidos extends AdminComponent
 		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$confirmed} satisfactoriamente."]);
 	}
 
-	public function sendNotificacion(Pedido $pedido )
+	public function sendNotificacion(Pedido $pedido, $notificacion )
 	{
 		$notificacion = new EmailController();
 
-        $notificacion->sendEmail('confirmarpago', $pedido->client(), $pedido->nropedido);
+        $notificacion->sendEmail($notificacion, $pedido->client(), $pedido->nropedido);
 
 	}
 

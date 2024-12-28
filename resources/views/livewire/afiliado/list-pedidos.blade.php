@@ -61,6 +61,7 @@
                                             <select class="form-control" wire:change="changeConfirmation({{ $pedido }}, $event.target.value)">
                                                 <option value="1" {{ ($pedido->confirmed === 1) ? 'selected' : '' }}>CONFIRMADO</option>
                                                 <option value="0" {{ ($pedido->confirmed === 0) ? 'selected' : '' }}>NO CONFIRMADO</option>
+                                                <option value="2" {{ ($pedido->confirmed === 2) ? 'selected' : '' }}>CONFIRMADO FALLIDA</option>
                                             </select>
                                         </td>
                                         <td><a href="/pasarela/{{ $pedido->pedido }}/{{ $pedido->comercio_id }}">{{ $pedido->nropedido }}</a></td>

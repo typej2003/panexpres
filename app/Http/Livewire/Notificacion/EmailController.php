@@ -43,7 +43,7 @@ class EmailController extends Component
                 $this->compraRealizada($user, $nropedido);
                 break;
             
-            case 'confirmarpago':
+            case 'confirmacionPago':
                 $this->confirmacionPago($user, $nropedido);
                 break;
             

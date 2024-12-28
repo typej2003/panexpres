@@ -11,6 +11,7 @@ class Pedido extends Model
 
     const CONFIRMED = '1';
     const NOTCONFIRMED = '0';
+    const CONFIRMEDFAILED = '2';
 
     const DELIVERED = 'delivered';
     const NOTDELIVERED = 'notdelivered';
