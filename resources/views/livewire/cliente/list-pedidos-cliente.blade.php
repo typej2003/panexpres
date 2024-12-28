@@ -75,6 +75,10 @@
                                         <td>{{ $pedido->metodoentrega }}</td>
                                         <td>{{ $pedido->created_at ?? 'N/A' }}</td>
                                         <td>
+                                            <a href="" wire:click.prevent="sendNotificacion({{ $pedido }})">
+                                                <img class="mr-2" style="width: 25px;" src="/img/icon-send.png" alt="">
+                                            </a>
+
                                             <a href="" wire:click.prevent="edit({{ $pedido }})">
                                                 <i class="fa fa-edit mr-2"></i>
                                             </a>

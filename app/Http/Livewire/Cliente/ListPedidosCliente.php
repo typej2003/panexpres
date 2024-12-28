@@ -40,6 +40,11 @@ class ListPedidosCliente extends AdminComponent
 		$this->currencyValue = request()->cookie('currency');
     }
 
+	public function sendNotificacion($pedido)
+	{
+		dd($pedido);
+	}
+
 	public function changeConfirmation(Pedido $pedido, $confirmed)
 	{
 		Validator::make(['confirmed' => $confirmed], [
