@@ -47,7 +47,7 @@
                                 <input name="name" type="hidden" value="{{ $product->name }}">
                                 <input name="price1" type="hidden" value="{{ $product->price1 }}">
                                 <input name="quantity" type="hidden" value="1">
-                                <div class="card showProductCard mx-auto text-center mx-2">
+                                <div class="card showProductCard mx-3 text-center mx-2">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="">

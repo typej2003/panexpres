@@ -107,8 +107,8 @@ class Cart1 extends AdminComponent
     }
     
 
-    public function updateQuantity($id, $value, $operacion)
-    {
+    public function updateQuantity($id, $value, $operacion){
+        
         switch ($operacion) {
             case '-':
                 if($value > 0){
@@ -338,18 +338,19 @@ class Cart1 extends AdminComponent
 
     public function render()
     {
+        $this->currencyValue = request()->cookie('currency');
+
+        $cartCollection = \Cart::getContent();
 
         $setting = Setting::find(1)->first();
 
         $words = '';
 
-        $conf = Setting::where('id', 1)->first();
+        $conf = Setting::where('id', 1)->first();        
         
-        $cartCollection = \Cart::getContent();
-
         return view('livewire.cart.cart1', [
             'in_cellphonecontact' => $setting->in_cellphonecontact, 
-            'comercio_id' => 1,
+            'comercio_id' => $this->comercio_id,
             'manufacturer_id' => 0,
             'modelo_id' => 0,
             'motor_id' => 0, 

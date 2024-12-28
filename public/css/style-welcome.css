@@ -53,7 +53,7 @@ a {text-decoration: none; }
 
 .botonera a { color: black; text-decoration: none; display: flex; align-items: center; }
 
-.botonera img { width: 45px !important; }
+.botonera img { width: 45px !important;}
 
 .botonera:hover {  background-color: white; color: #D7C8B6; box-shadow: 5px 5px 15px gray; }
 
@@ -90,7 +90,7 @@ a {text-decoration: none; }
 .overlay-content {position: relative; top: 0; width: 100vw !important; text-align: justify; margin-top: 1px;}
 .overlay a { padding: 8px; text-decoration: none; font-size: 1rem; color: #818181; display: block; transition: 0.3s;}
 .overlay a:hover, .overlay a:focus { color: #000000; font-size: 1.2rem;}
-.overlay .closebtn { position: absolute; top: 1px; right: 5px; font-size: 2rem; color: #000; z-index: 1;}
+.overlay .closebtn { position: absolute; top: 1px; right: 12px !important; font-size: 2rem; color: #000; z-index: 1;}
 .overlay .closebtn:hover { font-size: 2.2rem; color: #000;}
 .overlay .overlay-header {display: flex; justify-content: space-between; background-color: rgb(216, 214, 214); align-items: center; height: auto; padding-bottom: 10px;}
 .overlay-header img { width: 65%;}
@@ -126,11 +126,11 @@ a {text-decoration: none; }
   .overlay-header div { width: 20%; margin-right: 35px;}
   .overlay-header .currency-responsive {width: 15% !important; margin-left: 0 !important;}
   .overlay a {font-size: 20px} 
-  .overlay .closebtn { font-size: 2rem; top: 1px !important; margin-top: 1px !important; right: 1px !important; color: #000; z-index: 1; padding: 0 !important; margin: 0 !important; top: 0 !important;}
+  .overlay .closebtn { font-size: 2rem; top: 1px !important; margin-top: 1px !important; right: 15px !important; color: #000; z-index: 1; padding: 0 !important; margin: 0 !important; top: 0 !important;}
   .nav-overlay {margin-left: 2px; margin-top: 0; width: auto !important;}
   .wordMenu {display: none;}
   .w-full{display: none!important; }
-  .menu {background-color: white;  display: flex !important; justify-content:space-between !important; /*background-color: black;*/ color: black}
+  .menu {background-color: white;  display: flex !important; justify-content:space-between !important; /*background-color: black;*/ color: black; width: 100% !important;}
   body, html{ margin:0; padding:0; /*background-color: burlywood;*/}
   .header{display: none;}
   .wrapper{ padding-top:0px; margin-top: 45px; }
@@ -149,6 +149,15 @@ a {text-decoration: none; }
       margin: 2px 2px 0 5px !important;
       width: 20% !important;
       
+    }
+    /* Elemento del menu responsive */
+    .logo-movil {
+      width: 85px !important;
+      height: 40px !important;
+    }
+    .icon-movil {
+      width: 35px !important;
+      margin-top: 5px !important;
     }
   
     .menu-horizontal div {
@@ -246,82 +255,7 @@ svg {
   color: white;
 }
 
-/* card slider */
-.card.showProductCard {
-  background-color: #ffffff !important;
-  width: 20rem!important;
-  height: 23rem!important;
-  border-radius: 15px;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
-  flex: auto;
-}
 
-.showProductCard:hover {
-  box-shadow: 0 3px 3px #FC5E27;
-}
-
-.showProductCard img{
-  width: 100%!important;
-  height: 150px!important;
-  text-align: center!important;
-  align-items: center;
-}
-
-
-  .slider {
-      /*width: 50%;*/
-      width: 100%;
-      margin: 10px auto!important;        
-      /* height: 300px; */
-  }
-
-  .slick-slide {
-  margin: 0px 10px; 
-  }
-
-  .slick-slide img {
-  width: 80%;
-  height: 200px;
-  }
-
-  .slick-prev:before,
-  .slick-next:before {
-  color: black;
-  }
-
-  .slick-next.slick-arrow {
-      border: 1px solid black;
-      border-radius: 50px;
-      width: 35px;
-      height: 35px;
-      display: block;
-      /* background-image: url('/img/circle-right-regular.svg'); */
-      z-index: 2;
-  }
-
-  .slick-prev.slick-arrow {
-      border: 1px solid black;
-      border-radius: 50px;
-      width: 35px;
-      height: 35px;
-      display: block;
-      /* background-image: url('/img/circle-left-regular.svg'); */
-      z-index: 2;
-  }
-
-  .slick-slide {
-  transition: all ease-in-out .3s;
-  /* opacity: .2; */
-  }
-  
-  /* .slick-active {
-  opacity: .5;
-  }
-
-  .slick-current {
-  opacity: 1;
-  } */
-/**/
 .btn-app{
   padding: 0%;
 background-color: #28221B;
@@ -353,7 +287,7 @@ background-color: #3d362d!important;
 	background-color: #28221B !important;
 	color: #FFCC2A !important;
     min-width: 130px!important;
-	width: 140px!important;
+	width: 130px !important;
 	height: 45px !important;
 	font-size: .8rem!important;
 	margin-top: 5px !important;
@@ -460,6 +394,33 @@ background-color: #3d362d!important;
 
   .input-number-group .input-number-increment {
   margin-left: 0.3rem;
+  }
+
+  .input-number-group{
+      min-width: 120px !important;
+  }
+  .input-number{
+      width: 55px !important;
+  }
+  .input-number-decrement {
+      width: 22px !important;
+      font-size: 16x !important;
+      
+      border-top-left-radius: 50% !important;
+      border-bottom-left-radius: 50% !important;
+  }
+
+  .input-number-increment {
+      width: 22px !important;
+      font-size: 16x !important;
+      border-top-right-radius: 50% !important;
+      border-bottom-right-radius: 50% !important;
+  }
+
+  @media only screen and (max-width: 1070px) {
+      .input-number{
+          width: 55px !important;
+      }
   }
 
   @media (max-width: 768px) {
@@ -726,3 +687,4 @@ background-color: #3d362d!important;
     align-items: center;
     width: 80%!important;
 }
+

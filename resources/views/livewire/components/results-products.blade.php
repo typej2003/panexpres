@@ -1,4 +1,33 @@
+<style>
+    .cuadro {
+        height: auto !important;
+        box-shadow: 5px 5px 15px gray;
+        margin-bottom: 10px;
+        padding: 15px;
+    }
 
+    .imgProduct {
+        width: 250px !important; height: 200px !important;
+    }
+
+    .negrita {
+        font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+        .imgProduct {
+            width: 350px !important; height: 200px !important;
+        }
+        .description {
+            height: auto !important;
+            text-align: justify;
+            padding: 15px !important;
+        }
+        .cuadro {
+            height: 500px !important;
+        }
+    }
+</style>
             <div class="row">
                 <div class="col-md-3 col-12" wire:ignore>
                     <!-- Sección de busqueda -->
@@ -12,98 +41,46 @@
                         </div>        
                     </div>
 
-                    <div class="row">
-                        <!-- Sección de categoría -->
-                        <div class="col-md-12 col-12">
-                            @livewire('components.section-manufacturers', ['comercioId' => 1, 'parametro' => $parametro])
-                        </div>        
-                    </div>
-
                     <!-- Sección de Resultados -->
                     <div class="row bg">
                         <div class="col-md-12 col-12">
                             <span class="h4 mx-4">Resultado de: {{$parametro}} </span>  
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 col-12">
-                            @if($parametro)
-                                @forelse ($products as $index => $product)
-                                    <div class="row  border border-1 ">
-                                        <form class="d-flex" action="/add" method="post">
-                                            @csrf
-                                            <input name="product_id" type="hidden" value="{{ $product->id }}">
-                                            <input name="name" type="hidden" value="{{ $product->name }}">
-                                            <input name="price1" type="hidden" value="{{ $product->price1 }}">
-
-                                            <div class="col-md-2 col-12 d-flex">
-                                                <img class="mx-auto" style="width:150px;" src="{{ $product->image1_url }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="row">
-                                                    <div class="col-md-12 col-12 centrarFlex">
-                                                        <div class="centrar">
-                                                            <span class="h6">{{ $product->name }}</span>
-                                                        </div>
-                                                        <br>
-                                                        <div class="centrar">
-                                                            {{ $product->description }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row my-3">
-                                                    <div class="col-md-12 col-12 centrarFlex">
-                                                        <div class="centrar">
-                                                            <a class="btn btn-view centrar" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="row">
-                                                    <div class="col-md-12 col-12 d-flex">
-                                                        <span class="mx-auto h4">{{$currencyValue}}. {{ $product->getPrice1() }}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 col-12 d-flex justify-content-between">
-                                                        <div class="input-group input-number-group">
-                                                            <div class="input-group-button">
-                                                                <span class="input-number-decrement">-</span>
-                                                            </div>
-                                                            <input name="quantity" class="input-number" type="number" value="1" min="0" max="1000">
-                                                            <div class="input-group-button">
-                                                                <span class="input-number-increment">+</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 col-12">
-                                                        <div class="centrar">
-                                                        <button class="btn btn-sale w-25 h-100"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </form>
+                    @if($parametro)
+                        @forelse ($products as $index => $product)
+                        <div class="card p-3 border border-1 cuadro m-3 h-auto">
+                            <div class="row mx-2 border border-1 p-3">
+                                <div class="col-md-3 col-12 centrar">
+                                    <img class = "imgProduct" src="{{ $product->image1_url }}" alt="">
+                                </div>
+                                <div class="col-md-5 col-12">
+                                    <p class="centrar negrita">{{ $product->name }}</p>
+                                    <p class="centrar description" style="height: 50%;">{{ $product->description }}</p>
+                                    <div class="centrar p-0 my-0">
+                                        <a class="btn btn-view centrar" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
                                     </div>
-                                    
-                                @empty
-                                    <div class="card showProductCard mx-auto text-center">
-                                        <card-body>
-                                            <span>No tiene Productos Disponibles</span>
-                                        </card-body>
-                                        <card-footer>                    
-                                        </card-footer>                    
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="centrar">Precio: {{ $product->getPrice1() }}</div>
+                                    <div class="centrar">
+                                        <div class="col-md-12 col-12 d-flex justify-content-between">
+                                            <div class="input-group input-number-group">
+                                                <div class="input-group-button">
+                                                    <span class="input-number-decrement">-</span>
+                                                </div>
+                                                <input name="quantity" class="input-number" type="number" value="1" min="0" max="1000">
+                                                <div class="input-group-button">
+                                                    <span class="input-number-increment">+</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                @endforelse
-                            @endif
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
+                        @endforeach
+                    @endif
                 </div>
             </div>
     
@@ -121,5 +98,4 @@
                 $input.val(val - 1);
             }
         })
-
     </script>

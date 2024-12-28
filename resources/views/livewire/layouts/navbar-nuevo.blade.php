@@ -250,24 +250,24 @@
                     <div class="menu-responsive">
                         <div class="menu-responsive">
                             <!-- Menu horizontal -->
-                            <img class="logo-movil" src="{{ $comercio->avatar_url }}" alt="">
-                            <div class="button-search"><img src="/img/icon_buscar.png" alt=""></div>
+                            <a href="/"><img class="logo-movil" src="{{ $comercio->avatar_url }}" alt=""></a>
+                            <div class="button-search"><img class="icon-movil" src="/img/icon_buscar.png" alt=""></div>
                             @auth
                                 <div><a href="">
-                                        <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
+                                        <img class="icon-movil img-circle elevation-1"  src="{{ auth()->user()->avatar_url }}" id="profileImage" alt="User Image" style="height: 30px; width: 30px;">
                                         <span class="ml-1" x-ref="username">Hola, {{ auth()->user()->name }}</span>
                                     </a>
                                 </div>
                                 
                             @else
-                                <div><a href=""><img class="icon" src="/img/icon_miperfil.png" alt=""></a></div>
+                                <div><a href=""><img class="icon-movil" src="/img/icon_miperfil.png" alt=""></a></div>
                             @endauth
-                            <div class="d-none"><a href="">XXX<img class="icon" src="/img/icon_heart.png" alt=""></a></div>
+                            <div class="d-none"><a href=""><img class="icon" src="/img/icon_heart.png" alt=""></a></div>
                             
                             <div>
                                 <a class="d-flex justify-content-between" href="/goCart">
-                                    <img class="icon" src="/img/icon_carrito.png" style="cursor:pointer;">
-                                    <span class="text-dark">({{$totalQuantityCart}})</span>
+                                    <img class="icon-movil" src="/img/icon_carrito.png" style="cursor:pointer;">
+                                    <span class="fs-5 my-2 text-dark">({{$totalQuantityCart}})</span>
                                     <!-- <span class="text-dark">({{\Cart::getTotalQuantity()}})</span> -->
                                 </a>
                                 @livewire('carrito.cart-drop')

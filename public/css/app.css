@@ -139,6 +139,32 @@
     margin-left: 0.3rem;
     }
 
+    .input-number-group{
+        min-width: 120px !important;
+    }
+    .input-number{
+        width: 55px !important;
+    }
+    .input-number-decrement {
+        width: 22px !important;
+        font-size: 16x !important;
+        
+        border-top-left-radius: 50% !important;
+        border-bottom-left-radius: 50% !important;
+    }
+
+    .input-number-increment {
+        width: 22px !important;
+        font-size: 16x !important;
+        border-top-right-radius: 50% !important;
+        border-bottom-right-radius: 50% !important;
+    }
+
+    @media only screen and (max-width: 1070px) {
+        .input-number{
+            width: 55px !important;
+        }
+    }
     @media (max-width: 768px) {
        
     }
