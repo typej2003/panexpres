@@ -54,7 +54,9 @@ class EmailController extends Component
             default:
                 return view('livewire.notificacion.email-controller');
                 break;
-        }        
+        }
+
+        $this->dispatchBrowserEvent('updated', ['message' => "Notificación enviada."]);
     }
 
     public function sendMailWithAttachment($user, $title = '', $body = '')
