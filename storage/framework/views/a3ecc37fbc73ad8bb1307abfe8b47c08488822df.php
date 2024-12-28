@@ -4,15 +4,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('layouts.navbar-checkout')->html();
-} elseif ($_instance->childHasBeenRendered('yUKJI7l')) {
-    $componentId = $_instance->getRenderedChildComponentId('yUKJI7l');
-    $componentTag = $_instance->getRenderedChildComponentTagName('yUKJI7l');
+} elseif ($_instance->childHasBeenRendered('6cJXOGO')) {
+    $componentId = $_instance->getRenderedChildComponentId('6cJXOGO');
+    $componentTag = $_instance->getRenderedChildComponentTagName('6cJXOGO');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('yUKJI7l');
+    $_instance->preserveRenderedChild('6cJXOGO');
 } else {
     $response = \Livewire\Livewire::mount('layouts.navbar-checkout');
     $html = $response->html();
-    $_instance->logRenderedChild('yUKJI7l', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('6cJXOGO', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -44,6 +44,9 @@ echo $html;
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
                                 <h1>Operación procesada con éxito</h1>
+                                <p>
+                                    Su pago esta siendo validado por nuestro equipo de venta
+                                </p>
                                 <p>
                                     <a class="h5 text-titulo" href="/">Seguir comprando</a>
                                 </p>

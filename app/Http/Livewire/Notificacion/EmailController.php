@@ -8,6 +8,8 @@ use App\Mail\TestMail;
 use App\Models\Notificacion;
 use Mail;
 use App\Models\User;
+use App\Models\Pedido;
+use App\Models\PedidoDetalle;
 
 class EmailController extends Component
 {
@@ -31,14 +33,14 @@ class EmailController extends Component
         }        
     }
 
-    public function sendEmail($operacion, User $user)
+    public function sendEmail($operacion, User $user, $nropedido = 0 )
     {
         switch ($operacion) {
             case 'welcome':
                 $this->sendMailWelcome($user);
                 break;
             case 'compraRealizada':
-                $this->sendMailWelcome($user);
+                $this->compraRealizada($user, $nropedido);
                 break;
             
             default:
@@ -139,6 +141,25 @@ class EmailController extends Component
      
             });
         }
+        
+
+    }
+
+    public function compraRealizada(User $user, $nropedido)
+    {
+        $data["user"] = $user;
+        $data["names"] = $user->names;
+        $data["surnames"] = $user->surnames;
+        $data["email"] = $user->email;
+        $data["title"] = 'Compra realizada';
+        $data["nropedido"] = $nropedido;
+        $data["body"] = 'Gracias por su compra';
+        
+        Mail::send('emails.compra-realizada', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->subject($data["title"]);
+    
+        });
         
 
     }
