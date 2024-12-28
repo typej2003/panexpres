@@ -40,7 +40,7 @@ class ListPedidosCliente extends AdminComponent
 		$this->currencyValue = request()->cookie('currency');
     }
 
-	public function sendNotificacion($pedido)
+	public function sendNotificacion(Pedido $pedido )
 	{
 		dd($pedido);
 	}
