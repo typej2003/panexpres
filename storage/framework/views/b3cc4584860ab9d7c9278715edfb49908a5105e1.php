@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="/css/showProducts.css">
     <link rel="stylesheet" href="/css/star.css">
 
-    <div class="row">
+    <div class="row my-2">
         <div class="col-md-12">
             <a href="/"><h6><i class="fa fa-solid fa-arrow-left"></i> Continuar con la compra</h6></a>
         </div>
     </div>
+
+    <?php if(\Cart::getTotalQuantity()>0): ?>
 
     <div class="row my-2">
         <div class="col-md-8">
@@ -172,6 +174,17 @@ echo $html;
 ?>
         </div>
     </div>
+
+    <?php else: ?>
+    <div class="row my-2">
+        <div class="col-md-12">
+            <div class="centrar">Carrito Vacío</div>
+            <div class="centrar">
+                <img class="logo-responsive" src="/img/carrito_vacio.gif" alt="">
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
     
     <script>
         $('.input-number-increment').click(function() {
