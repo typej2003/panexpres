@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="utf-8">
+    <title>PanExprés</title>
+    <meta name="description" content="Compra y vende Pan de Jamón y Combos Navideños Caracas">
+    <meta name="keywords" content="vende, compra, Pan, Jamón, Pan de Jamón, Combos Navideños, Caracas">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="shortcut icon" type="x-icon" href="/img/panexpres_logo.png.png" />
-    <title>PanExpres</title>
 
     <!-- Bootstrap CSS -->
 	    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
