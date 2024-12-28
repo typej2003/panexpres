@@ -1,35 +1,36 @@
-<style>
-    .cuadro {
-        height: auto !important;
-        box-shadow: 5px 5px 15px gray;
-        margin-bottom: 10px;
-        padding: 15px;
-    }
-
-    .imgProduct {
-        width: 250px !important; height: 200px !important;
-    }
-
-    .negrita {
-        font-weight: bold;
-    }
-
-    @media screen and (max-width: 768px) {
-        .imgProduct {
-            width: 350px !important; height: 200px !important;
-        }
-        .description {
-            height: auto !important;
-            text-align: justify;
-            padding: 15px !important;
-        }
+<div>
+    <style>
         .cuadro {
-            height: 500px !important;
+            height: auto !important;
+            box-shadow: 5px 5px 15px gray;
+            margin-bottom: 10px;
+            padding: 15px;
         }
-    }
-</style>
+
+        .imgProduct {
+            width: 250px !important; height: 200px !important;
+        }
+
+        .negrita {
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 768px) {
+            .imgProduct {
+                width: 350px !important; height: 200px !important;
+            }
+            .description {
+                height: auto !important;
+                text-align: justify;
+                padding: 15px !important;
+            }
+            .cuadro {
+                height: 540px !important;
+            }
+        }
+    </style>
             <div class="row">
-                <div class="col-md-3 col-12" wire:ignore>
+                <div class="col-md-3 col-12" >
                     <!-- Sección de busqueda -->
                     
                 </div>
@@ -37,7 +38,7 @@
                     <div class="row">
                         <!-- Sección de categoría -->
                         <div class="col-md-12 col-12">
-                            @livewire('components.section-catalogo', ['comercioId' => 1, 'parametro' => $parametro])
+                            
                         </div>        
                     </div>
 
@@ -62,19 +63,22 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
-                                    <div class="centrar">Precio: {{ $product->getPrice1() }}</div>
+                                    <div class="centrar">Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</div>
                                     <div class="centrar">
                                         <div class="col-md-12 col-12 d-flex justify-content-between">
                                             <div class="input-group input-number-group">
                                                 <div class="input-group-button">
                                                     <span class="input-number-decrement">-</span>
                                                 </div>
-                                                <input name="quantity" class="input-number" type="number" value="1" min="0" max="1000">
+                                                <input wire:model.defer="state.quantity" name="quantity" class="input-number" type="number" value="1" min="0" max="1000">
                                                 <div class="input-group-button">
                                                     <span class="input-number-increment">+</span>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="centrar">
+                                        <button wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</button>
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +93,7 @@
         var $input = $(this).parents('.input-number-group').find('.input-number');
         var val = parseInt($input.val(), 10);
         $input.val(val + 1);
+        @this.emit('actualizarQuantity', $input.val())
         });
 
         $('.input-number-decrement').click(function() {
@@ -96,6 +101,8 @@
             var val = parseInt($input.val(), 10);
             if(val > 1){
                 $input.val(val - 1);
+                @this.emit('actualizarQuantity', $input.val())
             }
         })
     </script>
+</div>

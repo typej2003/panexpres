@@ -58,8 +58,7 @@ echo $html;
         <li class="nav-item">
             <div class="row">
                 <div class="col-md-12 my-2">
-                    
-                        <?php
+                    <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.currency')->html();
 } elseif ($_instance->childHasBeenRendered('l3697213750-1')) {
@@ -74,7 +73,6 @@ if (! isset($_instance)) {
 }
 echo $html;
 ?>
-                    
                 </div>
             </div>
         </li>

@@ -1,35 +1,36 @@
-<style>
-    .cuadro {
-        height: auto !important;
-        box-shadow: 5px 5px 15px gray;
-        margin-bottom: 10px;
-        padding: 15px;
-    }
-
-    .imgProduct {
-        width: 250px !important; height: 200px !important;
-    }
-
-    .negrita {
-        font-weight: bold;
-    }
-
-    @media  screen and (max-width: 768px) {
-        .imgProduct {
-            width: 350px !important; height: 200px !important;
-        }
-        .description {
-            height: auto !important;
-            text-align: justify;
-            padding: 15px !important;
-        }
+<div>
+    <style>
         .cuadro {
-            height: 500px !important;
+            height: auto !important;
+            box-shadow: 5px 5px 15px gray;
+            margin-bottom: 10px;
+            padding: 15px;
         }
-    }
-</style>
+
+        .imgProduct {
+            width: 250px !important; height: 200px !important;
+        }
+
+        .negrita {
+            font-weight: bold;
+        }
+
+        @media  screen and (max-width: 768px) {
+            .imgProduct {
+                width: 350px !important; height: 200px !important;
+            }
+            .description {
+                height: auto !important;
+                text-align: justify;
+                padding: 15px !important;
+            }
+            .cuadro {
+                height: 540px !important;
+            }
+        }
+    </style>
             <div class="row">
-                <div class="col-md-3 col-12" wire:ignore>
+                <div class="col-md-3 col-12" >
                     <!-- Sección de busqueda -->
                     
                 </div>
@@ -37,21 +38,7 @@
                     <div class="row">
                         <!-- Sección de categoría -->
                         <div class="col-md-12 col-12">
-                            <?php
-if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('components.section-catalogo', ['comercioId' => 1, 'parametro' => $parametro])->html();
-} elseif ($_instance->childHasBeenRendered('l676631579-0')) {
-    $componentId = $_instance->getRenderedChildComponentId('l676631579-0');
-    $componentTag = $_instance->getRenderedChildComponentTagName('l676631579-0');
-    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('l676631579-0');
-} else {
-    $response = \Livewire\Livewire::mount('components.section-catalogo', ['comercioId' => 1, 'parametro' => $parametro]);
-    $html = $response->html();
-    $_instance->logRenderedChild('l676631579-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
-}
-echo $html;
-?>
+                            
                         </div>        
                     </div>
 
@@ -76,19 +63,22 @@ echo $html;
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
-                                    <div class="centrar">Precio: <?php echo e($product->getPrice1()); ?></div>
+                                    <div class="centrar">Precio: <?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></div>
                                     <div class="centrar">
                                         <div class="col-md-12 col-12 d-flex justify-content-between">
                                             <div class="input-group input-number-group">
                                                 <div class="input-group-button">
                                                     <span class="input-number-decrement">-</span>
                                                 </div>
-                                                <input name="quantity" class="input-number" type="number" value="1" min="0" max="1000">
+                                                <input wire:model.defer="state.quantity" name="quantity" class="input-number" type="number" value="1" min="0" max="1000">
                                                 <div class="input-group-button">
                                                     <span class="input-number-increment">+</span>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="centrar">
+                                        <button wire:click.prevent="sendCard(<?php echo e($product->id); ?>, 1)" class="btn btn-sale text-center">Comprar ahora</button>
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +93,7 @@ echo $html;
         var $input = $(this).parents('.input-number-group').find('.input-number');
         var val = parseInt($input.val(), 10);
         $input.val(val + 1);
+        window.livewire.find('<?php echo e($_instance->id); ?>').emit('actualizarQuantity', $input.val())
         });
 
         $('.input-number-decrement').click(function() {
@@ -110,6 +101,8 @@ echo $html;
             var val = parseInt($input.val(), 10);
             if(val > 1){
                 $input.val(val - 1);
+                window.livewire.find('<?php echo e($_instance->id); ?>').emit('actualizarQuantity', $input.val())
             }
         })
-    </script><?php /**PATH C:\Users\typej\Documents\git\panexpres\resources\views/livewire/components/results-products.blade.php ENDPATH**/ ?>
+    </script>
+</div><?php /**PATH C:\Users\typej\Documents\git\panexpres\resources\views/livewire/components/results-products.blade.php ENDPATH**/ ?>

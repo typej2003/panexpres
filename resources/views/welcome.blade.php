@@ -52,21 +52,21 @@
                     @livewire('components.marcas-productos')
                 @endif
                 <div class="my-2"></div>    
-                <section class="">
+                <section class="container-fluid">
                     <div class="my-2"></div>                    
                     @if($words == '')    
                         <div class="my-2"></div>
                         @livewire('components.show-products', ['comercioId' => $comercio_id, 'currencyValue' => $currencyValue])
                     @endif
                     
-                    @if($words != '' )                    
+                    @if($words != '' )   
                         @livewire('components.results-products', [
-                            'comercioId' => 1, 
+                            'comercioId' => $comercio_id, 
                             'parametro' => $words,
                             'manufacturer_id' => $manufacturer_id,
                             'modelo_id' => $modelo_id,
                             'motor_id' => $motor_id,
-                            ] )
+                            ])
                     @endif
                 </section>
 

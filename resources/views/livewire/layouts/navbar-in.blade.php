@@ -44,9 +44,7 @@
         <li class="nav-item">
             <div class="row">
                 <div class="col-md-12 my-2">
-                    
-                        @livewire('components.currency')
-                    
+                    @livewire('components.currency')
                 </div>
             </div>
         </li>

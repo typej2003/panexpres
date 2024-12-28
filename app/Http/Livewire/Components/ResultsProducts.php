@@ -14,6 +14,7 @@ class ResultsProducts extends AdminComponent
 
     public $currencyValue;
     
+    public $state = [];
 
     public $productsRecibidos;
 
@@ -21,10 +22,11 @@ class ResultsProducts extends AdminComponent
 
     public $manufacturer_id, $modelo_id, $motor_id;
 
-    protected $listeners = ['infoRecibida' => 'actualizarInfo'];
+    protected $listeners = ['infoRecibida' => 'actualizarInfo', 'actualizarQuantity' => 'actualizarQuantity'];
 
     public function actualizarInfo($data, $manufacturer, $products)
     {
+        
         $this->parametro = $manufacturer;
 
         $this->informacion = $data;
@@ -32,8 +34,14 @@ class ResultsProducts extends AdminComponent
         $this->productsRecibidos = $products;
     }
 
+    public function actualizarQuantity($value)
+    {
+        $this->state['quantity'] = $value;
+    }
+
     public function mount($comercioId = 1, $parametro, $manufacturer_id, $modelo_id, $motor_id)
     {
+        
         $this->comercio_id = $comercioId;
 
         $this->parametro = $parametro;
@@ -44,26 +52,43 @@ class ResultsProducts extends AdminComponent
 
         $this->motor_id = $motor_id;
 
+        $this->state['quantity'] = 1;
+
         $this->currencyValue = request()->cookie('currency');
         
     }
 
     public function sendCard($product_id, $quantity )
     {
-        $product = Product::find($product_id);
-        
-        \Cart::add(array(
-            'id' => $product->id,
-            'name' => $product->name,
-            'price' => $product->price1,
-            'quantity' => $quantity,
-            'attributes' => array(
-                'image' => $product->image1_url,
-                'comercio_id' => $product->comercio_id,
-                'categoria_id' => $product->categoria_id,
-                'subcategoria_id' => $product->subcategoria_id,
-            )
-        ));
+        $elemento = \Cart::get($product_id);
+
+        if($elemento)
+        {
+            
+            $total = floatval($elemento->quantity) + floatval($this->state['quantity']);
+            //dd($quantity);
+            \Cart::update($product_id,
+                array(
+                    'quantity' => array(
+                        'relative' => false,
+                        'value' => $total
+                    ),
+            ));
+        }else{
+            $product = Product::find($product_id); 
+            \Cart::add(array(
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price1,
+                'quantity' => $quantity,
+                'attributes' => array(
+                    'image' => $product->image1_url,
+                    'comercio_id' => $product->comercio_id,
+                    'categoria_id' => $product->categoria_id,
+                    'subcategoria_id' => $product->subcategoria_id,
+                )
+            ));
+        }        
 
         $this->emit('changeQuantity');
         //return redirect()->back();

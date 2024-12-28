@@ -86,8 +86,7 @@ class CartController extends Controller
     }
 
     public function add1(Request$request, $id)
-    {
-       
+    {       
         \Cart::add(array(
             'id' => $request->id,
             'name' => $request->name,
@@ -113,7 +112,6 @@ class CartController extends Controller
                 ),
         ));
 
-
         $cartCollection = \Cart::getContent();
 
         return view('livewire.carrito.cart')->with('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);;
@@ -130,7 +128,6 @@ class CartController extends Controller
                     'value' => $this->state['quantity']
                 ),
         ));
-
 
         $cartCollection = \Cart::getContent();
 
