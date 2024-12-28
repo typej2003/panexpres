@@ -43,9 +43,10 @@
                         'modelo_id' => $modelo_id,
                         'motor_id' => $motor_id,
                         ])
-
-                @if($in_sliderprincipal > 0)
-                    @livewire('components.promociones')
+                @if($words == '' || $words == null)   
+                    @if($in_sliderprincipal > 0)
+                        @livewire('components.promociones')
+                    @endif
                 @endif
 
                 @if($in_marcasproductos > 0)
