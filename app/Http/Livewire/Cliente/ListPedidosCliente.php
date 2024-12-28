@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Cliente;
 
 use App\Http\Livewire\Admin\AdminComponent;
+use App\Http\Livewire\Notificacion\EmailController;
 use App\Models\User;
 use App\Models\Pedido;
 use App\Models\Comercio;
