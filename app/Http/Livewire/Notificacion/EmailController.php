@@ -43,6 +43,14 @@ class EmailController extends Component
                 $this->compraRealizada($user, $nropedido);
                 break;
             
+            case 'confirmarpago':
+                $this->confirmacionPago($user, $nropedido);
+                break;
+            
+            case 'confirmacionFallida':
+                $this->confirmacionFallida($user, $nropedido);
+                break;
+            
             default:
                 return view('livewire.notificacion.email-controller');
                 break;
@@ -162,5 +170,39 @@ class EmailController extends Component
         });
         
 
+    }
+
+    public function confirmacionPago(User $user, $nropedido)
+    {
+        $data["user"] = $user;
+        $data["names"] = $user->names;
+        $data["surnames"] = $user->surnames;
+        $data["email"] = $user->email;
+        $data["title"] = 'Confirmación del pago';
+        $data["nropedido"] = $nropedido;
+        $pedido = Pedido::where('nropedido', $nropedido)->first();
+        $data["body"] = 'Su pago con referencia ' . $pedido->reference . ' fue procesado';
+        
+        Mail::send('emails.pago-confirmado', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->subject($data["title"]);    
+        });
+    }
+
+    public function confirmacionFallida(User $user, $nropedido)
+    {
+        $data["user"] = $user;
+        $data["names"] = $user->names;
+        $data["surnames"] = $user->surnames;
+        $data["email"] = $user->email;
+        $data["title"] = 'Confirmacion Pago';
+        $data["nropedido"] = $nropedido;
+        $pedido = Pedido::where('nropedido', $nropedido)->first();
+        $data["body"] = 'Su pago con referencia ' . $pedido->reference . ' no fue procesado.' .'\n';
+        $data["body"] .= 'Lo invitamos a ponerse en contacto con nuestro personal de soporte por los teléfonos '. $pedido->comercio->telefono ;
+        Mail::send('emails.pago-fallido', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->subject($data["title"]);    
+        });
     }
 }

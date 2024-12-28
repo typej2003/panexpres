@@ -53,6 +53,7 @@ class ListPedidos extends AdminComponent
 		switch ($confirmed) {
 			case '1':
 				$confirmed = 'Confirmado';
+				$this->sendNotificacion($pedido);
 				break;
 			
 			case '0':
@@ -61,6 +62,14 @@ class ListPedidos extends AdminComponent
 		}
 
 		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$confirmed} satisfactoriamente."]);
+	}
+
+	public function sendNotificacion(Pedido $pedido )
+	{
+		$notificacion = new EmailController();
+
+        $notificacion->sendEmail('confirmarpago', $pedido->client(), $pedido->nropedido);
+
 	}
 
     public function addNew()

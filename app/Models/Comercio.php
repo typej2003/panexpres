@@ -58,6 +58,11 @@ class Comercio extends Model
         return asset('nobanner.png');
     }
 
+    public function getTelefonoAttribute()
+    {
+        return $this->contactcellphone . ' ' . $this->contactphone;
+    }
+
     public function propietario()
     {
         $propietario = User::find($this->user_id);
