@@ -72,9 +72,10 @@ class ListPedidos extends AdminComponent
 
 	public function sendNotificacion(Pedido $pedido, $notificacion )
 	{
+
 		$notificacion = new EmailController();
 
-        $notificacion->sendEmail($notificacion, $pedido->client(), $pedido->nropedido);
+        $notificacion->sendEmail($notificacion, $pedido->client, $pedido->nropedido);
 
 	}
 
