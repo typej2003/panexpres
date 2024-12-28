@@ -42,7 +42,10 @@ class ListPedidosCliente extends AdminComponent
 
 	public function sendNotificacion(Pedido $pedido )
 	{
-		dd($pedido);
+		$notificacion = new EmailController();
+
+        $notificacion->sendEmail('compra', auth()->user, $pedido->nropedido);
+
 	}
 
 	public function changeConfirmation(Pedido $pedido, $confirmed)
