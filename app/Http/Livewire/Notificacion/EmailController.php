@@ -184,8 +184,8 @@ class EmailController extends Component
         $data["title"] = 'Confirmación del pago';
         $data["nropedido"] = $nropedido;
         $pedido = Pedido::where('nropedido', $nropedido)->first();
-        $data["body"] = 'Su pago con referencia ' . $pedido->reference . ' fue procesado';
-        
+        $data["body"] = 'La compra ' . $nropedido . ', con referencia ' . $pedido->reference . ' fue procesado satisfactoriamente!'.'\n';
+                
         Mail::send('emails.pago-confirmado', $data, function($message) use ($data) {
             $message->to($data["email"])
                     ->subject($data["title"]);    
@@ -201,7 +201,7 @@ class EmailController extends Component
         $data["title"] = 'Confirmacion Pago';
         $data["nropedido"] = $nropedido;
         $pedido = Pedido::where('nropedido', $nropedido)->first();
-        $data["body"] = 'Su pago con referencia ' . $pedido->reference . ' no fue procesado.' .'\n';
+        $data["body"] = 'La compra ' . $nropedido . ', con referencia ' . $pedido->reference . ' no fue procesado.' .'\n';
         $data["body"] .= 'Lo invitamos a ponerse en contacto con nuestro personal de soporte por los teléfonos '. $pedido->comercio->telefono ;
         Mail::send('emails.pago-fallido', $data, function($message) use ($data) {
             $message->to($data["email"])
