@@ -29,12 +29,9 @@
             }
         }
     </style>
-            <div class="row">
-                <div class="col-md-3 col-12" >
-                    <!-- Sección de busqueda -->
-                    
-                </div>
-                <div class="col-md-9 col-12">
+            <div class="row d-flex">
+                
+                <div class="mx-auto col-md-9 col-12">
                     <div class="row">
                         <!-- Sección de categoría -->
                         <div class="col-md-12 col-12">
@@ -80,10 +77,18 @@
                                     <div class="centrar">
                                         <button wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</button>
                                     </div>
+                                    <div class="centrar">
+                                        <img class ="logo-responsive" src="{{ $product->comercio->avatar_url }}" alt="">
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        @empty
+                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="height: 50vh !important;">
+                            <span> No tiene resultado</span>
+                        </div>
+                        @endforelse
                     @endif
                 </div>
             </div>

@@ -37,7 +37,7 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Cafetown',
+            'name' => 'Coffetown',
             'avatar' => 'logo_coffetown.jpg',
             'mercado' => 'original',
             'area_id' => '1',

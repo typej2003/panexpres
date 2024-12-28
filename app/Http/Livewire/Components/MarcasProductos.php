@@ -10,10 +10,10 @@ class MarcasProductos extends AdminComponent
 {
     public function render()
     {
-        $subcategorias = Manufacturer::where('comercio_id', 1)->where('mercado', 'original')->get();
+        $manufacturer = Manufacturer::where('comercio_id', 1)->where('mercado', 'original')->get();
 
         return view('livewire.components.marcas-productos', [
-            'subcategorias' => $subcategorias,
+            'manufacturers' => $manufacturer,
         ]);
     }
 }

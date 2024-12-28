@@ -113,6 +113,10 @@ class ResultsProducts extends AdminComponent
             ->WhereHas('categories', function($q){
                 $q->where('name', 'like', '%'. $this->parametro . '%');
             });
+        $products = $products
+            ->WhereHas('comercio', function($q){
+                $q->where('name', 'like', '%'. $this->parametro . '%');
+            });
         
         $products = $products->paginate(15);
 
