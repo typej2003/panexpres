@@ -35,6 +35,15 @@
         @auth
           @if(auth()->user()->role == 'admin')
             <li class="nav-item">
+              <a href="{{ route('listPedidos', 1) }}" class="nav-link {{ request()->is('listPedidos') ? 'active' : '' }}">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Procesar Pedidos
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="{{ route('listPedidosCliente') }}" class="nav-link {{ request()->is('listPedidosCliente') ? 'active' : '' }}">
                 <i class="fa fa-solid fa-file-invoice-dollar"></i>
                 <p>
