@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 
 use App\Models\Pedido;
+use App\Models\PedidoDetalles;
 use App\Models\PedidoTemporal;
+use App\Models\PedidoDetallesTemporal;
 use App\Models\Transaccion;
 
 class ApiController extends Component
@@ -222,6 +224,8 @@ class ApiController extends Component
     
           //$pedido = Pedido::find($pedido_id);
 		  $pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
+
+		  $pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->first();
     
           $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
     
@@ -250,7 +254,11 @@ class ApiController extends Component
 
 			$pedido = $pedidotemporal->toArray();
 
+			$pedidodetalles = $pedidodetallestemporal->toArray();
+
         	Pedido::create($pedido);
+
+			PedidoDetalles::create($pedidodetalles);
 
 			$cart = new CartController;
 

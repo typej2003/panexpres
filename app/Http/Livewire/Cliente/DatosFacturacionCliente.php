@@ -170,6 +170,8 @@ class DatosFacturacionCliente extends AdminComponent
         $this->showEditModal = true;
         $this->class = 'readonly';
         $this->class1 = 'disabled';
+
+        $this->state['metodoenvio'] = 'enviodelivery';
         
     }
 

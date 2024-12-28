@@ -39,7 +39,7 @@ class EmailController extends Component
             case 'welcome':
                 $this->sendMailWelcome($user);
                 break;
-            case 'compraRealizada':
+            case 'compra':
                 $this->compraRealizada($user, $nropedido);
                 break;
             

@@ -1,5 +1,4 @@
-<div>
-    
+<div>    
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -22,8 +21,8 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- /.col -->
-                <div class="col-md-12">
-                    <div class="card" x-data="{ currentTab: $persist('changePickup') }">
+                <div class="col-md-12 d-flex">
+                    <div class="card mx-auto" x-data="{ currentTab: $persist('changePickup') }" style="width: 52rem;">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills" wire:ignore>
                                 <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Envío</a></li>

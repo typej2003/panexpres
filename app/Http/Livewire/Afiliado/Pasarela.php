@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\CartController;
+use App\Http\Livewire\Notificacion\EmailController;
 
 use App\Models\User;
 use App\Models\DatosBasicos;
@@ -16,7 +17,9 @@ use App\Models\Comercio;
 use App\Models\Banco;
 use App\Models\Transaccion;
 use App\Models\Pedido;
+use App\Models\PedidoDetalles;
 use App\Models\PedidoTemporal;
+use App\Models\PedidoDetallesTemporal;
 use App\Models\MetodoPagoC;
 use App\Models\Tasa;
 
@@ -60,45 +63,42 @@ class Pasarela extends Component
     public function mount($nropedido = '', $comercioId = 1, )
 	{
         
-            $this->pedido = PedidoTemporal::where('nropedido', $nropedido)->first();
-            $this->comercio_id = $comercioId;
+        $this->pedido = PedidoTemporal::where('nropedido', $nropedido)->first();
+        $this->comercio_id = $comercioId;
 
-            $this->currencyValue = request()->cookie('currency');
-            
-            //guardar variables de entrega
-            $this->metodoentrega = $this->pedido->metodoentrega;
+        $this->currencyValue = request()->cookie('currency');
+        
+        //guardar variables de entrega
+        $this->metodoentrega = $this->pedido->metodoentrega;
 
-            $this->autenticarComercio($comercioId, $this->pedido->comercio_id);  
-            
-            if($this->pedido)
+        $this->autenticarComercio($comercioId, $this->pedido->comercio_id);  
+        
+        if($this->pedido)
+        {
+            $this->nropedido = $this->pedido->nropedido;
+            $this->reference = $this->pedido->nropedido;
+            $this->title = $this->pedido->title;
+            $this->description = $this->pedido->description;
+            $this->clienteId = $this->pedido->user_id;
+            $this->amount = $this->pedido->coste;
+
+            if($this->currencyValue == 'Bs')
             {
-                $this->nropedido = $this->pedido->nropedido;
-                $this->reference = $this->pedido->nropedido;
-                $this->title = $this->pedido->title;
-                $this->description = $this->pedido->description;
-                $this->clienteId = $this->pedido->user_id;
-                $this->amount = $this->pedido->coste;
-
-                if($this->currencyValue == 'Bs')
-                {
-                    // Hacer conversion
-                    $this->amount = $this->convertir($this->pedido->coste, $this->pedido->comercio_id);
-                    $this->currency = '1';
-                }else{
-                    $this->currency = '2';
-                }
-                
-                $cliente = $this->pedido->client;            
-                $this->email = $cliente->email;
-                $this->cellphonecode = $cliente->datosbasicos->cellphonecode;
-                $this->cellphone = $cliente->datosbasicos->cellphone;
-                $this->identificationNac = $cliente->identificationNac;
-                $this->identificationNumber = $cliente->identificationNumber;
-                $this->comercio = Comercio::find($this->pedido->comercio_id);
+                // Hacer conversion
+                $this->amount = $this->convertir($this->pedido->coste, $this->pedido->comercio_id);
+                $this->currency = '1';
+            }else{
+                $this->currency = '2';
             }
             
-       
-        
+            $cliente = $this->pedido->client;            
+            $this->email = $cliente->email;
+            $this->cellphonecode = $cliente->datosbasicos->cellphonecode;
+            $this->cellphone = $cliente->datosbasicos->cellphone;
+            $this->identificationNac = $cliente->identificationNac;
+            $this->identificationNumber = $cliente->identificationNumber;
+            $this->comercio = Comercio::find($this->pedido->comercio_id);
+        }
 	}
 
     public function pasarelaPost($request)
@@ -123,8 +123,6 @@ class Pasarela extends Component
         $this->reference = $this->nropedido;
         $this->title = 'Compra';
         $this->description = $description;
-        
-        
 
         $this->currencyValue = request()->cookie('currency');
 
@@ -262,6 +260,8 @@ class Pasarela extends Component
 
         $pedidoTemporal = PedidoTemporal::where('nropedido', $operacion['nropedido'])->first();
 
+        $pedidoDetallesTemporal = PedidoDetallesTemporal::where('nropedido', $operacion['nropedido'])->first();
+
         $pedidoTemporal->update([
             'reference' => $operacion['reference'],
             'metodo' => $operacion['metodo'],
@@ -270,11 +270,21 @@ class Pasarela extends Component
 
         $pedido = $pedidoTemporal->toArray();
 
-        Pedido::create($pedido);
+        $pedidodetalles = $pedidoDetallesTemporal->toArray();
+
+        $newpedido = Pedido::create($pedido);
+
+        PedidoDetalles::create($pedidodetalles);
 
         $cart = new CartController;
 
         $cart->onlyClear();
+
+        // Envio de notificaciones por la compra
+
+        $notificacion = new EmailController();
+
+        $notificacion->sendEmail('compra', auth()->user, $newpedido->nropedido);
 
         if($transaccion){
             $data = ['state'=> 'ok'];

@@ -50,10 +50,10 @@
                     <div class="card" x-data="{ currentTab: $persist('profile') }">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills" wire:ignore>
-                                <li @click.prevent="currentTab = 'profile'" class="nav-item"><a class="nav-link" :class="currentTab === 'profile' ? 'active' : ''" href="#profile" data-toggle="tab"><i class="fa fa-user mr-1"></i> Editar Perfil</a></li>
-                                <li @click.prevent="currentTab = 'changePassword'" class="nav-item"><a class="nav-link" :class="currentTab === 'changePassword' ? 'active' : ''" href="#changePassword" data-toggle="tab"><i class="fa fa-key mr-1"></i> Cambiar Contraseña</a></li>
-                                <li @click.prevent="currentTab = 'changeBasicData'" class="nav-item"><a class="nav-link" :class="currentTab === 'changeBasicData' ? 'active' : ''" href="#changeBasicData" data-toggle="tab"><i class="fa fa-key mr-1"></i> Datos Básicos</a></li>
-                                <li @click.prevent="currentTab = 'changeBillingDetails'" class="nav-item"><a class="nav-link" :class="currentTab === 'changeBillingDetails' ? 'active' : ''" href="#changeBillingDetails" data-toggle="tab"><i class="fa fa-key mr-1"></i> Facturación</a></li>
+                                <li @click.prevent="currentTab = 'profile'" class="nav-item mx-2"><a class="nav-link" :class="currentTab === 'profile' ? 'active' : ''" href="#profile" data-toggle="tab"><i class="fa fa-user mr-1"></i> Editar Perfil</a></li>
+                                <li @click.prevent="currentTab = 'changePassword'" class="nav-item mx-2"><a class="nav-link" :class="currentTab === 'changePassword' ? 'active' : ''" href="#changePassword" data-toggle="tab"><i class="fa fa-key mr-1"></i> Cambiar Contraseña</a></li>
+                                <li @click.prevent="currentTab = 'changeBasicData'" class="nav-item mx-2"><a class="nav-link" :class="currentTab === 'changeBasicData' ? 'active' : ''" href="#changeBasicData" data-toggle="tab"><i class="fa fa-key mr-1"></i> Datos Básicos</a></li>
+                                <li @click.prevent="currentTab = 'changeBillingDetails'" class="nav-item mx-2"><a class="nav-link" :class="currentTab === 'changeBillingDetails' ? 'active' : ''" href="#changeBillingDetails" data-toggle="tab"><i class="fa fa-key mr-1"></i> Facturación</a></li>
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">

@@ -59,6 +59,11 @@ class Pedido extends Model
         'valoraciondelivery',
     ];
 
+    public function getMonedaAttribute()
+    {
+        return ($this->currency == '1'?'Bs':'$');
+    }
+
     public function comercio()
     {
         return $this->hasOne(Comercio::class, 'id', 'comercio_id');

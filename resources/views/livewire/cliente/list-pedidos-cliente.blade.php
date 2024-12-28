@@ -49,7 +49,6 @@
                                         </th>
                                         <th scope="col">Cédula</th>
                                         <th scope="col">Cliente</th>
-                                        <th scope="col">Productos</th>
                                         <th scope="col">Método de Pago</th>
                                         <th scope="col">Costo</th>
                                         <th scope="col">Método de Entrega</th>
@@ -67,11 +66,10 @@
                                                 <option value="0" {{ ($pedido->confirmed === 0) ? 'selected' : '' }}>NO CONFIRMADO</option>
                                             </select>
                                         </td>
-                                        <td><a href="/detallespedido/{{ $pedido->pedido }}/{{ $pedido->comercio_id }}">{{ $pedido->nropedido }}</a></td>
+                                        <td><a href="/detallespedido/{{ $pedido->nropedido }}">{{ $pedido->nropedido }}</a></td>
                                         <td>{{ $pedido->reference }}</td>
                                         <td>{{ $pedido->client->identificationNumber }}</td>
                                         <td>{{ $pedido->client->name }}</td>
-                                        <td></td>
                                         <td>{{ $pedido->metodo }}</td>
                                         <td>{{ $pedido->coste }} {{ $currencyValue }}</td>
                                         <td>{{ $pedido->metodoentrega }}</td>
