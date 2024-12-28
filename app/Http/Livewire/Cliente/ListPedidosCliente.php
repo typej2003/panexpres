@@ -45,7 +45,7 @@ class ListPedidosCliente extends AdminComponent
 	{
 		$notificacion = new EmailController();
 
-        $notificacion->sendEmail('compra', auth()->user, $pedido->nropedido);
+        $notificacion->sendEmail('compra', auth()->user(), $pedido->nropedido);
 
 	}
 

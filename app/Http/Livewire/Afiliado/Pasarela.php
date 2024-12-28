@@ -284,7 +284,7 @@ class Pasarela extends Component
 
         $notificacion = new EmailController();
 
-        $notificacion->sendEmail('compra', auth()->user, $newpedido->nropedido);
+        $notificacion->sendEmail('compra', auth()->user(), $newpedido->nropedido);
 
         if($transaccion){
             $data = ['state'=> 'ok'];
