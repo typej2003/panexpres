@@ -52,30 +52,28 @@ class ListPedidos extends AdminComponent
 		$pedido->update(['confirmed' => $confirmed]);
 
 		switch ($confirmed) {
-			case '2':
-				$confirmed = 'Confirmado Fallida';
-				$this->sendNotificacion($pedido, 'confirmacionFallida');
-				break;
-			
-			case '1':
-				$confirmed = 'Confirmado';
-				$this->sendNotificacion($pedido, 'confirmacionPago');
-				break;
-			
 			case '0':
 				$confirmed = 'No Confirmado';
+				break;
+			case '1':
+				$confirmed = 'Confirmado';
+				$this->sendNotificacion('confirmacionPago', $pedido);
+				break;
+			case '2':
+				$confirmed = 'Confirmado Fallida';
+				$this->sendNotificacion('confirmacionFallida', $pedido);
 				break;
 		}
 
 		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$confirmed} satisfactoriamente."]);
 	}
 
-	public function sendNotificacion(Pedido $pedido, $notificacion )
+	public function sendNotificacion($notificacion, Pedido $pedido)
 	{
+	
+		$notificacionemail = new EmailController();
 
-		$notificacion = new EmailController();
-
-        $notificacion->sendEmail($notificacion, $pedido->client, $pedido->nropedido);
+        $notificacionemail->sendEmail($notificacion, $pedido->client, $pedido->nropedido);
 
 	}
 

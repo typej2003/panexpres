@@ -52,6 +52,7 @@ class EmailController extends Component
                 break;
             
             default:
+                dd('default');
                 return view('livewire.notificacion.email-controller');
                 break;
         }

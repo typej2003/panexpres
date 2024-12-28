@@ -70,8 +70,8 @@
                                         <th scope="row"><?php echo e($pedidos->firstItem() + $index); ?></th>
                                         <td>
                                             <select class="form-control" wire:change="changeConfirmation(<?php echo e($pedido); ?>, $event.target.value)">
-                                                <option value="1" <?php echo e(($pedido->confirmed === 1) ? 'selected' : ''); ?>>CONFIRMADO</option>
                                                 <option value="0" <?php echo e(($pedido->confirmed === 0) ? 'selected' : ''); ?>>NO CONFIRMADO</option>
+                                                <option value="1" <?php echo e(($pedido->confirmed === 1) ? 'selected' : ''); ?>>CONFIRMADO</option>
                                                 <option value="2" <?php echo e(($pedido->confirmed === 2) ? 'selected' : ''); ?>>CONFIRMADO FALLIDA</option>
                                             </select>
                                         </td>
