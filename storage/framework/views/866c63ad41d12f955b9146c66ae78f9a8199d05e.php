@@ -16,7 +16,7 @@
             font-weight: bold;
         }
 
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
             .imgProduct {
                 width: 250px !important; height: 200px !important;
             }
@@ -44,25 +44,25 @@
                     <!-- Sección de Resultados -->
                     <div class="row bg">
                         <div class="col-md-12 col-12">
-                            <span class="h4 mx-4">Resultado de: {{$parametro}} </span>  
+                            <span class="h4 mx-4">Resultado de: <?php echo e($parametro); ?> </span>  
                         </div>
                     </div>
-                    @if($parametro)
-                        @forelse ($products as $index => $product)
+                    <?php if($parametro): ?>
+                        <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <div class="card p-3 border border-1 cuadro m-3 h-auto">
                             <div class="row mx-2 border border-1 p-3">
                                 <div class="col-md-3 col-12 centrar">
-                                    <img class = "imgProduct" src="{{ $product->image1_url }}" alt="">
+                                    <img class = "imgProduct" src="<?php echo e($product->image1_url); ?>" alt="">
                                 </div>
                                 <div class="col-md-5 col-12">
-                                    <p class="centrar negrita">{{ $product->name }}</p>
-                                    <p class="centrar description" style="height: 50%;">{{ $product->description }}</p>
+                                    <p class="centrar negrita"><?php echo e($product->name); ?></p>
+                                    <p class="centrar description" style="height: 50%;"><?php echo e($product->description); ?></p>
                                     <div class="centrar p-0 my-0">
-                                        <a class="btn btn-view centrar" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
+                                        <a class="btn btn-view centrar" href="/routedetails/<?php echo e($product->comercio_id); ?>/<?php echo e($product->id); ?>">Ver</a>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
-                                    <div class="centrar">Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</div>
+                                    <div class="centrar">Precio: <?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></div>
                                     <div class="centrar">
                                         <div class="col-md-12 col-12 d-flex justify-content-between">
                                             <div class="input-group input-number-group">
@@ -77,21 +77,21 @@
                                         </div>
                                     </div>
                                     <div class="centrar">
-                                        <button wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</button>
+                                        <button wire:click.prevent="sendCard(<?php echo e($product->id); ?>, 1)" class="btn btn-sale text-center">Comprar ahora</button>
                                     </div>
                                     <div class="centrar">
-                                        <img class ="logo-responsive" src="{{ $product->comercio->avatar_url }}" alt="">
+                                        <img class ="logo-responsive" src="<?php echo e($product->comercio->avatar_url); ?>" alt="">
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        @empty
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <div class="card p-3 border border-1 cuadro m-3 h-auto" style="height: 50vh !important;">
                             <span> No tiene resultado</span>
                         </div>
-                        @endforelse
-                    @endif
+                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
     
@@ -100,7 +100,7 @@
         var $input = $(this).parents('.input-number-group').find('.input-number');
         var val = parseInt($input.val(), 10);
         $input.val(val + 1);
-        @this.emit('actualizarQuantity', $input.val())
+        window.livewire.find('<?php echo e($_instance->id); ?>').emit('actualizarQuantity', $input.val())
         });
 
         $('.input-number-decrement').click(function() {
@@ -108,8 +108,8 @@
             var val = parseInt($input.val(), 10);
             if(val > 1){
                 $input.val(val - 1);
-                @this.emit('actualizarQuantity', $input.val())
+                window.livewire.find('<?php echo e($_instance->id); ?>').emit('actualizarQuantity', $input.val())
             }
         })
     </script>
-</div>
+</div><?php /**PATH C:\Users\typej\Documents\git\panexpres\resources\views/livewire/components/results-products.blade.php ENDPATH**/ ?>
