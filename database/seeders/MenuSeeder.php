@@ -16,9 +16,9 @@ class MenuSeeder extends Seeder
     public function run()
     {
         DB::table('menus')->insert([
-            'texto' => 'Panaderías',
-            'ruta' => 'Panaderia',
-            'origen' => 'categories', // view or categories
+            'texto' => 'Pan de Jamón',
+            'ruta' => 'Pan de Jamón',
+            'origen' => 'link', // view or categories
             'menu' => 1,
             'posicion' => 1,
             'comercio_id' => '1',
@@ -72,7 +72,7 @@ class MenuSeeder extends Seeder
 
         DB::table('menus')->insert([
             'texto' => 'Ofertas',
-            'ruta' => 'listOfertas',
+            'ruta' => 'Ofertas',
             'origen' => 'view', // view or categories
             'menu' => 1,
             'posicion' => 6,
@@ -94,8 +94,8 @@ class MenuSeeder extends Seeder
 
         DB::table('menus')->insert([
             'texto' => 'Aliados',
-            'ruta' => 'listAliados',
-            'origen' => 'view', // view or categories
+            'ruta' => 'Panaderia',
+            'origen' => 'categories', // view or categories
             'menu' => 1,
             'posicion' => 8,
             'comercio_id' => '1',

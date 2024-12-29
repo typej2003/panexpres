@@ -105,16 +105,18 @@ class ResultsProducts extends AdminComponent
                 ->where('comercio_id', $this->comercio_id);    
         }
         $products = $products
-            ->where('name', 'like', '%'. $this->parametro . '%');
+            ->where(function($q){
+                $q->where('name', 'like', '%'. $this->parametro . '%')
+                ->orWhere('description', 'like', '%'. $this->parametro . '%')
+                ->orWhere('details1', 'like', '%'. $this->parametro . '%')
+                ->orWhere('in_offer', '1');
+            });
         $products = $products
-            ->orWhere('description', 'like', '%'. $this->parametro . '%');
-        
-        $products = $products
-            ->WhereHas('categories', function($q){
+            ->orWhereHas('categories', function($q){
                 $q->where('name', 'like', '%'. $this->parametro . '%');
             });
         $products = $products
-            ->WhereHas('comercio', function($q){
+            ->orWhereHas('comercio', function($q){
                 $q->where('name', 'like', '%'. $this->parametro . '%');
             });
         

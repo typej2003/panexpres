@@ -200,6 +200,7 @@ class WelcomeController extends Controller
             'modelo_id' => $modelo_id,
             'motor_id' => $motor_id,
             'comercio_id' => $comercio_id,
+            'comercio' => $this->comercio,
             'in_cellphonecontact' => $setting->in_cellphonecontact,
             'in_sliderprincipal' => $setting->in_sliderprincipal,
             'in_marcasproductos' => $setting->in_marcasproductos,

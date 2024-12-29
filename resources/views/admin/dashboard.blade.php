@@ -22,8 +22,10 @@
   <div class="content">
     <div class="container-fluid">
     <div class="row">
+        @if(auth()->user()=='admin')
         <livewire:admin.dashboard.appointments-count />
         <livewire:admin.dashboard.users-count />
+        @endif
       </div>
     </div><!-- /.container-fluid -->
   </div>
