@@ -1,4 +1,5 @@
-<div>
+<div class="container-fluid">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .img1Promocion {
             width: 100%;
@@ -24,13 +25,13 @@
         @media screen and (max-width: 768px) {
             .img1Promocion {
                 width: 100% !important;
-                height: 100%;
+                height: 145px !important;
             }
             
             .cuadro1Promocion{
                 display: flex;
                 width: 100% !important;
-                height: 190px !important;
+                height: 145px !important;
                 margin-bottom: 5px !important;
                 padding: 0 !important;
                 
@@ -43,6 +44,7 @@
             }
             .img2Promocion {
                 width: 105% !important;
+                height: 105px !important;
                 padding: 0 !important;
                 height: 100%;
                 margin: auto !important;
@@ -50,7 +52,7 @@
             .cuadro2Promocion{
                 display: flex;
                 width: 100% !important;
-                height: 190px !important;
+                height: 105px !important;
                 margin-bottom: 5px !important;
                 padding: 0 !important;
             }
