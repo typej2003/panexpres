@@ -28,7 +28,12 @@
             }
             .cuadro1Promocion{
                 width: 100%;
-                height: 280px !important;
+                height: 190px !important;
+                margin-bottom: 5px;
+            }
+            .cuadro2Promocion{
+                width: 100%;
+                height: 120px !important;
                 margin-bottom: 5px;
             }
 
@@ -50,7 +55,6 @@
                             <a href="/viewdetails/<?php echo e($promocion->comercio_id); ?>/<?php echo e($promocion->product_id); ?>"><img class="img1Promocion" src="<?php echo e($promocion->avatar_url); ?>" alt="<?php echo e($clave); ?> slide"></a>
                         </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
