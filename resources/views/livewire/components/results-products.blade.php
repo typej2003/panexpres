@@ -27,8 +27,11 @@
             }
             .cuadro {
                 width: 100% !important;
-                height: 600px !important;
+                height: 620px !important;
                 padding: 0;
+            }
+            .logo-responsive {
+                width: 95px !important;
             }
         }
     </style>
