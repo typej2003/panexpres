@@ -363,6 +363,9 @@
     .footer-img {
       width: 100px !important;
     }
+
+    .w-full{display: none!important; }
+
   } 
   .text-titulo {
     color: #FC5E27 !important;

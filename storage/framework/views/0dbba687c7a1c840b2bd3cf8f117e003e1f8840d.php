@@ -1,8 +1,7 @@
-<div class="container-fluid">
+<div>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <div class="row">
-        <div class="col-md-12">
-            
+        <div class="col-md-12">            
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h4 class="accordion-header" id="headingOne">
@@ -101,7 +100,7 @@ unset($__errorArgs, $__bag); ?>" aria-labelledby="headingOne" data-bs-parent="#a
                         <input wire:model.defer="state.metodoentrega" type="hidden" name="metodoentrega" id="metodoentrega" >
 
                         <div class="row">
-                            <div class="col-xs-6 col-md-4 col-sm-4 col-4">
+                            <div class="col-xs-6 col-md-4 col-sm-4 col-12">
                                 <label for="identificationNac">Tipo de documento <span class="text-danger">*</span></label>
                                 <select wire:model.defer="state.identificationNac" class="form-control <?php $__errorArgs = ['identificationNac'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -118,7 +117,7 @@ unset($__errorArgs, $__bag); ?>" name="identificationNac" id="identificationNac"
                                     <option value="V" selected>V-</option>
                                 </select>
                             </div>
-                            <div class="col-xs-6 col-md-8 col=sm-8 col-8">
+                            <div class="col-xs-6 col-md-8 col-sm-8 col-12">
                                 <label for="identificationNumber">Documento <span class="text-danger">*</span></label>
                                 <input wire:model.defer="state.identificationNumber" type="text" class="form-control <?php $__errorArgs = ['identificationNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -428,7 +427,7 @@ unset($__errorArgs, $__bag); ?>
                             <h4>Métodos de entrega</h4>
                         </div>
                     </div>
-                    <input wire:model.defer="state.metodoenvio" type="text"  class=" <?php $__errorArgs = ['metodoenvio'];
+                    <input wire:model.defer="state.metodoenvio" type="hidden"  class=" <?php $__errorArgs = ['metodoenvio'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -554,7 +553,7 @@ unset($__errorArgs, $__bag); ?>" name="identificationNac" id="identificationNac"
                                         <option value="V" selected>V-</option>
                                     </select>
                                 </div>
-                                <div class="col-xs-6 col-md-8 col=sm-8 col-8">
+                                <div class="col-xs-6 col-md-8 col-sm-8 col-8">
                                     <label for="identificationNumber">Documento <span class="text-danger">*</span></label>
                                     <input wire:model.defer="state.identificationNumber" type="text" class="form-control <?php $__errorArgs = ['identificationNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

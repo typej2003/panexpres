@@ -20,7 +20,7 @@
 
     <div class="row my-2">
         <div class="col-md-8">
-            <table class="table table-reponsive">
+            <table class="table table-responsive">
                 <thead class="thead-primary">
                     <tr style="font-size: 12px">                      
                         <th scope="col"></th>

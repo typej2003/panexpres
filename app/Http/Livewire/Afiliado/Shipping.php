@@ -15,6 +15,15 @@ class Shipping extends Component
 
     public function render()
     {
+        if(  \Cart::getTotalQuantity() == 0)
+        {
+            $this->description = 'No puede ejecutar back en el navegador';
+            return view('livewire.error.show-error', [
+                'error' => '144',
+                'description' => 'No puede ejecutar back en el navegador',
+            ]);
+        }
+        
         return view('livewire.afiliado.shipping');
     }
 }

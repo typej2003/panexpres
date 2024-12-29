@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
     
     <div class="row">
@@ -244,7 +244,8 @@
                         
                     </div>
                     <div class="button-search w-full" style="display: none; cursor: pointer;"><img src="/img/icon_buscar.png" alt=""></div>
-                    <div class="menu-right w-full">
+                    <span class="fw-bold w-full">Divisa:</span>
+                    <div class="menu-right w-full d-flex justify-content-between">
                         @livewire('components.currency')
                     </div>
                     <div class="menu-responsive">
@@ -255,7 +256,6 @@
                             @auth
                                 <div><a href="">
                                         <img class="icon-movil img-circle elevation-1"  src="{{ auth()->user()->avatar_url }}" id="profileImage" alt="User Image" style="height: 30px; width: 30px;">
-                                        <span class="ml-1" x-ref="username">Hola, {{ auth()->user()->name }}</span>
                                     </a>
                                 </div>
                                 

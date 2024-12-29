@@ -1,4 +1,4 @@
-<div>    
+<div class="container-fluid overflow-auto" >    
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -8,7 +8,6 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/admin/dashboard">Escritorio</a></li>
                         <li class="breadcrumb-item active"><a href="/listPedidosCliente">Mis Pedidos</a></li>
                     </ol>
                 </div>
