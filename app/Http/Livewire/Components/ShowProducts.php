@@ -68,7 +68,7 @@ class ShowProducts extends AdminComponent
 
     }
 
-    public function mount($comercioId = 1, $currencyValue)
+    public function mount($comercioId = 1, $currencyValue='$')
     {
         $this->comercio_id = $comercioId;
 
@@ -78,7 +78,7 @@ class ShowProducts extends AdminComponent
         $this->state['ca_valoracion'] = 0;
         $this->state['class'] = 'star';
 
-        $this->currencyValue = $currencyValue;
+        $this->currencyValue = request()->cookie('currency');
         
     }
 
