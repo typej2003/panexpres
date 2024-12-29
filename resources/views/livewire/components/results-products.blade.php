@@ -18,7 +18,7 @@
 
         @media screen and (max-width: 768px) {
             .imgProduct {
-                width: 250px !important; height: 200px !important;
+                width: 250px !important; height: 150px !important;
             }
             .description {
                 height: auto !important;
