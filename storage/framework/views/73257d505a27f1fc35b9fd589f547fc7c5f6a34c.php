@@ -23,29 +23,50 @@
 
         @media  screen and (max-width: 768px) {
             .img1Promocion {
-                width: 100%;
+                width: 100% !important;
                 height: 100%;
             }
+            
             .cuadro1Promocion{
-                width: 100%;
+                display: flex;
+                width: 100% !important;
                 height: 190px !important;
-                margin-bottom: 5px;
+                margin-bottom: 5px !important;
+                padding: 0 !important;
+                
+            }
+            .carousel {
+                width: 95% !important;
+                padding: 0 !important;
+                margin: auto;
+                margin-left: 21px !important;
+            }
+            .img2Promocion {
+                width: 105% !important;
+                padding: 0 !important;
+                height: 100%;
+                margin: auto !important;
             }
             .cuadro2Promocion{
-                width: 100%;
-                height: 120px !important;
-                margin-bottom: 5px;
-            }
-
-            .col-md-7 {
+                display: flex;
+                width: 100% !important;
+                height: 190px !important;
+                margin-bottom: 5px !important;
                 padding: 0 !important;
             }
+            .subcuadro2Promocion {
+                width: 90% !important;
+                padding: 0 !important;
+                margin: auto;
+            }
+
         }
     </style>
+    <div class=""></div>
     <div class="row">
-        <div class="col-md-7">
-            <div class="cuadro1Promocion">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="col-md-7 col-sm-7">
+            <div class="cuadro1Promocion" style="">
+                <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="/viewdetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->product_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
@@ -68,21 +89,22 @@
                 
             </div>
         </div>
-        <div class="col-md-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="bg-secundary cuadro2Promocion mb-1">
-                        <a href="/viewdetails/2/1"><img class="img2Promocion" src="/img/promociones/panaderia_expreso_derecha1_compressed.jpg" alt=""></a>
+        <div class="col-md-5 col-sm-5">            
+            <div>
+                    <div class="cuadro2Promocion">
+                        <div class="subcuadro2Promocion">
+                            <a href="/viewdetails/2/1"><img class="img2Promocion" src="/img/promociones/panaderia_expreso_derecha1_compressed.jpg" alt=""></a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="bg-secundary cuadro2Promocion">
-                        <a href="viewdetails/2/2"><img class="img2Promocion" src="/img/promociones/panaderia_expreso_derecha2_compressed.jpg" alt=""></a>
+                
+            
+                    <div class="cuadro2Promocion">
+                        <div class="subcuadro2Promocion">
+                            <a href="viewdetails/2/2"><img class="img2Promocion" src="/img/promociones/panaderia_expreso_derecha2_compressed.jpg" alt=""></a>
+                        </div>
                     </div>
-                </div>
             </div>
+            
         </div>
     </div>
 </div>
