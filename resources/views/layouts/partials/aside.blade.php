@@ -34,6 +34,15 @@
 
         @auth
           @if(auth()->user()->role == 'admin')
+          
+            <li class="nav-item">
+              <a x-ref="profileLink" href="{{ route('admin.profile.edit') }}" class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Perfil
+                </p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="{{ route('listPedidos', 1) }}" class="nav-link {{ request()->is('listPedidos') ? 'active' : '' }}">
                 <i class="fa fa-solid fa-file-invoice-dollar"></i>
@@ -396,6 +405,15 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{ route('admin.settings') }}" class="nav-link {{ request()->is('admin/settings') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                  Configuraciones
+                </p>
+              </a>
+            </li>
           @endif
 
           @if(auth()->user()->role == 'cliente')
@@ -407,37 +425,6 @@
                 </p>
               </a>
             </li>
-            <!-- arbol -->
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
-                <p>
-                  Tables
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../tables/simple.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Simple Tables</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../tables/data.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>DataTables</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../tables/jsgrid.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>jsGrid</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <!-- fin arbol -->
           @endif
 
           @if(auth()->user()->role == 'delivery')
@@ -449,37 +436,7 @@
                 </p>
               </a>
             </li>
-            <!-- arbol -->
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
-                <p>
-                  Tables
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../tables/simple.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Simple Tables</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../tables/data.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>DataTables</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../tables/jsgrid.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>jsGrid</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <!-- fin arbol -->
+            
           @endif
 
           @if(auth()->user()->role == 'afiliado')
@@ -559,24 +516,6 @@
             </p>
           </a>
         </li> -->
-
-        <li class="nav-item">
-          <a href="{{ route('admin.settings') }}" class="nav-link {{ request()->is('admin/settings') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              Configuraciones
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a x-ref="profileLink" href="{{ route('admin.profile.edit') }}" class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              Perfil
-            </p>
-          </a>
-        </li>
 
         <li class="nav-item">
           <form method="POST" action="{{ route('logout') }}">
