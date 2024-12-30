@@ -141,7 +141,7 @@ unset($__errorArgs, $__bag); ?>" aria-labelledby="headingOne" data-bs-parent="#a
                                                         <div class="group-control">
                                                             <label class="text-bold Text-Uppercase" for="">Inicia Sesión</label>
                                                         </div>
-                                                        <div class="group-control my-3">
+                                                        <div class="group-control my-3 d-none">
                                                             <a class="form-control text-center" href="/login-google"><i class="fa fa-brands fa-google"></i> Iniciar con Google</a>
                                                         </div>
                                                         
@@ -468,11 +468,11 @@ if (! isset($_instance)) {
                     'modelo_id' => $modelo_id,
                     'motor_id' => $motor_id,
                     ])->html();
-} elseif ($_instance->childHasBeenRendered('tAG3ror')) {
-    $componentId = $_instance->getRenderedChildComponentId('tAG3ror');
-    $componentTag = $_instance->getRenderedChildComponentTagName('tAG3ror');
+} elseif ($_instance->childHasBeenRendered('l1868178478-0')) {
+    $componentId = $_instance->getRenderedChildComponentId('l1868178478-0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l1868178478-0');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('tAG3ror');
+    $_instance->preserveRenderedChild('l1868178478-0');
 } else {
     $response = \Livewire\Livewire::mount('components.show-recommended', [
                     'comercioId' => 1, 
@@ -482,7 +482,7 @@ if (! isset($_instance)) {
                     'motor_id' => $motor_id,
                     ]);
     $html = $response->html();
-    $_instance->logRenderedChild('tAG3ror', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('l1868178478-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

@@ -132,7 +132,7 @@
                                                         <div class="group-control">
                                                             <label class="text-bold Text-Uppercase" for="">Inicia Sesión</label>
                                                         </div>
-                                                        <div class="group-control my-3">
+                                                        <div class="group-control my-3 d-none">
                                                             <a class="form-control text-center" href="/login-google"><i class="fa fa-brands fa-google"></i> Iniciar con Google</a>
                                                         </div>
                                                         
