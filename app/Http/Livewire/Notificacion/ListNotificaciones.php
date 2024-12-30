@@ -174,9 +174,9 @@ class ListNotificaciones extends AdminComponent
 				
 				case 'email':
 
-					$notificacion = new EmailController();
+					$emailSend = new EmailController();
 
-        			$notificacion->sendEmail('compra', auth()->user(), 'xxxxx');
+        			$emailSend->sendEmail('compra', auth()->user(), 'xxxxx');
 					
 					// $clientes = Client::where('comercio_id', $notificacion->comercio_id)->get();
 
