@@ -3,7 +3,7 @@
     <style>
         .img1Promocion {
             width: 100%;
-            height: 100%;
+            height: 97.5%;
         }
         .img2Promocion {
             width: 100%;
