@@ -262,7 +262,7 @@
                                 <input class="input my-1" type="radio" name="metodoenvio" value="enviodelivery" checked/>
                             </div>
                             <div class="col-md-2">
-                                @if($deliveryArea) {{$deliveryArea->coste}} @else ? @endif
+                                @if($deliveryArea) {{ $currencyValue }} {{$deliveryArea->coste}} @else ? @endif
                             </div>
                             <div class="col-md-9">
                                 <span class="datos">@if($deliveryArea) {{$deliveryArea->name}} @else Envío local @endif</span>

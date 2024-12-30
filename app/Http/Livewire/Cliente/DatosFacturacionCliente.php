@@ -31,6 +31,8 @@ class DatosFacturacionCliente extends AdminComponent
     public $nropedido;
     public $metodoentrega = 'shipment';
 
+    public $currencyValue;
+
     protected $rules = [
         'country' => 'required|not_in:0',
         'province' => 'required|not_in:0',
@@ -67,6 +69,8 @@ class DatosFacturacionCliente extends AdminComponent
         $this->state['nropedido'] = $nropedido;
         $this->state['metodoentrega'] = $this->metodoentrega;
         $this->state['metodoenvio'] = 'enviodelivery';
+
+        $this->currencyValue = request()->cookie('currency');
     }
 
     public function changeZona($zona_id)

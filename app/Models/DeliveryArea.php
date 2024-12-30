@@ -38,4 +38,46 @@ class DeliveryArea extends Model
     {
         return $this->hasOne(Cities::class, 'id', 'city_id');
     }
+
+    public function getCoste()
+    {
+        $settingComercio = SettingComercio::where('comercio_id', $this->comercio_id)->first();
+
+        $setting = Setting::where('user_id', $this->user_id)->first();
+
+        // if(auth()->user()){
+        //     $settingComercio = SettingComercio::where('user_id', auth()->user()->id)->first();
+        //     if($settingComercio){
+        //         $currency = $settingComercio->currency;
+        //     }else{
+        //         $currency = $setting->currency;
+        //     }            
+        //     $currency = request()->cookie('currency');
+        // }else{
+        //     $currency = request()->cookie('currency');
+        // }        
+        $currency = request()->cookie('currency');
+
+        if(empty($currency) || is_null($currency) ){
+            $setting = SettingComercio::where('comercio_id', 1)->first();
+            $currency = $setting->currency;
+        }
+        
+        $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->where('status', 'activo')->first();
+
+        if(!$tasaValues){
+            $tasa = 1;
+        }else{
+            $tasa = $tasaValues->tasa;
+        }
+        
+        switch ($currency) {
+            case 'Bs':
+                return round($tasa * $this->coste, 2);
+                break;            
+            case '$':
+                return round($this->coste, 2);                
+                break;
+        }
+    }
 }
