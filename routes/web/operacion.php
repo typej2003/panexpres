@@ -36,7 +36,8 @@ Route::get('/checkout/shipping/{nropedido}', [WelcomeController::class, 'checkou
 Route::get('/checkout/pasarela/{nropedido}/{comercioId}', [WelcomeController::class, 'checkoutPasarela'])->name('checkout.pasarela'); 
 
 Route::get('/procesado/{comercio_id}', function($comercio_id)
-{   $comercio = Comercio::find($comercio_id);
+{   //$comercio = Comercio::find($comercio_id);
+    $comercio = Comercio::find(1);
     return view('externalviews.procesado', compact('comercio'));
 })->name('procesado'); 
 
@@ -62,7 +63,7 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
     $result = new ApiController();
     $result->registrarReferencia($id);
     
-    $cart = new CartController();
+    $cart = new CartController;
 
     $cart->onlyClear();
 

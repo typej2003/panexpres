@@ -13,7 +13,6 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/admin/dashboard">Escritorio</a></li>
                             <li class="breadcrumb-item active"><a href="/listPedidosCliente">Mis Pedidos</a></li>
                         </ol>
                     </div><!-- /.col -->
