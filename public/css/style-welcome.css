@@ -489,6 +489,11 @@ background-color: #3d362d!important;
   text-align: center;
   }
 
+  .wrapperRedesNM{ /* Navigation Map */
+    padding: 25px;
+    text-align: center;
+  }
+  
   .wrapperRedes .icon{
   position: relative;
   background-color: #ffffff;

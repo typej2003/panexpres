@@ -1,4 +1,12 @@
 <div class="container">
+    <style>
+        .overlay-content {
+            min-height: 80vh !important;
+        }
+        .wrapperRedes {
+            margin-top: auto !important;
+        }
+    </style>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
     
     <div class="row">
@@ -134,26 +142,72 @@ echo $html;
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>        
                     </div>
+                    <div class="nav-overlay">
+                        <div class="accordion-container">
+                            <div class="set" style="font-weight: bold; ">
+                                <a href="#">
+                                    <i class="fa fa-plus mr-3"></i>
+                                    Menu
+                                </a>
+
+                                <div class="content">
+                                    <div class="d-flex justify-content-between mx-5">
+                                        <form action="searchM" method="get" id="Pan de Jamón">
+                                            <?php echo csrf_field(); ?>
+                                            <input type="hidden" name="words" value="Pan de Jamón">
+                                            <input type="hidden" name="manufacturer_id" value="0">
+                                            <input type="hidden" name="modelo_id" value="0">
+                                            <input type="hidden" name="motor_id" value="0">
+                                            <a class="mx-4" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">Pan de Jamón</a>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <div class="d-flex justify-content-between mx-5">
+                                        <form action="searchM" method="get" id="Ofertas">
+                                            <?php echo csrf_field(); ?>
+                                            <input type="hidden" name="words" value="Ofertas">
+                                            <input type="hidden" name="manufacturer_id" value="0">
+                                            <input type="hidden" name="modelo_id" value="0">
+                                            <input type="hidden" name="motor_id" value="0">
+                                            <a class="mx-4" onclick="sendForm('Ofertas')" style="cursor:pointer;">Ofertas</a>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>        
+                    </div>
+                    <script>
+                        <script>
+                            function sendForm(form)
+                            {
+                                let formulario = document.getElementById(form)
+                                formulario.submit();
+                            }
+                        </script>
+                    </script>
 
                     <!-- Social Media Buttons HTML -->
-                    <div class="wrapperRedes d-flex justify-content-start">
-                        <a href="#" class="icon facebook">
+                    <div class="wrapperRedes d-flex justify-content-start navigationMap">
+                        <a href="<?php echo e($comercio->facebook); ?>" class="icon facebook">
                             <div class="tooltip">Facebook</div>
                             <span><i class="fab fa-facebook-f"></i></span>
                         </a>
-                        <a href="#" class="icon twitter">
+                        <a href="<?php echo e($comercio->twitter); ?>" class="icon twitter">
                             <div class="tooltip">Twitter</div>
                             <span><i class="fab fa-twitter"></i></span>
                         </a>
-                        <a href="#" class="icon instagram">
+                        <a href="<?php echo e($comercio->instagram); ?>" class="icon instagram">
                             <div class="tooltip">Instagram</div>
                             <span><i class="fab fa-instagram"></i></span>
                         </a>
-                        <a href="#" class="icon github">
+                        <a href="<?php echo e($comercio->facebook); ?>" class="icon github">
                             <div class="tooltip">Github</div>
                             <span><i class="fab fa-github"></i></span>
                         </a>
-                        <a href="#" class="icon youtube">
+                        <a href="<?php echo e($comercio->youtube); ?>" class="icon youtube">
                             <div class="tooltip">Youtube</div>
                             <span><i class="fab fa-youtube"></i></span>
                         </a>
