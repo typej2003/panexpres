@@ -9,7 +9,7 @@ use App\Models\Notificacion;
 use Mail;
 use App\Models\User;
 use App\Models\Pedido;
-use App\Models\PedidoDetalle;
+use App\Models\PedidoDetalles;
 
 class EmailController extends Component
 {
@@ -41,6 +41,10 @@ class EmailController extends Component
                 break;
             case 'compra':
                 $this->compraRealizada($user, $nropedido);
+                break;
+            
+            case 'compraRealizadaWithImages':
+                $this->compraRealizadaWithImages($user, $nropedido);
                 break;
             
             case 'confirmacionPago':
@@ -170,6 +174,40 @@ class EmailController extends Component
             $message->to($data["email"])
                     ->subject($data["title"]);
     
+        });
+        
+
+    }
+
+    public function compraRealizadaWithImages(User $user, $nropedido)
+    {
+        $data["user"] = $user;
+        $data["names"] = $user->names;
+        $data["surnames"] = $user->surnames;
+        $data["email"] = $user->email;
+        $data["title"] = 'Compra realizada';
+        $data["nropedido"] = $nropedido;
+        $data["body"] = 'Gracias por su compra';
+
+        $detalles = PedidoDetalles::where('nropedido', $nropedido)->get();
+
+        $files = [];
+
+        
+        foreach($detalles as $detalle)
+        {
+            $files[] = $detalle->image;
+        }
+
+        $data['detalles'] = $detalles;
+        
+        Mail::send('emails.compra-realizada-img', $data, function($message) use ($data, $files) {
+            $message->to($data["email"])
+                    ->subject($data["title"]);
+ 
+            foreach ($files as $file){
+                $message->attach($file);
+            }            
         });
         
 

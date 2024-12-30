@@ -260,21 +260,22 @@ class Pasarela extends Component
 
         $pedidoTemporal = PedidoTemporal::where('nropedido', $operacion['nropedido'])->first();
 
-        $pedidoDetallesTemporal = PedidoDetallesTemporal::where('nropedido', $operacion['nropedido'])->first();
-
         $pedidoTemporal->update([
             'reference' => $operacion['reference'],
             'metodo' => $operacion['metodo'],
             'currency' => $operacion['currency'],
         ]);
 
-        $pedido = $pedidoTemporal->toArray();
+        $pedidoDetallesTemporales = PedidoDetallesTemporal::where('nropedido', $operacion['nropedido'])->get();        
 
-        $pedidodetalles = $pedidoDetallesTemporal->toArray();
+        $pedido = $pedidoTemporal->toArray();
 
         $newpedido = Pedido::create($pedido);
 
-        PedidoDetalles::create($pedidodetalles);
+        foreach($pedidoDetallesTemporales as $pedidoDetallesTemporal){
+            $pedidodetalles = $pedidoDetallesTemporal->toArray();
+            $detalles = PedidoDetalles::create($pedidodetalles);
+        }
 
         $cart = new CartController;
 
@@ -285,6 +286,8 @@ class Pasarela extends Component
         $notificacion = new EmailController();
 
         $notificacion->sendEmail('compra', auth()->user(), $newpedido->nropedido);
+
+        //$notificacion->sendEmail('compraRealizadaWithImages', auth()->user(), $newpedido->nropedido);
 
         if($transaccion){
             $data = ['state'=> 'ok', 'comercio_id' => $newpedido->id];

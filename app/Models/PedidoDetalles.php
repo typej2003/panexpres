@@ -18,5 +18,6 @@ class PedidoDetalles extends Model
         'product_id',
         'price1',
         'quantity',
+        'image',
     ];
 }

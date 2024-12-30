@@ -90,6 +90,7 @@ class Cart1 extends AdminComponent
                 'name' => $elemento->name,
                 'price1' => $elemento->price,
                 'quantity' => $elemento->quantity,
+                'image' => $elemento->attributes->image,
             ]);
 
             \Cart::update($elemento->id,

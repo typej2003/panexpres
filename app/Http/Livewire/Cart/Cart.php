@@ -324,6 +324,7 @@ class Cart extends AdminComponent
 
     public function finalizarCompra()
     {        
+        
         $cart = new CartController;
         $contenido = $cart->contenido();
         $title = 'Compra';
@@ -360,6 +361,7 @@ class Cart extends AdminComponent
 
         foreach($contenido as $elemento)
         {
+
             $pedido = PedidoDetallesTemporal::create([
                 'pedido_id' => $pedido_id,
                 'nropedido' => $pedido->nropedido,                
@@ -369,6 +371,7 @@ class Cart extends AdminComponent
                 'name' => $elemento->name,
                 'price1' => $elemento->price,
                 'quantity' => $elemento->quantity,
+                'image' => $elemento->attributes->image,
             ]);
 
             \Cart::update($elemento->id,

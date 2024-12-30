@@ -78,6 +78,7 @@ class ResultsProducts extends AdminComponent
             $total = floatval($this->state['quantity']);
 
             $product = Product::find($product_id); 
+            
             \Cart::add(array(
                 'id' => $product->id,
                 'name' => $product->name,

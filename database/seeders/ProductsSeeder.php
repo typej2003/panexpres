@@ -36,8 +36,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 2,
             'comercio_id' => 2,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -71,8 +71,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 2,
             'comercio_id' => 2,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -105,8 +105,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 3,
             'comercio_id' => 3,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -141,8 +141,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 3,
             'comercio_id' => 3,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -175,8 +175,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 4,
             'comercio_id' => 4,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -210,8 +210,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 4,
             'comercio_id' => 4,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -244,8 +244,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 5,
             'comercio_id' => 5,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -279,8 +279,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 5,
             'comercio_id' => 5,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -313,8 +313,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 6,
             'comercio_id' => 6,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -348,8 +348,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 6,
             'comercio_id' => 6,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -382,8 +382,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 7,
             'comercio_id' => 7,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -397,7 +397,7 @@ class ProductsSeeder extends Seeder
         DB::table('products')->insert([
             'code_lote' => 'C0005',
             'code' => 'C0005',
-            'name' => 'Titanium Combo navideño',
+            'name' => 'Candelaria Combo navideño',
             'description' => 'Pan de 700 gramos',
             'image_path1' => 'combo_candelaria.jpg',
             'manufacturer_id' => '1', //marca
@@ -417,8 +417,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 7,
             'comercio_id' => 7,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -453,8 +453,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 8,
             'comercio_id' => 8,
             'category_id' => 2,
             'subcategory_id' => 10,
@@ -489,8 +489,8 @@ class ProductsSeeder extends Seeder
             'stock_min' => 10,
             'stock_max' => 100,
             'stock' => 50, // cant en almacen
-            'user_id' => 1,
             'area_id' => 1,
+            'user_id' => 8,
             'comercio_id' => 8,
             'category_id' => 2,
             'subcategory_id' => 10,

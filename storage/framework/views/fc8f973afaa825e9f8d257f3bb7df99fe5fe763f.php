@@ -69,9 +69,11 @@ echo $html;
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
                                             <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="changePasswordLink">Cambiar Contraseña</a>
                                         </div>
+                                        <?php if(auth()->user()->role == 'admin'): ?>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
                                             <a class="dropdown-item" href="<?php echo e(route('admin.settings')); ?>">Configuración</a>
                                         </div>
+                                        <?php endif; ?>
                                         <div class="dropdown-divider"></div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
                                             <form method="post" action="<?php echo e(route('logout')); ?>">
@@ -192,7 +194,9 @@ echo $html;
                                             <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="profileLink">Perfil</a>
                                             <a class="dropdown-item" href="<?php echo e(route('listPedidosCliente')); ?>" x-ref="profileLink">Mis Pedidos</a>
                                             <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="changePasswordLink">Cambiar Contraseña</a>
+                                            <?php if(auth()->user()->role =='admin'): ?>
                                             <a class="dropdown-item" href="<?php echo e(route('admin.settings')); ?>">Configuración</a>
+                                            <?php endif; ?>
                                             <div class="dropdown-divider"></div>
                                             <form method="post" action="<?php echo e(route('logout')); ?>">
                                                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>

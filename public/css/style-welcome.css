@@ -690,3 +690,7 @@ background-color: #3d362d!important;
     width: 80%!important;
 }
 
+.logo-login-register {
+  width: 100%;
+  border-radius: 5px;
+}

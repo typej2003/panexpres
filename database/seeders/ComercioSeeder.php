@@ -64,7 +64,7 @@ class ComercioSeeder extends Seeder
         // id 3
         DB::table('comercios')->insert([
             'area_id' => '1',
-            'user_id' => '2',
+            'user_id' => '3',
             'keyword' => 'panaderiadoralta',
             'name' => 'Panaderia Doralta',
             'avatar' => 'logo_doralta.jpg',
@@ -87,7 +87,7 @@ class ComercioSeeder extends Seeder
         // id 4
         DB::table('comercios')->insert([
             'area_id' => '1',
-            'user_id' => '2',
+            'user_id' => '4',
             'keyword' => 'panaderiaolandely',
             'name' => 'Panadería OLANDELY',
             'avatar' => 'logo_olandely.jpg',
@@ -110,7 +110,7 @@ class ComercioSeeder extends Seeder
         // id 5
         DB::table('comercios')->insert([
             'area_id' => '1',
-            'user_id' => '2',
+            'user_id' => '5',
             'keyword' => 'coffetown',
             'name' => 'Coffetown',
             'avatar' => 'logo_coffetown.jpg',
@@ -135,7 +135,7 @@ class ComercioSeeder extends Seeder
         // id 6
         DB::table('comercios')->insert([
             'area_id' => '1',
-            'user_id' => '2',
+            'user_id' => '6',
             'keyword' => 'titanium',
             'name' => 'Titanium',
             'avatar' => 'logo_titanium.jpg',
@@ -160,7 +160,7 @@ class ComercioSeeder extends Seeder
         // id 7
         DB::table('comercios')->insert([
             'area_id' => '1',
-            'user_id' => '2',
+            'user_id' => '7',
             'keyword' => 'candelaria',
             'name' => 'Panaderia Candelaria',
             'avatar' => 'logo_candelaria.jpg',
@@ -185,7 +185,7 @@ class ComercioSeeder extends Seeder
          // id 8
          DB::table('comercios')->insert([
             'area_id' => '1',
-            'user_id' => '2',
+            'user_id' => '8',
             'keyword' => 'gama',
             'name' => 'Gama',
             'avatar' => 'logo_gama.jpg',
@@ -210,7 +210,7 @@ class ComercioSeeder extends Seeder
         // id 9
         DB::table('comercios')->insert([
             'area_id' => '1',
-            'user_id' => '2',
+            'user_id' => '9',
             'keyword' => 'rio',
             'name' => 'Rio',
             'avatar' => 'logo_rio.jpg',
@@ -235,7 +235,7 @@ class ComercioSeeder extends Seeder
         // id 10
         DB::table('comercios')->insert([
             'area_id' => '1',
-            'user_id' => '2',
+            'user_id' => '10',
             'keyword' => 'vollmerbakery',
             'name' => 'Vollmer Bakery',
             'avatar' => 'logo_vollmer.jpg',

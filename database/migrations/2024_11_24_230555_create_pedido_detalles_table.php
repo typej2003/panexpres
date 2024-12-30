@@ -23,6 +23,7 @@ class CreatePedidoDetallesTable extends Migration
             $table->string('name');
             $table->decimal('price1', 12, 2);
             $table->decimal('quantity', 12, 2);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

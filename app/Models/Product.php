@@ -169,6 +169,11 @@ class Product extends Model
         //     $currency = request()->cookie('currency');
         // }        
         $currency = request()->cookie('currency');
+
+        if(empty($currency) || is_null($currency) ){
+            $setting = SettingComercio::where('comercio_id', 1)->first();
+            $currency = $setting->currency;
+        }
         
         $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->where('status', 'activo')->first();
 

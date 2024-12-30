@@ -54,9 +54,11 @@
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
                                             <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="changePasswordLink">Cambiar Contraseña</a>
                                         </div>
+                                        @if(auth()->user()->role == 'admin')
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
                                             <a class="dropdown-item" href="{{ route('admin.settings') }}">Configuración</a>
                                         </div>
+                                        @endif
                                         <div class="dropdown-divider"></div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
                                             <form method="post" action="{{ route('logout') }}">
@@ -175,7 +177,9 @@
                                             <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>
                                             <a class="dropdown-item" href="{{ route('listPedidosCliente') }}" x-ref="profileLink">Mis Pedidos</a>
                                             <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="changePasswordLink">Cambiar Contraseña</a>
+                                            @if(auth()->user()->role =='admin')
                                             <a class="dropdown-item" href="{{ route('admin.settings') }}">Configuración</a>
+                                            @endif
                                             <div class="dropdown-divider"></div>
                                             <form method="post" action="{{ route('logout') }}">
                                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
