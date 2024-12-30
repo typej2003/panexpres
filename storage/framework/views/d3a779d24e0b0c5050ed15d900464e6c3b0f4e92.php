@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/showProducts.css">
     <link rel="stylesheet" href="/css/star.css">
 
-    <div class="row">
+    <div class="row my-2">
         <div class="col-md-12">
         <a href="/"><h6><i class="fa fa-solid fa-arrow-left"></i> Continuar con la compra</h6></a>
         </div>
