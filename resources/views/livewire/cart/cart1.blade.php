@@ -37,7 +37,7 @@
                         <td>
                             <img src="{{ $item->attributes->image }}" class="img-thumbnail" width="80" height="80">                                        
                         </td>
-                        <td><strong>{{ $item->attributes->comercio_id }}</strong></td>
+                        <td><strong>{{ $this->getComercio($item->attributes->comercio_id)->name }}</strong></td>
                         <td><strong>{{ $item->name }}</strong></td>
                         <td>{{ $item->price }} USD</td>
                         <td>

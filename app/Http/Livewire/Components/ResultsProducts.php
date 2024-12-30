@@ -75,12 +75,14 @@ class ResultsProducts extends AdminComponent
                     ),
             ));
         }else{
+            $total = floatval($this->state['quantity']);
+
             $product = Product::find($product_id); 
             \Cart::add(array(
                 'id' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price1,
-                'quantity' => $quantity,
+                'quantity' => $total,
                 'attributes' => array(
                     'image' => $product->image1_url,
                     'comercio_id' => $product->comercio_id,
@@ -89,6 +91,29 @@ class ResultsProducts extends AdminComponent
                 )
             ));
         }        
+
+        $cartCollection = \Cart::getContent();
+
+        if(auth()->check()){
+            return redirect()->route('cart', [
+                'cartCollection' => $cartCollection, 
+                'words' => null,
+                'comercioId' => $this->comercio_id, 
+                'manufacturer_id' => 0,
+                'modelo_id' => 0,
+                'motor_id' => 0,
+            ]);
+        }else{
+            // return redirect()->route('cartOff');
+            return view('livewire.cart.cart', [
+                'cartCollection' => $cartCollection, 
+                'words' => null,
+                'comercioId' => $this->comercio_id, 
+                'manufacturer_id' => 0,
+                'modelo_id' => 0,
+                'motor_id' => 0,
+            ]);
+        }
 
         $this->emit('changeQuantity');
         //return redirect()->back();

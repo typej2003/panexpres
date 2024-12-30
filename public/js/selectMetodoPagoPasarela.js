@@ -1976,7 +1976,7 @@ function enviarDatos(datos){
             if(data.state == 'ok'){
                 console.log('operación exitosa!')
                 //window.location.href = "{{ route('listPedidosCliente')}}";
-                window.location.href = "/procesado";
+                window.location.href = "/procesado/"+data.comercio_id;
             }else{
                 console.log('operación fallida!')
             }

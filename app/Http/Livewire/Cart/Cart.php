@@ -13,6 +13,7 @@ use App\Models\PedidoDetallesTemporal;
 
 use App\Models\PedidoDetalles;
 use App\Http\Controllers\CartController;
+use App\Models\Comercio;
 use App\Models\SettingComercio;
 use App\Models\Impuesto;
 use App\Models\Tasa;
@@ -233,6 +234,11 @@ class Cart extends AdminComponent
 
         return $listpedidos;
 
+    }
+
+    public function getComercio($comercio_id)
+    {
+        return Comercio::find($comercio_id);
     }
 
     public function render()

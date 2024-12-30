@@ -20,6 +20,7 @@ use App\Http\Livewire\Recursos\ApiController;
 
 use App\Http\Livewire\Recursos\ImportExportExcel;
 
+use App\Models\Comercio;
 use App\Models\Pedido;
 use App\Models\Transaccion;
 use App\Http\Controllers\CartController;
@@ -34,13 +35,14 @@ Route::get('/checkout/shipping/{nropedido}', [WelcomeController::class, 'checkou
 
 Route::get('/checkout/pasarela/{nropedido}/{comercioId}', [WelcomeController::class, 'checkoutPasarela'])->name('checkout.pasarela'); 
 
-Route::get('/procesado', function(){
-    return view('externalviews.procesado');
+Route::get('/procesado/{comercio_id}', function($comercio_id)
+{   $comercio = Comercio::find($comercio_id);
+    return view('externalviews.procesado', compact('comercio'));
 })->name('procesado'); 
 
 Route::get('/procesado', function(){
     return view('externalviews.procesado');
-})->name('procesado');
+})->name('procesado2');
 
 // Route::get('/pagosatisfactorio/{token}', [ApiController::class, 'pagosatisfactorio'])->name('pagosatisfactorio')->middleware('auth');
 Route::get('/receiveBDV/{toke}', [WelcomeController::class, 'receiveBDV'])->name('receiveBDV'); 
@@ -64,7 +66,11 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
 
     $cart->onlyClear();
 
-    return view('externalviews.pagosatisfactorio', compact('id_suc') );
+    $transaccion = Transaccion::where('paymentId', $id_id)->first();
+
+    $comercio = Comercio::fid($transaccion->comercio_id);
+
+    return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio') );
 });
 
 

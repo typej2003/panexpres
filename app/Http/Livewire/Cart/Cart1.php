@@ -10,6 +10,7 @@ use App\Models\PedidoTemporal;
 use App\Models\PedidoDetallesTemporal;
 use App\Models\Tasa;
 use App\Models\Impuesto;
+use App\Models\Comercio;
 use App\Models\SettingComercio;
 use App\Http\Controllers\CartController;
 use App\Http\Livewire\Cart\PedidoProduct;
@@ -334,6 +335,11 @@ class Cart1 extends AdminComponent
             'cartCollection' => $cartCollection,
             'listpedidos' => $this->crearArray(),
         ]);
+    }
+
+    public function getComercio($comercio_id)
+    {
+        return Comercio::find($comercio_id);
     }
 
     public function render()

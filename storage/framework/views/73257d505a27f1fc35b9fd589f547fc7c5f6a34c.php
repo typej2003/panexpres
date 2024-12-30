@@ -7,7 +7,8 @@
         }
         .img2Promocion {
             width: 100%;
-            height: 98%;
+            height: 95%;
+            margin-bottom: 5px;
         }
         .cuadro1Promocion{
             width: 100%;

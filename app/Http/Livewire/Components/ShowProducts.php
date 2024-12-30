@@ -55,9 +55,41 @@ class ShowProducts extends AdminComponent
             )
         ));
 
+        $cartCollection = \Cart::getContent();
+
+        if(auth()->check()){
+            return redirect()->route('cart', [
+                'cartCollection' => $cartCollection, 
+                'words' => null,
+                'comercioId' => $this->comercio_id, 
+                'manufacturer_id' => 0,
+                'modelo_id' => 0,
+                'motor_id' => 0,
+            ]);
+        }else{
+            // return redirect()->route('cartOff');
+            return view('livewire.cart.cart', [
+                'cartCollection' => $cartCollection, 
+                'words' => null,
+                'comercioId' => $this->comercio_id, 
+                'manufacturer_id' => 0,
+                'modelo_id' => 0,
+                'motor_id' => 0,
+            ]);
+        }
+
         $this->emit('changeQuantity');
         //return redirect()->back();
         //return redirect()->route('cart.index')->with('success_msg', 'Item Agregado a su Carrito!');
+    }
+
+    public function cartView($productId)
+    {
+
+        // Almacenar producto y continuar
+        
+
+        
     }
 
     public function actualizarInfo($data, $manufacturer, $products)

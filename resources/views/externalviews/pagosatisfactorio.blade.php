@@ -23,6 +23,10 @@
                                 <p >
                                     <a target="_parent" class="h5 text-titulo" href="/listPedidosCliente">Ir a Mis Pedidos</a>
                                 </p>
+                                <p>
+                                    Ponte en contacto con nuestro equipo
+                                    <a href="https://api.whatsapp.com/send?phone=+58{{$comercio->contactcellphone}}&text={{ $comercio->msgcontact}}" target="_blank">{{$product->comercio->cellphonecontact}}</a> 
+                                </p>
                             </div>
                             <div class="card-footer d-flex justify-content-end">
                                 

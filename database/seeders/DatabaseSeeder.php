@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             MetodoPagoComercioSeeder::class,
             PromocionSeeder::class,
+            DeliveryAreaSeeder::class,
         ]);
     }
 }

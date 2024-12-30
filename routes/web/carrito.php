@@ -17,6 +17,8 @@
 		
 	Route::get('/goCart', [Navbar::class, 'cartRuta'])->name('goCart');
 
+	Route::get('/goCartView', [Navbar::class, 'cartView'])->name('goCartView');
+
 	Route::get('/previoproductcart/{sucursal_id}/{product_id}/{categoria}', [CartController::class, 'previaCompra']);
 	
 	Route::post('/add1/{id}', [CartController::class, 'add1'])->name('cart.store1');

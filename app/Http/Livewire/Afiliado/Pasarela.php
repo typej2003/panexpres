@@ -287,12 +287,12 @@ class Pasarela extends Component
         $notificacion->sendEmail('compra', auth()->user(), $newpedido->nropedido);
 
         if($transaccion){
-            $data = ['state'=> 'ok'];
+            $data = ['state'=> 'ok', 'comercio_id' => $newpedido->id];
         }
         else{
             $data = ['state'=> 'fallido'];
         }
-        
+
         return response()->json($data);
 
     }

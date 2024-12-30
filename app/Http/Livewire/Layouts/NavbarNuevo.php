@@ -186,4 +186,6 @@ class NavbarNuevo extends Component
             ]);
         }
     }
+
+    
 }
