@@ -67,9 +67,9 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
 
     $cart->onlyClear();
 
-    $transaccion = Transaccion::where('paymentId', $id_id)->first();
+    $transaccion = Transaccion::where('paymentId', $id_suc)->first();
 
-    $comercio = Comercio::fid($transaccion->comercio_id);
+    $comercio = Comercio::find($transaccion->comercio_id);
 
     return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio') );
 });
