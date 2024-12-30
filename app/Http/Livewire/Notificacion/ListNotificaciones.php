@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Notificacion;
 use App\Http\Livewire\Admin\AdminComponent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SmsTwilioController;
+use App\Http\Controllers\SendMailController;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
