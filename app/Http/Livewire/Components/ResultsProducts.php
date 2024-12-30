@@ -104,8 +104,8 @@ class ResultsProducts extends AdminComponent
                 'motor_id' => 0,
             ]);
         }else{
-            // return redirect()->route('cartOff');
-            return view('livewire.cart.cart', [
+            return redirect()->route('cartOff',[
+            // return view('livewire.cart.cart', [
                 'cartCollection' => $cartCollection, 
                 'words' => null,
                 'comercioId' => $this->comercio_id, 

@@ -325,9 +325,12 @@ class Cart1 extends AdminComponent
 
         $this->currencyValue = request()->cookie('currency');
 
+        $comercio = Comercio::find(1);
+            
         return view('cart.cart', [
             'in_cellphonecontact' => $setting->in_cellphonecontact, 
             'comercio_id' => 1,
+            'comercio' => $comercio, 
             'manufacturer_id' => 0,
             'modelo_id' => 0,
             'motor_id' => 0, 
@@ -339,7 +342,9 @@ class Cart1 extends AdminComponent
 
     public function getComercio($comercio_id)
     {
-        return Comercio::find($comercio_id);
+        $comercio = Comercio::find($comercio_id);
+        dd($comercio);
+        return $comercio->name;
     }
 
     public function render()

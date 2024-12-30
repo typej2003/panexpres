@@ -30,91 +30,93 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                @foreach($cartCollection as $item)
+                <?php $__currentLoopData = $cartCollection; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="row">
                     <tbody>
                     <tr style="font-size: 12px">
                         <td>
-                            <img src="{{ $item->attributes->image }}" class="img-thumbnail" width="80" height="80">                                        
+                            <img src="<?php echo e($item->attributes->image); ?>" class="img-thumbnail" width="80" height="80">                                        
                         </td>
-                        <td><strong>{{ $item->attributes->comercio_id }}</strong></td>
-                        <td><strong>{{ $item->name }}</strong></td>
-                        <td>{{ $item->price }} USD</td>
+                        <td><strong><?php echo e($item->attributes->comercio_id); ?></strong></td>
+                        <td><strong><?php echo e($item->name); ?></strong></td>
+                        <td><?php echo e($item->price); ?> USD</td>
                         <td>
                             <div class="col-md-12 d-flex justify-content-between">
                             <div class="input-group input-number-group">
                                     <div class="input-group-button">
-                                        <span class="input-number-decrement" wire:click.prevent="updateQuantity({{ $item->id }}, {{ $item->quantity }}, '-' )">-</span>
+                                        <span class="input-number-decrement" wire:click.prevent="updateQuantity(<?php echo e($item->id); ?>, <?php echo e($item->quantity); ?>, '-' )">-</span>
                                     </div>
-                                    <input class="input-number" type="number" value="{{ $item->quantity }}" min="0" max="1000">
+                                    <input class="input-number" type="number" value="<?php echo e($item->quantity); ?>" min="0" max="1000">
                                     <div class="input-group-button">
-                                        <span class="input-number-increment" wire:click.prevent="updateQuantity({{ $item->id }}, {{ $item->quantity }}, '+' )">+</span>
+                                        <span class="input-number-increment" wire:click.prevent="updateQuantity(<?php echo e($item->id); ?>, <?php echo e($item->quantity); ?>, '+' )">+</span>
                                     </div>
                                 </div>
                             </div>
                         </td>
-                        <td>{{ \Cart::get($item->id)->getPriceSum() }} USD </td>
+                        <td><?php echo e(\Cart::get($item->id)->getPriceSum()); ?> USD </td>
                         <td>
-                            <form action="{{ route('cart.remove') }}"   method="POST">
-                                {{ csrf_field() }}
-                                <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                            <form action="<?php echo e(route('cart.remove')); ?>"   method="POST">
+                                <?php echo e(csrf_field()); ?>
+
+                                <input type="hidden" value="<?php echo e($item->id); ?>" id="id" name="id">
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
                     </tbody>
                 </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </table>
-            @if(\Cart::getTotalQuantity()>0)
-                <h6>{{ \Cart::getTotalQuantity()}} Producto(s) en el carrito</h6><br>
-            @else
+            <?php if(\Cart::getTotalQuantity()>0): ?>
+                <h6><?php echo e(\Cart::getTotalQuantity()); ?> Producto(s) en el carrito</h6><br>
+            <?php else: ?>
                 <h6>No Existen Productos en el Carrito de Compra</h6><br>
-            @endif
+            <?php endif; ?>
             <div class="row">
                 <div class="col-md-6">
-                @if(count($cartCollection)>0)
-                    <form action="{{ route('cart.clear') }}" method="POST">
-                    {{ csrf_field() }}
+                <?php if(count($cartCollection)>0): ?>
+                    <form action="<?php echo e(route('cart.clear')); ?>" method="POST">
+                    <?php echo e(csrf_field()); ?>
+
                     <button class="btn-danger">
                         Vaciar Carrito
                     </button> 
                     </form>
-                @endif         
+                <?php endif; ?>         
                 </div>
             </div>                
         </div>
         <div class="col-md-4">
-        <div>Su pedido (cant: {{ count($listpedidos)}})</div>
+        <div>Su pedido (cant: <?php echo e(count($listpedidos)); ?>)</div>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Precio total artículos</th>
-                        <!-- <th scope="col">{{ $currencyValue }} {{$this->getSubTotal() }}</th> -->
-                         <th scope="col">{{ $currencyValue }} {{ $this->getTotal() }}</th>
+                        <!-- <th scope="col"><?php echo e($currencyValue); ?> <?php echo e($this->getSubTotal()); ?></th> -->
+                         <th scope="col"><?php echo e($currencyValue); ?> <?php echo e($this->getTotal()); ?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="d-none">
                         <th scope="row">Impuestos</th>
-                        <td>{{ $currencyValue }} {{ $this->getImpuestoIVA() }}</td>
+                        <td><?php echo e($currencyValue); ?> <?php echo e($this->getImpuestoIVA()); ?></td>
                     </tr>
-                    @if($currencyValue == '$')
+                    <?php if($currencyValue == '$'): ?>
                     <tr class="d-none">
                         <th scope="row">IGTF</th>
-                        <td>{{ $currencyValue }} {{ $this->amountIGTF() }}</td>
+                        <td><?php echo e($currencyValue); ?> <?php echo e($this->amountIGTF()); ?></td>
                     </tr>
-                    @endif
+                    <?php endif; ?>
                     <tr>
                         <th scope="row">Total</th>
-                        <td>{{ $currencyValue }} {{ $this->getTotal() }}</td>
+                        <td><?php echo e($currencyValue); ?> <?php echo e($this->getTotal()); ?></td>
                     </tr>
                     <tr>
                         <th scope="row" colspan = "2">
-                            @if(count($cartCollection)>0)
-                                @auth
+                            <?php if(count($cartCollection)>0): ?>
+                                <?php if(auth()->guard()->check()): ?>
                                 <button wire:click.prevent="finalizarCompra" class="form-control btn btn-success">Comprar</button>
-                                @else
+                                <?php else: ?>
                                 <div class="row">
                                     <div class="accordion" id="accordionExample">
                                         <div class="accordion-item">
@@ -123,12 +125,19 @@
                                                     <strong>¿Ya Eres Usuario? </strong> 
                                                 </a>
                                             </h4>
-                                            <div id="collapseOne" class="accordion-collapse collapse @error('showLogin') show @enderror" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div id="collapseOne" class="accordion-collapse collapse <?php $__errorArgs = ['showLogin'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> show <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
                                                     <br>Nos gustaria que Colocaras tus credenciales
                                                     <br>
-                                                    <form action="{{ route('autenticar') }}" method="POST">
-                                                        @csrf
+                                                    <form action="<?php echo e(route('autenticar')); ?>" method="POST">
+                                                        <?php echo csrf_field(); ?>
                                                         <div class="group-control">
                                                             <label class="text-bold Text-Uppercase" for="">Inicia Sesión</label>
                                                         </div>
@@ -143,9 +152,16 @@
                                                                     <input type="email" name="email" class="form-control inputForm" placeholder="Correo Electrónico" id="emailW">
                                                                 </div>
                                                             </div>
-                                                            @error('email')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                         </div>
                                                 
                                                         <div class="form-group my-3">
@@ -174,17 +190,31 @@
                                                     <strong>¿Aún no tienes cuenta? </strong> 
                                                 </a>
                                             </h4>
-                                            <div id="collapseThree" class="accordion-collapse collapse @error('showRegister') show @enderror" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                            <div id="collapseThree" class="accordion-collapse collapse <?php $__errorArgs = ['showRegister'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> show <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
-                                                    <form action="{{ route('registrarse') }}" method="post">           
-                                                        @csrf
-                                                        <input type="hidden" value="cliente" id="role" name="role" value="{{old('role')}}">
+                                                    <form action="<?php echo e(route('registrarse')); ?>" method="post">           
+                                                        <?php echo csrf_field(); ?>
+                                                        <input type="hidden" value="cliente" id="role" name="role" value="<?php echo e(old('role')); ?>">
 
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-xs-6 col-md-4 col-sm-4 col-4">
                                                                     <label for="identificationNac">Nac </label>
-                                                                    <select class="form-control @error('identificationNac') is-invalid @enderror" name="identificationNac" id="identificationNac" placeholder="Tipo" value="{{old('identificationNac')}}">
+                                                                    <select class="form-control <?php $__errorArgs = ['identificationNac'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="identificationNac" id="identificationNac" placeholder="Tipo" value="<?php echo e(old('identificationNac')); ?>">
                                                                         <option value="J">J-</option>
                                                                         <option value="E">E-</option>
                                                                         <option value="G">G-</option>
@@ -194,87 +224,143 @@
                                                                 </div>
                                                                 <div class="col-xs-6 col-md-8 col=sm-8 col-8">
                                                                     <label for="identificationNumber">Documento</label>
-                                                                    <input type="text" class="form-control @error('identificationNumber') is-invalid @enderror" name="identificationNumber" id="identificationNumber" placeholder="Documento" value="{{old('identificationNumber')}}">
+                                                                    <input type="text" class="form-control <?php $__errorArgs = ['identificationNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="identificationNumber" id="identificationNumber" placeholder="Documento" value="<?php echo e(old('identificationNumber')); ?>">
                                                                 </div>
-                                                                @error('identificationNumber')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                                @enderror
+                                                                <?php $__errorArgs = ['identificationNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                             </div>                            
                                                         </div>
                                                         
                                                         <div class="form-group">
                                                             <label for="name">Usuario <span class="text-danger">*</span></label>
                                                             <div class="input-group mb-3">                
-                                                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Usuario" value="{{old('name')}}">
+                                                                <input type="text" name="name" class="form-control <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" placeholder="Usuario" value="<?php echo e(old('name')); ?>">
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <span class="fas fa-envelope"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('name')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="names">Nombres <span class="text-danger">*</span></label>
                                                             <div class="input-group mb-3">                
-                                                                <input type="text" name="names" class="form-control" placeholder="Nombre completo" value="{{old('names')}}">
+                                                                <input type="text" name="names" class="form-control" placeholder="Nombre completo" value="<?php echo e(old('names')); ?>">
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <span class="fas fa-envelope"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('names')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            <?php $__errorArgs = ['names'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="surnames">Apellidos <span class="text-danger">*</span></label>
                                                             <div class="input-group mb-3">                
-                                                                <input type="text" name="surnames" class="form-control" placeholder="Apellidos" value="{{old('surnames')}}">
+                                                                <input type="text" name="surnames" class="form-control" placeholder="Apellidos" value="<?php echo e(old('surnames')); ?>">
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <span class="fas fa-envelope"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('surnames')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            <?php $__errorArgs = ['surnames'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                         </div>
                                                         
                                                         <div class="form-group">
                                                             <label for="documento">Email <span class="text-danger">*</span></label>            
                                                             <div class="input-group mb-3">
-                                                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{old('email')}}">
+                                                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="<?php echo e(old('email')); ?>">
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <span class="fas fa-envelope"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('email')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="documento">Contraseña <span class="text-danger">*</span></label>            
                                                             <div class="input-group mb-3">
-                                                                <input type="password" name="password" class="form-control" placeholder="Password" value="12345678" value="{{old('password')}}">
+                                                                <input type="password" name="password" class="form-control" placeholder="Password" value="12345678" value="<?php echo e(old('password')); ?>">
                                                                 <div class="input-group-append">
                                                                 <div class="input-group-text">
                                                                         <span class="fas fa-lock"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('password')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                         </div>
 
                                                         <div class="form-group">
@@ -287,16 +373,30 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('password_confirmation')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            <?php $__errorArgs = ['password_confirmation'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="documento">Teléfono </label>        
                                                             <div class="row ">
                                                                 <div class="col-xs-6 col-md-5 col-sm-4 col-4">
-                                                                    <select class="form-control @error('cellphone') is-invalid @enderror" name="cellphonecode" id="cellphonecode" value="{{old('cellphonecode')}}"> 
+                                                                    <select class="form-control <?php $__errorArgs = ['cellphone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="cellphonecode" id="cellphonecode" value="<?php echo e(old('cellphonecode')); ?>"> 
                                                                         <option value="0">Seleccione</option>
                                                                         <option value="0412">0412</option>
                                                                         <option value="0414">0414</option>
@@ -306,15 +406,36 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-xs-6 col-md-7 col-sm-8 col-8">
-                                                                    <input type="text" class="form-control @error('cellphone') is-invalid @enderror" name="cellphone" id="cellphone" value="{{old('cellphone')}}">
+                                                                    <input type="text" class="form-control <?php $__errorArgs = ['cellphone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="cellphone" id="cellphone" value="<?php echo e(old('cellphone')); ?>">
                                                                 </div>
                                                             </div>   
-                                                            @error('cellphonecode')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror 
-                                                            @error('cellphone')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror            
+                                                            <?php $__errorArgs = ['cellphonecode'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?> 
+                                                            <?php $__errorArgs = ['cellphone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>            
                                                         </div>
 
                                                         <div class="form-group my-3 d-flex">
@@ -327,8 +448,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endauth
-                            @endif
+                                <?php endif; ?>
+                            <?php endif; ?>
                         </th>
                     </tr>
                 </tbody>
@@ -338,13 +459,33 @@
 
     <div class="row my-2">
         <div class="col-md-12">
-            @livewire('components.show-recommended', [
+            <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('components.show-recommended', [
                     'comercioId' => 1, 
                     'parametro' => $words,
                     'manufacturer_id' => $manufacturer_id,
                     'modelo_id' => $modelo_id,
                     'motor_id' => $motor_id,
-                    ] )
+                    ])->html();
+} elseif ($_instance->childHasBeenRendered('tAG3ror')) {
+    $componentId = $_instance->getRenderedChildComponentId('tAG3ror');
+    $componentTag = $_instance->getRenderedChildComponentTagName('tAG3ror');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('tAG3ror');
+} else {
+    $response = \Livewire\Livewire::mount('components.show-recommended', [
+                    'comercioId' => 1, 
+                    'parametro' => $words,
+                    'manufacturer_id' => $manufacturer_id,
+                    'modelo_id' => $modelo_id,
+                    'motor_id' => $motor_id,
+                    ]);
+    $html = $response->html();
+    $_instance->logRenderedChild('tAG3ror', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
         </div>
     </div>
     
@@ -365,4 +506,4 @@
     </script>
 
     
-</div>
+</div><?php /**PATH C:\Users\typej\Documents\git\panexpres\resources\views/livewire/cart/cart1.blade.php ENDPATH**/ ?>

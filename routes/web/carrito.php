@@ -13,6 +13,20 @@
 
 	Route::get('/cart', Cart::class)->name('cart');
 
+	Route::get('/cartView/{comercioId}', function($comercioId) {
+		
+		$cartCollection = \Cart::getContent();
+
+		return view('livewire.cart.cart1', [
+			'cartCollection' => $cartCollection, 
+			'words' => null,
+			'comercioId' => $comercioId, 
+			'manufacturer_id' => 0,
+			'modelo_id' => 0,
+			'motor_id' => 0,
+		]);
+	})->name('cartView');
+
 	Route::get('/cartOff', [Cart1::class, 'index'])->name('cartOff');;
 		
 	Route::get('/goCart', [Navbar::class, 'cartRuta'])->name('goCart');
