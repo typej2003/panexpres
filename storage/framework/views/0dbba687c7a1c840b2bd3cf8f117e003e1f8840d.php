@@ -458,6 +458,8 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-9">
                                 <span class="datos"><?php if($deliveryArea): ?> <?php echo e($deliveryArea->name); ?> <?php else: ?> Envío local <?php endif; ?></span>
+                                <input type="text"  wire:model.defer="state.costeenvio" >
+                                <input type="text"  wire:model.defer="state.deliveryarea" >
                             </div>
                         </div>
 

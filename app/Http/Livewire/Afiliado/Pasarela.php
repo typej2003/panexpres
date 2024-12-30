@@ -290,7 +290,11 @@ class Pasarela extends Component
         //$notificacion->sendEmail('compraRealizadaWithImages', auth()->user(), $newpedido->nropedido);
 
         if($transaccion){
-            $data = ['state'=> 'ok', 'comercio_id' => $newpedido->id];
+            $data = [
+                'state'=> 'ok', 
+                'pedido_id' => $newpedido->id,
+                'nropedido' => $newpedido->nropedido,
+            ];
         }
         else{
             $data = ['state'=> 'fallido'];

@@ -35,10 +35,11 @@ Route::get('/checkout/shipping/{nropedido}', [WelcomeController::class, 'checkou
 
 Route::get('/checkout/pasarela/{nropedido}/{comercioId}', [WelcomeController::class, 'checkoutPasarela'])->name('checkout.pasarela'); 
 
-Route::get('/procesado/{comercio_id}', function($comercio_id)
+Route::get('/procesado/{nropedido}', function($nropedido)
 {   //$comercio = Comercio::find($comercio_id);
+    $nropedido = $nropedido;
     $comercio = Comercio::find(1);
-    return view('externalviews.procesado', compact('comercio'));
+    return view('externalviews.procesado', compact('comercio', 'nropedido'));
 })->name('procesado'); 
 
 Route::get('/procesado', function(){
@@ -73,7 +74,9 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
 
     $comercio = Comercio::find($transaccion->comercio_id);
 
-    return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio') );
+    $nropedido = $transaccion->nropedido;
+
+    return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio', 'nropedido') );
 });
 
 

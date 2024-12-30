@@ -22,6 +22,7 @@ class CreatePedidoTemporalsTable extends Migration
             $table->bigInteger('comercio_id');
             $table->bigInteger('user_id');
             $table->decimal('coste', 12, 2);
+            $table->decimal('costeenvio', 12, 2)->nullable();
             $table->string('currency')->default('1'); // 1 bs 2 $
             $table->string('metodo')->nullable(); // 1 bs 2 $
             $table->string('in_delivery')->default('0');
@@ -43,8 +44,9 @@ class CreatePedidoTemporalsTable extends Migration
             $table->string('country_id')->nullable();
             $table->string('state_id')->nullable();
             $table->string('city_id')->nullable();
-            $table->string('deliveryarea_id')->nullable();
             $table->string('zipcode')->nullable();
+            $table->string('deliveryarea_id')->nullable();
+            $table->string('deliveryarea')->nullable();
             $table->bigInteger('userdelivery_id')->nullable();
             $table->string('pedidoentregado')->nullable();
             $table->text('valoracionpedido')->nullable();

@@ -266,6 +266,8 @@
                             </div>
                             <div class="col-md-9">
                                 <span class="datos">@if($deliveryArea) {{$deliveryArea->name}} @else Envío local @endif</span>
+                                <input type="text"  wire:model.defer="state.costeenvio" >
+                                <input type="text"  wire:model.defer="state.deliveryarea" >
                             </div>
                         </div>
 

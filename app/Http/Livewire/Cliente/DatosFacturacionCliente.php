@@ -158,7 +158,16 @@ class DatosFacturacionCliente extends AdminComponent
 	{
 		$this->zonas = DeliveryArea::where('city_id', $value)->get();
 		// $this->subcategory = $this->subcategories->first()->id ?? null;
+        $this->state['costeenvio'] = '';
+        $this->state['deliveryarea'] = '';
 	}
+
+    public function updatedZona($value){
+        
+        $delivery = DeliveryArea::find($value);
+        $this->state['deliveryarea'] = $delivery->name;
+        $this->state['costeenvio'] = $delivery->coste;
+    }
 
     public function seleccionar(DatosFacturacion $datosfacturacion)
     {
@@ -181,7 +190,6 @@ class DatosFacturacionCliente extends AdminComponent
 
     public function siguiente()
     {
-        
         $validatedData = Validator::make($this->state, [
             'identificationNac' => 'required|not_in:0',
 			'identificationNumber' => 'required',
@@ -193,6 +201,8 @@ class DatosFacturacionCliente extends AdminComponent
             'zipcode' => 'nullable',
             'metodoenvio'=> 'required|in:enviodelivery,envionacional',
             'metodoentrega'=> 'required|not_in:0' ,
+            'deliveryarea' => 'nullable',
+            'costeenvio' => 'nullable',
 		],  [
             'required' => 'Valor requerido',
         ],)->validate();
@@ -204,7 +214,7 @@ class DatosFacturacionCliente extends AdminComponent
         $validatedData['country_id'] = $this->country;
         $validatedData['state_id'] = $this->province;
         $validatedData['city_id'] = $this->city;
-        $validatedData['zona_id'] = $this->zona;
+        $validatedData['deliveryarea_id'] = $this->zona;
 
         if($this->class !== 'readonly')
         {
