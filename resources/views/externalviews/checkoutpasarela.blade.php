@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/app.css">
 
-@livewire('layouts.navbar-checkout')
+@livewire('layouts.navbar-pasarela')
 
 <div class="container-fluid">
     @livewire('afiliado.pasarela', ['nropedido' => $nropedido, 'comercioId' => $comercioId])

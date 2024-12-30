@@ -3,16 +3,16 @@
 
 <?php
 if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('layouts.navbar-checkout')->html();
-} elseif ($_instance->childHasBeenRendered('3ZifvSo')) {
-    $componentId = $_instance->getRenderedChildComponentId('3ZifvSo');
-    $componentTag = $_instance->getRenderedChildComponentTagName('3ZifvSo');
+    $html = \Livewire\Livewire::mount('layouts.navbar-pasarela')->html();
+} elseif ($_instance->childHasBeenRendered('Yl2hYMs')) {
+    $componentId = $_instance->getRenderedChildComponentId('Yl2hYMs');
+    $componentTag = $_instance->getRenderedChildComponentTagName('Yl2hYMs');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('3ZifvSo');
+    $_instance->preserveRenderedChild('Yl2hYMs');
 } else {
-    $response = \Livewire\Livewire::mount('layouts.navbar-checkout');
+    $response = \Livewire\Livewire::mount('layouts.navbar-pasarela');
     $html = $response->html();
-    $_instance->logRenderedChild('3ZifvSo', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('Yl2hYMs', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -21,15 +21,15 @@ echo $html;
     <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('afiliado.pasarela', ['nropedido' => $nropedido, 'comercioId' => $comercioId])->html();
-} elseif ($_instance->childHasBeenRendered('vVmAnwa')) {
-    $componentId = $_instance->getRenderedChildComponentId('vVmAnwa');
-    $componentTag = $_instance->getRenderedChildComponentTagName('vVmAnwa');
+} elseif ($_instance->childHasBeenRendered('mMGDZos')) {
+    $componentId = $_instance->getRenderedChildComponentId('mMGDZos');
+    $componentTag = $_instance->getRenderedChildComponentTagName('mMGDZos');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('vVmAnwa');
+    $_instance->preserveRenderedChild('mMGDZos');
 } else {
     $response = \Livewire\Livewire::mount('afiliado.pasarela', ['nropedido' => $nropedido, 'comercioId' => $comercioId]);
     $html = $response->html();
-    $_instance->logRenderedChild('vVmAnwa', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('mMGDZos', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

@@ -1,4 +1,17 @@
 <div>
+    <style>
+        .pasarela {
+            width: 46rem !important;"
+        }
+
+        @media  only screen and (max-width: 1070px)
+        {
+            .pasarela {
+                width: 85% !important;"
+            }   
+
+        }
+    </style>
         <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.rtl.min.css" integrity="sha384-WJUUqfoMmnfkBLne5uxXj+na/c7sesSJ32gI7GfCk4zO4GthUKhSEGyvQ839BC51" crossorigin="anonymous"> -->
     <script src="https://kit.fontawesome.com/03cf5139f1.js"></script>
@@ -79,9 +92,36 @@
             
         })        
     </script>
-
     <div class="container-fluid d-flex flex-row">
-        <div class="card mx-auto" style="width: 32rem;">
+        <div class="row mx-auto pasarela">
+            <div class="col-sm-10">
+                
+            </div><!-- /.col -->
+            <div class="col-sm-2">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">
+                        Divisa <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('components.currency')->html();
+} elseif ($_instance->childHasBeenRendered('l4119507618-0')) {
+    $componentId = $_instance->getRenderedChildComponentId('l4119507618-0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l4119507618-0');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l4119507618-0');
+} else {
+    $response = \Livewire\Livewire::mount('components.currency');
+    $html = $response->html();
+    $_instance->logRenderedChild('l4119507618-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
+                    </li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div>
+    <div class="container-fluid d-flex flex-row">
+        <div class="card mx-auto pasarela" >
             <div class="card-body">
                 <div class="row my-3">
                     <div class="col-lg-12" wire:ignore>
