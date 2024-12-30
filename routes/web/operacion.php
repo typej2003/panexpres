@@ -77,6 +77,8 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
 });
 
 
+Route::get('/procesadoC', Procesado::class,)->name('showCurrency');
+
 Route::get('/showCurrency', Currency::class,)->name('showCurrency');
 
 Route::get('/menu', MenuComponent::class,)->name('menu');

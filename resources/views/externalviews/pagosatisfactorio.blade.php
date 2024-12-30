@@ -29,7 +29,7 @@
                                 </p>
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                
+                                <span id="countdown">5</span>
                             </div>
                         </div>
                     </div>
@@ -46,6 +46,31 @@
             boton.addEventListener('click', function(){
                 window.parent.location.href= "https://www.panexpres.com";
             })
+
+            window.onload=function() {
+                
+                var seconds = 5; //número de segundos a contar
+                function secondPassed() {
+
+                var minutes = Math.round((seconds - 30)/60); //calcula el número de minutos
+                var remainingSeconds = seconds % 60; //calcula los segundos
+                //si los segundos usan sólo un dígito, añadimos un cero a la izq
+                if (remainingSeconds < 10) { 
+                    remainingSeconds = "0" + remainingSeconds; 
+                } 
+                document.getElementById('countdown').innerHTML = minutes + ":" +     remainingSeconds; 
+                if (seconds == 0) { 
+                    clearInterval(countdownTimer); 
+                    window.parent.location.href= "/procesadoC";
+                    document.getElementById('countdown').innerHTML = "Buzz Buzz"; 
+                } else { 
+                    seconds--; 
+                } 
+                } 
+
+                var countdownTimer = setInterval(secondPassed, 1000);
+                
+            }
         </script>
 
     </div>
