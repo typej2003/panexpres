@@ -195,7 +195,7 @@ class ListNotificaciones extends AdminComponent
 			$notificacion->update(['nrosends' => $nrosends ]);
 			// session()->flash('message', 'User added successfully!');
 
-			$this->dispatchBrowserEvent('hide-form', ['message' => $messageTwilio]);
+			//$this->dispatchBrowserEvent('hide-form', ['message' => $messageTwilio]);
 
         } catch (Exception $e) {
             return 'Error: ' . $e->getMessage();
