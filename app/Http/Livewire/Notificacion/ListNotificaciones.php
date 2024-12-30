@@ -173,13 +173,17 @@ class ListNotificaciones extends AdminComponent
 					break;				
 				
 				case 'email':
-					$sendFile = new  SendMailController();
-        
-					$clientes = Client::where('comercio_id', $notificacion->comercio_id)->get();
 
-					foreach ($clientes as $key => $cliente) {
-						$sendFile->sendMailNotificacion($cliente, $notificacion);
-					}
+					$notificacion = new EmailController();
+
+        			$notificacion->sendEmail('compra', auth()->user(), 'xxxxx');
+					
+					// $clientes = Client::where('comercio_id', $notificacion->comercio_id)->get();
+
+					// foreach ($clientes as $key => $cliente) {
+					// 	$notificacion->sendEmail('compra', $cliente, $newpedido->nropedido);
+					// 	$sendFile->sendMailNotificacion($cliente, $notificacion);
+					// }
 					break;
 			}
 			
