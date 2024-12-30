@@ -169,8 +169,8 @@ class EmailController extends Component
         $data["title"] = 'Compra realizada';
         $data["nropedido"] = $nropedido;
         $pedido = Pedido::where('nropedido', $nropedido)->first();
-        $data["body"] = 'Pedido ' . $nropedido . ', con referencia ' . $pedido->reference . ' fue recibida.' .'<br>';
-        $data["body"] = 'Nuestro equipo de venta atenderá su pedido, en espera de validación, Gracias por su compra';
+        $data["body"] = 'Pedido ' . $nropedido . ', con referencia ' . $pedido->reference . ' fue recibido.' .'<br>';
+        $data["body"] .= 'Nuestro equipo de venta atenderá su pedido, en espera de validación, Gracias por su compra';
         
         Mail::send('emails.compra-realizada', $data, function($message) use ($data) {
             $message->to($data["email"])
