@@ -14,7 +14,9 @@ class EmailExample extends Component
     {
         $user = Auth()->user();
 
-        $email = Mail::to($user->email)->send(new UserPayment($user));        
+        //$email = Mail::to($user->email)->send(new UserPayment($user));        
+
+        $email = Mail::to($user->email)->from('ventas@panexpres.com')->send(new UserPayment($user));        
 
         $this->dispatchBrowserEvent('hide-form', ['message' => 'Usuario agregado satisfactoriamente!']);
 
