@@ -264,6 +264,8 @@ class ApiController extends Component
 
         	$cart->onlyClear();
 
+			\Cart::clear();
+
             return $token;
 
         }
