@@ -67,6 +67,8 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
 
     $cart->onlyClear();
 
+    \Cart::clear();
+
     $transaccion = Transaccion::where('paymentId', $id_suc)->first();
 
     $comercio = Comercio::find($transaccion->comercio_id);
