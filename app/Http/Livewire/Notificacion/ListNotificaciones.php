@@ -208,8 +208,7 @@ class ListNotificaciones extends AdminComponent
             'content' => 'required',
 		])->validate();
 
-		dd($request->all());
-
+		
 		$validatedData['comercio_id']=$this->comercio_id;
 
        // Handle file upload
