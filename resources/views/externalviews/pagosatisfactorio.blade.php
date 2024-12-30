@@ -29,7 +29,7 @@
                                 </p>
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <span id="countdown">5</span>
+                                <button class="btn btn-success" id="salir">Salir</button><span id="countdown">5</span>
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
         <script>
             let boton = document.getElementById('salir')
             boton.addEventListener('click', function(){
-                window.parent.location.href= "https://www.panexpres.com";
+                window.parent.location.href= "/procesadoC";
             })
 
             window.onload=function() {

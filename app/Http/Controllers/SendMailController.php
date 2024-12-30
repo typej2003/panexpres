@@ -12,6 +12,7 @@ class SendMailController extends Controller
         // Laravel 8
 
         $data["email"] = $user->email;
+        $data["from"] = 'ventas@panexpres.com';
         $data["title"] = "Techsolutionstuff";
         $data["body"] = "This is test mail with attachment";
  
@@ -22,6 +23,7 @@ class SendMailController extends Controller
   
         Mail::send('emails.test_mail', $data, function($message) use ($data, $files) {
             $message->to($data["email"])
+                    ->from($data["from"])
                     ->subject($data["title"]);
  
             foreach ($files as $file){
