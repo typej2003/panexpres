@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>PanExprés</title>
     <meta name="description" content="Compra y vende Pan de Jamón y Combos Navideños Caracas">
-    <meta name="keywords" content="vende, compra, Pan, Jamón, Pan de Jamón, Combos Navideños, Caracas">
+    <meta name="keywords" content="vende, compra, Pan, Jamón, Pan de Jamón, Combos Navideños, Caracas, directo a tu mesa, @panexpres.vezla, Panexprés, Panexpres">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="shortcut icon" type="x-icon" href="/img/panexpres_logo.png.png" />

@@ -20,6 +20,7 @@ class ProductsSeeder extends Seeder
             'code' => 'P0001',
             'name' => 'Pan de Jamón de 650 gramos',
             'description' => 'Pan de Jamón de 650 gramos',
+            'details1' => 'Ofertas Pan de Jamón de 650 gramos',
             'image_path1' => 'pan_expreso.jpg',
             'manufacturer_id' => '1', //marca
             'brand_id' => 1, //marca
@@ -52,7 +53,8 @@ class ProductsSeeder extends Seeder
             'code_lote' => 'C0002',
             'code' => 'C0002',
             'name' => 'EXPRESO Combo navideño',
-            'description' => 'Pan de Jamón de 650 gramos',
+            'description' => 'Pan de Jamón de 650 gramos + Cocacola 1,5 litro',
+            'details1' => 'Ofertas Pan de Jamón de 650 gramos',
             'image_path1' => 'combo_expreso.jpg',
             'manufacturer_id' => '1', //marca
             'brand_id' => 1, //marca
@@ -121,7 +123,7 @@ class ProductsSeeder extends Seeder
         DB::table('products')->insert([
             'code_lote' => 'C0002',
             'code' => 'C0002',
-            'name' => 'DORALTA Combo navideño',
+            'name' => 'DORALTA Combo navideño + Cocacola 1,5 litro',
             'description' => 'Pan de Jamón de 650 gramos',
             'image_path1' => 'combo_doralta.jpg',
             'manufacturer_id' => '1', //marca
@@ -191,7 +193,7 @@ class ProductsSeeder extends Seeder
             'code_lote' => 'C0002',
             'code' => 'C0002',
             'name' => 'OLANDELY Combo navideño',
-            'description' => 'Pan de Jamón de 1000 gramos',
+            'description' => 'Pan de Jamón de 1000 gramos + Cocacola 1,5 litro',
             'image_path1' => 'combo_olandely.jpg',
             'manufacturer_id' => '1', //marca
             'brand_id' => 1, //marca
@@ -259,7 +261,7 @@ class ProductsSeeder extends Seeder
         DB::table('products')->insert([
             'code_lote' => 'C0004',
             'code' => 'C0004',
-            'name' => 'Coffetown Combo navideño',
+            'name' => 'Coffetown Combo navideño + Cocacola 1,5 litro',
             'description' => 'Pan de Jamón de 1000 gramos',
             'image_path1' => 'combo_coffetown.jpg',
             'manufacturer_id' => '1', //marca
@@ -328,7 +330,7 @@ class ProductsSeeder extends Seeder
         DB::table('products')->insert([
             'code_lote' => 'C0005',
             'code' => 'C0005',
-            'name' => 'Titanium Combo navideño',
+            'name' => 'Titanium Combo navideño + Cocacola 1,5 litro',
             'description' => 'Pan de 700 gramos',
             'image_path1' => 'combo_titanium.jpg',
             'manufacturer_id' => '1', //marca
@@ -365,7 +367,7 @@ class ProductsSeeder extends Seeder
             'code_lote' => 'P0005',
             'code' => 'P0005',
             'name' => 'Pan de 700 gramos',
-            'description' => 'Pan de 700 gramos',
+            'description' => 'Pan de 700 gramos ',
             'image_path1' => 'pan_candelaria.jpg',
             'manufacturer_id' => '1', //marca
             'brand_id' => 1, //marca
@@ -397,7 +399,7 @@ class ProductsSeeder extends Seeder
         DB::table('products')->insert([
             'code_lote' => 'C0005',
             'code' => 'C0005',
-            'name' => 'Candelaria Combo navideño',
+            'name' => 'Candelaria Combo navideño + Cocacola 1,5 litro',
             'description' => 'Pan de 700 gramos',
             'image_path1' => 'combo_candelaria.jpg',
             'manufacturer_id' => '1', //marca
@@ -470,7 +472,7 @@ class ProductsSeeder extends Seeder
             'code_lote' => 'C0005',
             'code' => 'C0005',
             'name' => 'Gama Combo navideño',
-            'description' => 'Pan de 700 gramos',
+            'description' => 'Pan de 700 gramos + Cocacola 1,5 litro',
             'image_path1' => 'combo_gama.jpg',
             'manufacturer_id' => '1', //marca
             'brand_id' => 1, //marca

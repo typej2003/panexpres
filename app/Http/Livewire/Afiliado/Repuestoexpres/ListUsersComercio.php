@@ -18,7 +18,7 @@ class ListUsersComercio extends AdminComponent
 
 	public $state = [];
 
-	public $user;
+	public $usercomercio;
 
 	public $showEditModal = false;
 
@@ -42,16 +42,16 @@ class ListUsersComercio extends AdminComponent
 
     }
 
-	public function changeRole(UserComercio $user, $role)
+	public function changeRole(UserComercio $usercomercio, $role)
 	{
 		Validator::make(['role' => $role], [
 			'role' => [
 				'required',
-				Rule::in(UserComercio::ROLE_DELIVERY),
+				Rule::in(UserComercio::ROLE_ADMINCOMERCIO, UserComercio::ROLE_DELIVERY),
 			],
 		])->validate();
 
-		$user->update(['rolecomercio' => $role]);
+		$usercomercio->update(['rolecomercio' => $role]);
 
 		$this->dispatchBrowserEvent('updated', ['message' => "Rol cambió a {$role} satisfactoriamente."]);
 	}
@@ -63,6 +63,7 @@ class ListUsersComercio extends AdminComponent
         $this->comercio_id = $comercio_id;
 
         $this->state['identificationNac'] = "V";
+		$this->state['vehiculo'] = "0";
 
 		$this->showEditModal = false;
 
@@ -79,10 +80,10 @@ class ListUsersComercio extends AdminComponent
             'identificationNumber' => 'required',
 			'email' => 'required|email|unique:users',
 			'password' => 'required|confirmed',
-			'role' => 'required',
+			'rolecomercio' => 'required',
             'cellphonecode' => 'required',
             'cellphone' => 'required',
-            'vehiculo' => 'required',
+            'vehiculo' => 'nullable',
 		])->validate();
 
 		$validatedData['password'] = bcrypt($validatedData['password']);
@@ -91,6 +92,7 @@ class ListUsersComercio extends AdminComponent
 			$validatedData['avatar'] = $this->photo->store('/', 'avatars');
 		}
 
+		$validatedData['role'] = 'user';
 		$user = User::create($validatedData);
 
         DatosBasicos::create([
@@ -102,7 +104,7 @@ class ListUsersComercio extends AdminComponent
         UserComercio::create([
             'user_id' => $user->id,
             'comercio_id' => $this->comercio_id,
-            'rolecomercio' => $validatedData['role'],
+            'rolecomercio' => $validatedData['rolecomercio'],
             'vehiculo' => $validatedData['vehiculo'],
         ]);
 
@@ -111,15 +113,15 @@ class ListUsersComercio extends AdminComponent
 		$this->dispatchBrowserEvent('hide-form', ['message' => 'Usuario agregado satisfactoriamente!']);
 	}
 
-	public function edit(User $user)
+	public function edit(User $usercomercio)
 	{
 		$this->reset();
 
 		$this->showEditModal = true;
 
-		$this->user = $user;
+		$this->usercomercio = $usercomercio;
 
-		$this->state = $user->toArray();
+		$this->state = $usercomercio->toArray();
 
 		$this->dispatchBrowserEvent('show-form');
 	}
@@ -128,11 +130,16 @@ class ListUsersComercio extends AdminComponent
 	{
 		$validatedData = Validator::make($this->state, [
 			'name' => 'required',
-			'email' => 'required|email|unique:users,email,'.$this->user->id,
-			'password' => 'sometimes|confirmed',
-			'role' => 'required',
-			'identificationNac' => 'required',
-			'identificationNumber' => 'required',
+            'names' => 'required',
+            'surnames' => 'required',
+            'identificationNac' => 'required',
+            'identificationNumber' => 'required',
+			'email' => 'required|email|unique:users',
+			'password' => 'required|confirmed',
+			'rolecomercio' => 'required',
+            'cellphonecode' => 'required',
+            'cellphone' => 'required',
+            'vehiculo' => 'nullable',
 		])->validate();
 
 		if(!empty($validatedData['password'])) {
@@ -144,7 +151,13 @@ class ListUsersComercio extends AdminComponent
 			$validatedData['avatar'] = $this->photo->store('/', 'avatars');
 		}
 
-		$this->user->update($validatedData);
+		$this->usercomercio->update([
+			'rolecomercio' => $validatedData('rolecomercio'),
+		]);
+
+		$user = User::find($this->usercomercio->id);
+
+		$user->update($validatedData);
 
 		$this->dispatchBrowserEvent('hide-form', ['message' => 'Usuario actualizado satisfactoriamente!']);
 	}
@@ -158,9 +171,9 @@ class ListUsersComercio extends AdminComponent
 
 	public function deleteUser()
 	{
-		$user = User::findOrFail($this->userIdBeingRemoved);
+		$usercomercio = UserComercio::findOrFail($this->userIdBeingRemoved);
 
-		$user->delete();
+		$usercomercio->delete();
 
 		$this->dispatchBrowserEvent('hide-delete-modal', ['message' => 'Usuario eliminado satisfactoriamente!']);
 	}

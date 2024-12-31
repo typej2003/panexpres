@@ -9,6 +9,7 @@ class UserComercio extends Model
 {
     use HasFactory;
 
+    const ROLE_ADMINCOMERCIO = 'admincomercio';
     const ROLE_DELIVERY = 'delivery';
 
     protected $fillable = [

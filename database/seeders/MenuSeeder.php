@@ -84,7 +84,7 @@ class MenuSeeder extends Seeder
         DB::table('menus')->insert([
             'texto' => 'Vende desde Acá',
             'ruta' => 'vendedesdeaca',
-            'origen' => 'view', // view or categories
+            'origen' => 'categories', // view or categories
             'menu' => 1,
             'posicion' => 7,
             'comercio_id' => '1',
@@ -95,7 +95,7 @@ class MenuSeeder extends Seeder
         DB::table('menus')->insert([
             'texto' => 'Aliados',
             'ruta' => 'comercios',
-            'origen' => 'link', // view or categories
+            'origen' => 'categories', // view or categories
             'menu' => 1,
             'posicion' => 8,
             'comercio_id' => '1',

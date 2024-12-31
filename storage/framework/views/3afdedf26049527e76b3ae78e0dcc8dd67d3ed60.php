@@ -507,6 +507,17 @@
             <?php endif; ?>
             <!--  FIN CATEGORIA POR COMERCIO -->
           <?php endif; ?>
+
+          <?php if(auth()->user()->role == 'usuario' && auth()->user()->client->rolecomercio == 'admincomercio'): ?>
+            <li class="nav-item">
+              <a href="<?php echo e(route('listPedidosCliente')); ?>" class="nav-link <?php echo e(request()->is('listPedidosCliente') ? 'active' : ''); ?>">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Pedidos
+                </p>
+              </a>
+            </li>
+          <?php endif; ?>
         <?php endif; ?>
 
         <!-- <li class="nav-item">

@@ -506,6 +506,17 @@
             @endif
             <!--  FIN CATEGORIA POR COMERCIO -->
           @endif
+
+          @if(auth()->user()->role == 'usuario' && auth()->user()->client->rolecomercio == 'admincomercio')
+            <li class="nav-item">
+              <a href="{{ route('listPedidosCliente') }}" class="nav-link {{ request()->is('listPedidosCliente') ? 'active' : '' }}">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Pedidos
+                </p>
+              </a>
+            </li>
+          @endif
         @endauth
 
         <!-- <li class="nav-item">

@@ -64,7 +64,8 @@
                                         <td>{{ $user->created_at->toFormattedDate() ?? 'N/A' }}</td>
                                         <td>
                                             <select class="form-control" wire:change="changeRole({{ $user }}, $event.target.value)">
-                                                <option value="delivery" {{ ($user->rolecomercio === 'admin') ? 'selected' : '' }}>Delivery</option>
+                                                <option value="admincomercio" {{ ($user->rolecomercio === 'admincomercio') ? 'selected' : '' }}>Administrador Comercio</option>
+                                                <option value="delivery" {{ ($user->rolecomercio === 'delivery') ? 'selected' : '' }}>Delivery</option>
                                             </select>
                                         </td>
                                         <td>
@@ -123,8 +124,9 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Rol</label>
-                            <select name="" wire:model.defer="state.role" class="roleS form-control @error('role') is-invalid @enderror">
+                            <select name="" wire:model.defer="state.rolecomercio" class="roleS form-control @error('role') is-invalid @enderror">
                                 <option value="0">SELECCIONE..</option>
+                                <option value="admincomercio">Administrador Comercio</option>
                                 <option value="delivery">Delivery Boy</option>
                             </select>
                             @error('role')

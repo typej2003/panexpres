@@ -9,7 +9,7 @@
         }
 
         .imgProduct {
-            width: 250px !important; height: 160px !important;
+            width: 250px !important; height: 120px !important;
         }
 
         .negrita {
