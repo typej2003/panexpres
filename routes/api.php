@@ -22,6 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('api/enviardatos', EnviarDatos::class);
+Route::apiResource('enviardatos', EnviarDatos::class);
 
 Route::apiResource('apiuser', ApiController::class);
