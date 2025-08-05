@@ -29,7 +29,9 @@ Route::apiResource('enviardatos', EnviarDatos::class);
 
 Route::apiResource('apiuser', ApiController::class);
 
-//Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
+//Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
 
-Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
+Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
+
+
 
