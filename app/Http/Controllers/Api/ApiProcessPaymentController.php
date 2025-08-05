@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ApiProcessPaymentController extends Controller
 {
@@ -12,9 +13,25 @@ class ApiProcessPaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-		//$datos = $request->json()->all();
+	public function apiprocesspayment(Request $request)
+	{
+
+		// Loguea los datos recibidos para depuración
+		Log::info('Datos recibidos:', $request->all());
+
+		// Accede a los datos enviados
+		//$variable = $request->input('nombre_de_tu_variable');
+
+		// Procesa los datos
+		$respuesta = [
+			'mensaje' => "Variable recibida y procesada: " . $variable,
+			'status' => 'success'
+		];
+
+		// Retorna una respuesta JSON
+		return response()->json($respuesta);
+
+	//$datos = $request->json()->all();
 
 		// Procesa los datos recibidos
     	//$data = ['mensaje' => 'Datos recibidos con éxito'];
@@ -70,6 +87,11 @@ class ApiProcessPaymentController extends Controller
             header('Content-type: application/json');
             echo json_encode($response);
         }
+	}
+
+    public function index()
+    {
+		
     }
 
     /**
