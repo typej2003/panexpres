@@ -17,9 +17,12 @@ class ApiProcessPaymentController extends Controller
 		$datos = $request->json()->all();
 
 		// Procesa los datos recibidos
-    	$resultado = ['mensaje' => 'Datos recibidos con éxito'];
+    	$data = ['mensaje' => 'Datos recibidos con éxito'];
 
-    	return response()->json($resultado);
+    	return response()->json($data);
+
+		$data = ['valor' => "Operacion exitosa a traves de api!", ];
+        return response()->json($data);
 
         //Creación de solicitud de pago
         // $Payment = new IpgBdvPaymentRequest();
