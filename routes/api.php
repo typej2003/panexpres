@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\EnviarDatos;
 
 use App\Http\Controllers\Api\ApiController;
+
+use App\Http\Controllers\Api\ApiProcessPaymentController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,3 +28,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('enviardatos', EnviarDatos::class);
 
 Route::apiResource('apiuser', ApiController::class);
+
+Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
