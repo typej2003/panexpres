@@ -14,12 +14,12 @@ class ApiProcessPaymentController extends Controller
      */
     public function index(Request $request)
     {
-		$datos = $request->json()->all();
+		//$datos = $request->json()->all();
 
 		// Procesa los datos recibidos
-    	$data = ['mensaje' => 'Datos recibidos con éxito'];
+    	//$data = ['mensaje' => 'Datos recibidos con éxito'];
 
-    	return response()->json($data);
+    	//return response()->json($data);
 
 		$data = ['valor' => "Operacion exitosa a traves de api!", ];
         return response()->json($data);
