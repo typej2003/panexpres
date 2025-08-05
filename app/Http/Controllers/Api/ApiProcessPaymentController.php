@@ -21,7 +21,7 @@ class ApiProcessPaymentController extends Controller
 
 		// Accede a los datos enviados
 		//$variable = $request->input('nombre_de_tu_variable');
-
+		$variable = '0k';
 		// Procesa los datos
 		$respuesta = [
 			'mensaje' => "Variable recibida y procesada: " . $variable,
