@@ -15,7 +15,7 @@ class ApiProcessPaymentController extends Controller
      */
 	public function apiprocesspayment(Request $request)
 	{
-
+		die('parar');
 		// Loguea los datos recibidos para depuración
 		//Log::info('Datos recibidos:', $request->all());
 
