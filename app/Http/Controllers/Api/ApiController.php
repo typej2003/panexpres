@@ -24,6 +24,6 @@
             // \App\Models\TuModelo::create($datos);
 
             // Retorna una respuesta
-            return response()->json(['message' => 'Datos recibidos'], 200);
+            return response()->json(['message' => 'Datos recibidos completos'], 200);
         }
     }
