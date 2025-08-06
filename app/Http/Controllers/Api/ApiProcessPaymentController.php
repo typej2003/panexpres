@@ -17,6 +17,11 @@ class ApiProcessPaymentController extends Controller
 	{
 		$datos = $request->all();
 
+		return response()->json([
+                'message' => 'Datos recibidos completos',
+                'datos' => $datos,
+            ], 200);
+
 		//Creación de solicitud de pago
         $Payment = new IpgBdvPaymentRequest();
         
@@ -50,6 +55,12 @@ class ApiProcessPaymentController extends Controller
         
         if ($response->success == true) // Se procesó correctamente y es necesario redirigir a la página de pago
         {
+			return response()->json([
+                'message' => 'Datos recibidos completos',
+                'response' => $response,
+				'response->urlPayment' => $response->urlPayment,
+            ], 200);
+
             if (strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest') { //si es ajax
                 header('Content-type: application/json');
                 echo json_encode($response);			
