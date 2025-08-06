@@ -20,7 +20,6 @@ class ApiProcessPaymentController extends Controller
 		return response()->json([
                 'message' => 'Datos recibidos completos',
                 'datos' => $datos,
-				'success' => true,
             ], 200);
 			
 		//Creación de solicitud de pago
