@@ -29,11 +29,14 @@ Route::apiResource('enviardatos', EnviarDatos::class);
 
 Route::apiResource('apiuser', ApiController::class);
 
-//Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
+Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
 
-Route::apiResource('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
+Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
 
-Route::post('/mi-endpoint', function(Request $request) {
+//Route::get('/', [WelcomeController::class, 'index'])->name('welcome'); 
+
+Route::post('/miendpoint', function(Request $request) {
+
     $data = $request->json()->all();
 
     return response()->json([
