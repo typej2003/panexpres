@@ -15,13 +15,12 @@ class ApiProcessPaymentController extends Controller
      */
 	public function apiprocesspayment(Request $request)
 	{
-		die('parar');
 		// Loguea los datos recibidos para depuración
 		//Log::info('Datos recibidos:', $request->all());
 
 		// Accede a los datos enviados
 		//$variable = $request->input('nombre_de_tu_variable');
-		$variable = '0k';
+		$variable = '0k ok';
 		// Procesa los datos
 		$respuesta = [
 			'mensaje' => "Variable recibida y procesada: " . $variable,
