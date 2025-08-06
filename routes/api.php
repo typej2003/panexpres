@@ -31,7 +31,13 @@ Route::apiResource('apiuser', ApiController::class);
 
 //Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
 
-Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
+Route::apiResource('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
 
+Route::post('/mi-endpoint', function(Request $request) {
+    $data = $request->json()->all();
 
+    return response()->json([
+        'message' => 'Datos recibidos correctamente', 'received_data' => $data
+    ]);
+});
 
