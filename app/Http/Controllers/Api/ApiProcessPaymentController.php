@@ -22,7 +22,7 @@ class ApiProcessPaymentController extends Controller
                 'datos' => $datos,
 				'success' => true,
             ], 200);
-
+			
 		//Creación de solicitud de pago
         $Payment = new IpgBdvPaymentRequest();
         
