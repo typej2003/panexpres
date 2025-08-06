@@ -20,72 +20,17 @@ class ApiProcessPaymentController extends Controller
 
 		// Accede a los datos enviados
 		//$variable = $request->input('nombre_de_tu_variable');
-		$variable = '0k ok';
+		$variable = '0k';
 		// Procesa los datos
 		$respuesta = [
 			'mensaje' => "Variable recibida y procesada: " . $variable,
 			'status' => 'success',
 		];
-
+		die($respuesta);
 		// Retorna una respuesta JSON
 		return response()->json($respuesta);
 
-	//$datos = $request->json()->all();
-
-		// Procesa los datos recibidos
-    	//$data = ['mensaje' => 'Datos recibidos con éxito'];
-
-    	//return response()->json($data);
-
-		$data = ['valor' => "Operacion exitosa a traves de api!", ];
-        return response()->json($data);
-
-        //Creación de solicitud de pago
-        // $Payment = new IpgBdvPaymentRequest();
-        // $Payment->idLetter= $_POST['identificationNac']; //Letra de la cédula - V, E o P
-        // $Payment->idNumber= $_POST['identificationNumber']; //Número de cédula
-        // $Payment->amount= $_POST['amount']; //Monto a combrar, DECIMAL
-        // $Payment->currency= $_POST['currency']; //Moneda del pago, 0 - Bolivar Fuerte, 1 - Dolar
-        // $Payment->reference= $_POST['reference']; //Código de referecia o factura
-        // $Payment->title= $_POST['title']; //Titulo para el pago, Ej: Servicio de Cable
-        // $Payment->description= $_POST['description']; //Descripción del pago, Ej: Abono mes de marzo 2017
-        // $Payment->email= $_POST['email'];
-        // $Payment->cellphone= $_POST['cellphone'];
-        
-        $Payment->urlToReturn= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
-        //$Payment->urlToReturn= "http://localhost:8585/";
-        $Payment->urlToReturn= "https://ddrsistemas.com/pasarelape/procesado.php";
-        $Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
-
-        $Payment->rifLetter= $_POST['rifLetter'] ?? ''; //Letra de la cédula - V, E o P
-        $Payment->rifNumber= $_POST['rifNumber'] ?? ''; //Número de cédula
-    
-        $demo = "NO";
-
-        if( $demo == "SI" ) {
-            $PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
-        } else {
-            $PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
-        }
-
-        $response = $PaymentProcess->createPayment($Payment);
-        
-        if ($response->success == true) // Se procesó correctamente y es necesario redirigir a la página de pago
-        {
-            if (strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest') { //si es ajax
-                header('Content-type: application/json');
-                echo json_encode($response);			
-            }
-            else{ //si no es ajax
-                header("Location: ".$response->urlPayment); //W
-                die();
-            }		
-        }
-        else
-        {
-            header('Content-type: application/json');
-            echo json_encode($response);
-        }
+	
 	}
 
     public function index()

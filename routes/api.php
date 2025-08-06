@@ -29,18 +29,21 @@ Route::apiResource('enviardatos', EnviarDatos::class);
 
 Route::apiResource('apiuser', ApiController::class);
 
-Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
+//Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
 
-Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
+//Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
+Route::get('apiprocesspayment', function() {
+    dd('ok');
+});
 
 //Route::get('/', [WelcomeController::class, 'index'])->name('welcome'); 
 
-Route::post('/miendpoint', function(Request $request) {
+// Route::post('/miendpoint', function(Request $request) {
 
-    $data = $request->json()->all();
+//     $data = $request->json()->all();
 
-    return response()->json([
-        'message' => 'Datos recibidos correctamente', 'received_data' => $data
-    ]);
-});
+//     return response()->json([
+//         'message' => 'Datos recibidos correctamente', 'received_data' => $data
+//     ]);
+// });
 
