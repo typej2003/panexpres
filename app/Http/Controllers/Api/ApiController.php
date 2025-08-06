@@ -1,67 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+    namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+    use Illuminate\Http\Request;
 
-use App\Models\User;
-
-class ApiController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    class ApiController extends Controller
     {
-        $data = User::all();
-        return response()->json($data);
-    }
+        public function recibirDatos(Request $request)
+        {
+            // Accede a los datos enviados
+            $datos = $request->all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+            // Aquí procesas los datos
+            // Por ejemplo, guardar en la base de datos
+            // Ejemplo:
+            // \App\Models\TuModelo::create($datos);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+            // Retorna una respuesta
+            return response()->json(['message' => 'Datos recibidos'], 200);
+        }
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-}

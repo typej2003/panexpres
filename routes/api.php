@@ -44,3 +44,5 @@ Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
 //     ]);
 // });
 
+
+Route::post('/api/datos', [ApiController::class, 'recibirDatos']);
