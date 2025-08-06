@@ -25,6 +25,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('datos', [EnviarDatos::class, 'recibirDatos']);
+
 Route::apiResource('enviardatos', EnviarDatos::class);
 
 Route::apiResource('apiuser', ApiController::class);
@@ -45,4 +47,3 @@ Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
 // });
 
 
-Route::post('datos', [ApiController::class, 'recibirDatos']);
