@@ -13,7 +13,7 @@
             return response()->json($data);
         }
         
-        public function recibirDatos(Request $request)
+        public function recibirDatosApi(Request $request)
         {
             // Accede a los datos enviados
             $datos = $request->all();
