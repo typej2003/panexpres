@@ -31,10 +31,7 @@ Route::apiResource('apiuser', ApiController::class);
 
 //Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
 
-//Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
-Route::get('apiprocesspayment', function() {
-    dd('ok');
-});
+Route::apiResource('apiprocesspayment', ApiProcessPaymentController::class);
 
 //Route::get('/', [WelcomeController::class, 'index'])->name('welcome'); 
 
