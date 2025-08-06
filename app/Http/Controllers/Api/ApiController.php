@@ -25,6 +25,9 @@ use Illuminate\Http\Request;
             // \App\Models\TuModelo::create($datos);
 
             // Retorna una respuesta
-            return response()->json(['message' => 'Datos recibidos completos'], 200);
+            return response()->json([
+                'message' => 'Datos recibidos completos',
+                'datos' => $datos,
+            ], 200);
         }
     }
