@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class ApiProcessPaymentController extends Controller
 {
@@ -15,12 +14,13 @@ class ApiProcessPaymentController extends Controller
      */
 	public function apiprocesspayment(Request $request)
 	{
-		$datos = $request->all();
+		// Accede a los datos enviados
+        $datos = $request->all();
 
 		return response()->json([
                 'message' => 'Datos recibidos completos',
-                'identificationNumber' => $datos['identificationNumber'],
-				'cellphone' => $datos['cellphone'],
+                'identificationNumber' => $datos->identificationNumber,
+				'cellphone' => $datos->cellphone,
             ], 200);
 			
 		// //Creación de solicitud de pago
