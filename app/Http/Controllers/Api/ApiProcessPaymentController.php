@@ -16,66 +16,82 @@ class ApiProcessPaymentController extends Controller
 	{
 		// Accede a los datos enviados
         $datos = $request->all();
+		
+		//Creación de solicitud de pago
+        $Payment = new IpgBdvPaymentRequest();        
+		
+		$Payment->idLetter= $request->post('identificationNac'); //Letra de la cédula - V, E o P
+        $Payment->idNumber= $request->post('identificationNumber'); //Número de cédula
+        $Payment->amount= $request->post('amount'); //Monto a combrar, DECIMAL
+        $Payment->currency= $request->post('currency'); //Moneda del pago, 0 - Bolivar Fuerte, 1 - Dolar
+        $Payment->reference= $request->post('reference'); //Código de referecia o factura
+        $Payment->title= $request->post('title'); //Titulo para el pago, Ej: Servicio de Cable
+        $Payment->description= $request->post('description'); //Descripción del pago, Ej: Abono mes de marzo 2017
+        $Payment->email= $request->post('email');
+        $Payment->cellphone= $request->post('cellphone');        
+		
+        //$Payment->urlToReturn= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
 
-		return response()->json([
-                'message' => 'Datos recibidos completos',
-                'identificationNumber' => $datos,
-				'cellphone' => $datos,
-            ], 200);
-			
-		// //Creación de solicitud de pago
-        // $Payment = new IpgBdvPaymentRequest();
-        
-		// $Payment->idLetter= $datos['identificationNac']; //Letra de la cédula - V, E o P
-        // $Payment->idNumber= $datos['identificationNumber']; //Número de cédula
-        // $Payment->amount= $datos['amount']; //Monto a combrar, DECIMAL
-        // $Payment->currency= $datos['currency']; //Moneda del pago, 0 - Bolivar Fuerte, 1 - Dolar
-        // $Payment->reference= $datos['reference']; //Código de referecia o factura
-        // $Payment->title= $datos['title']; //Titulo para el pago, Ej: Servicio de Cable
-        // $Payment->description= $datos['description']; //Descripción del pago, Ej: Abono mes de marzo 2017
-        // $Payment->email= $datos['email'];
-        // $Payment->cellphone= $datos['cellphone'];
-        
-        // $Payment->urlToReturn= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
-        // //$Payment->urlToReturn= "http://localhost:8585/";
+		$Payment->urlToReturn= "https://"."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
+
+        //$Payment->urlToReturn= "http://localhost:8585/";
         // $Payment->urlToReturn= "https://ddrsistemas.com/pasarelape/procesado.php";
-        // $Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
+        $Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";	
 
-        // $Payment->rifLetter= $datos['rifLetter'] ?? ''; //Letra de la cédula - V, E o P
-        // $Payment->rifNumber= $datos['rifNumber'] ?? ''; //Número de cédula
-    
-        // $demo = "NO";
+        $Payment->rifLetter= $request->post('rifLetter') ?? ''; //Letra de la cédula - V, E o P
+        $Payment->rifNumber= $request->post('rifNumber') ?? ''; //Número de cédula
+		
+		$demo = "NO";
 
-        // if( $demo == "SI" ) {
-        //     $PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
-        // } else {
-        //     $PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
-        // }
+        if( $demo == "SI" ) {
+            $PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
+        } else {
+             $PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
+        }
 
-        // $response = $PaymentProcess->createPayment($Payment);
+        $response = $PaymentProcess->createPayment($Payment);
         
-        // if ($response->success == true) // Se procesó correctamente y es necesario redirigir a la página de pago
-        // {
-		// 	return response()->json([
-        //         'message' => 'Datos recibidos completos',
-        //         'response' => $response,
-		// 		'response->urlPayment' => $response->urlPayment,
-        //     ], 200);
-
-        //     if (strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest') { //si es ajax
-        //         header('Content-type: application/json');
-        //         echo json_encode($response);			
-        //     }
-        //     else{ //si no es ajax
-        //         header("Location: ".$response->urlPayment); //W
-        //         die();
-        //     }		
-        // }
-        // else
-        // {
-        //     header('Content-type: application/json');
-        //     echo json_encode($response);
-        // }
+        if ($response->success == true) // Se procesó correctamente y es necesario redirigir a la página de pago
+        {
+			$resultado = 'true';
+			$urlPayment = $response->urlPayment;
+			// if (strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest') { //si es ajax
+            //      header('Content-type: application/json');
+            //      echo json_encode($response);			
+            //  }
+            //  else{ //si no es ajax
+            //      header("Location: ".$response->urlPayment); //W
+            //      die();
+            //  }		
+        }
+        else
+        {
+			$resultado = 'false';
+             header('Content-type: application/json');
+             echo json_encode($response);
+        }
+		/*
+		*/		
+		return response()->json([
+                // 'message' => 'Datos recibidos completos',
+                // 'identificationNac' => $request->post('identificationNac'),
+				// 'identificationNumber' => $request->post('identificationNumber'),
+				// 'amount' => $request->post('amount'),
+				// 'currency' => $request->post('currency'),
+				// 'reference' => $request->post('reference'),
+				// 'title' => $request->post('title'),
+				// 'description' => $request->post('description'),
+				// 'email' => $request->post('email'),
+				// 'cellphone' => $request->post('cellphone'),
+				// 'cellphone1' => $request->post('cellphone1'),
+				// 'rifLetter' => $request->post('rifLetter'),
+				// 'rifNumber' => $request->post('rifNumber'),
+				// 'datos' => $datos,
+				// 'resultado' => $resultado,
+				// 'urlPayment' => $response->urlPayment,
+				'response' => $response
+            ], 200);
+		
 	}
 
     public function index()
