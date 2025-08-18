@@ -65,6 +65,28 @@ class UserSeeder extends Seeder
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
+         DB::table('users')->insert([
+            'identificationNac' => 'V',
+            'identificationNumber' => '13053081',
+            'name' => 'jose',
+            'names' => 'José',
+            'surnames' => 'Rosales',
+            'email' => 'typej2003@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'admin',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('datos_basicos')->insert([
+            'user_id' => 1,
+            'cellphonecode' => '0416',
+            'cellphone' => '5800403',
+            'address' => 'Caracas, San Bernardino',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
        
 
     }

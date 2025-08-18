@@ -19,26 +19,42 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/showProducts.css">    
     
-    @stack('styles')
-    <livewire:styles />
+    <?php echo $__env->yieldPushContent('styles'); ?>
+    <?php echo \Livewire\Livewire::styles(); ?>
+
 
 </head>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <!-- <script src="/js/jquery-3.6.4.min.js"></script> -->
     
-    <body class="hold-transition sidebar-mini {{ setting('sidebar_collapse') ? 'sidebar-collapse' : '' }}">
+    <body class="hold-transition sidebar-mini <?php echo e(setting('sidebar_collapse') ? 'sidebar-collapse' : ''); ?>">
     <div class="wrapper">
-    @auth
-        @livewire('layouts.navbar-in')
+    <?php if(auth()->guard()->check()): ?>
+        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('layouts.navbar-in')->html();
+} elseif ($_instance->childHasBeenRendered('DoOB8jm')) {
+    $componentId = $_instance->getRenderedChildComponentId('DoOB8jm');
+    $componentTag = $_instance->getRenderedChildComponentTagName('DoOB8jm');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('DoOB8jm');
+} else {
+    $response = \Livewire\Livewire::mount('layouts.navbar-in');
+    $html = $response->html();
+    $_instance->logRenderedChild('DoOB8jm', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
          <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('layouts.partials.aside_mk')
+        <?php echo $__env->make('layouts.partials.aside_mk', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            {{ $slot }}
+            <?php echo e($slot); ?>
+
         </div>
         <!-- /.content-wrapper -->
 
@@ -54,12 +70,26 @@
 
         <!-- Main Footer -->
         
-        @livewire('layouts.footer')
+        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('layouts.footer')->html();
+} elseif ($_instance->childHasBeenRendered('m23gndd')) {
+    $componentId = $_instance->getRenderedChildComponentId('m23gndd');
+    $componentTag = $_instance->getRenderedChildComponentTagName('m23gndd');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('m23gndd');
+} else {
+    $response = \Livewire\Livewire::mount('layouts.footer');
+    $html = $response->html();
+    $_instance->logRenderedChild('m23gndd', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
     </div>
     </body>
 
     <!-- ./wrapper -->
-    @endauth
+    <?php endif; ?>
     
 
 </html>
@@ -70,12 +100,13 @@
 <!-- <script src="/js/bootstrap.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/jquery-3.6.4.min.js"></script> -->
-@stack('js')
-@stack('before-livewire-scripts')
-<livewire:scripts />
-@stack('after-livewire-scripts')
+<?php echo $__env->yieldPushContent('js'); ?>
+<?php echo $__env->yieldPushContent('before-livewire-scripts'); ?>
+<?php echo \Livewire\Livewire::scripts(); ?>
 
-@stack('alpine-plugins')
+<?php echo $__env->yieldPushContent('after-livewire-scripts'); ?>
+
+<?php echo $__env->yieldPushContent('alpine-plugins'); ?>
 <!-- Alpine Core -->
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -83,3 +114,4 @@
 
 
 
+<?php /**PATH C:\Users\typej\Documents\git\panexpres-1\resources\views/layouts/app.blade.php ENDPATH**/ ?>

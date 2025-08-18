@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ApiController;
 
 use App\Http\Controllers\Api\ApiProcessPaymentController;
 
+use App\Http\Livewire\Pagomovil\ListPagomovil;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,5 +46,7 @@ Route::apiResource('processpayment', ApiProcessPaymentController::class);
 //         'message' => 'Datos recibidos correctamente', 'received_data' => $data
 //     ]);
 // });
+
+Route::post('/capturarPagomovil', [ListPagomovil::class, 'capturarPagomovil']);
 
 
