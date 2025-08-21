@@ -46,18 +46,18 @@ class LoginMikrotik extends Controller
             ->equal('name', $username)
             ->equal('password', $password);
 
-        // try {
-        //     // Ejecutar la consulta de login
-        //     $response = $client->query($query)->read();
-        //     // Verificar la respuesta para confirmar el éxito
-        //     if (!empty($response) && isset($response['!trap'])) 
-        //     {
-        //         return 'Error de autenticación: ' . $response['!trap'][0]['message'];
-        //     }
-        //     return "Inicio de sesión exitoso para {$username}.";
-        // } catch (Exception $e) {
-        //     return 'Error al conectar con MikroTik: ' . $e->getMessage();
-        // }
+        try {
+            // Ejecutar la consulta de login
+            $response = $client->query($query)->read();
+            // Verificar la respuesta para confirmar el éxito
+            if (!empty($response) && isset($response['!trap'])) 
+            {
+                return 'Error de autenticación: ' . $response['!trap'][0]['message'];
+            }
+            return "Inicio de sesión exitoso para {$username}.";
+        } catch (Exception $e) {
+            return 'Error al conectar con MikroTik: ' . $e->getMessage();
+        }
     }
 
     public function accesoMikrotik()
