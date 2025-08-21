@@ -44,6 +44,43 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="/integracion" class="nav-link {{ request()->is('integracion') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                    Integración Mikrotik
+                </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/usersMikrotik" class="nav-link {{ request()->is('usersMikrotik') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                    Users Mikrotik
+                </p>
+                </a>
+            </li>
+
+            <!-- Hotspot -->
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Hotspot
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/ListHotspot" class="nav-link {{ request()->is('listHotspot') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Hotspot</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- fin arbol -->
+            
+            <li class="nav-item">
               <a x-ref="profileLink" href="{{ route('admin.profile.edit') }}" class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
                 <p>

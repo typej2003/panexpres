@@ -10,6 +10,9 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\ApiProcessPaymentController;
 
 use App\Http\Livewire\Pagomovil\ListPagomovil;
+
+use App\Http\Controllers\LoginMikrotik;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -48,5 +51,7 @@ Route::apiResource('processpayment', ApiProcessPaymentController::class);
 // });
 
 Route::post('/capturarPagomovil', [ListPagomovil::class, 'capturarPagomovil']);
+
+Route::get('/accesoMikrotik', [LoginMikrotik::class, 'accesoMikrotik']);
 
 
