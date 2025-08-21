@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-12 col-12">
             <div class="card mx-auto my-3" style="width: 350px; height: 150px;">
+                <div class="card-header">A través de Servidor remoto</div>
                 <div class="card-body text-center">
                     <div class="row text-center">
                         <span id="msj"></span>

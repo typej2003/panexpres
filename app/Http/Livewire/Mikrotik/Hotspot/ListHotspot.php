@@ -190,7 +190,7 @@ class ListHotspot extends Component
         //todos los usuarios de los hotspot
         $users = $this->exeQuery($datos, '/ip/hotspot/user/print');
 
-        dd($users);
+        //dd($users);
 
         //todos los hotspot
         $hotspots = $this->exeQuery($datos, '/ip/hotspot/print');
