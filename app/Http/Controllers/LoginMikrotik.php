@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use RouterOS\Client;
 use RouterOS\Query;
 
@@ -41,6 +42,9 @@ class LoginMikrotik extends Controller
             'user' => 'admin',
             'pass' => 'admin123'
         ];
+
+        $client = new Client($datos);
+        
         // Crear la consulta para iniciar sesión
         $query = (new Query('/login'))
             ->equal('name', $username)
