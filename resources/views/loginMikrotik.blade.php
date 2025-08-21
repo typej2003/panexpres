@@ -1,8 +1,6 @@
-<html>
-    <head>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-    </head>
-<body>
+
+<div>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <div>
     <div class="row">
         <div class="col-md-12 col-12">
@@ -17,7 +15,6 @@
         </div>
     </div>
 </div>
-</body>
 <script>
     window.onload = function() {
         let btnLogin = document.querySelector('.btnLogin')
@@ -47,4 +44,4 @@
         })
     }
 </script>
-</html>
+</div>
