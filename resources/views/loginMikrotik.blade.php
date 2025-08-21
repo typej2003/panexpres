@@ -20,8 +20,8 @@
         let btnLogin = document.querySelector('.btnLogin')
         
         btnLogin.addEventListener('click', ()=> {
-            //fetch('https://panexpres.com/api/accesoMikrotik')
-            fetch('http://127.0.0.1:8000/api/accesoMikrotik')
+            //fetch('http://127.0.0.1:8000/api/accesoMikrotik')
+            fetch('https://panexpres.com/api/accesoMikrotik')
             .then(response => response.json())
             //.then(data => console.log(data))
             .then(data => {   
