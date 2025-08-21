@@ -39,7 +39,6 @@
             .catch(error => {
                 console.error('Error:', error)
                 msj.innerHTML = 'Error:' + error
-                btnEnviarPagomovil.disabled = false;
             });
         })
     }
