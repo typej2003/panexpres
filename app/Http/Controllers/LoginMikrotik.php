@@ -55,7 +55,7 @@ class LoginMikrotik extends Controller
                 return 'Error de autenticación: ' . $response['!trap'][0]['message'];
             }
             return "Inicio de sesión exitoso para {$username}.";
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return 'Error al conectar con MikroTik: ' . $e->getMessage();
         }
     }
