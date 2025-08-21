@@ -67,7 +67,7 @@ class LoginMikrotik extends Controller
         $username = 'Jose';
         $password = '123';
         // $this->crearUsuarioHotspot($username, $password, $profile = 'default');
-        // $this->iniciarSesionHotspot($username, $password);
+        $this->iniciarSesionHotspot($username, $password);
         
         $data = ['valor' => "Operacion exitosa a traves de api!", 'success' => true ];
         return response()->json($data);
