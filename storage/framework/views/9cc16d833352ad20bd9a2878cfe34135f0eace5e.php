@@ -49,7 +49,7 @@
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">
-                                                <button wire:click.prevent="addNewUserHotspot('<?php echo e($array['name']); ?>')" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Usuario</button>
+                                                <button wire:click.prevent="addNewUserHotspot('<?php echo e($array['name']); ?>')" class="btn btn-primary"><i class="fa fa-users"></i> Nuevo (<?php echo e($this->cantUsershotspots($array['name'])); ?>)</button>
                                                 <button class="btn btn-success">Activos</button>
                                             </div>
                                         </div>

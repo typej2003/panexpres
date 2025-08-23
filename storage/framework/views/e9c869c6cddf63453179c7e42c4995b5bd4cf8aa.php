@@ -76,6 +76,12 @@
                     <p>Hotspot</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="/crearTicket" class="nav-link <?php echo e(request()->is('crearTicket') ? 'active' : ''); ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear Ticket</p>
+                  </a>
+                </li>
               </ul>
             </li>
             <!-- fin arbol -->

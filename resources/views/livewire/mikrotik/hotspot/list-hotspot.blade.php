@@ -38,7 +38,7 @@
                                                 @endforeach
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">
-                                                <button wire:click.prevent="addNewUserHotspot('{{ $array['name'] }}')" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Usuario</button>
+                                                <button wire:click.prevent="addNewUserHotspot('{{ $array['name'] }}')" class="btn btn-primary"><i class="fa fa-users"></i> Nuevo ({{$this->cantUsershotspots($array['name'])}})</button>
                                                 <button class="btn btn-success">Activos</button>
                                             </div>
                                         </div>

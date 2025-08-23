@@ -21,6 +21,7 @@ class ListHotspot extends Component
     public $namesProfilesUser = [];
     public $usersHotspot = [];
     public $nameshotspots = [];
+    public $namesUsershotspots = [];
 
     public function exeQuery($datos, $query)
     {
@@ -190,6 +191,10 @@ class ListHotspot extends Component
         //todos los usuarios de los hotspot
         $users = $this->exeQuery($datos, '/ip/hotspot/user/print');
 
+        $this->namesUsershotspots = $users;
+
+        //dd($this->cantUsershotspots('hotspot1'));
+        //dd($this->cantUserstrial());        
         //dd($users);
 
         //todos los hotspot
@@ -211,5 +216,38 @@ class ListHotspot extends Component
         // }
 
         return view('livewire.mikrotik.hotspot.list-hotspot', ['result' => $hotspots, 'datos' => $datos]);
+    }
+
+    public function cantUsershotspots($hotspot)
+    {
+        $cant = 0;
+        $cantTrial = 0;
+
+        foreach ($this->namesUsershotspots as $elementos) {            
+            if(array_key_exists('server', $elementos))
+            {
+                if($elementos['server'] == $hotspot){
+                    $cant++;
+                }                
+            }
+            else{
+                $cantTrial++;
+            }
+        }
+        return $cant;
+    }
+
+    public function cantUserstrial()
+    {
+        $cant = 0;
+        $cantTrial = 0;
+
+        foreach ($this->namesUsershotspots as $elementos) {            
+            if(!array_key_exists('server', $elementos))
+            {            
+                $cant++;     
+            }
+        }
+        return $cant;
     }
 }
