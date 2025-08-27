@@ -36,7 +36,7 @@ Route::post('datos', [ApiController::class, 'recibirDatosApi']);
 Route::apiResource('enviardatos', EnviarDatos::class);
 
 //Crear usuario e iniciar sesion
-Route::apiResource('createUserSession', CreateUser::class);
+Route::get('createUserSession', [CreateUser::class, 'index']);
 
 Route::apiResource('apiuser', ApiController::class);
 
