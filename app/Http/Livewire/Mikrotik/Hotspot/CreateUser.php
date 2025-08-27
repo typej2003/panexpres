@@ -31,31 +31,37 @@ class CreateUser extends Component
         $username = 'usuarioPrueba';
         $password = '12345';
 
-		$this->crearUsuarioHotspot($username, $password, $profile = 'default');
+		$response = $this->crearUsuarioHotspot($username, $password, $profile = 'default');
 
-        //$response = $this->iniciarSesionHotspot($username, $password);
-
-        $data = ['valor' => "Operacion exitosa, usuario creado!"];
-        return response()->json($data);
-
-        
-
+        if($response)
+        {
+            //$response = $this->iniciarSesionHotspot($username, $password);
+            $data = ['valor' => "Operacion exitosa, usuario creado!", 'success' => true];
+            return response()->json($data);
+        }else{
+            $data = ['valor' => "Fallo creacion de usuario!", 'success' => false];
+            return response()->json($data);
+        }
 
 	}
 
     public function crearUsuarioHotspot($username, $password, $profile = 'default')
     {
-        // Conexión al dispositivo MikroTik
-        $client = new Client($this->datos);
+        try {
+            // Conexión al dispositivo MikroTik
+            $client = new Client($this->datos);
 
-        // Crear la consulta para añadir el usuario
-        $query = (new Query('/ip/hotspot/user/add'))
-            ->equal('name', $username)
-            ->equal('password', $password)
-            ->equal('profile', $profile); // Asigna un perfil, 'default' por defecto
-        // Ejecutar la consulta
-        $client->query($query)->read();
-        return true;
+            // Crear la consulta para añadir el usuario
+            $query = (new Query('/ip/hotspot/user/add'))
+                ->equal('name', $username)
+                ->equal('password', $password)
+                ->equal('profile', $profile); // Asigna un perfil, 'default' por defecto
+            // Ejecutar la consulta
+            $client->query($query)->read();
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
 
@@ -83,13 +89,9 @@ class CreateUser extends Component
                 ], 200);
                 
             }
-            return "Inicio de sesión exitoso para {$username}.";
+            return true;
         } catch (\Exception $e) {
-            $msj =  'Error al conectar con MikroTik: ' . $e->getMessage();
-            return response()->json([
-                    'message' => $msj,
-                    'status' => false,
-                ], 401);
+            return false;
         }
     }
 
