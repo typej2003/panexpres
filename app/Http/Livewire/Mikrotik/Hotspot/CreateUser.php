@@ -18,14 +18,14 @@ class CreateUser extends Component
     public function index()
     {
         //
-        $data = ['valor' => "Operacion exitosa a traves de api!", ];
+        $data = ['valor' => "Operacion exitosa a traves de api! con index", ];
         return response()->json($data);
     }
     
     public function addNew()
 	{
         //esto es un ejemplo
-        $data = ['valor' => "Operacion exitosa a traves de api!", ];
+        $data = ['valor' => "Operacion exitosa a traves de api! con addNew", ];
         return response()->json($data);
         
         $username = 'usuarioPrueba';
