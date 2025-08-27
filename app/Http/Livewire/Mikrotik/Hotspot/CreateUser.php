@@ -18,6 +18,9 @@ class CreateUser extends Component
 
     public function addNew()
 	{
+        $data = ['valor' => "Operacion exitosa a traves de api!", ];
+        return response()->json($data);
+        
         $username = 'usuarioPrueba';
         $password = '12345';
 
@@ -25,7 +28,7 @@ class CreateUser extends Component
 
         //$response = $this->iniciarSesionHotspot($username, $password);
 
-        $data = ['valor' => "Operacion exitosa, usuario creado!", 'success' => true ];
+        $data = ['valor' => "Operacion exitosa, usuario creado!"];
         return response()->json($data);
 
         
