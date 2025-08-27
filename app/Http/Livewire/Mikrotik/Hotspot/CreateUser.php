@@ -25,8 +25,8 @@ class CreateUser extends Component
     public function addNew()
 	{
         //esto es un ejemplo
-        $data = ['valor' => "Operacion exitosa a traves de api! con addNew", ];
-        return response()->json($data);
+        // $data = ['valor' => "Operacion exitosa a traves de api! con addNew", ];
+        // return response()->json($data);
         
         $username = 'usuarioPrueba';
         $password = '12345';
