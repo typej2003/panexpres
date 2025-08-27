@@ -59,7 +59,7 @@ class CreateUser extends Component
             // Ejecutar la consulta
             $client->query($query)->read();
             return true;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }
