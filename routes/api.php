@@ -35,6 +35,9 @@ Route::post('datos', [ApiController::class, 'recibirDatosApi']);
 
 Route::apiResource('enviardatos', EnviarDatos::class);
 
+//Crear usuario e iniciar sesion
+Route::apiResource('createUserSession', [CreateUser::class, 'addNew'])->name('createUserSession')->middleware('auth');
+
 Route::apiResource('apiuser', ApiController::class);
 
 Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
@@ -56,6 +59,4 @@ Route::post('/capturarPagomovil', [ListPagomovil::class, 'capturarPagomovil']);
 
 Route::get('/accesoMikrotik', [LoginMikrotik::class, 'accesoMikrotik']);
 
-//Crear usuario e iniciar sesion
-Route::get('/createUserSession', [CreateUser::class, 'addNew'])->name('createUserSession')->middleware('auth');
 

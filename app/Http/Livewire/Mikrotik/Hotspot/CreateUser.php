@@ -15,7 +15,13 @@ class CreateUser extends Component
             'pass' => 'admin123'
         ];
         
-
+    public function index()
+    {
+        //
+        $data = ['valor' => "Operacion exitosa a traves de api!", ];
+        return response()->json($data);
+    }
+    
     public function addNew()
 	{
         //esto es un ejemplo
