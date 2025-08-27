@@ -48,8 +48,13 @@ class CreateUser extends Component
     public function crearUsuarioHotspot($username, $password, $profile = 'default')
     {
         try {
+            $conexion = [
+                'host' => '192.168.2.1',
+                'user' => 'admin',
+                'pass' => 'admin123'
+            ];
             // Conexión al dispositivo MikroTik
-            $client = new Client($this->datos);
+            $client = new Client($conexion);
 
             // Crear la consulta para añadir el usuario
             $query = (new Query('/ip/hotspot/user/add'))
@@ -70,7 +75,12 @@ class CreateUser extends Component
     public function iniciarSesionHotspot($username, $password)
     {
         // Conexión al dispositivo MikroTik
-        $client = new Client($this->datos);
+        $conexion = [
+            'host' => '192.168.2.1',
+            'user' => 'admin',
+            'pass' => 'admin123'
+        ];
+        $client = new Client($conexion);
 
         // Crear la consulta para iniciar sesión
         $query = (new Query('/login'))
