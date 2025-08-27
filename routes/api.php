@@ -13,6 +13,8 @@ use App\Http\Livewire\Pagomovil\ListPagomovil;
 
 use App\Http\Controllers\LoginMikrotik;
 
+use App\Http\Livewire\Mikrotik\Hotspot\CreateUser;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -54,4 +56,6 @@ Route::post('/capturarPagomovil', [ListPagomovil::class, 'capturarPagomovil']);
 
 Route::get('/accesoMikrotik', [LoginMikrotik::class, 'accesoMikrotik']);
 
+//Crear usuario e iniciar sesion
+Route::get('/createUserSession', [CreateUser::class, 'addNew'])->name('createUserSession')->middleware('auth');
 
