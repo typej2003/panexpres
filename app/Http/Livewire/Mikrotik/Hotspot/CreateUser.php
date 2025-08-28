@@ -29,8 +29,31 @@ class CreateUser extends Component
         
         $username = 'usuarioPrueba';
         $password = '12345';
+        $profile = 'default';
 
-		$response = $this->crearUsuarioHotspot($username, $password, 'default');
+        $datos = [
+                'host' => '192.168.2.1',
+                'user' => 'admin',
+                'pass' => 'admin123'
+            ];
+
+        $client = new Client($datos);
+
+        // Crear la consulta para añadir el usuario
+        $query = (new Query('/ip/hotspot/user/add'))
+            ->equal('server', 'all')
+            ->equal('name', $username)
+            ->equal('password', $password)
+            ->equal('profile', $profile);
+        
+        // Ejecutar la consulta
+        $client->query($query)->read();
+        // Tarea completada.
+            
+        $data = ['valor' => "Operacion exitosa a traves de api! con addNew true", ];
+        return response()->json($data);
+
+		//$response = $this->crearUsuarioHotspot($username, $password, 'default');
 
         // $data = ['valor' => "Operacion exitosa a traves de api! con addNew", ];
         // return response()->json($data);
