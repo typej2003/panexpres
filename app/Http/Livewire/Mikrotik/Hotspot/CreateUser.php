@@ -37,38 +37,22 @@ class CreateUser extends Component
                 'pass' => 'admin123'
             ];
 
-        $client = new Client($datos);
+        // $client = new Client($datos);
 
-        // Crear la consulta para añadir el usuario
-        $query = (new Query('/ip/hotspot/user/add'))
-            ->equal('server', 'all')
-            ->equal('name', $username)
-            ->equal('password', $password)
-            ->equal('profile', $profile);
+        // // Crear la consulta para añadir el usuario
+        // $query = (new Query('/ip/hotspot/user/add'))
+        //     ->equal('server', 'all')
+        //     ->equal('name', $username)
+        //     ->equal('password', $password)
+        //     ->equal('profile', $profile);
         
-        // Ejecutar la consulta
-        $client->query($query)->read();
-        // Tarea completada.
+        // // Ejecutar la consulta
+        // $client->query($query)->read();
+        // // Tarea completada.
             
         $data = ['valor' => "Operacion exitosa a traves de api! con addNew true", ];
         return response()->json($data);
-
-		//$response = $this->crearUsuarioHotspot($username, $password, 'default');
-
-        // $data = ['valor' => "Operacion exitosa a traves de api! con addNew", ];
-        // return response()->json($data);
-
-        if($response)
-        {
-            //$response = $this->iniciarSesionHotspot($username, $password);
-            // $data = ['valor' => "Operacion exitosa, usuario creado!", ];
-            $data = ['valor' => "Operacion exitosa a traves de api! con addNew true", ];
-            return response()->json($data);
-        }else{
-            // $data = ['valor' => "Fallo creacion de usuario!"];
-            $data = ['valor' => "Fallido a traves de api! con addNew false", ];
-            return response()->json($data);
-        }
+        
 
 	}
 
