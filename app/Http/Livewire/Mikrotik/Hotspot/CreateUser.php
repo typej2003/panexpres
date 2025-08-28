@@ -32,8 +32,8 @@ class CreateUser extends Component
 
 		$response = $this->crearUsuarioHotspot($username, $password, 'default');
 
-        $data = ['valor' => "Operacion exitosa a traves de api! con addNew", ];
-        return response()->json($data);
+        // $data = ['valor' => "Operacion exitosa a traves de api! con addNew", ];
+        // return response()->json($data);
 
         if($response)
         {
@@ -52,6 +52,9 @@ class CreateUser extends Component
     public function crearUsuarioHotspot($username, $password, $profile = 'default')
     {
         try {
+
+            $data = ['valor' => "Operacion exitosa a traves de api! con addNew crearUsuarioHotspot", ];
+            return response()->json($data);
             
             $datos = [
                 'host' => '192.168.2.1',
