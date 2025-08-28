@@ -61,10 +61,10 @@ class CreateUser extends Component
 
             // Crear la consulta para añadir el usuario
             $query = (new Query('/ip/hotspot/user/add'))
-                ->equal('server', $validatedData['serverUH'])
-                ->equal('name', $validatedData['nameUH'])
-                ->equal('password', $validatedData['password'])
-                ->equal('profile', $validatedData['profileUH']);
+                ->equal('server', 'all')
+                ->equal('name', $username)
+                ->equal('password', $password)
+                ->equal('profile', $profile);
             
             // Ejecutar la consulta
             $client->query($query)->read();
