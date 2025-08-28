@@ -31,7 +31,7 @@ class CreateUser extends Component
         $username = 'usuarioPrueba';
         $password = '12345';
 
-		$response = $this->crearUsuarioHotspot($username, $password, $profile = 'default');
+		$response = $this->crearUsuarioHotspot($username, $password, 'default');
 
         if($response)
         {
