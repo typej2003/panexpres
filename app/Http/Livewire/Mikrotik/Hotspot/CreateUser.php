@@ -50,25 +50,31 @@ class CreateUser extends Component
     public function crearUsuarioHotspot($username, $password, $profile = 'default')
     {
         try {
-            $conexion = [
+            
+            $datos = [
                 'host' => '192.168.2.1',
                 'user' => 'admin',
                 'pass' => 'admin123'
             ];
-            // Conexión al dispositivo MikroTik
-            $client = new Client($conexion);
+
+            $client = new Client($datos);
 
             // Crear la consulta para añadir el usuario
             $query = (new Query('/ip/hotspot/user/add'))
-                ->equal('name', $username)
-                ->equal('password', $password)
-                ->equal('profile', $profile); // Asigna un perfil, 'default' por defecto
+                ->equal('server', $validatedData['serverUH'])
+                ->equal('name', $validatedData['nameUH'])
+                ->equal('password', $validatedData['password'])
+                ->equal('profile', $validatedData['profileUH']);
+            
             // Ejecutar la consulta
             $client->query($query)->read();
+            // Tarea completada.
+
             return true;
         } catch (Exception $e) {
             return false;
-        }
+            
+        } 
     }
 
 
