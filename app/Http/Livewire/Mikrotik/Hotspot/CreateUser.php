@@ -36,10 +36,10 @@ class CreateUser extends Component
         if($response)
         {
             //$response = $this->iniciarSesionHotspot($username, $password);
-            $data = ['valor' => "Operacion exitosa, usuario creado!", 'success' => true];
+            $data = ['valor' => "Operacion exitosa, usuario creado!"];
             return response()->json($data);
         }else{
-            $data = ['valor' => "Fallo creacion de usuario!", 'success' => false];
+            $data = ['valor' => "Fallo creacion de usuario!"];
             return response()->json($data);
         }
 
