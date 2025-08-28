@@ -37,22 +37,22 @@ class CreateUser extends Component
                 'pass' => 'admin123'
             ];
 
-        // $client = new Client($datos);
+        $client = new Client($datos);
 
-        // // Crear la consulta para añadir el usuario
-        // $query = (new Query('/ip/hotspot/user/add'))
-        //     ->equal('server', 'all')
-        //     ->equal('name', $username)
-        //     ->equal('password', $password)
-        //     ->equal('profile', $profile);
+        // Crear la consulta para añadir el usuario
+        $query = (new Query('/ip/hotspot/user/add'))
+            ->equal('server', 'all')
+            ->equal('name', $username)
+            ->equal('password', $password)
+            ->equal('profile', $profile);
         
-        // // Ejecutar la consulta
-        // $client->query($query)->read();
-        // // Tarea completada.
+        // Ejecutar la consulta
+        $client->query($query)->read();
+        // Tarea completada.
             
-        $data = ['valor' => "Operacion exitosa a traves de api! con addNew true", ];
+        $data = ['valor' => "Operacion exitosa a traves de api! con addNew", ];
         return response()->json($data);
-        
+
 
 	}
 
