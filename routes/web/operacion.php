@@ -99,7 +99,7 @@ Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
     
     //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
 
-    //return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio', 'nropedido') );
+    return view('externalviews.pagosatisfactorioMikrotik' );
 });
 
 

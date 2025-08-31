@@ -40,10 +40,10 @@ class ApiProcessPaymentController extends Controller
         // $Payment->urlToReturn= "https://ddrsistemas.com/pasarelape/procesado.php";
 
 		//usado para panexpres.com
-        $Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";	
+        //$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";	
 
 		//usado para Mikrotik
-		// $Payment->urlToReturn= "https://panexpres.com/pagosatisfactorioMikrotik/{ID}";
+		$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorioMikrotik/{ID}";
 
         $Payment->rifLetter= $request->post('rifLetter') ?? ''; //Letra de la cédula - V, E o P
         $Payment->rifNumber= $request->post('rifNumber') ?? ''; //Número de cédula
