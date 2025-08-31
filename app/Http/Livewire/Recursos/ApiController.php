@@ -139,7 +139,7 @@ class ApiController extends Component
 
 	public function ChequePago(Request $request){
                 
-        $demo = "NO";
+        $demo = "SI";
         
             //Instanciación de la API de pago con usuario y clave
 
