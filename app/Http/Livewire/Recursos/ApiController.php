@@ -13,6 +13,7 @@ use App\Models\PedidoDetalles;
 use App\Models\PedidoTemporal;
 use App\Models\PedidoDetallesTemporal;
 use App\Models\Transaccion;
+use App\Models\Pagomovil;
 
 class ApiController extends Component
 {
@@ -270,6 +271,48 @@ class ApiController extends Component
 
         }
     }
+
+	public function registrarReferenciaMikrotik($id)
+    {
+        $token = $id;
+
+		$demo = "NO";
+		if( $demo == "SI" ){                
+			$PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
+		} else {
+			$PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
+		}
+		
+		$datos = $PaymentProcess->checkPayment($token);
+        //$datos = $this->SearchPayment($token);
+    
+        if($datos->success == 'true')
+        {
+          $reference = $datos->reference;
+    
+          //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
+    
+          //$pedido = Pedido::find($pedido_id);
+		  $pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
+
+		  $pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->first();
+    
+          $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
+
+			$transaccion = Pagomovil::create([
+				'referencia' => $datos->reference,
+				'telefono' => '',
+				'banco' => 'BDVPasarela',
+				'monto' => $datos->amount,
+				'status' => 'PAGADO',
+				'token' => $token,
+          	]);
+
+            return $token;
+
+        }
+    }
+
 }
 
 class IpgBdv2

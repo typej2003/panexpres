@@ -31,6 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">User</th>
                                         <th scope="col">
                                             Referencia
                                             <span wire:click="sortBy('referencia')" class="float-right text-sm" style="cursor: pointer;">
@@ -55,9 +56,8 @@
                                     @forelse ($pagomoviles as $index => $pago)
                                     <tr>
                                         <th scope="row">{{ $pagomoviles->firstItem() + $index }}</th>
-                                        <td>
-                                            {{ $pago->referencia }}
-                                        </td>
+                                        <td>{{ $pago->user }}</td>
+                                        <td>{{ $pago->referencia }}</td>
                                         <td>{{ $pago->banco }}</td>
                                         <td>{{ $pago->telefono }}</td>
                                         <td>{{ $pago->monto }}</td>
@@ -69,6 +69,10 @@
                                             </select>
                                         </td>
                                         <td>
+                                            <a class="btn btn-success" href="" wire:click.prevent="activarUsuario({{ $pago }})">
+                                                Activar usuario
+                                            </a>
+
                                             <a href="" wire:click.prevent="edit({{ $pago }})">
                                                 <i class="fa fa-edit mr-2"></i>
                                             </a>

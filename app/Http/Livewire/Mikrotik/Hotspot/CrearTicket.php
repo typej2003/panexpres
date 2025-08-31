@@ -26,7 +26,7 @@ class CrearTicket extends Component
     public $showEditModal = false;
 
     public $datos = [
-        'host' => '192.168.1.2',
+        'host' => '192.168.2.1',
         'user' => 'admin',
         'pass' => 'admin123'
     ];
@@ -93,7 +93,7 @@ class CrearTicket extends Component
                 $username = 'user' . str_pad($i + 1, 2, '0', STR_PAD_LEFT);
                 
                 // Genera la contraseña de 8 dígitos
-                $password = $this->generatePassword();
+                $password = $this->randomPassword();
 
                 //dd($validatedData['server']);
                 
@@ -161,6 +161,18 @@ class CrearTicket extends Component
 
         return $password;
     }
+
+    private function randomPassword() {
+		// $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+		$alphabet = '1234567890';
+		$pass = array(); //remember to declare $pass as an array
+		$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+		for ($i = 0; $i < 8; $i++) {
+			$n = rand(0, $alphaLength);
+			$pass[] = $alphabet[$n];
+		}
+		return implode($pass); //turn the array into a string
+	}
 
     public function showUsersHotspot()
     {

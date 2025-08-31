@@ -79,6 +79,29 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
     return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio', 'nropedido') );
 });
 
+Route::get('/pagosatisfactorio/{id}', function ( $id ) {
+    $id_suc = $id;
+    //$pasarela = Pasarela();
+    $result = new ApiController();
+    $result->registrarReferencia($id);
+    
+    //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
+
+    return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio', 'nropedido') );
+});
+
+// Operaciones para la pasarela del mikrotik
+Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
+    $id_suc = $id;
+    //$pasarela = Pasarela();
+    $result = new ApiController();
+    $result->registrarReferenciaMikrotik($id);
+    
+    //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
+
+    //return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio', 'nropedido') );
+});
+
 
 Route::get('/procesadoC', Procesado::class,)->name('procesadoC');
 

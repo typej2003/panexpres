@@ -19,6 +19,8 @@ class Pagomovil extends Model
         'banco',
         'monto',
         'status',
+        'user',
+        'plan',
     ];
 
     public function comercios()

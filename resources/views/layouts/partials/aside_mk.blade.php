@@ -88,6 +88,12 @@
                     <p>Crear Usuario</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="/listPlanesHotspot" class="nav-link {{ request()->is('listPlanesHotspot') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Planes (Perfil usuario)</p>
+                  </a>
+                </li>
               </ul>
             </li>
             <!-- fin arbol -->

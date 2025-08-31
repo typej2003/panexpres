@@ -28,7 +28,9 @@ class ApiProcessPaymentController extends Controller
         $Payment->title= $request->post('title'); //Titulo para el pago, Ej: Servicio de Cable
         $Payment->description= $request->post('description'); //Descripción del pago, Ej: Abono mes de marzo 2017
         $Payment->email= $request->post('email');
-        $Payment->cellphone= $request->post('cellphone');        
+        $Payment->cellphone= $request->post('cellphone');    
+		
+		$user = $request->post('user');
 		
         //$Payment->urlToReturn= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
 
@@ -36,7 +38,12 @@ class ApiProcessPaymentController extends Controller
 
         //$Payment->urlToReturn= "http://localhost:8585/";
         // $Payment->urlToReturn= "https://ddrsistemas.com/pasarelape/procesado.php";
-        $Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";	
+
+		//usado para panexpres.com
+        //$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";	
+
+		//usado para Mikrotik
+		$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorioMikrotik/{ID}";
 
         $Payment->rifLetter= $request->post('rifLetter') ?? ''; //Letra de la cédula - V, E o P
         $Payment->rifNumber= $request->post('rifNumber') ?? ''; //Número de cédula

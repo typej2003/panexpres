@@ -15,7 +15,7 @@ class EnviarDatos extends Controller
     public function index()
     {
         //
-        $data = ['valor' => "Operacion exitosa a traves de api!", ];
+        $data = ['valor' => "Operacion exitosa a traves de api!", 'status' => true];
         return response()->json($data);
     }
 
