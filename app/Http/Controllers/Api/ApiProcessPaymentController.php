@@ -48,7 +48,7 @@ class ApiProcessPaymentController extends Controller
         $Payment->rifLetter= $request->post('rifLetter') ?? ''; //Letra de la cédula - V, E o P
         $Payment->rifNumber= $request->post('rifNumber') ?? ''; //Número de cédula
 		
-		$demo = "SI";
+		$demo = "NO";
 
         if( $demo == "SI" ) {
             $PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");

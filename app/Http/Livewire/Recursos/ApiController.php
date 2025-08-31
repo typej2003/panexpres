@@ -139,7 +139,7 @@ class ApiController extends Component
 
 	public function ChequePago(Request $request){
                 
-        $demo = "SI";
+        $demo = "NO";
         
             //Instanciación de la API de pago con usuario y clave
 
@@ -276,7 +276,7 @@ class ApiController extends Component
     {
         $token = $id;
 
-		$demo = "SI";
+		$demo = "NO";
 		if( $demo == "SI" ){                
 			$PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
 		} else {
