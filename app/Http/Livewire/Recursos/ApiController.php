@@ -276,7 +276,7 @@ class ApiController extends Component
     {
         $token = $id;
 
-		$demo = "NO";
+		$demo = "SI";
 		if( $demo == "SI" ){                
 			$PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
 		} else {
