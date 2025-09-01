@@ -21,6 +21,7 @@ class Pagomovil extends Model
         'status',
         'user',
         'plan',
+        'externalcomment',
     ];
 
     public function comercios()
