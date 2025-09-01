@@ -121,13 +121,6 @@ class MikrotikPasarelaController extends Controller
         {
           $reference = $datos->reference;
     
-          //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
-    
-          //$pedido = Pedido::find($pedido_id);
-		  $pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
-
-		  $pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->first();
-    
           $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
 
 			$transaccion = Pagomovil::create([
