@@ -135,6 +135,7 @@ class MikrotikPasarelaController extends Controller
                 'externalcomment' => json_encode($datos) . '/ '.$_SERVER['REMOTE_ADDR'],
 				'status' => 'PAGADO',
 				'token' => $token,
+                'datos' => $datos,
           	]);
 
         //     $transaccion = Transaccion::create([
