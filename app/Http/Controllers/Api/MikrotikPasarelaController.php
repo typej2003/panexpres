@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\IpgBdv2;
 use App\Http\Controllers\Api\IpgBdvPaymentResponse;
 use App\Http\Controllers\Api\IpgBdvCheckPaymentResponse;
 
+use App\Models\Pagomovil;
+
 use Illuminate\Http\Request;
 
 class MikrotikPasarelaController extends Controller
