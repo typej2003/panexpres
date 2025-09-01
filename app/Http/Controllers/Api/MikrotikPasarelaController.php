@@ -82,7 +82,9 @@ class MikrotikPasarelaController extends Controller
              echo json_encode($response);
         }
 		/*
-		*/		
+		*/	
+        $remote_addr = $_SERVER['REMOTE_ADDR'];	
+
 		return response()->json([
                 // 'message' => 'Datos recibidos completos',
                 // 'identificationNac' => $request->post('identificationNac'),
@@ -101,7 +103,7 @@ class MikrotikPasarelaController extends Controller
 				// 'resultado' => $resultado,
 				// 'urlPayment' => $response->urlPayment,
 				'response' => $response
-            ], 200);
+            ], 200)->header('Access-Control-Allow-Origin', '*');
 		
 	}
 
