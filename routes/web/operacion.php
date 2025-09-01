@@ -17,7 +17,7 @@ use App\Http\Livewire\Afiliado\Shipping;
 use App\Http\Livewire\Carrito\Procesado;
 
 use App\Http\Livewire\Recursos\ApiController;
-use App\Http\Controllers\Api\MikrotikPasarelaController;
+
 
 use App\Http\Livewire\Recursos\ImportExportExcel;
 
@@ -78,29 +78,6 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
     $nropedido = $transaccion->nropedido;
 
     return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio', 'nropedido') );
-});
-
-Route::get('/pagosatisfactorio/{id}', function ( $id ) {
-    $id_suc = $id;
-    //$pasarela = Pasarela();
-    $result = new ApiController();
-    $result->registrarReferencia($id);
-    
-    //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
-
-    return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio', 'nropedido') );
-});
-
-// Operaciones para la pasarela del mikrotik
-Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
-    $id_suc = $id;
-    //$pasarela = Pasarela();
-    $result = new MikrotikPasarelaController();
-    $datos = $result->registrarReferenciaMikrotik($id);
-    
-    //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
-
-    return view('externalviews.pagosatisfactorioMikrotik', ['datos' => $datos] );
 });
 
 
