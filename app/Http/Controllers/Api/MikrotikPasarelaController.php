@@ -130,10 +130,9 @@ class MikrotikPasarelaController extends Controller
 				'telefono' => '04165800403',
 				'banco' => 'BDVPasarela',
 				'monto' => $datos->amount,
-                'externalcomment' => json_encode($datos),
+                'externalcomment' => json_encode($datos) . '/ '.$_SERVER['REMOTE_ADDR'],
 				'status' => 'PAGADO',
 				'token' => $token,
-                'datos' => $datos,
           	]);
 
         //     $transaccion = Transaccion::create([
