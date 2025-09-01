@@ -12,7 +12,9 @@
                     <div class="col-lg-12">
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
-                                <h1>Mikrotik</h1>
+                                <h1>Mikrotik {{$datos}} </h1>
+                                
+
                                 <h1>Operación procesada con éxito</h1>
                                 <p>
                                     Su pago esta siendo validado por nuestro equipo de venta
@@ -35,12 +37,12 @@
         <script>
             let boton = document.getElementById('salir')
             boton.addEventListener('click', function(){
-                window.parent.location.href= "/procesadoC";
+                //window.parent.location.href= "/procesadoC";
             })
 
             window.onload=function() {
                 
-                window.parent.location.href= "/procesadoC";
+                //window.parent.location.href= "/procesadoC";
                 
             }
         </script>
