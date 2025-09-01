@@ -17,17 +17,7 @@
                                 <p>
                                     Su pago esta siendo validado por nuestro equipo de venta
                                 </p>
-                                <h3>¿Qué desea hacer ahora?</h3>
-                                <p>
-                                    <a target="_parent" class="h5 text-titulo" href="/">Seguir comprando</a>
-                                </p>
-                                <p >
-                                    <a target="_parent" class="h5 text-titulo" href="/listPagomovil">Ir a Mis Pedidos</a>
-                                </p>
-                                <p>
-                                    Ponte en contacto con nuestro equipo
-                                    <a href="" target="_blank"></a> 
-                                </p>
+                                
                             </div>
                             <div class="card-footer d-flex justify-content-end">
                                 <button class="btn btn-success" id="salir">Salir</button><span id="countdown">5</span>
