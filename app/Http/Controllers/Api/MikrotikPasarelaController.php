@@ -1,209 +1,109 @@
 <?php
 
-namespace App\Http\Livewire\Recursos;
+namespace App\Http\Controllers\Api;
 
-use Livewire\Component;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\ApiProcessPaymentController;
+use App\Http\Controllers\Api\IpgBdvPaymentRequest;
+use App\Http\Controllers\Api\IpgBdv2;
+use App\Http\Controllers\Api\IpgBdvPaymentResponse;
+use App\Http\Controllers\Api\IpgBdvCheckPaymentResponse;
 
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\CartController;
-
-use App\Models\Pedido;
-use App\Models\PedidoDetalles;
-use App\Models\PedidoTemporal;
-use App\Models\PedidoDetallesTemporal;
-use App\Models\Transaccion;
-use App\Models\Pagomovil;
-
-class ApiController extends Component
+class MikrotikPasarelaController extends Controller
 {
-    public $cedula = '13053081';
-    public $sistema = 'ddrsistema';
-    public $total = '1';
-    public $referencia = '1';
-    public $celular= '1';
-    public $correo= '1';
-    public $titulo= '1';
-    public $descripcion= '1';
-
-	public $tokenId;
-
-	public $id_suc;
-
-	public function procesado(Request $request)
+    //
+    public function mikrotikPasarela(Request $request)
 	{
-		$this->tokenId = $request->get('ID');
-		return view('livewire.recursos.procesado');
+		// Accede a los datos enviados
+        $datos = $request->all();
+		
+		//Creación de solicitud de pago
+        $Payment = new IpgBdvPaymentRequest();        
+		
+		$Payment->idLetter= $request->post('identificationNac'); //Letra de la cédula - V, E o P
+        $Payment->idNumber= $request->post('identificationNumber'); //Número de cédula
+        $Payment->amount= $request->post('amount'); //Monto a combrar, DECIMAL
+        $Payment->currency= $request->post('currency'); //Moneda del pago, 0 - Bolivar Fuerte, 1 - Dolar
+        $Payment->reference= $request->post('reference'); //Código de referecia o factura
+        $Payment->title= $request->post('title'); //Titulo para el pago, Ej: Servicio de Cable
+        $Payment->description= $request->post('description'); //Descripción del pago, Ej: Abono mes de marzo 2017
+        $Payment->email= $request->post('email');
+        $Payment->cellphone= $request->post('cellphone');    
+		
+		$user = $request->post('user');
+		
+        //$Payment->urlToReturn= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
+
+		$Payment->urlToReturn= "https://"."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
+
+        //$Payment->urlToReturn= "http://localhost:8585/";
+        // $Payment->urlToReturn= "https://ddrsistemas.com/pasarelape/procesado.php";
+
+		//usado para panexpres.com
+        //$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";	
+
+		//usado para Mikrotik
+		$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorioMikrotik/{ID}";
+
+        $Payment->rifLetter= $request->post('rifLetter') ?? ''; //Letra de la cédula - V, E o P
+        $Payment->rifNumber= $request->post('rifNumber') ?? ''; //Número de cédula
+		
+		$demo = "NO";
+
+        if( $demo == "SI" ) {
+            $PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
+        } else {
+             $PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
+        }
+
+        $response = $PaymentProcess->createPayment($Payment);
+        
+        if ($response->success == true) // Se procesó correctamente y es necesario redirigir a la página de pago
+        {
+			$resultado = 'true';
+			$urlPayment = $response->urlPayment;
+			// if (strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest') { //si es ajax
+            //      header('Content-type: application/json');
+            //      echo json_encode($response);			
+            //  }
+            //  else{ //si no es ajax
+            //      header("Location: ".$response->urlPayment); //W
+            //      die();
+            //  }		
+        }
+        else
+        {
+			$resultado = 'false';
+             header('Content-type: application/json');
+             echo json_encode($response);
+        }
+		/*
+		*/		
+		return response()->json([
+                // 'message' => 'Datos recibidos completos',
+                // 'identificationNac' => $request->post('identificationNac'),
+				// 'identificationNumber' => $request->post('identificationNumber'),
+				// 'amount' => $request->post('amount'),
+				// 'currency' => $request->post('currency'),
+				// 'reference' => $request->post('reference'),
+				// 'title' => $request->post('title'),
+				// 'description' => $request->post('description'),
+				// 'email' => $request->post('email'),
+				// 'cellphone' => $request->post('cellphone'),
+				// 'cellphone1' => $request->post('cellphone1'),
+				// 'rifLetter' => $request->post('rifLetter'),
+				// 'rifNumber' => $request->post('rifNumber'),
+				// 'datos' => $datos,
+				// 'resultado' => $resultado,
+				// 'urlPayment' => $response->urlPayment,
+				'response' => $response
+            ], 200);
+		
 	}
 
-    public function render()
-    {
-        return view('livewire.recursos.Index');
-    }
-
-    public function enviarPeticion(){
-        $curl = curl_init();
-
-        curl_setopt_array($curl, [
-            CURLOPT_URL => "https://open-weather-map27.p.rapidapi.com/weather",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => [
-                "x-rapidapi-host: open-weather-map27.p.rapidapi.com",
-                "x-rapidapi-key: Sign Up for Key"
-            ],
-        ]);
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            //echo "cURL Error #:" . $err;
-            dd("cURL Error #:" . $err);
-        } else {
-            //echo $response;
-            dd($response);
-        }
-    }
-    
-    public function recibirDatos(Request $request){
-	
-		//return response()->json($request->get('campo'));
-
-		//Creación de solicitud de pago
-		$Payment = new IpgBdvPaymentRequest();            
-
-		$Payment->idLetter= $request->get('identificationNac'); //Letra de la cédula - V, E o P
-		$Payment->idNumber= $request->get('identificationNumber'); //Número de cédula
-		$Payment->amount= $request->get('amount'); //Monto a combrar, DECIMAL
-		$Payment->currency= $request->get('currency'); //Moneda del pago, 0 - Bolivar Fuerte, 1 - Dolar
-		$Payment->reference= $request->get('reference'); //Código de referecia o factura
-		$Payment->title= $request->get('title'); //Titulo para el pago, Ej: Servicio de Cable
-		$Payment->description= $request->get('description'); //Descripción del pago, Ej: Abono mes de marzo 2017
-		$Payment->email= $request->get('email');
-		$Payment->cellphone= $request->get('cellphone');
-		
-		//$Payment->urlToReturn= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
-		
-		//$Payment->urlToReturn= "https://ddrsistemas.com/pasarelape/procesado.php";
-		//$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
-
-		// $Payment->urlToReturn= "http://http://192.168.1.4:8000/pagosatisfactorio/{ID}";
-		$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";
-		// $Payment->urlToReturn= "https://panexpres.com/receive/{ID}";
-		
-
-		// actualizado
-
-		$Payment->rifLetter= $request->get('rifLetter') ?? ''; //Letra de la cédula - V, E o P
-		$Payment->rifNumber= $request->get('rifNumber') ?? ''; //Número de cédula
-
-		$demo = "NO";
-		if( $demo == "SI" ){                
-			$PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
-		} else {
-			$PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
-		}
-
-		$response = $PaymentProcess->createPayment($Payment);
-		
-		if ($response->success == true) // Se procesó correctamente y es necesario redirigir a la página de pago
-		{
-			if (strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest') { //si es ajax
-				header('Content-type: application/json');
-				return response()->json($response);
-				echo json_encode($response);
-				
-			}
-			else{ //si no es ajax
-				return response()->json('die');
-				header("Location: ".$response->urlPayment); //W
-				//die();
-				return response()->json('die');
-			}		
-		}
-		else
-		{
-			return response()->json('response 2');
-			header('Content-type: application/json');
-			echo json_encode($response);
-		}
-        
-    }
-
-	public function ChequePago(Request $request){
-                
-        $demo = "NO";
-        
-            //Instanciación de la API de pago con usuario y clave
-
-            if( $demo == "SI" ) {
-                $PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
-            } else {
-                $PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
-            }
-            
-            $response = $PaymentProcess->checkPayment($request->get('token'));
-
-            return response()->json(json_encode($response));
-            echo json_encode($response);
-        
-    }
-
-	public function pagosatisfactorio($id){
-        $token = $id;
-
-		$datos = IpgBdv2::checkPayment($token);
-        //$datos = $this->SearchPayment($token);
-    
-        if($datos->success == 'true')
-        {
-          $reference = $datos->reference;
-    
-          //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
-    
-          //$pedido = Pedido::find($pedido_id);
-		  $pedido = Pedido::where('pedido', $reference)->first();
-    
-          $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
-    
-          $transaccion = Transacciones::create([
-           'token' => $token,
-           'paymentId' => auth()->user()->id,
-           'comercio_id' => 1,
-           'identificationNumber' => $datos->idNumber,
-           'id_transaccion' => $datos->transactionId,
-           'reference' => $datos->reference,
-           'totalbs' => $datos->amount,
-           'fechaPago' => $paymentDate,
-           'title' => $datos->title,
-           'description' => $datos->description,
-           'status' => 1,
-		   'pedido' => $datos->reference,
-          ]);
-    
-           $pedido->update(
-             [
-               'reference' => $datos->transactionId,
-               'confirmed' => 1,
-             ]);
-
-			$cart = new CartController;
-
-        	$cart->onlyClear();
-
-        }
-    
-        return view('externalviews.procesado', ['id_suc' => $token, 'success' => $datos->success] );
-    }
-	
-	public function registrarReferencia($id)
+    public function registrarReferenciaMikrotik($id)
     {
         $token = $id;
 
@@ -229,49 +129,38 @@ class ApiController extends Component
 		  $pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->first();
     
           $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
-    
-          $transaccion = Transaccion::create([
-           'token' => $token,
-           'paymentId' => $token,
-		   'cliente_id' => $pedidotemporal->user_id,
-		   'user_id' => $pedidotemporal->user_id,
-           'comercio_id' => $pedidotemporal->comercio_id,
-           'identificationNumber' => $datos->idNumber,
-           'id_transaccion' => $datos->transactionId,
-           'reference' => $datos->reference,
-           'totalbs' => $datos->amount,
-           'fechaPago' => $paymentDate,
-           'title' => $datos->title,
-           'description' => $datos->description,
-           'status' => 1,
-		   'nropedido' => $datos->reference,
-          ]);
-    
-           $pedidotemporal->update([
-			'reference' => $datos->transactionId,
-			'metodo' => 'tarjeta',
-			'confirmed' => 1,
-			]);
 
-			$pedido = $pedidotemporal->toArray();
+			$transaccion = Pagomovil::create([
+				'referencia' => $datos->reference,
+				'telefono' => '04165800403',
+				'banco' => 'BDVPasarela',
+				'monto' => $datos->amount,
+				'status' => 'PAGADO',
+				'token' => $token,
+                'datos' => $datos,
+          	]);
 
-			$pedidodetalles = $pedidodetallestemporal->toArray();
+        //     $transaccion = Transaccion::create([
+        //     'token' => $token,
+        //     'paymentId' => $token,
+        //     'cliente_id' => $pedidotemporal->user_id,
+        //     'user_id' => $pedidotemporal->user_id,
+        //     'comercio_id' => $pedidotemporal->comercio_id,
+        //     'identificationNumber' => $datos->idNumber,
+        //     'id_transaccion' => $datos->transactionId,
+        //     'reference' => $datos->reference,
+        //     'totalbs' => $datos->amount,
+        //     'fechaPago' => $paymentDate,
+        //     'title' => $datos->title,
+        //     'description' => $datos->description,
+        //     'status' => 1,
+        //     'nropedido' => $datos->reference,
+        //   ]);
 
-        	Pedido::create($pedido);
-
-			PedidoDetalles::create($pedidodetalles);
-
-			$cart = new CartController;
-
-        	$cart->onlyClear();
-
-			\Cart::clear();
-
-            return $token;
+            return $datos;
 
         }
     }
-
 }
 
 class IpgBdv2

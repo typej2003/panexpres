@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\EnviarDatos;
 use App\Http\Controllers\Api\ApiController;
 
 use App\Http\Controllers\Api\ApiProcessPaymentController;
+use App\Http\Controllers\Api\MikrotikPasarelaController;
 
 use App\Http\Livewire\Pagomovil\ListPagomovil;
 
@@ -47,6 +48,10 @@ Route::post('hotspot-login', [CreateUser::class, 'login1']);
 Route::apiResource('apiuser', ApiController::class);
 
 Route::post('apiprocesspayment', [ApiProcessPaymentController::class, 'apiprocesspayment']);
+
+Route::post('mikrotikPasarela', [MikrotikPasarelaController::class, 'mikrotikPasarela']);
+
+Route::apiResource('processpayment', MikrotikPasarelaController::class);
 
 Route::apiResource('processpayment', ApiProcessPaymentController::class);
 

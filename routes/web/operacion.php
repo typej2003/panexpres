@@ -17,6 +17,7 @@ use App\Http\Livewire\Afiliado\Shipping;
 use App\Http\Livewire\Carrito\Procesado;
 
 use App\Http\Livewire\Recursos\ApiController;
+use App\Http\Controllers\Api\MikrotikPasarelaController;
 
 use App\Http\Livewire\Recursos\ImportExportExcel;
 
@@ -94,12 +95,12 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
 Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
     $id_suc = $id;
     //$pasarela = Pasarela();
-    $result = new ApiController();
-    $result->registrarReferenciaMikrotik($id);
+    $result = new MikrotikPasarelaController();
+    $respuesta = $result->registrarReferenciaMikrotik($id);
     
     //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
 
-    return view('externalviews.pagosatisfactorioMikrotik' );
+    return view('externalviews.pagosatisfactorioMikrotik', ['respuesta' => $respuesta] );
 });
 
 
