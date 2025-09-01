@@ -96,11 +96,11 @@ Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
     $id_suc = $id;
     //$pasarela = Pasarela();
     $result = new MikrotikPasarelaController();
-    $respuesta = $result->registrarReferenciaMikrotik($id);
+    $datos = $result->registrarReferenciaMikrotik($id);
     
     //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
 
-    return view('externalviews.pagosatisfactorioMikrotik', ['respuesta' => $respuesta] );
+    return view('externalviews.pagosatisfactorioMikrotik', ['datos' => $datos] );
 });
 
 
