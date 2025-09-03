@@ -13,7 +13,7 @@
 
             <div class="mb-3">
                 <label for="message" class="form-label">Mensaje</label>
-                <textarea wire:model="message" class="form-control @error('message') is-invalid @enderror" id="message" rows="4"></textarea>
+                <textarea wire:model="message" class="form-control @error('message') is-invalid @enderror" id="message" rows="4">Esta es una prueba</textarea>
                 @error('message')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

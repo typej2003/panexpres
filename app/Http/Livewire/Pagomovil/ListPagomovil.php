@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pagomovil;
 
 use Illuminate\Http\Request;
 use App\Http\Livewire\Admin\AdminComponent;
+use App\Http\Livewire\Notificacion\SmsSender;
 use App\Models\Pagomovil;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -178,33 +179,12 @@ class ListPagomovil extends AdminComponent
 		$this->dispatchBrowserEvent('hide-form', ['message' => 'Pago móvil agregado satisfactoriamente!']);
 	}
 
-	public function edit(Pagomovil $pago)
-	{
-		$this->reset();
-
-		$this->showEditModal = true;
-
-		$this->pago = $pago;
-
-		$this->state = $pago->toArray();
-
-		$this->dispatchBrowserEvent('show-form');
-	}
-
-	public function updatePago()
-	{
-		$validatedData = Validator::make($this->state, [
-			'referencia' => 'required',
-            'telefono' => 'required',
-            'banco' => 'required',
-            'monto' => 'required',
-            'status' => 'required',
-		])->validate();
-
-		$this->pago->update($validatedData);
-
-		$this->dispatchBrowserEvent('hide-form', ['message' => 'Pago móvil actualizado satisfactoriamente!']);
-	}
+	public function enviarSms(Pagomovil $pago)
+    {
+        $message = 'Su solicitud esta siendo validada';
+        $sender = new SmsSender;
+        $sender->callSendSms($pago->telefono, $message);
+    }
 
 	public function confirmPagoRemoval($pagoId)
 	{

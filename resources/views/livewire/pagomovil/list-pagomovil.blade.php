@@ -73,12 +73,8 @@
                                                 Activar usuario
                                             </a>
 
-                                            <a href="" wire:click.prevent="edit({{ $pago }})">
-                                                <i class="fa fa-edit mr-2"></i>
-                                            </a>
-
-                                            <a href="" wire:click.prevent="confirmPagoRemoval({{ $pago->id }})">
-                                                <i class="fa fa-trash text-danger"></i>
+                                            <a href="" wire:click.prevent="enviarSms({{ $pago }})">
+                                                <i class="fa fa-solid fa-comment"></i>
                                             </a>
                                         </td>
                                     </tr>

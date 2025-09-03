@@ -84,12 +84,8 @@
                                                 Activar usuario
                                             </a>
 
-                                            <a href="" wire:click.prevent="edit(<?php echo e($pago); ?>)">
-                                                <i class="fa fa-edit mr-2"></i>
-                                            </a>
-
-                                            <a href="" wire:click.prevent="confirmPagoRemoval(<?php echo e($pago->id); ?>)">
-                                                <i class="fa fa-trash text-danger"></i>
+                                            <a href="" wire:click.prevent="enviarSms(<?php echo e($pago); ?>)">
+                                                <i class="fa fa-solid fa-comment"></i>
                                             </a>
                                         </td>
                                     </tr>
