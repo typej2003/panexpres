@@ -201,6 +201,15 @@
             </li>
 
             <li class="nav-item">
+              <a href="<?php echo e(route('smsSender')); ?>" class="nav-link <?php echo e(request()->is('smsSender') ? 'active' : ''); ?>">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Sms
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="<?php echo e(route('MakePayment', 1)); ?>" class="nav-link <?php echo e(request()->is('MakePayment') ? 'active' : ''); ?>">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
