@@ -1,4 +1,2 @@
 # panexpres
-# prueba 2
-# actualizar ruta api
-# actualizar twilio
+# panexpres 2
