@@ -26,7 +26,8 @@ class Integracion extends Component
         return new Client([
             'host' => $host,
             'user' => $user,
-            'pass' => $pass
+            'pass' => $pass,
+            'port' => '8728',
         ]);
 
     }
