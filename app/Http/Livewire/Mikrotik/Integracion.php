@@ -13,7 +13,7 @@ class Integracion extends Component
     public $response = null;
     public $identity = null;
 
-    public function integracion($host='typej.ddns.net', $user = 'admin', $pass= 'admin123')
+    public function showIntegracion($host='typej.ddns.net', $user = 'admin', $pass= 'admin123')
     {
         try {
             //prueba 1

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-12">
                 <h1>Integración del Router: {{ $identity}}</h1>
-                <button wire:click.prevent="integracion()" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Obtener</button>
+                <button wire:click.prevent="showIntegracion()" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Obtener</button>
         </div>
     </div>
     <div class="row container">
