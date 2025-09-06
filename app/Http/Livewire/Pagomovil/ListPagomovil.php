@@ -181,6 +181,7 @@ class ListPagomovil extends AdminComponent
             'banco' => 'required',
             'monto' => 'required',
             'status' => 'required',
+            'fecha_pago' => 'required',
 		])->validate();
 
 		Pagomovil::create($validatedData);
@@ -223,6 +224,7 @@ class ListPagomovil extends AdminComponent
             'monto' => 'required',
 			'user' => 'nullable',
 			'plan' => 'required',
+            'fecha_pago' => 'required',
         ]);
 
 		
@@ -235,6 +237,7 @@ class ListPagomovil extends AdminComponent
             'status' => 'noconfirmado', 
 			'user' => $request->post('user'), 
 			'plan' => $request->post('plan'),
+            'fecha_pago' => $request->post('fecha_pago'),
         ];
 
         if ($validator->fails()) {

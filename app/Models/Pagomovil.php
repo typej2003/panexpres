@@ -22,6 +22,7 @@ class Pagomovil extends Model
         'user',
         'plan',
         'externalcomment',
+        'fecha_pago',
     ];
 
     public function comercios()

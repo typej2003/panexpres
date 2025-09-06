@@ -32,6 +32,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">User</th>
+                                        <th scope="col">Fecha del Pago</th>
                                         <th scope="col">
                                             Referencia
                                             <span wire:click="sortBy('referencia')" class="float-right text-sm" style="cursor: pointer;">
@@ -57,6 +58,7 @@
                                     <tr>
                                         <th scope="row">{{ $pagomoviles->firstItem() + $index }}</th>
                                         <td>{{ $pago->user }}</td>
+                                        <td>{{ $pago->fecha_pago }}</td>
                                         <td>{{ $pago->referencia }}</td>
                                         <td>{{ $pago->banco }}</td>
                                         <td>{{ $pago->telefono }}</td>
@@ -131,6 +133,16 @@
                                 <option value="descartado">DESCARTADO</option>
                             </select>
                             @error('status')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fecha_pago">fecha_pago</label>
+                            <input type="date" wire:model.defer="state.fecha_pago" class="form-control @error('fecha_pago') is-invalid @enderror" id="fecha_pago" aria-describedby="fecha_pagoHelp" placeholder="Fecha pago">
+                            @error('fecha_pago')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
