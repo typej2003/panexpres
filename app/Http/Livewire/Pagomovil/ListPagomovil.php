@@ -124,9 +124,10 @@ class ListPagomovil extends AdminComponent
 
     public function sendSms($user, $password)
     {
-        $message = 'Su cuenta se encuentra activa. Usuario: ' . $usuaio . ' Clave: ' . $password;
+        $message = 'Su cuenta se encuentra activa. Usuario: ' . $user . ' Clave: ' . $password;
         $sender = new SmsSender;
-        $sender->callSendSms($pago->telefono, $message);
+        $sender->callSendSms($user, $message);
+
     }
 
 	/**
