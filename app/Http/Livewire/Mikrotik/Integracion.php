@@ -48,7 +48,7 @@ class Integracion extends Component
             'host' => $host,
             'user' => $user,
             'pass' => $pass,
-            'port' => '8728',
+            'port' => '8729',
         ]);
         
         $query = new Query('/system/identity/getall');
