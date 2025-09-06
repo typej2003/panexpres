@@ -33,6 +33,7 @@ class Integracion extends Component
 
     public function mount()
     {
+        //prueba 1
         $dominio = 'typej.ddns.net';
         $host = gethostbyname($dominio);
 
