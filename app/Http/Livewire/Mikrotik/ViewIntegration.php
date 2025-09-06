@@ -30,7 +30,7 @@ class ViewIntegration extends Component
                 'host' => $host,
                 'user' => $user,
                 'pass' => $pass,
-                // 'port' => 8728,
+                'port' => 8728,
             ]);
             
             $query = new Query('/system/identity/getall');
