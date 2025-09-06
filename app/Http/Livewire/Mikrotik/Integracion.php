@@ -55,7 +55,7 @@ class Integracion extends Component
 
             $this->response = $texto;
 
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             //throw $th;
             dd('Error: ' . $th);
             //transmision
