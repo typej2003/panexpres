@@ -50,6 +50,8 @@ class SmsSender extends Component
     static function callSendSms($nroto, $message)
     {
         $to = '+58'.$nroto;
+
+        dd($to);
         $message = $message;
 
         $sid = config('services.twilio.sid');
