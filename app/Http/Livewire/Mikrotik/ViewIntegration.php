@@ -22,8 +22,8 @@ class ViewIntegration extends Component
 
             //$host = '192.168.2.1';
             $host = 'typej.ddns.net';
-            $user = 'admin';
-            $pass = 'admin123';
+            $user = 'jose';
+            $pass = '123';
 
             // Iniciar la conexión
             $client = new Client([
