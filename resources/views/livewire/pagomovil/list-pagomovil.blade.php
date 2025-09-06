@@ -77,7 +77,7 @@
                                                 <i class="fa fa-solid fa-comment"></i>
                                             </a>
 
-                                            <a href="" wire:click.prevent="confirmPagoRemoval({{ $user->id }})">
+                                            <a href="" wire:click.prevent="confirmPagoRemoval({{ $pago->id }})">
                                                 <i class="fa fa-trash text-danger"></i>
                                             </a>
                                         </td>
