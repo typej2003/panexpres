@@ -38,6 +38,7 @@ class Integracion extends Component
         $host = gethostbyname($dominio);
 
         //$host = '201.209.23.151';
+        $host = 'typej.ddns.net';
         $user = 'admin';
         $pass = 'admin123';
 
