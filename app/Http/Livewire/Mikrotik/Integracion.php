@@ -59,7 +59,7 @@ class Integracion extends Component
 
         } catch (\Throwable $th) {
             //throw $th;
-            dd('error: ' . $th);
+            dd('Error: ' . $th);
         }        
 
     }
