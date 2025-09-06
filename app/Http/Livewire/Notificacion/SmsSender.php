@@ -51,7 +51,6 @@ class SmsSender extends Component
     {
         $to = '+58'.$nroto;
 
-        dd($to);
         $message = $message;
 
         $sid = config('services.twilio.sid');
