@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Mikrotik\Integracion;
+use App\Http\Livewire\Mikrotik\ViewIntegration;
 use App\Http\Livewire\Mikrotik\ListUsersMikrotik;
 use App\Http\Livewire\Mikrotik\Hotspot\ListHotspot;
 use App\Http\Livewire\Mikrotik\Hotspot\CrearTicket;
@@ -11,6 +12,8 @@ use App\Http\Livewire\Mikrotik\Hotspot\ListPlanes;
 use App\Http\Controllers\Api\MikrotikPasarelaController;
 
 Route::get('/integracion', Integracion::class)->name('integracion')->middleware('auth');
+
+Route::get('/viewintegration', ViewIntegration::class)->name('viewintegration')->middleware('auth');
 
 Route::get('/usersMikrotik', ListUsersMikrotik::class)->name('usersMikrotik')->middleware('auth');
 

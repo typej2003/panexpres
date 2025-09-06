@@ -7,7 +7,7 @@ use Livewire\Component;
 use RouterOS\Client;
 use RouterOS\Query;
 
-class Integracion extends Component
+class ViewIntegration extends Component
 {
     public $usuarios;
     public $response = null;
@@ -68,7 +68,7 @@ class Integracion extends Component
         $dominio = 'typej.ddns.net';
         $ip_del_dominio = gethostbyname($dominio);
 
-        return view('livewire.mikrotik.integracion', [
+        return view('livewire.mikrotik.view-integration', [
             'dominio'  => $dominio,
             'ip_del_dominio'  => $ip_del_dominio,
         ]);

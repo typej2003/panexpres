@@ -52,6 +52,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="/viewintegration" class="nav-link {{ request()->is('viewintegration') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                    View Integración Mikrotik
+                </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="/usersMikrotik" class="nav-link {{ request()->is('usersMikrotik') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
