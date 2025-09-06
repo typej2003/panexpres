@@ -7,6 +7,12 @@
             {!! $response !!}
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12 col-12">
+            {{ $ip_del_dominio }}
+        </div>
+    </div>
     
     
 

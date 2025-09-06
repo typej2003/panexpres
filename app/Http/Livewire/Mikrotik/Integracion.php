@@ -71,9 +71,12 @@ class Integracion extends Component
 
     public function render()
     {
+        $dominio = 'typej.ddns.net';
+        $ip_del_dominio = gethostbyname($dominio);
 
         return view('livewire.mikrotik.integracion', [
-            'arreglo' => $this->response
+            'arreglo' => $this->response,
+            'ip_del_dominio'  => $ip_del_dominio,
         ]);
     }
 }
