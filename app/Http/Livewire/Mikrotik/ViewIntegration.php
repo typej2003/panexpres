@@ -16,7 +16,7 @@ class ViewIntegration extends Component
     public function showIntegracion($host='typej.ddns.net', $user = 'admin', $pass= 'admin123')
     {
         try {
-            //prueba 1
+            //prueba 1 typej.ddns.net
             $dominio = 'typej.ddns.net';
             $host = gethostbyname($dominio);
 
@@ -30,7 +30,7 @@ class ViewIntegration extends Component
                 'host' => $host,
                 'user' => $user,
                 'pass' => $pass,
-                // 'port' => 8729,
+                'port' => 8728,
             ]);
             
             $query = new Query('/system/identity/getall');
