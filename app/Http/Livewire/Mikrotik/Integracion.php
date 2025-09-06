@@ -33,27 +33,17 @@ class Integracion extends Component
 
     public function mount()
     {
-        $host = '192.168.2.1';
+        $host = '201.209.23.151';
         $user = 'admin';
         $pass = 'admin123';
 
         // Iniciar la conexión
         $client = new Client([
-            'host' => '192.168.2.1',
-            'user' => 'admin',
-            'pass' => 'admin123'
+            'host' => $host,
+            'user' => $user,
+            'pass' => $pass
         ]);
-        /*
-        :put "--- Informacion del Sistema ---"
-        :put ("Identidad: " . [/system identity get name])
-        :put ("Modelo: " . [/system routerboard get model])
-        :put ("Version de RouterOS: " . [/system package get routeros version])
-        :put ("Tiempo de Actividad: " . [/system resource get uptime])
-        :put ("CPU Load: " . [/system resource get cpu-load] . "%")
-        :put ("Temperatura de la CPU: " . [/system health get temperature])
-        :put "--- Fin de la Informacion ---"
-        */
-
+        
         $query = new Query('/system/identity/getall');
 
         $identity = $client->query($query)->read();
