@@ -76,6 +76,10 @@
                                             <a href="" wire:click.prevent="enviarSms({{ $pago }})">
                                                 <i class="fa fa-solid fa-comment"></i>
                                             </a>
+
+                                            <a href="" wire:click.prevent="confirmPagoRemoval({{ $user->id }})">
+                                                <i class="fa fa-trash text-danger"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     @empty
