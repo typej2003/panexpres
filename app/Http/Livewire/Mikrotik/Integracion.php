@@ -33,8 +33,10 @@ class Integracion extends Component
 
     public function mount()
     {
-        $host = '201.209.23.151';
-        $host = 'he908mt2n43.sn.mynetname.net';
+        $dominio = 'typej.ddns.net';
+        $host = gethostbyname($dominio);
+
+        //$host = '201.209.23.151';
         $user = 'admin';
         $pass = 'admin123';
 
