@@ -7,8 +7,6 @@ use Livewire\Component;
 use RouterOS\Client;
 use RouterOS\Query;
 
-use App\Models\User;
-
 class Integracion extends Component
 {
     public $usuarios;
