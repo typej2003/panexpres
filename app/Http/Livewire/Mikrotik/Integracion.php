@@ -47,7 +47,8 @@ class Integracion extends Component
         $client = new Client([
             'host' => $host,
             'user' => $user,
-            'pass' => $pass
+            'pass' => $pass,
+            'port' => '8728',
         ]);
         
         $query = new Query('/system/identity/getall');
