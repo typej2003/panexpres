@@ -60,6 +60,7 @@ class Integracion extends Component
         } catch (\Throwable $th) {
             //throw $th;
             dd('Error: ' . $th);
+            //transmision
         }        
 
     }
@@ -76,6 +77,7 @@ class Integracion extends Component
         $ip_del_dominio = gethostbyname($dominio);
 
         return view('livewire.mikrotik.integracion', [
+            'dominio'  => $dominio,
             'ip_del_dominio'  => $ip_del_dominio,
         ]);
     }

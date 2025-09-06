@@ -1,4 +1,9 @@
 <div>
+    <div class="row my-3">
+        <div class="col-md-12 col-12">
+            Dominio: {{ $dominio }} Ip del dominio: {{ $ip_del_dominio }}
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
                 <h1>Integración del Router: {{ $identity}}</h1>
@@ -11,11 +16,7 @@
         </div>
     </div>
 
-    <div class="row my-3">
-        <div class="col-md-12 col-12">
-            Ip del dominio: {{ $ip_del_dominio }}
-        </div>
-    </div>
+    
     
     
 
