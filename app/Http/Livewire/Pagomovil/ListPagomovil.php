@@ -79,6 +79,7 @@ class ListPagomovil extends AdminComponent
 			$p = json_decode($pago->plan);
 			// crear un user
 			$user = $pago->telefono;
+
 			$this->createUserHotspot($user, $p->plan.'/'.$p->costo);
 
 			//actualizar el usuario en el pago
@@ -91,32 +92,41 @@ class ListPagomovil extends AdminComponent
 	public function createUserHotspot($user, $profile)
     {
         try {
-                $datos = [
-                    'host' => '192.168.2.1',
-                    'user' => 'admin',
-                    'pass' => 'admin123'
-                ];
 
-                $client = new Client($datos);
+                $client = new Client($this->datos);
+
+                $password = $this->randomPassword();
 
                 // Crear la consulta para añadir el usuario
                 $query = (new Query('/ip/hotspot/user/add'))
                     ->equal('server', 'all')
                     ->equal('name', $user)
-                    ->equal('password', $this->randomPassword())
+                    ->equal('password', $password)
                     ->equal('profile', $profile);
                 
                 // Ejecutar la consulta
                 $client->query($query)->read();
                 // Tarea completada.
 
+                //Enviar sms con el user y la contraseña
+                $this->sendSms($user, $password);
+
                 $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+
             } catch (Exception $e) {
+
                 $this->dispatchBrowserEvent('hide-formUserHotspot', ["Caught exception: " . $e->getMessage() . "\n"]);
                 
             } 
 
 		//$validatedData['password'] = bcrypt($validatedData['password']);
+    }
+
+    public function sendSms($user, $password)
+    {
+        $message = 'Su cuenta se encuentra activa. Usuario: ' . $usuaio . ' Clave: ' . $password;
+        $sender = new SmsSender;
+        $sender->callSendSms($pago->telefono, $message);
     }
 
 	/**
