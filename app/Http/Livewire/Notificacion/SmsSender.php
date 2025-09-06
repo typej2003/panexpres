@@ -61,8 +61,6 @@ class SmsSender extends Component
         // $token="75f907929db1e626e33f396c6a29acfc";
         // $from="+17276177128";
 
-        dd($sid);
-
         $client = new Client($sid, $token);
 
         try {
