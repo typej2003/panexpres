@@ -2,7 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Mikrotik\Integracion;
+use App\Http\Livewire\Mikrotik\ListRouters;
 use App\Http\Livewire\Mikrotik\ViewIntegration;
+use App\Http\Livewire\Mikrotik\Router\ConfigureRouter;
+use App\Http\Livewire\Mikrotik\Router\RouterUsers;
+use App\Http\Livewire\Mikrotik\Router\RouterHotspots;
+use App\Http\Livewire\Mikrotik\Router\RouterPlanes;
+
 use App\Http\Livewire\Mikrotik\ListUsersMikrotik;
 use App\Http\Livewire\Mikrotik\Hotspot\ListHotspot;
 use App\Http\Livewire\Mikrotik\Hotspot\CrearTicket;
@@ -13,7 +19,17 @@ use App\Http\Controllers\Api\MikrotikPasarelaController;
 
 Route::get('/integracion', Integracion::class)->name('integracion')->middleware('auth');
 
+Route::get('/listRouters', ListRouters::class)->name('listRouters')->middleware('auth');
+
 Route::get('/viewintegration', ViewIntegration::class)->name('viewintegration')->middleware('auth');
+
+Route::get('/configureRouter/{router_id}', ConfigureRouter::class)->name('configureRouter')->middleware('auth');
+
+Route::get('/routerUsers/{router_id}', RouterUsers::class)->name('routerUsers')->middleware('auth');
+
+Route::get('/routerHotspots/{router_id}', RouterHotspots::class)->name('routerHotspots')->middleware('auth');
+
+Route::get('/routerPlanes/{router_id}', RouterPlanes::class)->name('routerPlanes')->middleware('auth');
 
 Route::get('/usersMikrotik', ListUsersMikrotik::class)->name('usersMikrotik')->middleware('auth');
 

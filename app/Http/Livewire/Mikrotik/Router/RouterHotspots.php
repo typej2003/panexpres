@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Mikrotik\Hotspot;
+namespace App\Http\Livewire\Mikrotik\Router;
 
 use Livewire\Component;
-
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Models\Router;
 
 use RouterOS\Client;
 use RouterOS\Query;
 
-class ListHotspot extends Component
+class RouterHotspots extends Component
 {
+    public $router;
+
     public $state = [];
 
     public $showEditModal = false;
@@ -22,6 +24,11 @@ class ListHotspot extends Component
     public $usersHotspot = [];
     public $nameshotspots = [];
     public $namesUsershotspots = [];
+
+    public function mount($router_id)
+    {        
+        $this->router = Router::find($router_id);
+    }
 
     public function exeQuery($datos, $query)
     {
@@ -38,20 +45,52 @@ class ListHotspot extends Component
         return $result;
     }
 
+    public function cantUsershotspots($hotspot)
+    {
+        $cant = 0;
+        $cantTrial = 0;
+
+        foreach ($this->namesUsershotspots as $elementos) {            
+            if(array_key_exists('server', $elementos))
+            {
+                if($elementos['server'] == $hotspot){
+                    $cant++;
+                }                
+            }
+            else{
+                $cantTrial++;
+            }
+        }
+        return $cant;
+    }
+
+    public function cantUserstrial()
+    {
+        $cant = 0;
+        $cantTrial = 0;
+
+        foreach ($this->namesUsershotspots as $elementos) {            
+            if(!array_key_exists('server', $elementos))
+            {            
+                $cant++;     
+            }
+        }
+        return $cant;
+    }
+
     public function addNew()
 	{
-        
+        $router = $this->router; 
         $namesInterfacesT = $this->namesInterfaces; 
         $namesProfiles = $this->namesProfiles;
         $namesProfilesUser = $this->namesProfilesUser;
 		$this->reset();
-        
+        $this->router = $router; 
         $this->namesInterfaces = $namesInterfacesT; 
         $this->namesProfiles = $namesProfiles;
         $this->namesProfilesUser = $namesProfilesUser;
 
 		$this->showEditModal = false;
-
 
         $this->dispatchBrowserEvent('show-formHotspot', ['namesInterfaces' => $this->namesInterfaces, 'namesProfiles' => $this->namesProfiles]);
 
@@ -99,13 +138,13 @@ class ListHotspot extends Component
 
     public function addNewUserHotspot($nameserverUH)
 	{
+        $router = $this->router; 
         $namesInterfaces = $this->namesInterfaces; 
         $namesProfiles = $this->namesProfiles;
         $namesProfilesUser = $this->namesProfilesUser;
         $nameshotspots = $this->nameshotspots;
-
 		$this->reset();
-
+        $this->router = $router; 
         $this->namesInterfaces = $namesInterfaces; 
         $this->namesProfiles = $namesProfiles;
         $this->namesProfilesUser = $namesProfilesUser;
@@ -165,13 +204,18 @@ class ListHotspot extends Component
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-
     public function render()
     {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+        }
+        
         $datos = [
-            'host' => '192.168.2.1',
-            'user' => 'jose',
-            'pass' => '123'
+            'host' => $this->router->ip,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
         ];
 
         // todas las interfaces
@@ -213,41 +257,8 @@ class ListHotspot extends Component
 
         // foreach ($users as $elemento) {
         //     $this->usersHotspot[] = $elemento['name'];
-        // }
+        // 
 
-        return view('livewire.mikrotik.hotspot.list-hotspot', ['result' => $hotspots, 'datos' => $datos]);
-    }
-
-    public function cantUsershotspots($hotspot)
-    {
-        $cant = 0;
-        $cantTrial = 0;
-
-        foreach ($this->namesUsershotspots as $elementos) {            
-            if(array_key_exists('server', $elementos))
-            {
-                if($elementos['server'] == $hotspot){
-                    $cant++;
-                }                
-            }
-            else{
-                $cantTrial++;
-            }
-        }
-        return $cant;
-    }
-
-    public function cantUserstrial()
-    {
-        $cant = 0;
-        $cantTrial = 0;
-
-        foreach ($this->namesUsershotspots as $elementos) {            
-            if(!array_key_exists('server', $elementos))
-            {            
-                $cant++;     
-            }
-        }
-        return $cant;
+        return view('livewire.mikrotik.router.router-hotspots', ['result' => $hotspots ]);
     }
 }

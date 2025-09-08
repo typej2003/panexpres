@@ -1,29 +1,31 @@
 <?php
 
-namespace App\Http\Livewire\Mikrotik\Hotspot;
+namespace App\Http\Livewire\Mikrotik\Router;
 
 use Livewire\Component;
-
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Models\Router;
 
 use RouterOS\Client;
 use RouterOS\Query;
 
-class ListPlanes extends Component
+class RouterPlanes extends Component
 {
-    public $datos = [
-            'host' => '192.168.2.1',
-            'user' => 'jose',
-            'pass' => '123'
-        ];
+    public $router;
+
     public $state = [];
+
+    public $showEditModal = false;
 
     public $namesProfilesUser = [];
 
     public $addressPool = [];
 
-    public $showEditModal = false;
+    public function mount($router_id)
+    {        
+        $this->router = Router::find($router_id);
+    }
 
     public function exeQuery($datos, $query)
     {
@@ -47,7 +49,6 @@ class ListPlanes extends Component
     public function listPlanes()
     {
         try {
-
             $datos = [
                 'host' => '192.168.2.1', // Reemplaza con la IP de tu router
                 'user' => 'admin',      // Usuario API
@@ -76,12 +77,11 @@ class ListPlanes extends Component
 
     public function addNew()
 	{
-        
-     
+        $router = $this->router;
         $namesProfilesUser = $this->namesProfilesUser;
-        $addressPool = $this->addressPool;
-        
+        $addressPool = $this->addressPool;        
 		$this->reset();
+        $this->router = $router;
         $this->namesProfilesUser = $namesProfilesUser;
         $this->addressPool = $addressPool;
 
@@ -115,29 +115,24 @@ class ListPlanes extends Component
                     'idleTimeout' => 'nullable',
                     'keepaliveTimeout' => 'nullable',
                     'statusAutorefresh' => 'nullable',
-                    'rateLimitRxTx' => 'required',
+                    'downloadRate' => 'required',
+                    'uploadRate' => 'required',
                     'costo' => 'required',
 
                 ], $messages)->validate();
 
+                if(config('app.host') == 'ip'){
+                    $host = $this->router->ip;
+                }else{
+                    $host = $this->router->dns;
+                }                
                 $datos = [
-                    'host' => '192.168.2.1',
-                    'user' => 'admin',
-                    'pass' => 'admin123'
+                    'host' => $this->router->ip,
+                    'user' => $this->router->admin,
+                    'pass' => $this->router->password,
                 ];
 
                 $client = new Client($datos);
-
-                // $query = (new Query('/ip/hotspot/user/profile/add'))
-                //      ->equal('name', $validatedData['name'])
-                //      ->equal('address-pool', $validatedData['addressPool'])
-                //      ->equal('shared-users', $validatedData['sharedUsers'])
-                //      ->equal('session-timeout', $validatedData['sessionTimeout'])
-                //      ->equal('idle-timeout', $validatedData['idleTimeout'])
-                //      ->equal('keepalive-timeout', $validatedData['keepaliveTimeout'])
-                //      ->equal('status-autorefresh', $validatedData['statusAutorefresh'])
-                //      ->equal('rate-limit-rx-tx', $validatedData['rateLimitRxTx']);
-                    //  ->equal('comment', $validatedData['comment']);
                 
                  // 2. Definir los parámetros para el nuevo perfil
                 $profileName = '10M 2';
@@ -149,10 +144,9 @@ class ListPlanes extends Component
                 $query = (new Query('/ip/hotspot/user/profile/add'))
                     ->equal('name', "{$validatedData['name']}/{$validatedData['costo']}")
                     ->equal('address-pool', $validatedData['addressPool'])
-                    ->equal('rate-limit', $validatedData['rateLimitRxTx'])
-                    // ->equal('rate-limit', "{$downloadRate}/{$uploadRate}")
+                    ->equal('rate-limit', $validatedData['downloadRate'].'/'.$validatedData['uploadRate'])
                     // ->equal('address-list', $validatedData['addressList'])
-                    ->equal('session-timeout', $sessionTimeout);
+                    ->equal('session-timeout', $validatedData['sessionTimeout']);
                     // ->equal('comment', 'Perfil creado desde Laravel');
 
                 // Ejecutar la consulta
@@ -171,21 +165,32 @@ class ListPlanes extends Component
 
     public function render()
     {
-        
         //todos los perfiles usuarios de los hotspot
-        $profilesUser = $this->exeQuery($this->datos, '/ip/hotspot/user/profile/print');
+
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+        }        
+        $datos = [
+            'host' => $this->router->ip,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+        ];
+
+        $profilesUser = $this->exeQuery($datos, '/ip/hotspot/user/profile/print');
         $this->namesProfilesUser = [];
         foreach ($profilesUser as $elemento) {
             $this->namesProfilesUser[] = $elemento['name'];
         }
 
         //todos los perfiles usuarios de los hotspot
-        $address = $this->exeQuery($this->datos, '/ip/pool/print');
+        $address = $this->exeQuery($datos, '/ip/pool/print');
         $this->addressPool = [];
         foreach ($address as $elemento) {
             $this->addressPool[] = $elemento['name'];
         }
 
-        return view('livewire.mikrotik.hotspot.list-planes', ['profilesUser' => $profilesUser]);
+        return view('livewire.mikrotik.router.router-planes', ['profilesUser' => $profilesUser]);
     }
 }

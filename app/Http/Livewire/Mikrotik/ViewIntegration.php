@@ -20,10 +20,22 @@ class ViewIntegration extends Component
             $dominio = 'typej.ddns.net';
             $host = gethostbyname($dominio);
 
-            //$host = '192.168.2.1';
-            $host = 'typej.ddns.net';
             $user = 'jose';
             $pass = '123';
+
+            if(config('app.host') == 'ip'){
+                //$host = $this->router->ip;
+                $host = '192.168.2.1';
+            }else{
+                //$host = $this->router->dns;
+                $host = 'typej.ddns.net';
+            }        
+            $host = '192.168.2.1';
+            // $datos = [
+            //     'host' => $this->router->ip,
+            //     'user' => $this->router->admin,
+            //     'pass' => $this->router->password,
+            // ];
 
             // Iniciar la conexión
             $client = new Client([

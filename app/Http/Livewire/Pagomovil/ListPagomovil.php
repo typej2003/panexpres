@@ -32,10 +32,16 @@ class ListPagomovil extends AdminComponent
 
     public $sortDirection = 'desc';
 
-	public $datos = [
-            'host' => '192.168.2.1',
-            'user' => 'admin',
-            'pass' => 'admin123'
+	// public $datos = [
+    //         'host' => '192.168.2.1',
+    //         'user' => 'jose',
+    //         'pass' => '123'
+    //     ];
+    public $host = 'typej.ddns.net';
+    public $datos = [
+            'host' => 'typej.ddns.net',
+            'user' => 'jose',
+            'pass' => '123'
         ];
 
 	public function exeQuery($datos, $query)
@@ -69,7 +75,7 @@ class ListPagomovil extends AdminComponent
 
 	public function activarUsuario(Pagomovil $pago)
 	{
-		//revisar si existe user
+        //revisar si existe user
 		if($pago->user){
 			//se debe recargar el tiempo al usuario
 			dd('existe usuario');
@@ -226,7 +232,6 @@ class ListPagomovil extends AdminComponent
 			'plan' => 'required',
             'fecha_pago' => 'required',
         ]);
-
 		
         $data = [
             'referencia' => $request->post('referencia'), 

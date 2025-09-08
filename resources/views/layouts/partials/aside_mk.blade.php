@@ -15,6 +15,7 @@
       <div class="info">
         @auth
         <a href="#" class="d-block" x-ref="username">{{ auth()->user()->name }}</a>
+        {{ auth()->user()->role }}
         @endauth
       </div>
     </div>
@@ -40,6 +41,14 @@
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
                     Pago Móvil
+                </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/listRouters" class="nav-link {{ request()->is('listRouters') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                    Routers
                 </p>
                 </a>
             </li>
