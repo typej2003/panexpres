@@ -24,7 +24,7 @@ class MikrotikPasarelaController extends Controller
 		//Creación de solicitud de pago
         $Payment = new IpgBdvPaymentRequest();  
 		
-		$reference = $request->post('reference') . '/' . $request->post('nrorouter');
+		$reference = $request->post('reference') . '/' . $request->post('cellphone') . '/' . $request->post('nrorouter');
 		
 		$Payment->idLetter= $request->post('identificationNac'); //Letra de la cédula - V, E o P
         $Payment->idNumber= $request->post('identificationNumber'); //Número de cédula
@@ -128,13 +128,15 @@ class MikrotikPasarelaController extends Controller
           	$referenceArray = explode('/', $datos->reference);
 
 			$reference = $referenceArray[0];
-			$nrorouter = $referenceArray[1];
+			$telefono = $referenceArray[1];
+			$nrorouter = $referenceArray[2];
     
         	$paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
 
 			$transaccion = Pagomovil::create([
-				'referencia' => $datos->reference,
-				'telefono' => '04165800403',
+				'referencia' => $reference,
+				'nrorouter' => $nrorouter,
+				'telefono' => $telefono,
 				'banco' => 'BDVPasarela',
 				'monto' => $datos->amount,
 				'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
