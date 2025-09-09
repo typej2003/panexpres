@@ -23,6 +23,7 @@ class RouterSeeder extends Seeder
             'admin' => 'jose',
             'password' => '123',
             'location' => 'Caracas, San Bernardino',
+            'nrorouter' => 'R001',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
@@ -36,6 +37,7 @@ class RouterSeeder extends Seeder
             'admin' => 'jose',
             'password' => '123',
             'location' => 'Caracas, San Martin',
+            'nrorouter' => 'R002',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
@@ -49,6 +51,7 @@ class RouterSeeder extends Seeder
             'admin' => 'jose',
             'password' => '123',
             'location' => 'Caracas, Libertador',
+            'nrorouter' => 'R003',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);

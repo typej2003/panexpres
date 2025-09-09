@@ -86,7 +86,7 @@ class ListPagomovil extends AdminComponent
 			// crear un user
 			$user = $pago->telefono;
 
-			$this->createUserHotspot($user, $p->plan.'/'.$p->costo);
+			$this->createUserHotspot($pago->nrorouter, $user, $p->plan.'/'.$p->costo);
 
 			//actualizar el usuario en el pago
 			$pago->update(['user' => $user]);
@@ -95,11 +95,25 @@ class ListPagomovil extends AdminComponent
 
 	}
 
-	public function createUserHotspot($user, $profile)
+	public function createUserHotspot($nrorouter, $user, $profile)
     {
+        $router = Router::where('nrorouter', $nrorouter)->get();
+        
         try {
 
-                $client = new Client($this->datos);
+                if(config('app.host') == 'ip'){
+                    $host = $this->router->ip;
+                }else{
+                    $host = $this->router->dns;
+                }
+                
+                $datos = [
+                    'host' => $this->router->ip,
+                    'user' => $this->router->admin,
+                    'pass' => $this->router->password,
+                ];
+
+                $client = new Client($datos);
 
                 $password = $this->randomPassword();
 
@@ -231,6 +245,7 @@ class ListPagomovil extends AdminComponent
 			'user' => 'nullable',
 			'plan' => 'required',
             'fecha_pago' => 'required',
+            'nrorouter' => 'required',
         ]);
 		
         $data = [
@@ -244,6 +259,7 @@ class ListPagomovil extends AdminComponent
 			'plan' => $request->post('plan'),
             'fecha_pago' => $request->post('fecha_pago'),
             'externalcomment' => '',
+            'nrorouter' => $request->post('nrorouter'),
         ];
             
         if ($validator->fails()) {

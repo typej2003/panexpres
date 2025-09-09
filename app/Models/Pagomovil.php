@@ -23,6 +23,7 @@ class Pagomovil extends Model
         'plan',
         'externalcomment',
         'fecha_pago',
+        'nrorouter',
     ];
 
     public function comercios()

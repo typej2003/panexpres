@@ -18,6 +18,7 @@ class Router extends Model
         'admin',
         'password',
         'location',
+        'nrorouter',
     ];
 
     public function user()
