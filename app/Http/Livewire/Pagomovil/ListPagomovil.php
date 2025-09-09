@@ -102,8 +102,8 @@ class ListPagomovil extends AdminComponent
     {
         
         try {
-                $this->router = Router::where('nrorouter', $pago->nrorouter)->first();
-                
+                $this->router = Router::where('nrorouter', $nrorouter)->first();
+
                 if(config('app.host') == 'ip'){
                     $host = $this->router->ip;
                 }else{
