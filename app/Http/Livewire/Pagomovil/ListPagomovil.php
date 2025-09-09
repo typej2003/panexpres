@@ -258,7 +258,7 @@ class ListPagomovil extends AdminComponent
 
         $pago = Pagomovil::create($data);
 
-        $message = 'Un usuario realizo un pago movil. Telefono: ' . $data['telefono'] . ' Referencia: ' . $data['referencia'] . ' Monto: ' . $data['monto'];
+        $message = 'Un usuario realizo un pago movil. Telefono: ' . $data['telefono'] . ' Referencia: ' . $data['referencia'] . ' Monto: ' . $data['monto'] . ' Plan: ' . $data['plan'];
         $sender = new SmsSender;
         $sender->callSendSms($user, $message);
 
