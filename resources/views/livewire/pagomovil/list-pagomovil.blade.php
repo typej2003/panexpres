@@ -140,6 +140,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="nrorouter">Nrorouter</label>
+                            <input type="text" wire:model.defer="state.nrorouter" class="form-control @error('nrorouter') is-invalid @enderror" id="nrorouter" aria-describedby="nrorouterHelp" placeholder="Fecha pago">
+                            @error('nrorouter')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="fecha_pago">fecha_pago</label>
                             <input type="date" wire:model.defer="state.fecha_pago" class="form-control @error('fecha_pago') is-invalid @enderror" id="fecha_pago" aria-describedby="fecha_pagoHelp" placeholder="Fecha pago">
                             @error('fecha_pago')

@@ -89,7 +89,7 @@ class ListPagomovil extends AdminComponent
 			// crear un user
 			$user = $pago->telefono;
 
-			$this->createUserHotspot($pago->nrorouter, $user, $p->plan.'/'.$p->costo);
+            $this->createUserHotspot($pago->nrorouter, $user, $p->plan.'/'.$p->costo);
 
 			//actualizar el usuario en el pago
 			$pago->update(['user' => $user]);
@@ -100,10 +100,10 @@ class ListPagomovil extends AdminComponent
 
 	public function createUserHotspot($nrorouter, $user, $profile)
     {
-        $this->router = Router::where('nrorouter', $nrorouter)->get();
-
+        
         try {
-
+                $this->router = Router::where('nrorouter', $pago->nrorouter)->first();
+                
                 if(config('app.host') == 'ip'){
                     $host = $this->router->ip;
                 }else{
@@ -205,6 +205,7 @@ class ListPagomovil extends AdminComponent
             'monto' => 'required',
             'status' => 'required',
             'fecha_pago' => 'required',
+            'nrorouter' => 'required',
 		])->validate();
 
 		Pagomovil::create($validatedData);
