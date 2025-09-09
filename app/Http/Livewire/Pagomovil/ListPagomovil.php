@@ -111,7 +111,7 @@ class ListPagomovil extends AdminComponent
                 }
                 
                 $datos = [
-                    'host' => $this->router->ip,
+                    'host' => $host,
                     'user' => $this->router->admin,
                     'pass' => $this->router->password,
                 ];
