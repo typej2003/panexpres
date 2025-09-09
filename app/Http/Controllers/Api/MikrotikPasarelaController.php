@@ -146,22 +146,9 @@ class MikrotikPasarelaController extends Controller
 				'nrorouter' => $nrorouter,
 			]);
 
-        //     $transaccion = Transaccion::create([
-        //     'token' => $token,
-        //     'paymentId' => $token,
-        //     'cliente_id' => $pedidotemporal->user_id,
-        //     'user_id' => $pedidotemporal->user_id,
-        //     'comercio_id' => $pedidotemporal->comercio_id,
-        //     'identificationNumber' => $datos->idNumber,
-        //     'id_transaccion' => $datos->transactionId,
-        //     'reference' => $datos->reference,
-        //     'totalbs' => $datos->amount,
-        //     'fechaPago' => $paymentDate,
-        //     'title' => $datos->title,
-        //     'description' => $datos->description,
-        //     'status' => 1,
-        //     'nropedido' => $datos->reference,
-        //   ]);
+			// Crear usuario
+
+			// iniciar session
 
             return json_encode($datos);
 
