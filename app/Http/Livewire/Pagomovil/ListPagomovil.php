@@ -100,7 +100,7 @@ class ListPagomovil extends AdminComponent
 
 	public function createUserHotspot($nrorouter, $user, $profile)
     {
-        $router = Router::where('nrorouter', $nrorouter)->get();
+        $this->router = Router::where('nrorouter', $nrorouter)->get();
 
         try {
 
