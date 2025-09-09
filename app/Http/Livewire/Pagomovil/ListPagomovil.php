@@ -243,8 +243,9 @@ class ListPagomovil extends AdminComponent
 			'user' => $request->post('user'), 
 			'plan' => $request->post('plan'),
             'fecha_pago' => $request->post('fecha_pago'),
+            'externalcomment' => '',
         ];
-
+            
         if ($validator->fails()) {
             return response()->json([
                 'data' => $data,
