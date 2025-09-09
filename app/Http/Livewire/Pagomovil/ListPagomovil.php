@@ -32,17 +32,17 @@ class ListPagomovil extends AdminComponent
 
     public $sortDirection = 'desc';
 
-	// public $datos = [
-    //         'host' => '192.168.2.1',
+	 public $datos = [
+             'host' => '192.168.1.6',
+             'user' => 'jose',
+             'pass' => '123'
+         ];
+    // public $host = 'typej.ddns.net';
+    // public $datos = [
+    //         'host' => 'typej.ddns.net',
     //         'user' => 'jose',
     //         'pass' => '123'
     //     ];
-    public $host = 'typej.ddns.net';
-    public $datos = [
-            'host' => 'typej.ddns.net',
-            'user' => 'jose',
-            'pass' => '123'
-        ];
 
 	public function exeQuery($datos, $query)
     {

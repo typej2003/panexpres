@@ -41,7 +41,8 @@ Route::apiResource('enviardatos', EnviarDatos::class);
 //Crear usuario e iniciar sesion
 Route::get('createUserSession', [CreateUser::class, 'addNew']);
 
-Route::get('listPlanes', [ListPlanes::class, 'listPlanes']);
+//Route::get('listPlanes', [ListPlanes::class, 'listPlanes']);
+Route::post('listPlanes', [ListPlanes::class, 'listPlanes']);
 
 Route::post('hotspot-login', [CreateUser::class, 'login1']);
 

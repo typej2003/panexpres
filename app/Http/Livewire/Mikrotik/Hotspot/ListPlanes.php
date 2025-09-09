@@ -48,12 +48,22 @@ class ListPlanes extends Component
     {
         try {
 
+            if(config('app.host') == 'ip'){
+                $host = $this->router->ip;
+            }else{
+                $host = $this->router->dns;
+            }        
             $datos = [
-                'host' => '192.168.2.1', // Reemplaza con la IP de tu router
-                'user' => 'admin',      // Usuario API
-                'pass' => 'admin123', // Contraseña API
-                'port' => 8728,            // Puerto de la API
+                'host' => $this->router->ip,
+                'user' => $this->router->admin,
+                'pass' => $this->router->password,
             ];
+            // $datos = [
+            //     'host' => '192.168.1.6', // Reemplaza con la IP de tu router
+            //     'user' => 'jose',      // Usuario API
+            //     'pass' => '123', // Contraseña API
+            //     'port' => 8728,            // Puerto de la API
+            // ];
 
             //todas los perfiles de hotspot
             $profiles = $this->exeQuery($datos, '/ip/hotspot/user/profile/print');
