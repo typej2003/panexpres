@@ -22,13 +22,15 @@ class MikrotikPasarelaController extends Controller
         $datos = $request->all();
 		
 		//Creación de solicitud de pago
-        $Payment = new IpgBdvPaymentRequest();        
+        $Payment = new IpgBdvPaymentRequest();  
+		
+		$reference = $request->post('reference') . '/' . $request->post('nrorouter');
 		
 		$Payment->idLetter= $request->post('identificationNac'); //Letra de la cédula - V, E o P
         $Payment->idNumber= $request->post('identificationNumber'); //Número de cédula
         $Payment->amount= $request->post('amount'); //Monto a combrar, DECIMAL
         $Payment->currency= $request->post('currency'); //Moneda del pago, 0 - Bolivar Fuerte, 1 - Dolar
-        $Payment->reference= $request->post('reference'); //Código de referecia o factura
+        $Payment->reference= $reference; //Código de referecia o factura
         $Payment->title= $request->post('title'); //Titulo para el pago, Ej: Servicio de Cable
         $Payment->description= $request->post('description'); //Descripción del pago, Ej: Abono mes de marzo 2017
         $Payment->email= $request->post('email');
@@ -123,20 +125,24 @@ class MikrotikPasarelaController extends Controller
     
         if($datos->success == 'true')
         {
-          $reference = $datos->reference;
+          	$referenceArray = explode('/', $datos->reference);
+
+			$reference = $referenceArray[0];
+			$nrorouter = $referenceArray[1];
     
-          $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
+        	$paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
 
 			$transaccion = Pagomovil::create([
 				'referencia' => $datos->reference,
 				'telefono' => '04165800403',
 				'banco' => 'BDVPasarela',
 				'monto' => $datos->amount,
-                'externalcomment' => json_encode($datos) . '/ '.$_SERVER['REMOTE_ADDR'],
+				'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
 				'status' => 'PAGADO',
 				'token' => $token,
-                'datos' => $datos,
-          	]);
+				'datos' => json_encode($datos),
+				'nrorouter' => $nrorouter,
+			]);
 
         //     $transaccion = Transaccion::create([
         //     'token' => $token,
@@ -155,7 +161,7 @@ class MikrotikPasarelaController extends Controller
         //     'nropedido' => $datos->reference,
         //   ]);
 
-            return $datos;
+            return json_encode($datos);
 
         }
     }
