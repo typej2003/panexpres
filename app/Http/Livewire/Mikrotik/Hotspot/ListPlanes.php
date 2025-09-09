@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Mikrotik\Hotspot;
 
 use Livewire\Component;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -44,19 +44,21 @@ class ListPlanes extends Component
         return $result;
     }
 
-    public function listPlanes()
+    public function listPlanes(Request $request)
     {
         try {
 
+            $admin = $request->post('admin');
+            $password = $request->post('password');
             if(config('app.host') == 'ip'){
-                $host = $this->router->ip;
+                $host = $request->post('ip');
             }else{
-                $host = $this->router->dns;
+                $host = $request->post('dns');
             }        
             $datos = [
-                'host' => $this->router->ip,
-                'user' => $this->router->admin,
-                'pass' => $this->router->password,
+                'host' => $router,
+                'user' => $admin,
+                'pass' => $password,
             ];
             // $datos = [
             //     'host' => '192.168.1.6', // Reemplaza con la IP de tu router
