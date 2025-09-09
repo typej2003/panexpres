@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Livewire\Admin\AdminComponent;
 use App\Http\Livewire\Notificacion\SmsSender;
 use App\Models\Pagomovil;
+use App\Models\Router;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -17,6 +18,8 @@ class ListPagomovil extends AdminComponent
 {
 
 	public $state = [];
+
+    public $router;
 
 	public $pago;
 
@@ -98,7 +101,7 @@ class ListPagomovil extends AdminComponent
 	public function createUserHotspot($nrorouter, $user, $profile)
     {
         $router = Router::where('nrorouter', $nrorouter)->get();
-        
+
         try {
 
                 if(config('app.host') == 'ip'){
