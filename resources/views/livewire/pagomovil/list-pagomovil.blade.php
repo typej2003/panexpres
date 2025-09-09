@@ -71,16 +71,23 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <a class="btn btn-success" href="" wire:click.prevent="activarUsuario({{ $pago }})">
-                                                Activar usuario
-                                            </a>
+                                            @if($pago->status === 'confirmado')
+                                                <a href="" wire:click.prevent="activarUsuario({{ $pago }})">
+                                                    <i class="fa fa-solid fa-user-plus mx-2"></i>
+                                                </a>
+                                            @else
+                                                <a href="">
+                                                    <i class="fa fa-solid fa-toggle-off mx-2"></i>
+                                                </a>
+                                            @endif
+                                            
 
                                             <a href="" wire:click.prevent="enviarSms({{ $pago }})">
-                                                <i class="fa fa-solid fa-comment"></i>
+                                                <i class="fa fa-solid fa-comment mx-2"></i>
                                             </a>
 
                                             <a href="" wire:click.prevent="confirmPagoRemoval({{ $pago->id }})">
-                                                <i class="fa fa-trash text-danger"></i>
+                                                <i class="fa fa-trash text-danger mx-2"></i>
                                             </a>
                                         </td>
                                     </tr>
