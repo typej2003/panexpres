@@ -260,7 +260,7 @@ class ListPagomovil extends AdminComponent
 
         $message = 'Un usuario realizo un pago movil. Telefono: ' . $data['telefono'] . ' Referencia: ' . $data['referencia'] . ' Monto: ' . $data['monto'] . ' Plan: ' . $data['plan'];
         $sender = new SmsSender;
-        $sender->callSendSms($user, $message);
+        $sender->callSendSms($data['telefono'], $message);
 
         return response()->json([
                 'data' => $data,
