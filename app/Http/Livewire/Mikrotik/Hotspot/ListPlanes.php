@@ -56,7 +56,7 @@ class ListPlanes extends Component
                 $host = $request->post('dns');
             }        
             $datos = [
-                'host' => $router,
+                'host' => $host,
                 'user' => $admin,
                 'pass' => $password,
             ];
