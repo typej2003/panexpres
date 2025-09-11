@@ -13,6 +13,8 @@
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
                                 <h1>Mikrotik {{$datos}} </h1>
+
+                                <input type="text" value="{{ $url }}">
                                 
 
                                 <h1>Operación procesada con éxito</h1>
@@ -25,7 +27,7 @@
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button class="btn btn-success" id="salir">Salir</button>
+                                <button class="btn btn-success" id="conectarse">Conectarse</button>
                             </div>
                         </div>
                     </div>
@@ -38,9 +40,10 @@
         <!-- Modal -->
         
         <script>
-            let boton = document.getElementById('salir')
+            let boton = document.getElementById('conectarse')
             boton.addEventListener('click', function(){
-                window.parent.location.href= "https://panexpres.com";
+                let url = document.getElementById('url').value
+                window.parent.location.href= url;
             })
 
             window.onload=function() {
