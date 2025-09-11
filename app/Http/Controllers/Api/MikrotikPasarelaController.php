@@ -130,6 +130,8 @@ class MikrotikPasarelaController extends Controller
 			$reference = $referenceArray[0];
 			$telefono = $referenceArray[1];
 			$nrorouter = $referenceArray[2];
+			$plan = $referenceArray[3];
+			$costo = $referenceArray[4];
     
         	$paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
 
@@ -147,12 +149,60 @@ class MikrotikPasarelaController extends Controller
 			]);
 
 			// Crear usuario
+			$this->createUserHotspot($nrorouter, $telefono, $plan.'/'.$costo);
 
 			// iniciar session
 
             return json_encode($datos);
 
         }
+    }
+
+	public function createUserHotspot($nrorouter, $user, $profile)
+    {
+        
+        try {
+                $this->router = Router::where('nrorouter', $nrorouter)->first();
+
+                if(config('app.host') == 'ip'){
+                    $host = $this->router->ip;
+                }else{
+                    $host = $this->router->dns;
+                }
+                
+                $datos = [
+                    'host' => $host,
+                    'user' => $this->router->admin,
+                    'pass' => $this->router->password,
+                ];
+
+                $client = new Client($datos);
+
+                $password = $this->randomPassword();
+
+                // Crear la consulta para añadir el usuario
+                $query = (new Query('/ip/hotspot/user/add'))
+                    ->equal('server', 'all')
+                    ->equal('name', $user)
+                    ->equal('password', $password)
+                    ->equal('profile', $profile);
+                
+                // Ejecutar la consulta
+                $client->query($query)->read();
+                // Tarea completada.
+
+                //Enviar sms con el user y la contraseña
+                $this->sendSms($user, $password);
+
+                $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+
+            } catch (Exception $e) {
+
+                $this->dispatchBrowserEvent('hide-formUserHotspot', ["Caught exception: " . $e->getMessage() . "\n"]);
+                
+            } 
+
+		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 }
 
