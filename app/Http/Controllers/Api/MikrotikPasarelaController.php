@@ -260,19 +260,15 @@ class MikrotikPasarelaController extends Controller
             $query = new Query('/ip/hotspot/active/login');
             $query->set('user', $username);
             $query->set('password', $password);
-            
-            // La API de MikroTik requiere la dirección MAC para la autenticación
-            // Asegúrate de enviar la MAC desde tu formulario HTML
-            //$query->set('mac-address', $macAddress);
 
-            // $query = (new Query('/ip/hotspot/active/login'))
-            //     ->equal('user', $username)
-            //     ->equal('password', $password)
+			$query = (new Query('/ip/hotspot/active/login'))
+                ->equal('name', $username)
+                ->equal('password', $password);
             //     ->equal('mac-address', $macAddress);
 
             $response = $client->query($query)->read();
 
-            return ['valor' => "Operacion exitosa a traves de api!", 'status' => true];
+            return true;
 
             // Verificar si el login fue exitoso según la respuesta de MikroTik
             // if (empty($response)) {
@@ -292,7 +288,7 @@ class MikrotikPasarelaController extends Controller
 
         } catch (Exception $e) {
             // Manejar errores de conexión o de la API
-            return response()->json(['status' => false, 'valor' => 'Error de conexión con el router.', 'error' => $e->getMessage()], 500);
+            return false;
         }
     }
 }
