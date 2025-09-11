@@ -146,14 +146,13 @@ class MikrotikPasarelaController extends Controller
 				'banco' => 'BDVPasarela',
 				'plan' => $plan,
 				'monto' => $datos->amount,
-				'externalcomment' => $plan,
-				//'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
+				'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
 				'status' => 'PAGADO',
 				'token' => $token,
 			]);
 
 			// Crear usuario
-			//$this->createUserHotspot($nrorouter, $telefono, $plan.'/'.$costo);
+			$this->createUserHotspot($nrorouter, $telefono, $plan.'/'.$costo);
 
 			// iniciar session
 

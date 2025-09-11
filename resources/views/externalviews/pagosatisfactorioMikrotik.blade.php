@@ -22,7 +22,7 @@
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button class="btn btn-success" id="salir">Salir</button><span id="countdown">5</span>
+                                <button class="btn btn-success" id="salir">Salir</button>
                             </div>
                         </div>
                     </div>
@@ -43,6 +43,12 @@
             window.onload=function() {
                 
                 //window.parent.location.href= "/procesadoC";
+                function miFuncion() {
+                    console.log("¡5 segundos han pasado!"); // Tu código aquí
+                    window.parent.location.href= "https://panexpres.com";
+                }
+
+                setTimeout(miFuncion, 5000); // Ejecuta miFuncion después de 5000 milisegundos
                 
             }
         </script>
