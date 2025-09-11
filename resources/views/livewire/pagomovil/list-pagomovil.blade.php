@@ -65,7 +65,7 @@
                                         <td>{{ $pago->referencia }}</td>
                                         <td>{{ $pago->banco }}</td>
                                         <td>{{ $pago->telefono }}</td>
-                                        <td>{{ $pago->plan }}</td>
+                                        <td>{{ $pago->externalcomment }}</td>
                                         <td>{{ $pago->monto }}</td>
                                         <td>
                                             <select class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">

@@ -144,8 +144,10 @@ class MikrotikPasarelaController extends Controller
 				'telefono' => $telefono,
 				'user' => $telefono,
 				'banco' => 'BDVPasarela',
+				'plan' => $plan,
 				'monto' => $datos->amount,
-				'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
+				'externalcomment' => $datos->reference,
+				//'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
 				'status' => 'PAGADO',
 				'token' => $token,
 			]);
