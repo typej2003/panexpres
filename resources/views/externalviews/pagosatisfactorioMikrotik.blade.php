@@ -24,6 +24,10 @@
                                 <p>
                                     <div class="h2" id="contador">5</div>
                                 </p>
+                                <p>
+                                    <a target="_parent" class="h5 text-titulo" href="/">Seguir comprando</a>
+                                    <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=jose&amp;password=123">click here</a>
+                                </p>
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
