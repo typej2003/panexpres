@@ -14,7 +14,7 @@
                             <div class="card-body text-center">
                                 <h1>Mikrotik {{$datos}} </h1>
 
-                                <input type="text" value="{{ $url }}">
+                                <input type="text" id="url" name="url" value="{{ $url }}">
                                 
 
                                 <h1>Operación procesada con éxito</h1>
@@ -43,6 +43,7 @@
             let boton = document.getElementById('conectarse')
             boton.addEventListener('click', function(){
                 let url = document.getElementById('url').value
+                alert(url);
                 window.parent.location.href= url;
             })
 
