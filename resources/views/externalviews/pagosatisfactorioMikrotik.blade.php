@@ -65,7 +65,7 @@
                 clearInterval(intervalo); // Detiene el intervalo cuando el contador llega a 0
                 console.log("¡Contador finalizado!");
                 //window.parent.location.href= "https://panexpres.com";
-                parent.location.href = data.response.urlPayment;
+                window.top.location.href = 'https://panexpres.com';
             } else {
                 contador--; // Decrementa el contador en 1
             }
