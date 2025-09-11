@@ -31,6 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Router</th>
                                         <th scope="col">User</th>
                                         <th scope="col">Fecha del Pago</th>
                                         <th scope="col">
@@ -48,6 +49,7 @@
                                             </span>
                                         </th>
                                         <th scope="col">Teléfono</th>
+                                        <th scope="col">Plan</th>
                                         <th scope="col">Monto</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Opciones</th>
@@ -57,11 +59,13 @@
                                     @forelse ($pagomoviles as $index => $pago)
                                     <tr>
                                         <th scope="row">{{ $pagomoviles->firstItem() + $index }}</th>
-                                        <td>{{ $pago->user }}</td>
+                                        <td>{{ $pago->nrorouter }}</td>
+                                        <td>{{ $pago->user }}</td>                                        
                                         <td>{{ $pago->fecha_pago }}</td>
                                         <td>{{ $pago->referencia }}</td>
                                         <td>{{ $pago->banco }}</td>
                                         <td>{{ $pago->telefono }}</td>
+                                        <td>{{ $pago->plan }}</td>
                                         <td>{{ $pago->monto }}</td>
                                         <td>
                                             <select class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">
