@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\IpgBdv2;
 use App\Http\Controllers\Api\IpgBdvPaymentResponse;
 use App\Http\Controllers\Api\IpgBdvCheckPaymentResponse;
 
+use App\Http\Livewire\Notificacion\SmsSender;
 use RouterOS\Client;
 use RouterOS\Query;
 
@@ -167,22 +168,22 @@ class MikrotikPasarelaController extends Controller
 		}
     }
 
-	public function createUserHotspot($nrorouter, $user, $profile)
+	public function createUserHotspot($nrorouter, $userF, $profile)
     {
-        
+        $user = $userF;
         try {
-                $this->router = Router::where('nrorouter', $nrorouter)->first();
+                $router = Router::where('nrorouter', $nrorouter)->first();
 
                 if(config('app.host') == 'ip'){
-                    $host = $this->router->ip;
+                    $host = $router->ip;
                 }else{
-                    $host = $this->router->dns;
+                    $host = $router->dns;
                 }
                 
                 $datos = [
                     'host' => $host,
-                    'user' => $this->router->admin,
-                    'pass' => $this->router->password,
+                    'user' => $router->admin,
+                    'pass' => $router->password,
                 ];
 
                 $client = new Client($datos);
@@ -212,6 +213,13 @@ class MikrotikPasarelaController extends Controller
             } 
 
 		//$validatedData['password'] = bcrypt($validatedData['password']);
+    }
+	public function sendSms($user, $password)
+    {
+        $message = 'Su cuenta se encuentra activa. Usuario: ' . $user . ' Clave: ' . $password;
+        $sender = new SmsSender;
+        $sender->callSendSms($user, $message);
+
     }
 }
 

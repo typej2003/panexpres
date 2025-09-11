@@ -37,7 +37,7 @@
         <script>
             let boton = document.getElementById('salir')
             boton.addEventListener('click', function(){
-                //window.parent.location.href= "/procesadoC";
+                window.parent.location.href= "https://panexpres.com";
             })
 
             window.onload=function() {
