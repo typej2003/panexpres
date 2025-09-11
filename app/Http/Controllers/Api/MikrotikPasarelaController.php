@@ -139,16 +139,15 @@ class MikrotikPasarelaController extends Controller
         	$paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
 
 			$transaccion = Pagomovil::create([
-				'referencia' => $reference,
-				'nrorouter' => $nrorouter,
-				'telefono' => $telefono,
-				'user' => $telefono,
+				'referencia' => $datos->reference,
+				'nrorouter' => '',
+				'telefono' => '',
+				'user' => '',
 				'banco' => 'BDVPasarela',
 				'monto' => $datos->amount,
 				'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
 				'status' => 'PAGADO',
 				'token' => $token,
-				'nrorouter' => $nrorouter,
 			]);
 
 			// Crear usuario
@@ -156,9 +155,11 @@ class MikrotikPasarelaController extends Controller
 
 			// iniciar session
 
-            return json_encode($datos);
+            return json_encode(true);
 
-        }
+        }else{
+			return json_encode(false);
+		}
     }
 
 	public function createUserHotspot($nrorouter, $user, $profile)

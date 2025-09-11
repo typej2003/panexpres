@@ -52,7 +52,7 @@ Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
         
     //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
 
-    $datos = json_encode($datos);
+    //$datos = json_encode($datos);
 
 
     return view('externalviews.pagosatisfactorioMikrotik', ['datos' => $datos] );
