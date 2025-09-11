@@ -146,7 +146,7 @@ class MikrotikPasarelaController extends Controller
 				'banco' => 'BDVPasarela',
 				'plan' => $plan,
 				'monto' => $datos->amount,
-				'externalcomment' => $datos->reference,
+				'externalcomment' => $plan,
 				//'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
 				'status' => 'PAGADO',
 				'token' => $token,
