@@ -30,7 +30,7 @@ class ViewIntegration extends Component
                 //$host = $this->router->dns;
                 $host = 'typej.ddns.net';
             }        
-            $host = '192.168.2.1';
+            //$host = '192.168.2.1';
             // $datos = [
             //     'host' => $this->router->ip,
             //     'user' => $this->router->admin,
