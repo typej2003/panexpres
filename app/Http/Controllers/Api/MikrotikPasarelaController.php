@@ -25,7 +25,7 @@ class MikrotikPasarelaController extends Controller
         $Payment = new IpgBdvPaymentRequest();  
 
 		$plan = json_decode($request->post('planPasarela'));
-		$reference = $request->post('reference') . '/' . $request->post('cellphone') . '/' . $request->post('nrorouter').$plan->plan.'/'.$plan->costo;
+		$reference = $request->post('reference') . '/' . $request->post('cellphone') . '/' . $request->post('nrorouter'). '/' .$plan->plan.'/'.$plan->costo;
 
 		//$reference = $request->post('reference') . '/' . $request->post('cellphone') . '/' . $request->post('nrorouter');
 		
@@ -133,16 +133,16 @@ class MikrotikPasarelaController extends Controller
 			$reference = $referenceArray[0];
 			$telefono = $referenceArray[1];
 			$nrorouter = $referenceArray[2];
-			// $plan = $referenceArray[3];
-			// $costo = $referenceArray[4];
+			$plan = $referenceArray[3];
+			$costo = $referenceArray[4];
     
         	$paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
 
 			$transaccion = Pagomovil::create([
-				'referencia' => $datos->reference,
-				'nrorouter' => '',
-				'telefono' => '',
-				'user' => '',
+				'referencia' => $reference,
+				'nrorouter' => $nrorouter,
+				'telefono' => $telefono,
+				'user' => $telefono,
 				'banco' => 'BDVPasarela',
 				'monto' => $datos->amount,
 				'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
