@@ -257,7 +257,7 @@ class MikrotikPasarelaController extends Controller
             //$macAddress = '1A-2B-3C-4D-5E';
 			$client = new Client($datos);
 
-            $query = (new Query('/ip/hotspot/active/login'))
+            $query = (new Query('/ip/hotspot/login'))
                 ->equal('name', $username)
                 ->equal('password', $password);
             //     ->equal('mac-address', $macAddress);
