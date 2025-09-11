@@ -204,11 +204,11 @@ class MikrotikPasarelaController extends Controller
                 //Enviar sms con el user y la contraseña
                 $this->sendSms($user, $password);
 
-                $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+                return true;
 
             } catch (Exception $e) {
 
-                $this->dispatchBrowserEvent('hide-formUserHotspot', ["Caught exception: " . $e->getMessage() . "\n"]);
+                return false;
                 
             } 
 
@@ -226,7 +226,7 @@ class MikrotikPasarelaController extends Controller
 		}
 		return implode($pass); //turn the array into a string
 	}
-	
+
 	public function sendSms($user, $password)
     {
         $message = 'Su cuenta se encuentra activa. Usuario: ' . $user . ' Clave: ' . $password;
