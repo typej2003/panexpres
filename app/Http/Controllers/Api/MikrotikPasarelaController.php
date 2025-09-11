@@ -168,9 +168,8 @@ class MikrotikPasarelaController extends Controller
 		}
     }
 
-	public function createUserHotspot($nrorouter, $userF, $profile)
+	public function createUserHotspot($nrorouter, $user, $profile)
     {
-        $user = $userF;
         try {
                 $router = Router::where('nrorouter', $nrorouter)->first();
 
@@ -204,6 +203,8 @@ class MikrotikPasarelaController extends Controller
                 //Enviar sms con el user y la contraseña
                 $this->sendSms($user, $password);
 
+				$this->login($nrorouter, $user, $password);
+
                 return true;
 
             } catch (Exception $e) {
@@ -233,6 +234,66 @@ class MikrotikPasarelaController extends Controller
         $sender = new SmsSender;
         $sender->callSendSms($user, $message);
 
+    }
+
+	public function login($nrorouter, $username, $password)
+    {
+        try {
+
+            $router = Router::where('nrorouter', $nrorouter)->first();
+
+			if(config('app.host') == 'ip'){
+				$host = $router->ip;
+			}else{
+				$host = $router->dns;
+			}
+			
+			$datos = [
+				'host' => $host,
+				'user' => $router->admin,
+				'pass' => $router->password,
+			];
+
+            //$macAddress = '1A-2B-3C-4D-5E';
+
+            // Se utiliza el comando /ip/hotspot/active/login
+            $query = new Query('/ip/hotspot/active/login');
+            $query->set('user', $username);
+            $query->set('password', $password);
+            
+            // La API de MikroTik requiere la dirección MAC para la autenticación
+            // Asegúrate de enviar la MAC desde tu formulario HTML
+            //$query->set('mac-address', $macAddress);
+
+            // $query = (new Query('/ip/hotspot/active/login'))
+            //     ->equal('user', $username)
+            //     ->equal('password', $password)
+            //     ->equal('mac-address', $macAddress);
+
+            $response = $client->query($query)->read();
+
+            return ['valor' => "Operacion exitosa a traves de api!", 'status' => true];
+
+            // Verificar si el login fue exitoso según la respuesta de MikroTik
+            // if (empty($response)) {
+            //     return response()->json([
+            //         'status' => true,
+            //         'valor' => 'Usuario autenticado exitosamente.',
+            //         // Aquí puedes redirigir al usuario
+            //         // El login.html debe manejar la redirección del navegador con JS
+            //     ]);
+            // } else {
+            //     return response()->json([
+            //         'status' => false,
+            //         'valor' => 'Error de autenticación con MikroTik.',
+            //         'response' => $response
+            //     ]);
+            // }
+
+        } catch (Exception $e) {
+            // Manejar errores de conexión o de la API
+            return response()->json(['status' => false, 'valor' => 'Error de conexión con el router.', 'error' => $e->getMessage()], 500);
+        }
     }
 }
 
