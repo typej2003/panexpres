@@ -25,9 +25,9 @@ class MikrotikPasarelaController extends Controller
         $Payment = new IpgBdvPaymentRequest();  
 
 		$plan = json_decode($request->post('planPasarela'));
-		//$reference = $request->post('reference') . '/' . $request->post('cellphone') . '/' . $request->post('nrorouter').$plan->plan.'/'.$plan->costo;
+		$reference = $request->post('reference') . '/' . $request->post('cellphone') . '/' . $request->post('nrorouter').$plan->plan.'/'.$plan->costo;
 
-		$reference = $request->post('reference') . '/' . $request->post('cellphone') . '/' . $request->post('nrorouter');
+		//$reference = $request->post('reference') . '/' . $request->post('cellphone') . '/' . $request->post('nrorouter');
 		
 		$Payment->idLetter= $request->post('identificationNac'); //Letra de la cédula - V, E o P
         $Payment->idNumber= $request->post('identificationNumber'); //Número de cédula
