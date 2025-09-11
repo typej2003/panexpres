@@ -19,6 +19,9 @@
                                 <p>
                                     Su pago esta siendo validado por nuestro equipo de venta
                                 </p>
+                                <p>
+                                    <div id="contador">5</div>
+                                </p>
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
@@ -51,6 +54,22 @@
                 setTimeout(miFuncion, 5000); // Ejecuta miFuncion después de 5000 milisegundos
                 
             }
+
+            let contador = 5; // Valor inicial del contador
+
+            const intervalo = setInterval(() => {
+            console.log(contador); // Muestra el valor actual del contador
+            document.getElementById('contador').innerHTML = contador;
+
+            if (contador === 0) {
+                clearInterval(intervalo); // Detiene el intervalo cuando el contador llega a 0
+                console.log("¡Contador finalizado!");
+                window.parent.location.href= "https://panexpres.com";
+            } else {
+                contador--; // Decrementa el contador en 1
+            }
+            }, 1000); // Ejecuta la función cada 1000 milisegundos (1 segundo)
+
         </script>
 
     </div>
