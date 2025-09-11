@@ -20,7 +20,7 @@
                                     Su pago esta siendo validado por nuestro equipo de venta
                                 </p>
                                 <p>
-                                    <div id="contador">5</div>
+                                    <div class="h2" id="contador">5</div>
                                 </p>
                                 
                             </div>
@@ -48,7 +48,7 @@
                 //window.parent.location.href= "/procesadoC";
                 function miFuncion() {
                     console.log("¡5 segundos han pasado!"); // Tu código aquí
-                    window.parent.location.href= "https://panexpres.com";
+                    //window.parent.location.href= "https://panexpres.com";
                 }
 
                 setTimeout(miFuncion, 5000); // Ejecuta miFuncion después de 5000 milisegundos
@@ -64,7 +64,8 @@
             if (contador === 0) {
                 clearInterval(intervalo); // Detiene el intervalo cuando el contador llega a 0
                 console.log("¡Contador finalizado!");
-                window.parent.location.href= "https://panexpres.com";
+                //window.parent.location.href= "https://panexpres.com";
+                parent.location.href = data.response.urlPayment;
             } else {
                 contador--; // Decrementa el contador en 1
             }
