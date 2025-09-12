@@ -69,8 +69,8 @@ Route::get('/pruebapagosatisfactorioMikrotik', function () {
     $pass = '52479051';
 
     $host = 'typej.ddns.net';
-    $user = 'jose';
-    $pass = '123';
+    //$user = 'jose';
+    //$pass = '123';
     $url = 'http://'.$host .'/login?dst=...&username='. $user . '&password='.$pass;
 
     $datos = true;
@@ -84,8 +84,8 @@ Route::get('/google', function() {
 
 Route::get('/enviarLogin', function() {
     $host = 'typej.ddns.net';
-    $user = 'jose';
-    $pass = '123';
+    $user = '04165800403';
+    $pass = '52479051';
     $url = 'http://'.$host .'/login?dst=...&username='. $user . '&password='.$pass;
     return redirect()->away($url);
 });
