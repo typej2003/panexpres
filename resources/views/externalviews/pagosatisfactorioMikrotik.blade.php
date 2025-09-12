@@ -18,7 +18,7 @@
 
                                 <h1>Operación procesada con éxito</h1>
                                 <p>
-                                    Inicio de sesión en <span class="h2 text-danger" id="contador"></span>
+                                    Inicio de sesión en <span class="h2 text-danger" id="contador">5</span>
                                 </p>
 
                                 
@@ -37,7 +37,7 @@
                                 }
                                 const idIntervalo = setInterval(() => {
                                 console.log(contador); // Muestra el valor actual del contador
-                                document.getElementById('contador').innerHTML = contador
+                                document.getElementById('contador').textContent = contador
 
                                 if (contador === 0) {
                                     clearInterval(idIntervalo); // Detiene el intervalo cuando llega a 0
