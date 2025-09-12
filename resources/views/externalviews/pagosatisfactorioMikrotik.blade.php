@@ -11,10 +11,10 @@
                     <div class="col-lg-12">
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
-                                <h1>Mikrotik {{$datos}} </h1>
+                                <h1>Mikrotik</h1>
 
-                                <input type="text" id="url" name="url" value="{{ $url }}">
-                                
+                                <input type="text" id="user" name="user" value="{{ $user }}">
+                                <input type="text" id="password" name="password" value="{{ $password }}">                                
 
                                 <h1>Operación procesada con éxito</h1>
                                 <p>

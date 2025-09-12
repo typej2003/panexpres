@@ -68,16 +68,13 @@ Route::get('/pruebapagosatisfactorioMikrotik', function () {
     
     $user = '04165800403';
 
-    $pass = '52479051';
+    $password = '52479051';
 
     $host = 'typej.ddns.net';
-    //$user = 'jose';
-    //$pass = '123';
-    $url = 'http://'.$host .'/login?dst=...&username='. $user . '&password='.$pass;
 
     $datos = true;
 
-    return view('externalviews.pagosatisfactorioMikrotik', ['datos' => $datos, 'url'  =>  $url] );
+    return view('externalviews.pagosatisfactorioMikrotik', ['user' => $user, 'password'  =>  $password] );
 });
 
 Route::get('/google', function() {
