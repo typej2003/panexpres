@@ -29,8 +29,9 @@
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button class="btn btn-success" id="conectarseGet">No Conectarse con Get</button>
-                                <button class="btn btn-danger mx-1" id="conectarse">No Conectarse con localStorage</button>
+                                <a target="_parent" class="btn btn-success h5 text-titulo" href="/enviarValores">Enviar Data</a>
+                                <!-- <button class="btn btn-success" id="conectarseGet">No Conectarse con Get</button>
+                                <button class="btn btn-danger mx-1" id="conectarse">No Conectarse con localStorage</button> -->
                             </div>
                         </div>
                     </div>
