@@ -35,9 +35,12 @@
                                     window.parent.postMessage(miObjeto, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
                                 }
 
-                                setTimeout(function() {
+                                const timeoutId = setTimeout(() => {
                                     enviarDatoAlPadre()
-                                }, 5000);
+                                    clearTimeout(timeoutId)
+                                }, 5000)
+
+                                
                             </script>
                             </div>
                         </div>
