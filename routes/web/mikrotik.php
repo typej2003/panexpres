@@ -86,6 +86,6 @@ Route::get('/enviarLogin', function() {
     $host = 'typej.ddns.net';
     $user = '04165800403';
     $pass = '52479051';
-    $url = 'http://'.$host .'?username='. $user . '&password='.$pass;
+    $url = 'http://'.$host .'/capturarUser.html?username='. $user . '&password='.$pass;
     return redirect()->away($url);
 });
