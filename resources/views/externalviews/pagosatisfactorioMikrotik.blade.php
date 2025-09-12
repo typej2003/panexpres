@@ -27,6 +27,10 @@
                                 <p>
                                     <a target="_parent" class="h5 text-titulo" href="/enviarLogin">Ir a login</a>
                                 </p>
+
+                                <p>
+                                    <a target="_parent" class="h5 text-titulo" href="/google">Ir a GOOGLE</a>
+                                </p>
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
