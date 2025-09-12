@@ -73,6 +73,8 @@ Route::get('/pruebapagosatisfactorioMikrotik', function () {
     $pass = '123';
     $url = 'http://'.$host .'/login?dst=...&username='. $user . '&password='.$pass;
 
+    $datos = true;
+
     return view('externalviews.pagosatisfactorioMikrotik', ['datos' => $datos, 'url'  =>  $url] );
 });
 
