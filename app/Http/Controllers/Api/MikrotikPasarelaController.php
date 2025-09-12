@@ -161,7 +161,7 @@ class MikrotikPasarelaController extends Controller
 
 			// iniciar session
 
-            return json_encode($newUser);
+            return $newUser;
 
         }else{
 			$newUser = [
@@ -169,7 +169,7 @@ class MikrotikPasarelaController extends Controller
 					'password' => '',
 					'status' => false,
 				];
-			return json_encode($newUser);
+			return $newUser;
 		}
     }
 
