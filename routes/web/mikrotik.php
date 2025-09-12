@@ -76,7 +76,7 @@ Route::get('/pruebapagosatisfactorioMikrotik', function () {
 
     $datos = true;
 
-    return view('externalviews.pagosatisfactorioMikrotik', ['user' => $user, 'password'  =>  $password] );
+    return view('externalviews.ver', ['user' => $user, 'password'  =>  $password] );
 });
 
 Route::get('/google', function() {
