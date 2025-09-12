@@ -26,7 +26,6 @@
                                 </p>
                                 <p>
                                     <a target="_parent" class="h5 text-titulo" href="/enviarLogin">Enviar a login</a>
-                                    <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=jose&amp;password=123">click here</a>
                                 </p>
                                 
                             </div>
