@@ -34,6 +34,7 @@
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
+                                <button class="btn btn-success" id="conectarseGet">Conectarse con Get</button>
                                 <button class="btn btn-success" id="conectarse">Conectarse con localStorage</button>
                             </div>
                         </div>
@@ -54,6 +55,13 @@
                 localStorage.setItem('username', '04165800403')
                 localStorage.setItem('password', '52479051')
                 window.parent.location.href= 'http://typej.ddns.net/login';
+            })
+
+            let boton = document.getElementById('conectarseGet')
+            boton.addEventListener('click', function(){
+                let url = document.getElementById('url').value
+                alert(url);
+                window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
             })
 
             window.onload=function() {
