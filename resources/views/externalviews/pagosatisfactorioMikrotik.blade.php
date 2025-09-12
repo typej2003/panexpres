@@ -29,7 +29,8 @@
                                 </p>
 
                                 <p>
-                                    <a target="_parent" class="h5 text-titulo" href="/google">Ir a GOOGLE</a>
+                                    <!-- <a target="_parent" class="h5 text-titulo" href="/google">Ir a GOOGLE</a> -->
+                                    <a a href=“$(link-login-only)?target=lv&dst=http://www.hotmail.com”>Ir a Hotmail</a>
                                 </p>
                                 
                             </div>
@@ -57,8 +58,7 @@
 
             let conectarseGet = document.getElementById('conectarseGet')
             conectarseGet.addEventListener('click', function(){
-                //window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
-                window.parent.location.href= '/login?username=04165800403&password=52479051';
+                window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
             })
 
             window.onload=function() {
