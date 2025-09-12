@@ -30,7 +30,7 @@
 
                                 <p>
                                     <!-- <a target="_parent" class="h5 text-titulo" href="/google">Ir a GOOGLE</a> -->
-                                    <a a href=“$(link-login-only)?target=lv&dst=http://www.hotmail.com”>Ir a Hotmail</a>
+                                    <a a href="$(link-login-only)?target=lv&dst=http://www.hotmail.com">Ir a Hotmail</a>
                                 </p>
                                 
                             </div>
