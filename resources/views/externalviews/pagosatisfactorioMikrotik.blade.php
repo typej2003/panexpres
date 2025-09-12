@@ -26,10 +26,13 @@
                                 <button onclick="enviarDatoAlPadre()">Enviar Variable al Padre</button>
                                 <script>
                                 function enviarDatoAlPadre() {
-                                    const miVariable = "¡Hola desde el iframe!";
+                                    const miObjeto = {
+                                        user: document.getElementById('user').value,
+                                        password: document.getElementById('password').value,
+                                    };
                                     // Usa window.parent para referirte al padre y postMessage para enviar datos
                                     // El primer argumento es los datos y el segundo es el origen del padre
-                                    window.parent.postMessage(miVariable, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
+                                    window.parent.postMessage(miObjeto, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
                                 }
                             </script>
                             </div>
