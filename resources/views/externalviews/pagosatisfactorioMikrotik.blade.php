@@ -34,7 +34,7 @@
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button class="btn btn-success" id="conectarse">Conectarse</button>
+                                <button class="btn btn-success" id="conectarse">Conectarse con localStorage</button>
                             </div>
                         </div>
                     </div>
