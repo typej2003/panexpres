@@ -24,7 +24,7 @@
                                     <div class="h2" id="contador">5</div>
                                 </p>
                                 <p>
-                                    <a target="_parent" class="h5 text-titulo" href="/enviarData">Enviar Data</a>
+                                    <a target="_parent" class="h5 text-titulo" href="/enviarValores">Enviar Data</a>
                                 </p>
                                 
                             </div>

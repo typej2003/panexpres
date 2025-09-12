@@ -92,7 +92,7 @@ Route::get('/enviarLoginNo', function() {
     return redirect()->away($url);
 });
 
-Route::get('/enviarLogin', function () {
+Route::get('/enviarValores', function () {
 
     $host = 'typej.ddns.net';
     $user = '04165800403';
