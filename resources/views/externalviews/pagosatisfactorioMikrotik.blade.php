@@ -9,6 +9,21 @@
             <div class="container-fluid">
 
                 <div class="row">
+                    <div class="col-md-12 col-12">
+                        <!-- Código dentro del iframe -->
+                        <button onclick="enviarValorAlPadre()">Enviar Dato</button>
+
+                        <script>
+                            function enviarValorAlPadre() {
+                                const valorAEnviar = "El valor que quieres guardar"; // Obtén el valor que necesitas
+                                window.parent.postMessage(valorAEnviar, "http://dominio-del-padre.com"); // Especifica el origen del padre si es necesario
+                            }
+                        </script>
+
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
