@@ -35,7 +35,7 @@
                             </div>
                             <div class="card-footer d-flex justify-content-end">
                                 <button class="btn btn-success" id="conectarseGet">Conectarse con Get</button>
-                                <button class="btn btn-success" id="conectarse">Conectarse con localStorage</button>
+                                <button class="btn btn-danger mx-1" id="conectarse">Conectarse con localStorage</button>
                             </div>
                         </div>
                     </div>
