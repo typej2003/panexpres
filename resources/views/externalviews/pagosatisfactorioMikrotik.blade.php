@@ -18,7 +18,7 @@
 
                                 <h1>Operación procesada con éxito</h1>
                                 <p>
-                                    Inicio de sesión en <span class="h2 text-danger" id="contador">5</span>
+                                    Inicio de sesión en <span class="h2 text-danger" id="contador">5 segundos</span>
                                 </p>
 
                                 
@@ -35,17 +35,17 @@
                                     // El primer argumento es los datos y el segundo es el origen del padre
                                     window.parent.postMessage(miObjeto, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
                                 }
-                                const idIntervalo = setInterval(() => {
-                                console.log(contador); // Muestra el valor actual del contador
-                                document.getElementById('contador').textContent = contador
+                                // const idIntervalo = setInterval(() => {
+                                // console.log(contador); // Muestra el valor actual del contador
+                                // document.getElementById('contador').textContent = contador
 
-                                if (contador === 0) {
-                                    clearInterval(idIntervalo); // Detiene el intervalo cuando llega a 0
-                                    console.log("¡Cuenta regresiva terminada!");
-                                } else {
-                                    contador--; // Disminuye el contador en 1
-                                }
-                                }, 1000); // 1000 milisegundos = 1 segundo
+                                // if (contador === 0) {
+                                //     clearInterval(idIntervalo); // Detiene el intervalo cuando llega a 0
+                                //     console.log("¡Cuenta regresiva terminada!");
+                                // } else {
+                                //     contador--; // Disminuye el contador en 1
+                                // }
+                                // }, 1000); // 1000 milisegundos = 1 segundo
 
                                 const timeoutId = setTimeout(() => {
                                     enviarDatoAlPadre()
