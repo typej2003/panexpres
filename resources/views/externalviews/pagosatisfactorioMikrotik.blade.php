@@ -50,17 +50,13 @@
         <script>
             let boton = document.getElementById('conectarse')
             boton.addEventListener('click', function(){
-                let url = document.getElementById('url').value
-                alert(url);
                 localStorage.setItem('username', '04165800403')
                 localStorage.setItem('password', '52479051')
                 window.parent.location.href= 'http://typej.ddns.net/login';
             })
 
-            let boton = document.getElementById('conectarseGet')
-            boton.addEventListener('click', function(){
-                let url = document.getElementById('url').value
-                alert(url);
+            let conectarseGet = document.getElementById('conectarseGet')
+            conectarseGet.addEventListener('click', function(){
                 window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
             })
 
