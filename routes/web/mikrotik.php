@@ -83,6 +83,9 @@ Route::get('/google', function() {
 });
 
 Route::get('/enviarLogin', function() {
+    $host = 'typej.ddns.net';
+    $user = 'jose';
+    $pass = '123';
     $url = 'http://'.$host .'/login?dst=...&username='. $user . '&password='.$pass;
     return redirect()->away($url);
 });
