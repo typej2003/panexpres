@@ -47,16 +47,15 @@ Route::get('/listPlanesHotspot', ListPlanes::class)->name('listPlanesHotspot')->
 
 // Operaciones para la pasarela del mikrotik
 Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
-    $newUser1 = [];
+    $newUser = [];
     $newUser = '';
     $id_suc = $id;
     //$pasarela = Pasarela();
     $result = new MikrotikPasarelaController();
-    $newUser1 = $result->registrarReferenciaMikrotik($id);
+    $newUser = $result->registrarReferenciaMikrotik($id);
 
-    $newUser = $newUser1['user'];
-
-    return view('externalviews.ver', ['user' => $newUser, ] );
+    return view('externalviews.ver', ['newUser' => $newUser, ] );
+    
     if ($newUser['status']== true)
     {
         return view('externalviews.pagosatisfactorioMikrotik', ['user' => $newUser['user'], 'password'  =>  $newUser['password']] );

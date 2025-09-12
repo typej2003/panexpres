@@ -12,7 +12,8 @@
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
                                 <h1>Mikrotik</h1>
-                                <h2>{{ $newUser }}</h2>
+                                <h2>{{ $newUser['user'] }}</h2>
+                                <h2>{{ $newUser['password'] }}</h2>
 
                                 
                                 <h1>Operación procesada con éxito</h1>
