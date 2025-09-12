@@ -54,7 +54,8 @@ Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
     $result = new MikrotikPasarelaController();
     $newUser1 = $result->registrarReferenciaMikrotik($id);
 
-    $newUser = json_encode($newUser1);
+    $newUser = $newUser1->user;
+
     return view('externalviews.ver', ['user' => $newUser, ] );
     if ($newUser['status']== true)
     {
@@ -74,9 +75,11 @@ Route::get('/pruebapagosatisfactorioMikrotik', function () {
 
     $host = 'typej.ddns.net';
 
+
+
     $datos = true;
 
-    return view('externalviews.ver', ['user' => $user, 'password'  =>  $password] );
+    return view('externalviews.ver', ['user' => $user, 'password'  =>  $password, 'newUser'  =>  $newUser] );
 });
 
 Route::get('/google', function() {
