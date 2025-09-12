@@ -164,7 +164,12 @@ class MikrotikPasarelaController extends Controller
             return json_encode($newUser);
 
         }else{
-			return json_encode(false);
+			$newUser = [
+					'user' => '',
+					'password' => '',
+					'status' => false,
+				];
+			return json_encode($newUser);
 		}
     }
 

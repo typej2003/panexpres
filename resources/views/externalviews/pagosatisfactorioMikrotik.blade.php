@@ -38,7 +38,7 @@
                                 const timeoutId = setTimeout(() => {
                                     enviarDatoAlPadre()
                                     clearTimeout(timeoutId)
-                                }, 5000)
+                                }, 15000)
 
                                 
                             </script>

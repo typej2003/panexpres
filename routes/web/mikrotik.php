@@ -51,8 +51,15 @@ Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
     //$pasarela = Pasarela();
     $result = new MikrotikPasarelaController();
     $newUser = $result->registrarReferenciaMikrotik($id);
+
+    if ($newUser['status'])
+    {
+        return view('externalviews.pagosatisfactorioMikrotik', ['user' => $newUser['user'], 'password'  =>  $newUser['password']] );
+    }else{
+        return view('externalviews.pagosatisfactorioMikrotik', ['user' => 'fallo', 'password'  =>  'fallo'] );
+    }
         
-    return view('externalviews.pagosatisfactorioMikrotik', ['user' => $newUser->user, 'password'  =>  $newUser->password] );
+    
 });
 
 Route::get('/pruebapagosatisfactorioMikrotik', function () {
