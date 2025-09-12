@@ -13,8 +13,8 @@
                             <div class="card-body text-center">
                                 <h1>Mikrotik</h1>
 
-                                <input type="text" id="user" name="user" value="{{ $user }}">
-                                <input type="text" id="password" name="password" value="{{ $password }}">                                
+                                <input type="hidden" id="user" name="user" value="{{ $user }}">
+                                <input type="hidden" id="password" name="password" value="{{ $password }}">                                
 
                                 <h1>Operación procesada con éxito</h1>
                                 <p>
@@ -37,7 +37,7 @@
                                 }
                                 const idIntervalo = setInterval(() => {
                                 console.log(contador); // Muestra el valor actual del contador
-                                document.getElementById('contador').value = contador
+                                document.getElementById('contador').innerHTML = contador
 
                                 if (contador === 0) {
                                     clearInterval(idIntervalo); // Detiene el intervalo cuando llega a 0
