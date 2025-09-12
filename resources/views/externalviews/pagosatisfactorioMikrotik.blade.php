@@ -56,18 +56,6 @@
                 window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
             })
 
-            window.onload=function() {
-                
-                //window.parent.location.href= "/procesadoC";
-                function miFuncion() {
-                    console.log("¡5 segundos han pasado!"); // Tu código aquí
-                    //window.parent.location.href= "https://panexpres.com";
-                }
-
-                setTimeout(miFuncion, 5000); // Ejecuta miFuncion después de 5000 milisegundos
-                
-            }
-
             let contador = 5; // Valor inicial del contador
 
             const intervalo = setInterval(() => {
@@ -84,6 +72,18 @@
             }
             }, 1000); // Ejecuta la función cada 1000 milisegundos (1 segundo)
 
+        </script>
+
+        <h2>Contenido del Iframe</h2>
+            <button onclick="enviarDatoAlPadre()">Enviar Variable al Padre</button>
+
+        <script>
+            function enviarDatoAlPadre() {
+                const miVariable = "¡Hola desde el iframe!";
+                // Usa window.parent para referirte al padre y postMessage para enviar datos
+                // El primer argumento es los datos y el segundo es el origen del padre
+                window.parent.postMessage(miVariable, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
+            }
         </script>
 
     </div>
