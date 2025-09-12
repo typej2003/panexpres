@@ -8,6 +8,22 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-md-12 col-12">
+                        <h2>Contenido del Iframe</h2>
+                        <button onclick="enviarDatoAlPadre()">Enviar Variable al Padre</button>
+
+                        <script>
+                            function enviarDatoAlPadre() {
+                                const miVariable = "¡Hola desde el iframe!";
+                                // Usa window.parent para referirte al padre y postMessage para enviar datos
+                                // El primer argumento es los datos y el segundo es el origen del padre
+                                window.parent.postMessage(miVariable, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
@@ -44,17 +60,17 @@
         <!-- Modal -->
         
         <script>
-            let boton = document.getElementById('conectarse')
-            boton.addEventListener('click', function(){
-                localStorage.setItem('username', '04165800403')
-                localStorage.setItem('password', '52479051')
-                window.parent.location.href= 'http://typej.ddns.net/login';
-            })
+            // let boton = document.getElementById('conectarse')
+            // boton.addEventListener('click', function(){
+            //     localStorage.setItem('username', '04165800403')
+            //     localStorage.setItem('password', '52479051')
+            //     window.parent.location.href= 'http://typej.ddns.net/login';
+            // })
 
-            let conectarseGet = document.getElementById('conectarseGet')
-            conectarseGet.addEventListener('click', function(){
-                window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
-            })
+            // let conectarseGet = document.getElementById('conectarseGet')
+            // conectarseGet.addEventListener('click', function(){
+            //     window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
+            // })
 
             let contador = 5; // Valor inicial del contador
 
@@ -72,18 +88,6 @@
             }
             }, 1000); // Ejecuta la función cada 1000 milisegundos (1 segundo)
 
-        </script>
-
-        <h2>Contenido del Iframe</h2>
-            <button onclick="enviarDatoAlPadre()">Enviar Variable al Padre</button>
-
-        <script>
-            function enviarDatoAlPadre() {
-                const miVariable = "¡Hola desde el iframe!";
-                // Usa window.parent para referirte al padre y postMessage para enviar datos
-                // El primer argumento es los datos y el segundo es el origen del padre
-                window.parent.postMessage(miVariable, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
-            }
         </script>
 
     </div>
