@@ -57,7 +57,8 @@
 
             let conectarseGet = document.getElementById('conectarseGet')
             conectarseGet.addEventListener('click', function(){
-                window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
+                //window.parent.location.href= 'http://typej.ddns.net/login?username=04165800403&password=52479051';
+                window.parent.location.href= '/login?username=04165800403&password=52479051';
             })
 
             window.onload=function() {
