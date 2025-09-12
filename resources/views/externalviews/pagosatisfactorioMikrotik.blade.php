@@ -16,7 +16,7 @@
                         <script>
                             function enviarValorAlPadre() {
                                 const valorAEnviar = "El valor que quieres guardar"; // Obtén el valor que necesitas
-                                window.parent.postMessage(valorAEnviar, "http://typej.ddns.net/planes"); // Especifica el origen del padre si es necesario
+                                window.parent.postMessage(valorAEnviar, "http://typej.ddns.net"); // Especifica el origen del padre si es necesario
                             }
                         </script>
 
