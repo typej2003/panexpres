@@ -18,8 +18,9 @@
 
                                 <h1>Operación procesada con éxito</h1>
                                 <p>
-                                    Su pago esta siendo validado por nuestro equipo de venta
+                                    Inicio de sesión en <span class="h2 text-danger" id="contador"></span>
                                 </p>
+
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
@@ -34,11 +35,22 @@
                                     // El primer argumento es los datos y el segundo es el origen del padre
                                     window.parent.postMessage(miObjeto, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
                                 }
+                                const idIntervalo = setInterval(() => {
+                                console.log(contador); // Muestra el valor actual del contador
+                                document.getElementById('contador').value = contador
+
+                                if (contador === 0) {
+                                    clearInterval(idIntervalo); // Detiene el intervalo cuando llega a 0
+                                    console.log("¡Cuenta regresiva terminada!");
+                                } else {
+                                    contador--; // Disminuye el contador en 1
+                                }
+                                }, 1000); // 1000 milisegundos = 1 segundo
 
                                 const timeoutId = setTimeout(() => {
                                     enviarDatoAlPadre()
                                     clearTimeout(timeoutId)
-                                }, 15000)
+                                }, 5000)
 
                                 
                             </script>
