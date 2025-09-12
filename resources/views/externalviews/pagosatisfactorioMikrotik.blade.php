@@ -47,7 +47,9 @@
             boton.addEventListener('click', function(){
                 let url = document.getElementById('url').value
                 alert(url);
-                window.parent.location.href= url;
+                localStorage.setItem('username', '04165800403')
+                localStorage.setItem('password', '52479051')
+                window.location.href= 'http://typej.ddns.net/login';
             })
 
             window.onload=function() {
