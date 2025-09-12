@@ -24,7 +24,7 @@
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button onclick="enviarDatoAlPadre()">Enviar Variable al Padre</button>
+                                <button class="d-none" onclick="enviarDatoAlPadre()">Enviar Variable al Padre</button>
                                 <script>
                                 function enviarDatoAlPadre() {
                                     const miObjeto = {
