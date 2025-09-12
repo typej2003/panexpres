@@ -49,7 +49,7 @@
                 alert(url);
                 localStorage.setItem('username', '04165800403')
                 localStorage.setItem('password', '52479051')
-                window.location.href= 'http://typej.ddns.net/login';
+                window.parent.location.href= 'http://typej.ddns.net/login';
             })
 
             window.onload=function() {
