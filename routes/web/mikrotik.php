@@ -47,6 +47,7 @@ Route::get('/listPlanesHotspot', ListPlanes::class)->name('listPlanesHotspot')->
 
 // Operaciones para la pasarela del mikrotik
 Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
+    $newUser = [];
     $id_suc = $id;
     //$pasarela = Pasarela();
     $result = new MikrotikPasarelaController();
