@@ -157,11 +157,11 @@ class MikrotikPasarelaController extends Controller
 			]);
 
 			// Crear usuario
-			$this->createUserHotspot($nrorouter, $telefono, $plan.'/'.$costo);
+			$newUser = $this->createUserHotspot($nrorouter, $telefono, $plan.'/'.$costo);
 
 			// iniciar session
 
-            return json_encode(true);
+            return json_encode($newUser);
 
         }else{
 			return json_encode(false);
@@ -203,13 +203,25 @@ class MikrotikPasarelaController extends Controller
                 //Enviar sms con el user y la contraseña
                 $this->sendSms($user, $password);
 
-				$this->login($nrorouter, $user, $password);
+				//$this->login($nrorouter, $user, $password);
 
-                return true;
+				$newUser = [
+					'user' => $user,
+					'password' => $password,
+					'status' => true,
+				];
+
+                return $newUser;
 
             } catch (Exception $e) {
 
-                return false;
+                $newUser = [
+					'user' => '',
+					'password' => '',
+					'status' => false,
+				];
+
+                return $newUser;
                 
             } 
 

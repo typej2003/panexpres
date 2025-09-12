@@ -50,18 +50,9 @@ Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
     $id_suc = $id;
     //$pasarela = Pasarela();
     $result = new MikrotikPasarelaController();
-    $datos = $result->registrarReferenciaMikrotik($id);
+    $newUser = $result->registrarReferenciaMikrotik($id);
         
-    //$transaccion = Transaccion::where('paymentId', $id_suc)->first();
-
-    //$datos = json_encode($datos);
-
-    $host = 'typej.ddns.net';
-    $user = 'jose';
-    $pass = '123';
-    $url = 'http://'.$host .'/login?dst=...&username='. $user . '&password='.$pass;
-
-    return view('externalviews.pagosatisfactorioMikrotik', ['datos' => $datos, 'url'  =>  $url] );
+    return view('externalviews.pagosatisfactorioMikrotik', ['user' => $newUser->user, 'password'  =>  $newUser->password] );
 });
 
 Route::get('/pruebapagosatisfactorioMikrotik', function () {
