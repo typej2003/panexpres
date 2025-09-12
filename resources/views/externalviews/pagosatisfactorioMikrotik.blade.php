@@ -7,22 +7,6 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-
-                <div class="row">
-                    <div class="col-md-12 col-12">
-                        <!-- Código dentro del iframe -->
-                        <button onclick="enviarValorAlPadre()">Enviar Dato</button>
-
-                        <script>
-                            function enviarValorAlPadre() {
-                                const valorAEnviar = "El valor que quieres guardar"; // Obtén el valor que necesitas
-                                window.parent.postMessage(valorAEnviar, "http://typej.ddns.net"); // Especifica el origen del padre si es necesario
-                            }
-                        </script>
-
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card" style="width: 100% !important;">
@@ -40,18 +24,13 @@
                                     <div class="h2" id="contador">5</div>
                                 </p>
                                 <p>
-                                    <a target="_parent" class="h5 text-titulo" href="/enviarLogin">Ir a login</a>
-                                </p>
-
-                                <p>
-                                    <!-- <a target="_parent" class="h5 text-titulo" href="/google">Ir a GOOGLE</a> -->
-                                    <a a href="$(link-login-only)?target=lv&dst=http://www.hotmail.com">Ir a Hotmail</a>
+                                    <a target="_parent" class="h5 text-titulo" href="/enviarData">Enviar Data</a>
                                 </p>
                                 
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button class="btn btn-success" id="conectarseGet">Conectarse con Get</button>
-                                <button class="btn btn-danger mx-1" id="conectarse">Conectarse con localStorage</button>
+                                <button class="btn btn-success" id="conectarseGet">No Conectarse con Get</button>
+                                <button class="btn btn-danger mx-1" id="conectarse">No Conectarse con localStorage</button>
                             </div>
                         </div>
                     </div>

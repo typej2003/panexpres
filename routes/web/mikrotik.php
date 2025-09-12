@@ -17,6 +17,8 @@ use App\Http\Controllers\LoginMikrotik;
 use App\Http\Livewire\Mikrotik\Hotspot\ListPlanes;
 use App\Http\Controllers\Api\MikrotikPasarelaController;
 
+use Illuminate\Support\Facades\Response;
+
 Route::get('/integracion', Integracion::class)->name('integracion')->middleware('auth');
 
 Route::get('/listRouters', ListRouters::class)->name('listRouters')->middleware('auth');
@@ -82,10 +84,33 @@ Route::get('/google', function() {
     return redirect()->away('https://www.google.com');
 });
 
-Route::get('/enviarLogin', function() {
+Route::get('/enviarLoginNo', function() {
     $host = 'typej.ddns.net';
     $user = '04165800403';
     $pass = '52479051';
     $url = 'http://'.$host .'/login?username='. $user . '&password='.$pass;
     return redirect()->away($url);
+});
+
+Route::get('/enviarLogin', function () {
+
+    $host = 'typej.ddns.net';
+    $user = '04165800403';
+    $pass = '52479051';
+
+    return Response::stream(
+        function () {
+            while (true) {
+                echo "data: " . json_encode(['message' => 'Evento recibido: ' . date('Y-m-d H:i:s')]) . "\n\n";
+                flush(); // Asegura que los datos se envíen inmediatamente
+                sleep(5); // Espera 5 segundos antes de enviar el siguiente evento
+            }
+        },
+        200,
+        [
+            'Content-Type' => 'text/event-stream',
+            'Cache-Control' => 'no-cache',
+            'X-Accel-Buffering' => 'no', // Para servidores como Nginx
+        ]
+    );
 });
