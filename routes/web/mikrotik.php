@@ -54,7 +54,7 @@ Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {
     $result = new MikrotikPasarelaController();
     $newUser = $result->registrarReferenciaMikrotik($id);
 
-    return view('externalviews.ver', ['newUser' => $newUser, ] );
+    //return view('externalviews.ver', ['newUser' => $newUser, ] );
     
     if ($newUser['status']== true)
     {
