@@ -34,6 +34,10 @@
                                     // El primer argumento es los datos y el segundo es el origen del padre
                                     window.parent.postMessage(miObjeto, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
                                 }
+
+                                setTimeout(function() {
+                                    enviarDatoAlPadre()
+                                }, 5000);
                             </script>
                             </div>
                         </div>
