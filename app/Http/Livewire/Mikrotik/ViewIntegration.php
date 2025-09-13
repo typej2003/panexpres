@@ -45,6 +45,8 @@ class ViewIntegration extends Component
                 'pass' => $this->router->password,
                 'port' => 8728,
             ]);
+
+            dd($host);
             
             $query = new Query('/system/identity/getall');
 
