@@ -20,6 +20,10 @@ class TimeOut extends Component
 
     public $addressPool = [];
 
+    public $user = '04165800403';
+
+    public $password = '60048209';
+
     public function mount($router_id=1)
     {   
              
