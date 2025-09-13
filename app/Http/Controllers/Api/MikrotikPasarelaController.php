@@ -178,17 +178,32 @@ class MikrotikPasarelaController extends Controller
         try {
                 $router = Router::where('nrorouter', $nrorouter)->first();
 
-                if(config('app.host') == 'ip'){
-                    $host = $router->ip;
-                }else{
-                    $host = $router->dns;
-                }
+                // if(config('app.host') == 'ip'){
+                //     $host = $router->ip;
+                // }else{
+                //     $host = $router->dns;
+                // }
                 
-                $datos = [
-                    'host' => $host,
-                    'user' => $router->admin,
-                    'pass' => $router->password,
-                ];
+                // $datos = [
+                //     'host' => $host,
+                //     'user' => $router->admin,
+                //     'pass' => $router->password,
+                // ];
+				if(config('app.host') == 'ip'){
+					$host = $router->ip;
+				}else{
+					$host = $router->dns;
+					//$host = 'typej.ddns.net';
+					//$host = '192.168.1.6';
+				}        
+				
+				// Iniciar la conexión
+				$datos = [
+					'host' => $host,
+					'user' => $router->admin,
+					'pass' => $router->password,
+					'port' => 8728,
+				];
 
                 $client = new Client($datos);
 
