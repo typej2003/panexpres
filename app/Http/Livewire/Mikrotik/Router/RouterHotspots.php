@@ -33,6 +33,7 @@ class RouterHotspots extends Component
     public function exeQuery($datos, $query)
     {
         try {
+                
                 $client = new Client($datos);
 
                 $query = new Query($query);
@@ -213,7 +214,7 @@ class RouterHotspots extends Component
             //$host = 'typej.ddns.net';
             //$host = '192.168.1.6';
         }        
-        dd($host);
+        
         // Iniciar la conexión
         $datos = new Client([
             'host' => $host,
@@ -221,6 +222,7 @@ class RouterHotspots extends Component
             'pass' => $this->router->password,
             'port' => 8728,
         ]);
+        
 
         // todas las interfaces
         $interfaces = $this->exeQuery($datos, '/interface/print');
