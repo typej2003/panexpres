@@ -8,6 +8,7 @@ use App\Http\Livewire\Mikrotik\Router\ConfigureRouter;
 use App\Http\Livewire\Mikrotik\Router\RouterUsers;
 use App\Http\Livewire\Mikrotik\Router\RouterHotspots;
 use App\Http\Livewire\Mikrotik\Router\RouterPlanes;
+use App\Http\Livewire\Mikrotik\User\TimeOut;
 
 use App\Http\Livewire\Mikrotik\ListUsersMikrotik;
 use App\Http\Livewire\Mikrotik\Hotspot\ListHotspot;
@@ -44,6 +45,8 @@ Route::get('/crearTicket', CrearTicket::class)->name('crearTicket')->middleware(
 Route::get('/createUser', CreateUser::class)->name('createUser')->middleware('auth');
 
 Route::get('/listPlanesHotspot', ListPlanes::class)->name('listPlanesHotspot')->middleware('auth');
+
+Route::get('/timeOut', TimeOut::class)->name('timeOut')->middleware('auth');
 
 // Operaciones para la pasarela del mikrotik
 Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {

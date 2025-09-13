@@ -33,6 +33,15 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a href="{{ route('timeOut') }}" class="nav-link {{ request()->is('timeOut') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Tiempo de sesión
+            </p>
+          </a>
+        </li>
+
         @auth
           @if(auth()->user()->role == 'admin')
 
