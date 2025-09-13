@@ -33,7 +33,6 @@ class RouterHotspots extends Component
     public function exeQuery($datos, $query)
     {
         try {
-            dd($datos);
                 
                 $client = new Client($datos);
 
