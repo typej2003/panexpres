@@ -20,11 +20,13 @@ class TimeOut extends Component
 
     public $addressPool = [];
 
-    public function mount($router_id)
-    {        
+    public function mount($router_id=1)
+    {   
+             
         $this->router = Router::find($router_id);
+
     }
-    
+
     public function render()
     {
         //todos los perfiles usuarios de los hotspot
