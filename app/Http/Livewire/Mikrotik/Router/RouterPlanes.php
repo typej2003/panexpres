@@ -125,21 +125,20 @@ class RouterPlanes extends Component
                     $host = $this->router->ip;
                 }else{
                     $host = $this->router->dns;
-                }                
+                    //$host = 'typej.ddns.net';
+                    //$host = '192.168.1.6';
+                }        
+                
+                // Iniciar la conexión
                 $datos = [
-                    'host' => $this->router->ip,
+                    'host' => $host,
                     'user' => $this->router->admin,
                     'pass' => $this->router->password,
+                    'port' => 8728,
                 ];
 
                 $client = new Client($datos);
                 
-                 // 2. Definir los parámetros para el nuevo perfil
-                $profileName = '10M 2';
-                $downloadRate = '10M';
-                $uploadRate = '10M';
-                $sessionTimeout = '1h'; // 1 hora de sesión
-
                 // 3. Construir la consulta de la API para crear el perfil
                 $query = (new Query('/ip/hotspot/user/profile/add'))
                     ->equal('name', "{$validatedData['name']}/{$validatedData['costo']}")
