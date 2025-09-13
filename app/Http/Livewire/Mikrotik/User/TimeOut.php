@@ -27,6 +27,25 @@ class TimeOut extends Component
 
     }
 
+    public function exeQuery($datos, $query)
+    {
+        try {
+                $client = new Client($datos);
+
+                $query = new Query($query);
+
+                $result = $client->query($query)->read();
+
+            } catch (Exception $e) {
+                $result = "Caught exception: " . $e->getMessage() . "\n";
+                return response()->json([
+                    'success' => false,
+                    'message' => $result,
+                ]);
+            } 
+        return $result;
+    }
+
     public function render()
     {
         //todos los perfiles usuarios de los hotspot
