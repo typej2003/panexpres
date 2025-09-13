@@ -66,7 +66,6 @@ class HotspotUsers extends Controller
             $query = $query->where('name', $profile);
             $profiles = $client->query($query)->read();
 
-            dd($profiles);
             $hotspotUsers = [];
             foreach ($response as $user) {
                 $uptime = $user['uptime'];
