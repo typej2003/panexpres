@@ -217,12 +217,12 @@ class RouterHotspots extends Component
         }        
         
         // Iniciar la conexión
-        $datos = new Client([
+        $datos = [
             'host' => $host,
             'user' => $this->router->admin,
             'pass' => $this->router->password,
             'port' => 8728,
-        ]);
+        ];
         
 
         // todas las interfaces

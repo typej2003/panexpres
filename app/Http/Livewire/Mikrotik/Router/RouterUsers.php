@@ -87,10 +87,20 @@ class RouterUsers extends Component
 
     public function render()
     {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
         $datos = [
-            'host' => $this->router->ip,
+            'host' => $host,
             'user' => $this->router->admin,
             'pass' => $this->router->password,
+            'port' => 8728,
         ];
 
         $query = '/user/print';

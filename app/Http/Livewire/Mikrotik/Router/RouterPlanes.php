@@ -171,11 +171,16 @@ class RouterPlanes extends Component
             $host = $this->router->ip;
         }else{
             $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
         }        
+        
+        // Iniciar la conexión
         $datos = [
-            'host' => $this->router->ip,
+            'host' => $host,
             'user' => $this->router->admin,
             'pass' => $this->router->password,
+            'port' => 8728,
         ];
 
         $profilesUser = $this->exeQuery($datos, '/ip/hotspot/user/profile/print');
