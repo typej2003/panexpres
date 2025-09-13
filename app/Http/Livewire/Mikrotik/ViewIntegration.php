@@ -46,8 +46,6 @@ class ViewIntegration extends Component
                 'port' => 8728,
             ]);
 
-            dd($host);
-            
             $query = new Query('/system/identity/getall');
 
             $identity = $client->query($query)->read();
