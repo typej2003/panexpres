@@ -95,7 +95,7 @@ class RouterUsers extends Component
                 //$host = 'typej.ddns.net';
                 $host = '192.168.1.6';
             }        
-            dd($host);
+            
             // Iniciar la conexión
             $datos = [
                 'host' => $host,
@@ -126,7 +126,7 @@ class RouterUsers extends Component
             //$host = 'typej.ddns.net';
             //$host = '192.168.1.6';
         }        
-        
+        dd($host);
         // Iniciar la conexión
         $datos = [
             'host' => $host,
