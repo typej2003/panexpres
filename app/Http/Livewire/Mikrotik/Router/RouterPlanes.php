@@ -142,6 +142,7 @@ class RouterPlanes extends Component
                 // 3. Construir la consulta de la API para crear el perfil
                 $query = (new Query('/ip/hotspot/user/profile/add'))
                     ->equal('name', "{$validatedData['name']}/{$validatedData['costo']}")
+                    ->equal('shared-users', $validatedData['sharedUsers'])
                     ->equal('address-pool', $validatedData['addressPool'])
                     ->equal('rate-limit', $validatedData['downloadRate'].'/'.$validatedData['uploadRate'])
                     // ->equal('address-list', $validatedData['addressList'])
