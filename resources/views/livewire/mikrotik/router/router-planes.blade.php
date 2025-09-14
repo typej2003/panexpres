@@ -50,7 +50,7 @@
                                             <div class="card-footer d-flex justify-content-between">
                                                 <!-- <button wire:click.prevent="addNewUserHotspot('{{ $array['name'] }}')" class="btn btn-primary"><i class="fa fa-users"></i> Nuevo ()</button>
                                                 <button class="btn btn-success">Activos</button> -->
-                                                <button wire:click.prevent="deleteProfile('{{ $array['name'] }}')" class="btn btn-danger"><i class="fa fa-trash text-danger"></i></button>
+                                                <a wire:click.prevent="deleteProfile('{{ $array['name'] }}')"><i class="fa fa-trash text-danger"></i></a>
                                             </div>
                                         </div>
                                     </div>
