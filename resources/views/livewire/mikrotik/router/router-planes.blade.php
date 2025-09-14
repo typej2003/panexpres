@@ -13,6 +13,7 @@
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">Router: {{ $router->identity }}</h1>
                     <h4 class="m-0 text-dark">Ip: {{ $router->ip }}</h4>
+                    <h4 class="m-0 text-dark">DNS: {{ $router->dns }}</h4>
                     <h4 class="m-0 text-dark">Dirección Mac: {{ $router->macAddress }}</h4>
                     <h4 class="m-0 text-dark">Localización: {{ $router->location }}</h4>
                     <h1 class="m-0 text-dark">Planes</h1>
