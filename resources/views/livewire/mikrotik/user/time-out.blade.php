@@ -15,7 +15,7 @@
                     <h4 class="m-0 text-dark">Ip: {{ $router->ip }}</h4>
                     <h4 class="m-0 text-dark">Dirección Mac: {{ $router->macAddress }}</h4>
                     <h4 class="m-0 text-dark">Localización: {{ $router->location }}</h4>
-                    <h1 class="m-0 text-dark">Planes</h1>
+                    <h1 class="m-0 text-dark">Tiempo de sesión</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -40,6 +40,34 @@
                         <div class="card-body">
                             <div class="row">
                                 @foreach ($profilesUser as $key => $array) 
+                                    <div class="col-md-3 col-4">
+                                        <div class="card w-100 shadow">
+                                            <div class="card-body">
+                                                @foreach ($array as $clave => $element)                         
+                                                    <strong><span class="fw-bold">{{ $clave }}:</span></strong>  {{ $element }} <br>
+                                                @endforeach
+                                            </div>
+                                            <div class="card-footer d-flex justify-content-between">
+                                                <!-- <button wire:click.prevent="addNewUserHotspot('{{ $array['name'] }}')" class="btn btn-primary"><i class="fa fa-users"></i> Nuevo ()</button>
+                                                <button class="btn btn-success">Activos</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                @foreach ($usersHotspot as $key => $array) 
                                     <div class="col-md-3 col-4">
                                         <div class="card w-100 shadow">
                                             <div class="card-body">

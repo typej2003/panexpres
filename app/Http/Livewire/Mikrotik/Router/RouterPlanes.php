@@ -163,7 +163,7 @@ class RouterPlanes extends Component
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-    public function deleteProfile($nombreDelPerfil)
+    public function deleteProfile($nameProfile)
     {
         try {
             if(config('app.host') == 'ip'){
@@ -171,7 +171,7 @@ class RouterPlanes extends Component
             }else{
                 $host = $this->router->dns;
                 //$host = 'typej.ddns.net';
-                //$host = '192.168.1.6';
+                $host = '192.168.1.6';
             }        
             
             // Iniciar la conexión
@@ -181,8 +181,12 @@ class RouterPlanes extends Component
                 'pass' => $this->router->password,
                 'port' => 8728,
             ];
-
-            $delete = $this->exeQuery($datos, '/user profile remove ' .$nombreDelPerfil);
+            
+            $client = new Client($datos);
+            $query = (new Query('/ip/hotspot/user/profile/remove'))
+            ->equal('.id', $nameProfile);
+            
+            $delete = $client->query($query)->read();
             return true;
                 
         } catch (\Exception $e) {

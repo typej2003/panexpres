@@ -51,7 +51,11 @@
                                                 <h3>Desactivada: {{ $result[$i]['disabled'] }}</h3>
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">
-                                                <button class="btn btn btn-warning">Modificar</button><button class="btn btn btn-danger">Eliminar</button>
+                                                <button class="btn btn btn-warning">Modificar</button>
+                                                
+                                                <a href="" wire:click.prevent="deleteUser('{{ $result[$i]['.id'] }}')">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +63,7 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                       
+                            
                         </div>
                     </div>
                 </div>
