@@ -163,6 +163,34 @@ class RouterPlanes extends Component
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
+    public function deleteProfile($nombreDelPerfil)
+    {
+        try {
+            if(config('app.host') == 'ip'){
+                $host = $this->router->ip;
+            }else{
+                $host = $this->router->dns;
+                //$host = 'typej.ddns.net';
+                //$host = '192.168.1.6';
+            }        
+            
+            // Iniciar la conexión
+            $datos = [
+                'host' => $host,
+                'user' => $this->router->admin,
+                'pass' => $this->router->password,
+                'port' => 8728,
+            ];
+
+            $delete = $this->exeQuery($datos, '/user profile remove ' .$nombreDelPerfil);
+            return true;
+                
+        } catch (\Exception $e) {
+            // Manejar el error
+            return null;
+        }
+    }
+
     public function render()
     {
         //todos los perfiles usuarios de los hotspot
