@@ -52,39 +52,46 @@ class TimeOut extends Component
 
     public function render()
     {
-        
-        //todos los perfiles usuarios de los hotspot
+        try {
+            //todos los perfiles usuarios de los hotspot
 
-        if(config('app.host') == 'ip'){
-            $host = $this->router->ip;
-        }else{
-            $host = $this->router->dns;
-        }        
-        $datos = [
-            'host' => $this->router->ip,
-            'user' => $this->router->admin,
-            'pass' => $this->router->password,
-        ];
+            if(config('app.host') == 'ip'){
+                $host = $this->router->ip;
+            }else{
+                $host = $this->router->dns;
+            }        
+            $datos = [
+                'host' => $this->router->ip,
+                'user' => $this->router->admin,
+                'pass' => $this->router->password,
+            ];
 
-        //$profilesUser = $this->exeQuery($datos, '/ip/hotspot/user/profile/print');
+            //$profilesUser = $this->exeQuery($datos, '/ip/hotspot/user/profile/print');
 
-        $nameProfile = '1 minuto/10';
-        $client = new Client($datos);
-        $query = (new Query('/ip/hotspot/user/profile/print'))
-        ->where('name', $nameProfile);        
-        $result = $client->query($query)->read();
-        
-        //dd($result[0]['session-timeout']);
+            $nameProfile = '1 minuto/10';
+            $client = new Client($datos);
+            $query = (new Query('/ip/hotspot/user/profile/print'))
+            ->where('name', $nameProfile);        
+            $result = $client->query($query)->read();
+            
+            //dd($result[0]['session-timeout']);
 
-        //$usersHotspot = $this->exeQuery($datos, '/ip/hotspot/user/print');        
-        $nameProfile = '04165800403';
-        $client = new Client($datos);
-        $query = (new Query('/ip/hotspot/user/print'))
-        ->where('name', $nameProfile);        
-        $result1 = $client->query($query)->read();
+            //$usersHotspot = $this->exeQuery($datos, '/ip/hotspot/user/print');        
+            $nameProfile = '04165800403';
+            $client = new Client($datos);
+            $query = (new Query('/ip/hotspot/user/print'))
+            ->where('name', $nameProfile);        
+            $result1 = $client->query($query)->read();
 
-        dd($result1[0]['uptime']);
-        
-        return view('livewire.mikrotik.user.time-out', ['profilesUser' => $profilesUser, 'profilesUser' => $usersHotspot]);
+            dd($result1[0]['uptime']);
+            
+            return view('livewire.mikrotik.user.time-out', ['profilesUser' => $profilesUser, 'profilesUser' => $usersHotspot]);
+        } catch (Exception $e) {
+            $result = "Caught exception: " . $e->getMessage() . "\n";
+            return response()->json([
+                'success' => false,
+                'message' => $result,
+            ]);
+        } 
     }
 }
