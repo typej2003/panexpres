@@ -39,7 +39,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                
+                                <h1>Hola</h1>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
