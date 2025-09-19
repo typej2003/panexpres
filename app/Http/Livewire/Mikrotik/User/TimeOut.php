@@ -86,9 +86,10 @@ class TimeOut extends Component
             ->where('name', $nameProfile);        
             $result1 = $client->query($query)->read();
 
-            dd($result1[0]['uptime']);
+            dd('session-timeout: '. $result[0]['session-timeout'] . ' uptime: ' . $result1[0]['uptime']);
             
             return view('livewire.mikrotik.user.time-out', ['profilesUser' => $profilesUser, 'profilesUser' => $usersHotspot]);
+
         } catch (Exception $e) {
             $result = "Caught exception: " . $e->getMessage() . "\n";
             return response()->json([
