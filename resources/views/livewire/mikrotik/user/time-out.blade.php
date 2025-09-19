@@ -24,16 +24,24 @@
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
+            <div class="row my-3">
+                <div class="col-md-12 col-12">
+                    Dominio: {{ $dominio }} Ip del dominio: {{ $ip_del_dominio }}
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
     </div>
 
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="d-flex justify-content-between mb-2">
-                <button wire:click.prevent="addNew" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Nuevo Plan</button>
-                <div></div>
+            <div class="row">
+                <div class="col-md-12">
+                        <h1>Integración del Router: {{ $identity}}</h1>
+                        <button wire:click.prevent="procesar()" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Obtener</button>
+                </div>
             </div>
+            
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">

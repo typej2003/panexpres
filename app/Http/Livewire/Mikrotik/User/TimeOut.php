@@ -50,7 +50,7 @@ class TimeOut extends Component
         return $result;
     }
 
-    public function render()
+    public function procesar()
     {
         try {
             //todos los perfiles usuarios de los hotspot
@@ -96,5 +96,18 @@ class TimeOut extends Component
             ]);
             return view('livewire.mikrotik.ViewIntegration');
         } 
+    }
+
+    public function render()
+    {
+        $dominio = 'typej.ddns.net';
+        $ip_del_dominio = gethostbyname($dominio);
+
+        return view('livewire.mikrotik.user.time-out', [
+            'dominio'  => $dominio,
+            'ip_del_dominio'  => $ip_del_dominio,
+        ]);
+
+        
     }
 }
