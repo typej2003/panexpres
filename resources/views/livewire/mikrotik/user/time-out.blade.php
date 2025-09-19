@@ -67,7 +67,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                @if($profilesUser)
+                                @if($usersHotspot)
                                 @foreach ($usersHotspot as $key => $array) 
                                     <div class="col-md-3 col-4">
                                         <div class="card w-100 shadow">
