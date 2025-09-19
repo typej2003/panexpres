@@ -24,11 +24,9 @@ class TimeOut extends Component
 
     public $password = '60048209';
 
-    public function mount($router_id=1)
+    public function mount($nrorouter="R001")
     {   
-             
-        $this->router = Router::find($router_id);
-
+        $this->router = Router::where('nrorouter', $nrorouter)->first();
     }
 
     public function exeQuery($datos, $query)
@@ -59,17 +57,22 @@ class TimeOut extends Component
                 $host = $this->router->ip;
             }else{
                 $host = $this->router->dns;
+                //$host = 'typej.ddns.net';
+                //$host = '192.168.1.6';
             }        
-            $datos = [
-                'host' => $this->router->ip,
+            
+            // Iniciar la conexión
+            $client = new Client([
+                'host' => $host,
                 'user' => $this->router->admin,
                 'pass' => $this->router->password,
-            ];
+                'port' => 8728,
+            ]);
 
             //$profilesUser = $this->exeQuery($datos, '/ip/hotspot/user/profile/print');
 
             $nameProfile = '1 minuto/10';
-            $client = new Client($datos);
+            
             $query = (new Query('/ip/hotspot/user/profile/print'))
             ->where('name', $nameProfile);        
             $result = $client->query($query)->read();

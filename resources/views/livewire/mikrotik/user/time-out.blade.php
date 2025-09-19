@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-            </div>vv
+            </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
