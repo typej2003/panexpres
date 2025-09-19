@@ -50,7 +50,7 @@ class TimeOut extends Component
         return $result;
     }
 
-    public function render()
+    public function process()
     {
         try {
             //todos los perfiles usuarios de los hotspot
@@ -93,5 +93,11 @@ class TimeOut extends Component
                 'message' => $result,
             ]);
         } 
+    }
+
+    public function render()
+    {
+    
+        return view('livewire.mikrotik.user.time-out', ['profilesUser' => null, 'profilesUser' => null]);
     }
 }
