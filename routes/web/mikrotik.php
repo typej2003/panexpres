@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Mikrotik\Integracion;
+
 use App\Http\Livewire\Mikrotik\ListRouters;
 use App\Http\Livewire\Mikrotik\ViewIntegration;
 use App\Http\Livewire\Mikrotik\Router\ConfigureRouter;
@@ -21,7 +21,7 @@ use App\Http\Controllers\Api\MikrotikPasarelaController;
 
 use Illuminate\Support\Facades\Response;
 
-Route::get('/integracion', Integracion::class)->name('integracion')->middleware('auth');
+
 
 Route::get('/listRouters', ListRouters::class)->name('listRouters')->middleware('auth');
 
