@@ -92,6 +92,7 @@ class TimeOut extends Component
                 'success' => false,
                 'message' => $result,
             ]);
+            return view('livewire.mikrotik.ViewIntegration');
         } 
     }
 }
