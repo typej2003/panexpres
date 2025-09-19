@@ -39,21 +39,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                @foreach ($profilesUser as $key => $array) 
-                                    <div class="col-md-3 col-4">
-                                        <div class="card w-100 shadow">
-                                            <div class="card-body">
-                                                @foreach ($array as $clave => $element)                         
-                                                    <strong><span class="fw-bold">{{ $clave }}:</span></strong>  {{ $element }} <br>
-                                                @endforeach
-                                            </div>
-                                            <div class="card-footer d-flex justify-content-between">
-                                                <!-- <button wire:click.prevent="addNewUserHotspot('{{ $array['name'] }}')" class="btn btn-primary"><i class="fa fa-users"></i> Nuevo ()</button>
-                                                <button class="btn btn-success">Activos</button> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
@@ -61,37 +47,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                @if($usersHotspot)
-                                @foreach ($usersHotspot as $key => $array) 
-                                    <div class="col-md-3 col-4">
-                                        <div class="card w-100 shadow">
-                                            <div class="card-body">
-                                                @foreach ($array as $clave => $element)                         
-                                                    <strong><span class="fw-bold">{{ $clave }}:</span></strong>  {{ $element }} <br>
-                                                @endforeach
-                                            </div>
-                                            <div class="card-footer d-flex justify-content-between">
-                                                <!-- <button wire:click.prevent="addNewUserHotspot('{{ $array['name'] }}')" class="btn btn-primary"><i class="fa fa-users"></i> Nuevo ()</button>
-                                                <button class="btn btn-success">Activos</button> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                @endif
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                       
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>vv
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
