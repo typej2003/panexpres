@@ -69,6 +69,8 @@ class TimeOut extends Component
             //$profilesUser = $this->exeQuery($datos, '/ip/hotspot/user/profile/print');
 
             $nameProfile = '1 minuto/10';
+
+            dd('ok');
             $client = new Client($datos);
             $query = (new Query('/ip/hotspot/user/profile/print'))
             ->where('name', $nameProfile);        
