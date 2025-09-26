@@ -111,9 +111,9 @@ class RouterPlanes extends Component
                     'name' => 'required',
                     'addressPool' => 'required|not_in:0',
                     'sharedUsers' => 'required',
-                    'sessionTimeout' => 'nullable',
-                    'idleTimeout' => 'nullable',
-                    'keepaliveTimeout' => 'nullable',
+                    'sessionTimeout' => 'nullable', //tiempo máximo que un usuario permanece conectado y autorizado
+                    'idleTimeout' => 'nullable', //Detectar y cerrar la sesión de un usuario que ha dejado de usar activamente la red
+                    'keepaliveTimeout' => 'nullable', //Sirve para verificar si un usuario aún está conectado al router
                     'statusAutorefresh' => 'nullable',
                     'downloadRate' => 'required',
                     'uploadRate' => 'required',

@@ -49,7 +49,7 @@ Route::get('/listPlanesHotspot', ListPlanes::class)->name('listPlanesHotspot')->
 
 Route::get('/timeOut', TimeOut::class)->name('timeOut')->middleware('auth');
 
-Route::get('/hotspot-users', [HotspotUsers::class, 'getHotspotUsers'])->name('hotspot-users')->middleware('auth');
+Route::get('/hotspot-users/{nrorouter}/{name}', HotspotUsers::class)->name('hotspot-users')->middleware('auth');
 
 // Operaciones para la pasarela del mikrotik
 Route::get('/pagosatisfactorioMikrotik/{id}', function ( $id ) {

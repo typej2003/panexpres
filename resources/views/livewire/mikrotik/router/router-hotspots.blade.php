@@ -51,6 +51,7 @@
                                             <div class="card-footer d-flex justify-content-between">
                                                 <button wire:click.prevent="addNewUserHotspot('{{ $array['name'] }}')" class="btn btn-primary"><i class="fa fa-users"></i> Nuevo ({{$this->cantUsershotspots($array['name'])}})</button>
                                                 <button class="btn btn-success">Activos</button>
+                                                <a href="/hotspot-users/{{$router->nrorouter}}/{{ $array['name'] }}" class="btn btn-primary"><i class="fa fa-users"></i></a>
                                             </div>
                                         </div>
                                     </div>

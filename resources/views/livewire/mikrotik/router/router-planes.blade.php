@@ -129,6 +129,7 @@
                                 {{ $message }}
                             </div>
                             @enderror
+                            <span class="fw-bold small">Tiempo máximo que un usuario permanece conectado y autorizado</span>
                         </div>
 
                         <div class="form-group">
@@ -139,6 +140,7 @@
                                 {{ $message }}
                             </div>
                             @enderror
+                            <span class="fw-bold small">Detectar y cerrar la sesión de un usuario que ha dejado de usar activamente la red</span>
                         </div>
 
                         <div class="form-group">
@@ -149,6 +151,8 @@
                                 {{ $message }}
                             </div>
                             @enderror
+                            <span class="fw-bold small">Sirve para verificar si un usuario aún está conectado al router</span>
+                            
                         </div>
 
                         <div class="form-group">

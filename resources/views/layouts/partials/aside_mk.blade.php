@@ -34,15 +34,6 @@
         </li>
 
         <li class="nav-item">
-          <a href="{{ route('hotspot-users') }}" class="nav-link {{ request()->is('hotspot-users') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Hotspot-users
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item">
           <a href="{{ route('timeOut') }}" class="nav-link {{ request()->is('timeOut') ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
@@ -64,7 +55,7 @@
             </li>
             <li class="nav-item">
                 <a href="/listRouters" class="nav-link {{ request()->is('listRouters') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-comments"></i>
+                <i class="nav-icon fas fa-solid fa-network-wired"></i>
                 <p>
                     Routers
                 </p>

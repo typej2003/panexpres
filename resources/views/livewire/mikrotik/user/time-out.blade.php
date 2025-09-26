@@ -38,6 +38,7 @@
             <div class="row">
                 <div class="col-md-12">
                         <button wire:click.prevent="procesar()" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Obtener</button>
+                        <button wire:click.prevent="convertir()" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Convertir</button>
                 </div>
             </div>
             
@@ -46,7 +47,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                
+                                <div class="form-group">
+                                    <label for="tiempo">Tiempo</label>
+                                    <input wire:model.defer="state.tiempo" type="text" id="tiempo" name="tiempo" class="form-control @error('tiempo') is-invalid @enderror">
+                                    @error('tiempo')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between">

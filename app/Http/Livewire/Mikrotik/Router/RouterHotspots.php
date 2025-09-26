@@ -177,13 +177,21 @@ class RouterHotspots extends Component
                     'email' => 'nullable',                    
                 ], $messages)->validate();
 
-                $datos = [
-                    'host' => '192.168.2.1',
-                    'user' => 'admin',
-                    'pass' => 'admin123'
-                ];
-
-                $client = new Client($datos);
+                if(config('app.host') == 'ip'){
+                    $host = $this->router->ip;
+                }else{
+                    $host = $this->router->dns;
+                    //$host = 'typej.ddns.net';
+                    //$host = '192.168.1.6';
+                }        
+                
+                // Iniciar la conexión
+                $client = new Client([
+                    'host' => $host,
+                    'user' => $this->router->admin,
+                    'pass' => $this->router->password,
+                    'port' => 8728,
+                ]);
 
                 // Crear la consulta para añadir el usuario
                 $query = (new Query('/ip/hotspot/user/add'))
@@ -193,8 +201,29 @@ class RouterHotspots extends Component
                     ->equal('profile', $validatedData['profileUH']);
                 
                 // Ejecutar la consulta
-                $client->query($query)->read();
+                $result = $client->query($query)->read();
                 // Tarea completada.
+                if($result['after']['message'] == 'failure: already have user with this name for this server')
+                {
+                    // Buscar el usuario
+                    $query = (new Query('/ip/hotspot/user/print'))
+                        ->where('name', $validatedData['nameUH']);
+                    
+                    // // Ejecutar la consulta
+                    $user = $client->query($query)->read();
+                    //dd($user[0]['.id']);
+
+                    // Modificar datos
+                    $query = (new Query('/ip/hotspot/user/set'))
+                        ->where('.id', '*2B')
+                        ->equal('server', $validatedData['serverUH'])
+                        ->equal('password', $validatedData['password'])
+                        ->equal('profile', $validatedData['profileUH']);
+                    
+                    // Ejecutar la consulta
+                    $result = $client->query($query)->read();
+                    dd($result);
+                }
 
                 $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
             } catch (Exception $e) {
@@ -212,7 +241,7 @@ class RouterHotspots extends Component
         }else{
             $host = $this->router->dns;
             //$host = 'typej.ddns.net';
-            //$host = '192.168.1.6';
+            $host = '192.168.1.6';
         }        
         
         // Iniciar la conexión
