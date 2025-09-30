@@ -5,8 +5,17 @@ namespace App\Http\Livewire\Mikrotik\Router;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+<<<<<<< HEAD
+use RouterOS\Query;
+use RouterOS\Client;
+use RouterOS\Config;
+use RouterOS\Exceptions\ClientException;
+use RouterOS\Exceptions\LoginException;
+
+=======
 use RouterOS\Client;
 use RouterOS\Query;
+>>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
 use Illuminate\Http\Request;
 use App\Models\Router;
 
@@ -17,6 +26,10 @@ class HotspotUsers extends Component
     public $nameserverUH;
     
     public $state = [];
+<<<<<<< HEAD
+    public $userIdBeingRemoved;
+=======
+>>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
     public $namesInterfaces = [];
     public $namesProfiles = [];
     public $namesProfilesUser = [];
@@ -182,8 +195,57 @@ class HotspotUsers extends Component
                 // Ejecutar la consulta
                 $result = $client->query($query)->read();
                 // Tarea completada.
+<<<<<<< HEAD
+
+                $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+            } catch (Exception $e) {
+                $this->dispatchBrowserEvent('hide-formUserHotspot', ["Caught exception: " . $e->getMessage() . "\n"]);
+                
+            } 
+
+		//$validatedData['password'] = bcrypt($validatedData['password']);
+    }
+
+    public function updateUserHotspot()
+    {
+        try {
+                $messages = [
+                    'required' => 'El campo :attribute es requerido.',
+                    'name.max' => 'The name cannot exceed 255 characters.',
+                ];
+
+                $validatedData = Validator::make($this->state, [
+                    'serverUH' => 'required',
+                    'nameUH' => 'required',
+                    'password' => 'required',
+                    'address' => 'nullable',
+                    'macaddress' => 'nullable',
+                    'profileUH' => 'required|not_in:0',
+                    'routes' => 'nullable',
+                    'email' => 'nullable',                    
+                ], $messages)->validate();
+
+                if(config('app.host') == 'ip'){
+                    $host = $this->router->ip;
+                }else{
+                    $host = $this->router->dns;
+                    //$host = 'typej.ddns.net';
+                    $host = '192.168.1.6';
+                }        
+                
+                // Iniciar la conexión
+                $client = new Client([
+                    'host' => $host,
+                    'user' => $this->router->admin,
+                    'pass' => $this->router->password,
+                    'port' => 8728,
+                ]);
+
+                
+=======
                 if($result['after']['message'] == 'failure: already have user with this name for this server')
                 {
+>>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
                     // Buscar el usuario
                     $query = (new Query('/ip/hotspot/user/print'))
                         ->where('name', $validatedData['nameUH']);
@@ -201,10 +263,17 @@ class HotspotUsers extends Component
 
                     // Ejecuta el comando
                     $response = $client->query($query)->read();
+<<<<<<< HEAD
+                 
+                    
+
+                $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot actualizado satisfactoriamente!']);
+=======
                     dd($result);
                 }
 
                 $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+>>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
             } catch (Exception $e) {
                 $this->dispatchBrowserEvent('hide-formUserHotspot', ["Caught exception: " . $e->getMessage() . "\n"]);
                 
@@ -213,6 +282,239 @@ class HotspotUsers extends Component
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
+<<<<<<< HEAD
+    public function addNew()
+	{
+        $router = $this->router; 
+        
+        $namesInterfaces = $this->namesInterfaces; 
+        $namesProfiles = $this->namesProfiles;
+        $namesProfilesUser = $this->namesProfilesUser;
+        $nameshotspots = $this->nameshotspots;
+        $users = $this->users;
+        $name = $this->name;
+		$this->reset();
+        
+        $this->router = $router; 
+        $this->namesInterfaces = $namesInterfaces; 
+        $this->namesProfiles = $namesProfiles;
+        $this->namesProfilesUser = $namesProfilesUser;
+        $this->nameshotspots = $nameshotspots;
+        $this->users = $users;
+        $this->name = $name;
+
+		$this->showEditModal = false;
+        
+        $this->state['serverUH'] = $this->name;
+
+        $this->dispatchBrowserEvent('show-formUserHotspot', ['hotspots' => $this->nameshotspots, 'namesProfilesUser' => $this->namesProfilesUser, 'nameserverUH' => $this->name ]);
+
+	}
+
+    public function edit($id, $nameUH, $profileUH)
+	{
+        $router = $this->router; 
+        
+        $namesInterfaces = $this->namesInterfaces; 
+        $namesProfiles = $this->namesProfiles;
+        $namesProfilesUser = $this->namesProfilesUser;
+        $nameshotspots = $this->nameshotspots;
+        $users = $this->users;
+        $name = $this->name;
+		$this->reset();
+        
+        $this->router = $router; 
+        $this->namesInterfaces = $namesInterfaces; 
+        $this->namesProfiles = $namesProfiles;
+        $this->namesProfilesUser = $namesProfilesUser;
+        $this->nameshotspots = $nameshotspots;
+        $this->users = $users;
+        $this->name = $name;
+
+		$this->showEditModal = true;
+        
+        $this->state['serverUH'] = $this->name;
+        $this->state['nameUH'] = $nameUH;
+        $this->state['profileUH'] = $profileUH;        
+
+        $this->dispatchBrowserEvent('show-formUserHotspot', ['hotspots' => $this->nameshotspots, 'namesProfilesUser' => $this->namesProfilesUser, 'nameserverUH' => $this->name ]);
+
+	}
+
+    public function confirmUserRemoval($userId)
+	{
+		$this->userIdBeingRemoved = $userId;
+
+		$this->dispatchBrowserEvent('show-delete-modal');
+	}
+
+	public function deleteUser()
+	{
+		
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            $host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+        // Crear la consulta para añadir el usuario
+        $query = (new Query('/ip/hotspot/user/remove'))
+        ->equal('.id', $this->userIdBeingRemoved);
+        
+        // Ejecutar la consulta
+        $result = $client->query($query)->read();
+        
+		$this->dispatchBrowserEvent('hide-delete-modal', ['message' => 'Usuario eliminado satisfactoriamente!']);
+	}
+
+    public function timeProfileUser($name)
+    {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            $host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        
+        // Buscar el usuario
+        $query = (new Query('/ip/hotspot/user/profile/print'))
+            ->where('name', $name);
+            
+        // Ejecutar la consulta
+        $time = $client->query($query)->read();
+
+        if (isset($time[0]['session-timeout'])) {
+            return $time[0]['session-timeout'];
+        }else{
+            return '';
+        }
+    }
+
+    public function limitUptimeUser($name)
+    {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            $host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        
+        // Buscar el usuario
+        $query = (new Query('/ip/hotspot/user/print'))
+            ->where('name', $name)
+            ->equal('.proplist', 'limit-uptime', 'uptime');
+            
+        // Ejecutar la consulta
+        $limit = $client->query($query)->read();
+
+        if (isset($limit[0]['limit-uptime'])) {
+            return $limit[0]['limit-uptime'];
+        }else{
+            return '';
+        }
+    }
+
+    public function configRouter()
+    {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            $host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        return $client;
+    }
+
+    public function cleanUptime($id, $newUptime = "00:00:00")
+    {
+        $client = $this->configRouter();
+
+        $userName = "user"; // El nombre del usuario a modificar
+        
+        try {
+            
+            $query = (new Query('/ip/hotspot/user/reset-counters'))
+                ->equal('.id', $id);
+
+
+            $response = $client->query($query)->read();
+            
+            $this->dispatchBrowserEvent('hide-formUserHotspot', ["Uptime limit de {$id} actualizado a {$newUptimeLimit}\n"]);
+            
+
+        } catch (\Exception $e) {
+            $this->dispatchBrowserEvent('hide-formUserHotspot', ["Error: " . $e->getMessage() . "\n"]);
+        }
+
+        
+    }
+
+    public function defineUptimeLimit($id, $newUptimeLimit = "00:00:15")
+    {
+        $client = $this->configRouter();
+
+        $userName = "user"; // El nombre del usuario a modificar
+        
+        try {
+            
+            $query = (new Query('/ip/hotspot/user/set'))
+                ->equal('.id', $id)
+                ->equal('limit-uptime', $newUptimeLimit);
+
+
+            $response = $client->query($query)->read();
+            
+            $this->dispatchBrowserEvent('hide-formUserHotspot', ["Uptime limit de {$id} actualizado a {$newUptimeLimit}\n"]);
+            
+
+        } catch (\Exception $e) {
+            $this->dispatchBrowserEvent('hide-formUserHotspot', ["Error: " . $e->getMessage() . "\n"]);
+        }
+
+        
+    }
+
+=======
+>>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
     public function render()
     {
         try {

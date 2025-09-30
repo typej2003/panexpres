@@ -15,6 +15,8 @@
       <div class="info">
         <?php if(auth()->guard()->check()): ?>
         <a href="#" class="d-block" x-ref="username"><?php echo e(auth()->user()->name); ?></a>
+        <?php echo e(auth()->user()->role); ?>
+
         <?php endif; ?>
       </div>
     </div>
@@ -32,6 +34,15 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a href="<?php echo e(route('timeOut')); ?>" class="nav-link <?php echo e(request()->is('timeOut') ? 'active' : ''); ?>">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Tiempo de sesión
+            </p>
+          </a>
+        </li>
+
         <?php if(auth()->guard()->check()): ?>
           <?php if(auth()->user()->role == 'admin'): ?>
 
@@ -44,10 +55,18 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/integracion" class="nav-link <?php echo e(request()->is('integracion') ? 'active' : ''); ?>">
+                <a href="/listRouters" class="nav-link <?php echo e(request()->is('listRouters') ? 'active' : ''); ?>">
+                <i class="nav-icon fas fa-solid fa-network-wired"></i>
+                <p>
+                    Routers
+                </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/viewintegration" class="nav-link <?php echo e(request()->is('viewintegration') ? 'active' : ''); ?>">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
-                    Integración Mikrotik
+                    View Integración Mikrotik
                 </p>
                 </a>
             </li>

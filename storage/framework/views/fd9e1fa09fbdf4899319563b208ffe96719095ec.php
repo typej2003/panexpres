@@ -42,7 +42,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Router</th>
                                         <th scope="col">User</th>
+                                        <th scope="col">Fecha del Pago</th>
                                         <th scope="col">
                                             Referencia
                                             <span wire:click="sortBy('referencia')" class="float-right text-sm" style="cursor: pointer;">
@@ -58,6 +60,7 @@
                                             </span>
                                         </th>
                                         <th scope="col">Teléfono</th>
+                                        <th scope="col">Plan</th>
                                         <th scope="col">Monto</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Opciones</th>
@@ -67,10 +70,13 @@
                                     <?php $__empty_1 = true; $__currentLoopData = $pagomoviles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $pago): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
                                         <th scope="row"><?php echo e($pagomoviles->firstItem() + $index); ?></th>
-                                        <td><?php echo e($pago->user); ?></td>
+                                        <td><?php echo e($pago->nrorouter); ?></td>
+                                        <td><?php echo e($pago->user); ?></td>                                        
+                                        <td><?php echo e($pago->fecha_pago); ?></td>
                                         <td><?php echo e($pago->referencia); ?></td>
                                         <td><?php echo e($pago->banco); ?></td>
                                         <td><?php echo e($pago->telefono); ?></td>
+                                        <td><?php echo e($pago->plan); ?></td>
                                         <td><?php echo e($pago->monto); ?></td>
                                         <td>
                                             <select class="form-control" wire:change="changeStatus(<?php echo e($pago); ?>, $event.target.value)">
@@ -80,18 +86,29 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <a class="btn btn-success" href="" wire:click.prevent="activarUsuario(<?php echo e($pago); ?>)">
-                                                Activar usuario
-                                            </a>
+                                            <?php if($pago->status === 'confirmado'): ?>
+                                                <a href="" wire:click.prevent="activarUsuario(<?php echo e($pago); ?>)">
+                                                    <i class="fa fa-solid fa-user-plus mx-2"></i>
+                                                </a>
+                                            <?php else: ?>
+                                                <a href="">
+                                                    <i class="fa fa-solid fa-toggle-off mx-2"></i>
+                                                </a>
+                                            <?php endif; ?>
+                                            
 
                                             <a href="" wire:click.prevent="enviarSms(<?php echo e($pago); ?>)">
-                                                <i class="fa fa-solid fa-comment"></i>
+                                                <i class="fa fa-solid fa-comment mx-2"></i>
+                                            </a>
+
+                                            <a href="" wire:click.prevent="confirmPagoRemoval(<?php echo e($pago->id); ?>)">
+                                                <i class="fa fa-trash text-danger mx-2"></i>
                                             </a>
                                         </td>
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                     <tr class="text-center">
-                                        <td colspan="7">
+                                        <td colspan="11">
                                             <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/v2/assets/empty.svg" alt="No results found">
                                             <p class="mt-2">No se encontro resultados</p>
                                         </td>
@@ -146,6 +163,56 @@ unset($__errorArgs, $__bag); ?>" id="">
                                 <option value="descartado">DESCARTADO</option>
                             </select>
                             <?php $__errorArgs = ['status'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback">
+                                <?php echo e($message); ?>
+
+                            </div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nrorouter">Nrorouter</label>
+                            <input type="text" wire:model.defer="state.nrorouter" class="form-control <?php $__errorArgs = ['nrorouter'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="nrorouter" aria-describedby="nrorouterHelp" placeholder="Fecha pago">
+                            <?php $__errorArgs = ['nrorouter'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback">
+                                <?php echo e($message); ?>
+
+                            </div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fecha_pago">fecha_pago</label>
+                            <input type="date" wire:model.defer="state.fecha_pago" class="form-control <?php $__errorArgs = ['fecha_pago'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="fecha_pago" aria-describedby="fecha_pagoHelp" placeholder="Fecha pago">
+                            <?php $__errorArgs = ['fecha_pago'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
