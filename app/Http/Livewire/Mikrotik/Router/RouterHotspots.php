@@ -292,7 +292,7 @@ class RouterHotspots extends Component
 
         // foreach ($users as $elemento) {
         //     $this->usersHotspot[] = $elemento['name'];
-        // 
+        // ..
 
         return view('livewire.mikrotik.router.router-hotspots', ['result' => $hotspots ]);
     }
