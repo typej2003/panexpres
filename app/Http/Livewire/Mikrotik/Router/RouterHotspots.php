@@ -200,7 +200,7 @@ class RouterHotspots extends Component
                     ->equal('password', $validatedData['password'])
                     ->equal('profile', $validatedData['profileUH']);
                 
-                // Ejecutar la consulta
+                // Ejecutar la consulta .
                 $result = $client->query($query)->read();
                 // Tarea completada.
                 if($result['after']['message'] == 'failure: already have user with this name for this server')
