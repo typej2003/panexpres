@@ -6,7 +6,6 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\Router;
-
 use RouterOS\Client;
 use RouterOS\Query;
 
