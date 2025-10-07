@@ -1,5 +1,4 @@
 <div>
-<<<<<<< HEAD
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -65,7 +64,7 @@
                                             <a href="" wire:click.prevent="confirmUserRemoval('{{ $user['.id'] }}')">
                                                 <i class="fa fa-trash text-danger mr-2"></i>
                                             </a>
-                                            <a href="" wire:click.prevent="defineUptimeLimit('{{ $user['.id'] }}')">
+                                            <a href="" wire:click.prevent="defineUptimeLimit('{{ $user['.id'] }}', '{{ $user['profile'] }}')">
                                                 <i class="fa fa-solid fa-broom mr-2 text-warning"></i>
                                             </a>
                                             <a href="" wire:click.prevent="cleanUptime('{{ $user['.id'] }}')">
@@ -108,42 +107,7 @@
         </div>
     </div>
 
-=======
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<body>
-    <div class="container mt-5">
-        <h1>Usuarios todos los Hotspots</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>.id</th>
-                    <th>Usuario</th>
-                    <th>Server</th>
-                    <th>Profile/Plan</th>
-                    <th>Uptime</th>
-                    <th>Disabled</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($users as $user)
-                <tr>
-                    <td>{{ $user['.id'] }}</td>
-                    <td>
-                        <a href="" wire:click.prevent="addNewUserHotspot('{{ $user['name'] }}')">
-                            {{ $user['name'] }}
-                        </a>
-                    </td>
-                    <td>{{ (isset($user['server']))? $user['server'] : '' }}</td>
-                    <td>{{ (isset($user['profile']))? $user['profile'] : '' }}</td>
-                    <td>{{ $user['uptime'] }}</td>
-                    <td>{{ $user['disabled'] }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
     
->>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
 <!-- Modal -->
 <div class="modal fade" id="formUserHotspot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
     <div class="modal-dialog" role="document">
@@ -197,11 +161,7 @@
 
                     <div class="form-group">
                         <label for="password">Contraseña</label>
-<<<<<<< HEAD
                         <input type="password" wire:model.defer="state.password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Contraseña" autocomplete="off">
-=======
-                        <input type="password" wire:model.defer="state.password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Contraseña">
->>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
                         @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -228,54 +188,15 @@
 <script>
     window.onload = function() {
         
-<<<<<<< HEAD
-=======
-        window.addEventListener('hide-formHotspot', function (event) {
-            $('#formHotspot').modal('hide');
-            toastr.success(event.detail.message, 'Success!');
-        });
-        
-        window.addEventListener('show-formHotspot', function (event) {
-
-            let namesInterfaces = event.detail.namesInterfaces
-            let namesProfiles = event.detail.namesProfiles
-
-            let interfaceH = document.getElementById('interfaceH')
-            let profileH = document.getElementById('profileH')
-            
-            let options = '';                
-            
-            options = '<option value="0">SELECCIONE..</option>'
-            namesInterfaces.forEach(element => {
-                options += `<option value="${element}">${element}</option>`
-            });
-            interfaceH.innerHTML = options
-
-            options = '<option value="0">SELECCIONE..</option>'
-            namesProfiles.forEach(element => {
-                options += `<option value="${element}">${element}</option>`
-            });
-            profileH.innerHTML = options
-
-            $('#formHotspot').modal('show');            
-
-        });
-
->>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
         window.addEventListener('hide-formUserHotspot', function (event) {
             $('#formUserHotspot').modal('hide');
             toastr.success(event.detail.message, 'Success!');
         });
 
         window.addEventListener('show-formUserHotspot', function (event) {
-<<<<<<< HEAD
             
             let namesProfilesUser = event.detail.namesProfilesUser
 
-=======
-
-            let namesProfilesUser = event.detail.namesProfilesUser
->>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
             let hotspots = event.detail.hotspots
             let nameserverUH = event.detail.nameserverUH
 
@@ -290,11 +211,8 @@
             }
             let options = '';
 
-<<<<<<< HEAD
             console.log(hotspots)
 
-=======
->>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
             options = '<option value="all">Todos</option>'
             hotspots.forEach(element => {
                 options += `<option value="${element}">${element}</option>`

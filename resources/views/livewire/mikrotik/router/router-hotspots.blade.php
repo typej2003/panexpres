@@ -41,7 +41,7 @@
                         <div class="card-body">
                             <div class="row">
                                 @foreach ($result as $key => $array) 
-                                    <div class="col-md-3 col-4">
+                                    <div class="col-md-4 col-4">
                                         <div class="card w-100 shadow">
                                             <div class="card-body">
                                                 @foreach ($array as $clave => $element)                         
@@ -50,10 +50,6 @@
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">
                                                 <button wire:click.prevent="addNewUserHotspot('{{ $array['name'] }}')" class="btn btn-primary"><i class="fa fa-users"></i> Nuevo ({{$this->cantUsershotspots($array['name'])}})</button>
-<<<<<<< HEAD
-=======
-                                                <button class="btn btn-success">Activos</button>
->>>>>>> 0604bef2f8b0af5de7343918d133ded26ea16b8a
                                                 <a href="/hotspot-users/{{$router->nrorouter}}/{{ $array['name'] }}" class="btn btn-primary"><i class="fa fa-users"></i></a>
                                             </div>
                                         </div>
