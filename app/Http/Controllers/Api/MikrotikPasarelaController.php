@@ -212,6 +212,15 @@ class MikrotikPasarelaController extends Controller
 			$client->query($query)->read();
 			// Tarea completada.
 
+			// buscar id
+			$query = (new Query('/ip/hotspot/user/print'))
+				->where('name', $user);
+			$response = $client->query($query)->read();
+			$this->dispatchBrowserEvent('hide-form', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+
+			// asignar limit uptime
+			$this->defineUptimeLimit($response[0]['.id'], $profile, $newUptimeLimit = "00:00:15");
+
 			//Enviar sms con el user y la contraseña
 			$this->sendSms($user, $password);
 
@@ -222,9 +231,6 @@ class MikrotikPasarelaController extends Controller
 				'password' => $password,
 				'status' => true,
 			];
-
-			// asignar limit uptime
-			$this->defineUptimeLimit($user, $profile, $newUptimeLimit = "00:00:15");
 
 			return $newUser;
 
@@ -243,7 +249,7 @@ class MikrotikPasarelaController extends Controller
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-	public function defineUptimeLimit($name, $profile, $newUptimeLimit = "00:00:15")
+	public function defineUptimeLimit($id, $profile, $newUptimeLimit = "00:00:15")
     {
 
         $client = $this->configRouter();
@@ -253,7 +259,7 @@ class MikrotikPasarelaController extends Controller
             $newUptimeLimit = $this->timeProfileUser($profile);
             
             $query = (new Query('/ip/hotspot/user/set'))
-                ->equal('name', $name)
+                ->equal('.id', $id)
                 ->equal('limit-uptime', $newUptimeLimit);
 
 
