@@ -29,6 +29,7 @@ class ViewIntegration extends Component
             //$host = 'typej.ddns.net';
             //$host = '192.168.1.6';
         }        
+        $host = '192.168.1.6';
         // Iniciar la conexión
         $client = new Client([
             'host' => $host,
@@ -86,7 +87,7 @@ class ViewIntegration extends Component
         try {
             
             $query = (new Query('/ip/hotspot/user/print'))
-                ->equal('name', '04165800403');
+                ->where('name', '04165800403');
 
 
             $response = $client->query($query)->read();
