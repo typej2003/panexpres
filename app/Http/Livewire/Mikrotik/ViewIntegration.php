@@ -92,7 +92,7 @@ class ViewIntegration extends Component
 
             $response = $client->query($query)->read();
 
-            dd($response);
+            dd($response[0]['.id']);
             
 
         } catch (\Exception $e) {
