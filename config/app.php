@@ -60,8 +60,8 @@ return [
     //'url' => env('APP_URL', 'http://127.0.0.1:8000'),
     'url' => env('APP_URL', 'http://192.168.1.4:8000'),
 
-    //'host' => 'dns', //Remoto
-    'host' => 'ip', //local
+    'host' => 'dns', //Remoto
+    //'host' => 'ip', //local
 
     'asset_url' => env('ASSET_URL', null),
 
