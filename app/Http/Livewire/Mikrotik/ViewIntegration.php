@@ -29,7 +29,7 @@ class ViewIntegration extends Component
             //$host = 'typej.ddns.net';
             //$host = '192.168.1.6';
         }        
-        dd($this->router->password);
+        dd(config('app.host'));
         // Iniciar la conexión
         $client = new Client([
             'host' => $host,
