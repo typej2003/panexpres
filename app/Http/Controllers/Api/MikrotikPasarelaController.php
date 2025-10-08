@@ -159,8 +159,6 @@ class MikrotikPasarelaController extends Controller
 			// Crear usuario
 			$newUser = $this->createUserHotspot($nrorouter, $telefono, $plan.'/'.$costo);
 
-			// iniciar session
-
             return $newUser;
 
         }else{
@@ -173,79 +171,118 @@ class MikrotikPasarelaController extends Controller
 		}
     }
 
+	public function configRouter()
+    {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        return $client;
+    }
+
 	public function createUserHotspot($nrorouter, $user, $profile)
     {
         try {
-                $router = Router::where('nrorouter', $nrorouter)->first();
+			$router = Router::where('nrorouter', $nrorouter)->first();
 
-                // if(config('app.host') == 'ip'){
-                //     $host = $router->ip;
-                // }else{
-                //     $host = $router->dns;
-                // }
-                
-                // $datos = [
-                //     'host' => $host,
-                //     'user' => $router->admin,
-                //     'pass' => $router->password,
-                // ];
-				if(config('app.host') == 'ip'){
-					$host = $router->ip;
-				}else{
-					$host = $router->dns;
-					//$host = 'typej.ddns.net';
-					//$host = '192.168.1.6';
-				}        
-				
-				// Iniciar la conexión
-				$datos = [
-					'host' => $host,
-					'user' => $router->admin,
-					'pass' => $router->password,
-					'port' => 8728,
-				];
+			$client = $this->configRouter();
 
-                $client = new Client($datos);
+			$password = $this->randomPassword();
 
-                $password = $this->randomPassword();
+			// Crear la consulta para añadir el usuario
+			$query = (new Query('/ip/hotspot/user/add'))
+				->equal('server', 'all')
+				->equal('name', $user)
+				->equal('password', $password)
+				->equal('profile', $profile);
+			
+			// Ejecutar la consulta
+			$client->query($query)->read();
+			// Tarea completada.
 
-                // Crear la consulta para añadir el usuario
-                $query = (new Query('/ip/hotspot/user/add'))
-                    ->equal('server', 'all')
-                    ->equal('name', $user)
-                    ->equal('password', $password)
-                    ->equal('profile', $profile);
-                
-                // Ejecutar la consulta
-                $client->query($query)->read();
-                // Tarea completada.
+			//Enviar sms con el user y la contraseña
+			$this->sendSms($user, $password);
 
-                //Enviar sms con el user y la contraseña
-                $this->sendSms($user, $password);
+			//$this->login($nrorouter, $user, $password);
 
-				//$this->login($nrorouter, $user, $password);
+			$newUser = [
+				'user' => $user,
+				'password' => $password,
+				'status' => true,
+			];
 
-				$newUser = [
-					'user' => $user,
-					'password' => $password,
-					'status' => true,
-				];
+			// asignar limit uptime
+			$this->defineUptimeLimit($user, $profile, $newUptimeLimit = "00:00:15");
 
-                return $newUser;
+			return $newUser;
 
-            } catch (Exception $e) {
+		} catch (Exception $e) {
 
-                $newUser = [
-					'user' => '',
-					'password' => '',
-					'status' => false,
-				];
+			$newUser = [
+				'user' => '',
+				'password' => '',
+				'status' => false,
+			];
 
-                return $newUser;
-                
-            } 
+			return $newUser;
+			
+		} 
 
 		//$validatedData['password'] = bcrypt($validatedData['password']);
+    }
+
+	public function defineUptimeLimit($name, $profile, $newUptimeLimit = "00:00:15")
+    {
+
+        $client = $this->configRouter();
+
+        try {
+            //buscar tiempo del perfil de user
+            $newUptimeLimit = $this->timeProfileUser($profile);
+            
+            $query = (new Query('/ip/hotspot/user/set'))
+                ->equal('name', $name)
+                ->equal('limit-uptime', $newUptimeLimit);
+
+
+            $response = $client->query($query)->read();
+            
+            return true;
+            
+
+        } catch (\Exception $e) {
+            return false;
+        }        
+    }
+
+	public function timeProfileUser($name)
+    {
+        $client = $this->configRouter();
+        
+        // Buscar el usuario
+        $query = (new Query('/ip/hotspot/user/profile/print'))
+            ->where('name', $name);
+            
+        // Ejecutar la consulta
+        $time = $client->query($query)->read();
+
+        if (isset($time[0]['session-timeout'])) {
+            return $time[0]['session-timeout'];
+        }else{
+            return '';
+        }
     }
 
 	private function randomPassword() {
