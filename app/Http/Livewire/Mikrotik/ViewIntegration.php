@@ -20,6 +20,27 @@ class ViewIntegration extends Component
         $this->router = Router::where('nrorouter', $nrorouter)->first();
     }
 
+    public function configRouter()
+    {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            $host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        return $client;
+    }
+
     public function showIntegracion($host='typej.ddns.net', $user = 'admin', $pass= 'admin123')
     {
         try {
@@ -27,24 +48,8 @@ class ViewIntegration extends Component
             $dominio = 'typej.ddns.net';
             $host = gethostbyname($dominio);
 
-            $user = 'jose';
-            $pass = '123';
 
-            if(config('app.host') == 'ip'){
-                $host = $this->router->ip;
-            }else{
-                $host = $this->router->dns;
-                //$host = 'typej.ddns.net';
-                //$host = '192.168.1.6';
-            }        
-            
-            // Iniciar la conexión
-            $client = new Client([
-                'host' => $host,
-                'user' => $this->router->admin,
-                'pass' => $this->router->password,
-                'port' => 8728,
-            ]);
+            $client = $this->configRouter();
 
             $query = new Query('/system/identity/getall');
 
