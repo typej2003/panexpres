@@ -143,7 +143,7 @@ class ListPagomovil extends AdminComponent
 			    $this->defineUptimeLimit($user, $profile, $newUptimeLimit = "00:00:15");
 
                 //Enviar sms con el user y la contraseña
-                $this->sendSms($user, $password);
+                //$this->sendSms($user, $password);
 
                 $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
 
