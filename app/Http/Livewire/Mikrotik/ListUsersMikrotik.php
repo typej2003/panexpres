@@ -77,10 +77,20 @@ class ListUsersMikrotik extends Component
 
     public function render()
     {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
         $datos = [
-            'host' => '192.168.2.1',
-            'user' => 'admin',
-            'pass' => 'admin123'
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
         ];
 
         $query = '/user/print';
