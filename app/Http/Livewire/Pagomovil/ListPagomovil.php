@@ -130,7 +130,7 @@ class ListPagomovil extends AdminComponent
 
                 // Crear la consulta para añadir el usuario
                 $query = (new Query('/ip/hotspot/user/add'))
-                    ->equal('server', 'all')
+                    ->equal('server', 'hotspot1')
                     ->equal('name', $user)
                     ->equal('password', $password)
                     ->equal('profile', $profile);
@@ -142,17 +142,19 @@ class ListPagomovil extends AdminComponent
                 $query = (new Query('/ip/hotspot/user/print'))
                     ->where('name', $user);
                 $response = $client->query($query)->read();
+                $this->dispatchBrowserEvent('hide-form', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+
                 // asignar limit uptime
 			    $this->defineUptimeLimit($response[0]['.id'], $profile, $newUptimeLimit = "00:00:15");
 
                 //Enviar sms con el user y la contraseña
                 //$this->sendSms($user, $password);
 
-                $this->dispatchBrowserEvent('hide-formUserHotspot', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+                $this->dispatchBrowserEvent('hide-form', ['message' => 'Limit Uptime del Usuario cambiado satisfactoriamente!']);
 
             } catch (Exception $e) {
 
-                $this->dispatchBrowserEvent('hide-formUserHotspot', ["Caught exception: " . $e->getMessage() . "\n"]);
+                $this->dispatchBrowserEvent('hide-form', ["Caught exception: " . $e->getMessage() . "\n"]);
                 
             } 
 
