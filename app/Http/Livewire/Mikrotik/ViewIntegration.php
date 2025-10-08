@@ -86,7 +86,7 @@ class ViewIntegration extends Component
         try {
             
             $query = (new Query('/ip/hotspot/user'))
-                ->where('name', '04165800403');
+                ->equal('name', '04165800403');
 
 
             $response = $client->query($query)->read();
