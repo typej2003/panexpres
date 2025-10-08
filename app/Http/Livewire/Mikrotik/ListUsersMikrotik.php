@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Mikrotik;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Models\Router;
 
 use RouterOS\Client;
 use RouterOS\Query;
@@ -14,6 +15,11 @@ class ListUsersMikrotik extends Component
     public $state = [];
 
     public $showEditModal = false;
+
+    public function mount($nrorouter="R001")
+    {        
+        $this->router = Router::where('nrorouter', $nrorouter)->first();
+    }
 
     public function exeQuery($datos, $query)
     {
