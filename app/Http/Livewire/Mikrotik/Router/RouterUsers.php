@@ -23,6 +23,27 @@ class RouterUsers extends Component
         $this->router = Router::find($router_id);
     }
 
+    public function configRouter()
+    {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        return $client;
+    }
+
     public function exeQuery($datos, $query)
     {
         try {
@@ -57,14 +78,8 @@ class RouterUsers extends Component
                     'password' => 'required|confirmed',
                     'group' => 'required|not_in:0',
                 ])->validate();
-
-                $datos = [
-                    'host' => $this->router->ip,
-                    'user' => $this->router->admin,
-                    'pass' => $this->router->password,
-                ];
-
-                $client = new Client($datos);
+                
+                $client = $this->configRouter();
 
                 $query = (new Query('/user/add'))
                      ->equal('name', $validatedData['name'])
