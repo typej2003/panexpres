@@ -88,23 +88,8 @@ class RouterUsers extends Component
     public function deleteUser($nameProfile)
     {
         try {
-            if(config('app.host') == 'ip'){
-                $host = $this->router->ip;
-            }else{
-                $host = $this->router->dns;
-                //$host = 'typej.ddns.net';
-                $host = '192.168.1.6';
-            }        
-            
-            // Iniciar la conexión
-            $datos = [
-                'host' => $host,
-                'user' => $this->router->admin,
-                'pass' => $this->router->password,
-                'port' => 8728,
-            ];
-            
-            $client = new Client($datos);
+            $client = $this->configRouter();
+
             $query = (new Query('/user/remove'))
             ->equal('.id', $nameProfile);
             

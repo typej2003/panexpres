@@ -240,7 +240,7 @@ class RouterHotspots extends Component
         }else{
             $host = $this->router->dns;
             //$host = 'typej.ddns.net';
-            $host = '192.168.1.6';
+            //$host = '192.168.1.6';
         }        
         
         // Iniciar la conexión

@@ -161,21 +161,7 @@ class HotspotUsers extends Component
                     'email' => 'nullable',                    
                 ], $messages)->validate();
 
-                if(config('app.host') == 'ip'){
-                    $host = $this->router->ip;
-                }else{
-                    $host = $this->router->dns;
-                    //$host = 'typej.ddns.net';
-                    $host = '192.168.1.6';
-                }        
-                
-                // Iniciar la conexión
-                $client = new Client([
-                    'host' => $host,
-                    'user' => $this->router->admin,
-                    'pass' => $this->router->password,
-                    'port' => 8728,
-                ]);
+                $client = $this->configRouter();
 
                 // Crear la consulta para añadir el usuario
                 $query = (new Query('/ip/hotspot/user/add'))
@@ -316,22 +302,8 @@ class HotspotUsers extends Component
 
 	public function deleteUser()
 	{
-		
-        if(config('app.host') == 'ip'){
-            $host = $this->router->ip;
-        }else{
-            $host = $this->router->dns;
-            //$host = 'typej.ddns.net';
-            $host = '192.168.1.6';
-        }        
-        
-        // Iniciar la conexión
-        $client = new Client([
-            'host' => $host,
-            'user' => $this->router->admin,
-            'pass' => $this->router->password,
-            'port' => 8728,
-        ]);
+		$client = $this->configRouter();
+
         // Crear la consulta para añadir el usuario
         $query = (new Query('/ip/hotspot/user/remove'))
         ->equal('.id', $this->userIdBeingRemoved);
@@ -387,7 +359,7 @@ class HotspotUsers extends Component
         }else{
             $host = $this->router->dns;
             //$host = 'typej.ddns.net';
-            $host = '192.168.1.6';
+            //$host = '192.168.1.6';
         }        
         
         // Iniciar la conexión
@@ -454,12 +426,13 @@ class HotspotUsers extends Component
     public function render()
     {
         try {
+            
             if(config('app.host') == 'ip'){
                 $host = $this->router->ip;
             }else{
                 $host = $this->router->dns;
                 //$host = 'typej.ddns.net';
-                $host = '192.168.1.6';
+                //$host = '192.168.1.6';
             }        
             
             // Iniciar la conexión
