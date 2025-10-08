@@ -47,7 +47,6 @@ class ViewIntegration extends Component
             $dominio = 'typej.ddns.net';
             $host = gethostbyname($dominio);
 
-
             $client = $this->configRouter();
 
             $query = new Query('/system/identity/getall');
@@ -77,6 +76,27 @@ class ViewIntegration extends Component
             dd('Error: ' . $th);
             //transmision
         }        
+
+    }
+
+    public function verIdUser($host='typej.ddns.net', $user = 'admin', $pass= 'admin123')
+    {
+        $client = $this->configRouter();
+
+        try {
+            
+            $query = (new Query('/ip/hotspot/user'))
+                ->where('name', $name);
+
+
+            $response = $client->query($query)->read();
+
+            dd($response);
+            
+
+        } catch (\Exception $e) {
+            dd('Operación fallida');
+        }     
 
     }
 

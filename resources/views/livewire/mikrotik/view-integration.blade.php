@@ -16,7 +16,12 @@
         </div>
     </div>
 
-    
+    <div class="row">
+        <div class="col-md-12">
+                <h1>Buscar id 04165800403</h1>
+                <button wire:click.prevent="verIdUser()" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Ver id user</button>
+        </div>
+    </div>
     
     
 
