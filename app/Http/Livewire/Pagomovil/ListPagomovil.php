@@ -98,25 +98,33 @@ class ListPagomovil extends AdminComponent
 
 	}
 
-	public function createUserHotspot($nrorouter, $user, $profile)
+    public function configRouter()
     {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
+        }        
         
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        return $client;
+    }
+
+	public function createUserHotspot($nrorouter, $user, $profile)
+    {        
         try {
                 $this->router = Router::where('nrorouter', $nrorouter)->first();
 
-                if(config('app.host') == 'ip'){
-                    $host = $this->router->ip;
-                }else{
-                    $host = $this->router->dns;
-                }
-                
-                $datos = [
-                    'host' => $host,
-                    'user' => $this->router->admin,
-                    'pass' => $this->router->password,
-                ];
-
-                $client = new Client($datos);
+                $client = $this->configRouter();
 
                 $password = $this->randomPassword();
 
@@ -131,6 +139,9 @@ class ListPagomovil extends AdminComponent
                 $client->query($query)->read();
                 // Tarea completada.
 
+                // asignar limit uptime
+			    $this->defineUptimeLimit($user, $profile, $newUptimeLimit = "00:00:15");
+
                 //Enviar sms con el user y la contraseña
                 $this->sendSms($user, $password);
 
@@ -143,6 +154,48 @@ class ListPagomovil extends AdminComponent
             } 
 
 		//$validatedData['password'] = bcrypt($validatedData['password']);
+    }
+
+    public function defineUptimeLimit($name, $profile, $newUptimeLimit = "00:00:15")
+    {
+
+        $client = $this->configRouter();
+
+        try {
+            //buscar tiempo del perfil de user
+            $newUptimeLimit = $this->timeProfileUser($profile);
+            
+            $query = (new Query('/ip/hotspot/user/set'))
+                ->equal('name', $name)
+                ->equal('limit-uptime', $newUptimeLimit);
+
+
+            $response = $client->query($query)->read();
+            
+            return true;
+            
+
+        } catch (\Exception $e) {
+            return false;
+        }        
+    }
+
+	public function timeProfileUser($name)
+    {
+        $client = $this->configRouter();
+        
+        // Buscar el usuario
+        $query = (new Query('/ip/hotspot/user/profile/print'))
+            ->where('name', $name);
+            
+        // Ejecutar la consulta
+        $time = $client->query($query)->read();
+
+        if (isset($time[0]['session-timeout'])) {
+            return $time[0]['session-timeout'];
+        }else{
+            return '';
+        }
     }
 
     public function sendSms($user, $password)
@@ -322,7 +375,5 @@ class ListPagomovil extends AdminComponent
         return view('livewire.pagomovil.list-pagomovil', [
         	'pagomoviles' => $pagomoviles,
         ]);
-    }
-
-	
+    }	
 }
