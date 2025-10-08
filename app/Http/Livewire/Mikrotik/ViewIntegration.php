@@ -85,7 +85,7 @@ class ViewIntegration extends Component
 
         try {
             
-            $query = (new Query('/ip/hotspot/user'))
+            $query = (new Query('/ip/hotspot/user/print'))
                 ->equal('name', '04165800403');
 
 
