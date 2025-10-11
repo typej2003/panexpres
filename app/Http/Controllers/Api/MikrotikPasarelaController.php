@@ -219,8 +219,7 @@ class MikrotikPasarelaController extends Controller
 			$query = (new Query('/ip/hotspot/user/print'))
 				->where('name', $user);
 			$response = $client->query($query)->read();
-			$this->dispatchBrowserEvent('hide-form', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
-
+			
 			// asignar limit uptime
 			$this->defineUptimeLimit($response[0]['.id'], $profile, $newUptimeLimit = "00:00:15");
 
