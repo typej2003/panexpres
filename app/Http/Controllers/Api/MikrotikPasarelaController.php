@@ -228,28 +228,38 @@ class MikrotikPasarelaController extends Controller
 				$client->query($query)->read();
 				// Tarea completada.
 
-				
-			}
-			// buscar id
-			$query = (new Query('/ip/hotspot/user/print'))
-				->where('name', $user);
-			$response = $client->query($query)->read();
+				$newUser = [
+					'user' => $user,
+					'password' => $password,
+					'status' => true,
+				];
 
-			$userMikrotik->update(['mikrotik_id' => $response[0]['.id'] ]);
+				// buscar id
+				$query = (new Query('/ip/hotspot/user/print'))
+					->where('name', $user);
+				$response = $client->query($query)->read();
+
+				$userMikrotik->update(['mikrotik_id' => $response[0]['.id'] ]);
+				
+				$mikrotik_id = $response[0]['.id'];
+
+			}else{
+				$newUser = [
+					'user' => $user,
+					'password' => $userMikrotik->password,
+					'status' => false,
+				];
+
+				$mikrotik_id = $userMikrotik->mikrotik_id;
+			}
 			
 			// asignar limit uptime
-			$this->defineUptimeLimit($userMikrotik, $response[0]['.id'], $profile, $newUptimeLimit = "00:00:15");
+			$this->defineUptimeLimit($userMikrotik, $mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
 
 			//Enviar sms con el user y la contraseña
 			//$this->sendSms($user, $password);
 
-			//$this->login($nrorouter, $user, $password);
-
-			$newUser = [
-				'user' => $user,
-				'password' => $password,
-				'status' => true,
-			];
+			//$this->login($nrorouter, $user, $password);			
 
 			return $newUser;
 
