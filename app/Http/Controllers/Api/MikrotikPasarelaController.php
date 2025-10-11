@@ -197,7 +197,7 @@ class MikrotikPasarelaController extends Controller
 	public function createUserHotspot($nrorouter, $user, $profile)
     {
         try {
-			dd($this->router);
+			dd($nrorouter);
 			$this->router = Router::where('nrorouter', $nrorouter)->first();
 
 			$client = $this->configRouter();
