@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class UserMikrotik extends Model
 {
     use HasFactory;
-
+    //actualizar
     protected $fillable = [
+        'mikrotik_id',
         'server',
         'name',
         'password',
