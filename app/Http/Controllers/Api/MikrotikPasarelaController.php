@@ -200,8 +200,6 @@ class MikrotikPasarelaController extends Controller
 			
 			$this->router = Router::where('nrorouter', $nrorouter)->first();
 
-			dd($this->router);
-
 			$client = $this->configRouter();
 
 			$password = $this->randomPassword();
