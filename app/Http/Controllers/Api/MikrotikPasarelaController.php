@@ -21,6 +21,8 @@ use Illuminate\Http\Request;
 class MikrotikPasarelaController extends Controller
 {
     //
+	public $router; 
+	
     public function mikrotikPasarela(Request $request)
 	{
 		// Accede a los datos enviados
