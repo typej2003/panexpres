@@ -22,7 +22,7 @@ class MikrotikPasarelaController extends Controller
 {
     //
 	public $router; 
-	
+
     public function mikrotikPasarela(Request $request)
 	{
 		// Accede a los datos enviados
@@ -197,7 +197,8 @@ class MikrotikPasarelaController extends Controller
 	public function createUserHotspot($nrorouter, $user, $profile)
     {
         try {
-			$router = Router::where('nrorouter', $nrorouter)->first();
+
+			$this->router = Router::where('nrorouter', $nrorouter)->first();
 
 			$client = $this->configRouter();
 
