@@ -225,7 +225,7 @@ class MikrotikPasarelaController extends Controller
 			$this->defineUptimeLimit($response[0]['.id'], $profile, $newUptimeLimit = "00:00:15");
 
 			//Enviar sms con el user y la contraseña
-			$this->sendSms($user, $password);
+			//$this->sendSms($user, $password);
 
 			//$this->login($nrorouter, $user, $password);
 
