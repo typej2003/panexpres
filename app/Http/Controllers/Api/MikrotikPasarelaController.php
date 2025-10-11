@@ -15,6 +15,7 @@ use RouterOS\Query;
 
 use App\Models\Pagomovil;
 use App\Models\Router;
+use App\Models\UserMikrotik;
 
 use Illuminate\Http\Request;
 
@@ -202,26 +203,42 @@ class MikrotikPasarelaController extends Controller
 
 			$client = $this->configRouter();
 
-			$password = $this->randomPassword();
+			$userMikrotik = UserMikrotik::where('name', $user)->first();
+			$server = 'all';
 
-			// Crear la consulta para añadir el usuario
-			$query = (new Query('/ip/hotspot/user/add'))
-				->equal('server', 'all')
-				->equal('name', $user)
-				->equal('password', $password)
-				->equal('profile', $profile);
-			
-			// Ejecutar la consulta
-			$client->query($query)->read();
-			// Tarea completada.
+			if(!$userMikrotik)
+			{
+				$password = $this->randomPassword();
 
+				$userMikrotik = UserMikrotik::create([
+					'server' => $server,
+					'name' => $user,
+					'password' => $password,
+					'profile' => $profile,
+				]);
+
+				// Crear la consulta para añadir el usuario
+				$query = (new Query('/ip/hotspot/user/add'))
+					->equal('server', 'all')
+					->equal('name', $user)
+					->equal('password', $password)
+					->equal('profile', $profile);
+				
+				// Ejecutar la consulta
+				$client->query($query)->read();
+				// Tarea completada.
+
+				
+			}
 			// buscar id
 			$query = (new Query('/ip/hotspot/user/print'))
 				->where('name', $user);
 			$response = $client->query($query)->read();
+
+			$userMikrotik->update(['mikrotik_id' => $response[0]['.id'] ]);
 			
 			// asignar limit uptime
-			$this->defineUptimeLimit($response[0]['.id'], $profile, $newUptimeLimit = "00:00:15");
+			$this->defineUptimeLimit($userMikrotik, $response[0]['.id'], $profile, $newUptimeLimit = "00:00:15");
 
 			//Enviar sms con el user y la contraseña
 			//$this->sendSms($user, $password);
@@ -251,7 +268,7 @@ class MikrotikPasarelaController extends Controller
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-	public function defineUptimeLimit($id, $profile, $newUptimeLimit = "00:00:15")
+	public function defineUptimeLimit(UserMikrotik $userMikrotik, $id, $profile, $newUptimeLimit = "00:00:15")
     {
 
         $client = $this->configRouter();
@@ -266,6 +283,8 @@ class MikrotikPasarelaController extends Controller
 
 
             $response = $client->query($query)->read();
+
+			$userMikrotik->update(['limitUptime' => $newUptimeLimit ]);
             
             return true;
             

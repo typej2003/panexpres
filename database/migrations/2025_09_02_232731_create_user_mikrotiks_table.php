@@ -15,6 +15,7 @@ class CreateUserMikrotiksTable extends Migration
     {
         Schema::create('user_mikrotiks', function (Blueprint $table) {
             $table->id();
+            $table->string('mikrotik_id')->nullable();
             $table->string('server')->nullable();
             $table->string('name')->nullable();
             $table->string('password')->nullable();
