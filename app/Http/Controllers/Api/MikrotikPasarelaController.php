@@ -239,18 +239,30 @@ class MikrotikPasarelaController extends Controller
 					->where('name', $user);
 				$response = $client->query($query)->read();
 
-				$userMikrotik->update(['mikrotik_id' => $response[0]['.id'] ]);
-				
 				$mikrotik_id = $response[0]['.id'];
+
+				$userMikrotik = UserMikrotik::create([
+                        'mikrotik_id' => $mikrotik_id, 
+                        'name'=>$user,
+                        'server'=>$server,
+                        'profile'=>$profile,                        
+                    ]);
 
 			}else{
 				$newUser = [
-					'user' => $user,
-					'password' => $userMikrotik->password,
-					'status' => false,
-				];
-
+                        'user' => $user,
+                        'password' => $userMikrotik->password,
+                        'status' => false,
+                    ];
+				$userMikrotik->update(['profile'=>$profile]);
 				$mikrotik_id = $userMikrotik->mikrotik_id;
+
+				// Modificar profile
+				$query = (new Query('/ip/hotspot/user/set'))
+					->equal('.id', $mikrotik_id)
+					->equal('profile', $profile);
+
+				$response = $client->query($query)->read();
 			}
 			
 			// asignar limit uptime
