@@ -19,6 +19,15 @@ class UserMikrotik extends Model
         'profile',
         'routes',
         'email',
+        'limitUptime',
+        'limitBytesIn',
+        'limitBytesOut',
+        'limitBytesTotal',
+        'uptime',
+        'bytesIn',
+        'packetsIn',
+        'bytesOut',
+        'packetsOut',
     ];
 
 }

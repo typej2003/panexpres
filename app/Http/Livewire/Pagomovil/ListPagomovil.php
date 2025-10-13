@@ -174,7 +174,7 @@ class ListPagomovil extends AdminComponent
                 }
 
                 // asignar limit uptime
-			    $this->defineUptimeLimit($mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
+			    $this->defineUptimeLimit($userMikrotik, $mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
 
                 //Enviar sms con el user y la contraseña
                 //$this->sendSms($user, $password);
@@ -190,7 +190,7 @@ class ListPagomovil extends AdminComponent
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-    public function defineUptimeLimit($id, $profile, $newUptimeLimit = "00:00:15")
+    public function defineUptimeLimit(UserMikrotik $userMikrotik, $id, $profile, $newUptimeLimit = "00:00:15")
     {
 
         $client = $this->configRouter();
@@ -205,6 +205,8 @@ class ListPagomovil extends AdminComponent
 
 
             $response = $client->query($query)->read();
+
+            $userMikrotik->update(['limitUptime' => $newUptimeLimit]);
             
             return true;
             
