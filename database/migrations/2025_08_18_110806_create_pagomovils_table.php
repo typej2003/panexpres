@@ -20,6 +20,7 @@ class CreatePagomovilsTable extends Migration
             $table->string('banco');
             $table->decimal('monto', 12,2);
             $table->string('status');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

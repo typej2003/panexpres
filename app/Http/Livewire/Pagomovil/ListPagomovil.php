@@ -82,9 +82,9 @@ class ListPagomovil extends AdminComponent
 	public function activarUsuario(Pagomovil $pago)
 	{
         //revisar si existe user
-		if($pago->user){
+		if(!$pago->active){
 			//se debe recargar el tiempo al usuario
-			dd('existe usuario');
+			dd('El Pago fue procesado');
 		}
 		else{
 			// crear usuario y mandar datos al cliente

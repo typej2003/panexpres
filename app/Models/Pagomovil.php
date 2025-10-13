@@ -19,6 +19,7 @@ class Pagomovil extends Model
         'banco',
         'monto',
         'status',
+        'active',
         'user',
         'plan',
         'externalcomment',
