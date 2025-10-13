@@ -31,6 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Opciones</th>
                                         <th scope="col">Router</th>
                                         <th scope="col">User</th>
                                         <th scope="col">Fecha del Pago</th>
@@ -52,28 +53,13 @@
                                         <th scope="col">Plan</th>
                                         <th scope="col">Monto</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Opciones</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody wire:loading.class="text-muted">
                                     @forelse ($pagomoviles as $index => $pago)
                                     <tr>
                                         <th scope="row">{{ $pagomoviles->firstItem() + $index }}</th>
-                                        <td>{{ $pago->nrorouter }}</td>
-                                        <td>{{ $pago->user }}</td>                                        
-                                        <td>{{ $pago->fecha_pago }}</td>
-                                        <td>{{ $pago->referencia }}</td>
-                                        <td>{{ $pago->banco }}</td>
-                                        <td>{{ $pago->telefono }}</td>
-                                        <td>{{ $pago->plan }}</td>
-                                        <td>{{ $pago->monto }}</td>
-                                        <td>
-                                            <select class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">
-                                                <option value="confirmado" {{ ($pago->status === 'confirmado') ? 'selected' : '' }}>CONFIRMADO</option>
-                                                <option value="noconfirmado" {{ ($pago->status === 'noconfirmado') ? 'selected' : '' }}>NO CONFIRMADO</option>
-                                                <option value="rechazado" {{ ($pago->status === 'rechazado') ? 'selected' : '' }}>RECHAZADO</option>
-                                            </select>
-                                        </td>
                                         <td>
                                             @if($pago->status === 'confirmado')
                                                 <a href="" wire:click.prevent="activarUsuario({{ $pago }})">
@@ -94,6 +80,21 @@
                                                 <i class="fa fa-trash text-danger mx-2"></i>
                                             </a>
                                         </td>
+                                        <td>{{ $pago->nrorouter }}</td>
+                                        <td>{{ $pago->user }}</td>                                        
+                                        <td>{{ $pago->fecha_pago }}</td>
+                                        <td>{{ $pago->referencia }}</td>
+                                        <td>{{ $pago->banco }}</td>
+                                        <td>{{ $pago->telefono }}</td>
+                                        <td>{{ $pago->plan }}</td>
+                                        <td>{{ $pago->monto }}</td>
+                                        <td>
+                                            <select class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">
+                                                <option value="confirmado" {{ ($pago->status === 'confirmado') ? 'selected' : '' }}>CONFIRMADO</option>
+                                                <option value="noconfirmado" {{ ($pago->status === 'noconfirmado') ? 'selected' : '' }}>NO CONFIRMADO</option>
+                                                <option value="rechazado" {{ ($pago->status === 'rechazado') ? 'selected' : '' }}>RECHAZADO</option>
+                                            </select>
+                                        </td>                                        
                                     </tr>
                                     @empty
                                     <tr class="text-center">
