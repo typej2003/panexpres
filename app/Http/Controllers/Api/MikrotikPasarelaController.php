@@ -252,7 +252,7 @@ class MikrotikPasarelaController extends Controller
 				$newUser = [
                         'user' => $user,
                         'password' => $userMikrotik->password,
-                        'status' => false,
+                        'status' => true,
                     ];
 				$userMikrotik->update(['profile'=>$profile]);
 				$mikrotik_id = $userMikrotik->mikrotik_id;
