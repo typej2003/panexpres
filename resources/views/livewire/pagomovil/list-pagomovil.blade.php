@@ -79,8 +79,8 @@
                                                 <i class="fa fa-trash text-danger mx-2"></i>
                                             </a>
                                         </td>
-                                        <td style="width:200px;">
-                                            <select class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">
+                                        <td>
+                                            <select style="width:200px;" class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">
                                                 <option value="confirmado" {{ ($pago->status === 'confirmado') ? 'selected' : '' }}>CONFIRMADO</option>
                                                 <option value="noconfirmado" {{ ($pago->status === 'noconfirmado') ? 'selected' : '' }}>NO CONFIRMADO</option>
                                                 <option value="rechazado" {{ ($pago->status === 'rechazado') ? 'selected' : '' }}>RECHAZADO</option>
