@@ -139,7 +139,7 @@ class ListPagomovil extends AdminComponent
 
                     // Crear la consulta para añadir el usuario
                     $query = (new Query('/ip/hotspot/user/add'))
-                        ->equal('server', 'hotspot1')
+                        ->equal('server', $server)
                         ->equal('name', $user)
                         ->equal('password', $password)
                         ->equal('profile', $profile);
@@ -152,7 +152,12 @@ class ListPagomovil extends AdminComponent
                         ->where('name', $user);
                     $response = $client->query($query)->read();
 
-                    $userMikrotik->update(['mikrotik_id' => $response[0]['.id'] ]);
+                    $userMikrotik = UserMikrotik::create([
+                        'mikrotik_id' => $response[0]['.id'], 
+                        'name'=>$user,
+                        'server'=>$server,
+                        'profile'=>$profile,                        
+                    ]);
 				
 				    $mikrotik_id = $response[0]['.id'];
 
@@ -164,7 +169,7 @@ class ListPagomovil extends AdminComponent
                         'password' => $userMikrotik->password,
                         'status' => false,
                     ];
-
+                    $userMikrotik->update(['profile'=>$profile]);
                     $mikrotik_id = $userMikrotik->mikrotik_id;
                 }
 
