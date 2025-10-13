@@ -171,6 +171,13 @@ class ListPagomovil extends AdminComponent
                     ];
                     $userMikrotik->update(['profile'=>$profile]);
                     $mikrotik_id = $userMikrotik->mikrotik_id;
+
+                    // Modificar profile
+                    $query = (new Query('/ip/hotspot/user'))
+                        ->equal('.id', $mikrotik_id)
+                        ->equal('profile', $profile);
+
+                    
                 }
 
                 // asignar limit uptime
