@@ -32,7 +32,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Opciones</th>
-                                        <th scope="col">Status</th>
+                                        <th style="width:200px;" scope="col">Status</th>
                                         <th scope="col">Router</th>
                                         <th scope="col">User</th>
                                         <th scope="col">Fecha del Pago</th>
