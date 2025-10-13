@@ -266,6 +266,8 @@ class MikrotikPasarelaController extends Controller
 					->equal('profile', $profile);
 
 				$response = $client->query($query)->read();
+
+				$this->cleanUptime($mikrotik_id, $newUptime = "00:00:00");
 			}
 			
 			// asignar limit uptime
@@ -335,6 +337,30 @@ class MikrotikPasarelaController extends Controller
         }else{
             return '';
         }
+    }
+
+	public function cleanUptime($id, $newUptime = "00:00:00")
+    {
+        $client = $this->configRouter();
+
+        $userName = "user"; // El nombre del usuario a modificar
+        
+        try {
+            
+            $query = (new Query('/ip/hotspot/user/reset-counters'))
+                ->equal('.id', $id);
+
+
+            $response = $client->query($query)->read();
+            
+            return true;
+            
+
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        
     }
 
 	private function randomPassword() {

@@ -178,6 +178,8 @@ class ListPagomovil extends AdminComponent
                         ->equal('profile', $profile);
 
                     $response = $client->query($query)->read();
+
+                    $this->cleanUptime($mikrotik_id, $newUptime = "00:00:00");
                     
                 }
 
@@ -240,6 +242,30 @@ class ListPagomovil extends AdminComponent
         }else{
             return '';
         }
+    }
+
+    public function cleanUptime($id, $newUptime = "00:00:00")
+    {
+        $client = $this->configRouter();
+
+        $userName = "user"; // El nombre del usuario a modificar
+        
+        try {
+            
+            $query = (new Query('/ip/hotspot/user/reset-counters'))
+                ->equal('.id', $id);
+
+
+            $response = $client->query($query)->read();
+            
+            return true;
+            
+
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        
     }
 
     public function sendSms($user, $password)
