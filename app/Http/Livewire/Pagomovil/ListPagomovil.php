@@ -176,7 +176,7 @@ class ListPagomovil extends AdminComponent
                     $query = (new Query('/ip/hotspot/user'))
                         ->equal('.id', $mikrotik_id)
                         ->equal('profile', $profile);
-
+                    $response = $client->query($query)->read();
                     
                 }
 
