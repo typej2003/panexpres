@@ -5,8 +5,11 @@ namespace App\Http\Livewire\Pagomovil;
 use Illuminate\Http\Request;
 use App\Http\Livewire\Admin\AdminComponent;
 use App\Http\Livewire\Notificacion\SmsSender;
+
 use App\Models\Pagomovil;
 use App\Models\Router;
+use App\Models\UserMikrotik;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -126,26 +129,47 @@ class ListPagomovil extends AdminComponent
 
                 $client = $this->configRouter();
 
-                $password = $this->randomPassword();
+                $userMikrotik = UserMikrotik::where('name', $user)->first();
+                $server = 'all';
 
-                // Crear la consulta para añadir el usuario
-                $query = (new Query('/ip/hotspot/user/add'))
-                    ->equal('server', 'hotspot1')
-                    ->equal('name', $user)
-                    ->equal('password', $password)
-                    ->equal('profile', $profile);
-                
-                // Ejecutar la consulta
-                $client->query($query)->read();
-                // Tarea completada.
-                // buscar id
-                $query = (new Query('/ip/hotspot/user/print'))
-                    ->where('name', $user);
-                $response = $client->query($query)->read();
-                $this->dispatchBrowserEvent('hide-form', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+                if(!$userMikrotik)
+                {
+
+                    $password = $this->randomPassword();
+
+                    // Crear la consulta para añadir el usuario
+                    $query = (new Query('/ip/hotspot/user/add'))
+                        ->equal('server', 'hotspot1')
+                        ->equal('name', $user)
+                        ->equal('password', $password)
+                        ->equal('profile', $profile);
+                    
+                    // Ejecutar la consulta
+                    $client->query($query)->read();
+                    // Tarea completada.
+                    // buscar id
+                    $query = (new Query('/ip/hotspot/user/print'))
+                        ->where('name', $user);
+                    $response = $client->query($query)->read();
+
+                    $userMikrotik->update(['mikrotik_id' => $response[0]['.id'] ]);
+				
+				    $mikrotik_id = $response[0]['.id'];
+
+                    $this->dispatchBrowserEvent('hide-form', ['message' => 'Usuario del Hotspot agregado satisfactoriamente!']);
+
+                }else{
+                    $newUser = [
+                        'user' => $user,
+                        'password' => $userMikrotik->password,
+                        'status' => false,
+                    ];
+
+                    $mikrotik_id = $userMikrotik->mikrotik_id;
+                }
 
                 // asignar limit uptime
-			    $this->defineUptimeLimit($response[0]['.id'], $profile, $newUptimeLimit = "00:00:15");
+			    $this->defineUptimeLimit($mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
 
                 //Enviar sms con el user y la contraseña
                 //$this->sendSms($user, $password);
