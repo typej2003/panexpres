@@ -33,6 +33,7 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Opciones</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Activo</th>
                                         <th scope="col">Router</th>
                                         <th scope="col">User</th>
                                         <th scope="col">Fecha del Pago</th>
@@ -80,12 +81,13 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <select style="width:200px;" class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">
+                                            <select style="width:120px;" class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">
                                                 <option value="confirmado" {{ ($pago->status === 'confirmado') ? 'selected' : '' }}>CONFIRMADO</option>
                                                 <option value="noconfirmado" {{ ($pago->status === 'noconfirmado') ? 'selected' : '' }}>NO CONFIRMADO</option>
                                                 <option value="rechazado" {{ ($pago->status === 'rechazado') ? 'selected' : '' }}>RECHAZADO</option>
                                             </select>
                                         </td>                                        
+                                        <td>{{ $pago->active }}</td>
                                         <td>{{ $pago->nrorouter }}</td>
                                         <td>{{ $pago->user }}</td>                                        
                                         <td>{{ $pago->fecha_pago }}</td>
