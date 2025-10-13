@@ -95,7 +95,7 @@ class ListPagomovil extends AdminComponent
             $this->createUserHotspot($pago->nrorouter, $user, $p->plan.'/'.$p->costo);
 
 			//actualizar el usuario en el pago
-			$pago->update(['user' => $user]);
+			$pago->update(['user' => $user, 'active' => false ]);
 
 		}
 
