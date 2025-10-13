@@ -32,7 +32,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Opciones</th>
-                                        <th style="width:200px;" scope="col">Status</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Router</th>
                                         <th scope="col">User</th>
                                         <th scope="col">Fecha del Pago</th>
@@ -79,7 +79,7 @@
                                                 <i class="fa fa-trash text-danger mx-2"></i>
                                             </a>
                                         </td>
-                                        <td>
+                                        <td style="width:200px;">
                                             <select class="form-control" wire:change="changeStatus({{ $pago }}, $event.target.value)">
                                                 <option value="confirmado" {{ ($pago->status === 'confirmado') ? 'selected' : '' }}>CONFIRMADO</option>
                                                 <option value="noconfirmado" {{ ($pago->status === 'noconfirmado') ? 'selected' : '' }}>NO CONFIRMADO</option>
