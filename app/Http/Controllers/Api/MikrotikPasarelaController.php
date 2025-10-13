@@ -157,6 +157,7 @@ class MikrotikPasarelaController extends Controller
 				'externalcomment' => json_encode($datos) . '/ ip remoto: '.$_SERVER['REMOTE_ADDR'],
 				'status' => 'PAGADO',
 				'token' => $token,
+				'active' => false,
 			]);
 
 			// Crear usuario
