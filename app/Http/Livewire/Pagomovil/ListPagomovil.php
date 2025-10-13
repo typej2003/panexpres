@@ -174,8 +174,9 @@ class ListPagomovil extends AdminComponent
 
                     // Modificar profile
                     $query = (new Query('/ip/hotspot/user/set'))
-                        ->where('.id', $mikrotik_id)
+                        ->equal('.id', $mikrotik_id)
                         ->equal('profile', $profile);
+
                     $response = $client->query($query)->read();
                     
                 }
