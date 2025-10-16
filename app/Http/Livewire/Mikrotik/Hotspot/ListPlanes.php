@@ -75,6 +75,24 @@ class ListPlanes extends Component
         return $result;
     }
 
+    public function exeQueryListPlanes($datos, $query)
+    {
+        try {
+
+                //$client = $this->configRouter();
+
+                $client = new Client($datos);
+
+                $query = new Query($query);
+
+                $result = $client->query($query)->read();
+
+            } catch (Exception $e) {
+                $result = "Caught exception: " . $e->getMessage() . "\n";
+            } 
+        return $result;
+    }
+
     public function listPlanes(Request $request)
     {
         try {
@@ -99,7 +117,7 @@ class ListPlanes extends Component
             // ];
 
             //todas los perfiles de hotspot
-            $profiles = $this->exeQuery($datos, '/ip/hotspot/user/profile/print');
+            $profiles = $this->exeQueryListPlanes($datos, '/ip/hotspot/user/profile/print');
             $namesProfiles = [];
             foreach ($profiles as $elemento) {
                 $namesProfiles[] = $elemento['name'];
