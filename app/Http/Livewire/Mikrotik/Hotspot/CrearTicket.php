@@ -10,6 +10,8 @@ use Illuminate\Validation\Rule;
 use RouterOS\Client;
 use RouterOS\Query;
 
+use App\Models\Router;
+
 use Illuminate\Http\Request;
 //use \RouterOS; // Asegúrate de que este 'use' apunte al namespace correcto
 
@@ -20,6 +22,8 @@ class CrearTicket extends Component
     public $namesprofiles = [];
 
     public $state = [];
+
+    public $router;
 
     public $usershotspot = [];
 
@@ -38,8 +42,9 @@ class CrearTicket extends Component
     ];
     public $cuentas = [];
 
-    public function mount()
+    public function mount($nrorouter = 'R001')
     {        
+        $this->router = Router::where('nrorouter', $nrorouter)->first();
         //todos los hotspots
         $hotspots = $this->exeQuery($this->datos, '/ip/hotspot/print');
         $this->nameshotspots = [];
@@ -55,10 +60,34 @@ class CrearTicket extends Component
         }
     }
 
+    public function configRouter()
+    {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        return $client;
+    }
+
     public function exeQuery($datos, $query)
     {
         try {
-                $client = new Client($datos);
+
+                $client = $this->configRouter();
+
+                //$client = new Client($datos);
 
                 $query = new Query($query);
 
@@ -72,7 +101,6 @@ class CrearTicket extends Component
     
     public function createHotspotUsers()
     {
-        
         $messages = [
                     'required' => 'El campo :attribute es requerido.',
                     'name.max' => 'The name cannot exceed 255 characters.',
@@ -85,9 +113,9 @@ class CrearTicket extends Component
         ], $messages)->validate();
 
         try {
-            
-            $client = new Client($this->datos);
 
+            $client = $this->configRouter();
+            
             for ($i = 0; $i < intval($validatedData['totalTicket']); $i++) {
                 // Genera un nombre de usuario único (puedes ajustarlo)
                 $username = 'user' . str_pad($i + 1, 2, '0', STR_PAD_LEFT);
@@ -195,8 +223,7 @@ class CrearTicket extends Component
     }
 
     public function render()
-    {
-        
+    {       
 
         return view('livewire.mikrotik.hotspot.crear-ticket');
     }
