@@ -10,6 +10,8 @@ use Illuminate\Validation\Rule;
 use RouterOS\Client;
 use RouterOS\Query;
 
+use App\Models\Router;
+
 class ListPlanes extends Component
 {
     public $datos = [
@@ -19,16 +21,48 @@ class ListPlanes extends Component
         ];
     public $state = [];
 
+    public $router;
+
     public $namesProfilesUser = [];
 
     public $addressPool = [];
 
     public $showEditModal = false;
 
+    public function mount($nrorouter = 'R001')
+    {        
+        $this->router = Router::where('nrorouter', $nrorouter)->first();
+        
+    }
+
+    public function configRouter()
+    {
+        if(config('app.host') == 'ip'){
+            $host = $this->router->ip;
+        }else{
+            $host = $this->router->dns;
+            //$host = 'typej.ddns.net';
+            //$host = '192.168.1.6';
+        }        
+        
+        // Iniciar la conexión
+        $client = new Client([
+            'host' => $host,
+            'user' => $this->router->admin,
+            'pass' => $this->router->password,
+            'port' => 8728,
+        ]);
+
+        return $client;
+    }
+
     public function exeQuery($datos, $query)
     {
         try {
-                $client = new Client($datos);
+
+                $client = $this->configRouter();
+
+                //$client = new Client($datos);
 
                 $query = new Query($query);
 
@@ -36,10 +70,6 @@ class ListPlanes extends Component
 
             } catch (Exception $e) {
                 $result = "Caught exception: " . $e->getMessage() . "\n";
-                return response()->json([
-                    'success' => false,
-                    'message' => $result,
-                ]);
             } 
         return $result;
     }
