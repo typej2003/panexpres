@@ -18,9 +18,9 @@ class RouterUsers extends Component
 
     public $showEditModal = false;
 
-    public function mount($router_id)
+    public function mount($nrorouter = "R001")
     {        
-        $this->router = Router::find($router_id);
+        $this->router = Router::where('nrorouter', $nrorouter)->first();
     }
 
     public function configRouter()
@@ -47,7 +47,10 @@ class RouterUsers extends Component
     public function exeQuery($datos, $query)
     {
         try {
-                $client = new Client($datos);
+
+                $client = $this->configRouter();
+
+                //$client = new Client($datos);
 
                 $query = new Query($query);
 
@@ -126,7 +129,6 @@ class RouterUsers extends Component
             //$host = 'typej.ddns.net';
             //$host = '192.168.1.6';
         }        
-        dd($host);
         // Iniciar la conexión
         $datos = [
             'host' => $host,
