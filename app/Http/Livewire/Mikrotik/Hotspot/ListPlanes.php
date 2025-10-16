@@ -32,6 +32,7 @@ class ListPlanes extends Component
     public function mount($nrorouter = 'R001')
     {        
         $this->router = Router::where('nrorouter', $nrorouter)->first();
+        $this->router = Router::find(1);
         
     }
 
