@@ -109,16 +109,14 @@ class CrearTicketPhone extends Component
         $validatedData = Validator::make($this->state, [
             'server' => 'required|not_in:0',
             'profile' => 'required|not_in:0',
-            'totalTicket' => 'required|not_in:0',
+            'cellphone' => 'required',
         ], $messages)->validate();
 
         try {
 
             $client = $this->configRouter();
             
-            for ($i = 0; $i < intval($validatedData['totalTicket']); $i++) {
-                // Genera un nombre de usuario único (puedes ajustarlo)
-                $username = 'user' . str_pad($i + 1, 2, '0', STR_PAD_LEFT);
+                $username = $validatedData['cellphone'];
                 
                 // Genera la contraseña de 8 dígitos
                 $password = $this->randomPassword();
@@ -140,7 +138,7 @@ class CrearTicketPhone extends Component
 
                 // Puedes manejar la respuesta si es necesario
                 // Por ejemplo, registrar en la base de datos de Laravel si el usuario se creó correctamente
-            }
+            
 
             //llamar a graficar qr
             $this->dispatchBrowserEvent('crear-qr', ['usershotspot' => $this->cuentas]);

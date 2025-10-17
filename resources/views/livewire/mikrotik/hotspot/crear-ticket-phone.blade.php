@@ -63,9 +63,9 @@
                                 </div>
 
                                 <div class="form-group col-md-3 col-3">
-                                    <label for="totalTicket">N° de ticket(s)</label>
-                                    <input type="text" wire:model.defer="state.totalTicket" class="form-control @error('totalTicket') is-invalid @enderror" id="totalTicket" aria-describedby="totalTicketHelp" placeholder="Total de Tickets">
-                                    @error('totalTicket')
+                                    <label for="cellphone">N° Celular</label>
+                                    <input type="text" wire:model.defer="state.cellphone" class="form-control @error('cellphone') is-invalid @enderror" id="cellphone" aria-describedby="cellphoneHelp" placeholder="Nro cellphone">
+                                    @error('cellphone')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
