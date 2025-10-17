@@ -139,7 +139,7 @@ class ListPlanes extends Component
      
         $namesProfilesUser = $this->namesProfilesUser;
         $addressPool = $this->addressPool;
-        $router = $this->$router;
+        $router = $this->router;
         
 		$this->reset();
         $this->namesProfilesUser = $namesProfilesUser;
