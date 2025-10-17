@@ -101,6 +101,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a href="/crearTicketPhone" class="nav-link {{ request()->is('crearTicketPhone') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear Ticket Phone</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="/createUser" class="nav-link {{ request()->is('createUser') ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Crear Usuario</p>

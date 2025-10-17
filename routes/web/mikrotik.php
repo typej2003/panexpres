@@ -14,6 +14,7 @@ use App\Http\Livewire\Mikrotik\Router\HotspotUsers;
 use App\Http\Livewire\Mikrotik\ListUsersMikrotik;
 use App\Http\Livewire\Mikrotik\Hotspot\ListHotspot;
 use App\Http\Livewire\Mikrotik\Hotspot\CrearTicket;
+use App\Http\Livewire\Mikrotik\Hotspot\CrearTicketPhone;
 use App\Http\Livewire\Mikrotik\Hotspot\CreateUser;
 use App\Http\Controllers\LoginMikrotik;
 use App\Http\Livewire\Mikrotik\Hotspot\ListPlanes;
@@ -42,6 +43,8 @@ Route::get('/ListHotspot', ListHotspot::class)->name('ListHotspot')->middleware(
 Route::get('/loginMikrotik', [LoginMikrotik::class, 'loginMikrotik'])->name('loginMikrotik')->middleware('auth');
 
 Route::get('/crearTicket', CrearTicket::class)->name('crearTicket')->middleware('auth');
+
+Route::get('/crearTicketPhone', CrearTicketPhone::class)->name('crearTicketPhone')->middleware('auth');
 
 Route::get('/createUser', CreateUser::class)->name('createUser')->middleware('auth');
 
