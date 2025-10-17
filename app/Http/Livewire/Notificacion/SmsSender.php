@@ -24,7 +24,6 @@ class SmsSender extends Component
         $token = config('services.twilio.token');
         $from = config('services.twilio.from');
 
-        dd($token);
         // $sid="AC6d08e9ee1a34c0c9481171fd8d517571";
         // $token="ad0800810673e33bf45607ce04ec0183";
         // $from="+17276177128";
