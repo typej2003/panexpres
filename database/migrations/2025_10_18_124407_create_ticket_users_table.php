@@ -18,6 +18,7 @@ class CreateTicketUsersTable extends Migration
             $table->string('nroTicket');
             $table->bigInteger('user_id');
             $table->string('user');
+            $table->string('profile');
             $table->string('monto');
             $table->string('nrorouter');
             $table->timestamps();
