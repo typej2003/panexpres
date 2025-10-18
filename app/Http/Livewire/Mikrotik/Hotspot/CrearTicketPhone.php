@@ -166,7 +166,7 @@ class CrearTicketPhone extends Component
                 $mikrotik_id = $response[0]['.id'];
 
             }else{
-                dd('no entro');
+                
 				$newUser = [
                         'user' => $user,
                         'password' => $userMikrotik->password,
