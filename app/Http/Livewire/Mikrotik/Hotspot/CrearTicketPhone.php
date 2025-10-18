@@ -102,6 +102,7 @@ class CrearTicketPhone extends Component
     
     public function createHotspotUsers()
     {
+        dd('para');
         $messages = [
                     'required' => 'El campo :attribute es requerido.',
                     'name.max' => 'The name cannot exceed 255 characters.',
