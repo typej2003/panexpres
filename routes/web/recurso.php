@@ -7,5 +7,5 @@ use App\Http\Livewire\Recursos\LectorQr;
 
 //Route::get('/lectorQr', LectorQr::class)->name('lectorQr');
 Route::get('/lectorQr', function(){
-    return view('externalviews.lectorQr');
+    return view('externalviews.lectorQr')->middleware('auth');
 });
