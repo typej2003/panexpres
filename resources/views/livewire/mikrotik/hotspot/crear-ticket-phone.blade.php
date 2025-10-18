@@ -78,12 +78,20 @@
                                 @if($showEditModal)
                                 <span>Guardar Cambios</span>
                                 @else
-                                <span>Crear Ticket(s)</span>
+                                <span>Crear Ticket</span>
                                 @endif
                             </button>
                         </div>
                         </form>
                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <div class="d-flex justify-content-between mb-2">
+                        <button class="btn btn-success">Imprimir todo</button>
+                    </div>        
                 </div>
             </div>
 
