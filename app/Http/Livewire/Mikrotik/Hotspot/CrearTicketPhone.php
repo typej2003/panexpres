@@ -148,9 +148,10 @@ class CrearTicketPhone extends Component
             // asignar limit uptime
 			$this->defineUptimeLimit($username, $mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
 
+            dd($this->randomNroTicket());
             // registra user en modelo TicketUser
             TicketUser::create([
-                'nroTicket' => $this->randomPassword(),
+                'nroTicket' => $this->randomNroTicket(),
                 'user_id' => auth()->user()->id,
                 'user' => $username,
                 'monto' => explode('/', $profile)[1],
