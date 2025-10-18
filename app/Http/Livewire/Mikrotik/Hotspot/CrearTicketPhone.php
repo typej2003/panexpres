@@ -126,8 +126,7 @@ class CrearTicketPhone extends Component
             $profile = $validatedData['profile'];
 
             if(!$userMikrotik)
-			{
-                
+			{                
                 // Genera la contraseña de 8 dígitos
                 $password = $this->randomPassword();
 
@@ -175,8 +174,6 @@ class CrearTicketPhone extends Component
 				$userMikrotik->update(['profile'=>$profile]);
 				$mikrotik_id = $userMikrotik->mikrotik_id;
 				$password = $userMikrotik->password;
-                dd('actualizo 2');
-                
 
 				// Modificar profile
 				$query = (new Query('/ip/hotspot/user/set'))
