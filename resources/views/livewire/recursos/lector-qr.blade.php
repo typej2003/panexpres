@@ -8,7 +8,7 @@
     <body>
     <h1>Scan from WebCam:</h1>
     <div id="video-container">
-        <video id="qr-video"></video>
+        <video style="width: 100px;" id="qr-video"></video>
     </div>
     <div>
         <label>
