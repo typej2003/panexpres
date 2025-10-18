@@ -160,8 +160,8 @@
             let contenido ='';
             usershotspot.forEach((user) => {
                 contenido = `<div class="col-md-4 col-4">
-                            <div id="${user['name']}" class="card shadow w-75">
-                                <div class="card-body">
+                            <div class="card shadow w-75">
+                                <div id="${user['name']}" class="card-body">
                                     <div class="text-start"><span>Usuario: </span>${user['name']}</div>
                                     <div class="text-start"><span>Password: </span>${user['password']}</div>
                                     <div style="width:100px; height:100px;" id="qr${user['name']}"></div>
