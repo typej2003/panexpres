@@ -194,7 +194,7 @@ class CrearTicketPhone extends Component
             TicketUser::create([
                 'nroTicket' => $this->randomNroTicket(),
                 'user_id' => auth()->user()->id,
-                'user' => $userMikrotik,
+                'user' => $userMikrotik->name,
                 'monto' => explode('/', $profile)[1],
                 'profile' => $profile,
                 'nrorouter' => $this->router->nrorouter,
