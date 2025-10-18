@@ -277,11 +277,12 @@ class CrearTicketPhone extends Component
 
         $resp = TicketUser::where('nroTicket', implode($nroTicket))->first();        
 
-        if($resp){
+        if(!$resp){
+            dd('es null');
             $nroTicket = $this->randomNroTicket();
             dd($nroTicket);
         }
-        dd('es null');
+        dd('no es null');
 		return implode($nroTicket); //turn the array into a string
 	}
 
