@@ -167,6 +167,10 @@
                                     <div class="text-center">${user['name']}</div>
                                     <div style="width:100px; height:100px;" id="qr${user['name']}"></div>
                                 </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-success">Imprimir</button>
+                                </div>
+
                             </div>                                    
                         </div>`
                 seccionQr.innerHTML += contenido
