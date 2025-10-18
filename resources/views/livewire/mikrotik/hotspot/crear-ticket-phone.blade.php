@@ -165,7 +165,7 @@
             seccionQr.innerHTML = ''
             let contenido ='';
             usershotspot.forEach((user) => {
-                contenido = `<div class="">
+                contenido = `<div class="col-md-4 col-4">
                             <div class="card shadow w-75">
                                 <div id="${user['name']}" class="card-body">
                                     <div class="text-start"><span>Usuario: </span>${user['name']}</div>
