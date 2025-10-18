@@ -125,7 +125,7 @@ class CrearTicketPhone extends Component
 
             if(!$userMikrotik)
 			{
-            
+                dd('entro');
                 // Genera la contraseña de 8 dígitos
                 $password = $this->randomPassword();
 
@@ -166,6 +166,7 @@ class CrearTicketPhone extends Component
                 $mikrotik_id = $response[0]['.id'];
 
             }else{
+                dd('no entro');
 				$newUser = [
                         'user' => $user,
                         'password' => $userMikrotik->password,
