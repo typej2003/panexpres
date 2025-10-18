@@ -155,10 +155,8 @@
     <script>
         window.addEventListener('crear-qr', event => {
             let usershotspot = event.detail.usershotspot
-
             let seccionQr = document.querySelector('.seccion-qr')
             seccionQr.innerHTML = ''
-
             let contenido ='';
             usershotspot.forEach((user) => {
                 contenido = `<div class="col-md-4 col-4">
@@ -169,14 +167,12 @@
                                     <div style="width:100px; height:100px;" id="qr${user['name']}"></div>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-success">Imprimir</button>
+                                    <button class="btn btn-success imprimir">Imprimir</button>
                                 </div>
 
                             </div>                                    
                         </div>`
-                seccionQr.innerHTML += contenido
-
-                
+                seccionQr.innerHTML += contenido                
             });
             usershotspot.forEach((user) => {
                 doQr(user)
@@ -207,5 +203,28 @@
             }
         }
         //doQr()
+
+        let btnImprimir = document.querySelector('.imprimir');
+
+        btnImprimir.addEventListener('click', function() {
+            // Code to be executed when the button is clicked
+            console.log('Button clicked!');
+            alert('You clicked the button!');
+        });
+
+        function imprimirDivEnNuevaVentana(idDiv) {
+            // 1. Obtiene el contenido del div
+            var contenido = document.getElementById(idDiv).innerHTML;
+            // 2. Crea una nueva ventana
+            var ventanaImpresion = window.open('', '_blank');
+            // 3. Escribe el contenido en la nueva ventana
+            ventanaImpresion.document.write('<html><head><title>Imprimir</title></head><body>');
+            ventanaImpresion.document.write(contenido);
+            ventanaImpresion.document.write('</body></html>');
+            // 4. Cierra la escritura
+            ventanaImpresion.document.close();
+            // 5. Llama a la ventana de impresión
+            ventanaImpresion.print();
+        }
     </script>
 </div>
