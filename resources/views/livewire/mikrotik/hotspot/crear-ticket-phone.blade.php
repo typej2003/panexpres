@@ -90,17 +90,15 @@
             <div class="row">
                 <div class="col-md-12 col-12">
                     <div class="d-flex justify-content-between mb-2">
-                        <button class="btn btn-success">Imprimir todo</button>
+                        <button onclick="printdivAll('seccion-gr')" id="imprimirTodo" class="btn btn-success">Imprimir todo</button>
                     </div>        
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 col-12">
-                    <div class="row seccion-qr">                        
-                                             
-                    </div>
-                    
+                    <div id="seccion-gr" class="row seccion-qr">
+                    </div>                    
                 </div>
             </div>
 
@@ -194,6 +192,17 @@
         }
 
         function printdiv(elem) {
+            var header_str = '<html><head><title>' + document.title  + '</title></head><body>';
+            var footer_str = '</body></html>';
+            var new_str = document.getElementById(elem).innerHTML;
+            var old_str = document.body.innerHTML;
+            document.body.innerHTML = header_str + new_str + footer_str;
+            window.print();
+            document.body.innerHTML = old_str;
+            return false;
+        }
+
+        function printdivAll(elem) {
             var header_str = '<html><head><title>' + document.title  + '</title></head><body>';
             var footer_str = '</body></html>';
             var new_str = document.getElementById(elem).innerHTML;
