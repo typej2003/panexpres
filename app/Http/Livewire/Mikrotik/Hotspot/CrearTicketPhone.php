@@ -102,7 +102,7 @@ class CrearTicketPhone extends Component
     
     public function createHotspotUsers()
     {
-        dd('para');
+        
         $messages = [
                     'required' => 'El campo :attribute es requerido.',
                     'name.max' => 'The name cannot exceed 255 characters.',
@@ -274,6 +274,9 @@ class CrearTicketPhone extends Component
 			$n = rand(0, $alphaLength);
 			$nroTicket[] = $alphabet[$n];
 		}
+
+        dd(implode($nroTicket));
+        
         $resp = TicketUser::where('nroTicket', implode($nroTicket))->first();
         if(!$resp){
             $nroTicket = $this->randomNroTicket();
