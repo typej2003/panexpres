@@ -137,9 +137,9 @@ class CrearTicketPhone extends Component
 
             $this->cuentas[] = ['name' => $username, 'password' => $password];
 
-            dd($this->cuentas);
+            $this->dispatchBrowserEvent('hide-form', ['message' => 'Se han creado el usuario ' . $username . ' de Hotspot con éxito.']);
 
-            $this->dispatchBrowserEvent('hide-formHotspot', ['message' => 'Se han creado el usuario ' . $username . ' de Hotspot con éxito.']);
+            dd('por aqui');
 
             // buscar id
             $query = (new Query('/ip/hotspot/user/print'))
