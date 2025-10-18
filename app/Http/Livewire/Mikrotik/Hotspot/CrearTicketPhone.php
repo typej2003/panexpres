@@ -168,7 +168,7 @@ class CrearTicketPhone extends Component
             }else{
                 
 				$newUser = [
-                        'user' => $user,
+                        'user' => $username,
                         'password' => $userMikrotik->password,
                         'status' => true,
                     ];
