@@ -167,7 +167,7 @@
                                     <div style="width:100px; height:100px;" id="qr${user['name']}"></div>
                                 </div>
                                 <div class="card-footer">
-                                    <button onClick="hacer(${user['name']})" class="btn btn-success imprimir">Imprimir</button>
+                                    <button onclick="hacer()" class="btn btn-success imprimir">Imprimir</button>
                                 </div>
 
                             </div>                                    
@@ -180,7 +180,7 @@
         
         }) 
 
-        function hacer(user)
+        function hacer()
         {
             alert(user)
         }
