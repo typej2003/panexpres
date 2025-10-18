@@ -24,6 +24,7 @@ class CreateUserMikrotiksTable extends Migration
             $table->string('profile')->nullable();
             $table->string('routes')->nullable();
             $table->string('email')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

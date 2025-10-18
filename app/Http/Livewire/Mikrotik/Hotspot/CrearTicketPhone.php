@@ -11,6 +11,7 @@ use RouterOS\Client;
 use RouterOS\Query;
 
 use App\Models\Router;
+use App\Models\TicketUser;
 
 use Illuminate\Http\Request;
 //use \RouterOS; // Asegúrate de que este 'use' apunte al namespace correcto
@@ -116,29 +117,49 @@ class CrearTicketPhone extends Component
 
             $client = $this->configRouter();
             
-                $username = $validatedData['cellphone'];
-                
-                // Genera la contraseña de 8 dígitos
-                $password = $this->randomPassword();
-
-                //dd($validatedData['server']);
-                
-                $query = (new Query('/ip/hotspot/user/add'))
-                    ->equal('server', $validatedData['server'])
-                    ->equal('name', $username)
-                    ->equal('password', $password)
-                    ->equal('profile', $validatedData['profile']);
-                // Ejecutar la consulta
-                $response = $client->query($query)->read();
-                // Tarea completada.
-
-                $this->cuentas[] = ['name' => $username, 'password' => $password];
-
-                $this->dispatchBrowserEvent('hide-formHotspot', ['message' => 'Se han creado el usuario ' . $username . ' de Hotspot con éxito.']);
-
-                // Puedes manejar la respuesta si es necesario
-                // Por ejemplo, registrar en la base de datos de Laravel si el usuario se creó correctamente
+            $username = $validatedData['cellphone'];
             
+            // Genera la contraseña de 8 dígitos
+            $password = $this->randomPassword();
+
+            //dd($validatedData['server']);
+            $profile = $validatedData['profile'];
+            
+            $query = (new Query('/ip/hotspot/user/add'))
+                ->equal('server', $validatedData['server'])
+                ->equal('name', $username)
+                ->equal('password', $password)
+                ->equal('profile', $profile);
+            // Ejecutar la consulta
+            $response = $client->query($query)->read();
+            // Tarea completada.
+
+            $this->cuentas[] = ['name' => $username, 'password' => $password];
+
+            $this->dispatchBrowserEvent('hide-formHotspot', ['message' => 'Se han creado el usuario ' . $username . ' de Hotspot con éxito.']);
+
+            // buscar id
+            $query = (new Query('/ip/hotspot/user/print'))
+                ->where('name', $user);
+            $response = $client->query($query)->read();
+
+            $mikrotik_id = $response[0]['.id'];
+
+            // asignar limit uptime
+			$this->defineUptimeLimit($username, $mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
+
+            // registra user en modelo TicketUser
+            TicketUser::create([
+                'nroTicket' => $this->randomPassword(),
+                'user_id' => auth()->user()->id,
+                'user' => $username,
+                'monto' => explode('/', $profile)[1],
+                'profile' => $profile,
+                'nrorouter' => $this->router->nrorouter,
+            ]);            
+
+            // Puedes manejar la respuesta si es necesario
+            // Por ejemplo, registrar en la base de datos de Laravel si el usuario se creó correctamente            
 
             //llamar a graficar qr
             $this->dispatchBrowserEvent('crear-qr', ['usershotspot' => $this->cuentas]);
@@ -147,6 +168,48 @@ class CrearTicketPhone extends Component
 
         } catch (\Exception $e) {
             return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function defineUptimeLimit(UserMikrotik $userMikrotik, $id, $profile, $newUptimeLimit = "00:00:15")
+    {
+
+        $client = $this->configRouter();
+
+        try {
+            //buscar tiempo del perfil de user
+            $newUptimeLimit = $this->timeProfileUser($profile);
+            
+            $query = (new Query('/ip/hotspot/user/set'))
+                ->equal('.id', $id)
+                ->equal('limit-uptime', $newUptimeLimit);
+
+            $response = $client->query($query)->read();
+
+			$userMikrotik->update(['limitUptime' => $newUptimeLimit ]);
+            
+            return true;            
+
+        } catch (\Exception $e) {
+            return false;
+        }        
+    }
+
+	public function timeProfileUser($name)
+    {
+        $client = $this->configRouter();
+        
+        // Buscar el usuario
+        $query = (new Query('/ip/hotspot/user/profile/print'))
+            ->where('name', $name);
+            
+        // Ejecutar la consulta
+        $time = $client->query($query)->read();
+
+        if (isset($time[0]['session-timeout'])) {
+            return $time[0]['session-timeout'];
+        }else{
+            return '';
         }
     }
 
@@ -198,6 +261,22 @@ class CrearTicketPhone extends Component
 			$pass[] = $alphabet[$n];
 		}
 		return implode($pass); //turn the array into a string
+	}
+
+    private function randomNroTicket() {
+		// $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+		$alphabet = '1234567890';
+		$nroTicket = array(); //remember to declare $pass as an array
+		$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+		for ($i = 0; $i < 8; $i++) {
+			$n = rand(0, $alphaLength);
+			$nroTicket[] = $alphabet[$n];
+		}
+        $resp = TicketUser::where('nroTicket', implode($nroTicket))->first();
+        if(!$resp){
+            $nroTicket = $this->randomNroTicket();
+        }
+		return implode($nroTicket); //turn the array into a string
 	}
 
     public function showUsersHotspot()

@@ -28,6 +28,7 @@ class UserMikrotik extends Model
         'packetsIn',
         'bytesOut',
         'packetsOut',
+        'active',
     ];
 
 }
