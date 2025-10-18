@@ -203,6 +203,9 @@
         }
 
         function printdivAll(elem) {
+            var buttonAll = document.querySelectorAll('imprimir')
+            buttonAll.style.display = 'none'
+            
             var header_str = '<html><head><title>' + document.title  + '</title></head><body>';
             var footer_str = '</body></html>';
             var new_str = document.getElementById(elem).innerHTML;
