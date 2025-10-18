@@ -166,7 +166,7 @@ class CrearTicketPhone extends Component
                 $mikrotik_id = $response[0]['.id'];
 
             }else{
-                
+                dd('actualizo');
 				$newUser = [
                         'user' => $user,
                         'password' => $userMikrotik->password,
@@ -176,7 +176,7 @@ class CrearTicketPhone extends Component
 				$mikrotik_id = $userMikrotik->mikrotik_id;
 				$password = $userMikrotik->password;
 
-                dd('actualizo');
+                
 
 				// Modificar profile
 				$query = (new Query('/ip/hotspot/user/set'))
