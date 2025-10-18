@@ -166,12 +166,14 @@ class CrearTicketPhone extends Component
                 $mikrotik_id = $response[0]['.id'];
 
             }else{
-                dd($userMikrotik->password);
+                
 				$newUser = [
                         'user' => $user,
                         'password' => $userMikrotik->password,
                         'status' => true,
                     ];
+
+                dd($newUser);
 				$userMikrotik->update(['profile'=>$profile]);
 				$mikrotik_id = $userMikrotik->mikrotik_id;
 				$password = $userMikrotik->password;
