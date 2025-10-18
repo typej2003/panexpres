@@ -164,7 +164,8 @@
                 contenido = `<div class="col-md-4 col-4">
                             <div class="card shadow w-75">
                                 <div class="card-body">
-                                    <div class="text-center">${user['name']}</div>
+                                    <div class="text-start">${user['name']}</div>
+                                    <div class="text-start">${user['password']}</div>
                                     <div style="width:100px; height:100px;" id="qr${user['name']}"></div>
                                 </div>
                                 <div class="card-footer">
