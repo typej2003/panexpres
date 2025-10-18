@@ -139,16 +139,14 @@ class CrearTicketPhone extends Component
 
             $this->dispatchBrowserEvent('hide-form', ['message' => 'Se han creado el usuario ' . $username . ' de Hotspot con éxito.']);
 
-            dd('por aqui');
-
             // buscar id
             $query = (new Query('/ip/hotspot/user/print'))
-                ->where('name', $user);
+                ->where('name', $username);
             $response = $client->query($query)->read();
 
             $mikrotik_id = $response[0]['.id'];
 
-            dd('por aqui');
+            dd('por aqui ' . $mikrotik_id);
 
             // asignar limit uptime
 			$this->defineUptimeLimit($username, $mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
