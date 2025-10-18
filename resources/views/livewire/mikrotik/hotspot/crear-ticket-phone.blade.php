@@ -180,9 +180,9 @@
         
         }) 
 
-        function hacer()
+        function hacer(user)
         {
-            alert('user')
+            alert(user)
         }
 
         function doQr(user)
