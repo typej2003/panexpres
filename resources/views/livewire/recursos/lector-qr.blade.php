@@ -4,7 +4,6 @@
     <head>
         <meta charset="UTF-8">
         <title>QR Scanner Demo</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/qr-scanner/1.0.0/qr-scanner.min.js"></script>
     </head>
     <body>
     <h1>Scan from WebCam:</h1>
