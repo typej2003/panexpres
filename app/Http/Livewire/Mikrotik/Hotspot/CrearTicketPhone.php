@@ -115,7 +115,7 @@ class CrearTicketPhone extends Component
         ], $messages)->validate();
 
         try {
-            dd($this->randomNroTicket());
+            
             $client = $this->configRouter();
             
             $username = $validatedData['cellphone'];
