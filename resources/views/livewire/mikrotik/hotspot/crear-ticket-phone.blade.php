@@ -204,7 +204,9 @@
 
         function printdivAll(elem) {
             var buttonAll = document.querySelectorAll('imprimir')
-            buttonAll.style.display = 'none'
+            buttonAll.forEach(button => {
+                button.style.display = 'none';
+            });
             
             var header_str = '<html><head><title>' + document.title  + '</title></head><body>';
             var footer_str = '</body></html>';
