@@ -167,7 +167,7 @@
                                     <div style="width:100px; height:100px;" id="qr${user['name']}"></div>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-success imprimir">Imprimir</button>
+                                    <button onClick="hacer(${user['name']})" class="btn btn-success imprimir">Imprimir</button>
                                 </div>
 
                             </div>                                    
@@ -179,6 +179,11 @@
             });
         
         }) 
+
+        function hacer(user)
+        {
+            alert(user)
+        }
 
         function doQr(user)
         {
