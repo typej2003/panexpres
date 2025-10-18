@@ -165,7 +165,7 @@
             seccionQr.innerHTML = ''
             let contenido ='';
             usershotspot.forEach((user) => {
-                contenido = `<div class="col-md-4 col-4">
+                contenido = `<div class="col-md-4 col-4 ">
                             <div class="card shadow w-75">
                                 <div id="${user['name']}" class="card-body">
                                     <div class="text-start"><span>Usuario: </span>${user['name']}</div>
@@ -191,8 +191,8 @@
             printdiv(user)
         }
 
-        function printdiv(elem) {
-            var header_str = '<html><head><title>' + document.title  + '</title></head><body>';
+        function printdiv(elem) {            
+            var header_str = '<html><head><title>' + document.title  + '</title><link rel="stylesheet" href="bootstrap.min.css"></head><body>';
             var footer_str = '</body></html>';
             var new_str = document.getElementById(elem).innerHTML;
             var old_str = document.body.innerHTML;
