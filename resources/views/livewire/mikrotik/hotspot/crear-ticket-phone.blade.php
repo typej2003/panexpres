@@ -182,7 +182,7 @@
 
         function hacer()
         {
-            alert(user)
+            alert('user')
         }
 
         function doQr(user)
