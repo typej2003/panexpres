@@ -123,6 +123,8 @@ class CrearTicketPhone extends Component
 
             $userMikrotik = UserMikrotik::where('name', $username)->first();
 
+            $profile = $validatedData['profile'];
+
             if(!$userMikrotik)
 			{
                 
@@ -136,9 +138,6 @@ class CrearTicketPhone extends Component
 					'profile' => $validatedData['profile'],
 				]);
 
-                //dd($validatedData['server']);
-                $profile = $validatedData['profile'];
-                
                 $query = (new Query('/ip/hotspot/user/add'))
                     ->equal('server', $validatedData['server'])
                     ->equal('name', $username)
