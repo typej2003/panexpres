@@ -204,15 +204,14 @@
         }
         //doQr()
 
-        let btnImprimir = document.querySelector('.imprimir');
+        let btnImprimir = document.querySelectorAll('.imprimir');
 
-        btnImprimir.addEventListener('click', function() {
-            // Code to be executed when the button is clicked
-            console.log('Button clicked!');
-            alert('You clicked the button!');
+        btnImprimir.forEach(boton => {
+            boton.addEventListener('click', imprimirDivEnNuevaVentana(this));
         });
 
         function imprimirDivEnNuevaVentana(idDiv) {
+            alert(idDiv)
             // 1. Obtiene el contenido del div
             var contenido = document.getElementById(idDiv).innerHTML;
             // 2. Crea una nueva ventana
