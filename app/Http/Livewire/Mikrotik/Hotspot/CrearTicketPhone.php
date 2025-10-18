@@ -183,6 +183,8 @@ class CrearTicketPhone extends Component
 
 				$response = $client->query($query)->read();
 
+                dd($response);
+
 				$this->cleanUptime($mikrotik_id, $newUptime = "00:00:00");
 
                 $this->dispatchBrowserEvent('hide-form', ['message' => 'Se han actualizo el usuario ' . $username . ' de Hotspot con éxito.']);
