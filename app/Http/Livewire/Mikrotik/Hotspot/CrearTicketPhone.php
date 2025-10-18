@@ -119,41 +119,80 @@ class CrearTicketPhone extends Component
             $client = $this->configRouter();
             
             $username = $validatedData['cellphone'];
+
+            $userMikrotik = UserMikrotik::where('name', $username)->first();
+
+            if(!$userMikrotik)
+			{
             
-            // Genera la contraseña de 8 dígitos
-            $password = $this->randomPassword();
+                // Genera la contraseña de 8 dígitos
+                $password = $this->randomPassword();
 
-            //dd($validatedData['server']);
-            $profile = $validatedData['profile'];
-            
-            $query = (new Query('/ip/hotspot/user/add'))
-                ->equal('server', $validatedData['server'])
-                ->equal('name', $username)
-                ->equal('password', $password)
-                ->equal('profile', $profile);
-            // Ejecutar la consulta
-            $response = $client->query($query)->read();
-            // Tarea completada.
+                $userMikrotik = UserMikrotik::create([
+					'server' => $validatedData['server'],
+					'name' => $username,
+					'password' => $password,
+					'profile' => $validatedData['profile'],
+				]);
 
-            $this->cuentas[] = ['name' => $username, 'password' => $password];
+                //dd($validatedData['server']);
+                $profile = $validatedData['profile'];
+                
+                $query = (new Query('/ip/hotspot/user/add'))
+                    ->equal('server', $validatedData['server'])
+                    ->equal('name', $username)
+                    ->equal('password', $password)
+                    ->equal('profile', $profile);
+                // Ejecutar la consulta
+                $response = $client->query($query)->read();
+                // Tarea completada.
 
-            $this->dispatchBrowserEvent('hide-form', ['message' => 'Se han creado el usuario ' . $username . ' de Hotspot con éxito.']);
+                $this->cuentas[] = ['name' => $username, 'password' => $password];
 
-            // buscar id
-            $query = (new Query('/ip/hotspot/user/print'))
-                ->where('name', $username);
-            $response = $client->query($query)->read();
+                $this->dispatchBrowserEvent('hide-form', ['message' => 'Se han creado el usuario ' . $username . ' de Hotspot con éxito.']);
 
-            $mikrotik_id = $response[0]['.id'];
+                $newUser = [
+					'user' => $username,
+					'password' => $password,
+					'status' => true,
+				];
+
+                // buscar id
+                $query = (new Query('/ip/hotspot/user/print'))
+                    ->where('name', $username);
+                $response = $client->query($query)->read();
+
+                $mikrotik_id = $response[0]['.id'];
+
+            }else{
+				$newUser = [
+                        'user' => $user,
+                        'password' => $userMikrotik->password,
+                        'status' => true,
+                    ];
+				$userMikrotik->update(['profile'=>$profile]);
+				$mikrotik_id = $userMikrotik->mikrotik_id;
+				$password = $userMikrotik->password;
+
+				// Modificar profile
+				$query = (new Query('/ip/hotspot/user/set'))
+					->equal('.id', $mikrotik_id)
+					->equal('password', $password)
+					->equal('profile', $profile);
+
+				$response = $client->query($query)->read();
+
+				$this->cleanUptime($mikrotik_id, $newUptime = "00:00:00");
+			}
 
             // asignar limit uptime
-			$this->defineUptimeLimit($username, $mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
+			$this->defineUptimeLimit($userMikrotik, $mikrotik_id, $profile, $newUptimeLimit = "00:00:15");
 
             // registra user en modelo TicketUser
             TicketUser::create([
                 'nroTicket' => $this->randomNroTicket(),
                 'user_id' => auth()->user()->id,
-                'user' => $username,
+                'user' => $userMikrotik,
                 'monto' => explode('/', $profile)[1],
                 'profile' => $profile,
                 'nrorouter' => $this->router->nrorouter,
@@ -212,6 +251,30 @@ class CrearTicketPhone extends Component
         }else{
             return '';
         }
+    }
+
+    public function cleanUptime($id, $newUptime = "00:00:00")
+    {
+        $client = $this->configRouter();
+
+        $userName = "user"; // El nombre del usuario a modificar
+        
+        try {
+            
+            $query = (new Query('/ip/hotspot/user/reset-counters'))
+                ->equal('.id', $id);
+
+
+            $response = $client->query($query)->read();
+            
+            return true;
+            
+
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        
     }
 
     public function selectUsershotspots($users, $hotspot)
