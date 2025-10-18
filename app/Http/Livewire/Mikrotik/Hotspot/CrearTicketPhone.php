@@ -135,6 +135,7 @@ class CrearTicketPhone extends Component
 					'name' => $username,
 					'password' => $password,
 					'profile' => $validatedData['profile'],
+                    'routes' => $this->router->nrorouter,
 				]);
 
                 $query = (new Query('/ip/hotspot/user/add'))
@@ -162,6 +163,8 @@ class CrearTicketPhone extends Component
                 $response = $client->query($query)->read();
 
                 $mikrotik_id = $response[0]['.id'];
+
+                $userMikrotik->update(['mikrotik_id'=>$mikrotik_id]);
 
             }else{
                 
