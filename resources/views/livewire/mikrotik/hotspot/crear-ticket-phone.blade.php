@@ -208,7 +208,7 @@
                 button.style.display = 'none';
             });
             
-            var header_str = '<html><head><title>' + document.title  + '</title></head><body>';
+            var header_str = '<html><head><title>' + document.title  + '</title><link rel="stylesheet" href="bootstrap.min.css"></head><body>';
             var footer_str = '</body></html>';
             var new_str = document.getElementById(elem).innerHTML;
             var old_str = document.body.innerHTML;
