@@ -183,7 +183,7 @@ class CrearTicketPhone extends Component
 
 				$response = $client->query($query)->read();
 
-                dd($response);
+                dd($mikrotik_id . ' ' . $password . ' ' . $profile);
 
 				$this->cleanUptime($mikrotik_id, $newUptime = "00:00:00");
 
