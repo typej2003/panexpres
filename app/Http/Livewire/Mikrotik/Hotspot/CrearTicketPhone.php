@@ -279,11 +279,8 @@ class CrearTicketPhone extends Component
 
         if($resp != null){
             $nroTicket = $this->randomNroTicket();
-            dd($nroTicket);
         }
-        dd($nroTicket);
-        dd('no es null');
-		return implode($nroTicket); //turn the array into a string
+        return implode($nroTicket); //turn the array into a string
 	}
 
     public function showUsersHotspot()
