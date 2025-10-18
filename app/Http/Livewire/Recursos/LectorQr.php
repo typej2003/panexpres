@@ -8,6 +8,7 @@ class LectorQr extends Component
 {
     public function render()
     {
-        return view('livewire.recursos.lector-qr');
+        //return view('livewire.recursos.lector-qr');
+        return view('externalviews.acerca');
     }
 }
