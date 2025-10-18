@@ -277,7 +277,7 @@ class CrearTicketPhone extends Component
 
         $resp = TicketUser::where('nroTicket', implode($nroTicket))->first();        
 
-        if(count($resp)){
+        if($resp != null){
             $nroTicket = $this->randomNroTicket();
             dd($nroTicket);
         }
