@@ -281,6 +281,7 @@ class CrearTicketPhone extends Component
             $nroTicket = $this->randomNroTicket();
             dd($nroTicket);
         }
+        dd($nroTicket);
         dd('no es null');
 		return implode($nroTicket); //turn the array into a string
 	}
