@@ -12,6 +12,7 @@ use RouterOS\Query;
 
 use App\Models\Router;
 use App\Models\TicketUser;
+use App\Models\UserMikrotik;
 
 use Illuminate\Http\Request;
 //use \RouterOS; // Asegúrate de que este 'use' apunte al namespace correcto
