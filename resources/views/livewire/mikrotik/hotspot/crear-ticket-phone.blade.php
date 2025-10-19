@@ -31,7 +31,7 @@
                         <form autocomplete="off" wire:submit.prevent="{{ $showEditModal ? 'updateHotspot' : 'createHotspotUsers' }}">
                         <div class="card-body">                            
                             <div class="row">
-                                <div class="form-group col-md-4 col-4">
+                                <div class="form-group col-md-4 col-1">
                                     <label for="server">Hotspot</label>
                                     <select name="server" wire:model.defer="state.server" class="form-control @error('server') is-invalid @enderror" id="server" wire:ignore.self>
                                         <option value="0">SELECCIONE..</option>
@@ -47,7 +47,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group col-md-3 col-3">
+                                <div class="form-group col-md-3 col-1">
                                     <label for="profile">Perfil de Usuario</label>
                                     <select name="profile" wire:model.defer="state.profile" class="form-control @error('profile') is-invalid @enderror" id="profile" wire:ignore.self>
                                         <option value="0">SELECCIONE..</option>
@@ -62,7 +62,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group col-md-3 col-3">
+                                <div class="form-group col-md-3 col-1">
                                     <label for="cellphone">N° Celular</label>
                                     <input type="text" wire:model.defer="state.cellphone" class="form-control @error('cellphone') is-invalid @enderror" id="cellphone" aria-describedby="cellphoneHelp" placeholder="Nro cellphone">
                                     @error('cellphone')
