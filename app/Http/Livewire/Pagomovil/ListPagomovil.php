@@ -173,7 +173,7 @@ class ListPagomovil extends AdminComponent
                     $userMikrotik->update(['profile'=>$profile]);
                     $mikrotik_id = $userMikrotik->mikrotik_id;
     
-                    if(!$mikrotik_id){
+                    if($mikrotik_id == null){
                         $mikrotik_id = $this->searchId_mikrotik($client);
                         $userMikrotik->update(['mikrotik_id'=>$mikrotik_id]);
                     }
