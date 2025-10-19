@@ -151,7 +151,7 @@ class ListPagomovil extends AdminComponent
                     // $query = (new Query('/ip/hotspot/user/print'))
                     //     ->where('name', $user);
                     // $response = $client->query($query)->read();
-                    $mikrotik_id = $this->searchId_mikrotik($client);
+                    $mikrotik_id = $this->searchId_mikrotik($client, $user);
 
                     $userMikrotik = UserMikrotik::create([
                         'mikrotik_id' => $mikrotik_id, 
@@ -174,7 +174,7 @@ class ListPagomovil extends AdminComponent
                     $mikrotik_id = $userMikrotik->mikrotik_id;
     
                     if($mikrotik_id == null){
-                        $mikrotik_id = $this->searchId_mikrotik($client);
+                        $mikrotik_id = $this->searchId_mikrotik($client, $user);
                         $userMikrotik->update(['mikrotik_id'=>$mikrotik_id]);
                     }
 
@@ -206,7 +206,7 @@ class ListPagomovil extends AdminComponent
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-    public function searchId_mikrotik($client)
+    public function searchId_mikrotik($client, $user)
 	{
 		try {
 			// buscar id
