@@ -1,11 +1,11 @@
 <div>
     <style>
         select {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
         }
         input {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
         }
     </style>
