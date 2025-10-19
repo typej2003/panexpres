@@ -164,7 +164,7 @@ class CrearTicketPhone extends Component
 
                 // $mikrotik_id = $response[0]['.id'];
 
-                $mikrotik_id = $this->searchId_mikrotik($client);
+                $mikrotik_id = $this->searchId_mikrotik($client, $username);
 				
                 $userMikrotik->update(['mikrotik_id'=>$mikrotik_id]);
 
@@ -181,7 +181,7 @@ class CrearTicketPhone extends Component
 				$password = $userMikrotik->password;
 
                 if(!$mikrotik_id){
-					$mikrotik_id = $this->searchId_mikrotik($client);
+					$mikrotik_id = $this->searchId_mikrotik($client, $username);
                     $userMikrotik->update(['mikrotik_id'=>$mikrotik_id]);
 				}
 
@@ -226,7 +226,7 @@ class CrearTicketPhone extends Component
         }
     }
 
-    public function searchId_mikrotik($client)
+    public function searchId_mikrotik($client, $user)
 	{
 		try {
 			// buscar id

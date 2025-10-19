@@ -239,7 +239,7 @@ class MikrotikPasarelaController extends Controller
 				// $query = (new Query('/ip/hotspot/user/print'))
 				// 	->where('name', $user);
 				// $response = $client->query($query)->read();
-				$mikrotik_id = $this->searchId_mikrotik($client);
+				$mikrotik_id = $this->searchId_mikrotik($client, $user);
 
 				$userMikrotik = UserMikrotik::create([
                         'mikrotik_id' => $mikrotik_id, 
@@ -258,7 +258,7 @@ class MikrotikPasarelaController extends Controller
 				$mikrotik_id = $userMikrotik->mikrotik_id;
 				$password = $userMikrotik->password;
 				if(!$mikrotik_id){
-					$mikrotik_id = $this->searchId_mikrotik($client);
+					$mikrotik_id = $this->searchId_mikrotik($client, $user);
 					$userMikrotik->update(['mikrotik_id'=>$mikrotik_id]);
 				}
 				// Modificar profile
@@ -297,7 +297,7 @@ class MikrotikPasarelaController extends Controller
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-	public function searchId_mikrotik($client)
+	public function searchId_mikrotik($client, $user)
 	{
 		try {
 			// buscar id
