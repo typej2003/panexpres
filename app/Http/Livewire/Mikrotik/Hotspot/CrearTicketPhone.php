@@ -188,6 +188,8 @@ class CrearTicketPhone extends Component
 
                 $this->cleanUptime($mikrotik_id, $newUptime = "00:00:00");
 
+                $this->cuentas[] = ['name' => $username, 'password' => $password];
+
                 $this->dispatchBrowserEvent('hide-form', ['message' => 'Se han actualizo el usuario ' . $username . ' de Hotspot con éxito.']);
 			}
 
