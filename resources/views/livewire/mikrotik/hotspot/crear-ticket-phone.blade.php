@@ -74,7 +74,7 @@
 
                                 <div class="form-group col-md-3 col-12">
                                     <label for="cellphone">N° Celular</label>
-                                    <input type="text" wire:model.defer="state.cellphone" class="form-control @error('cellphone') is-invalid @enderror" id="cellphone" aria-describedby="cellphoneHelp" placeholder="Nro cellphone">
+                                    <input type="text" wire:model.defer="state.cellphone" class="form-control @error('cellphone') is-invalid @enderror" id="cellphone" aria-describedby="cellphoneHelp" placeholder="Nro cellphone" style="font-size:20px; font-weight: 600;">
                                     @error('cellphone')
                                     <div class="invalid-feedback">
                                         {{ $message }}
