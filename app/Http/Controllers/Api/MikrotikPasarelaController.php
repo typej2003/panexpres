@@ -236,11 +236,10 @@ class MikrotikPasarelaController extends Controller
 				];
 
 				// buscar id
-				$query = (new Query('/ip/hotspot/user/print'))
-					->where('name', $user);
-				$response = $client->query($query)->read();
-
-				$mikrotik_id = $response[0]['.id'];
+				// $query = (new Query('/ip/hotspot/user/print'))
+				// 	->where('name', $user);
+				// $response = $client->query($query)->read();
+				$mikrotik_id = $this->searchId_mikrotik($client);
 
 				$userMikrotik = UserMikrotik::create([
                         'mikrotik_id' => $mikrotik_id, 
@@ -258,7 +257,10 @@ class MikrotikPasarelaController extends Controller
 				$userMikrotik->update(['profile'=>$profile]);
 				$mikrotik_id = $userMikrotik->mikrotik_id;
 				$password = $userMikrotik->password;
-
+				if(!$mikrotik_id){
+					$mikrotik_id = $this->searchId_mikrotik($client);
+					$userMikrotik->update(['mikrotik_id'=>$mikrotik_id]);
+				}
 				// Modificar profile
 				$query = (new Query('/ip/hotspot/user/set'))
 					->equal('.id', $mikrotik_id)
@@ -294,6 +296,23 @@ class MikrotikPasarelaController extends Controller
 
 		//$validatedData['password'] = bcrypt($validatedData['password']);
     }
+
+	public function searchId_mikrotik($client)
+	{
+		try {
+			// buscar id
+			$query = (new Query('/ip/hotspot/user/print'))
+				->where('name', $user);
+			$response = $client->query($query)->read();
+
+			return  $response[0]['.id'];
+
+
+		} catch (\Throwable $th) {
+			return false;
+		}
+		
+	}
 
 	public function defineUptimeLimit(UserMikrotik $userMikrotik, $id, $profile, $newUptimeLimit = "00:00:15")
     {
