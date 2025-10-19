@@ -170,7 +170,7 @@
                                 <div id="${user['name']}" class="card-body">
                                     <div class="text-start"><span>Usuario: </span>${user['name']}</div>
                                     <div class="text-start"><span>Password: </span>${user['password']}</div>
-                                    <div style="width:100px; height:100px;" id="qr${user['name']}"></div>
+                                    <div class="w-80 h-80" id="qr${user['name']}"></div>
                                 </div>
                                 <div class="card-footer btn-imprimir">
                                     <button onclick="imprimirDiv('${user['name']}')" class="btn btn-success">Imprimir</button>
