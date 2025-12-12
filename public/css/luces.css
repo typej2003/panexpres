@@ -1,10 +1,10 @@
 /* luces.css */
 
-/* Definición de variables de color (Pueden ir en :root o aquí) */
+/* Definición de variables de color (Ahora solo Rojo y Verde) */
 :root {
     --color-rojo: #e74c3c; 
     --color-verde: #2ecc71; 
-    --color-azul: #3498db; 
+    /* --color-azul: #3498db; -- Eliminado */
 }
 
 /* Estilos de los botones (Se mantienen los estilos base) */
@@ -24,10 +24,7 @@
     /* Verde */
     border: 3px solid var(--color-verde); 
 }
-[data-luz="3"] { 
-    /* Azul */
-    border: 3px solid var(--color-azul); 
-}
+/* [data-luz="3"] - Eliminado */
 
 /* 2. Clase para ENCENDER la luz (Aplicada por JavaScript) */
 [data-luz].is-lit {

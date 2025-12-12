@@ -6,11 +6,11 @@
         /* Estilos Base y Layout (MANTENEMOS SOLO LOS ESTILOS DE LAYOUT) */
         /* ----------------------------------------------------------- */
 
-        /* Puedes mover esta definición de colores a luces.css si solo los usas ahí */
+        /* Si el color se definió en luces.css, puedes quitar este bloque :root */
         :root {
             --color-rojo: #e74c3c; 
             --color-verde: #2ecc71; 
-            --color-azul: #3498db; 
+            /* --color-azul: #3498db; -- Eliminado */
         }
 
         .marcas-productos-container {
@@ -61,8 +61,8 @@
         <div class="marcas-productos-flex">
             @foreach($manufacturers as $manufacturer )
                 <?php
-                    // Cálculo de la propiedad data-luz (1, 2, 3, 1, 2, 3...)
-                    $luzValue = ($loop->index % 3) + 1;
+                    // ⭐ Lógica de 2 colores: (1, 2, 1, 2...) ⭐
+                    $luzValue = ($loop->index % 2) + 1;
                 ?>
                 <form action="/searchM" method="get">
                     @csrf
