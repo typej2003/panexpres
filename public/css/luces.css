@@ -1,0 +1,39 @@
+/* luces.css */
+
+/* Definición de variables de color (Pueden ir en :root o aquí) */
+:root {
+    --color-rojo: #e74c3c; 
+    --color-verde: #2ecc71; 
+    --color-azul: #3498db; 
+}
+
+/* Estilos de los botones (Se mantienen los estilos base) */
+.marcas-productos-flex button {
+    transition: transform 0.2s, box-shadow 0.3s ease-out;
+    position: relative; 
+    border-radius: 50%; 
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1), 0 0 0px transparent; /* Sombra base sutil */
+}
+
+/* 1. Asignación de Color Base (Borde y latencia) */
+[data-luz="1"] {
+    /* Rojo */
+    border: 3px solid var(--color-rojo); 
+}
+[data-luz="2"] { 
+    /* Verde */
+    border: 3px solid var(--color-verde); 
+}
+[data-luz="3"] { 
+    /* Azul */
+    border: 3px solid var(--color-azul); 
+}
+
+/* 2. Clase para ENCENDER la luz (Aplicada por JavaScript) */
+[data-luz].is-lit {
+    /* El color --glow-color se establece en línea por JS */
+    box-shadow: 
+        0 0 5px var(--glow-color), 
+        0 0 15px var(--glow-color), 
+        0 0 30px var(--glow-color); 
+}
