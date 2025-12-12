@@ -8,6 +8,10 @@ body {
     padding-top: 110px; 
 }
 
+.logo-login {
+    width: 100% !important;
+}
+
 /* 1. Estilos del Navbar Principal */
 .navbar {
     display: flex;
@@ -212,6 +216,19 @@ body {
     background-color: #dd751a;
 }
 
+.btn-success {
+    background-color: #fc5e27 !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 8px 15px !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    transition: background-color 0.3s !important;
+}
+
+.btn-success:hover {
+    background-color: #dd751a;
+}
 
 /* 5. MENÚ HORIZONTAL DE ESCRITORIO */
 .main-menu-desktop {

@@ -13,7 +13,7 @@
   <!-- icheck bootstrap -->
   <!-- Theme style -->
   
-  <link rel="stylesheet" href="/css/style-welcome.css">
+  <link rel="stylesheet" href="{{ asset('/css/styles_expres.css') }}">
   
 </head>
 <body>
@@ -22,7 +22,9 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12 titulo c-a text-center">
-                    <a href="/"><img class="logo-login-register mx-auto " src="/img/panexpres_banner.png" alt=""></a>
+                    <a href="/">
+                        <img class="logo-login mx-auto " src="{{ asset('/img/panexpres_banner.png') }}" alt="">
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -80,7 +82,7 @@
                 <div class="form-group">
                     <div class="row mx-auto my-3">
                         <div class="col-xs-12 col-sm-12 col-md-12 d-flex">
-                            <button class="btn btn-app w-100 mx-auto">Iniciar Sesión</button>
+                            <button class="btn btn-success w-100 mx-auto">Iniciar Sesión</button>
                         </div>
                     </div>                
                 </div>
