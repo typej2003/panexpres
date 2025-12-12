@@ -1,0 +1,76 @@
+/* ------------------------------------------- */
+/* EFECTOS NAVIDEÑOS (NIEVE Y TRINEO) */
+/* ------------------------------------------- */
+
+/* ❄️ Contenedor de la Nieve */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: 9999; 
+    overflow: hidden;
+}
+
+/* Partícula de Nieve */
+.snowflake {
+    color: #FFF;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 1px #000;
+    position: absolute;
+    top: -10px; 
+    animation: fall linear infinite;
+}
+
+/* Animación de caída de la nieve */
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* 🎅 Silueta del Trineo de Santa Claus (Ajustado) */
+.santa-sleigh {
+    position: fixed;
+    top: 50px; 
+    left: -200px; 
+    width: 200px; 
+    height: 100px;
+    
+    /* CAMBIOS CLAVE PARA LA SILUETA: */
+    /*background-color: #000000; /* Fondo negro como silueta */
+    background-image: url('/img/santaclaus1.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* --- FIN CAMBIOS --- */
+
+    z-index: 10000;
+    pointer-events: none;
+    border-radius: 5px; /* Opcional: para suavizar la silueta, puedes quitarlo si quieres un rectángulo perfecto */
+}
+
+/* Animación del vuelo del trineo */
+@keyframes fly-across {
+    from {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(100vw) translateY(-10px) rotate(2deg);
+    }
+    to {
+        transform: translateX(calc(100vw + 200px)) translateY(0) rotate(0deg); 
+        opacity: 1;
+    }
+}
+
+/* Regla para desactivar los efectos en móvil */
+@media (max-width: 480px) {
+    .snow-container,
+    .santa-sleigh {
+        display: none !important;
+    }
+}

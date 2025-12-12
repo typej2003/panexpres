@@ -30,4 +30,9 @@ class Promocion extends Model
 
         return asset('noimage.png');
     }
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }

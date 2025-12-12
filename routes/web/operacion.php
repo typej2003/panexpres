@@ -10,6 +10,8 @@ use App\Http\Livewire\Recursos\Selectul;
 
 use App\Http\Livewire\Components\Currency;
 
+use App\Http\Livewire\Components\CurrencyExpres;
+
 use App\Http\Livewire\Components\MenuComponent;
 
 use App\Http\Livewire\Afiliado\Pasarela;
@@ -84,6 +86,8 @@ Route::get('/pagosatisfactorio/{id}', function ( $id ) {
 Route::get('/procesadoC', Procesado::class,)->name('procesadoC');
 
 Route::get('/showCurrency', Currency::class,)->name('showCurrency');
+
+Route::get('/changeCurrency/{currency}', [CurrencyExpres::class, 'changeCurrency'])->name('changeCurrency');
 
 Route::get('/menu', MenuComponent::class,)->name('menu');
 

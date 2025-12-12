@@ -34,7 +34,7 @@
          <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('layouts.partials.aside_mk')
+        @include('layouts.partials.aside')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
