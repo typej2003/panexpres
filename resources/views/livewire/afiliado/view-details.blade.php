@@ -208,18 +208,21 @@
             </div>            
         @endif
     
-        <div class="content-row"> <div class="col-full"> @if (config('app.url').'/nobanner.png' !== $comercio->banner_url )
+        <div class="content-row"> <div class="col-full"> 
+                @if (config('app.url').'/nobanner.png' !== $comercio->banner_url )
+                    
                     <img style="width:100%; height: 150px; 
                     @if(auth()->user())
                         margin-top: 60px;
                     @endif
-                    " src="{{ $comercio->banner_url}}" alt="">
+                    " src="{{ asset($comercio->banner_url) }}" alt="">
                 @else
+                    
                     <img style="width:100%; height: 150px; 
                     @if(auth()->user())
                         margin-top: 60px;
                     @endif
-                    " src="/img/panexpres_banner.png" alt="">
+                    " src="{{ asset('/img/panexpres_banner.png') }}" alt="">
                 @endif
             </div>
         </div>
@@ -260,14 +263,15 @@
                             </div>
                         </form>
                     </div>
+                    
                     <div class="content-row d-flex justify-content-start"> @if($product->in_envio_nacional)
-                        <div style="width: auto;"><img style="width:60px" src="/img/envio_auto.png" alt=""><span>Envío nacional</span></div>
+                        <div style="width: auto;"><img style="width:60px" src="{{ asset('/img/envio_auto.png') }}" alt=""><span>Envío nacional</span></div>
                         @endif
                         @if($product->in_delivery)
-                        <div style="width: auto;"><img style="width:60px" src="/img/envio_moto.png" alt=""><span>Delivery</span></div>
+                        <div style="width: auto;"><img style="width:60px" src="{{ asset('/img/envio_moto.png') }}" alt=""><span>Delivery</span></div>
                         @endif
                         @if($product->in_pickup)
-                        <div style="width: auto;"><img style="width:60px" src="/img/envio_pickup.png" alt=""><span>Pickup</span></div>
+                        <div style="width: auto;"><img style="width:60px" src="{{ asset('/img/envio_pickup.png') }}" alt=""><span>Pickup</span></div>
                         @endif
                     </div>
                     <div class="content-row"> <div class="col-full custom-accordion" id="accordionExample"> <div class="accordion-item">

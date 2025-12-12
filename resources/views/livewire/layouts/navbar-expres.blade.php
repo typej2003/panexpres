@@ -50,7 +50,7 @@
         <i class="fas fa-bars hamburger-icon" id="hamburgerIcon"></i>
 
         <div class="navbar-logo">
-            <a href="/"><img src="img/panexpres_logo.png" alt="Logo Pan Expres" class="logo-img"></a>
+            <a href="/"><img  src="{{ asset('img/panexpres_logo.png') }}" alt="Logo Pan Expres" class="logo-img"></a>
         </div>
 
         <div class="navbar-search">

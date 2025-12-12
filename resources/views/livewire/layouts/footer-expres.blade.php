@@ -4,7 +4,7 @@
         <div class="footer-row footer-row-1">
             
             <div class="footer-col footer-col-logo">
-                <img src="img/panexpres_logo_blanco.png" alt="Logo Pan Expres Blanco" class="footer-logo">
+                <img src="{{ asset('img/panexpres_logo_blanco.png') }}" alt="Logo Pan Expres Blanco" class="footer-logo">
                 <div class="social-links">
                     <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
@@ -53,7 +53,7 @@
         <div class="footer-row footer-row-2">
             
             <div class="footer-col-secondary footer-col-ddr">
-                <img src="/img/logo_ddr.png" alt="Logo DDR" class="footer-logo1-small">
+                <img src="{{ asset('/img/logo_ddr.png') }}" alt="Logo DDR" class="footer-logo1-small">
             </div>
 
             <div class="footer-col-secondary footer-col-copyright">
@@ -61,7 +61,7 @@
             </div>
 
             <div class="footer-col-secondary footer-col-bank">
-                <img src="/img/bancos_01.png" alt="Logo Banco" class="footer-logo2-small">
+                <img src="{{ asset('/img/bancos_01.png') }}" alt="Logo Banco" class="footer-logo2-small">
             </div>
 
         </div>

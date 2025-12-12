@@ -59,6 +59,13 @@
     </body>
 
     <!-- ./wrapper -->
+    @else
+
+        @if(request()->segment(2) == 'routedetails')
+
+            {{ dd('entro')}}
+        @endif        
+
     @endauth
     
 
