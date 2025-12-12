@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('/css/styles_expres.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/navidad.css') }}">
+    <livewire:styles />
 </head>
 <body>
     <div id="container-body">
@@ -48,9 +49,6 @@
                 @livewire('components.results-products-expres', [
                     'comercioId' => $comercio_id, 
                     'parametro' => $words,
-                    'manufacturer_id' => $manufacturer_id,
-                    'modelo_id' => $modelo_id,
-                    'motor_id' => $motor_id,
                     ])
             @endif
         </section> 
@@ -65,3 +63,13 @@
     <script src="{{ asset('/js/navidad.js') }}"></script> 
 </body>
 </html>
+@stack('js')
+@stack('before-livewire-scripts')
+<livewire:scripts />
+@stack('after-livewire-scripts')
+
+@stack('alpine-plugins')
+<!-- Alpine Core -->
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" /> -->

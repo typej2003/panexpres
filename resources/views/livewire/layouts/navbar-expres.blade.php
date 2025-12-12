@@ -11,17 +11,11 @@
             <form action="searchM" method="get" id="Pan de Jamón">
                 @csrf
                 <input type="hidden" name="words" value="Pan de Jamón">
-                <input type="hidden" name="manufacturer_id" value="0">
-                <input type="hidden" name="modelo_id" value="0">
-                <input type="hidden" name="motor_id" value="0">
                 <a class="menu-item sub-title" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">PAN DE JAMÓN</a>
             </form>
             <form action="searchM" method="get" id="Ofertas">
                 @csrf
                 <input type="hidden" name="words" value="Ofertas">
-                <input type="hidden" name="manufacturer_id" value="0">
-                <input type="hidden" name="modelo_id" value="0">
-                <input type="hidden" name="motor_id" value="0">
                 <a class="menu-item sub-title" onclick="sendForm('Ofertas')" style="cursor:pointer;">OFERTAS</a>
             </form>
             <a href="#" class="menu-item sub-title">ALIADOS</a>
@@ -55,9 +49,6 @@
 
         <div class="navbar-search">
             <form class="navbar-search" action="{{ route('search') }}" method="GET" wire:ignore>
-                <input wire:model.defer="state.manufacturer_id" type="hidden" class ="manufacturerS_id" name = "manufacturerS_id">
-                <input wire:model.defer="state.modelo_id" type="hidden" class ="modeloS_id" name = "modeloS_id">
-                <input wire:model.defer="state.motor_id" type="hidden" class ="motorS_id" name = "motorS_id">
                 <div class="search-input-group">
                     <i class="fas fa-search search-icon"></i>
                     <input type="text"  name="words" placeholder="Buscar productos...">
@@ -121,15 +112,7 @@
             </div>
 
             <div class="action-dropdown cart-dropdown">
-                <a href="#" class="action-item cart dropdown-trigger">
-                    <i class="fas fa-shopping-cart cart-icon"></i>
-                    <span class="cart-count">4</span>
-                </a>
-                <div class="dropdown-content cart-summary">
-                    <p class="cart-item">4 x Pan de Jamón Clásico</p>
-                    <p class="cart-total">Total: $40.00 USD</p>
-                    <a href="#" class="btn-checkout">Ver Carrito</a>
-                    </div>
+                @livewire('carrito.cart-drop-expres')
             </div>
             
         </div>
@@ -144,17 +127,11 @@
             <form action="searchM" method="get" id="Pan de Jamón">
                 @csrf
                 <input type="hidden" name="words" value="Pan de Jamón">
-                <input type="hidden" name="manufacturer_id" value="0">
-                <input type="hidden" name="modelo_id" value="0">
-                <input type="hidden" name="motor_id" value="0">
                 <a class="menu-options-wrapper" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">PAN DE JAMÓN</a>
             </form>
             <form action="searchM" method="get" id="Ofertas">
                 @csrf
                 <input type="hidden" name="words" value="Ofertas">
-                <input type="hidden" name="manufacturer_id" value="0">
-                <input type="hidden" name="modelo_id" value="0">
-                <input type="hidden" name="motor_id" value="0">
                 <a class="menu-options-wrapper" onclick="sendForm('Ofertas')" style="cursor:pointer;">OFERTAS</a>
             </form>
             <a href="#">VENDE DESDE ACÁ</a>

@@ -277,7 +277,7 @@
 
                 @if($parametro)
                     @forelse ($products as $index => $product)
-                    <div class="cuadro m-3 h-auto">
+                    <div class="cuadro m-3 h-auto" wire:key="product-{{ $product->id }}">
                         <div class="producto-inner">
                             
                             <div class="producto-parte col-img centrar">
@@ -310,7 +310,7 @@
                                 </div>
                                 
                                 <div class="centrar">
-                                    <button onclick="handleSendCard({{ $product->id }})" class="btn btn-sale text-center">Comprar ahora</button>
+                                    <button wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</button>
                                 </div>
                                 
                                 <div class="centrar">
@@ -331,6 +331,7 @@
     </div>
     
     <script>
+        
         document.addEventListener('DOMContentLoaded', () => {
             const increments = document.querySelectorAll('.input-number-increment');
             const decrements = document.querySelectorAll('.input-number-decrement');
@@ -379,12 +380,5 @@
             });
         });
         
-        function handleSendCard(productId) {
-            const quantityInput = document.querySelector(`input[name="quantity_${productId}"]`);
-            const quantity = quantityInput ? parseInt(quantityInput.value, 10) : 1;
-            
-            console.log(`Comprando producto ID: ${productId} con cantidad: ${quantity}`);
-            alert(`Producto ${productId} agregado al carrito con ${quantity} unidad(es).`);
-        }
     </script>
 </div>

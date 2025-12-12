@@ -243,7 +243,8 @@
                     <div class="content-row"> <div class="col-full"> <span>{{ $currencyValue }} {{ $product->getPrice1() }}</span>
                         </div>
                     </div>
-                    <div class="content-row"> <form class="col-full d-flex justify-content-between" action="/add" method="post"> @csrf
+                    <div class="content-row"> 
+                        <form class="col-full d-flex justify-content-between" action="/add" method="post"> @csrf
                             <input name="product_id" type="hidden" value="{{ $product->id }}">
                             <input name="name" type="hidden" value="{{ $product->name }}">
                             <input name="price1" type="hidden" value="{{ $product->price1 }}">
@@ -258,6 +259,7 @@
                                 </div>
                             </div>
                             <div class="col-half d-flex justify-content-start"> <button class="btn btn-sale"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
+                            <button wire:click.prevent="prueba" class="btn btn-sale text-center">Prueba Comprar</button>
                             </div>
                             <div class="col-quarter d-none"> <button class="btn h-75 border border-secondary"><i class="fa fa-solid fa-heart"></i></button>                        
                             </div>

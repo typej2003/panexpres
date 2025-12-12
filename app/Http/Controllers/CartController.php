@@ -19,9 +19,15 @@ class CartController extends Controller
 
     public $state = [];
 
+    // 1. Define los listeners que tu componente escuchará
+    protected $listeners = [
+        'addProductToCart' => 'handleAddToCart',
+    ];
+
     public function __construct() { 
         $this->conf = Setting::where('id', 1)->first();
     }
+    
     //
     public function vercart()  
     {    
@@ -66,6 +72,7 @@ class CartController extends Controller
 
     public function add(Request $request )
     {
+        dd($request);
         $product = Product::find($request->product_id);
         
         \Cart::add(array(
@@ -83,6 +90,30 @@ class CartController extends Controller
         ));
         return redirect()->back();
         //return redirect()->route('cart.index')->with('success_msg', 'Item Agregado a su Carrito!');
+    }
+
+    // 2. Método que procesa el evento y llama a la lógica del controlador
+    public function handleAddToCart($data)
+    {
+        // $data contendrá: ['id' => 123, 'qty' => 2]
+        
+        $productId = $data['id'];
+        $quantity = $data['qty'];
+
+        dd($data);
+
+        // 3. Crear una instancia y llamar a la función del controlador
+        // Nota: Es mejor mover la lógica del carrito a un servicio/clase aparte.
+        // Pero si insistes en llamar al controlador:
+        
+        $cartController = new \App\Http\Controllers\CartController();
+        $cartController->add(request(), $productId, $quantity); // Adapta la llamada según CartController
+        
+        // O mejor:
+        // CartService::add($productId, $quantity); 
+
+        // Opcional: Actualizar el componente para mostrar el carrito actualizado
+        $this->dispatch('cartUpdated'); 
     }
 
     public function add1(Request$request, $id)

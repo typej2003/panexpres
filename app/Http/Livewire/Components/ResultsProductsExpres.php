@@ -39,7 +39,7 @@ class ResultsProductsExpres extends AdminComponent
         $this->state['quantity'] = $value;
     }
 
-    public function mount($comercioId = 1, $parametro, $manufacturer_id, $modelo_id, $motor_id)
+    public function mount($comercioId = 1, $parametro, $manufacturer_id = 0, $modelo_id = 0, $motor_id = 0)
     {
         
         $this->comercio_id = $comercioId;
