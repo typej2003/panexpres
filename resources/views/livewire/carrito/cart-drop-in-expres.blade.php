@@ -1,4 +1,6 @@
-<a href="#" class="action-item cart dropdown-trigger">
+<div>
+    <div class="action-dropdown cart-dropdown">
+        <a href="#" class="action-item cart dropdown-trigger">
     <i class="fas fa-shopping-cart cart-icon"></i>
     <span class="cart-count">{{count(\Cart::getContent())}}</span>
 </a>
@@ -30,6 +32,8 @@
         <br> 
         
     @else
-        <p>Tu carrito esta vacío<p>
+        <p>Tu carrito esta vacío</p>
     @endif
+</div>
+    </div>
 </div>
