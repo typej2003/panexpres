@@ -7,6 +7,7 @@
 	use App\Http\Livewire\Cart\Cart1;
 	use App\Http\Livewire\Cart\LiveCartController;
 	use App\Http\Livewire\Layouts\Navbar;
+	use App\Http\Livewire\Layouts\NavbarExpres;
 	
 
 	// Route::get('/cart', Cart::class)->name('cart');
@@ -21,15 +22,12 @@
 			'cartCollection' => $cartCollection, 
 			'words' => null,
 			'comercioId' => $comercioId, 
-			'manufacturer_id' => 0,
-			'modelo_id' => 0,
-			'motor_id' => 0,
 		]);
 	})->name('cartView');
 
 	Route::get('/cartOff', [Cart1::class, 'index'])->name('cartOff');;
 		
-	Route::get('/goCart', [Navbar::class, 'cartRuta'])->name('goCart');
+	Route::get('/goCart', [NavbarExpres::class, 'cartRuta'])->name('goCart');
 
 	Route::get('/goCartView', [Navbar::class, 'cartView'])->name('goCartView');
 

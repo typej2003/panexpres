@@ -7,10 +7,6 @@
             box-sizing: border-box;
         }
 
-        a {
-            text-decoration: none;
-            font-size: 1.4rem;
-        }
         /* Reemplazo de .container-fluid */
         .container-css {
             width: 100%;
@@ -74,13 +70,6 @@
         .table-css tbody tr:nth-of-type(odd) {
             background-color: rgba(0, 0, 0, 0.05); /* Rayado */
         }
-
-        .col1 {
-            width: 60%;
-        }
-        .col2 {
-            width: 40%;
-        }
         
         .img-thumb { /* Reemplazo de .img-thumbnail */
             padding: 0.25rem;
@@ -122,26 +111,15 @@
             border-color: #bd2130;
         }
         
-        .btn-success { /* Reemplaza btn-success */
+        .btn-success-css { /* Reemplaza btn-success y form-control */
             color: #fff;
-            background-color: #FC5E27!important;
-            border-color: #5a1e0aff;
-            width: 100%;
+            background-color: #28a745;
+            border-color: #28a745;
+            width: 100%; /* Para imitar form-control */
         }
-        .btn-success:hover {
-            background-color: #fa8f6c;
-            border-color: #fa8f6c;
-        }
-
-        .btn-app { /* Estilo base para botones de app/accion si no tienen éxito/peligro */
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-app:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+        .btn-success-css:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
         }
         
         /* Reemplazo de d-flex justify-content-between */
@@ -248,16 +226,11 @@
     </style>
 
     <div class="container-css">
-        <div class="flex-row my-2"> 
-            <div class="col-100"> 
-                <a href="/"><h6><i class="fa fa-solid fa-shopping-cart"></i> Ir a compra</h6></a>
+        <div class="flex-row my-2"> <div class="col-100"> <a href="/"><h6><i class="fa fa-solid fa-arrow-left"></i> Continuar con la compra</h6></a>
             </div>
         </div>
 
-        <div class="flex-row my-2"> 
-            <div class="col-8"> 
-                <table class="table-css"> 
-                    <thead class="thead-primary">
+        <div class="flex-row my-2"> <div class="col-8"> <table class="table-css"> <thead class="thead-primary">
                         <tr style="font-size: 12px">                      
                             <th scope="col"></th>
                             <th scope="col">Comercio</th>
@@ -272,14 +245,12 @@
                     @foreach($cartCollection as $item)
                         <tr style="font-size: 12px">
                             <td>
-                                <img src="{{ $item->attributes->image }}" class="img-thumb" width="80" height="80"> 
-                            </td>
+                                <img src="{{ $item->attributes->image }}" class="img-thumb" width="80" height="80"> </td>
                             <td><strong>{{ $item->attributes->comercio_id }}</strong></td>
                             <td><strong>{{ $item->name }}</strong></td>
                             <td>{{ $item->price }} USD</td>
                             <td>
-                                <div class="col-100 flex-between"> 
-                                    <div class="input-group input-number-group">
+                                <div class="col-100 flex-between"> <div class="input-group input-number-group">
                                         <div class="input-group-button">
                                             <span class="input-number-decrement" wire:click.prevent="updateQuantity({{ $item->id }}, {{ $item->quantity }}, '-' )">-</span>
                                         </div>
@@ -295,8 +266,7 @@
                                 <form action="{{ route('cart.remove') }}"   method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                    <button class="btn-base btn-danger-css"><i class="fa fa-trash"></i></button> 
-                                </form>
+                                    <button class="btn-base btn-danger-css"><i class="fa fa-trash"></i></button> </form>
                             </td>
                         </tr>
                     @endforeach
@@ -307,48 +277,34 @@
                 @else
                     <h6>No Existen Productos en el Carrito de Compra</h6><br>
                 @endif
-                <div class="flex-row"> 
-                    <div class="col-100"> 
-                        @if(count($cartCollection)>0)
-                            <form action="{{ route('cart.clear') }}" method="POST">
-                            {{ csrf_field() }}
-                            <button class="btn-base btn-danger-css"> 
-                                <i class="fa fa-trash"></i> Vaciar Carrito
-                            </button> 
-                            </form>
-                        @endif         
+                <div class="flex-row"> <div class="col-100"> @if(count($cartCollection)>0)
+                        <form action="{{ route('cart.clear') }}" method="POST">
+                        {{ csrf_field() }}
+                        <button class="btn-base btn-danger-css"> Vaciar Carrito
+                        </button> 
+                        </form>
+                    @endif         
                     </div>
                 </div>                
             </div>
-            <div class="col-4"> 
-                <div>Su pedido (cant: {{ count($listpedidos)}})</div>
-                <table class="table-css"> 
-                    <thead>
+            <div class="col-4"> <div>Su pedido (cant: {{ count($listpedidos)}})</div>
+                <table class="table-css"> <thead>
                         <tr>
                             <th scope="col">Precio total artículos</th>
                             <th scope="col">{{ $currencyValue }} {{ $this->getTotal() }}</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr class="d-none">
+                            <th scope="row">Impuestos</th>
+                            <td>{{ $currencyValue }} {{ $this->getImpuestoIVA() }}</td>
+                        </tr>
                         @if($currencyValue == '$')
-                        <tr class="">
+                        <tr class="d-none">
                             <th scope="row">IGTF</th>
                             <td>{{ $currencyValue }} {{ $this->amountIGTF() }}</td>
                         </tr>
                         @endif
-                        @foreach ($cartCollection as $item)
-                        <tr>
-                            <th class="col1">{{$item->name}}</th>
-                            <td class="col2">{{$item->quantity . ' x ' . $item->price .$currencyValue}}</td>
-                        </tr>
-                        @endforeach
-                        @if($currencyValue == 'Bs')
-                        <tr>
-                            <th scope="row">Impuestos</th>
-                            <td>{{ $currencyValue }} {{ $this->getImpuestoIVA() }}</td>
-                        </tr>
-                        @endif
-                        
                         <tr>
                             <th scope="row">Total</th>
                             <td>{{ $currencyValue }} {{ $this->getTotal() }}</td>
@@ -357,11 +313,8 @@
                             <th scope="row" colspan = "2">
                                 @if(count($cartCollection)>0)
                                     @auth
-                                    <button wire:click.prevent="finalizarCompra" class="btn-base btn-success w-100">Continuar</button> 
-                                    @else
-                                    <div class="flex-row"> 
-                                        <div class="accordion"> 
-                                            <div class="accordion-item-css">
+                                    <button wire:click.prevent="finalizarCompra" class="btn-base btn-success-css">Comprar</button> @else
+                                    <div class="flex-row"> <div class="accordion"> <div class="accordion-item-css">
                                                 <h4 class="accordion-header-css" id="headingOne">
                                                     <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                         <strong>¿Ya Eres Usuario? </strong> 
@@ -377,35 +330,22 @@
                                                                 <label class="text-bold text-uppercase" for="">Inicia Sesión</label>
                                                             </div>
                                                             <div class="group-control my-3 d-none">
-                                                                <a class="form-control-css text-center" href="/login-google"><i class="fa fa-brands fa-google"></i> Iniciar con Google</a> 
-                                                            </div>
+                                                                <a class="form-control-css text-center" href="/login-google"><i class="fa fa-brands fa-google"></i> Iniciar con Google</a> </div>
                                                             
-                                                            <div class="form-group-css my-3"> 
-                                                                <div class="flex-row input-row-css" > 
-                                                                    <div class="col-100"> 
-                                                                        <label for="email">Correo Electrónico</label>
-                                                                        <input type="email" name="email" class="form-control-css inputForm" placeholder="Correo Electrónico" id="emailW"> 
-                                                                    </div>
+                                                            <div class="form-group-css my-3"> <div class="flex-row input-row-css" > <div class="col-100"> <label for="email">Correo Electrónico</label>
+                                                                        <input type="email" name="email" class="form-control-css inputForm" placeholder="Correo Electrónico" id="emailW"> </div>
                                                                 </div>
                                                                 @error('email')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                     
-                                                            <div class="form-group-css my-3"> 
-                                                                <div class="flex-row input-row-css"> 
-                                                                    <div class="col-100"> 
-                                                                        <label for="password">Contraseña</label>
-                                                                        <input type="password" name="password" id="password-fieldW" class="form-control-css inputForm" placeholder="Contraseña" value="12345678"/> 
-                                                                    </div>
+                                                            <div class="form-group-css my-3"> <div class="flex-row input-row-css"> <div class="col-100"> <label for="password">Contraseña</label>
+                                                                        <input type="password" name="password" id="password-fieldW" class="form-control-css inputForm" placeholder="Contraseña" value="12345678"/> </div>
                                                                 </div>                
                                                             </div>          
                                                             
-                                                            <div class="form-group-css"> 
-                                                                <div class="flex-row my-3"> 
-                                                                    <div class="col-100 d-flex"> 
-                                                                        <button class="btn-base btn-app w-100 mx-auto">Iniciar Sesión</button> 
-                                                                    </div>
+                                                            <div class="form-group-css"> <div class="flex-row my-3"> <div class="col-100 d-flex"> <button class="btn-base btn-app w-100 mx-auto">Iniciar Sesión</button> </div>
                                                                 </div>                
                                                             </div>
                                                         </form>
@@ -425,9 +365,7 @@
                                                             <input type="hidden" value="cliente" id="role" name="role" value="{{old('role')}}">
 
                                                             <div class="form-group-css">
-                                                                <div class="flex-row input-row-css"> 
-                                                                    <div style="width: 30%;"> 
-                                                                        <label for="identificationNac">Nac </label>
+                                                                <div class="flex-row input-row-css"> <div style="width: 30%;"> <label for="identificationNac">Nac </label>
                                                                         <select class="form-control-css" name="identificationNac" id="identificationNac" placeholder="Tipo" value="{{old('identificationNac')}}">
                                                                             <option value="J">J-</option>
                                                                             <option value="E">E-</option>
@@ -436,8 +374,7 @@
                                                                             <option value="V" selected>V-</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div style="width: 70%;"> 
-                                                                        <label for="identificationNumber">Documento</label>
+                                                                    <div style="width: 70%;"> <label for="identificationNumber">Documento</label>
                                                                         <input type="text" class="form-control-css" name="identificationNumber" id="identificationNumber" placeholder="Documento" value="{{old('identificationNumber')}}">
                                                                     </div>
                                                                     @error('identificationNumber')
@@ -450,7 +387,7 @@
                                                                 <label for="name">Usuario <span class="text-danger">*</span></label>
                                                                 <div class="input-group-css mb-3">                
                                                                     <input type="text" name="name" class="form-control-css" placeholder="Usuario" value="{{old('name')}}">
-                                                                </div>
+                                                                    </div>
                                                                 @error('name')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
@@ -508,9 +445,7 @@
 
                                                             <div class="form-group-css">
                                                                 <label for="documento">Teléfono </label>        
-                                                                <div class="flex-row input-row-css"> 
-                                                                    <div style="width: 40%;"> 
-                                                                        <select class="form-control-css" name="cellphonecode" id="cellphonecode" value="{{old('cellphonecode')}}"> 
+                                                                <div class="flex-row input-row-css"> <div style="width: 40%;"> <select class="form-control-css" name="cellphonecode" id="cellphonecode" value="{{old('cellphonecode')}}"> 
                                                                             <option value="0">Seleccione</option>
                                                                             <option value="0412">0412</option>
                                                                             <option value="0414">0414</option>
@@ -519,8 +454,7 @@
                                                                             <option value="0426">0426</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div style="width: 60%;"> 
-                                                                        <input type="text" class="form-control-css" name="cellphone" id="cellphone" value="{{old('cellphone')}}">
+                                                                    <div style="width: 60%;"> <input type="text" class="form-control-css" name="cellphone" id="cellphone" value="{{old('cellphone')}}">
                                                                     </div>
                                                                 </div>   
                                                                 @error('cellphonecode')
@@ -532,14 +466,13 @@
                                                             </div>
 
                                                             <div class="form-group-css my-3 d-flex">
-                                                                <button type="submit" class="btn-base btn-app mx-auto"><span class="fas fa-user-plus"></span>Unete</button> 
-                                                            </div>
+                                                                <button type="submit" class="btn-base btn-app mx-auto"><span class="fas fa-user-plus"></span>Unete</button> </div>
 
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            </div>
                                     </div>
                                     @endauth
                                 @endif
@@ -550,9 +483,7 @@
             </div>
         </div>
 
-        <div class="flex-row my-2"> 
-            <div class="col-100"> 
-                @livewire('components.show-recommended-expres', [
+        <div class="flex-row my-2"> <div class="col-100"> @livewire('components.show-recommended-expres', [
                         'comercioId' => 1, 
                         'parametro' => $words,
                         ] )

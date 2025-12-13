@@ -39,7 +39,7 @@
                     <li><a href="#">Soporte en Línea</a></li>
                 </ul>
             </div>
-
+            @guest
             <div class="footer-col">
                 <h4 class="footer-title">Mi Cuenta</h4>
                 <ul>
@@ -47,6 +47,7 @@
                     <li><a href="#">Entrar</a></li>
                 </ul>
             </div>
+            @endguest
 
         </div>
 

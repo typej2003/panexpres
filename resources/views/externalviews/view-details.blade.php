@@ -1,7 +1,7 @@
 <div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('/css/styles_expres.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/navidad.css') }}">
+    <livewire:styles />
     <div id="contenedor-loader" style="visibility: hidden;">
         <style>
                 #loader {
@@ -103,6 +103,9 @@
 
         @endif
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{{ asset('/js/script_expres.js') }}"></script>
 
     @stack('js')
     @stack('before-livewire-scripts')
@@ -110,4 +113,16 @@
     @stack('after-livewire-scripts')
     <script src="{{ asset('/js/script_expres.js') }}"></script>
     <script src="{{ asset('/js/navidad.js') }}"></script> 
+
+    @stack('js')
+    @stack('before-livewire-scripts')
+    <livewire:scripts />
+    @stack('after-livewire-scripts')
+
+    @stack('alpine-plugins')
+    <!-- Alpine Core -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" /> -->
+
 </div>

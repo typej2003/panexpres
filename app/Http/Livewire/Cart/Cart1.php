@@ -35,6 +35,7 @@ class Cart1 extends AdminComponent
     {
         $this->comercio_id = $comercioId;
         $this->currencyValue = request()->cookie('currency');
+        
     }
 
     public function emitCurrency($currencyValue, Request $request)
@@ -151,7 +152,28 @@ class Cart1 extends AdminComponent
 
     public function getTotal()
     {
-        return round($this->subtotal + $this->impuesto + $this->IGTF, 2);
+        
+        $total = 0;
+        $impuesto = 0;
+
+        $cartCollection = \Cart::getContent();
+
+        
+
+        foreach ($cartCollection as $item)
+        {
+            $total = $total + $item->quantity * $item->price;
+        }
+
+        if($this->currencyValue == '$')
+        {
+            $impuesto = 0;
+        }
+        if($this->currencyValue == 'Bs')
+        {
+            $impuesto = 0;
+        }
+        return round($total + $impuesto, 2);
     }
 
     public function getImpuestoIVA()
@@ -316,6 +338,7 @@ class Cart1 extends AdminComponent
 
     public function index()
     {
+        
         $setting = Setting::find(1)->first();
 
         $words = '';
@@ -327,14 +350,11 @@ class Cart1 extends AdminComponent
         $this->currencyValue = request()->cookie('currency');
 
         $comercio = Comercio::find(1);
-            
+
         return view('cart.cart', [
             'in_cellphonecontact' => $setting->in_cellphonecontact, 
             'comercio_id' => 1,
-            'comercio' => $comercio, 
-            'manufacturer_id' => 0,
-            'modelo_id' => 0,
-            'motor_id' => 0, 
+            'comercio' => $comercio,
             'words' => $words,
             'cartCollection' => $cartCollection,
             'listpedidos' => $this->crearArray(),
@@ -363,9 +383,6 @@ class Cart1 extends AdminComponent
         return view('livewire.cart.cart1', [
             'in_cellphonecontact' => $setting->in_cellphonecontact, 
             'comercio_id' => $this->comercio_id,
-            'manufacturer_id' => 0,
-            'modelo_id' => 0,
-            'motor_id' => 0, 
             'words' => $words,
             'cartCollection' => $cartCollection,
             'listpedidos' => $this->crearArray(),

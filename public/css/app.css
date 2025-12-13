@@ -420,3 +420,7 @@
   width: 210px;
   margin-left: 15px;
 }
+.btn-success {
+  background-color: var(--main-btn-color) !important;
+}
+

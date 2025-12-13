@@ -67,7 +67,28 @@ class Cart extends AdminComponent
 
     public function getTotal()
     {
-        return round($this->subtotal + $this->impuesto + $this->IGTF, 2);
+        
+        $total = 0;
+        $impuesto = 0;
+
+        $cartCollection = \Cart::getContent();
+
+        
+
+        foreach ($cartCollection as $item)
+        {
+            $total = $total + $item->quantity * $item->price;
+        }
+
+        if($this->currencyValue == '$')
+        {
+            $impuesto = 0;
+        }
+        if($this->currencyValue == 'Bs')
+        {
+            $impuesto = 0;
+        }
+        return round($total + $impuesto, 2);
     }
 
     public function getImpuestoIVA()
