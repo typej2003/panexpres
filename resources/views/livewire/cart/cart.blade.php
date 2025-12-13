@@ -68,9 +68,10 @@
     .text-bold { font-weight: bold; }
     .text-uppercase { text-transform: uppercase; }
     .text-danger { color: #dc3545; }
-    .table {
-        font-size: 1.2rem;
+    .table1 {
+        font-size: 1rem;
     }
+    
 </style>
 <div class="container-fluid">
     <link rel="stylesheet" href="/css/app.css">
@@ -87,7 +88,7 @@
 
     <div class="row my-2">
         <div class="col-md-8">
-            <table class="table table-responsive">
+            <table class="table table1 table-responsive">
                 <thead class="thead-primary">
                     <tr>                      
                         <th scope="col"></th>
@@ -102,7 +103,7 @@
                 @foreach($cartCollection as $item)
                 <div class="row">
                     <tbody>
-                    <tr style="font-size: 12px">
+                    <tr>
                         <td>
                             <img src="{{ $item->attributes->image }}" class="img-thumbnail" width="80" height="80">                                        
                         </td>
@@ -153,7 +154,7 @@
             </div>                
         </div>
         <div class="col-md-4">
-            <div>Su pedido (cant: {{ count($listpedidos)}})</div>
+            <div class="h4">Su pedido (cant: {{ count($listpedidos)}})</div>
                 <table class="table-css"> 
                     <thead>
                         <tr>

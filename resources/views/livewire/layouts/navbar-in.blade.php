@@ -34,17 +34,11 @@
                         <a class="btn-cart-drop d-flex justify-content-between botonera">
                             <img  src="/img/icon_carrito.png" style="height:25px !important; cursor:pointer !important;">
                             <span class="text-dark">({{ $totalQuantityCart}} )</span>
-                            <!-- <span class="text-dark">({{\Cart::getTotalQuantity()}})</span> -->
+                            <span class="text-dark">({{\Cart::getTotalQuantity()}})</span>
                         </a>
-                        @livewire('carrito.cart-drop', ['currencyValue' => $currencyValue ])
+                         @livewire('carrito.cart-drop', ['currencyValue' => $currencyValue ]) 
                     </div>
-                </div>
-            </div>
-        </li>
-        <li class="nav-item">
-            <div class="row">
-                <div class="col-md-12 my-2">
-                    @livewire('components.currency')
+                    
                 </div>
             </div>
         </li>

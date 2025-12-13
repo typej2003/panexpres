@@ -19,7 +19,7 @@
   <!-- /.content-header -->
 
   <!-- Main content -->
-  <div class="content">
+  <div class="content" style="height: 80vh;" >
     <div class="container-fluid">
     <div class="row">
         @if(auth()->user()=='admin')

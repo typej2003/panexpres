@@ -75,6 +75,10 @@
             background-color: rgba(0, 0, 0, 0.05); /* Rayado */
         }
 
+        .table1 {
+            font-size: 1rem;
+        }
+
         .col1 {
             width: 60%;
         }
@@ -256,7 +260,7 @@
 
         <div class="flex-row my-2"> 
             <div class="col-8"> 
-                <table class="table-css"> 
+                <table class="table1 table-css"> 
                     <thead class="thead-primary">
                         <tr style="font-size: 12px">                      
                             <th scope="col"></th>
@@ -321,7 +325,7 @@
                 </div>                
             </div>
             <div class="col-4"> 
-                <div>Su pedido (cant: {{ count($listpedidos)}})</div>
+                <div class="h4">Su pedido (cant: {{ count($listpedidos)}})</div>
                 <table class="table-css"> 
                     <thead>
                         <tr>

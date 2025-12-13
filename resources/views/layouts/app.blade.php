@@ -22,7 +22,7 @@
     <body class="hold-transition sidebar-mini {{ setting('sidebar_collapse') ? 'sidebar-collapse' : '' }}">
     <div class="wrapper">
     @auth
-        @livewire('layouts.navbar-in')
+        @livewire('layouts.navbar-in-expres')
          <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -59,6 +59,7 @@
 
 <script src="/js/app.js"></script>
 <script src="/js/backend.js"></script>
+
 <!-- <script src="/js/bootstrap.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/jquery-3.6.4.min.js"></script> -->
