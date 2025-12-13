@@ -376,8 +376,8 @@
   }
 
   .nav-link {
-    color: #FFF !important;
-    background-color: var(--menu-background-overlay) !important;
+    color: #fc5e27 !important;
+    /*background-color: var(--menu-background-overlay) !important;*/
   }
   .nav-link:hover {
     color: #000 !important;
