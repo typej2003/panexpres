@@ -18,7 +18,8 @@ use App\Http\Livewire\Afiliado\Pasarela;
 use App\Http\Livewire\Afiliado\Shipping;
 use App\Http\Livewire\Carrito\Procesado;
 
-use App\Http\Livewire\Recursos\ApiController;
+//use App\Http\Livewire\Recursos\ApiController;
+use App\Http\Livewire\Pasarela\BioPago;
 
 
 use App\Http\Livewire\Recursos\ImportExportExcel;
@@ -64,7 +65,7 @@ Route::get('/receiveBDV/{toke}', [WelcomeController::class, 'receiveBDV'])->name
 Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
     $id_suc = $id;
     //$pasarela = Pasarela();
-    $result = new ApiController();
+    $result = new BioPago();
     $result->registrarReferencia($id);
     
     $cart = new CartController;

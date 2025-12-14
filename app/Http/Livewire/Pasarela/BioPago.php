@@ -2,11 +2,16 @@
 
 namespace App\Http\Livewire\Pasarela;
 
-use App\Http\Controllers\Api\ApiProcessPaymentController;
-
+//use App\Http\Controllers\Api\ApiProcessPaymentController;
+use App\Http\Controllers\CartController;
 use Livewire\Component;
 use Illuminate\Http\Request;
+use App\Models\Pedido;
+use App\Models\PedidoDetalles;
 use App\Models\PedidoTemporal;
+use App\Models\PedidoDetallesTemporal;
+use App\Models\Transaccion;
+use App\Models\Pagomovil;
 use Illuminate\Support\Facades\Session;
 
 class BioPago extends Component
@@ -198,6 +203,75 @@ class BioPago extends Component
     public function render()
     {
         return view('livewire.pasarela.bio-pago');
+    }
+
+	public function registrarReferencia($id)
+    {
+        $token = $id;
+
+		$demo = "NO";
+		if( $demo == "SI" ){                
+			$PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
+		} else {
+			$PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
+		}
+		
+		$datos = $PaymentProcess->checkPayment($token);
+        //$datos = $this->SearchPayment($token);
+    
+        if($datos->success == 'true')
+        {
+          $reference = $datos->reference;
+    
+          //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
+    
+          //$pedido = Pedido::find($pedido_id);
+		  $pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
+
+		  $pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->first();
+    
+          $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
+    
+          $transaccion = Transaccion::create([
+           'token' => $token,
+           'paymentId' => $token,
+		   'cliente_id' => $pedidotemporal->user_id,
+		   'user_id' => $pedidotemporal->user_id,
+           'comercio_id' => $pedidotemporal->comercio_id,
+           'identificationNumber' => $datos->idNumber,
+           'id_transaccion' => $datos->transactionId,
+           'reference' => $datos->reference,
+           'totalbs' => $datos->amount,
+           'fechaPago' => $paymentDate,
+           'title' => $datos->title,
+           'description' => $datos->description,
+           'status' => 1,
+		   'nropedido' => $datos->reference,
+          ]);
+    
+           $pedidotemporal->update([
+			'reference' => $datos->transactionId,
+			'metodo' => 'tarjeta',
+			'confirmed' => 1,
+			]);
+
+			$pedido = $pedidotemporal->toArray();
+
+			$pedidodetalles = $pedidodetallestemporal->toArray();
+
+        	Pedido::create($pedido);
+
+			PedidoDetalles::create($pedidodetalles);
+
+			$cart = new CartController;
+
+        	$cart->onlyClear();
+
+			\Cart::clear();
+
+            return $token;
+
+        }
     }
 }
 
