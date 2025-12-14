@@ -27,7 +27,7 @@
             </li> -->
         @endforeach
         <p class="cart-total">Total: {{ $this->getPrice( \Cart::get($item->id)->getPriceSum(), $item->attributes->comercio_id ) }} {{$currencyValue}}</p>
-        <a href="/goCart" class="btn-checkout">Ver Carrito</a>
+        <a href="/goCart" class="btn-success">VER CARRITO</a>
         
         <br> 
         

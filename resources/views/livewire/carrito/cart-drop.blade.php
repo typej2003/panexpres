@@ -36,7 +36,7 @@
         <li class="list-group-item">
             <div class="row d-flex" style="margin: 0px;">
                 <!-- <a class="btn btn-app mx-auto" href="{{ route('cart') }}"> -->
-                <a class="btn btn-app mx-auto" href="/goCart">
+                <a class="btn btn-success mx-auto" href="/goCart">
                     VER CARRITO
                 </a>
             </div>
