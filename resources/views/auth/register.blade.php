@@ -155,7 +155,7 @@
             </div>
 
             <div class="form-group my-3 d-flex">
-                <button type="submit" class="btn btn-app mx-auto"><span class="fas fa-user-plus"></span>Unete</button>
+                <button type="submit" class="btn btn-success mx-auto"><span class="fas fa-user-plus"></span>Unete</button>
             </div>
 
         </form>
