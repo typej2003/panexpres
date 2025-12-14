@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PanExpres</title>
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- icheck bootstrap -->
+  <!-- Theme style -->
   
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style-welcome.css">
-
+  <link rel="stylesheet" href="{{ asset('/css/styles_expres.css') }}">
+  
 </head>
 <body class="">
 <div class="d-flex">
@@ -21,7 +22,9 @@
     <div class="card-body">
         <div class="row">
             <div class="col-lg-12 titulo c-a text-center">
-                <a href="/"><img class="logo-login-register mx-auto " src="/img/panexpres_banner.png" alt=""></a>
+                <a href="/">
+                    <img class="logo-login mx-auto " src="{{ asset('/img/panexpres_banner.png') }}" alt="">
+                </a>
             </div>
         </div>
         <div class="row">
