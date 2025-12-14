@@ -42,6 +42,15 @@ class ListPedidosCliente extends AdminComponent
 		$this->currencyValue = request()->cookie('currency');
     }
 
+	public function irCart(PedidoTemporal $pedidoTemporal)
+	{
+
+		return redirect()->route('pasarela', [
+				'nropedido' => $pedidoTemporal->nropedido, 
+				'comercioId' => $pedidoTemporal->comercioId,
+			]);
+	}
+
 	public function sendNotificacion(Pedido $pedido )
 	{
 		$notificacion = new EmailController();
