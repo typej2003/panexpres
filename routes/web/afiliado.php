@@ -27,6 +27,7 @@ use App\Http\Livewire\Afiliado\MetodosPagos;
 use App\Http\Livewire\Afiliado\ListDeliveryArea;
 use App\Http\Livewire\Afiliado\Repuestoexpres\ListUsersComercio;
 use App\Http\Livewire\Afiliado\ListPromociones;
+use App\Http\Livewire\Afiliado\SvgEjemplos;
 
 use App\Models\Comercio;
 use App\Models\Product;
@@ -114,3 +115,5 @@ Route::get('/listDeliveryArea/{comercioId}', ListDeliveryArea::class)->name('lis
 Route::get('/listUsersComercio/{comercioId}', ListUsersComercio::class)->name('listUsersComercio')->middleware('auth');
 
 Route::get('/listPromociones', ListPromociones::class)->name('listPromociones')->middleware('auth');
+
+Route::get('/svgEjemplos', SvgEjemplos::class)->name('svgEjemplos')->middleware('auth');

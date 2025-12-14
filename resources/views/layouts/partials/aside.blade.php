@@ -15,6 +15,7 @@
       <div class="info">
         @auth
         <a href="#" class="d-block" x-ref="username">{{ auth()->user()->name }}</a>
+        <span class="text-white">{{ auth()->user()->role }}</span>
         @endauth
       </div>
     </div>
@@ -34,7 +35,15 @@
 
         @auth
           @if(auth()->user()->role == 'admin')
-          
+            <li class="nav-item">
+              <a href="/svgEjemplos" class="nav-link {{ request()->is('svgEjemplos') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  SVG Ejemplos
+                </p>
+              </a>
+            </li>
+            
             <li class="nav-item">
               <a x-ref="profileLink" href="{{ route('admin.profile.edit') }}" class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
@@ -178,6 +187,8 @@
                     </p>
                   </a>
                 </li>
+
+                
 
               </ul>
             </li>

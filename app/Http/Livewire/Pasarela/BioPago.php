@@ -108,7 +108,7 @@ class BioPago extends Component
 
         
 		
-		$demo = "NO";
+		$demo = "SI";
 
 		/*dd('
 			$Payment->idLetter= '.$Payment->idLetter.' 
@@ -126,7 +126,7 @@ class BioPago extends Component
 		');*/
 
 
-        if( $demo == "SI" ) {
+        if( $demo == "NO" ) {
             $PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
         } else {
              $PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");

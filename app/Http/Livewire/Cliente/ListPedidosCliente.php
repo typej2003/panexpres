@@ -6,6 +6,7 @@ use App\Http\Livewire\Admin\AdminComponent;
 use App\Http\Livewire\Notificacion\EmailController;
 use App\Models\User;
 use App\Models\Pedido;
+use App\Models\PedidoTemporal;
 use App\Models\Comercio;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -186,14 +187,22 @@ class ListPedidosCliente extends AdminComponent
     public function render()
     {
 		
-    	$pedidos = Pedido::query()
-    		->where('user_id', auth()->user()->id)
-            ->orWhere('reference', 'like', '%'.$this->searchTerm.'%')
-            ->orderBy($this->sortColumnName, $this->sortDirection)
-            ->paginate(15);
+		// 1. **Consulta para los pedidos paginados (Modelo Pedido)**
+		// Se mantiene tu lógica original para Pedido
+		$pedidos = Pedido::query()
+			->where('user_id', auth()->user()->id)
+			->orWhere('reference', 'like', '%'.$this->searchTerm.'%')
+			->orderBy($this->sortColumnName, $this->sortDirection)
+			->paginate(15);
+		
+		
+		$pedidoTemporal = PedidoTemporal::query()
+			->where('user_id', auth()->user()->id)
+			->orWhere('reference', 'like', '%'.$this->searchTerm.'%')->latest()->first();
 
-        return view('livewire.cliente.list-pedidos-cliente', [
+		return view('livewire.cliente.list-pedidos-cliente', [
         	'pedidos' => $pedidos,
+			'pedidoTemporal' => $pedidoTemporal,
         ]);
     }
 }

@@ -3,7 +3,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><i class="fa fa-solid fa-file-invoice-dollar"></i> Mis Pedidos</h1>
+                    <h1 class="m-0 text-dark">
+                        <i class="fa fa-solid fa-file-invoice-dollar"></i> Mis Pedidos YA</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -18,7 +19,6 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between mb-2">
@@ -57,15 +57,10 @@
                                     </tr>
                                 </thead>
                                 <tbody wire:loading.class="text-muted">
-                                    @forelse ($pedidos as $index => $pedido)
+                                    @foreach ($pedidos as $index => $pedido)
                                     <tr>
                                         <th scope="row">{{ $pedidos->firstItem() + $index }}</th>
-                                        <td>
-                                            <select class="form-control" wire:change="changeConfirmation({{ $pedido }}, $event.target.value)" disabled >
-                                                <option value="1" {{ ($pedido->confirmed === 1) ? 'selected' : '' }}>CONFIRMADO</option>
-                                                <option value="0" {{ ($pedido->confirmed === 0) ? 'selected' : '' }}>NO CONFIRMADO</option>
-                                            </select>
-                                        </td>
+                                        <td>$pedido->confirmed</td>
                                         <td><a href="/detallespedido/{{ $pedido->nropedido }}">{{ $pedido->nropedido }}</a></td>
                                         <td>{{ $pedido->reference }}</td>
                                         <td>{{ $pedido->client->identificationNumber }}</td>
@@ -90,14 +85,28 @@
                                             @endif
                                         </td>
                                     </tr>
-                                    @empty
-                                    <tr class="text-center">
-                                        <td colspan="9">
-                                            <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/v2/assets/empty.svg" alt="No results found" style="width: 150px;">
-                                            <p class="mt-2">No se encontro resultado</p>
+                                    @endforeach
+                                    @if($pedidoTemporal)
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>NO EFECTUADO</td>
+                                        <td><a href="/detallespedido/{{ $pedidoTemporal->nropedido }}">{{ $pedidoTemporal->nropedido }}</a></td>
+                                        <td>{{ $pedidoTemporal->reference }}</td>
+                                        <td>{{ $pedidoTemporal->client->identificationNumber }}</td>
+                                        <td>{{ $pedidoTemporal->client->name }}</td>
+                                        <td>{{ $pedidoTemporal->metodo }}</td>
+                                        <td>{{ $pedidoTemporal->coste }} {{ $currencyValue }}</td>
+                                        <td>{{ $pedidoTemporal->metodoentrega }}</td>
+                                        <td>{{ $pedidoTemporal->created_at ?? 'N/A' }}</td>
+                                        <td class="">
+                                            <a href="/pasarela/{{ $pedidoTemporal->nropedido }}" wire:click.prevent="edit({{ $pedidoTemporal }})">
+                                                Ir a <i class="fas fa-shopping-cart cart-icon-list"></i>
+                                            </a>
                                         </td>
                                     </tr>
-                                    @endforelse
+                                    @endif
+
+                                    
                                 </tbody>
                             </table>
                         </div>

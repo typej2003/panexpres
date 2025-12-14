@@ -440,3 +440,20 @@
   .nav-link {
     color: #fff !important;
   }
+
+  .d-block {
+    color: white !important;
+    font-weight: bold !important;
+  }
+
+ .cart-icon {
+    font-size: 1.8rem;
+    /* Color Naranja para ícono de Carrito */
+    color: #fc5e27; 
+}
+
+.cart-icon-list {
+    font-size: 1.2rem;
+    /* Color Naranja para ícono de Carrito */
+    color: #fc5e27; 
+}

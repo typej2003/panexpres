@@ -203,8 +203,8 @@
                     }
                     if(currency == '$'){
                         // elegir iconos por tipo
-                        imgGrey = index === 0 ? './img/icono_pasarela_gris.png' : './img/icono_kiosko_gris.png';
-                        imgBlue = index === 0 ? './img/icono_pasarela_azul.png' : './img/icono_kiosko_azul.png';
+                        imgGrey = index === 0 ? '🇿' : '🇿';
+                        imgBlue = index === 0 ? '🅿️' : '🅿️';
 
                         subtitle = index === 0 ? '' : '';
                     }
