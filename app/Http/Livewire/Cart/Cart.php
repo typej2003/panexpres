@@ -292,6 +292,8 @@ class Cart extends AdminComponent
 
         $words = '';
 
+        dd('index');
+
         return view('livewire.cart.cart', [
             'in_cellphonecontact' => $setting->in_cellphonecontact, 
             'comercio_id' => 1,

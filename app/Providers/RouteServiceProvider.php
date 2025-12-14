@@ -58,6 +58,7 @@ class RouteServiceProvider extends ServiceProvider
                     require base_path('routes/web/mikrotik.php');
                     require base_path('routes/web/smsMikrotik.php');
                     require base_path('routes/web/recurso.php');
+                    require base_path('routes/web/metodospagos.php');
                     require base_path('routes/web.php');
                 });
 

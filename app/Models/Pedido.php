@@ -9,14 +9,15 @@ class Pedido extends Model
 {
     use HasFactory;
 
-    const CONFIRMED = '1';
     const NOTCONFIRMED = '0';
+    const CONFIRMED = '1';
     const CONFIRMEDFAILED = '2';
 
     const DELIVERED = 'delivered';
     const NOTDELIVERED = 'notdelivered';
 
     protected $fillable = [
+        'status',
         'nropedido',
         'reference',
         'comercio_id',

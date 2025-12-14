@@ -245,7 +245,7 @@
                             <img src="img/campanas.png" alt="Icono de Campanas">
                         </div>
                     </div>
-                    <a href="{{ $lastProduct ? '/comprar/' . $lastProduct->id : '#' }}" class="buy-button-pure">Comprar</a>
+                    <a href="" wire:click.prevent="sendCard({{ $lastProduct->id }}, 1)" class="buy-button-pure">Comprar</a>
                 </div> 
 
                 @forelse ($products as $index => $product)
@@ -262,7 +262,7 @@
                                 <img src="img/campanas.png" alt="Icono de Campanas">
                             </div>
                         </div>
-                        <a href="/comprar/{{ $product->id }}" class="buy-button-pure">Comprar</a>
+                        <a href="" wire:click.prevent="sendCard({{ $product->id }}, 1)" class="buy-button-pure">Comprar</a>
                     </div>
                 @empty
                     <div class="carousel-item-pure">
@@ -278,7 +278,6 @@
                                 <img src="img/campanas.png" alt="Icono de Campanas">
                             </div>
                         </div>
-                        <a href="#" class="buy-button-pure">Comprar</a>
                     </div>
                 @endforelse
                 
@@ -295,7 +294,7 @@
                             <img src="img/campanas.png" alt="Icono de Campanas">
                         </div>
                     </div>
-                    <a href="{{ $firstProduct ? '/comprar/' . $firstProduct->id : '#' }}" class="buy-button-pure">Comprar</a>
+                    <a href="" wire:click.prevent="sendCard({{ $firstProduct->id }}, 1)" class="buy-button-pure">Comprar</a>
                 </div>
 
             </div>

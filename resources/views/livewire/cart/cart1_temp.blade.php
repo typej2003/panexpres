@@ -313,7 +313,7 @@
                             <th scope="row" colspan = "2">
                                 @if(count($cartCollection)>0)
                                     @auth
-                                    <button wire:click.prevent="finalizarCompra" class="btn-base btn-success-css">Comprar</button> @else
+                                    <button wire:click.prevent="finalizarCompra" class="btn-base btn-success-css">Comprar Cart1</button> @else
                                     <div class="flex-row"> <div class="accordion"> <div class="accordion-item-css">
                                                 <h4 class="accordion-header-css" id="headingOne">
                                                     <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

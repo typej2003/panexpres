@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'surnames' => 'Diaz',
             'email' => 'ddrsistemas@gmail.com',
             'password' => bcrypt('12345678'),
-            'role' => 'admin',
+            'role' => 'root',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
@@ -31,6 +31,28 @@ class UserSeeder extends Seeder
             'user_id' => 1,
             'cellphonecode' => '0414',
             'cellphone' => '1899016',
+            'address' => 'Caracas, San Bernardino',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('users')->insert([
+            'identificationNac' => 'V',
+            'identificationNumber' => '99888777',
+            'name' => 'admin',
+            'names' => 'admin',
+            'surnames' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'admin',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('datos_basicos')->insert([
+            'user_id' => 2,
+            'cellphonecode' => '0416',
+            'cellphone' => '5800403',
             'address' => 'Caracas, San Bernardino',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
@@ -50,7 +72,7 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('datos_basicos')->insert([
-            'user_id' => 1,
+            'user_id' => 3,
             'cellphonecode' => '0416',
             'cellphone' => '5800403',
             'address' => 'Caracas, San Bernardino',
@@ -72,7 +94,7 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('datos_basicos')->insert([
-            'user_id' => 1,
+            'user_id' => 4,
             'cellphonecode' => '0416',
             'cellphone' => '5800403',
             'address' => 'Caracas, San Bernardino',

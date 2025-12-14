@@ -1,3 +1,4 @@
+<div>
 <style>
     /* Nota: Deberías definir tus estilos CSS customizados (como .btn-success-css, .btn-app) fuera de este componente o inyectarlos como en el ejemplo anterior si quieres eliminar Bootstrap por completo. 
        Para esta respuesta, asumo que las clases CSS customizadas están disponibles o las usarás para reemplazar las de Bootstrap. */
@@ -76,8 +77,7 @@
 <div class="container-fluid">
     <link rel="stylesheet" href="/css/app.css">
     
-    <script src="/js/jquery-3.6.4.min.js"></script>
-
+    
     <div class="row my-2">
         <div class="col-md-12">
             <a href="/"><h6><i class="fa fa-solid fa-shopping-cart"></i> Ir a compra</h6></a>
@@ -190,7 +190,7 @@
                             <th scope="row" colspan = "2">
                                 @if(count($cartCollection)>0)
                                     @auth
-                                    <button wire:click.prevent="finalizarCompra" class="btn-base btn-success w-100">Continuar</button> 
+                                    <button wire:click.prevent="finalizarCompra" class="btn-base btn-success w-100">Continuar Cart</button> 
                                     @else
                                     <div class="flex-row"> 
                                         <div class="accordion"> 
@@ -419,4 +419,5 @@
 
     </script>
     
+</div>
 </div>

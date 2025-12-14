@@ -93,20 +93,6 @@
         })        
     </script>
     <div class="container-fluid d-flex flex-row">
-        <div class="row mx-auto pasarela">
-            <div class="col-sm-10">
-                
-            </div><!-- /.col -->
-            <div class="col-sm-2">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item active">
-                        Divisa @livewire('components.currency')
-                    </li>
-                </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div>
-    <div class="container-fluid d-flex flex-row">
         <div class="card mx-auto pasarela" >
             <div class="card-body">
                 <div class="row my-3">

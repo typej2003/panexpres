@@ -26,7 +26,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 8.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -60,7 +60,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 10.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -96,7 +96,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 7.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -130,7 +130,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 9.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -166,7 +166,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 10.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -199,7 +199,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 12.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -235,7 +235,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 12.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -268,7 +268,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 14.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -304,8 +304,8 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 9.0, //precio al detal
-            'profit_price' => 12, // porcentaje de ganancia
+            'price1' => 1.0, //precio al detal
+            'profit_price' => 1, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
             'price_offer' => 1, //precio de oferta
@@ -337,7 +337,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 11.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -373,7 +373,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 9.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -406,7 +406,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 11.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -442,7 +442,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 11.0, //precio al detal
+            'price1' => 1.0, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia
@@ -478,7 +478,7 @@ class ProductsSeeder extends Seeder
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
-            'price1' => 14.95, //precio al detal
+            'price1' => 1.00, //precio al detal
             'profit_price' => 12, // porcentaje de ganancia
             'price_mayor' => 1, //precio al mayor
             'profit_mayor' => 12, // porcentaje de ganancia

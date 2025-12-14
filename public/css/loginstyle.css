@@ -1,0 +1,230 @@
+:root {
+            --main-bg-color1:  #6500DB;
+            --main-bg-color2: #fe7c24;
+            --main-bg-color1-hover:  #8e54cf;            
+            --main-bg-color2-hover: #ecac7d;
+            --menu-background-overlay: #fa8f6c; 
+            --main-footer-color: #FFCC2A;
+            --table-child1: #d8b6f6;
+            --table-child2: #fdf2ea;
+        }
+.text-orange {
+    color: #F5710F;
+}
+
+.text-violet {
+    color: #6500DB;
+}
+.bg-p {
+    background-color: var(--table-child1);
+}
+
+.bg-s {
+    background-color: var(--table-child2);
+}
+
+.text-primary {
+    color: var(--main-bg-color1) !important;
+}
+
+/* Estilos generales */
+body {
+    background-color: #f8f9fa; /* Color de fondo suave */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    border-bottom: 1px solid #e9ecef;
+}
+.header-img1{
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-bg-color1) !important;
+}
+.header-img2{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-bg-color2);
+}
+.img1-header {
+    width: 40%;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}   
+.img2-header {
+    width: 70%;
+    height: auto;
+}   
+/* Estilos específicos para las tarjetas y responsividad */
+.card {
+    border-radius: 1rem;
+    border: none;
+}
+
+/* Contenedor de perfiles para inputs radio */
+#perfiles-hotspot label.form-check-label {
+    /* Estilo base para cada perfil */
+    display: block;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    min-width: 150px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Estilo cuando el perfil está seleccionado */
+#perfiles-hotspot input[type="radio"]:checked + label {
+    border-color: #007bff; /* Borde azul de Bootstrap */
+    background-color: #e2f0ff; /* Fondo ligeramente azul */
+    color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Ocultar el input radio por defecto */
+#perfiles-hotspot input[type="radio"] {
+    display: none;
+}
+
+/* Footer */
+footer {
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    padding: 10px;
+    background-color:var(--main-bg-color1) !important;
+    color: white;
+}
+
+.btn-outline-extra {
+    color: #F5710F;
+    border-color: #F5710F;
+}
+.btn-outline-extra:hover {
+    background-color: #F5710F;
+    color: white;
+    border-color: #F5710F;
+}   
+
+.btn-secondary.disabled, .btn-secondary:disabled {
+    background-color: var(--main-bg-color1);
+    border-color: grey;
+    color: white;
+}
+.btn-secondary.enabled, .btn-secondary:enabled {
+    background-color: var(--main-bg-color1);
+    border-color: grey;
+    color: white;
+}
+
+/* Responsive para Header en móviles */
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+        /* MÓVILES EXTRA PEQUEÑOS (ej. iPhone 5/SE o menos) */
+    
+    .container {
+        padding: 0 5px; /* Reduce aún más el padding en móviles muy pequeños */
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* --------------------------------------------------------------------- */
+/* 3. MEDIA QUERY PARA TABLET (A partir de 641px)                        */
+/* --------------------------------------------------------------------- */
+@media (min-width: 641px) {
+    /* TABLETS (Desde 641px hasta 1024px) */
+    
+    body {
+        font-size: 18px;
+    }
+
+    .container {
+        /* Limita el ancho del contenedor en tablets para centrarlo un poco */
+        max-width: 768px; 
+        margin: 0 auto; /* Centrar */
+    }
+
+    .card {
+        /* En tablets, las tarjetas podrían mostrarse en dos columnas */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* --------------------------------------------------------------------- */
+/* 4. MEDIA QUERY PARA ESCRITORIO / DESKTOP (A partir de 1025px)         */
+/* --------------------------------------------------------------------- */
+@media (min-width: 1025px) {
+    /* ESCRITORIO (A partir de 1025px) */
+    
+    body {
+        font-size: 16px; /* A menudo se reduce el tamaño del texto base en escritorio */
+    }
+
+    .container {
+        /* Limita el ancho en pantallas grandes para una mejor lectura */
+        max-width: 1280px; 
+    }
+    
+    .card {
+        /* En escritorio, las tarjetas podrían mostrarse en cuatro columnas */
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    nav ul li {
+        /* Ejemplo: El menú que estaba apilado se convierte en una fila */
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+/* === Header/Footer fijo movido desde el HTML === */
+header { padding-top: 100px; }
+header .header-img1 { position: fixed; top: 0; left: 0; width: 100%; background: #ffffff; z-index: 1000; }
+header .header-img1 img { max-height: 80px; }
+
+/* Reservar espacio inferior para footer fijo */
+body { padding-bottom: 96px; }
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    z-index: 1000;
+    padding: 0.6rem 0;
+    border-top: 1px solid #e9ecef;
+}
+.footer-img-row img { max-height: 48px; }
+.footer-actions .btn { min-width: 120px; }
+}
+
+.btn-biopago{
+    background-color: var(--main-bg-color1);
+    color: white;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 2rem
+}

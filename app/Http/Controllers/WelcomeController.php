@@ -268,10 +268,11 @@ class WelcomeController extends Controller
 
     public function checkoutPasarela($nropedido, $comercioId)
     {
-        return view('externalviews.checkoutpasarela', [
-            'nropedido' => $nropedido,
-            'comercioId' => $comercioId,
-        ]);
+        
+        return redirect()->route('pasarela', [
+				'nropedido' => $nropedido, 
+				'comercioId' => $comercioId,
+			]);
     }
 
     public function receiveBDV($toke)

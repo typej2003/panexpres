@@ -15,6 +15,7 @@ class CreatePedidoTemporalsTable extends Migration
     {
         Schema::create('pedido_temporals', function (Blueprint $table) {
             $table->id();
+            $table->string('status')->nullable()->default('0');
             $table->string('nropedido');
             $table->string('reference')->nullable();
             $table->string('title')->nullable();

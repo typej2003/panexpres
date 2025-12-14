@@ -74,7 +74,7 @@ function selectMetodoPago(index1 = 0, comercio_idP, nropedidoP, referenceP, titl
             let option1 = document.createElement('option')
             option1.classList.add('optionModoPago')
             option1.value="tarjetadebito"
-            option1.innerHTML = "TARJETA DE DÉBITO"
+            option1.innerHTML = "BIOPAGO BDV"
 
             let option2 = document.createElement('option')
             option2.classList.add('optionModoPago')
@@ -782,7 +782,7 @@ function showFormGrupoTarjetaDebito()
 {
     let formGrupo = `
         <div class="row">
-            <div class="col-lg-12 text-justity pt-3 negrita">Ingresa los datos de tu pago</div>
+            <div class="col-lg-12 text-justity pt-3 negrita">X Ingresa los datos de tu pago</div>
         </div>
 
         <div class="row">
@@ -832,7 +832,7 @@ function showFormGrupoTarjetaDebito()
         <div class="form-group">
             <div class="row mx-auto my-3 p-3">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <button id="procesarTarjeta" class="btn boton1 w-100" onClick="procesarTarjeta()">PROCESAR</button>
+                    <button id="procesarTarjeta" class="btn btn-success w-100" onClick="procesarTarjeta()">PROCESAR</button>
                 </div>
             </div>
         `
@@ -841,6 +841,7 @@ function showFormGrupoTarjetaDebito()
 
 function procesarTarjetaDebito()
 {
+    alert('procesar')
     bloqueP.innerHTML = showFormGrupoProcesarTarjetaDebito()
     alert('procesar')
 }
@@ -935,6 +936,7 @@ function initFormulario() {
         form.addEventListener('submit', event => {
             event.preventDefault();
             if (form.checkValidity()) {
+                alert('createPayment')
                 createPayment();
             }
             else {
@@ -1984,3 +1986,86 @@ function enviarDatos(datos){
         }
     });
 }
+
+
+    // 1. OBTENCIÓN DE ELEMENTOS
+    // --- Fuentes (Inputs que se escriben) ---
+    const inputNacSource = document.getElementById('identificationNac1');
+    const inputNumSource = document.getElementById('identificationNumber1');
+    const inputPreMovil = document.getElementById('premovil');
+    const inputMovil = document.getElementById('movil');
+
+    // --- Destinos (Inputs que se actualizan) ---
+    const inputNacTarget = document.getElementById('identificationNac');
+    const inputNumTarget = document.getElementById('identificationNumber');
+    const inputCellphoneTarget = document.getElementById('cellphone');
+
+    // ===================================================
+    // 2. FUNCIONES DE PROCEDIMIENTO
+    // ===================================================
+
+    /**
+     * Sincroniza el valor de un campo fuente a un campo destino.
+     * @param {HTMLElement} source - El elemento que cambió.
+     * @param {HTMLElement} target - El elemento que será actualizado.
+     */
+    function syncValue(source, target) {
+        if (target) {
+            target.value = source.value;
+        }
+    }
+
+    /**
+     * Combina los valores de 'premovil' y 'movil' y los asigna a 'cellphone'.
+     */
+    function combineCellphone() {
+        const code = inputPreMovil ? inputPreMovil.value.trim() : '';
+        const number = inputMovil ? inputMovil.value.trim() : '';
+        
+        // Combina los valores. Puedes decidir si quieres un separador (ej: '-')
+        const combinedValue = code + number;
+
+        if (inputCellphoneTarget) {
+            inputCellphoneTarget.value = combinedValue;
+        }
+    }
+
+    // ===================================================
+    // 3. ASIGNACIÓN DE EVENTOS (PROCEDIMIENTO PRINCIPAL)
+    // ===================================================
+
+    // Asegura que el script se ejecute cuando el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- Sincronización de campos de Identificación ---
+
+        if (inputNacSource) {
+            inputNacSource.addEventListener('input', function() {
+                syncValue(inputNacSource, inputNacTarget);
+            });
+        }
+
+        if (inputNumSource) {
+            inputNumSource.addEventListener('input', function() {
+                syncValue(inputNumSource, inputNumTarget);
+            });
+        }
+        
+        // --- Sincronización de campos de Teléfono ---
+        
+        // El campo 'cellphone' se actualiza si cambia 'premovil' o 'movil'
+        if (inputPreMovil) {
+            inputPreMovil.addEventListener('input', combineCellphone);
+        }
+        
+        if (inputMovil) {
+            inputMovil.addEventListener('input', combineCellphone);
+        }
+
+        // Ejecutar las funciones una vez al cargar la página para sincronizar
+        // si los campos ya tienen valores (ej: si vienen de Blade/Livewire)
+        if (inputNacSource) syncValue(inputNacSource, inputNacTarget);
+        if (inputNumSource) syncValue(inputNumSource, inputNumTarget);
+        if (inputPreMovil || inputMovil) combineCellphone();
+
+    });

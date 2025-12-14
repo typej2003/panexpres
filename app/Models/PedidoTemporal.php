@@ -10,6 +10,7 @@ class PedidoTemporal extends Model
     use HasFactory;
 
     protected $fillable = [
+        'status',
         'nropedido',
         'reference',
         'comercio_id',
@@ -54,6 +55,16 @@ class PedidoTemporal extends Model
         'valoracionpedido',
         'valoraciondelivery',
     ];
+
+    public function getMonedaAttribute()
+    {
+        return ($this->currency == '1'?'Bs':'$');
+    }
+
+    public function getMonedaAttributeN()
+    {
+        return ($this->currency == '0'?'0':'1');
+    }
 
     public function comercio()
     {
