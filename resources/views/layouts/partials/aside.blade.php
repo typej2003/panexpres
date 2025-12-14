@@ -543,8 +543,8 @@
           <form method="POST" action="{{ route('logout') }}">
             @csrf
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
+              <i class="nav-icon fas fa-sign-out-alt text-white"></i>
+              <p class="text-white">
                 Salir
               </p>
             </a>

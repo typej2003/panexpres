@@ -8,11 +8,18 @@
                         {{ session('error_message') }}
                     </div>
                 @endif
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                        {{-- O si prefieres la sintaxis de Session::get() --}}
+                        {{-- {{ Session::get('error') }} --}}
+                    </div>
+                @endif
 
                 <form autocomplete="off" novalidate>
                     
                     {{-- Campos ocultos --}}
-                    <input id="currency" name="currency" type="hidden" wire:model.defer="currency">
+                    <input id="currency" name="currency" type="text" wire:model.defer="currency">
                     <input id="reference" name="reference" type="hidden" wire:model.defer="reference">
                     <input id="rifLetter" name="rifLetter" type="hidden" wire:model.defer="rifLetter">
                     <input id="rifNumber" name="rifNumber" type="hidden" wire:model.defer="rifNumber">

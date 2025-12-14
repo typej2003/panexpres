@@ -46,7 +46,7 @@ class Cart1 extends AdminComponent
     
     public function finalizarCompra()
     {        
-        dd('finalizar Compra');
+        
         $cart = new CartController;
         $contenido = $cart->contenido();
         $title = 'Compra';

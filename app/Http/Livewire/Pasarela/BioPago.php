@@ -82,6 +82,7 @@ class BioPago extends Component
         $Payment->idNumber= $this->identificationNumber; //Número de cédula
         $Payment->amount= $this->amount; //Monto a combrar, DECIMAL
 		$Payment->currency= $this->currency; //Moneda del pago, 0 - Bolivar Fuerte, 1 - Dolar
+		$Payment->currency= '1';
         $Payment->reference= $reference; //Código de referecia o factura
         $Payment->title= $this->title; //Titulo para el pago, Ej: Servicio de Cable
         $Payment->description= $this->description; //Descripción del pago, Ej: Abono mes de marzo 2017
@@ -154,8 +155,8 @@ class BioPago extends Component
         }
         else
         {
-			dd($response);
-            Session::flash('error_message', 'No se pudo procesar la solicitud debido a un error de servidor.');
+			
+            Session::flash('error', 'Error: ' . $response->responseCode . ', ' . $response->responseMessage);
 
             // Opción 2: Redirigir hacia atrás (a la página que enviaba el formulario)
             return redirect()->back();
