@@ -13,6 +13,7 @@
     <h4></h4>
 
     <div class="container">
+        <br>
         <iframe src="{{$urlPayment}}" id="iframePasarela" class="iframePasarela" frameborder="0"></iframe>
     </div>
 

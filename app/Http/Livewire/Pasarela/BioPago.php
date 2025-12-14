@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Pasarela;
 
+use App\Http\Controllers\Api\ApiProcessPaymentController;
+
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\PedidoTemporal;
@@ -14,7 +16,7 @@ class BioPago extends Component
     public $identificationNac = 'V';
     public $identificationNumber = '';
     public $email = '';
-    public $currency = 0;
+    public $currency = 1;
     public $reference;
     public $rifLetter = 'V'; 
     public $rifNumber = '';
@@ -50,11 +52,10 @@ class BioPago extends Component
 			$this->identificationNac = $this->pedidoTemporal->client->identificationNac;
 			$this->identificationNumber = $this->pedidoTemporal->client->identificationNumber;
 			$this->email  = $this->pedidoTemporal->client->email;
-			// $this->currency = $this->pedidoTemporal->getMonedaAttributeN();
-			$this->currency = 1;
+			$this->currency = $this->pedidoTemporal->getMonedaAttributeN();
 			$this->reference = $this->pedidoTemporal->nropedido;
-			$this->rifLetter  = $this->pedidoTemporal->client->identificationNac;
-			$this->rifNumber = $this->pedidoTemporal->client->identificationNumber;
+			$this->rifLetter  = '';
+			$this->rifNumber = '';
 			$this->title = 'Compra por Internet';
 			$this->description = 'Descripcion de la compra';
 			$this->cellphone1 = $this->pedidoTemporal->client->datosbasicos->cellphonecode . $this->pedidoTemporal->client->datosbasicos->cellphone;
@@ -80,10 +81,9 @@ class BioPago extends Component
 
 		$Payment->idLetter= $this->identificationNac; //Letra de la cédula - V, E o P
         $Payment->idNumber= $this->identificationNumber; //Número de cédula
-        $Payment->amount= $this->amount; //Monto a combrar, DECIMAL
+		$Payment->amount= $this->amount; //Monto a combrar, DECIMAL
 		$Payment->currency= $this->currency; //Moneda del pago, 0 - Bolivar Fuerte, 1 - Dolar
-		$Payment->currency= '1';
-        $Payment->reference= $reference; //Código de referecia o factura
+		$Payment->reference= $reference; //Código de referecia o factura
         $Payment->title= $this->title; //Titulo para el pago, Ej: Servicio de Cable
         $Payment->description= $this->description; //Descripción del pago, Ej: Abono mes de marzo 2017
         $Payment->email= $this->email;
@@ -91,9 +91,6 @@ class BioPago extends Component
 		$Payment->rifLetter= $this->rifLetter ?? ''; //Letra de la cédula - V, E o P
         $Payment->rifNumber= $this->rifNumber ?? ''; //Número de cédula
 
-		$Payment->rifLetter = 'V';
-		$Payment->rifNumber = '13053081';
-		
 		//$Payment->urlToReturn= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
 
 		$Payment->urlToReturn= "https://"."://".$_SERVER['HTTP_HOST'].'/ipg2-bdv-demo/success.php?token={ID}'; //URL de retrono al finalizar el pago
@@ -105,11 +102,9 @@ class BioPago extends Component
         //$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorio/{ID}";	
 
 		//usado para Mikrotik
-		$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorioMikrotik/{ID}";
+		$Payment->urlToReturn= "https://panexpres.com/pagosatisfactorioPanexpres/{ID}";
 
-        
-		
-		$demo = "SI";
+		//dd($Payment);
 
 		/*dd('
 			$Payment->idLetter= '.$Payment->idLetter.' 
@@ -126,8 +121,9 @@ class BioPago extends Component
 			$Payment->rifNumber= '.$Payment->rifNumber.' 
 		');*/
 
+		$demo = "NO";
 
-        if( $demo == "NO" ) {
+        if( $demo == "SI" ) {
             $PaymentProcess = new IpgBdv2 ("70527030","z0tTsYq3");
         } else {
              $PaymentProcess = new IpgBdv2 ("76669805","0Ih2wwzK");
@@ -204,6 +200,7 @@ class BioPago extends Component
         return view('livewire.pasarela.bio-pago');
     }
 }
+
 
 class IpgBdv2
 {

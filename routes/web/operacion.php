@@ -61,7 +61,7 @@ Route::get('/receiveBDV/{toke}', [WelcomeController::class, 'receiveBDV'])->name
 
 // extras
 
-Route::get('/pagosatisfactorio/{id}', function ( $id ) {
+Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
     $id_suc = $id;
     //$pasarela = Pasarela();
     $result = new ApiController();

@@ -19,7 +19,7 @@
                 <form autocomplete="off" novalidate>
                     
                     {{-- Campos ocultos --}}
-                    <input id="currency" name="currency" type="text" wire:model.defer="currency">
+                    <input id="currency" name="currency" type="hidden" wire:model.defer="currency">
                     <input id="reference" name="reference" type="hidden" wire:model.defer="reference">
                     <input id="rifLetter" name="rifLetter" type="hidden" wire:model.defer="rifLetter">
                     <input id="rifNumber" name="rifNumber" type="hidden" wire:model.defer="rifNumber">
