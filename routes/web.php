@@ -108,6 +108,10 @@ Route::get('/register1', function(){
     return view('auth.register1');
 });
 
+Route::get('/proximamente', function(){
+    return view('auth.proximamente');
+});
+
 Route::get('/registerDelivery', function(){
     return view('auth.registerDelivery');
 });

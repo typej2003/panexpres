@@ -270,7 +270,7 @@
                     </a>
                     <div class="dropdown-content profile-menu">
                         <a href="/login">Acceso</a>
-                        <a href="/register">Registro</a>
+                        <a href="/proximamente">Registro</a>
                     </div>
                 @endauth
             </div>
