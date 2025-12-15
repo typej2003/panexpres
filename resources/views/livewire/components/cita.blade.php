@@ -15,7 +15,13 @@
 
                 <div class="card shadow">
                     <div class="card-body p-4 p-md-5">
-                        
+                        @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         <form action="{{ route('cita.guardar') }}" method="POST">
                             @csrf
                             
@@ -38,10 +44,10 @@
                                 <label for="negocio" class="form-label">Tipo de Aliado/Negocio</label>
                                 <select class="form-select" id="negocio" name="tipo_negocio" required>
                                     <option value="" disabled selected>Selecciona una opción</option>
-                                    <option value="Distribuidor">Distribuidor</option>
                                     <option value="Fabricante">Fabricante/Marca</option>
-                                    <option value="Minorista">Minorista</option>
-                                    <option value="Otro">Otro</option>
+                                    <option value="aliado">Vendedor</option>
+                                    <option value="promotor">Promotor</option>
+                                    <option value="delivery">Delivery</option>
                                 </select>
                             </div>
                             

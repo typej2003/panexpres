@@ -12,6 +12,7 @@ use App\Http\Livewire\Components\Nosotros;
 
 use App\Http\Livewire\Components\Contacto;
 use App\Http\Livewire\Components\Cita;
+use App\Http\Livewire\Components\FormularioCita;
 
 Route::get('/aliados', function (Request $request) {
     // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
@@ -120,4 +121,4 @@ Route::get('/agendar', function (Request $request) {
 
 
 // Ejemplo en routes/web.php
-Route::post('/cita-guardar', [Cita::class, 'store'])->name('cita.guardar');
+Route::post('/cita-guardar', [FormularioCita::class, 'store'])->name('cita.guardar');
