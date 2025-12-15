@@ -66,8 +66,6 @@
 
         <div class="navbar-actions">
 
-            <button wire:click.prevent="clearCar" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Limpiar</button>
-            
             <div class="action-dropdown profile-dropdown">
                 @auth
 
