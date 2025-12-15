@@ -164,7 +164,7 @@
             <form action="{{ route('search') }}" method="get" id="Pan de Jamón">
                 @csrf
                 <input type="hidden" name="words" value="Pan de Jamón">
-                <a class="menu-options-wrapper" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">PAN DE JAMÓN 1</a>
+                <a class="menu-options-wrapper" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">PAN DE JAMÓN</a>
             </form>
             <form action="searchM" method="get" id="Ofertas">
                 @csrf
