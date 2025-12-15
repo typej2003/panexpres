@@ -57,6 +57,25 @@
                                     </tr>
                                 </thead>
                                 <tbody wire:loading.class="text-muted">
+                                    @if($pedidoTemporal->confirmed == 0)
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>{{$pedidoTemporal->getConfirmed()}}</td>
+                                        <td><a href="/detallespedido/{{ $pedidoTemporal->nropedido }}">{{ $pedidoTemporal->nropedido }}</a></td>
+                                        <td>{{ $pedidoTemporal->reference }}</td>
+                                        <td>{{ $pedidoTemporal->client->identificationNumber }}</td>
+                                        <td>{{ $pedidoTemporal->client->name }}</td>
+                                        <td>{{ $pedidoTemporal->metodo }}</td>
+                                        <td>{{ $pedidoTemporal->coste }} {{ $currencyValue }}</td>
+                                        <td>{{ $pedidoTemporal->metodoentrega }}</td>
+                                        <td>{{ $pedidoTemporal->created_at ?? 'N/A' }}</td>
+                                        <td class="">
+                                            <a href="" wire:click.prevent="irCart({{ $pedidoTemporal }})">
+                                                Ir a <i class="fas fa-shopping-cart cart-icon-list"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endif
                                     @foreach ($pedidos as $index => $pedido)
                                     <tr>
                                         <th scope="row">{{ $pedidos->firstItem() + $index }}</th>
@@ -86,26 +105,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                    @if($pedidoTemporal->confirmed == 0)
-                                    <tr>
-                                        <th scope="row"></th>
-                                        <td>{{$pedidoTemporal->getConfirmed()}}</td>
-                                        <td><a href="/detallespedido/{{ $pedidoTemporal->nropedido }}">{{ $pedidoTemporal->nropedido }}</a></td>
-                                        <td>{{ $pedidoTemporal->reference }}</td>
-                                        <td>{{ $pedidoTemporal->client->identificationNumber }}</td>
-                                        <td>{{ $pedidoTemporal->client->name }}</td>
-                                        <td>{{ $pedidoTemporal->metodo }}</td>
-                                        <td>{{ $pedidoTemporal->coste }} {{ $currencyValue }}</td>
-                                        <td>{{ $pedidoTemporal->metodoentrega }}</td>
-                                        <td>{{ $pedidoTemporal->created_at ?? 'N/A' }}</td>
-                                        <td class="">
-                                            <a href="" wire:click.prevent="irCart({{ $pedidoTemporal }})">
-                                                Ir a <i class="fas fa-shopping-cart cart-icon-list"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endif
-
                                     
                                 </tbody>
                             </table>
