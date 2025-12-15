@@ -221,7 +221,9 @@ class BioPago extends Component
     
         if($datos->success == 'true')
         {
-          $reference = $datos->reference;
+          $reference = explode('/', $datos->reference)[0];
+
+		  dd($reference);
     
           //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
     
@@ -269,9 +271,11 @@ class BioPago extends Component
 
 			\Cart::clear();
 
-            return $token;
-
+            return ['status' => false, 'token' =>$token];
         }
+		else{
+			return ['status' => false];
+		}
     }
 }
 

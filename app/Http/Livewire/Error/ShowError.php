@@ -24,6 +24,9 @@ class ShowError extends Component
             case '12':
                 $this->description = "Pedido no pertenece a este Comercio";
                 break;
+            case '20':
+                $this->description = "Fallo al registrar transaccion";
+                break;
         }
     }
 
