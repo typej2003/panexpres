@@ -223,9 +223,7 @@ class BioPago extends Component
         {
           $reference = explode('/', $datos->reference)[0];
 
-		  dd($reference);
-    
-          //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
+		  //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
     
           //$pedido = Pedido::find($pedido_id);
 		  $pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
