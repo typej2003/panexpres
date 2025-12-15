@@ -357,6 +357,21 @@
             carouselContainer.addEventListener('mouseleave', startAutoplay);
             
             startAutoplay(); 
+
+            document.addEventListener("visibilitychange", function() {
+                if (document.visibilityState === 'visible') {
+                    // 1. Si usas librerías (ej. Slick o Swiper):
+                    // swiper.update(); 
+                    // O si es Slick:
+                    // $('.tu-carrusel').slick('slickGoTo', 0, false); 
+                    
+                    // 2. Si es casero: Reiniciar el temporizador del carrusel
+                    startAutoplay();
+                }
+            });
+
         });
+
+
     </script>
 </div>
