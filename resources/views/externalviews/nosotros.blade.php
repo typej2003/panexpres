@@ -34,6 +34,7 @@ contacto<!DOCTYPE html>
         
         <div class="my-2"></div>    
         <section class="container-fluid">
+            @livewire('components.nosotros')
             <div class="my-2"></div>                    
             @if($words == '')    
                 <div class="my-2"></div>
