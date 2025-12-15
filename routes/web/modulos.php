@@ -11,6 +11,7 @@ use App\Http\Livewire\Components\VendeDesdeAca;
 use App\Http\Livewire\Components\Nosotros;
 
 use App\Http\Livewire\Components\Contacto;
+use App\Http\Livewire\Components\Cita;
 
 Route::get('/aliados', function (Request $request) {
     // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
@@ -36,9 +37,7 @@ Route::get('/aliados', function (Request $request) {
     ]);
 })->name('aliados');
 
-Route::get('/vendedesdeaca', function(){
-    return view('externalviews.vendedesdeaca', ['parametro1' => '', 'parametro2'  => '']);
-})->name('vendedesdeaca');
+
 Route::get('/vendedesdeaca', function (Request $request) {
     // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
     $in_cellphonecontact = $request->input('in_cellphonecontact');
@@ -47,9 +46,6 @@ Route::get('/vendedesdeaca', function (Request $request) {
     $in_marcasproductos  = $request->input('in_marcasproductos');
     $words               = $request->input('words');
     
-    // **NOTA IMPORTANTE:** El campo 'comercio_id' NO está en tu formulario. 
-    // Si quieres usarlo, deberás obtenerlo de otra fuente (ej. sesión, base de datos). 
-    // Por ahora, lo dejamos como null o lo defines.
     $comercio_id         = null; // O $request->input('comercio_id'); si lo añades al form
     
     // 2. Pasar los parámetros a la vista
@@ -63,10 +59,65 @@ Route::get('/vendedesdeaca', function (Request $request) {
     ]);
 })->name('vendedesdeaca');
 
-Route::get('/nosotros', function(){
-    return view('externalviews.nosotros', ['parametro1' => '', 'parametro2'  => '']);
+Route::get('/nosotros', function (Request $request) {    
+    // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
+    $in_cellphonecontact = $request->input('in_cellphonecontact');
+
+    $contactcellphone = $request->input('contactcellphone');
+    $msgcontact = $request->input('msgcontact');
+    $in_marcasproductos  = $request->input('in_marcasproductos');
+    $words               = $request->input('words');    
+    $comercio_id         = null; // O $request->input('comercio_id'); si lo añades al form    
+    // 2. Pasar los parámetros a la vista
+    return view('externalviews.nosotros', [
+        'in_cellphonecontact' => $in_cellphonecontact,
+        'contactcellphone' => $contactcellphone,
+        'msgcontact' => $msgcontact,
+        'in_marcasproductos'  => $in_marcasproductos,
+        'words'               => $words,
+        'comercio_id'         => $comercio_id // Si tienes este dato de otra fuente
+    ]);
 })->name('nosotros');
 
-Route::get('/contacto', function(){
-    return view('externalviews.contacto', ['parametro1' => '', 'parametro2'  => '']);
+Route::get('/contacto', function (Request $request) {
+    // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
+    $in_cellphonecontact = $request->input('in_cellphonecontact');
+    $contactcellphone = $request->input('contactcellphone');
+    $msgcontact = $request->input('msgcontact');
+    $in_marcasproductos  = $request->input('in_marcasproductos');
+    $words               = $request->input('words');    
+    $comercio_id         = null; // O $request->input('comercio_id'); si lo añades al form    
+    // 2. Pasar los parámetros a la vista
+    return view('externalviews.contacto', [
+        'in_cellphonecontact' => $in_cellphonecontact,
+        'contactcellphone' => $contactcellphone,
+        'msgcontact' => $msgcontact,
+        'in_marcasproductos'  => $in_marcasproductos,
+        'words'               => $words,
+        'comercio_id'         => $comercio_id // Si tienes este dato de otra fuente
+    ]);
 })->name('contacto');
+
+Route::get('/agendar', function (Request $request) {
+    // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
+    $in_cellphonecontact = $request->input('in_cellphonecontact');
+    $contactcellphone = $request->input('contactcellphone');
+    $msgcontact = $request->input('msgcontact');
+    $in_marcasproductos  = $request->input('in_marcasproductos');
+    $words               = $request->input('words');    
+    $comercio_id         = null; // O $request->input('comercio_id'); si lo añades al form    
+    // 2. Pasar los parámetros a la vista
+    return view('externalviews.cita', [
+        'in_cellphonecontact' => $in_cellphonecontact,
+        'contactcellphone' => $contactcellphone,
+        'msgcontact' => $msgcontact,
+        'in_marcasproductos'  => $in_marcasproductos,
+        'words'               => $words,
+        'comercio_id'         => $comercio_id // Si tienes este dato de otra fuente
+    ]);
+})->name('agendar.cita');
+
+
+
+// Ejemplo en routes/web.php
+Route::post('/cita-guardar', [Cita::class, 'store'])->name('cita.guardar');
