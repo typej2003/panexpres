@@ -26,7 +26,7 @@ class CartController extends Controller
     ];
 
     public function __construct() { 
-        $this->conf = Setting::where('id', 1)->first();
+        //$this->conf = Setting::where('id', 1)->first();
     }
     
     

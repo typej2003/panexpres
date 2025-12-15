@@ -425,6 +425,7 @@ class Cart extends AdminComponent
                         ));
         }
 
+        \Cart::clear();
         //$cart->onlyClear();
         // return redirect()->route('checkout.shipping');
         

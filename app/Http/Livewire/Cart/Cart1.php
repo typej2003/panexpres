@@ -63,7 +63,26 @@ class Cart1 extends AdminComponent
             $descripcion .= ' - '. $elemento->price;
         }
         
-        $pedidoref = auth()->user()->identificationNumber . '-' . str_replace("-", "", date("Y-m-d")) . str_replace(":", "", date("H:i:s"));
+        $pedidoref = '';
+        //Revisar si existe pedido sin procesar y si el ultimo es igual al del carrito
+        $pedidoExistente = PedidoTemporal::where('user_id', auth()->user()->id)->latest()->first();
+
+        if($pedidoExistente && $pedidoExistente->status=='0'){
+            $pedidoref = $pedidoExistente->nropedido;
+            //la borro
+            PedidoDetallesTemporal::where('pedido_id', $pedidoExistente->id)
+            // 2. Ejecuta el método delete() en el constructor de consultas.
+            ->delete();
+            $pedidoExistente->delete();
+            
+        }else{
+            //dd(' el pedido fue registrado');
+        }
+        
+        if($pedidoref == '')
+        {
+            $pedidoref = auth()->user()->identificationNumber . '-' . str_replace("-", "", date("Y-m-d")) . str_replace(":", "", date("H:i:s"));
+        }
 
         $pedido = PedidoTemporal::create([
             'nropedido' => $pedidoref,
