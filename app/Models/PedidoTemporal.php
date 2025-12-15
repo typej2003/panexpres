@@ -75,4 +75,20 @@ class PedidoTemporal extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    public function getConfirmed()
+    {
+        switch ($this->confirmed) {
+            case '0':
+                return 'NO CONFIRMADO';
+                break;
+            case '1':
+                return 'CONFIRMADO';
+                break;
+            case '2':
+                return 'CONFIRMACION RECHAZADA';
+                break;
+            
+        }
+    }
 }

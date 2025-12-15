@@ -60,7 +60,7 @@
                                     @foreach ($pedidos as $index => $pedido)
                                     <tr>
                                         <th scope="row">{{ $pedidos->firstItem() + $index }}</th>
-                                        <td>{{$pedido->confirmed}}</td>
+                                        <td>{{$pedido->getConfirmed()}}</td>
                                         <td><a href="/detallespedido/{{ $pedido->nropedido }}">{{ $pedido->nropedido }}</a></td>
                                         <td>{{ $pedido->reference }}</td>
                                         <td>{{ $pedido->client->identificationNumber }}</td>
@@ -89,7 +89,7 @@
                                     @if($pedidoTemporal->confirmed == 0)
                                     <tr>
                                         <th scope="row"></th>
-                                        <td>NO EFECTUADO</td>
+                                        <td>{{$pedidoTemporal->getConfirmed()}}</td>
                                         <td><a href="/detallespedido/{{ $pedidoTemporal->nropedido }}">{{ $pedidoTemporal->nropedido }}</a></td>
                                         <td>{{ $pedidoTemporal->reference }}</td>
                                         <td>{{ $pedidoTemporal->client->identificationNumber }}</td>
