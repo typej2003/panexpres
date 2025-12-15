@@ -69,7 +69,7 @@ Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
     
     $result->registrarReferencia($id);
 
-    if($result->status == false)
+    if($result['status'] == false)
     {
         return view('livewire.error', ['error' => 20, '']);
     }

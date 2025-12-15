@@ -250,6 +250,7 @@ class BioPago extends Component
           ]);
     
            $pedidotemporal->update([
+			'status' => 1,
 			'reference' => $datos->transactionId,
 			'metodo' => 'tarjeta',
 			'confirmed' => 1,
