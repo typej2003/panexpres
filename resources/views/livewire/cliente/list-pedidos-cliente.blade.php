@@ -86,7 +86,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                    @if($pedidoTemporal)
+                                    @if($pedidoTemporal->confirmed == 0)
                                     <tr>
                                         <th scope="row"></th>
                                         <td>NO EFECTUADO</td>
