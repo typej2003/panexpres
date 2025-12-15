@@ -2,10 +2,10 @@
     <div class="action-dropdown cart-dropdown">
         <a href="#" class="action-item cart dropdown-trigger">
     <i class="fas fa-shopping-cart cart-icon"></i>
-    <span class="cart-count">{{count(\Cart::getContent())}}</span>
+    <span class="cart-count">{{\Cart::getTotal()}}</span>
 </a>
 <div class="dropdown-content cart-summary">
-    @if(count(\Cart::getContent()) > 0)
+    @if(\Cart::getTotal() > 0)
         @foreach(\Cart::getContent() as $item)
             <p class="cart-item">{{$item->quantity}} x {{$item->name}}</p>
             <!-- <li class="list-group-item">

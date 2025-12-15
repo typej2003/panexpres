@@ -14,6 +14,7 @@ class NavbarExpres extends Component
     public $comercio;
     public $comercio_id;
 
+    
     public function mount($comercioId = 1){
 
         $this->comercio_id = $comercioId;
@@ -55,6 +56,15 @@ class NavbarExpres extends Component
         
     }
 
+    public function clearCar()
+    {
+        
+        
+        $cart = new CartController;
+
+        $cart->onlyClear();
+
+    }
 
     public function cartRuta()
     {

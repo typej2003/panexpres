@@ -28,7 +28,6 @@ use App\Models\Comercio;
 use App\Models\Pedido;
 use App\Models\Transaccion;
 use App\Http\Controllers\CartController;
-use Cart;
 
 // Route::get('/pasarela/{nropedido}/{comercioId}', Pasarela::class)->name('pasarela')->middleware('auth');
 Route::get('/pasarela', Pasarela::class)->name('pasarela')->middleware('auth');
@@ -70,11 +69,11 @@ Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
     
     $result->registrarReferencia($id);
 
-    $cart = new CartController;
-
-    $cart->onlyClear();
-
     \Cart::clear();
+
+    // $cart = new CartController;
+
+    // $cart->onlyClear();
 
     $transaccion = Transaccion::where('paymentId', $id_suc)->first();
 
@@ -82,11 +81,9 @@ Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
 
     $nropedido = $transaccion->nropedido;
 
-    $cart = new CartController;
+    // $cart = new CartController;
 
-    $cart->onlyClear();
-
-    \Cart::clear();
+    // $cart->onlyClear();
 
     return view('externalviews.pagosatisfactorio', compact('id_suc', 'comercio', 'nropedido') );
 });

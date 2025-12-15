@@ -22,11 +22,13 @@ class CartController extends Controller
     // 1. Define los listeners que tu componente escuchará
     protected $listeners = [
         'addProductToCart' => 'handleAddToCart',
+        'clearCart' => 'clearCart',
     ];
 
     public function __construct() { 
         $this->conf = Setting::where('id', 1)->first();
     }
+    
     
     //
     public function vercart()  
@@ -72,7 +74,6 @@ class CartController extends Controller
 
     public function add(Request $request )
     {
-        dd($request);
         $product = Product::find($request->product_id);
         
         \Cart::add(array(
