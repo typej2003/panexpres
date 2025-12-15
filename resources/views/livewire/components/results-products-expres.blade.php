@@ -94,7 +94,7 @@
             margin-bottom: 0;
         }
 
-        .christmas-text {
+        .christmas-text1 {
             font-family: 'Great Vibes', cursive; /* Fuente elegante */
             font-size: 1.8rem !important;
             color: #910101ff; /* Color principal rojo */
@@ -247,7 +247,7 @@
                 }
             }
             
-            .imgProduct {
+            .imgProduct1 {
                 width: 250px; 
                 height: auto; 
                 box-shadow: 

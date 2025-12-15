@@ -8,7 +8,7 @@
                  style="max-width: 60%;">
         </div>
         
-        <p class="w-75 mx-auto">
+        <p class="h4 w-75 mx-auto fw-bold">
             ¡PanExpres: La Oportunidad de Vender y Crecer Juntos!    
         </p>
         <p class="w-75 mx-auto">

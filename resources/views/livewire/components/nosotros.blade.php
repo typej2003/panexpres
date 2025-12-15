@@ -8,13 +8,13 @@
                  style="max-width: 60%;">
         </div>        
         
-        <p class="h4 w-75 mx-auto fw-bold">
+        <p class="h4 w-75 mx-auto fw-bold mt-5">
             Bienvenido a PanExprés
         </p>
         <p class="w-75 mx-auto">
             PanExprés es un innovador portal diseñado especialmente para conectar panaderías, negocios afines y sus clientes. En nuestro entorno, priorizamos la seguridad y la comodidad durante todo el proceso de compra, asegurando una experiencia satisfactoria para todos nuestros aliados y compradores.
         </p>
-        <p class="w-75 mx-auto">
+        <p class="h4 w-75 mx-auto fw-bold mt-5">
             Nuestra Propuesta de Valor
         </p>
         <p class="w-75 mx-auto fw-bold">
@@ -24,16 +24,16 @@
             PanExprés no es solo un mercado en línea, es una plataforma que ha integrado su propio centro de distribución. Esto nos permite garantizar la seguridad en cada etapa de la transacción, desde que un producto es seleccionado hasta que llega a las manos del cliente.
         </p>
 
-        <p class="w-75 mx-auto">
+        <p class="w-75 mx-auto fw-bold">
             Ventajas de Nuestro Centro de Distribución
         </p>
         <p class="w-75 mx-auto">
             Entrega Unificada: Ofrecemos a nuestros usuarios la posibilidad de realizar múltiples compras de diferentes proveedores y recibirlas en un solo envío. Esto no solo ahorra tiempo, sino que también reduce costos de envío para nuestros clientes.
         </p>
-        <p class="w-75 mx-auto">
+        <p class="w-75 mx-auto mt-5">
             Cobertura Local: Nuestro centro de distribución está estratégicamente ubicado para servir eficientemente a la zona de Caracas. Esto asegura que los productos lleguen frescos y a tiempo a su destino.
         </p>
-        <p class="w-75 mx-auto">
+        <p class="h4 w-75 mx-auto fw-bold">
             Beneficios para Aliados y Clientes
         </p>
         <p class="w-75 mx-auto fw-bold">
