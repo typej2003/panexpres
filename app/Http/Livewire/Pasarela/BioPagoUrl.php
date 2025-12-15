@@ -9,6 +9,14 @@ class BioPagoUrl extends Component
 {
     public $response;
     public $urlPayment;
+    protected $listeners = [
+        'clearCartJs' => 'clearCart',
+    ];
+
+    public function clearCart()
+    {
+        \Cart::clear();
+    }
 
     public function mount(Request $request)
     {

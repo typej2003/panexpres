@@ -1,5 +1,4 @@
 <div>
-<div>
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -51,6 +50,7 @@
                 </div>
             </div>
             @endif
+            <div class="row">
             <table class="table table-hover table-bordered table-responsive">
                 <thead>
                     <tr>
@@ -78,6 +78,7 @@
                     @endforelse
                 </tbody>
             </table>
+            </div>
         <div>            
     </div>
 </div>

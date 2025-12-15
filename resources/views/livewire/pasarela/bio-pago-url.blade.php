@@ -29,6 +29,11 @@
                 // Asignar la altura del contenido al iframe
                 iframe.style.height = contentHeight + 'px';
             };
+
+            // Función para manejar mensajes recibidos del iframe
+            window.addEventListener('message', function(event) {
+                Livewire.emit('clearCartJs');
+            });
         });
     </script>
 </div>
