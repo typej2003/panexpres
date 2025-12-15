@@ -20,6 +20,8 @@ class BioPagoUrl extends Component
 
     public function mount(Request $request)
     {
+        
+
         $this->response = $request->input('response');
 
         $this->urlPayment = $request->input('urlPayment');
