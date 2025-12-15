@@ -237,7 +237,7 @@
                         <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 45px; width: 45px;">
                         <span class="profile-text">{{ auth()->user()->name }}</span>
                     </a>
-                    @if(auth()->user()->role == 'admin')
+                    @if(auth()->user()->role == 'admin' || auth()->user()->role == 'root')
                         <div class="dropdown-content profile-menu">
                             <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
                             <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>

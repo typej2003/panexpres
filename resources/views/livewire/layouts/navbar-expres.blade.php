@@ -18,14 +18,44 @@
                 <input type="hidden" name="words" value="Ofertas">
                 <a class="menu-item sub-title" onclick="sendForm('Ofertas')" style="cursor:pointer;">OFERTAS</a>
             </form>
-            <a href="#" class="menu-item sub-title">ALIADOS</a>
+            
+            <form action="{{ route('aliados') }}" method="get" id="aliados">
+                {{-- @csrf se elimina aquí ya que no es necesario para GET --}}
+                
+                <input type="hidden" name="contactcellphone" value="04141869016">
+                <input type="hidden" name="in_cellphonecontact" value="1">
+                
+                {{-- Dejar solo una instancia de cada campo --}}
+                <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                <input type="hidden" name="in_marcasproductos" value="1">
+                <input type="hidden" name="words" value="">
+                
+                {{-- El valor 'msgcontact' que tenías fuera de un campo de input no es enviado --}}
+                
+                <a class="menu-item" onclick="sendFormLink('aliados')" style="cursor:pointer;">ALIADOS</a>
+            </form>
         </div>
 
         <div class="mobile-menu-section">
             <h4 class="menu-title">SOBRE NOSOTROS</h4>
             <hr class="menu-divider">
-            <a href="#" class="menu-item">NOSOTROS</a>
-            <a href="#" class="menu-item">CONTACTO</a>
+            <form action="{{ route('nosotros') }}" method="get" id="nosotros">
+                <input type="hidden" name="contactcellphone" value="04141869016">
+                <input type="hidden" name="in_cellphonecontact" value="1">
+                <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                <input type="hidden" name="in_marcasproductos" value="1">
+                <input type="hidden" name="words" value="">
+                <a class="menu-item" onclick="sendFormLink('nosotros')" style="cursor:pointer;">NOSOTROS</a>
+            </form>
+            <form action="{{ route('contacto') }}" method="get" id="contacto">
+                <input type="hidden" name="contactcellphone" value="04141869016">
+                <input type="hidden" name="in_cellphonecontact" value="1">
+                <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                <input type="hidden" name="in_marcasproductos" value="1">
+                <input type="hidden" name="words" value="">
+                <a class="menu-item" onclick="sendFormLink('contacto')" style="cursor:pointer;">CONTÁCTO</a>
+            </form>
+
             <a href="#" class="menu-item">SOPORTE EN LÍNEA</a>
         </div>
         
@@ -61,6 +91,14 @@
             {
                 let formulario = document.getElementById(form)
                 formulario.submit();
+            }
+        </script>
+
+        <script>
+            function sendFormLink(formLink)
+            {
+                let formularioLink = document.getElementById(formLink)
+                formularioLink.submit(); // Esto envía los datos como: /aliados?contactcellphone=...&in_cellphonecontact=...
             }
         </script>
 
@@ -134,8 +172,26 @@
                 <input type="hidden" name="words" value="Ofertas">
                 <a class="menu-options-wrapper" onclick="sendForm('Ofertas')" style="cursor:pointer;">OFERTAS</a>
             </form>
-            <a href="#">VENDE DESDE ACÁ</a>
-            <a href="#">ALIADOS</a>
+
+            <form action="{{ route('vendedesdeaca') }}" method="get" id="vendedesdeaca">
+                <input type="hidden" name="contactcellphone" value="04141869016">
+                <input type="hidden" name="in_cellphonecontact" value="1">
+                <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                <input type="hidden" name="in_marcasproductos" value="1">
+                <input type="hidden" name="words" value="">
+                <a class="menu-options-wrapper" onclick="sendFormLink('vendedesdeaca')" style="cursor:pointer;">VENDE DESDE ACÁ</a>
+            </form>
+
+            <form action="{{ route('aliados') }}" method="get" id="aliados">
+                @csrf
+                <input type="hidden" name="contactcellphone" value="04141869016">
+                <input type="hidden" name="in_cellphonecontact" value="1">
+                <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                <input type="hidden" name="in_marcasproductos" value="1">
+                <input type="hidden" name="words" value="">                
+                <a class="menu-options-wrapper" onclick="sendFormLink('aliados')" style="cursor:pointer;">ALIADOS</a>
+            </form>
+            
         </div>
 
         <div class="currency-dropdown desktop-currency-right" wire:ignore>

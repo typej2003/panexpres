@@ -16,8 +16,26 @@
             <div class="footer-col">
                 <h4 class="footer-title">Acerca de</h4>
                 <ul>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Contáctos</a></li>
+                    <li>
+                        <form action="{{ route('nosotros') }}" method="get" id="nosotros">
+                            <input type="hidden" name="contactcellphone" value="04141869016">
+                            <input type="hidden" name="in_cellphonecontact" value="1">
+                            <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                            <input type="hidden" name="in_marcasproductos" value="1">
+                            <input type="hidden" name="words" value="">
+                            <a class="menu-item" onclick="sendFormLink('nosotros')" style="cursor:pointer;">Nosotros</a>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="{{ route('contacto') }}" method="get" id="contacto">
+                            <input type="hidden" name="contactcellphone" value="04141869016">
+                            <input type="hidden" name="in_cellphonecontact" value="1">
+                            <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                            <input type="hidden" name="in_marcasproductos" value="1">
+                            <input type="hidden" name="words" value="">
+                            <a class="menu-item" onclick="sendFormLink('contacto')" style="cursor:pointer;">Contáctos</a>
+                        </form>
+                    </li>
                     <li><a href="#">Política de Privacidad</a></li>
                     <li><a href="#">Términos y Condiciones</a></li>
                 </ul>
@@ -26,10 +44,42 @@
             <div class="footer-col">
                 <h4 class="footer-title">Categorías</h4>
                 <ul>
-                    <li><a href="#">Aliados</a></li>
-                    <li><a href="#">Pan de Jamón</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Vende con Nosotros</a></li>
+                    <li>
+                        <form action="{{ route('aliados') }}" method="get" id="aliados">
+                            @csrf
+                            <input type="hidden" name="contactcellphone" value="04141869016">
+                            <input type="hidden" name="in_cellphonecontact" value="1">
+                            <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                            <input type="hidden" name="in_marcasproductos" value="1">
+                            <input type="hidden" name="words" value="">                
+                            <a class="" onclick="sendFormLink('aliados')" style="cursor:pointer;">Aliados</a>
+                        </form>
+                        
+                    </li>
+                    <li>
+                        <form action="searchM" method="get" id="Pan de Jamón">
+                            @csrf
+                            <input type="hidden" name="words" value="Pan de Jamón">
+                            <a class="" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">Pan de Jamón</a>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="searchM" method="get" id="Ofertas">
+                            @csrf
+                            <input type="hidden" name="words" value="Ofertas">
+                            <a class="" onclick="sendForm('Ofertas')" style="cursor:pointer;">Ofertas</a>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="{{ route('vendedesdeaca') }}" method="get" id="vendedesdeaca">
+                            <input type="hidden" name="contactcellphone" value="04141869016">
+                            <input type="hidden" name="in_cellphonecontact" value="1">
+                            <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                            <input type="hidden" name="in_marcasproductos" value="1">
+                            <input type="hidden" name="words" value="">
+                            <a class="" onclick="sendFormLink('vendedesdeaca')" style="cursor:pointer;">Vende desde Acá</a>
+                        </form>
+                    </li>
                 </ul>
             </div>
 
