@@ -8,12 +8,12 @@
         <div class="mobile-menu-section">
             <h4 class="menu-title main-title">CATEGORÍAS</h4>
             <hr class="menu-divider">
-            <form action="searchM" method="get" id="Pan de Jamón">
+            <form action="{{ route('search') }}" method="get" id="Pan de Jamón">
                 @csrf
                 <input type="hidden" name="words" value="Pan de Jamón">
                 <a class="menu-item sub-title" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">PAN DE JAMÓN</a>
             </form>
-            <form action="searchM" method="get" id="Ofertas">
+            <form action="{{ route('search') }}" method="get" id="Ofertas">
                 @csrf
                 <input type="hidden" name="words" value="Ofertas">
                 <a class="menu-item sub-title" onclick="sendForm('Ofertas')" style="cursor:pointer;">OFERTAS</a>
@@ -126,7 +126,6 @@
                     @endif
                     @if(auth()->user()->role == 'cliente')
                         <div class="dropdown-content profile-menu">                            
-                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
                             <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>
                             <a class="dropdown-item d-none" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Mis Listas de Deseos</a>
                             <a class="dropdown-item" href="{{ route('listPedidosCliente') }}" x-ref="profileLink">Mis Pedidos</a>
@@ -162,10 +161,10 @@
             <span>MENÚ</span>
         </a>
         <div class="menu-options-wrapper">
-            <form action="searchM" method="get" id="Pan de Jamón">
+            <form action="{{ route('search') }}" method="get" id="Pan de Jamón">
                 @csrf
                 <input type="hidden" name="words" value="Pan de Jamón">
-                <a class="menu-options-wrapper" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">PAN DE JAMÓN</a>
+                <a class="menu-options-wrapper" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">PAN DE JAMÓN 1</a>
             </form>
             <form action="searchM" method="get" id="Ofertas">
                 @csrf

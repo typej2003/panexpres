@@ -62,9 +62,6 @@ class ShowProductsExpres extends AdminComponent
                 'cartCollection' => $cartCollection, 
                 'words' => null,
                 'comercioId' => $this->comercio_id, 
-                'manufacturer_id' => 0,
-                'modelo_id' => 0,
-                'motor_id' => 0,
             ]);
         }else{
             return redirect()->route('cartOff',[
@@ -72,9 +69,6 @@ class ShowProductsExpres extends AdminComponent
                 'cartCollection' => $cartCollection, 
                 'words' => null,
                 'comercioId' => $this->comercio_id, 
-                'manufacturer_id' => 0,
-                'modelo_id' => 0,
-                'motor_id' => 0,
             ]);
         }
 

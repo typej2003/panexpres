@@ -12,46 +12,62 @@
 
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/footer_expres.css">
-    
-    
+        
     @stack('styles')
     <livewire:styles />
 
 </head>
     
-    <body class="hold-transition sidebar-mini {{ setting('sidebar_collapse') ? 'sidebar-collapse' : '' }}">
+    <style>
+    /* CSS para eliminar el espacio vacío cuando no hay barra lateral */
+    .no-sidebar .content-wrapper, 
+    .no-sidebar .main-footer {
+        /* El !important es a menudo necesario para sobrescribir las reglas 
+        de margin-left de AdminLTE/Bootstrap */
+        margin-left: 0 !important; 
+    }
+    
+</style>
+@php
+    // Define si el usuario es un rol que requiere la barra lateral
+    $hasSidebar = Auth::check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'root');
+    
+    // Si NO tiene barra lateral, agregamos la clase que elimina el margen izquierdo
+    $customBodyClass = $hasSidebar ? '' : 'no-sidebar';
+@endphp
+    
+<body class="hold-transition sidebar-mini {{ setting('sidebar_collapse') ? 'sidebar-collapse' : '' }} {{ $customBodyClass }}">
     <div class="wrapper">
+    
     @auth
-        @livewire('layouts.navbar-in-expres')
-         <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        @include('layouts.partials.aside')
-
-        <!-- Content Wrapper. Contains page content -->
+        @if(auth()->user()->role=='cliente')
+            <link rel="stylesheet" href="/css/styles_expres.css">
+            @livewire('layouts.navbar-expres')
+            <script src="/js/script_expres.js"></script>
+        @else
+            @livewire('layouts.navbar-in-expres')
+        @endif
+        @if ($hasSidebar)
+            @include('layouts.partials.aside')
+        @endif
         <div class="content-wrapper">
             {{ $slot }}
         </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
+        @if ($hasSidebar)
+            <aside class="control-sidebar control-sidebar-dark">
+                <div class="p-3">
+                    <h5>Title</h5>
+                    <p>Sidebar content</p>
+                </div>
+            </aside>
+            @endif
         
         @livewire('layouts.footer-expres')
-    </div>
-    </body>
 
-    <!-- ./wrapper -->
+    </div>
     @endauth
+    
+    </body>
     
 
 </html>
