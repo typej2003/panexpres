@@ -60,8 +60,6 @@
                                                 <i class="fa fa-arrow-down {{ $sortColumnName === 'reference' && $sortDirection === 'desc' ? '' : 'text-muted' }}"></i>
                                             </span>
                                         </th>
-                                        <th scope="col">Cédula</th>
-                                        <th scope="col">Cliente</th>
                                         <th scope="col">Método de Pago</th>
                                         <th scope="col">Costo</th>
                                         <th scope="col">Método de Entrega</th>
@@ -76,8 +74,6 @@
                                         <td>{{$compra->getConfirmed()}}</td>
                                         <td><a href="/detallespedido/{{ $compra->nropedido }}">{{ $compra->nropedido }}</a></td>
                                         <td>{{ $compra->reference }}</td>
-                                        <td>{{ $compra->client->identificationNumber }}</td>
-                                        <td>{{ $compra->client->name }}</td>
                                         <td>{{ $compra->metodo }}</td>
                                         <td>{{ $compra->coste }} {{ $currencyValue }}</td>
                                         <td>{{ $compra->metodoentrega }}</td>
