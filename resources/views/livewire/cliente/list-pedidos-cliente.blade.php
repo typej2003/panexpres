@@ -60,7 +60,7 @@
                                     @foreach ($pedidos as $index => $pedido)
                                     <tr>
                                         <th scope="row">{{ $pedidos->firstItem() + $index }}</th>
-                                        <td>$pedido->confirmed</td>
+                                        <td>{{$pedido->confirmed}}</td>
                                         <td><a href="/detallespedido/{{ $pedido->nropedido }}">{{ $pedido->nropedido }}</a></td>
                                         <td>{{ $pedido->reference }}</td>
                                         <td>{{ $pedido->client->identificationNumber }}</td>
