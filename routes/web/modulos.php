@@ -99,6 +99,27 @@ Route::get('/contacto', function (Request $request) {
     ]);
 })->name('contacto');
 
+Route::get('/politicadeprivacidad', function (Request $request) {
+    // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
+    $in_cellphonecontact = $request->input('in_cellphonecontact');
+    $contactcellphone = $request->input('contactcellphone');
+    $msgcontact = $request->input('msgcontact');
+    $in_marcasproductos  = $request->input('in_marcasproductos');
+    $words               = $request->input('words');    
+    $comercio_id         = null; // O $request->input('comercio_id'); si lo añades al form    
+    // 2. Pasar los parámetros a la vista
+    return view('externalviews.politicadeprivacidad', [
+        'in_cellphonecontact' => $in_cellphonecontact,
+        'contactcellphone' => $contactcellphone,
+        'msgcontact' => $msgcontact,
+        'in_marcasproductos'  => $in_marcasproductos,
+        'words'               => $words,
+        'comercio_id'         => $comercio_id // Si tienes este dato de otra fuente
+    ]);
+})->name('politicadeprivacidad');
+
+
+
 Route::get('/agendar', function (Request $request) {
     // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
     $in_cellphonecontact = $request->input('in_cellphonecontact');

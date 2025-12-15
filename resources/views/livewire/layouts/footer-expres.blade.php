@@ -27,17 +27,32 @@
                         </form>
                     </li>
                     <li>
-                        <form action="{{ route('contacto') }}" method="get" id="contacto">
+                        
+                            <a href="https://api.whatsapp.com/send?phone=+58{{'04141869016'}}&text={{ 'Hola, te asesoramos por  whatsapp.'}}" class="" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp whatsapp-icon"></i>
+                                Contácto (04141869016)
+                            </a>
+                        
+                        <!-- <form action="{{ route('contacto') }}" method="get" id="contacto">
                             <input type="hidden" name="contactcellphone" value="04141869016">
                             <input type="hidden" name="in_cellphonecontact" value="1">
                             <input type="hidden" name="msgcontact" value="msgcontact_value"> 
                             <input type="hidden" name="in_marcasproductos" value="1">
                             <input type="hidden" name="words" value="">
                             <a class="menu-item" onclick="sendFormLink('contacto')" style="cursor:pointer;">Contáctos</a>
+                        </form> -->
+                    </li>
+                    <li>
+                        <form action="{{ route('politicadeprivacidad') }}" method="get" id="politicadeprivacidad">
+                            <input type="hidden" name="contactcellphone" value="04141869016">
+                            <input type="hidden" name="in_cellphonecontact" value="1">
+                            <input type="hidden" name="msgcontact" value="msgcontact_value"> 
+                            <input type="hidden" name="in_marcasproductos" value="1">
+                            <input type="hidden" name="words" value="">
+                            <a class="" onclick="sendFormLink('politicadeprivacidad')" style="cursor:pointer;">Política de Privacidad</a>
                         </form>
                     </li>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li class="d-none"><a href="#">Términos y Condiciones</a></li>
                 </ul>
             </div>
 
@@ -86,7 +101,12 @@
             <div class="footer-col">
                 <h4 class="footer-title">Ayuda</h4>
                 <ul>
-                    <li><a href="#">Soporte en Línea</a></li>
+                    <li>
+                        <a href="https://api.whatsapp.com/send?phone=+58{{'04141869016'}}&text={{ 'Hola, te asesoramos por  whatsapp.'}}" class="" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp whatsapp-icon"></i>
+                                Soporte en Línea
+                        </a>
+                    </li>
                 </ul>
             </div>
             @guest
