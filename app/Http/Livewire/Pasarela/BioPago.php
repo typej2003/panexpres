@@ -13,6 +13,7 @@ use App\Models\PedidoDetallesTemporal;
 use App\Models\Transaccion;
 use App\Models\Pagomovil;
 use Illuminate\Support\Facades\Session;
+use Cart;
 
 class BioPago extends Component
 {
@@ -263,10 +264,6 @@ class BioPago extends Component
         	Pedido::create($pedido);
 
 			PedidoDetalles::create($pedidodetalles);
-
-			$cart = new CartController;
-
-        	$cart->onlyClear();
 
 			\Cart::clear();
 
