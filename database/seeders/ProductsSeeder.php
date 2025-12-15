@@ -92,7 +92,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Pan de Jamón de 650 gramos',
             'description' => 'Pan de Jamón de 650 gramos',
             'image_path1' => 'pan_doralta.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '2', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -126,7 +126,7 @@ class ProductsSeeder extends Seeder
             'name' => 'DORALTA Combo navideño + Cocacola 1,5 litro',
             'description' => 'Pan de Jamón de 650 gramos',
             'image_path1' => 'combo_doralta.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '2', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -162,7 +162,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Pan de Jamón de 1000 gramos',
             'description' => 'Pan de Jamón de 1000 gramos',
             'image_path1' => 'pan_olandely.png',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '3', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -195,7 +195,7 @@ class ProductsSeeder extends Seeder
             'name' => 'OLANDELY Combo navideño',
             'description' => 'Pan de Jamón de 1000 gramos + Cocacola 1,5 litro',
             'image_path1' => 'combo_olandely.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '3', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -231,7 +231,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Pan de Jamón  de 1000 gramos',
             'description' => 'Pan de Jamón de 1000 gramos',
             'image_path1' => 'pan_coffetown.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '4', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -264,7 +264,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Coffetown Combo navideño + Cocacola 1,5 litro',
             'description' => 'Pan de Jamón de 1000 gramos',
             'image_path1' => 'combo_coffetown.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '4', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -300,7 +300,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Pan de 700 gramos',
             'description' => 'Pan de 700 gramos',
             'image_path1' => 'pan_titanium.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '5', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -333,7 +333,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Titanium Combo navideño + Cocacola 1,5 litro',
             'description' => 'Pan de 700 gramos',
             'image_path1' => 'combo_titanium.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '5', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -369,7 +369,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Pan de 700 gramos',
             'description' => 'Pan de 700 gramos ',
             'image_path1' => 'pan_candelaria.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '6', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -402,7 +402,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Candelaria Combo navideño + Cocacola 1,5 litro',
             'description' => 'Pan de 700 gramos',
             'image_path1' => 'combo_candelaria.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '6', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -438,7 +438,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Pan de Jamon',
             'description' => 'Pan de 700 gramos',
             'image_path1' => 'pan_gama.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '7', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
@@ -474,7 +474,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Gama Combo navideño',
             'description' => 'Pan de 700 gramos + Cocacola 1,5 litro',
             'image_path1' => 'combo_gama.jpg',
-            'manufacturer_id' => '1', //marca
+            'manufacturer_id' => '7', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
             'currency' => '$', //moneda
