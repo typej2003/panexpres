@@ -57,6 +57,7 @@
                                     </tr>
                                 </thead>
                                 <tbody wire:loading.class="text-muted">
+                                    @if($pedidoTemporal)
                                     @if($pedidoTemporal->confirmed == 0)
                                     <tr>
                                         <th scope="row"></th>
@@ -75,6 +76,7 @@
                                             </a>
                                         </td>
                                     </tr>
+                                    @endif
                                     @endif
                                     @foreach ($pedidos as $index => $pedido)
                                     <tr>
