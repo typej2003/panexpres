@@ -436,6 +436,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('listMisCompras') }}" class="nav-link {{ request()->is('listMisCompras') ? 'active' : '' }}">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Mis Compras
+                </p>
+              </a>
+            </li>
           @endif
 
           @if(auth()->user()->role == 'delivery')
@@ -524,6 +532,14 @@
                 <i class="fa fa-solid fa-file-invoice-dollar"></i>
                 <p>
                   Pedidos
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('listMisCompras') }}" class="nav-link {{ request()->is('listMisCompras') ? 'active' : '' }}">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Mis Compras
                 </p>
               </a>
             </li>

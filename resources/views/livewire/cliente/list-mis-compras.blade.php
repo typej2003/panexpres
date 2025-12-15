@@ -4,12 +4,25 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-solid fa-file-invoice-dollar"></i> Mis Pedidos</h1>
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                            width="36" 
+                            height="36" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            stroke-width="2" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round"
+                            style="color: #dd751a;">                            
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg> Mis Compras</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admin/dashboard">Escritorio</a></li>
-                        <li class="breadcrumb-item active"><a href="">Mis Pedidos</a></li>
+                        <li class="breadcrumb-item active"><a href="">Mis Compras</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -57,57 +70,23 @@
                                     </tr>
                                 </thead>
                                 <tbody wire:loading.class="text-muted">
-                                    @if($pedidoTemporal)
-                                    @if($pedidoTemporal->confirmed == 0)
+                                    @foreach ($compras as $index => $compra)
                                     <tr>
-                                        <th scope="row"></th>
-                                        <td>{{$pedidoTemporal->getConfirmed()}}</td>
-                                        <td><a href="/detallespedido/{{ $pedidoTemporal->nropedido }}">{{ $pedidoTemporal->nropedido }}</a></td>
-                                        <td>{{ $pedidoTemporal->reference }}</td>
-                                        <td>{{ $pedidoTemporal->client->identificationNumber }}</td>
-                                        <td>{{ $pedidoTemporal->client->name }}</td>
-                                        <td>{{ $pedidoTemporal->metodo }}</td>
-                                        <td>{{ $pedidoTemporal->coste }} {{ $currencyValue }}</td>
-                                        <td>{{ $pedidoTemporal->metodoentrega }}</td>
-                                        <td>{{ $pedidoTemporal->created_at ?? 'N/A' }}</td>
-                                        <td class="">
-                                            <a href="" wire:click.prevent="irCart({{ $pedidoTemporal }})">
-                                                <i class="fas fa-shopping-cart mx-2 cart-icon-list"></i>
-                                            </a>
-
-                                            <a href="" wire:click.prevent="confirmPedidoTemporalRemoval({{ $pedidoTemporal->id }})">
-                                                <i class="fa fa-trash text-danger mx-2"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endif
-                                    @endif
-                                    @foreach ($pedidos as $index => $pedido)
-                                    <tr>
-                                        <th scope="row">{{ $pedidos->firstItem() + $index }}</th>
-                                        <td>{{$pedido->getConfirmed()}}</td>
-                                        <td><a href="/detallespedido/{{ $pedido->nropedido }}">{{ $pedido->nropedido }}</a></td>
-                                        <td>{{ $pedido->reference }}</td>
-                                        <td>{{ $pedido->client->identificationNumber }}</td>
-                                        <td>{{ $pedido->client->name }}</td>
-                                        <td>{{ $pedido->metodo }}</td>
-                                        <td>{{ $pedido->coste }} {{ $currencyValue }}</td>
-                                        <td>{{ $pedido->metodoentrega }}</td>
-                                        <td>{{ $pedido->created_at ?? 'N/A' }}</td>
+                                        <th scope="row">{{ $compras->firstItem() + $index }}</th>
+                                        <td>{{$compra->getConfirmed()}}</td>
+                                        <td><a href="/detallespedido/{{ $compra->nropedido }}">{{ $compra->nropedido }}</a></td>
+                                        <td>{{ $compra->reference }}</td>
+                                        <td>{{ $compra->client->identificationNumber }}</td>
+                                        <td>{{ $compra->client->name }}</td>
+                                        <td>{{ $compra->metodo }}</td>
+                                        <td>{{ $compra->coste }} {{ $currencyValue }}</td>
+                                        <td>{{ $compra->metodoentrega }}</td>
+                                        <td>{{ $compra->created_at ?? 'N/A' }}</td>
                                         <td>
-                                            <a href="" wire:click.prevent="sendNotificacion({{ $pedido }})">
+                                            <a href="" wire:click.prevent="sendNotificacion({{ $compra }})">
                                                 <img class="mr-2" style="width: 25px;" src="/img/icon-send.png" alt="">
                                             </a>
 
-                                            <a href="" wire:click.prevent="edit({{ $pedido }})">
-                                                <i class="fa fa-edit mr-2"></i>
-                                            </a>
-
-                                            @if($pedido->confirmed == 0)
-                                            <a href="" wire:click.prevent="confirmPedidoRemoval({{ $pedido->id }})">
-                                                <i class="fa fa-trash text-danger"></i>
-                                            </a>
-                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -116,7 +95,7 @@
                             </table>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            {{ $pedidos->links() }}
+                            {{ $compras->links() }}
                         </div>
                     </div>
                 </div>
