@@ -23,7 +23,7 @@ class SettingsSeeder extends Seeder
             'sidebar_collapse' => false,
             'in_cellphonecontact' => true,  
             'in_sliderprincipal' => true,
-            'currency' => '$',
+            'currency' => 'Bs',
             'api_bcv' => 'NO',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'

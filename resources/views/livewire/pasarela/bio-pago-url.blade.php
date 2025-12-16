@@ -9,10 +9,13 @@
             flex: 1 1 auto;
             overflow: hidden;
         }
+        .biopago-url {
+            height: 70vh!important;
+        }
     </style>
     <h4></h4>
 
-    <div class="container">
+    <div class="container biopago-url">
         <br>
         <iframe src="{{$urlPayment}}" id="iframePasarela" class="iframePasarela" frameborder="0"></iframe>
     </div>

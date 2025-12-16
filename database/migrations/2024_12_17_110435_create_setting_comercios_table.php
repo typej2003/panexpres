@@ -34,7 +34,7 @@ class CreateSettingComerciosTable extends Migration
             $table->boolean('in_sliderprincipal')->default(true);
             $table->boolean('in_marcasproductos')->default(true);
             
-            $table->string('currency')->nullable()->default('$');
+            $table->string('currency')->nullable()->default('Bs');
             $table->string('api_bcv')->nullable()->default('NO');
             $table->string('in_impuesto')->nullable()->default('SI');
             $table->timestamps();

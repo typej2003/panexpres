@@ -16,7 +16,7 @@ class CreateSettingUsersTable extends Migration
         Schema::create('setting_users', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->string('currency')->nullable();
+            $table->string('currency')->nullable()->default('Bs');
             $table->timestamps();
         });
     }

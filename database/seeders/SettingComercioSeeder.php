@@ -24,7 +24,7 @@ class SettingComercioSeeder extends Seeder
             'sidebar_collapse' => false,
             'in_cellphonecontact' => true,  
             'in_sliderprincipal' => true,
-            'currency' => '$',
+            'currency' => 'Bs',
             'api_bcv' => 'NO',
             'in_impuesto' => 'SI',
             'created_at' => '2022-05-16 12:20:36',

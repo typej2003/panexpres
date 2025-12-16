@@ -50,7 +50,7 @@ class ComercioSeeder extends Seeder
             'contactcellphone' => '04162222222',
             'contactphone'  => '0212-222-22-22',
             'horario'  => 'Lunes a Domingo hora: 6:30 am a 8:00 pm',
-            'email'  => 'panaderiaexpreso@gmail.com',
+            'email'  => 'ideharte44@gmail.com',
             'youtube'  => 'https://www.youtube.com/@ddrsistemas',
             'instagram'  => 'https://instagram/panexpres.vezla',
             'twitter'  => 'https://www.youtube.com/@ddrsistemas',

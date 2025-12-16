@@ -50,7 +50,6 @@ class CurrencyExpres extends AdminComponent
         }else{
             $this->currencyValue = \Cookie::get('currency');
         }
-
         
     }
 
