@@ -52,10 +52,17 @@
 
                 if (miObjeto && miObjeto.status === true) {
                     console.log('Pago finalizado exitosamente. Redireccionando...');
-                    Livewire.emit('clearCartJs');
+                    // **Asegúrate de que Livewire está cargado antes de emitir**
+                    if (typeof Livewire !== 'undefined') {
+                        // Emitir el evento definido en el $listeners del componente: 'clearCartJs'
+                        Livewire.emit('clearCartJs');
+                        
+                        // Opcional: Redirigir después de limpiar el carrito (si es lo que deseas)
+                        window.location.href = '/'; 
+                    } else {
+                        console.error("Livewire no está cargado. No se pudo emitir 'clearCartJs'.");
+                    }
                     
-                    // Ejemplo de lo que harías con el dato
-                    // window.location.href = '/procesadoC'; 
                 }
             });
 
