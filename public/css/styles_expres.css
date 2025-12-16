@@ -89,6 +89,43 @@ body {
     border-color: #007bff;
 }
 
+/* 3.1. Estilos de la Barra de Búsqueda */
+.navbar-search-mobile {
+    flex-grow: 1; 
+    max-width: 80%;
+    margin: auto auto;
+}
+
+.search-input-group-mobile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 80vw; 
+}
+
+.search-icon-mobile {
+    position: absolute;
+    left: 10px;
+    color: #888;
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+.navbar-search-mobile input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    box-sizing: border-box; 
+}
+
+.navbar-search-mobile input:focus {
+    border-color: #007bff;
+}
+
 /* 4. Estilos de las Acciones */
 .navbar-actions {
     display: flex;
@@ -360,7 +397,7 @@ body {
     width: 70%;
     background-color: #ffffff; /* Fondo Blanco */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 1000; 
+    z-index: 2000; 
     flex-direction: column;
     height: calc(100vh - 75px); 
     padding-top: 10px;
@@ -426,6 +463,25 @@ body {
     background-color: #f4f4f4; /* Hover suave */
 }
 /* --- FIN ESTILOS NUEVA ESTRUCTURA --- */
+
+/* Menu vertical en movil */
+.main-menu-mobile {
+    display: none;
+    /*display: flex; */
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #fc5e27; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 5px 5px; 
+    width: 100%;
+    
+    /* --- PROPIEDADES PARA FIJAR --- */
+    position: fixed;
+    top: 64px; /* AJUSTADO: Posiciona debajo del navbar principal (~70px) */
+    z-index: 1010; 
+    
+    box-sizing: border-box; 
+}
 
 
 /* 8. RESPONSIVE DESIGN */
@@ -495,9 +551,17 @@ body {
 
     /* --- Mobile-menu  ---*/
     .mobile-menu-vertical {
-        top: 56px;         
+        top: 65px;         
     }
-    
+
+    .main-menu-mobile {
+        display: block;
+    }
+
+    .navbar-search-mobile .navbar-search-mobile {
+        display: block;
+    }
+
     /* --- Footer en Móvil --- */
     
     /* AJUSTE CRÍTICO 1: Asegura que la fila 1 ocupe el 100% y se centre */
@@ -566,7 +630,7 @@ body {
 
     /* AJUSTADO: Espacio para una sola barra fija (~70px) */
     body {
-        padding-top: 55px;
+        padding-top: 120px;
     }
     
     /* Asegura que el color del enlace en la divisa móvil sea oscuro si el botón es oscuro */
@@ -577,6 +641,15 @@ body {
     .logo-img {
         width: 35vw;
     }
+
+    .main-menu-mobile {
+        display: block;
+    }
+
+    .navbar-search-mobile {
+        display: block;
+    }
+
 }
 
 /* ------------------------------------------- */

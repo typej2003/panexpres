@@ -15,6 +15,7 @@
         "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "illuminate/support": "*",
+        "jenssegers/agent": "^2.6",
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.12",
         "laravel/socialite": "^5.16",

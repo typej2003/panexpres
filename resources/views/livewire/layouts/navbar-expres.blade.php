@@ -198,4 +198,13 @@
         </div>
 
     </nav>
+
+    <nav class="main-menu-mobile">
+        <form class="navbar-search-mobile" action="{{ route('search') }}" method="GET" wire:ignore>
+            <div class="search-input-group-mobile">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text"  name="words" placeholder="Buscar productos...">
+            </div>
+        </form>
+    </nav>
 </div>
