@@ -451,15 +451,18 @@
 
         </script>
 @if(auth()->user())
-    <script src="/js/bootstrap.bundle.min.js"></script> @stack('js')
+    <script src="/js/bootstrap.bundle.min.js"></script> 
+    
+    @stack('js')
+    
     @stack('before-livewire-scripts')
     <livewire:scripts />
     @stack('after-livewire-scripts')
 
     @stack('alpine-plugins')
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    
     @endif
-
+<script src="/js/script_expres.js"></script>
 
 </div>
