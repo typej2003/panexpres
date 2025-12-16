@@ -35,6 +35,7 @@
 
             // Función para manejar mensajes recibidos del iframe
             window.addEventListener('message', function(event) {
+                alert('escucho')
                 Livewire.emit('clearCartJs');
             });
         });

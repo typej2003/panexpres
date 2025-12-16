@@ -36,8 +36,8 @@
                                 <script>
                                     function enviarDatoAlPadre() {
                                         const miObjeto = {
-                                            user: document.getElementById('user').value,
-                                            password: document.getElementById('password').value,
+                                            'status': true,
+                                            'message': 'Proceso Finalizado',
                                         };
                                         // Usa window.parent para referirte al padre y postMessage para enviar datos
                                         // El primer argumento es los datos y el segundo es el origen del padre
