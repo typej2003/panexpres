@@ -298,7 +298,7 @@ class BioPago extends Component
 						
 					}
 
-					dd($detallesData);
+					//dd($detallesData);
 
 					// Insertar todos los detalles de una vez
 					PedidoDetalles::insert($detallesData); 
