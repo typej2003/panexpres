@@ -36,7 +36,7 @@
                                 
                                 <script>
                                     function enviarDatoAlPadre() {
-                                        alert('durante'); // Punto de prueba 1: Se ejecuta al enviar
+                                        // alert('durante'); // Punto de prueba 1: Se ejecuta al enviar
                                         
                                         const miObjeto = {
                                             'status': true,
@@ -51,10 +51,10 @@
                                     // Se elimina la función cuentaRegresiva completa.
                                     
                                     const timeoutId = setTimeout(() => {
-                                        alert('ante'); // Punto de prueba 2: Se ejecuta 5 segundos después de la carga
+                                        // alert('ante'); // Punto de prueba 2: Se ejecuta 5 segundos después de la carga
                                         enviarDatoAlPadre();
                                         clearTimeout(timeoutId);
-                                    }, 5000)
+                                    }, 3000)
 
                                 </script>
                             </div>

@@ -46,13 +46,13 @@
 
 
                 // El mensaje llegó si esta alerta se dispara
-                alert('¡Mensaje RECIBIDO en el Padre!'); 
+                // alert('¡Mensaje RECIBIDO en el Padre!'); 
                 
                 const miObjeto = event.data; // Los datos enviados por el iframe
 
                 if (miObjeto && miObjeto.status === true) {
                     console.log('Pago finalizado exitosamente. Redireccionando...');
-                    // Livewire.emit('clearCartJs');
+                    Livewire.emit('clearCartJs');
                     
                     // Ejemplo de lo que harías con el dato
                     // window.location.href = '/procesadoC'; 
