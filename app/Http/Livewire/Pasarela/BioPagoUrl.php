@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pasarela;
 
 use Livewire\Component;
 use Illuminate\Http\Request;
+use Cart;
 
 class BioPagoUrl extends Component
 {
@@ -16,6 +17,7 @@ class BioPagoUrl extends Component
 
     public function clearCart()
     {
+        dd('clearCart');
         // 🔑 Verifica si el carrito tiene contenido ANTES de limpiarlo
         if (\Cart::getContent()->isNotEmpty()) {
             \Cart::clear();
