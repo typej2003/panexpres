@@ -69,22 +69,22 @@ class EmailController extends Component
     {
         switch ($operacion) {
             case 'welcome':
-                $this->welcomeComercio($email);
+                $this->welcomeComercio($comercio);
                 break;
             case 'compra':
-                $this->compraRealizadaComercio($email, $nropedido);
+                $this->compraRealizadaComercio($comercio, $nropedido);
                 break;
             
             case 'compraRealizadaWithImages':
-                $this->compraRealizadaWithImagesComercio($email, $nropedido);
+                $this->compraRealizadaWithImagesComercio($comercio, $nropedido);
                 break;
             
             case 'confirmacionPago':
-                $this->confirmacionPagoComercio($email, $nropedido);
+                $this->confirmacionPagoComercio($comercio, $nropedido);
                 break;
             
             case 'confirmacionFallida':
-                $this->emailOnlyconfirmacionFallida($email, $nropedido);
+                $this->emailOnlyconfirmacionFallida($comercio, $nropedido);
                 break;
             
             default:
