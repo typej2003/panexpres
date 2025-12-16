@@ -406,8 +406,9 @@ class Cart extends AdminComponent
 
             $pedido = PedidoDetallesTemporal::create([
                 'pedido_id' => $pedido_id,
-                'nropedido' => $pedido->nropedido,                
-                'comercio_id' => $this->comercio_id,
+                'nropedido' => $pedido->nropedido,    
+                'comercio_id' => $elemento->attributes->comercio_id,
+                // 'comercio_id' => $this->comercio_id,
                 'user_id' => auth()->user()->id,
                 'product_id' => $elemento->id,
                 'name' => $elemento->name,
