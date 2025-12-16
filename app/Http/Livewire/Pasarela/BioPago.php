@@ -292,10 +292,12 @@ class BioPago extends Component
 						$detalleArray['updated_at'] = $timestamp;
 						
 						// --- ASIGNACIÓN DE CLAVE FORÁNEA ---
-						$detalleArray['pedido_id'] = $nuevoPedido->id; 
+						$detalleArray['pedido_id'] = $nuevoPedido->id;
 						
 						$detallesData[] = $detalleArray;
 					}
+
+					dd($detallesData);
 
 					// Insertar todos los detalles de una vez
 					PedidoDetalles::create($detallesData); 
