@@ -83,7 +83,7 @@ Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
 
     $comercio = Comercio::find($transaccion->comercio_id);
 
-    $nropedido = explode('/', $transaccion->nropedido)[0];
+    $nropedido = $transaccion->nropedido;
 
     //Envios de notificaciones
     $emailwelcome = new EmailController();

@@ -247,7 +247,7 @@ class BioPago extends Component
 				'title' => $datos->title,
 				'description' => $datos->description,
 				'status' => 1,
-				'nropedido' => $datos->reference,
+				'nropedido' => $reference,
 				'cellphonecode' => $pedidoTemporal->cellphonecode,
 				'cellphone' => $pedidoTemporal->cellphone,
 				'metodo' => 'BioPagoBdv',
