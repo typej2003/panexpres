@@ -111,6 +111,12 @@
                             { name: "Pago Móvil", value: "pagomovil" },  // Índice 1 automáticamente
                             { name: "Transferencia", value: "transferencia" },  // Índice 2 automáticamente
                             ];
+
+                        forma = [
+                            { name: "Pasarela", value: "pasarela" }, // Índice 0 automáticamente                            
+                            ];
+
+
                         break;
                 
                     case '$':

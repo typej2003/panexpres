@@ -268,7 +268,7 @@ class WelcomeController extends Controller
 
     public function checkoutPasarela($nropedido, $comercioId)
     {
-        \Cart::clear();
+        //\Cart::clear();
         
         return redirect()->route('pasarela', [
 				'nropedido' => $nropedido, 

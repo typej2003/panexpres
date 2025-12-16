@@ -35,6 +35,8 @@ class BillingDetails extends AdminComponent
             $this->state = $datosfacturacion->toArray();
         }
 
+        $this->state['zipcode'] = '123';
+
         $this->provinces = collect();
         $this->cities = collect();
         $this->zonas = collect();

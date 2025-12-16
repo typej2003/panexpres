@@ -1,6 +1,6 @@
 <div>
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <div class="row">
+    <div class="row d-none">
         <div class="col-md-12">            
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Dirección de envío</h4>
+                                <h4>Dirección de delivery</h4>
                             </div>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="zona" class="">Zona de entrega <span class="text-danger">*</span></label>
+                        <label for="zona" class="">Zona de entrega 2<span class="text-danger">*</span></label>
                         <select wire:model="zona" wire:change="changeZona( $event.target.value)" class="form-control @error('zona') is-invalid @enderror" id="zona" {{$class}} {{$class1}}>
                             <option value="0">Por favor seleccione una ciudad</option>
                             @foreach($zonas as $zona)
@@ -224,7 +224,7 @@
 
                     </script>
                     <div class="form-group">
-                        <label for="address" class="">Dirección postal (Calle, Nº de Casa) <span class="text-danger">*</span></label>
+                        <label for="address" class="">Dirección (Calle, Nº de Casa) <span class="text-danger">*</span></label>
                         <textarea wire:model.defer="state.address" type="text" class="form-control @error('address') is-invalid @enderror" id="inpuAddress" placeholder="Dirección" {{$class}} {{$class1}}></textarea>
                         @error('address')
                         <div class="invalid-feedback">
@@ -233,7 +233,7 @@
                         @enderror
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="zipcode" class="">Código Postal </label>
                         <input type="text" wire:model.defer="state.zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror" id="zipcode" placeholder="Código Postal" {{$class}} {{$class1}}>
                         @error('zipcode')
@@ -247,7 +247,7 @@
 
                     <div class="form-group">
                         <div class="col-md-12">
-                            <h4>Métodos de entrega</h4>
+                            <h5>Costo del Delivery</h5>
                         </div>
                     </div>
                     <input wire:model.defer="state.metodoenvio" type="hidden"  class=" @error('metodoenvio') is-invalid @enderror" id="metodoenvio">
@@ -257,14 +257,14 @@
                     </div>
                     @enderror
                     <div class="form-group">
-                        <div class="row border border-top my-4 centrar" style="height: 45px !important;">
+                        <div class="row border border-top my-4 d-flex justify-content-start" style="height: 45px !important;">
                             <div class="col-md-1">
                                 <input class="input my-1" type="radio" name="metodoenvio" value="enviodelivery" checked/>
                             </div>
                             <div class="col-md-2">
                                 @if($deliveryArea) {{ $currencyValue }} {{$deliveryArea->coste}} @else ? @endif
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9 d-none">
                                 <span class="datos">@if($deliveryArea) {{$deliveryArea->name}} @else Envío local @endif</span>
                                 <input type="text"  wire:model.defer="state.costeenvio" >
                                 <input type="text"  wire:model.defer="state.deliveryarea" >
@@ -317,7 +317,7 @@
                      
                     <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10 d-flex">
-                            <button wire:click.prevent="siguiente" class="btn btn-success mx-auto"> Siguiente</button>
+                            <button wire:click.prevent="irPasarela" class="btn btn-success mx-auto"> Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -464,7 +464,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="zona" class="">Zona de entrega <span class="text-danger">*</span></label>
+                            <label for="zona" class="">Zona de entrega 1 <span class="text-danger">*</span></label>
                             <select wire:model="zona" class="form-control @error('zona') is-invalid @enderror" id="zona">
                                 <option value="0">Por favor seleccione una ciudad</option>
                                 @foreach($zonas as $zona)

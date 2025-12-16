@@ -124,7 +124,7 @@
                 </div>
                 @enderror
             </div>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label for="zipcode" class="">Código Postal <span class="text-danger">*</span></label>
                 <input type="text" wire:model.defer="state.zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror" id="zipcode" placeholder="Código Postal">
                 @error('zipcode')

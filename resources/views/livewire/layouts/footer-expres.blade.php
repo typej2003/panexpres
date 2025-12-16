@@ -30,7 +30,7 @@
                         
                             <a href="https://api.whatsapp.com/send?phone=+58{{'04141869016'}}&text={{ 'Hola, te asesoramos por  whatsapp.'}}" class="" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-whatsapp whatsapp-icon"></i>
-                                Contácto (04141869016)
+                                Contácto
                             </a>
                         
                         <!-- <form action="{{ route('contacto') }}" method="get" id="contacto">

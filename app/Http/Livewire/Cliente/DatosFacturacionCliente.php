@@ -12,6 +12,7 @@ use App\Models\Estado;
 use App\Models\Cities;
 use App\Models\DeliveryArea;
 use App\Models\PedidoTemporal;
+use App\Models\DatosDeliveryUser;
 
 class DatosFacturacionCliente extends AdminComponent
 {
@@ -25,13 +26,16 @@ class DatosFacturacionCliente extends AdminComponent
 
     public $country = 237;
     public $province = 24;
-    public $city;
+    public $city = 149;
     public $zona;
     public $countries = [], $provinces = [], $cities = [], $zonas = [];
     public $nropedido;
     public $metodoentrega = 'shipment';
 
     public $currencyValue;
+
+    public $zipcode = '123';
+    public $delivery;
 
     protected $rules = [
         'country' => 'required|not_in:0',
@@ -53,6 +57,11 @@ class DatosFacturacionCliente extends AdminComponent
         $this->countries = Country::all();
         $this->provinces = Estado::where('country_id', 237)->get();
         $this->cities = Cities::where('state_id', 24)->get();
+        $this->zonas = DeliveryArea::where('country_id', 237)
+                                    ->where('state_id', 24)
+                                    ->where('city_id', 149)
+                                    ->get();
+
 
         $datosfacturacion = DatosFacturacion::where('user_id', auth()->user()->id)->first();
 
@@ -69,6 +78,33 @@ class DatosFacturacionCliente extends AdminComponent
         $this->state['nropedido'] = $nropedido;
         $this->state['metodoentrega'] = $this->metodoentrega;
         $this->state['metodoenvio'] = 'enviodelivery';
+
+        $this->state['zipcode'] = '123';
+
+        // Revisar si tiene datos de delivery
+        $pedido = PedidoTemporal::where('nropedido', $nropedido)->first();
+        
+        $this->delivery = DatosDeliveryUser::where('user_id', $pedido->user_id)->first();
+        
+        if($this->delivery !== null)
+        {
+            $zona = DeliveryArea::find($this->delivery->deliveryarea_id);
+            $this->deliveryArea = $zona;
+            
+            $this->state['cellphonecode'] = $this->delivery->cellphonecode;
+            $this->state['cellphone'] = $this->delivery->cellphone;
+            $this->state['country_id'] = $this->delivery->country_id;
+            $this->state['state_id'] = $this->delivery->state_id;
+            $this->state['city_id'] = $this->delivery->city_id;
+            $this->state['deliveryarea_id'] = $this->delivery->deliveryarea_id;
+            $this->state['deliveryarea'] = $this->delivery->deliveryarea;
+            $this->state['zipcode'] = $this->delivery->zipcode;
+            $this->state['address'] = $this->delivery->address;
+            $this->zona = $this->delivery->deliveryarea_id;
+
+            $this->state['costeenvio'] = $this->delivery->costeenvio;
+            $this->state['deliveryarea'] = $this->delivery->deliveryarea;
+        }
 
         $this->currencyValue = request()->cookie('currency');
     }
@@ -188,8 +224,9 @@ class DatosFacturacionCliente extends AdminComponent
         
     }
 
-    public function siguiente()
+    public function irPasarela()
     {
+        
         $validatedData = Validator::make($this->state, [
             'identificationNac' => 'required|not_in:0',
 			'identificationNumber' => 'required',
@@ -201,13 +238,13 @@ class DatosFacturacionCliente extends AdminComponent
             'zipcode' => 'nullable',
             'metodoenvio'=> 'required|in:enviodelivery,envionacional',
             'metodoentrega'=> 'required|not_in:0' ,
-            'deliveryarea' => 'nullable',
+            'deliveryarea' => 'required',
             'costeenvio' => 'nullable',
+            'deliveryarea' => 'required',
 		],  [
             'required' => 'Valor requerido',
         ],)->validate();
 
-        
         $this->validate();
         
         $validatedData['user_id'] = auth()->user()->id;
@@ -233,6 +270,14 @@ class DatosFacturacionCliente extends AdminComponent
         $pedido = PedidoTemporal::where('nropedido', $this->state['nropedido'])->first();
 
         $pedido->update($validatedData);
+
+        //Guardar datos del delivery
+        if($this->delivery == null)        
+        {
+            DatosDeliveryUser::create($validatedData);
+        }else{
+            $this->delivery->update($validatedData);
+        }
 
         // $pedido = Pedido::where('pedido', $this->nropedido)->first();
 

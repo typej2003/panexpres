@@ -4,7 +4,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><i class="fa fa-regular fa-paper-plane"></i> Envio / Pickup <img src="/img/envio_pickup_i.png" alt=""></h1>
+                    <!-- <h1><i class="fa fa-regular fa-paper-plane"></i> Envio / Pickup <img src="/img/envio_pickup_i.png" alt=""></h1> -->
+                     <h1><i class="fa fa-regular fa-paper-plane"></i> Delivery </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -24,8 +25,9 @@
                     <div class="card mx-auto" x-data="{ currentTab: $persist('changePickup') }" style="width: 52rem;">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills" wire:ignore>
-                                <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Envío</a></li>
-                                <li @click.prevent="currentTab = 'changePickup'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changePickup' ? 'active' : ''" href="#changePickup" data-toggle="tab"><img style="width: 20px;" src="/img/envio_pickup_i.png" alt=""> Pickup</a></li>
+                                <!-- <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Envío</a></li> -->
+                                 <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Delivery</a></li>
+                                <!-- <li @click.prevent="currentTab = 'changePickup'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changePickup' ? 'active' : ''" href="#changePickup" data-toggle="tab"><img style="width: 20px;" src="/img/envio_pickup_i.png" alt=""> Pickup</a></li> -->
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -36,7 +38,7 @@
                                 </div>
 
                                 <div class="tab-pane" :class="currentTab === 'changePickup' ? 'active' : ''" id="changePickup" wire:ignore.self>
-                                    @livewire('afiliado.shipping-centrodistribucion', ['nropedido' => $nropedido])
+                                    <!-- @livewire('afiliado.shipping-centrodistribucion', ['nropedido' => $nropedido]) -->
                                 </div>
                                 <!-- /.tab-pane -->
                             </div>
