@@ -64,6 +64,37 @@ class EmailController extends Component
         $this->dispatchBrowserEvent('updated', ['message' => "Notificación enviada."]);
     }
 
+    public function sendEmailComercio($operacion, Comercio $comercio, $nropedido = 0 )
+    {
+        switch ($operacion) {
+            case 'welcome':
+                $this->welcomeComercio($email);
+                break;
+            case 'compra':
+                $this->compraRealizadaComercio($email, $nropedido);
+                break;
+            
+            case 'compraRealizadaWithImages':
+                $this->compraRealizadaWithImagesComercio($email, $nropedido);
+                break;
+            
+            case 'confirmacionPago':
+                $this->confirmacionPagoComercio($email, $nropedido);
+                break;
+            
+            case 'confirmacionFallida':
+                $this->emailOnlyconfirmacionFallida($email, $nropedido);
+                break;
+            
+            default:
+                dd('default');
+                return view('livewire.notificacion.email-controller');
+                break;
+        }
+
+        $this->dispatchBrowserEvent('updated', ['message' => "Notificación enviada."]);
+    }
+
     public function sendMailWithAttachment($user, $title = '', $body = '')
     {
         // Laravel 8
@@ -247,5 +278,25 @@ class EmailController extends Component
             $message->to($data["email"])
                     ->subject($data["title"]);    
         });
+    }
+
+    public function compraRealizadaComercio($comercio, $nropedido)
+    {
+        $data["comercio"] = $comercio;
+        $data["name"] = $comercio->name;
+        $data["email"] = $comercio->email;
+        $data["title"] = 'Compra realizada';
+        $data["nropedido"] = $nropedido;
+        $pedido = Pedido::where('nropedido', $nropedido)->first();
+        $data["body"] = 'Pedido ' . $nropedido . ', con referencia ' . $pedido->reference . ' fue recibido.' .'<br>';
+        $data["body"] .= 'Nuestro equipo de venta atenderá su pedido, en espera de validación, Gracias por su compra';
+        
+        Mail::send('emails.compra-realizada', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->subject($data["title"]);
+    
+        });
+        
+
     }
 }

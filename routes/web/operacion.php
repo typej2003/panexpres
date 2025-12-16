@@ -14,6 +14,8 @@ use App\Http\Livewire\Components\CurrencyExpres;
 
 use App\Http\Livewire\Components\MenuComponent;
 
+use App\Http\Livewire\Notificacion\EmailController;
+
 use App\Http\Livewire\Afiliado\Pasarela;
 use App\Http\Livewire\Afiliado\Shipping;
 use App\Http\Livewire\Carrito\Procesado;
@@ -24,8 +26,10 @@ use App\Http\Livewire\Pasarela\BioPago;
 
 use App\Http\Livewire\Recursos\ImportExportExcel;
 
+use App\Models\User;
 use App\Models\Comercio;
 use App\Models\Pedido;
+use App\Models\PedidoDetalles;
 use App\Models\Transaccion;
 use App\Http\Controllers\CartController;
 
@@ -79,7 +83,29 @@ Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
 
     $comercio = Comercio::find($transaccion->comercio_id);
 
-    $nropedido = $transaccion->nropedido;
+    $nropedido = explode('/', $transaccion->nropedido)[0];
+
+    //Envios de notificaciones
+    $emailwelcome = new EmailController();
+
+    //Enviar a root
+    $user = User::where('role', 'root')->first();
+
+    $emailwelcome->sendEmail('compra', $user, $nropedido);
+
+    $detalles = PedidoDetalles::where('nropedido', $nropedido)->get();
+    foreach($detalles as $pedido)
+    {
+        $comercio= Comercio::find($pedido->comercio_id);
+
+        $emailwelcome->sendEmailComercio('compra', $comercio, $nropedido);
+
+    }
+
+    $pedido = Pedido::where('nropedido', $nropedido)->first();
+
+    $emailwelcome->sendEmail('compra', $pedido->client()->email, $nropedido);
+    
 
     // $cart = new CartController;
 
