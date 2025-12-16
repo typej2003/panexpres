@@ -14,7 +14,7 @@
                             <div class="card-body text-center">
                                 <h1>Operación procesada con éxito</h1>
                                 <p>
-                                    Su pago <a href="/detallespedido/{{ $nropedido }}">{{ $pedidoTemporal->nropedido }}</a> esta siendo validado por nuestro equipo de venta.
+                                    Su pago <a href="/detallespedido/{{ $nropedido }}">{{ $nropedido }}</a> esta siendo validado por nuestro equipo de venta.
                                 </p>
                                 <h3>¿Qué desea hacer ahora?</h3>
                                 <p>
