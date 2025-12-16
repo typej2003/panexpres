@@ -1,5 +1,13 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/app.css">
+
+!-- <script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/jquery-3.6.4.min.js"></script> -->
+@stack('js')
+@stack('before-livewire-scripts')
+<livewire:scripts />
+@stack('after-livewire-scripts')
+
 
 
 <div class="container-fluid">
@@ -12,10 +20,10 @@
                     <div class="col-lg-12">
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
-                                <h1>PanExpres.com</h1>
+                                <h4>PanExprés</h4>
                                 <br>
-                                <h4>Compra nro: {{$nropedido}}</h4>
-                                <h4>Operación procesada con éxito</h4>
+                                <h2>Compra nro: {{$nropedido}}</h2>
+                                <h2>Operación procesada con éxito</h2>
                                 <p>
                                     Su pago esta siendo validado por nuestro equipo de venta.
                                 </p>
@@ -74,15 +82,7 @@
 <script src="/js/app.js"></script>
 <script src="/js/backend.js"></script>
 
-<!-- <script src="/js/bootstrap.min.js"></script>
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/jquery-3.6.4.min.js"></script> -->
-@stack('js')
-@stack('before-livewire-scripts')
-<livewire:scripts />
-@stack('after-livewire-scripts')
-
-
+<
 @stack('alpine-plugins')
 <!-- Alpine Core -->
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
