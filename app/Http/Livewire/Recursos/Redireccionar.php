@@ -19,6 +19,9 @@ class Redireccionar extends Component
                 } else {
                     session()->flash('cart_info', 'El carrito ya estaba vacío.');
                 }
+
+                return redirect()->to('/');
+                
                 break;
             
         }
