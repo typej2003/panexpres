@@ -20,6 +20,8 @@
     </div>
 
     <script>
+        let paymentStatusReceived = false;
+
         document.addEventListener('DOMContentLoaded', function() {
             
             // 🔑 CORRECCIÓN 1: Usar la ID correcta ('iframePasarela')
@@ -30,41 +32,30 @@
             
             // Función para manejar mensajes recibidos del iframe
             window.addEventListener('message', function(event) {
+                // ... (Validación de origen) ...
                 
-                // 🔑 PASO CLAVE: Validar el origen. Como el servidor es Laravel, 
-                // asumimos que el protocolo es 'https://'.
-                const ALLOWED_ORIGIN = 'https://panexpres.com'; 
-                
-                // Si la URL de pago es de otro dominio, DEBES usar ese otro dominio aquí.
-                // Ejemplo: if (event.origin !== 'https://otrodominiopago.com') return;
-                
-                // Opcional: Si los dominios son diferentes, verifica el origen del iframe.
-                // if (event.origin !== ALLOWED_ORIGIN && event.origin !== window.location.origin) {
-                //     console.warn("Mensaje ignorado: Origen no permitido:", event.origin);
-                //     return; 
-                // }
-
-
-                // El mensaje llegó si esta alerta se dispara
-                // alert('¡Mensaje RECIBIDO en el Padre!'); 
-                
-                const miObjeto = event.data; // Los datos enviados por el iframe
-
-                if (miObjeto && miObjeto.status === true) {
-                    console.log('Pago finalizado exitosamente. Redireccionando...');
-                    // **Asegúrate de que Livewire está cargado antes de emitir**
-                    if (typeof Livewire !== 'undefined') {
-                        // Emitir el evento definido en el $listeners del componente: 'clearCartJs'
-                        Livewire.emit('clearCartJs');
-                        
-                        // Opcional: Redirigir después de limpiar el carrito (si es lo que deseas)
-                        window.location.href = '/'; 
-                    } else {
-                        console.error("Livewire no está cargado. No se pudo emitir 'clearCartJs'.");
-                    }
+                if (event.data && event.data.status === true) {
+                    console.log('Mensaje de pago recibido.');
+                    paymentStatusReceived = true; // Establecer bandera
                     
+                    // Intentar emitir inmediatamente, y si falla, el hook lo intentará después
+                    if (typeof Livewire !== 'undefined') {
+                        Livewire.emit('clearCartJs');
+                    }
                 }
             });
+
+            // 2. Usar el hook para emitir el evento si el mensaje llegó antes de que Livewire cargara.
+            // Esto asegura que la función se llama *después* de que Livewire está lista.
+            if (typeof Livewire !== 'undefined') {
+                Livewire.hook('element.init', () => {
+                    if (paymentStatusReceived === true) {
+                        console.log('Livewire listo. Emitiendo el evento pendiente.');
+                        Livewire.emit('clearCartJs');
+                        paymentStatusReceived = false; // Resetear
+                    }
+                });
+            }
 
         });
     </script>
