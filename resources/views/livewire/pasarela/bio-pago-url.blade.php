@@ -18,6 +18,10 @@
         <br>
         <iframe src="{{$urlPayment}}" id="iframePasarela" class="iframePasarela" frameborder="0"></iframe>
     </div>
+    
+    @stack('before-livewire-scripts')
+    <livewire:scripts />     
+    @stack('after-livewire-scripts')
 
     <script>
         let paymentStatusReceived = false;
