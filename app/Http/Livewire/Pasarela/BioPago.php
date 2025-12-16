@@ -256,38 +256,54 @@ class BioPago extends Component
 				'confirmed' => 1,
 			]);
 
-			// 3. CREAR DETALLES (LA PARTE QUE REQUIERE EL BUCLE)
-
-			if ($pedidodetallestemporal->isNotEmpty()) {
+			if ($pedidotemporal) {
 				
-				$detallesData = [];
-				$timestamp = now()->toDateTimeString(); // <--- CLAVE: Obtener la hora actual en el formato YYYY-MM-DD HH:MM:SS
+				// 2. CREAR ENCABEZADO (USANDO TU SIMPLIFICACIÓN)
+				// Se asume que Pedido::$fillable contiene las columnas de PedidoTemporal.
+				$pedidoData = $pedidotemporal->toArray();
+				
+				// Si necesitas quitar el 'id' del temporal o añadir/modificar campos, hazlo aquí:
+				unset($pedidoData['id']); 
+				// $pedidoData['status'] = 'procesado';
 
-				foreach ($pedidodetallestemporal as $detalleTemporal) {
+				$nuevoPedido = Pedido::create($pedidoData);
+						// 3. CREAR DETALLES (LA PARTE QUE REQUIERE EL BUCLE)
+
+				if ($pedidodetallestemporal->isNotEmpty()) {
 					
-					$detalleArray = $detalleTemporal->toArray();
-					
-					// --- LIMPIEZA DE CAMPOS ---
-					unset($detalleArray['id']); 
-					//unset($detalleArray['nropedido']); 
-					
-					// --- CORRECCIÓN DE FECHAS ---
-					// 1. Quitar las fechas originales serializadas del temporal
-					unset($detalleArray['created_at']); 
-					unset($detalleArray['updated_at']);
-					
-					// 2. Insertar las fechas en el formato correcto para MySQL
-					$detalleArray['created_at'] = $timestamp; 
-					$detalleArray['updated_at'] = $timestamp;
-					
-					// --- ASIGNACIÓN DE CLAVE FORÁNEA ---
-					$detalleArray['pedido_id'] = $nuevoPedido->id; 
-					
-					$detallesData[] = $detalleArray;
+					$detallesData = [];
+					$timestamp = now()->toDateTimeString(); // <--- CLAVE: Obtener la hora actual en el formato YYYY-MM-DD HH:MM:SS
+
+					foreach ($pedidodetallestemporal as $detalleTemporal) {
+						
+						$detalleArray = $detalleTemporal->toArray();
+						
+						// --- LIMPIEZA DE CAMPOS ---
+						unset($detalleArray['id']); 
+						//unset($detalleArray['nropedido']); 
+						
+						// --- CORRECCIÓN DE FECHAS ---
+						// 1. Quitar las fechas originales serializadas del temporal
+						unset($detalleArray['created_at']); 
+						unset($detalleArray['updated_at']);
+						
+						// 2. Insertar las fechas en el formato correcto para MySQL
+						$detalleArray['created_at'] = $timestamp; 
+						$detalleArray['updated_at'] = $timestamp;
+						
+						// --- ASIGNACIÓN DE CLAVE FORÁNEA ---
+						$detalleArray['pedido_id'] = $nuevoPedido->id; 
+						
+						$detallesData[] = $detalleArray;
+					}
+
+					// Insertar todos los detalles de una vez
+					PedidoDetalles::create($detallesData); 
 				}
 
-				// Insertar todos los detalles de una vez
-				PedidoDetalles::create($detallesData); 
+				// 4. (Opcional) Eliminar los registros temporales
+				PedidoTemporal::where('nropedido', $reference)->delete();
+				PedidoDetallesTemporal::where('nropedido', $reference)->delete();
 			}
 
 			\Cart::clear();
