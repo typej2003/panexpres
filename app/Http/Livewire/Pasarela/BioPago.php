@@ -229,7 +229,7 @@ class BioPago extends Component
           //$pedido = Pedido::find($pedido_id);
 		  $pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
 
-		  $pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->first();
+		  $pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->get();
     
           $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
     
