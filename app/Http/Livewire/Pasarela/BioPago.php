@@ -295,13 +295,13 @@ class BioPago extends Component
 						$detalleArray['pedido_id'] = $nuevoPedido->id;
 						
 						$detallesData[] = $detalleArray;
-
-						PedidoDetalles::create($detallesData); 
-
+						
 					}
 
+					dd($detallesData);
+
 					// Insertar todos los detalles de una vez
-					
+					PedidoDetalles::insert($detallesData); 
 				}
 
 				// 4. (Opcional) Eliminar los registros temporales
