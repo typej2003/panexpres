@@ -49,17 +49,17 @@
                 }
             });
 
-            // 2. Usar el hook para emitir el evento si el mensaje llegó antes de que Livewire cargara.
-            // Esto asegura que la función se llama *después* de que Livewire está lista.
-            if (typeof Livewire !== 'undefined') {
-                Livewire.hook('element.init', () => {
-                    if (paymentStatusReceived === true) {
-                        console.log('Livewire listo. Emitiendo el evento pendiente.');
-                        Livewire.emit('clearCartJs');
-                        paymentStatusReceived = false; // Resetear
-                    }
-                });
-            }
+            // 3. 🔑 Hook de Livewire: Garantiza que la emisión se ejecute *después* de la carga de Livewire
+            window.addEventListener('livewire:load', function() {
+                console.log('Evento livewire:load disparado. Livewire listo.');
+                
+                // Si ya recibimos los datos de pago ANTES de que Livewire cargara:
+                if (paymentDataForLivewire !== null) {
+                    console.log('Emitiendo evento pendiente a Livewire.');
+                    Livewire.emit('clearCartJs', paymentDataForLivewire.orderId, paymentDataForLivewire.status);
+                    paymentDataForLivewire = null; // Limpiar la bandera para evitar repeticiones
+                }
+            });
 
         });
     </script>

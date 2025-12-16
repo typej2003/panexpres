@@ -2,7 +2,7 @@
 
 !-- <script src="/js/bootstrap.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/jquery-3.6.4.min.js"></script> -->
+<script src="/js/jquery-3.6.4.min.js"></script> 
 @stack('js')
 @stack('before-livewire-scripts')
 <livewire:scripts />
