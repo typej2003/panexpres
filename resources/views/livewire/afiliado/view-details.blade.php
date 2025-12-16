@@ -300,7 +300,7 @@
                     @endif
                 </div>
             </div>
-            <div class="tarjeta content-row mt-2 mx-2 text-orange">
+            <div class="tarjeta content-row mt-2 atext-orange">
                 <h4>Detalles del producto</h4>
             </div>
             <div class="tarjeta content-row mb-2"> 
@@ -312,7 +312,7 @@
                 </div>
                 <div class="col-two-thirds"> 
                     <div class="content-row"> 
-                        <div class="col-full h4 p-3"> 
+                        <div class="col-full h4 pt-4"> 
                             {{ $product->name}}
                         </div>
                     </div>
