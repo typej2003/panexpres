@@ -8,6 +8,7 @@ use App\Mail\TestMail;
 use App\Models\Notificacion;
 use Mail;
 use App\Models\User;
+use App\Models\Comercio;
 use App\Models\Pedido;
 use App\Models\PedidoDetalles;
 

@@ -96,7 +96,7 @@ Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
     $detalles = PedidoDetalles::where('nropedido', $nropedido)->get();
     foreach($detalles as $pedido)
     {
-        $comercio= Comercio::find($pedido->comercio_id);
+        $comercio = Comercio::find($pedido->comercio_id);
 
         $emailwelcome->sendEmailComercio('compra', $comercio, $nropedido);
 
