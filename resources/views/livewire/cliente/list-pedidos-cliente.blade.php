@@ -49,6 +49,7 @@
                                         </th>
                                         <th scope="col">Cédula</th>
                                         <th scope="col">Cliente</th>
+                                        <th scope="col">Email</th>
                                         <th scope="col">Método de Pago</th>
                                         <th scope="col">Costo</th>
                                         <th scope="col">Método de Entrega</th>
@@ -66,6 +67,7 @@
                                         <td>{{ $pedidoTemporal->reference }}</td>
                                         <td>{{ $pedidoTemporal->client->identificationNumber }}</td>
                                         <td>{{ $pedidoTemporal->client->name }}</td>
+                                        <td>{{ $pedidoTemporal->client->email }}</td>
                                         <td>{{ $pedidoTemporal->metodo }}</td>
                                         <td>{{ $pedidoTemporal->coste }} {{ $currencyValue }}</td>
                                         <td>{{ $pedidoTemporal->metodoentrega }}</td>

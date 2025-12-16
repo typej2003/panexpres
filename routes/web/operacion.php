@@ -104,7 +104,7 @@ Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
 
     $pedido = Pedido::where('nropedido', $nropedido)->first();
 
-    $emailwelcome->sendEmail('compra', $pedido->client()->email, $nropedido);
+    $emailwelcome->sendEmail('compra', $pedido->client, $nropedido);
     
 
     // $cart = new CartController;
