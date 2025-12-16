@@ -12,9 +12,12 @@
                     <div class="col-lg-12">
                         <div class="card" style="width: 100% !important;">
                             <div class="card-body text-center">
-                                <h1>Operación procesada con éxito</h1>
+                                <h1>PanExpres.com</h1>
+                                <br>
+                                <h4>Compra nro: {{$nropedido}}</h4>
+                                <h4>Operación procesada con éxito</h4>
                                 <p>
-                                    Su pago <a href="/detallespedido/{{ $nropedido }}">{{ $nropedido }}</a> esta siendo validado por nuestro equipo de venta.
+                                    Su pago esta siendo validado por nuestro equipo de venta.
                                 </p>
                                 <h3>¿Qué desea hacer ahora?</h3>
                                 <p>
