@@ -238,15 +238,21 @@ class BioPago extends Component
 				'cliente_id' => $pedidotemporal->user_id,
 				'user_id' => $pedidotemporal->user_id,
 				'comercio_id' => $pedidotemporal->comercio_id,
+				'identificationNac' => $pedidotemporal->identificationNac,
 				'identificationNumber' => $datos->idNumber,
 				'id_transaccion' => $datos->transactionId,
-				'reference' => $datos->reference,
+				'reference' => $datos->transactionId,
 				'totalbs' => $datos->amount,
 				'fechaPago' => $paymentDate,
 				'title' => $datos->title,
 				'description' => $datos->description,
 				'status' => 1,
 				'nropedido' => $datos->reference,
+				'cellphonecode' => $pedidoTemporal->cellphonecode,
+				'cellphone' => $pedidoTemporal->cellphone,
+				'metodo' => 'BioPagoBdv',
+				'currency' => 'Bs',
+				'amount' => $datos->amount,
           	]);
     
            	$pedidotemporal->update([
