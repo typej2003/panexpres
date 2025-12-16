@@ -36,8 +36,10 @@
             // Función para manejar mensajes recibidos del iframe
             window.addEventListener('message', function(event) {
                 alert('despues')
-                Livewire.emit('clearCartJs');
+                const miObjeto = event.data; // Los datos enviados por el iframe
+                // Livewire.emit('clearCartJs');
             });
+
         });
     </script>
 </div>
