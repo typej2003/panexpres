@@ -1,5 +1,8 @@
 <div class="">    
     <style>
+        .view-detail {
+            margin-top: -50px;
+        }
         .img-responsive {
             width:100%; height: 250px;
         }
@@ -208,7 +211,8 @@
             </div>            
         @endif
     
-        <div class="content-row"> <div class="col-full"> 
+        <div class="view-detail content-row"> 
+            <div class="col-full"> 
                 @if (config('app.url').'/nobanner.png' !== $comercio->banner_url )
                     
                     <img style="width:100%; height: 150px; 
@@ -226,15 +230,26 @@
                 @endif
             </div>
         </div>
-        <div class="custom-card mx-auto my-3" style="width: 80%" > <div class="content-row mb-2"> <div class="col-half"> </div><div class="col-half align-right"> <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                        <li class="breadcrumb-item active">{{ $comercio->name }}</li>
-                    </ol>
-                </div></div><div class="content-row mb-2"> <div class="col-one-third"> <div style="width:100%; height: 80%;">
-                        <img class="img-responsive" src="{{ $product->image1_url }}" alt="">
-                    </div>
+        <div class="custom-card mx-auto my-3" style="width: 100%" > 
+            <div class="content-row mb-2"> 
+                <div class="col-half"> 
+
+                </div>
+            <div class="col-half align-right"> 
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item active">{{ $comercio->name }}</li>
+                </ol>
+            </div>
+        </div>
+        <div class="content-row mb-2"> 
+            <div class="col-one-third"> 
+                <div style="width:100%; height: 80%;">
+                    <img class="img-responsive" src="{{ $product->image1_url }}" alt="">
+                </div>
                     
-                </div><div class="col-two-thirds"> <div class="content-row"> <div class="col-full"> {{ $product->name}}
+            </div>
+        <div class="col-two-thirds"> <div class="content-row"> <div class="col-full"> {{ $product->name}}
                         </div>
                     </div>
                     <div class="content-row d-flex justify-content-between"> <div class="col-full"> <div>Ver mas productos de<span class="mx-1"><a href="">{{ $product->comercio->name}}</a></span></div>
@@ -330,12 +345,10 @@
                     </div>
                 </div></div></div>
     
-        <div class="content-row my-2"> <div class="col-full"> @livewire('components.show-recommended', [
+        <div class="content-row my-2"> <div class="col-full"> 
+            @livewire('components.show-recommended-expres', [
                         'comercioId' => 1, 
                         'parametro' => $words='',
-                        'manufacturer_id' => $manufacturer_id='',
-                        'modelo_id' => $modelo_id='',
-                        'motor_id' => $motor_id='',
                         ] )
             </div>
         </div>
