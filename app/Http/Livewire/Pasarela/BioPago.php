@@ -222,41 +222,81 @@ class BioPago extends Component
     
         if($datos->success == 'true')
         {
-          $reference = explode('/', $datos->reference)[0];
+          	$reference = explode('/', $datos->reference)[0];
 
-		  //$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
+		  	//$pedido_id = explode('-', str_replace('Pedido ', '', $reference, ))[0];
     
-          //$pedido = Pedido::find($pedido_id);
-		  $pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
-
-		  $pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->get();
+          	//$pedido = Pedido::find($pedido_id);
+		  	$pedidotemporal = PedidoTemporal::where('nropedido', $reference)->first();
+		  	$pedidodetallestemporal = PedidoDetallesTemporal::where('nropedido', $reference)->get();
     
-          $paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
+          	$paymentDate = date('Y-m-d H:i:s', strtotime($datos->paymentDate));
     
-          $transaccion = Transaccion::create([
-           'token' => $token,
-           'paymentId' => $token,
-		   'cliente_id' => $pedidotemporal->user_id,
-		   'user_id' => $pedidotemporal->user_id,
-           'comercio_id' => $pedidotemporal->comercio_id,
-           'identificationNumber' => $datos->idNumber,
-           'id_transaccion' => $datos->transactionId,
-           'reference' => $datos->reference,
-           'totalbs' => $datos->amount,
-           'fechaPago' => $paymentDate,
-           'title' => $datos->title,
-           'description' => $datos->description,
-           'status' => 1,
-		   'nropedido' => $datos->reference,
-          ]);
+          	$transaccion = Transaccion::create([
+				'token' => $token,
+				'paymentId' => $token,
+				'cliente_id' => $pedidotemporal->user_id,
+				'user_id' => $pedidotemporal->user_id,
+				'comercio_id' => $pedidotemporal->comercio_id,
+				'identificationNumber' => $datos->idNumber,
+				'id_transaccion' => $datos->transactionId,
+				'reference' => $datos->reference,
+				'totalbs' => $datos->amount,
+				'fechaPago' => $paymentDate,
+				'title' => $datos->title,
+				'description' => $datos->description,
+				'status' => 1,
+				'nropedido' => $datos->reference,
+          	]);
     
-           $pedidotemporal->update([
-			'status' => 1,
-			'reference' => $datos->transactionId,
-			'metodo' => 'tarjeta',
-			'confirmed' => 1,
+           	$pedidotemporal->update([
+				'status' => 1,
+				'reference' => $datos->transactionId,
+				'metodo' => 'tarjeta',
+				'confirmed' => 1,
 			]);
 
+			if ($pedidotemporal) {
+				
+				// 2. CREAR ENCABEZADO (USANDO TU SIMPLIFICACIÓN)
+				// Se asume que Pedido::$fillable contiene las columnas de PedidoTemporal.
+				$pedidoData = $pedidotemporal->toArray();
+				
+				// Si necesitas quitar el 'id' del temporal o añadir/modificar campos, hazlo aquí:
+				unset($pedidoData['id']); 
+				// $pedidoData['status'] = 'procesado';
+
+				$nuevoPedido = Pedido::create($pedidoData);
+				
+				// 3. CREAR DETALLES (LA PARTE QUE REQUIERE EL BUCLE)
+				if ($pedidodetallestemporal->isNotEmpty()) {
+					
+					$detallesData = [];
+					
+					foreach ($pedidodetallestemporal as $detalleTemporal) {
+						
+						// Convertir el detalle temporal a array
+						$detalleArray = $detalleTemporal->toArray();
+						
+						// Quitar el 'id' del temporal y el 'nropedido' antiguo
+						unset($detalleArray['id']); 
+						//unset($detalleArray['nropedido']); 
+						
+						// CLAVE: Asignar el ID del pedido permanente al detalle
+						$detalleArray['pedido_id'] = $nuevoPedido->id; 
+						
+						// Usaremos la inserción en lote por eficiencia
+						$detallesData[] = $detalleArray;
+					}
+
+					// Insertar todos los detalles de una vez
+					PedidoDetalles::insert($detallesData); 
+				}
+				
+				// 4. (Opcional) Eliminar los registros temporales
+				PedidoTemporal::where('nropedido', $reference)->delete();
+				PedidoDetallesTemporal::where('nropedido', $reference)->delete();
+			}
 			$pedido = $pedidotemporal->toArray();
 
 			$pedidodetalles = $pedidodetallestemporal->toArray();
