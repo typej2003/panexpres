@@ -243,7 +243,7 @@
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $lastProduct->price1 }}</span></p>
                         </div>
                         <div class="card-badge-pure">
-                            <img src="img/campanas.png" alt="Icono de Campanas">
+                            <img src="{{ asset('/img/campanas.png') }}" alt="Icono de Campanas">
                         </div>
                     </div>
                     <a href="" wire:click.prevent="sendCard({{ $lastProduct->id }}, 1)" class="buy-button-pure">Comprar</a>
@@ -260,7 +260,7 @@
                                 <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $recommended->price1 }}</span></p>
                             </div>
                             <div class="card-badge-pure">
-                                <img src="img/campanas.png" alt="Icono de Campanas">
+                                <img src="{{ asset('/img/campanas.png') }}" alt="Icono de Campanas">
                             </div>
                         </div>
                         <a href="" wire:click.prevent="sendCard({{ $recommended->id }}, 1)" class="buy-button-pure">Comprar</a>
@@ -276,7 +276,7 @@
                                 <p>¡No encontro elementos!</p>
                             </div>
                             <div class="card-badge-pure">
-                                <img src="img/campanas.png" alt="Icono de Campanas">
+                                <img src="{{ asset('/img/campanas.png') }}" alt="Icono de Campanas">
                             </div>
                         </div>
                     </div>
@@ -292,7 +292,7 @@
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $firstProduct->price1 }}</span></p>
                         </div>
                         <div class="card-badge-pure">
-                            <img src="img/campanas.png" alt="Icono de Campanas">
+                            <img src="{{ asset('/img/campanas.png') }}" alt="Icono de Campanas">
                         </div>
                     </div>
                     <a href="" wire:click.prevent="sendCard({{ $firstProduct->id }}, 1)" class="buy-button-pure">Comprar</a>

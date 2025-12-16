@@ -477,7 +477,7 @@ body {
     
     /* --- PROPIEDADES PARA FIJAR --- */
     position: fixed;
-    top: 64px; /* AJUSTADO: Posiciona debajo del navbar principal (~70px) */
+    top: 52px; /* AJUSTADO: Posiciona debajo del navbar principal (~70px) */
     z-index: 1010; 
     
     box-sizing: border-box; 
