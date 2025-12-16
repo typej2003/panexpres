@@ -33,39 +33,29 @@
                             </div>
                             <div class="card-footer d-flex justify-content-end">
                                 <button class="d-none" onclick="enviarDatoAlPadre()">Enviar Variable al Padre</button>
+                                
                                 <script>
                                     function enviarDatoAlPadre() {
-                                        alert('durante')
+                                        alert('durante'); // Punto de prueba 1: Se ejecuta al enviar
+                                        
                                         const miObjeto = {
                                             'status': true,
                                             'message': 'Proceso Finalizado',
                                         };
-                                        // Usa window.parent para referirte al padre y postMessage para enviar datos
-                                        // El primer argumento es los datos y el segundo es el origen del padre
-                                        window.parent.postMessage(miObjeto, '*'); // Enviar a cualquier origen por simplicidad, pero se recomienda especificar el origen del padre para seguridad.
-                                    }
-                                    var contador = 5
-                                    function cuentaRegresiva(contador){                                    
-                                        const idIntervalo = setInterval(() => {
-                                            console.log(contador); // Muestra el valor actual del contador
-                                            document.getElementById('contador').textContent = contador
-
-                                            if (contador === 0) {
-                                                clearInterval(idIntervalo); // Detiene el intervalo cuando llega a 0
-                                                console.log("¡Cuenta regresiva terminada!");
-                                            } else {
-                                                contador--; // Disminuye el contador en 1
-                                            }
-                                        }, 1000); // 1000 milisegundos = 1 segundo                                
+                                        
+                                        // Envío del mensaje. Usamos '*' solo para pruebas iniciales; 
+                                        // si el padre está en panexpres.com, deberías usar 'https://panexpres.com'
+                                        window.parent.postMessage(miObjeto, '*'); 
                                     }
 
+                                    // Se elimina la función cuentaRegresiva completa.
+                                    
                                     const timeoutId = setTimeout(() => {
-                                        alert('ante')
-                                        enviarDatoAlPadre()
-                                        clearTimeout(timeoutId)
+                                        alert('ante'); // Punto de prueba 2: Se ejecuta 5 segundos después de la carga
+                                        enviarDatoAlPadre();
+                                        clearTimeout(timeoutId);
                                     }, 5000)
 
-                                    
                                 </script>
                             </div>
                         </div>
