@@ -77,19 +77,6 @@
         <!-- /.content -->
 
         <!-- Modal -->
-        
-        <script>
-            let boton = document.getElementById('salir')
-            boton.addEventListener('click', function(){
-                window.parent.location.href= "/procesadoC";
-            })
-
-            window.onload=function() {
-                
-                window.parent.location.href= "/procesadoC";
-                
-            }
-        </script>
 
     </div>
 </div>
