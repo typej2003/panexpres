@@ -258,8 +258,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-half d-flex justify-content-start"> <button class="btn btn-sale"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
-                            <button wire:click.prevent="prueba" class="btn btn-sale text-center">Prueba Comprar</button>
+                            <div class="col-half d-flex justify-content-start"> <button class="btn btn-success"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
+                            
                             </div>
                             <div class="col-quarter d-none"> <button class="btn h-75 border border-secondary"><i class="fa fa-solid fa-heart"></i></button>                        
                             </div>
