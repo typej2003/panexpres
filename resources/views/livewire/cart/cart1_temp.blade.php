@@ -226,7 +226,7 @@
     </style>
 
     <div class="container-css">
-        <div class="flex-row my-2"> <div class="col-100"> <a href="/"><h6><i class="fa fa-solid fa-arrow-left"></i> Continuar con la compra</h6></a>
+        <div class="flex-row my-2"> <div class="col-100"> <a href="/"><h6><i class="fa fa-solid fa-arrow-left"></i> Continuar</h6></a>
             </div>
         </div>
 

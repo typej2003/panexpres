@@ -190,7 +190,7 @@
                             <th scope="row" colspan = "2">
                                 @if(count($cartCollection)>0)
                                     @auth
-                                    <button wire:click.prevent="finalizarCompra" class="btn-base btn-success w-100">Continuar Cart</button> 
+                                    <button wire:click.prevent="finalizarCompra" class="btn-base btn-success w-100">Continuar</button> 
                                     @else
                                     <div class="flex-row"> 
                                         <div class="accordion"> 
