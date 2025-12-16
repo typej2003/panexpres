@@ -35,6 +35,7 @@
                                 <button class="d-none" onclick="enviarDatoAlPadre()">Enviar Variable al Padre</button>
                                 <script>
                                     function enviarDatoAlPadre() {
+                                        alert('durante')
                                         const miObjeto = {
                                             'status': true,
                                             'message': 'Proceso Finalizado',
@@ -59,6 +60,7 @@
                                     }
 
                                     const timeoutId = setTimeout(() => {
+                                        alert('ante')
                                         enviarDatoAlPadre()
                                         clearTimeout(timeoutId)
                                     }, 5000)
