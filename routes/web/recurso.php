@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Recursos\LectorQr;
+use App\Http\Livewire\Recursos\Redireccionar;
 
 //Route::get('/lectorQr', LectorQr::class)->name('lectorQr')->middleware('auth');
 
@@ -10,3 +11,5 @@ Route::get('/lectorQr', function(){
     // return view('externalviews.lectorQr')->middleware('auth');
     return view('externalviews.lectorQr');
 });
+
+Route::get('/redireccionar/{opcion}', Redireccionar::class)->name('redireccionar')->middleware('auth');
