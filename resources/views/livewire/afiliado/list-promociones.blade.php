@@ -197,7 +197,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancelar</button>
-                        <button type="submit" class="boton"><i class="fa fa-save mr-1"></i>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save mr-1"></i>
                             @if($showEditModal)
                             <span>Guardar Cambios</span>
                             @else
