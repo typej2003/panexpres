@@ -245,11 +245,11 @@
         <div class="col-promociones col2">
             
             <div class="fila-promo superior">
-                <img src="img/promociones/panaderia_expreso_derecha1.jpg" alt="Banner Empresa">    
+                <img src="{{$bannerRightUp}}" alt="Banner Empresa">    
             </div>
             
             <div class="fila-promo inferior">
-                <img src="img/promociones/panaderia_expreso_derecha2.jpg" alt="Banner Residencial">
+                <img src="{{$bannerRightDown}}" alt="Banner Residencial">
             </div>
             
         </div>

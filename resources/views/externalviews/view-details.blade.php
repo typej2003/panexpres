@@ -56,6 +56,7 @@
                 @endif
             </head> 
             <body>
+                <h1>Haollloo</h1>
                 <div class="full-width-row"> <div class="full-width-column"> 
                     @if($in_cellphonecontact > 0)            
                             <!-- <div class="full-width-row" id="whatsapp" style="position: fixed; bottom: 20px; right:20px; z-index: 20;"> <a href="https://api.whatsapp.com/send?phone=+58{{$comercio->contactcellphone}}&text={{ $comercio->msgcontact}}" target="_blank">

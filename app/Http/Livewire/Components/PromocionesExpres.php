@@ -11,6 +11,8 @@ class PromocionesExpres extends Component
     public $currencyValue = 'Bs';
 
     public $comercio_id;
+    public $bannerRightUp;
+    public $bannerRightDown;
 
     public function mount($comercioId = 1, $currencyValue='$')
     {
@@ -19,6 +21,23 @@ class PromocionesExpres extends Component
         $this->comercio = Comercio::find($this->comercio_id);
 
         $this->currencyValue = request()->cookie('currency');
+
+        $banner1 = Promocion::where('bannerside', 2)->where('order', 1)->first();
+		
+		if($banner1 !== null)
+		{
+			$this->bannerRightUp = $banner1->avatar_url;
+		}else{
+			$this->bannerRightUp = asset('noimage.png');
+		}
+		
+		$banner2 = Promocion::where('bannerside', 2)->where('order', 2)->first();
+		if($banner2 !== null)
+		{
+			$this->bannerRightDown = $banner2->avatar_url;
+		}else{
+			$this->bannerRightDown = asset('noimage.png');
+		}
         
     }
 
