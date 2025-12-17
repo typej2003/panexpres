@@ -65,15 +65,12 @@ Route::get('/routedetails/{comercioId}/{productId}', function($comercioId, $prod
             $setting = SettingComercio::where('comercio_id', 1)->first();
         }        
         
-        return view('externalviews.view-details', [
+        return view('externalviews.view-details-expres', [
             'comercio' => $comercio, 
             'productId' => $product->id,
             'in_cellphonecontact' => $setting->in_cellphonecontact,
             'in_sliderprincipal' => $setting->in_sliderprincipal,
             'in_marcasproductos' => $setting->in_marcasproductos,
-            'manufacturer_id' => '',
-            'modelo_id' => '',
-            'motor_id' => '',
         ]);
     }
 });

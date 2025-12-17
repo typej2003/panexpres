@@ -101,12 +101,11 @@
                                     <!-- Top Image -->
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
-                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightUp->avatar_url }}' }">
+                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightUp->avatarp1_url }}' }">
                                                 <input wire:model="bannerRightUp" type="file" class="d-none" x-ref="image" x-on:change="
                                                         reader = new FileReader();
                                                         reader.onload = (event) => {
-                                                            imagePreview = event.target.result;
-                                                            document.getElementById('profileImage').src = `${imagePreview}`;
+                                                            imagePreview = event.target.result;                                                            
                                                         };
                                                         reader.readAsDataURL($refs.image.files[0]);
                                                     " />
@@ -124,12 +123,12 @@
                                     <!-- Down Image --> 
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
-                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightDown->avatar_url }}' }">
+                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightDown->avatarp2_url }}' }">
                                                 <input wire:model="bannerRightDown" type="file" class="d-none" x-ref="image" x-on:change="
                                                         reader = new FileReader();
                                                         reader.onload = (event) => {
                                                             imagePreview = event.target.result;
-                                                            document.getElementById('profileImage').src = `${imagePreview}`;
+                                                            
                                                         };
                                                         reader.readAsDataURL($refs.image.files[0]);
                                                     " />

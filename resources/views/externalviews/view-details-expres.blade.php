@@ -23,29 +23,14 @@
         @livewire('layouts.navbar-expres')
         
         @if($in_cellphonecontact > 0)
-            <a href="https://api.whatsapp.com/send?phone=+58{{$contactcellphone}}&text={{ $msgcontact}}" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+            <a href="https://api.whatsapp.com/send?phone=+58{{$comercio->contactcellphone}}&text={{ $comercio->msgcontact}}" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp whatsapp-icon"></i>
             </a>
-        @endif
-
-        @if($in_marcasproductos > 0)
-            @livewire('components.marcas-productos')
         @endif
         
         <div class="my-2"></div>    
         <section class="container-fluid">
-            <div class="my-2"></div>                    
-            @if($words == '')    
-                <div class="my-2"></div>
-                @livewire('components.show-products-expres')
-            @endif
-            
-            @if($words != '' )   
-                @livewire('components.results-products-expres', [
-                    'comercioId' => $comercio_id, 
-                    'parametro' => $words,
-                    ])
-            @endif
+            <div class="my-2"></div>
         </section> 
 
         @livewire('layouts.footer-expres')

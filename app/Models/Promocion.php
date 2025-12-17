@@ -23,9 +23,29 @@ class Promocion extends Model
 
     protected $appends = [
         'avatar_url',
+        'avatarp1_url',
+        'avatarp2_url',
     ];
 
     public function getAvatarUrlAttribute()
+    {
+        if ($this->avatar && Storage::disk('avatarspromociones')->exists($this->avatar)) {
+            return Storage::disk('avatarspromociones')->url($this->avatar);
+        }
+
+        return asset('noimage.png');
+    }
+
+    public function getAvatarp1UrlAttribute()
+    {
+        if ($this->avatar && Storage::disk('avatarspromociones')->exists($this->avatar)) {
+            return Storage::disk('avatarspromociones')->url($this->avatar);
+        }
+
+        return asset('noimage.png');
+    }
+
+    public function getAvatarp2UrlAttribute()
     {
         if ($this->avatar && Storage::disk('avatarspromociones')->exists($this->avatar)) {
             return Storage::disk('avatarspromociones')->url($this->avatar);

@@ -219,43 +219,52 @@ class ListPromociones extends AdminComponent
 
 	public function updatedBannerRightUp()
     {       
-        $searchKeys = [
+		$searchKeys = [
             'bannerside' => 2, // Fila Derecha
             'order' => 1,       // Banner Superior
         ];
         $diskName = 'avatarspromociones';
-
+		
         // 1. Validar el archivo subido
         $this->validate([
             'bannerRightUp' => 'required|image|max:1024', // Asegura que sea una imagen y menor a 1MB
         ]);
 
+
         // 2. Encontrar el registro actual para obtener la ruta previa (si existe)
         $banner1 = Promocion::where($searchKeys)->first();
-
-		$previousPath = $banner1 ? $banner1->avatar : null;
-
-		// 3. Obtener el archivo subido
+        $previousPath = $banner1 ? $banner1->avatar : null;
+        
+        // 3. Obtener el archivo subido
         $uploadedFile = $this->bannerRightUp;
 
-		// 4. Obtener el nombre original del archivo
+        // 4. Obtener el nombre original del archivo
         $originalName = $uploadedFile->getClientOriginalName();
 
-		// 5. Almacenar la nueva imagen usando su nombre original (storeAs)
+        // 5. Almacenar la nueva imagen usando su nombre original (storeAs)
         $path = $uploadedFile->storeAs('/', $originalName, $diskName);
 
-		// 7. Eliminar la imagen anterior del disco (si existe y no es la nueva)
+        // 6. Crear o Actualizar el registro en la base de datos
+        // Usa updateOrCreate para garantizar que solo exista un registro con 'bannerside=2' y 'order=1'
+		
+		
+        // 7. Eliminar la imagen anterior del disco (si existe y no es la nueva)
         if (!empty($previousPath) && $previousPath !== $path && Storage::disk($diskName)->exists($previousPath)) {
             Storage::disk($diskName)->delete($previousPath);
         }
 
+		
+
 		$banner1->update(['avatar' => $path]);
+
+		
 
 		$this->bannerRightUp = $banner1;
         
-        
-		// 10. Disparar el evento de navegador
+        // 10. Disparar el evento de navegador
         $this->dispatchBrowserEvent('updated', ['message' => 'Imagen cambiada satisfactoriamente!']);
+
+		
     }
 
 	public function updatedBannerRightDown()
