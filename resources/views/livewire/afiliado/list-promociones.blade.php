@@ -107,14 +107,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="comercio" class="">Comercio <span class="text-danger">*</span></label>
-                            <select wire:model="comercio" class="form-control @error('comercio') is-invalid @enderror" id="comercio">
+                            <label for="comercio_id" class="">Comercio <span class="text-danger">*</span></label>
+                            <select wire:model="comercio_id" class="form-control @error('comercio_id') is-invalid @enderror" id="comercio_id">
                                 <option value="0">Seleccione una opción</option>
                                 @foreach($comercios as $com)
                                     <option value="{{ $com->id }}" selected>{{ $com->name }}</option>
                                 @endforeach
                             </select>
-                            @error('comercio')
+                            @error('comercio_id')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

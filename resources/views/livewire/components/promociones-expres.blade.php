@@ -192,8 +192,8 @@
             <div class="container-carouselpromo-full" id="mainCarouselpromoContainer">
                 
                 <div class="carouselpromo-inner" id="carouselpromoInner">
-
-                @if($promociones == null)
+                
+                @if(count($promociones) > 0 )
                     
                     <div class="carouselpromo-item is-clone" data-index="{{ $lastPromocion->id }}">
                         <img src="{{ $lastPromocion->avatar_url }}" alt="{{ $lastPromocion->name }} Clon">

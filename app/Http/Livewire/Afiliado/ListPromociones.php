@@ -19,6 +19,8 @@ class ListPromociones extends AdminComponent
 	public $state = [];
 
 	public $comercio;
+	public $comercio_id = 0;
+	public $product_id = 0;
     public $product;
     public $comercios = [], $products = [];
 
@@ -45,6 +47,8 @@ class ListPromociones extends AdminComponent
 
 	public function updatedComercio($value)
 	{
+		$this->comercio_id = $value;
+
 		$this->products = Product::where('comercio_id', $value)->get();
 		$this->product = $this->products->first()->id ?? null;
 	}
@@ -76,11 +80,14 @@ class ListPromociones extends AdminComponent
             'active' => 'required',
 		])->validate();
 
+		
+
         if ($this->photo) {
 			$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');
 		}
 
 		$validatedData['comercio_id'] = $this->comercio_id;
+
 		$validatedData['product_id'] = $this->product_id;
 
 		Promocion::create($validatedData);
