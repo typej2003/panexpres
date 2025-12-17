@@ -154,7 +154,6 @@
         /* ✅ BOTÓN FLOTANTE "COMPRAR" (POSICIÓN SUBIDA) */
         /* ------------------------------------------------------------------- */
         .buy-button-pure {
-            transform: translateX(-50%); 
             z-index: 100;
             padding: 10px 15px;
             background-color: #dd751a; 
@@ -169,6 +168,7 @@
             white-space: nowrap; 
             text-decoration: none; 
             display: inline-block;
+            
         }
         
         .buy-button-pure:hover {
@@ -208,8 +208,7 @@
             }
 
             .buy-button-pure {
-                bottom: 15px; 
-                left: 50%; 
+                
             }
 
             .container-show-products {
@@ -233,7 +232,6 @@
             .carousel-container-pure { max-width: 1200px; }
             .container-show-products { height: 15rem !important; margin-bottom: 1px; }
             .buy-button-pure {
-                margin-left: 50%;
                 padding: 10px 25px;    /* Botón ancho y cómodo */
                 font-size: 1rem;       /* Texto estándar */
                 border-radius: 50px;
@@ -257,7 +255,6 @@
             .container-show-products { height: 22rem !important; margin-bottom: 1px;}
             .buy-button-pure {
                 margin: auto;
-                margin-left: 50%;
                 margin-top: 5px;
                 padding: 8px 20px;     /* Reducimos el tamaño para no saturar */
                 font-size: 0.95rem;
@@ -268,6 +265,11 @@
                 right: -10px; /* Ajuste para darle un poco más de margen */
                 z-index: 16; 
             }
+
+            .container-show-recommended {
+                min-height: 20vh !important;
+            }
+            .container-show-products { height: 20vh !important; margin-bottom: 1px;}
         }
 
         @media (min-width: 768px) {
@@ -278,6 +280,7 @@
                 width: 80px; /* Aumentar el tamaño */
                 height: 80px; /* Aumentar el tamaño */
             }
+            .container-show-products { height: 20vh !important; margin-bottom: 1px;}
         }
 
         /* Móvil o Zoom extremo (< 768px) */
@@ -288,11 +291,13 @@
             .buy-button-pure {
                 bottom: 35px;          /* Más cerca del borde para dar espacio a la imagen */
                 padding: 10px 0;       /* Más alto para facilitar el toque */
-                width: 80%;            /* Se vuelve ancho para que sea fácil de pulsar con el pulgar */
+                width: 50%;            /* Se vuelve ancho para que sea fácil de pulsar con el pulgar */
                 font-size: 1.1rem;     /* Aumentamos el texto ligeramente para lectura móvil */
                 border-radius: 8px;    /* Menos redondeado para que parezca más un botón de acción móvil */
+                
             }
         }
+
     </style>
     <div class="container-show-recommended">
         <h4>También te recomendamos</h4>
@@ -316,7 +321,7 @@
                 </div> 
 
                 @forelse ($productsRecommended as $index => $recommended)
-                    <div class="carousel-item-pure">
+                    <div class="carousel-item-pure text-center">
                         <div class="card-content">
                             <div class="card-single-body">
                                 <img src="{{ $recommended->image1_url }}" alt="Imagen 1">
@@ -329,7 +334,7 @@
                                 <img src="{{ asset('/img/campanas.png') }}" alt="Icono de Campanas">
                             </div>
                         </div>
-                        <a href="" wire:click.prevent="sendCard({{ $recommended->id }}, 1)" class="buy-button-pure">Comprar</a>
+                        <a href="" wire:click.prevent="sendCard({{ $recommended->id }}, 1)" class="buy-button-pure text-center">Comprar</a>
                     </div>
                 @empty
                     <div class="carousel-item-pure">

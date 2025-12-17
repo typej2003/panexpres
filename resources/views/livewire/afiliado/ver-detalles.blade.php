@@ -28,7 +28,7 @@
         }
     </style>
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <div class="wrapper-center" wire:ignore>
+    <div class="wrapper-center">
 
         <div class="wrapper-center">
             <div class="show-recommended content-row mx-auto my-4 p-2" style="max-width: 1200px;">
