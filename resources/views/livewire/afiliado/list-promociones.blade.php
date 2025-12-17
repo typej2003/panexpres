@@ -101,8 +101,8 @@
                                     <!-- Top Image -->
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
-                                            <div class="text-center" x-data="{ imagePreview: '{{ auth()->user()->avatar_url }}' }">
-                                                <input wire:model="BannerRightUp" type="file" class="d-none" x-ref="image" x-on:change="
+                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightUp->avatar_url }}' }">
+                                                <input wire:model="bannerRightUp" type="file" class="d-none" x-ref="image" x-on:change="
                                                         reader = new FileReader();
                                                         reader.onload = (event) => {
                                                             imagePreview = event.target.result;
@@ -121,11 +121,11 @@
                             <tr>
                                 <th scope="row">Inferior</th>
                                 <td>
-                                    <!-- Bottom Image -->
+                                    <!-- Down Image --> 
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
-                                            <div class="text-center" x-data="{ imagePreview: '{{ auth()->user()->avatar_url }}' }">
-                                                <input wire:model="RightDownBanner" type="file" class="d-none" x-ref="image" x-on:change="
+                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightDown->avatar_url }}' }">
+                                                <input wire:model="bannerRightDown" type="file" class="d-none" x-ref="image" x-on:change="
                                                         reader = new FileReader();
                                                         reader.onload = (event) => {
                                                             imagePreview = event.target.result;
@@ -167,15 +167,29 @@
                         </button>
                     </div>
                     <div class="modal-body">
+
                         <div class="form-group">
-                            <label for="comercio_id" class="">Comercio <span class="text-danger">*</span></label>
-                            <select wire:model="comercio_id" class="form-control @error('comercio_id') is-invalid @enderror" id="comercio_id">
+                            <label for="bannerside">Lado del Banner</label>
+                            <select wire:model.defer="state.bannerside" id="bannerside" autofocus class="form-control @error('bannerside') is-invalid @enderror">
+                                <option value="1" selected >Izquierdo</option>
+                                <option value="2">Derecho</option>
+                            </select>
+                            @error('bannerside')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comercio" class="">Comercio <span class="text-danger">*</span></label>
+                            <select wire:model="comercio" class="form-control @error('comercio') is-invalid @enderror" id="comercio">
                                 <option value="0">Seleccione una opción</option>
                                 @foreach($comercios as $com)
                                     <option value="{{ $com->id }}" selected>{{ $com->name }}</option>
                                 @endforeach
                             </select>
-                            @error('comercio_id')
+                            @error('comercio')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -291,3 +305,27 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+    .profile-user-img:hover {
+        background-color: blue;
+        cursor: pointer;
+    }
+</style>
+@endpush
+
+@push('alpine-plugins')
+<!-- Alpine Plugins -->
+<script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+@endpush
+
+@push('js')
+<script>
+    $(document).ready(function () {
+        Livewire.on('nameChanged', (changedName) => {
+            $('[x-ref="username"]').text(changedName);
+        })
+    });
+</script>
+@endpush

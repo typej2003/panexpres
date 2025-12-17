@@ -12,6 +12,7 @@ class Promocion extends Model
     use HasFactory;
 
     protected $fillable = [
+        'bannerside',
         'title',
         'avatar',
         'order',
