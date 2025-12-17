@@ -192,6 +192,8 @@
             <div class="container-carouselpromo-full" id="mainCarouselpromoContainer">
                 
                 <div class="carouselpromo-inner" id="carouselpromoInner">
+
+                @if($promociones == null)
                     
                     <div class="carouselpromo-item is-clone" data-index="{{ $lastPromocion->id }}">
                         <img src="{{ $lastPromocion->avatar_url }}" alt="{{ $lastPromocion->name }} Clon">
@@ -217,7 +219,16 @@
                             {{$currencyValue}}. {{ $firstPromocion->product->price1 ?? 'N/D' }}
                         </div>
                     </div>
+                @else
+
+                    <div class="carouselpromo-item is-clone" data-index="0">
+                        <h4>No existe elementos</h4>
+                        <div class="promo-overlay">
+                            
+                        </div>
+                    </div>
                     
+                @endif
 
                 </div>
 
