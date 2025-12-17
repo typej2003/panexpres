@@ -130,7 +130,11 @@ class ListPromociones extends AdminComponent
 	public function edit(Promocion $promocion)
 	{
 		
+		$bannerRightUp = $this->bannerRightUp;
+		$bannerRightDown = $this->bannerRightDown;
 		$this->reset();
+		$this->bannerRightUp = $bannerRightUp;
+		$this->bannerRightDown = $bannerRightDown;
 		
 		$this->showEditModal = true;
 
