@@ -41,7 +41,7 @@ class ListPromociones extends AdminComponent
 
     public $sortColumnName = 'created_at';
 
-    public $sortDirection = 'desc';
+    public $sortDirection = 'asc';
 
     public $photo;
 
