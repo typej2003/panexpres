@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between mb-2">
-                        <button wire:click.prevent="addNew" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Nueva Marca</button>
+                        <button wire:click.prevent="addNew" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Nueva Elemento Banner</button>
                         <x-search-input wire:model="searchTerm" />
                     </div>
                     <div class="card" style="width: 100% !important;">
@@ -84,6 +84,67 @@
                 </div>
             </div>
             <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <table class="table table-hover table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Banner Derecho</th>
+                                <th scope="col">imagen</th>
+                            </tr>
+                        </thead>
+                        <tbody wire:loading.class="text-muted">
+                            <tr>
+                                <th scope="row">Superior</th>
+                                <td>
+                                    <!-- Top Image -->
+                                    <div class="card card-primary card-outline">
+                                        <div class="card-body box-profile">
+                                            <div class="text-center" x-data="{ imagePreview: '{{ auth()->user()->avatar_url }}' }">
+                                                <input wire:model="BannerRightUp" type="file" class="d-none" x-ref="image" x-on:change="
+                                                        reader = new FileReader();
+                                                        reader.onload = (event) => {
+                                                            imagePreview = event.target.result;
+                                                            document.getElementById('profileImage').src = `${imagePreview}`;
+                                                        };
+                                                        reader.readAsDataURL($refs.image.files[0]);
+                                                    " />
+                                                <img x-on:click="$refs.image.click()" class="profile-user-img img-circle" x-bind:src="imagePreview ? imagePreview : '/backend/dist/img/user4-128x128.jpg'" alt="User profile picture">
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Inferior</th>
+                                <td>
+                                    <!-- Bottom Image -->
+                                    <div class="card card-primary card-outline">
+                                        <div class="card-body box-profile">
+                                            <div class="text-center" x-data="{ imagePreview: '{{ auth()->user()->avatar_url }}' }">
+                                                <input wire:model="RightDownBanner" type="file" class="d-none" x-ref="image" x-on:change="
+                                                        reader = new FileReader();
+                                                        reader.onload = (event) => {
+                                                            imagePreview = event.target.result;
+                                                            document.getElementById('profileImage').src = `${imagePreview}`;
+                                                        };
+                                                        reader.readAsDataURL($refs.image.files[0]);
+                                                    " />
+                                                <img x-on:click="$refs.image.click()" class="profile-user-img img-circle" x-bind:src="imagePreview ? imagePreview : '/backend/dist/img/user4-128x128.jpg'" alt="User profile picture">
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
