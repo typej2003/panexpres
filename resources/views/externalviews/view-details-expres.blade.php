@@ -31,6 +31,7 @@
         <div class="my-2"></div>    
         <section class="container-fluid">
             <div class="my-2"></div>
+            @livewire('afiliado.ver-detalles', ['productId' => $productId])    
         </section> 
 
         @livewire('layouts.footer-expres')

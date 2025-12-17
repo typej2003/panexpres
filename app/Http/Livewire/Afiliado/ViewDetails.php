@@ -17,6 +17,7 @@ class ViewDetails extends AdminComponent
 
     public function mount($productId)
     {
+        
         $this->product_id = $productId;
 
         $this->currencyValue = request()->cookie('currency');

@@ -37,13 +37,13 @@
 
                 <div class="row g-4">
                     <div class="col-12 col-lg-5">
-                        <div class="product-gallery sticky-md-top" style="top: 20px;">
+                        <div class="product-gallery sticky-md-top" style="top: 20px; z-index: 10">
                             
                             <div class="image-counters d-flex gap-2 mb-3 justify-content-center">
                                 <div class="img-number active" onclick="changeImageNum(this, 'imagen1.jpg')">1</div>
-                                <div class="img-number" onclick="changeImageNum(this, 'imagen2.jpg')">2</div>
+                                <div class="img-number" onclick="changeImageNum(this, '/img/campanas.png')">2</div>
                                 <div class="img-number" onclick="changeImageNum(this, 'imagen3.jpg')">3</div>
-                                <div class="img-number" onclick="changeImageNum(this, 'imagen4.jpg')">4</div>
+                                <div class="img-number" onclick="changeImageNum(this, '/img/campanas.png')">4</div>
                             </div>
 
                             <div class="main-image-container shadow-sm rounded bg-white d-flex align-items-center justify-content-center overflow-hidden" style="height: 400px; border: 1px solid #f0f0f0;">
@@ -157,15 +157,6 @@
                 });
             });
         </script>
-
-        <div class="show-recommended content-row mx-auto my-2"> 
-            <div class="col-full"> 
-                @livewire('components.show-recommended-expres', [
-                            'comercioId' => 1, 
-                            'parametro' => $words='',
-                            ] )
-            </div>
-        </div>
     </div>
    
 </div>
