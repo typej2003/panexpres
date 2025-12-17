@@ -1,4 +1,13 @@
-/* Estilos Base */
+:root {
+    :root {
+    --color-principal:#dd751a;
+    --main-btn-color: #FC5E27;
+    --color-secundario: #893e08; 
+    --main-footer-color: #FFCC2A;
+    --grey-1: #dddddd;
+  }
+}
+
 body {
     margin: 0;
     font-family: sans-serif;
@@ -435,6 +444,19 @@ body {
     margin-top: 0;
 }
 
+.profile-menu a {
+    color: #893e08 !important; /* Aplica el color café oscuro */
+    text-decoration: none;      /* Quita el subrayado si no lo deseas */
+    display: block;             /* Hace que todo el ancho sea clickable */
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-menu a:hover {
+    background-color: #f1f1f1; /* Cambia el fondo al pasar el mouse */
+    color: #5d2a05;            /* Oscurece un poco el color en hover */
+}
+
 .menu-divider {
     border: 0;
     height: 1px;
@@ -844,3 +866,95 @@ section[id] {
     scroll-margin-top: 125px; 
 }
 
+.text-primary {
+    color: #dd751a !important;   /* El color café que solicitaste */
+    font-weight: bold !important; /* Negrita */
+    text-transform: uppercase;   /* Fuerza las mayúsculas */
+    
+    /* Configuración para títulos H4 */
+    display: block;              /* Asegura que tome su propia línea */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    
+    /* Tamaño de fuente fluido (Zoom-friendly) */
+    /* Mínimo 1.1rem, ideal 2vw del ancho, máximo 1.5rem */
+    font-size: clamp(1.1rem, 2vw, 1.5rem) !important;
+    
+    /* Mejora de legibilidad */
+    letter-spacing: 0.5px;       /* Espaciado ligero para mayúsculas */
+    line-height: 1.2;            /* Evita que las líneas choquen si el texto es largo */
+}
+
+.text-secondary {
+    color: #893e08 !important;   /* El color café que solicitaste */
+    font-weight: bold !important; /* Negrita */
+    text-transform: uppercase;   /* Fuerza las mayúsculas */
+    
+    /* Configuración para títulos H4 */
+    display: block;              /* Asegura que tome su propia línea */
+    margin-bottom: 0.5rem;
+    
+    /* Tamaño de fuente fluido (Zoom-friendly) */
+    /* Mínimo 1.1rem, ideal 2vw del ancho, máximo 1.5rem */
+    font-size: clamp(1.1rem, 2vw, 1.5rem) !important;
+    
+    /* Mejora de legibilidad */
+    letter-spacing: 0.5px;       /* Espaciado ligero para mayúsculas */
+    line-height: 1.2;            /* Evita que las líneas choquen si el texto es largo */
+}
+
+.text-subtitle {
+    color: #893e08 !important;   /* El color café que solicitaste */
+    font-weight: bold !important; /* Negrita */    
+    /* Configuración para títulos H4 */
+    display: block;              /* Asegura que tome su propia línea */
+    margin-bottom: 0.5rem;
+    
+    /* Tamaño de fuente fluido (Zoom-friendly) */
+    /* Mínimo 1.1rem, ideal 2vw del ancho, máximo 1.5rem */
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem) !important;
+    
+    /* Mejora de legibilidad */
+    letter-spacing: 0.5px;       /* Espaciado ligero para mayúsculas */
+    line-height: 1.2;            /* Evita que las líneas choquen si el texto es largo */
+}
+
+.wrapper-center {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;     /* Centrado vertical */
+    min-height: 100vh;      /* Ocupa todo el alto de la ventana */
+    width: 100%;
+    background-color: #f4f4f4; /* Opcional: fondo suave */
+}
+
+.card-form {
+    width: 80%;              /* 80% del ancho de la pantalla */
+    max-width: 1000px;       /* Evita que sea gigante en monitores UltraWide */
+    min-height: 60vh;        /* Altura proporcional mínima */
+    
+    background: #ffffff;
+    padding: clamp(20px, 5vw, 40px); /* Espaciado interno fluido */
+    
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+
+    /* Para que el contenido interno también pueda centrarse */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.col-md-6 {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    text-align: center;      /* Asegura que si hay texto también se centre */
+}
+
+.col-md-6 img {
+    max-width: 100%;         /* Evita que la imagen se salga con el zoom */
+    height: auto;            /* Mantiene la proporción */
+    display: block;
+}

@@ -120,7 +120,7 @@ class ListPromociones extends AdminComponent
 		}
 
 		$validatedData['comercio_id'] = $this->comercio;
-		$validatedData['product_id'] = $this->product_id;
+		$validatedData['product_id'] = $this->product;
 
 		Promocion::create($validatedData);
 
@@ -162,6 +162,9 @@ class ListPromociones extends AdminComponent
         if ($this->photo) {
 			$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');            
 		}
+
+		$validatedData['comercio_id'] = $this->comercio;
+		$validatedData['product_id'] = $this->product;
 
 		$this->promocion->update($validatedData);
 

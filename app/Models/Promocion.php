@@ -13,6 +13,8 @@ class Promocion extends Model
 
     protected $fillable = [
         'bannerside',
+        'comercio_id',
+        'product_id',
         'title',
         'avatar',
         'order',

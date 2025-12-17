@@ -270,7 +270,11 @@ class WelcomeController extends Controller
     {
         //\Cart::clear();
         
-        return redirect()->route('pasarela', [
+        // return redirect()->route('pasarela', [
+		// 		'nropedido' => $nropedido, 
+		// 		'comercioId' => $comercioId,
+		// 	]);
+        return redirect()->route('biopago', [
 				'nropedido' => $nropedido, 
 				'comercioId' => $comercioId,
 			]);

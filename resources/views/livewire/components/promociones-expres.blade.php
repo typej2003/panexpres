@@ -1,3 +1,15 @@
+<style>
+    .carouselpromo-inner {
+        display: flex !important; /* Fuerza el flujo horizontal */
+        flex-wrap: nowrap !important;
+        align-items: stretch;
+    }
+
+    .carouselpromo-item {
+        flex: 0 0 auto; /* Evita que los items se encojan */
+        width: 100%; 
+    }
+</style>
 <div>
     <style>
         /* ----------------------------------------------------------- */
@@ -192,44 +204,24 @@
             <div class="container-carouselpromo-full" id="mainCarouselpromoContainer">
                 
                 <div class="carouselpromo-inner" id="carouselpromoInner">
-                
-                @if(count($promociones) > 0 )
-                    
-                    <div class="carouselpromo-item is-clone" data-index="{{ $lastPromocion->id }}">
-                        <img src="{{ $lastPromocion->avatar_url }}" alt="{{ $lastPromocion->name }} Clon">
-                        <div class="promo-overlay">
-                            {{$currencyValue}}. {{ $lastPromocion->product->price1 ?? 'N/D' }}
-                        </div>
-                    </div>
-
-                    @foreach($promociones as $clave => $promocion)
-                    
-                        <div class="carouselpromo-item" data-index="{{ $promocion->id }}">
-                            <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
+                    @forelse($promociones as $promocion)
+                        <div class="carouselpromo-item" data-id="{{ $promocion->id }}">
+                            @if($promocion->product_id)
+                                <a href="/routedetails/{{ $promocion->comercio_id }}/{{ $promocion->product_id }}">
+                                    <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
+                                </a>
+                            @else
+                                <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
+                            @endif
                             <div class="promo-overlay">
                                 {{$currencyValue}}. {{ $promocion->product->price1 ?? '¡OFERTA!' }}
                             </div>
                         </div>
-
-                    @endforeach
-                    
-                    <div class="carouselpromo-item is-clone" data-index="{{ $firstPromocion->id }}">
-                        <img src="{{ $firstPromocion->avatar_url }}" alt="{{ $firstPromocion->name }} Clon">
-                        <div class="promo-overlay">
-                            {{$currencyValue}}. {{ $firstPromocion->product->price1 ?? 'N/D' }}
+                    @empty
+                        <div class="carouselpromo-item">
+                            <h4>No existen promociones disponibles</h4>
                         </div>
-                    </div>
-                @else
-
-                    <div class="carouselpromo-item is-clone" data-index="0">
-                        <h4>No existe elementos</h4>
-                        <div class="promo-overlay">
-                            
-                        </div>
-                    </div>
-                    
-                @endif
-
+                    @endforelse
                 </div>
 
                 <button class="carouselpromo-control carouselpromo-control-prev" type="button" data-direction="-1">&lt;</button>
@@ -266,123 +258,73 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const inner = document.getElementById('carouselpromoInner');
-            const indicatorsContainer = document.getElementById('carouselpromoIndicators');
-            const items = inner.querySelectorAll('.carouselpromo-item');
-            const controls = document.querySelectorAll('.carouselpromo-control');
-            const carouselContainer = document.getElementById('mainCarouselpromoContainer');
+        const inner = document.getElementById('carouselpromoInner');
+        const items = Array.from(inner.querySelectorAll('.carouselpromo-item'));
+        const indicatorsContainer = document.getElementById('carouselpromoIndicators');
+        
+        if (items.length <= 1) return;
 
-            const totalItems = items.length; 
-            const realItemsCount = totalItems - 2; 
-            
-            let currentIndex = 1; 
-            
-            let autoplayInterval;
-            const AUTOPLAY_DELAY = 4000;
+        // 1. CLONACIÓN AUTOMÁTICA (Para evitar errores de Blade)
+        const firstClone = items[0].cloneNode(true);
+        const lastClone = items[items.length - 1].cloneNode(true);
+        inner.appendChild(firstClone);
+        inner.insertBefore(lastClone, items[0]);
 
-            if (totalItems <= 3) return; 
+        // 2. RE-CALCULAR ITEMS CON CLONES
+        const allItems = inner.querySelectorAll('.carouselpromo-item');
+        const totalItems = allItems.length; // Originales + 2
+        let currentIndex = 1;
 
-            inner.style.width = `${totalItems * 100}%`; 
-            
-            const itemWidth = 100 / totalItems; 
-            items.forEach(item => {
-                item.style.width = `${itemWidth}%`;
-            });
-            
-            updateCarousel(false); 
-
-            function updateCarousel(useTransition = true) {
-                
-                inner.style.transition = useTransition ? 'transform 0.5s ease-in-out' : 'none';
-
-                const offset = currentIndex * itemWidth; 
-                inner.style.transform = `translateX(-${offset}%)`;
-                
-                let realIndex = currentIndex - 1;
-                
-                if (currentIndex === 0) {
-                    realIndex = realItemsCount - 1; 
-                } 
-                else if (currentIndex === totalItems - 1) {
-                    realIndex = 0; 
-                } 
-                else {
-                    realIndex = currentIndex - 1;
-                }
-                
-                indicatorsContainer.querySelectorAll('button').forEach((btn, index) => {
-                    btn.classList.toggle('active', index === realIndex);
-                });
-            }
-            
-            inner.addEventListener('transitionend', () => {
-                if (currentIndex === 0) {
-                    currentIndex = totalItems - 2; 
-                    updateCarousel(false);
-                } 
-                else if (currentIndex === totalItems - 1) {
-                    currentIndex = 1; 
-                    updateCarousel(false);
-                }
-            });
-
-            function moveNext() {
-                currentIndex++;
-                updateCarousel(true);
-            }
-
-            function startAutoplay() {
-                stopAutoplay(); 
-                autoplayInterval = setInterval(moveNext, AUTOPLAY_DELAY);
-            }
-            function stopAutoplay() {
-                clearInterval(autoplayInterval);
-            }
-
-            controls.forEach(control => {
-                control.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    stopAutoplay();
-                    
-                    const direction = parseInt(control.getAttribute('data-direction'));
-                    currentIndex += direction;
-                    updateCarousel(true);
-
-                    startAutoplay(); 
-                });
-            });
-
-            indicatorsContainer.querySelectorAll('button').forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    stopAutoplay();
-                    
-                    const targetIndex = index + 1;
-                    currentIndex = targetIndex;
-                    updateCarousel(true);
-
-                    startAutoplay(); 
-                });
-            });
-
-            carouselContainer.addEventListener('mouseenter', stopAutoplay);
-            carouselContainer.addEventListener('mouseleave', startAutoplay);
-            
-            startAutoplay(); 
-
-            document.addEventListener("visibilitychange", function() {
-                if (document.visibilityState === 'visible') {
-                    // 1. Si usas librerías (ej. Slick o Swiper):
-                    // swiper.update(); 
-                    // O si es Slick:
-                    // $('.tu-carrusel').slick('slickGoTo', 0, false); 
-                    
-                    // 2. Si es casero: Reiniciar el temporizador del carrusel
-                    startAutoplay();
-                }
-            });
-
+        // 3. ESTILOS DE ANCHO PRECISOS
+        inner.style.width = `${totalItems * 100}%`;
+        allItems.forEach(item => {
+            item.style.width = `${100 / totalItems}%`;
         });
 
+        function updateCarousel(transition = true) {
+            inner.style.transition = transition ? 'transform 0.5s ease-in-out' : 'none';
+            const offset = -(currentIndex * (100 / totalItems));
+            inner.style.transform = `translateX(${offset}%)`;
 
+            // Actualizar indicadores
+            const realIndex = (currentIndex === 0) ? items.length - 1 : (currentIndex === totalItems - 1) ? 0 : currentIndex - 1;
+            const dots = indicatorsContainer.querySelectorAll('button');
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === realIndex));
+        }
+
+        // Posición inicial (en el primer elemento real, no el clon)
+        updateCarousel(false);
+
+        // 4. LÓGICA DE REBOTE INFINITO
+        inner.addEventListener('transitionend', () => {
+            if (currentIndex === 0) {
+                currentIndex = totalItems - 2;
+                updateCarousel(false);
+            }
+            if (currentIndex === totalItems - 1) {
+                currentIndex = 1;
+                updateCarousel(false);
+            }
+        });
+
+        // 5. CONTROLES
+        document.querySelectorAll('.carouselpromo-control').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const dir = parseInt(btn.getAttribute('data-direction'));
+                currentIndex += dir;
+                updateCarousel(true);
+            });
+        });
+
+        // Autoplay
+        let interval = setInterval(() => { currentIndex++; updateCarousel(true); }, 4000);
+        const container = document.getElementById('mainCarouselpromoContainer');
+        container.addEventListener('mouseenter', () => clearInterval(interval));
+        container.addEventListener('mouseleave', () => {
+            interval = setInterval(() => { currentIndex++; updateCarousel(true); }, 4000);
+        });
+    });
     </script>
+
 </div>
+

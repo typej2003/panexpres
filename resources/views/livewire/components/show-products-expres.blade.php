@@ -41,7 +41,7 @@
         }
         .card-content {
             height: 100%; background: transparent; box-shadow: none;
-            height: auto; background: blue; box-shadow: none;
+            height: auto; box-shadow: none;
             overflow: hidden; 
             display: flex; /* Mantener flex */
             flex-direction: column; /* Mantener columna */
@@ -154,9 +154,7 @@
         /* ✅ BOTÓN FLOTANTE "COMPRAR" (POSICIÓN SUBIDA) */
         /* ------------------------------------------------------------------- */
         .buy-button-pure {
-            position: absolute;
-            bottom: 25px; 
-            left: 50%; 
+            
             transform: translateX(-50%); 
             z-index: 100;
             padding: 10px 15px;
@@ -497,6 +495,74 @@
         }
     </style>
 
+    <!-- para el carrusel -->
+    <style>
+        /* Escritorio y Zoom estándar */
+        @media (min-width: 1200px) {
+            .carousel-container-pure { max-width: 1200px; }
+            .container-show-products { height: 15rem !important; margin-bottom: 1px; }
+            .buy-button-pure {
+                margin-left: 50%;
+                padding: 10px 25px;    /* Botón ancho y cómodo */
+                font-size: 1rem;       /* Texto estándar */
+                border-radius: 50px;
+            }
+
+            .card-badge-pure {
+                bottom: -5px; /* Ajuste para darle un poco más de margen */
+                right: -10px; /* Ajuste para darle un poco más de margen */
+                z-index: 16; 
+                width: 80px; /* Aumentar el tamaño */
+                height: 80px; /* Aumentar el tamaño */
+            }
+        }
+
+        /* Tablet o Zoom medio (768px - 1199px) */
+        @media  (min-width: 768px) and (max-width: 1199px) {
+            .carousel-control-pure {
+                width: 40px; /* Botones más pequeños para que no tapen el contenido */
+                font-size: 1.2rem;
+            }
+            .container-show-products { height: 22rem !important; margin-bottom: 1px;}
+            .buy-button-pure {
+                margin: auto;
+                margin-left: 50%;
+                margin-top: 5px;
+                padding: 8px 20px;     /* Reducimos el tamaño para no saturar */
+                font-size: 0.95rem;
+            }
+            
+            .card-badge-pure {
+                bottom: -5px; /* Ajuste para darle un poco más de margen */
+                right: -10px; /* Ajuste para darle un poco más de margen */
+                z-index: 16; 
+            }
+        }
+
+        @media (min-width: 768px) {
+            .card-badge-pure {
+                bottom: -5px; /* Ajuste para darle un poco más de margen */
+                right: -10px; /* Ajuste para darle un poco más de margen */
+                z-index: 16; 
+                width: 80px; /* Aumentar el tamaño */
+                height: 80px; /* Aumentar el tamaño */
+            }
+        }
+
+        /* Móvil o Zoom extremo (< 768px) */
+        @media (max-width: 767px) {
+            .card-badge-pure {
+                width: 30px; /* Reducimos iconos flotantes */
+            }
+            .buy-button-pure {
+                bottom: 35px;          /* Más cerca del borde para dar espacio a la imagen */
+                padding: 10px 0;       /* Más alto para facilitar el toque */
+                width: 80%;            /* Se vuelve ancho para que sea fácil de pulsar con el pulgar */
+                font-size: 1.1rem;     /* Aumentamos el texto ligeramente para lectura móvil */
+                border-radius: 8px;    /* Menos redondeado para que parezca más un botón de acción móvil */
+            }
+        }
+    </style>
     <div class="container-show-products">
 
         @if (!Agent::isMobile() && !Agent::isTablet())
@@ -514,10 +580,11 @@
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $lastProduct->price1 }}</span></p>
                         </div>
                         <div class="card-badge-pure">
-                            <img src="img/campanas.png" alt="Icono de Campanas">
+                            <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                         </div>
+                        <a href="" wire:click.prevent="sendCard({{ $lastProduct->id }}, 1)" class="buy-button-pure">Comprar</a>
                     </div>
-                    <a href="" wire:click.prevent="sendCard({{ $lastProduct->id }}, 1)" class="buy-button-pure">Comprar</a>
+                    
                 </div> 
 
                 @forelse ($products as $index => $product)
@@ -531,7 +598,7 @@
                                 <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price1 }}</span></p>
                             </div>
                             <div class="card-badge-pure">
-                                <img src="img/campanas.png" alt="Icono de Campanas">
+                                <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                             </div>
                         </div>
                         <a href="" wire:click.prevent="sendCard({{ $product->id }}, 1)" class="buy-button-pure">Comprar</a>
@@ -547,7 +614,7 @@
                                 <p>¡No encontro elementos!</p>
                             </div>
                             <div class="card-badge-pure">
-                                <img src="img/campanas.png" alt="Icono de Campanas">
+                                <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                             </div>
                         </div>
                     </div>
@@ -563,7 +630,7 @@
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $firstProduct->price1 }}</span></p>
                         </div>
                         <div class="card-badge-pure">
-                            <img src="img/campanas.png" alt="Icono de Campanas">
+                            <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                         </div>
                     </div>
                     <a href="" wire:click.prevent="sendCard({{ $firstProduct->id }}, 1)" class="buy-button-pure">Comprar</a>
