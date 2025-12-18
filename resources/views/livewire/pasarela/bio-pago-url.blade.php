@@ -42,7 +42,7 @@
                     console.log('Mensaje de pago recibido.');
                     paymentStatusReceived = true; // Establecer bandera
 
-                    window.location.href = '/redireccionar/clearCart';
+                    window.location.href = '/redireccionar/resumenCompra';
                     
                     // Intentar emitir inmediatamente, y si falla, el hook lo intentará después
                     if (typeof Livewire !== 'undefined') {

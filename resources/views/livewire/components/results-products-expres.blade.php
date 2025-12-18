@@ -296,7 +296,7 @@
                             <div class="producto-parte col-ctrl">
                                 <div class="centrar text-subtitle">Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</div>
                                 
-                                <div class="centrar">
+                                <div class="centrar d-none">
                                     <div class="justify-content-between">
                                         <div class="input-group input-number-group">
                                             <div class="input-group-button">

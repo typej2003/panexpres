@@ -25,6 +25,7 @@ class AlliedUserCreationWizard extends Component
         'password_confirmation' => '12345678',
         'identificationNac' => 'V',
         'identificationNumber' => '13053081',
+        'role' => 'aliado',
         // Paso 2: Identidad
         'names' => '',
         'surnames' => '',
@@ -105,17 +106,19 @@ class AlliedUserCreationWizard extends Component
 
     public function saveStep1()
     {
+        
         $this->validate([
             'state.role' => 'required',
-            'state.username' => 'required|unique:users,name',
+            'state.name' => 'required|unique:users,name',
             'state.email' => 'required|email|unique:users,email',
             'state.password' => 'required|min:8|confirmed',
             'state.identificationNac' => 'required',
             'state.identificationNumber' => 'required|numeric',
         ]);
 
+        
         $user = User::create([
-            'name' => $this->state['username'],
+            'name' => $this->state['name'],
             'email' => $this->state['email'],
             'password' => Hash::make($this->state['password']),
             'identificationNac' => $this->state['identificationNac'],
@@ -169,7 +172,7 @@ class AlliedUserCreationWizard extends Component
     public function saveStep4()
     {
         $this->validate([
-            'state.name' => 'required',
+            'state.nameC' => 'required',
             'state.rifLetter' => 'required',
             'state.rifNumber' => 'required',
             'state.comercio_email' => 'required|email',
