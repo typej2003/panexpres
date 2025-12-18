@@ -21,11 +21,13 @@ Route::get('/redireccionar/{opcion}', Redireccionar::class)->name('redireccionar
 Route::get('/probarEmailCompra', function() {
 
     $user = User::where('name', 'cliente')->first();
-    
+
     $pedido = Pedido::where('id', 1)->first();
 
     $emailwelcome = new EmailController();
 
     $emailwelcome->sendEmail('compra', $user, $pedido->nropedido );
+
+    return redirect()->back();
 
 })->name('probarEmailCompra')->middleware('auth');
