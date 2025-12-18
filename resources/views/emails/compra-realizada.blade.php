@@ -10,6 +10,13 @@
         
         <hr class="my-3 mx-auto" style="width: 80%; border: 0; border-top: 5px solid #893e08; opacity: 1;">
     </div>
+    <div class="text-center mb-4">
+        <img src="https://panexpres.com/img/logopanexpres_color.png" alt="Logo Pan Express" style="max-height: 100px; width: auto;">
+        
+        <hr class="my-3 mx-auto" style="width: 80%; border: 0; border-top: 5px solid #893e08; opacity: 1;">
+    </div>
+    <img src="https://panexpres.com/logo_email.png" alt="PanExpres">
+
     <h1>Hola, {{ $names }} {{ $surnames }}</h1>
     <p>¡Gracias por tu compra!</p>
     <p>{!! $body !!}</p>
