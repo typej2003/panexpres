@@ -26,7 +26,6 @@
                             </h1>
                             <p style="color: #555555; font-size: 16px; line-height: 1.6;">¡Gracias por tu compra!</p>
                             <p style="color: #555555; font-size: 16px; line-height: 1.6;">{!! $body !!}</p>
-                            <p style="color: #555555; font-size: 16px; line-height: 1.6;">Te invitamos a disfrutar todos nuestros productos.</p>
                             
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 30px auto;">
                                 <tr>
@@ -45,24 +44,38 @@
                     </tr>
 
                     <tr>
-                        <td width="33%" align="center" style="vertical-align: middle;">
-                            <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                        <td bgcolor="#8a3c10" style="padding: 30px 10px; color: #ffffff;">
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                                 <tr>
-                                    <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 35px; height: 35px;">
-                                        <a href="TU_LINK_INSTAGRAM" style="display: block; text-decoration: none;">
-                                            <img src="https://cdn-icons-png.flaticon.com/32/2111/2111463.png" alt="IG" width="18" height="18" style="display: block; margin: 0 auto; filter: brightness(0) invert(1);">
-                                        </a>
+                                    <td width="33%" align="center" style="vertical-align: middle;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 32px; height: 32px;">
+                                                    <a href="#" style="display: block; text-decoration: none; color: #f07229; font-size: 12px; font-weight: bold; line-height: 32px;">IG</a>
+                                                </td>
+                                                <td width="8"></td>
+                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 32px; height: 32px;">
+                                                    <a href="#" style="display: block; text-decoration: none; color: #f07229; font-size: 12px; font-weight: bold; line-height: 32px;">TK</a>
+                                                </td>
+                                                <td width="8"></td>
+                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 32px; height: 32px;">
+                                                    <a href="#" style="display: block; text-decoration: none; color: #f07229; font-size: 12px; font-weight: bold; line-height: 32px;">FB</a>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
-                                    <td width="10"></td>
-                                    <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 35px; height: 35px;">
-                                        <a href="TU_LINK_TIKTOK" style="display: block; text-decoration: none;">
-                                            <img src="https://cdn-icons-png.flaticon.com/32/3046/3046121.png" alt="TK" width="18" height="18" style="display: block; margin: 0 auto; filter: brightness(0) invert(1);">
-                                        </a>
+
+                                    <td width="34%" align="center" style="vertical-align: middle; border-left: 1px solid rgba(255,255,255,0.3); border-right: 1px solid rgba(255,255,255,0.3);">
+                                        <div style="font-size: 11px; font-family: Arial, sans-serif; line-height: 1.6;">
+                                            <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none;">ventas@panexpres.com</a><br>
+                                            <a href="https://panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold;">panexpres.com</a>
+                                        </div>
                                     </td>
-                                    <td width="10"></td>
-                                    <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 35px; height: 35px;">
-                                        <a href="TU_LINK_FACEBOOK" style="display: block; text-decoration: none;">
-                                            <img src="https://cdn-icons-png.flaticon.com/32/5968/5968764.png" alt="FB" width="18" height="18" style="display: block; margin: 0 auto; filter: brightness(0) invert(1);">
+
+                                    <td width="33%" align="center" style="vertical-align: middle;">
+                                        <a href="https://wa.me/5804141869016" style="text-decoration: none; color: #ffffff; font-family: Arial, sans-serif;">
+                                            <div style="font-size: 18px; margin-bottom: 2px;">&#9993;</div>
+                                            <div style="font-size: 10px; font-weight: bold; text-transform: uppercase;">WhatsApp<br>Asesoría</div>
                                         </a>
                                     </td>
                                 </tr>
@@ -71,18 +84,13 @@
                     </tr>
 
                     <tr>
-                        <td bgcolor="#fc5e27" style="padding: 10px 30px; text-align: center;">
-                            <p style="color: #ffffff; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
-                                &copy; {{ date('Y') }} Pan Express. Todos los derechos reservados.
+                        <td bgcolor="#fc5e27" style="padding: 12px 30px; text-align: center;">
+                            <p style="color: #ffffff; font-size: 11px; margin: 0;">
+                                &copy; {{ date('Y') }} <strong>Pan Express</strong>. Todos los derechos reservados.
                             </p>
                         </td>
                     </tr>
                 </table>
-
-                <p style="font-size: 11px; color: #999999; margin-top: 20px; max-width: 600px; text-align: center; line-height: 1.4;">
-                    Has recibido este correo porque te registraste o realizaste una compra en Pan Express.
-                </p>
-
             </td>
         </tr>
     </table>
