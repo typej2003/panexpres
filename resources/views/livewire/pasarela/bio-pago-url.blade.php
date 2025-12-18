@@ -7,9 +7,11 @@
             border: 0;
             flex: 1 1 auto;
             overflow: hidden;
+            z-index: 0;
         }
         .biopago-url {
-            height: 70vh!important;
+            height: auto !important;
+            z-index: 0;
         }
     </style>
     <h4></h4>
