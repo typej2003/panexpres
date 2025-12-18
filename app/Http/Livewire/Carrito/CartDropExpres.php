@@ -12,8 +12,14 @@ class CartDropExpres extends Component
     public $currencyValue;
 
     protected $listeners = [
-        'emitCurrency' => 'emitCurrency'
+        'emitCurrency' => 'emitCurrency',
+        'changeQuantity' => 'changeQuantity'
     ];
+
+    public function changeQuantity()
+    {
+        $this->totalQuantityCart = \Cart::getTotalQuantity();
+    }
 
     public function mount()
     {

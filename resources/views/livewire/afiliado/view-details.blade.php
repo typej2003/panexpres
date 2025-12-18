@@ -39,36 +39,41 @@
                         <div class="product-gallery sticky-md-top" style="top: 20px; z-index: 10">
                             
                             <div class="image-counters d-flex gap-2 mb-3 justify-content-center">
-                                <div class="img-number active" onclick="changeImageNum(this, 'imagen1.jpg')">1</div>
-                                <div class="img-number" onclick="changeImageNum(this, '/img/campanas.png')">2</div>
+                                <div class="img-number active" onclick="changeImageNum(this, {{ $product->image1_url }})">1</div>
+                                <!-- <div class="img-number" onclick="changeImageNum(this, '/img/campanas.png')">2</div>
                                 <div class="img-number" onclick="changeImageNum(this, 'imagen3.jpg')">3</div>
-                                <div class="img-number" onclick="changeImageNum(this, '/img/campanas.png')">4</div>
+                                <div class="img-number" onclick="changeImageNum(this, '/img/campanas.png')">4</div> -->
                             </div>
 
                             <div class="main-image-container shadow-sm rounded bg-white d-flex align-items-center justify-content-center overflow-hidden" style="height: 400px; border: 1px solid #f0f0f0;">
-                                <img id="main-view" src="/img/campanas.png" alt="Producto" class="img-fluid h-100" style="object-fit: contain; transition: opacity 0.3s ease;">
+                                <img id="main-view" src="{{ $product->image1_url }}" alt="Producto" class="img-fluid h-100" style="object-fit: contain; transition: opacity 0.3s ease;">
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-lg-7">
                         <div class="product-info-card p-4 shadow-sm rounded bg-white border">
-                            <h3 class="fw-bold mb-1">Nombre del Producto</h3>
-                            <a href="#" class="text-muted small d-block mb-3 text-decoration-none">Ver más de este comercio</a>
+                            <h3 class="fw-bold mb-1">{{ $product->name }} </h3>
+                            <!-- <a href="#" class="text-muted small d-block mb-3 text-decoration-none">Ver más de este comercio</a> -->
                             
-                            <h2 class="text-success fw-bold mb-4" id="product-price">$150.00</h2>
+                            <h2 class="text-success fw-bold mb-4" id="product-price">{{ $product->price1 }}{{ $currencyValue }}</h2>
 
                             <div class="row align-items-end mb-4">
                                 <div class="col-sm-5 col-md-4 mb-3 mb-sm-0">
                                     <label class="form-label small fw-bold">Cantidad</label>
                                     <div class="input-group input-number-group">
-                                        <button class="btn btn-outline-secondary btn-decrement shadow-none" type="button">-</button>
-                                        <input type="number" class="form-control text-center input-qty bg-white" value="1" min="1" max="10" readonly>
-                                        <button class="btn btn-outline-secondary btn-increment shadow-none" type="button">+</button>
+                                        <div class="input-group-button">
+                                            <span class="input-number-decrement" wire:click.prevent="updateQuantity( '-' )">-</span>
+                                        </div>
+                                        <input class="input-number" type="number" value="{{ $cantidad }}" min="0" max="1000">
+                                        <div class="input-group-button">
+                                            <span class="input-number-increment" wire:click.prevent="updateQuantity( '+' )">+</span>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="col-sm-7 col-md-8">
-                                    <button class="btn btn-success btn-lg w-100 py-3 fw-bold shadow-sm">
+                                    <button wire:click.prevent="sendCard({{ $product->id }})" class="btn btn-success btn-lg w-100 py-3 fw-bold shadow-sm">
                                         COMPRAR AHORA <i class="fa fa-shopping-cart ms-2"></i>
                                     </button>
                                 </div>
@@ -94,7 +99,10 @@
                                     </h2>
                                     <div id="desc" class="accordion-collapse collapse" data-bs-parent="#productDetailAccordion">
                                         <div class="accordion-body px-0 text-muted small">
-                                            Descripción detallada del artículo.
+                                            <p>Descripción: {{ $product->description }}</p>
+                                            <p>Fabricante: {{ $product->manufacturer->name }}</p>
+                                            <p>Marca: {{ $product->brand->name }}</p>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +114,8 @@
                                     </h2>
                                     <div id="specs" class="accordion-collapse collapse" data-bs-parent="#productDetailAccordion">
                                         <div class="accordion-body px-0 small text-muted">
-                                            Detalles técnicos y materiales.
+                                            <p>Tamaño: {{ $product->tx_tamanio }}</p>
+                                            <p>Peso: {{ $product->tx_peso }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -155,6 +164,59 @@
                     }
                 });
             });
+        </script>
+
+        <!-- objetos de cantidad -->
+         <script>
+        
+            document.addEventListener('DOMContentLoaded', () => {
+                const increments = document.querySelectorAll('.input-number-increment');
+                const decrements = document.querySelectorAll('.input-number-decrement');
+                
+                const getInputAndLimits = (button) => {
+                    const input = button.closest('.input-number-group').querySelector('.input-number');
+                    const min = parseInt(input.getAttribute('min'), 10) || 1;
+                    const max = parseInt(input.getAttribute('max'), 10) || 1000;
+                    return { input, min, max };
+                };
+
+                increments.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const { input, max } = getInputAndLimits(button);
+                        let val = parseInt(input.value, 10);
+                        
+                        if (val < max) {
+                            input.value = val + 1;
+                        }
+                    });
+                });
+
+                decrements.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const { input, min } = getInputAndLimits(button);
+                        let val = parseInt(input.value, 10);
+                        
+                        if (val > min) { 
+                            input.value = val - 1;
+                        }
+                    });
+                });
+
+                document.querySelectorAll('.input-number').forEach(input => {
+                    input.addEventListener('change', () => {
+                        const min = parseInt(input.getAttribute('min'), 10) || 1;
+                        const max = parseInt(input.getAttribute('max'), 10) || 1000;
+                        let val = parseInt(input.value, 10);
+
+                        if (isNaN(val) || val < min) {
+                            input.value = min;
+                        } else if (val > max) {
+                            input.value = max;
+                        }
+                    });
+                });
+            });
+            
         </script>
 
         <div class="show-recommended content-row mx-auto my-4 p-2" style="max-width: 1200px;">

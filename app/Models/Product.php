@@ -412,7 +412,12 @@ class Product extends Model
 
     public function manufacturer()
     {
-        return $this->hasOne(Manufacturer::class, 'manufacturer_id', 'id');
+        return $this->hasOne(Manufacturer::class, 'id', 'manufacturer_id');
+    }
+
+    public function brand()
+    {
+        return $this->hasOne(Brand::class, 'id', 'brand_id');
     }
 
     public function categories()

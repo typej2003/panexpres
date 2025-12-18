@@ -340,6 +340,8 @@ class Cart extends AdminComponent
 
         $cartCollection = \Cart::getContent();
 
+        $this->emit('changeQuantity');
+
         return redirect()->back()->with(['cartCollection' => $cartCollection]);
         // return view('livewire.cart.cart')->with('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);
         // return redirect()->route('cart.index')->with('success_msg', 'El Carrito ha sido Actualizado');
