@@ -113,8 +113,8 @@
             <div class="footer-col">
                 <h4 class="footer-title">Mi Cuenta</h4>
                 <ul>
-                    <li><a href="#">Registrarse</a></li>
-                    <li><a href="#">Entrar</a></li>
+                    <li><a href="/register">Registrarse</a></li>
+                    <li><a href="/login">Entrar</a></li>
                 </ul>
             </div>
             @endguest
