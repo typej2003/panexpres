@@ -50,6 +50,7 @@ class ListPromociones extends AdminComponent
 
     public function mount()
     {
+		
 		$banner1 = Promocion::where('bannerside', 2)->where('order', 1)->first();
 		
 		if($banner1 !== null)
@@ -219,6 +220,7 @@ class ListPromociones extends AdminComponent
 
 	public function updatedBannerRightUp()
     {       
+		
 		$searchKeys = [
             'bannerside' => 2, // Fila Derecha
             'order' => 1,       // Banner Superior

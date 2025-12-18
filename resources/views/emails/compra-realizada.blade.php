@@ -30,7 +30,7 @@
                             
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 30px auto;">
                                 <tr>
-                                    <td align="center" bgcolor="#198754" style="border-radius: 5px;">
+                                    <td align="center" bgcolor="#f96b21" style="border-radius: 5px;">
                                         <a href="#" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 12px 30px; display: inline-block; font-weight: bold;">
                                             Sigue tu pedido
                                         </a>
@@ -45,47 +45,39 @@
                     </tr>
 
                     <tr>
-                        <td bgcolor="#873e07" style="padding: 40px 30px; color: #ffffff;">
+                        <td bgcolor="#8a3c10" style="padding: 30px 20px; color: #ffffff;">
                             <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                                 <tr>
-                                    <td width="240" style="vertical-align: top; padding-bottom: 20px;">
-                                        <div style="font-size: 1rem; font-weight: bold; margin-bottom: 15px; font-family: Arial, sans-serif;">
-                                            Síguenos en nuestras redes
-                                        </div>
-                                        
+                                    <td width="33%" align="center" style="vertical-align: middle;">
                                         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                             <tr>
-                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 35px; height: 35px;">
-                                                    <a href="#" style="color: #dd751a; text-decoration: none; font-weight: bold; font-size: 12px; line-height: 35px; display: block;">IG</a>
+                                                <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 32px; height: 32px;">
+                                                    <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold; font-size: 11px; line-height: 32px; display: block;">IG</a>
                                                 </td>
-                                                <td width="10"></td>
-                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 35px; height: 35px;">
-                                                    <a href="#" style="color: #dd751a; text-decoration: none; font-weight: bold; font-size: 12px; line-height: 35px; display: block;">TK</a>
+                                                <td width="8"></td>
+                                                <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 32px; height: 32px;">
+                                                    <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold; font-size: 11px; line-height: 32px; display: block;">TK</a>
                                                 </td>
-                                                <td width="10"></td>
-                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 35px; height: 35px;">
-                                                    <a href="#" style="color: #dd751a; text-decoration: none; font-weight: bold; font-size: 12px; line-height: 35px; display: block;">FB</a>
+                                                <td width="8"></td>
+                                                <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 32px; height: 32px;">
+                                                    <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold; font-size: 11px; line-height: 32px; display: block;">FB</a>
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
 
-                                    <td style="vertical-align: top; padding-left: 10px;">
-                                        <div style="font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #fc5e27; display: inline-block; padding-bottom: 5px;">
-                                            Contacto
-                                        </div>
-                                        <div style="font-size: 0.95rem; line-height: 2.2;">
-                                            <span style="font-size: 16px; margin-right: 5px;">&#9993;</span> 
-                                            <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none;">ventas@panexpres.com</a>
-                                            <br>
-                                            
-                                            <span style="font-size: 16px; margin-right: 5px;">&#127760;</span> 
+                                    <td width="33%" align="center" style="vertical-align: middle; border-left: 1px solid #a65b2e; border-right: 1px solid #a65b2e;">
+                                        <div style="font-size: 12px; font-family: Arial, sans-serif; line-height: 1.5;">
+                                            <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none;">ventas@panexpres.com</a><br>
                                             <a href="https://panexpres.com" style="color: #ffffff; text-decoration: none;">panexpres.com</a>
-                                            <br>
-                                            
-                                            <span style="font-size: 16px; margin-right: 5px;">&#128222;</span> 
-                                            <a href="https://wa.me/5804141869016" style="color: #ffffff; text-decoration: none; font-weight: bold;">WhatsApp Asesoría</a>
                                         </div>
+                                    </td>
+
+                                    <td width="33%" align="center" style="vertical-align: middle;">
+                                        <a href="https://wa.me/5804141869016" style="text-decoration: none; color: #ffffff; font-family: Arial, sans-serif;">
+                                            <span style="font-size: 20px;">&#128222;</span><br>
+                                            <span style="font-size: 11px; font-weight: bold; text-transform: uppercase;">WhatsApp</span>
+                                        </a>
                                     </td>
                                 </tr>
                             </table>
@@ -93,15 +85,16 @@
                     </tr>
 
                     <tr>
-                        <td bgcolor="#fc5e27" style="padding: 15px 30px; text-align: center;">
-                            <p style="color: #ffffff; font-size: 12px; margin: 0; font-family: Arial, sans-serif;">
-                                &copy; {{ date('Y') }} <strong>Pan Express</strong>. Todos los derechos reservados.
+                        <td bgcolor="#fc5e27" style="padding: 10px 30px; text-align: center;">
+                            <p style="color: #ffffff; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
+                                &copy; {{ date('Y') }} Pan Express. Todos los derechos reservados.
                             </p>
                         </td>
                     </tr>
+                </table>
 
-                </table> <p style="font-size: 12px; color: #999999; margin-top: 20px; max-width: 600px; line-height: 1.4;">
-                    Has recibido este correo porque te registraste o realizaste una compra en Pan Express. Si no deseas recibir más correos, puedes gestionar tus preferencias en nuestro sitio web.
+                <p style="font-size: 11px; color: #999999; margin-top: 20px; max-width: 600px; text-align: center; line-height: 1.4;">
+                    Has recibido este correo porque te registraste o realizaste una compra en Pan Express.
                 </p>
 
             </td>
