@@ -30,7 +30,7 @@
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 30px auto;">
                                 <tr>
                                     <td align="center" bgcolor="#f96b21" style="border-radius: 5px;">
-                                        <a href="#" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 12px 30px; display: inline-block; font-weight: bold;">
+                                        <a href="https://panexpres.com/detallespedido/{{ $nropedido }}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 12px 30px; display: inline-block; font-weight: bold;">
                                             Sigue tu pedido
                                         </a>
                                     </td>
