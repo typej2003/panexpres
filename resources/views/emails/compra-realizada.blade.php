@@ -74,7 +74,7 @@
 
                                     <td width="33%" align="center" style="vertical-align: middle;">
                                         <a href="https://wa.me/5804141869016" style="text-decoration: none; color: #ffffff; font-family: Arial, sans-serif;">
-                                            <div style="font-size: 18px; margin-bottom: 2px;">&#9993;</div>
+                                            <div style="font-size: 18px; margin-bottom: 2px;">&#128222;</div>
                                             <div style="font-size: 10px; font-weight: bold; text-transform: uppercase;">WhatsApp<br>Asesoría</div>
                                         </a>
                                     </td>
@@ -82,15 +82,12 @@
                             </table>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td bgcolor="#fc5e27" style="padding: 12px 30px; text-align: center;">
-                            <p style="color: #ffffff; font-size: 11px; margin: 0;">
-                                &copy; {{ date('Y') }} <strong>Pan Express</strong>. Todos los derechos reservados.
-                            </p>
-                        </td>
-                    </tr>
                 </table>
+
+                <p style="font-size: 11px; color: #999999; margin-top: 20px; max-width: 600px; text-align: center; line-height: 1.4;">
+                    Has recibido este correo porque realizaste una compra en Pan Express.
+                </p>
+
             </td>
         </tr>
     </table>
