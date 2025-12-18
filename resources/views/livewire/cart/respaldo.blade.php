@@ -255,7 +255,7 @@
                                                             <div class="form-group">
                                                                 <label for="documento">Contraseña <span class="text-danger">*</span></label>            
                                                                 <div class="input-group mb-3">
-                                                                    <input type="password" name="password" class="form-control" placeholder="Password" value="12345678">
+                                                                    <input type="password" name="password" class="form-control" placeholder="Password" value="">
                                                                     <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                             <span class="fas fa-lock"></span>
@@ -270,7 +270,7 @@
                                                             <div class="form-group">
                                                                 <label for="documento">Repita la contraseña <span class="text-danger">*</span></label>        
                                                                 <div class="input-group mb-3">
-                                                                    <input type="password" name="password_confirmation" class="form-control" placeholder="password confirmation" value="12345678">
+                                                                    <input type="password" name="password_confirmation" class="form-control" placeholder="password confirmation" value="">
                                                                     <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                             <span class="fas fa-lock"></span>

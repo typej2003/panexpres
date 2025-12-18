@@ -104,7 +104,7 @@
                             <div class="row mx-auto">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <label for="password">Contraseña</label>
-                                    <input type="password" name="password" id="password-field" class="form-control inputForm" placeholder="Contraseña" value="12345678"/>
+                                    <input type="password" name="password" id="password-field" class="form-control inputForm" placeholder="Contraseña" value=""/>
                                 </div>
                             </div>                
                         </div>
@@ -195,7 +195,7 @@
                     <div class="form-group my-3">
                         <div class="row mx-auto">
                             <div class="col-xs-12 col-md-12 col-sm-12 col-12">
-                                <input type="password" name="password" class="form-control inputForm" placeholder="Contraseña" value="12345678">                    
+                                <input type="password" name="password" class="form-control inputForm" placeholder="Contraseña" value="">                    
                             </div>
                         </div>
                     </div>
@@ -203,7 +203,7 @@
                     <div class="form-group my-3">
                         <div class="row mx-auto">
                             <div class="col-xs-12 col-md-12 col-sm-12 col-12">
-                                <input type="password" name="password_confirmation" class="form-control inputForm" placeholder="Confirme la Contraseña" value="12345678">                        
+                                <input type="password" name="password_confirmation" class="form-control inputForm" placeholder="Confirme la Contraseña" value="">                        
                             </div>
                         </div>
                     </div>

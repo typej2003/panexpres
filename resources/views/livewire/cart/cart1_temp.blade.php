@@ -341,7 +341,7 @@
                                                             </div>
                                                     
                                                             <div class="form-group-css my-3"> <div class="flex-row input-row-css"> <div class="col-100"> <label for="password">Contraseña</label>
-                                                                        <input type="password" name="password" id="password-fieldW" class="form-control-css inputForm" placeholder="Contraseña" value="12345678"/> </div>
+                                                                        <input type="password" name="password" id="password-fieldW" class="form-control-css inputForm" placeholder="Contraseña" value=""/> </div>
                                                                 </div>                
                                                             </div>          
                                                             
@@ -426,7 +426,7 @@
                                                             <div class="form-group-css">
                                                                 <label for="documento">Contraseña <span class="text-danger">*</span></label>            
                                                                 <div class="input-group-css mb-3">
-                                                                    <input type="password" name="password" class="form-control-css" placeholder="Password" value="12345678" value="{{old('password')}}">
+                                                                    <input type="password" name="password" class="form-control-css" placeholder="Password" value="" value="{{old('password')}}">
                                                                 </div>
                                                                 @error('password')
                                                                     <span class="text-danger">{{ $message }}</span>
@@ -436,7 +436,7 @@
                                                             <div class="form-group-css">
                                                                 <label for="documento">Repita la contraseña <span class="text-danger">*</span></label>        
                                                                 <div class="input-group-css mb-3">
-                                                                    <input type="password" name="password_confirmation" class="form-control-css" placeholder="password confirmation" value="12345678">
+                                                                    <input type="password" name="password_confirmation" class="form-control-css" placeholder="password confirmation" value="">
                                                                 </div>
                                                                 @error('password_confirmation')
                                                                     <span class="text-danger">{{ $message }}</span>

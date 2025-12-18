@@ -112,7 +112,7 @@
                                                             <div class="row mx-auto">
                                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                                     <label for="password">Contraseña</label>
-                                                                    <input type="password" name="password" id="password-field" class="form-control inputForm" placeholder="Contraseña" value="12345678"/ autocomplete="off">
+                                                                    <input type="password" name="password" id="password-field" class="form-control inputForm" placeholder="Contraseña" value="" autocomplete="off">
                                                                 </div>
                                                             </div>                
                                                         </div>
