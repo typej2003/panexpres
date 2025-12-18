@@ -10,8 +10,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('/css/styles_expres.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/navidad.css') }}">
     <livewire:styles />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        .text-primary-custom { color: #893e08 !important; }
+        
+        /* Indicadores Numéricos */
+        .img-number {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #ddd;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-weight: bold; font-size: 0.85rem;
+            transition: 0.2s; color: #555;
+        }
+        .img-number.active {
+            background: #893e08; color: white; border-color: #893e08;
+        }
+
+        /* Estilo del selector de cantidad */
+        .input-qty::-webkit-inner-spin-button, .input-qty::-webkit-outer-spin-button {
+            -webkit-appearance: none; margin: 0;
+        }
+
+        @media (max-width: 991px) {
+            .main-image-container { height: 320px !important; }
+            .sticky-md-top { position: relative !important; top: 0 !important; }
+        }
+    </style>
 </head>
 <body>
     <div id="container-body">
@@ -22,30 +49,21 @@
 
         @livewire('layouts.navbar-expres')
         
-        @if($in_cellphonecontact > 0)
-            <a href="https://api.whatsapp.com/send?phone=+58{{$comercio->contactcellphone}}&text={{ $comercio->msgcontact}}" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp whatsapp-icon"></i>
-            </a>
-        @endif
-        
         <div class="my-2"></div>    
         <section class="container-fluid">
             <div class="my-2"></div>
-            @livewire('afiliado.ver-detalles', ['productId' => $productId])    
+            @livewire('afiliado.ver-detalles', ['comercioId' => $comercioId, 'productId' => $productId])    
 
             @livewire('components.show-recommended-expres', ['productId' => $productId])    
         </section> 
-
-
 
         @livewire('layouts.footer-expres')
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="{{ asset('/js/script_expres.js') }}"></script>
-    <script src="{{ asset('/js/navidad.js') }}"></script> 
+
 </body>
 </html>
 @stack('js')

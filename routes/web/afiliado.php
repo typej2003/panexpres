@@ -66,11 +66,8 @@ Route::get('/routedetails/{comercioId}/{productId}', function($comercioId, $prod
         }        
         
         return view('externalviews.view-details-expres', [
-            'comercio' => $comercio, 
+            'comercioId' => $comercioId, 
             'productId' => $product->id,
-            'in_cellphonecontact' => $setting->in_cellphonecontact,
-            'in_sliderprincipal' => $setting->in_sliderprincipal,
-            'in_marcasproductos' => $setting->in_marcasproductos,
         ]);
     }
 });

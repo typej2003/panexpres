@@ -41,7 +41,7 @@
         }
         .card-content {
             height: 100%; background: transparent; box-shadow: none;
-            height: auto; background: blue; box-shadow: none;
+            height: auto; box-shadow: none;
             overflow: hidden; 
             display: flex; /* Mantener flex */
             flex-direction: column; /* Mantener columna */

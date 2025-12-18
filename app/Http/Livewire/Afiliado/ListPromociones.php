@@ -227,10 +227,13 @@ class ListPromociones extends AdminComponent
         ];
         $diskName = 'avatarspromociones';
 		
-        // 1. Validar el archivo subido
         $this->validate([
-            'bannerRightUp' => 'required|image|max:1024', // Asegura que sea una imagen y menor a 1MB
-        ]);
+			'bannerRightUp' => 'required|image',
+		], [
+			'bannerRightUp.required' => 'Debes seleccionar una imagen.',
+			'bannerRightUp.image' => 'El archivo debe ser una imagen (jpg, png, etc).',
+			'bannerRightUp.max' => 'La imagen no debe pesar más de 1MB.',
+		]);
 
 
         // 2. Encontrar el registro actual para obtener la ruta previa (si existe)
@@ -278,9 +281,14 @@ class ListPromociones extends AdminComponent
         $diskName = 'avatarspromociones';
 
         // 1. Validar el archivo subido
-        $this->validate([
-            'bannerRightDown' => 'required|image|max:1024', // Asegura que sea una imagen y menor a 1MB
-        ]);
+        
+		$this->validate([
+			'bannerRightDown' => 'required|image',
+		], [
+			'bannerRightDown.required' => 'Debes seleccionar una imagen.',
+			'bannerRightDown.image' => 'El archivo debe ser una imagen (jpg, png, etc).',
+			'bannerRightDown.max' => 'La imagen no debe pesar más de 1MB.',
+		]);
 
         // 2. Encontrar el registro actual para obtener la ruta previa (si existe)
         $banner1 = Promocion::where($searchKeys)->first();

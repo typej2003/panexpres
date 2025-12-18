@@ -85,6 +85,16 @@
             </div>
             <!-- /.row -->
 
+            @if ($errors->any())
+                <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                    <ul style="margin: 0;">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-lg-12">
                     <table class="table table-hover table-bordered table-responsive">
@@ -101,7 +111,7 @@
                                     <!-- Top Image -->
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
-                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightUp->avatarp1_url }}' }">
+                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightUp->avatar_url }}' }">
                                                 <input wire:model="bannerRightUp" type="file" class="d-none" x-ref="image" x-on:change="
                                                         reader = new FileReader();
                                                         reader.onload = (event) => {
@@ -123,7 +133,7 @@
                                     <!-- Down Image --> 
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
-                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightDown->avatarp2_url }}' }">
+                                            <div class="text-center" x-data="{ imagePreview: '{{ $bannerRightDown->avatar_url }}' }">
                                                 <input wire:model="bannerRightDown" type="file" class="d-none" x-ref="image" x-on:change="
                                                         reader = new FileReader();
                                                         reader.onload = (event) => {
