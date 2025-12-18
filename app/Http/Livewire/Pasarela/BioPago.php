@@ -54,7 +54,7 @@ class BioPago extends Component
 		$this->pedidoTemporal = PedidoTemporal::where('nropedido', $this->nropedido)->first();
 		if($this->pedidoTemporal)
 		{
-			$this->amount = $this->pedidoTemporal->coste;
+			$this->amount = $this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio;
 			$this->identificationNac = $this->pedidoTemporal->client->identificationNac;
 			$this->identificationNumber = $this->pedidoTemporal->client->identificationNumber;
 			$this->email  = $this->pedidoTemporal->client->email;

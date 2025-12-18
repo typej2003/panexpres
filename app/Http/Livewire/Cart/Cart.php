@@ -347,7 +347,6 @@ class Cart extends AdminComponent
 
     public function finalizarCompra()
     {        
-        
         $cart = new CartController;
         $contenido = $cart->contenido();
         $title = 'Compra';

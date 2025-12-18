@@ -43,6 +43,15 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="/probarEmailCompra" class="nav-link {{ request()->is('probarEmailCompra') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  EMAIL a 'cliente'
+                </p>
+              </a>
+            </li>
             
             <li class="nav-item">
               <a x-ref="profileLink" href="{{ route('admin.profile.edit') }}" class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}">

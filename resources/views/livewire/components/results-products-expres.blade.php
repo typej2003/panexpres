@@ -82,13 +82,14 @@
         .producto-parte.col-desc {
             display: flex; 
             flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
+            /* justify-content: center;  */
+            /* align-items: center;  */
             padding: 15px;
         }
         .producto-parte.col-desc p, .producto-parte.col-desc div {
-            text-align: center;
+            text-align: start;
             width: 100%;
+            margin-right: 5px;
         }
         .producto-parte.col-desc .centrar:last-child {
             margin-bottom: 0;
@@ -284,7 +285,7 @@
                                 <img class = "imgProduct" src="{{ $product->image1_url }}" alt="{{ $product->name }}">
                             </div>
                             
-                            <div class="producto-parte col-desc">
+                            <div class="producto-parte col-desc mx-2 text-subtitle">
                                 <p class="christmas-text negrita">{{ $product->name }}</p>
                                 <p class="description">{{ $product->description }}</p>
                                 <div class="p-0 my-0">
@@ -293,7 +294,7 @@
                             </div>
                             
                             <div class="producto-parte col-ctrl">
-                                <div class="centrar">Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</div>
+                                <div class="centrar text-subtitle">Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</div>
                                 
                                 <div class="centrar">
                                     <div class="justify-content-between">
@@ -301,7 +302,7 @@
                                             <div class="input-group-button">
                                                 <span class="input-number-decrement" data-product-id="{{ $product->id }}">-</span>
                                             </div>
-                                            <input name="quantity_{{ $product->id }}" class="input-number" type="number" value="1" min="1" max="1000">
+                                            <input name="quantity_{{ $product->id }}" class="input-number " type="number" value="1" min="1" max="1000">
                                             <div class="input-group-button">
                                                 <span class="input-number-increment" data-product-id="{{ $product->id }}">+</span>
                                             </div>

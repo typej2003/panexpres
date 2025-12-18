@@ -30,6 +30,6 @@
         <br> 
         
     @else
-        <p>Tu carrito esta vacío<p>
+        <p class="menu-title">Tu carrito esta vacío<p>
     @endif
 </div>
