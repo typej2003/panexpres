@@ -310,7 +310,7 @@
                             <img src="{{ $lastProduct->image1_url }}" alt="{{ $lastProduct->name }} Clon">
                         </div>
                         <div class="card-overlay-text">
-                            <h4 class="christmas-text">{{ $lastProduct->name }}</h4>
+                            <h4 class="text-white">{{ $lastProduct->name }}</h4>
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $lastProduct->price1 }}</span></p>
                         </div>
                         <div class="card-badge-pure">
@@ -327,7 +327,7 @@
                                 <img src="{{ $recommended->image1_url }}" alt="Imagen 1">
                             </div>
                             <div class="card-overlay-text">
-                                <h4 class="christmas-text">{{ $recommended->name }}</h4>
+                                <h4 class="text-white">{{ $recommended->name }}</h4>
                                 <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $recommended->price1 }}</span></p>
                             </div>
                             <div class="card-badge-pure">
@@ -359,7 +359,7 @@
                             <img src="{{ $firstProduct->image1_url }}" alt="{{ $firstProduct->name }} Clon">
                         </div>
                         <div class="card-overlay-text">
-                            <h4 class="christmas-text">{{$firstProduct->name}}</h4>
+                            <h4 class="text-white">{{$firstProduct->name}}</h4>
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $firstProduct->price1 }}</span></p>
                         </div>
                         <div class="card-badge-pure">

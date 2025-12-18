@@ -86,7 +86,7 @@
 
         .card-overlay-text h4 { margin: 0 0 5px 0; font-size: 1.1rem; }
 
-        .christmas-text1 {
+        .christmas-text {
             font-family: 'Great Vibes', cursive; /* Fuente elegante */
             font-size: 1.8rem !important;
             color: #dd751a; /* Color principal rojo */
@@ -322,22 +322,6 @@
         }
         .producto-parte.col-desc .centrar:last-child {
             margin-bottom: 0;
-        }
-
-        .christmas-text1 {
-            font-family: 'Great Vibes', cursive; /* Fuente elegante */
-            font-size: 1.8rem !important;
-            color: #910101ff; /* Color principal rojo */
-            text-shadow: 
-                0 0 10px #01380dff,   /* Brillo rojo suave */
-                0 0 20px #0e521dff,
-                0 0 30px #3d9c52ff,   /* Brillo verde */
-                0 0 40px #6baa79ff,
-                0 0 50px #ffffffff,   /* Brillo dorado/amarillo */
-                0 0 60px #ffffffff !important;
-            /*text-shadow: -2px 2px 0px #ffff;*/
-            font-weight: bold !important;
-            /*animation: pulse 2s infinite alternate; /* Animación simple para dar vida */
         }
 
         /* Animación opcional para un efecto de "parpadeo" o "brillo pulsante" */
@@ -576,7 +560,7 @@
                             <img src="{{ $lastProduct->image1_url }}" alt="{{ $lastProduct->name }} Clon">
                         </div>
                         <div class="card-overlay-text">
-                            <h4 class="christmas-text">{{ $lastProduct->name }}</h4>
+                            <h4 class="text-white">{{ $lastProduct->name }}</h4>
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $lastProduct->price1 }}</span></p>
                         </div>
                         <div class="card-badge-pure">
@@ -594,7 +578,7 @@
                                 <img src="{{ $product->image1_url }}" alt="Imagen 1">
                             </div>
                             <div class="card-overlay-text">
-                                <h4 class="christmas-text">{{ $product->name }}</h4>
+                                <h4 class="text-white">{{ $product->name }}</h4>
                                 <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price1 }}</span></p>
                             </div>
                             <div class="card-badge-pure">
@@ -626,7 +610,7 @@
                             <img src="{{ $firstProduct->image1_url }}" alt="{{ $firstProduct->name }} Clon">
                         </div>
                         <div class="card-overlay-text">
-                            <h4 class="christmas-text">{{$firstProduct->name}}</h4>
+                            <h4 class="text-white">{{$firstProduct->name}}</h4>
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $firstProduct->price1 }}</span></p>
                         </div>
                         <div class="card-badge-pure">
@@ -828,7 +812,7 @@
                                 </div>
                                 
                                 <div class="producto-parte col-desc">
-                                    <p class="christmas-text negrita">{{ $product->name }}</p>
+                                    <p class="text-white negrita">{{ $product->name }}</p>
                                     <p class="description">{{ $product->description }}</p>
                                     <div class="p-0 my-0">
                                         <a class="btn btn-view" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
