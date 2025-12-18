@@ -14,7 +14,7 @@
                     
                     <tr>
                         <td style="padding: 40px 30px 20px 30px; text-align: center;">
-                            <img src="{{ $message->embed(public_path('img/logopanexpres_color.png')) }}" alt="Logo Pan Express" width="200" style="display: block; margin: 0 auto; max-width: 220px; height: auto; border: 0;">
+                            <img src="{{ asset('img/logopanexpres_color.png') }}" alt="Logo Pan Express" width="200" style="display: block; margin: 0 auto; max-width: 220px; height: auto; border: 0;">
                             <hr style="width: 80%; border: 0; border-top: 5px solid #893e08; margin: 20px auto 0 auto; opacity: 1;">
                         </td>
                     </tr>
@@ -52,19 +52,19 @@
                                             <tr>
                                                 <td align="center">
                                                     <a href="https://instagram.com/panexpres" target="_blank">
-                                                        <img src="{{ $message->embed(public_path('img/instagram_blanco.png')) }}" width="32" alt="Instagram" style="display: block; border: 0;">
+                                                        <img src="{{ asset('img/instagram_blanco.png') }}" width="32" alt="Instagram" style="display: block; border: 0;">
                                                     </a>
                                                 </td>
                                                 <td width="10"></td>
                                                 <td align="center">
                                                     <a href="https://tiktok.com/@panexpres" target="_blank">
-                                                        <img src="{{ $message->embed(public_path('img/tiktok_blanco.png')) }}" width="32" alt="TikTok" style="display: block; border: 0;">
+                                                        <img src="{{ asset('img/tiktok_blanco.png') }}" width="32" alt="TikTok" style="display: block; border: 0;">
                                                     </a>
                                                 </td>
                                                 <td width="10"></td>
                                                 <td align="center">
                                                     <a href="https://facebook.com/panexpres" target="_blank">
-                                                        <img src="{{ $message->embed(public_path('img/facebook_blanco.png')) }}" width="32" alt="Facebook" style="display: block; border: 0;">
+                                                        <img src="{{ asset('img/facebook_blanco.png') }}" width="32" alt="Facebook" style="display: block; border: 0;">
                                                     </a>
                                                 </td>
                                             </tr>
@@ -74,18 +74,18 @@
                                     <td width="34%" align="center" style="vertical-align: middle; border-left: 1px solid rgba(255,255,255,0.3); border-right: 1px solid rgba(255,255,255,0.3);">
                                         <div style="font-size: 11px; font-family: Arial, sans-serif; line-height: 1.8;">
                                             <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 5px;">
-                                                <img src="{{ $message->embed(public_path('img/correo_blanco.png')) }}" width="14" style="vertical-align: middle; margin-right: 4px;" alt="Email"> ventas@panexpres.com
+                                                <img src="{{ asset('img/correo_blanco.png') }}" width="14" style="vertical-align: middle; margin-right: 4px;" alt="Email"> ventas@panexpres.com
                                             </a>
                                             <br>
                                             <a href="https://panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold; display: inline-block;">
-                                                <img src="{{ $message->embed(public_path('img/internet_blanco.png')) }}" width="14" style="vertical-align: middle; margin-right: 4px;" alt="Web"> panexpres.com
+                                                <img src="{{ asset('img/internet_blanco.png') }}" width="14" style="vertical-align: middle; margin-right: 4px;" alt="Web"> panexpres.com
                                             </a>
                                         </div>
                                     </td>
 
                                     <td width="33%" align="center" style="vertical-align: middle;">
                                         <a href="https://wa.me/5804141869016" style="text-decoration: none; color: #ffffff;">
-                                            <img src="{{ $message->embed(public_path('img/whatsapp_blanco.png')) }}" width="32" alt="WhatsApp" style="display: block; margin: 0 auto 5px auto; border: 0;">
+                                            <img src="{{ asset('img/whatsapp_blanco.png') }}" width="32" alt="WhatsApp" style="display: block; margin: 0 auto 5px auto; border: 0;">
                                             <span style="font-size: 10px; font-family: Arial, sans-serif; font-weight: bold; text-transform: uppercase;">Asesoría</span>
                                         </a>
                                     </td>
