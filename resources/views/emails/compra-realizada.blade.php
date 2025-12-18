@@ -51,35 +51,26 @@ IG<!DOCTYPE html>
                                         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                             <tr>
                                                 <td align="center">
-                                                    <a href="#" style="">
-                                                        <img style="width: 35px; height: auto;" 
-                                                            src="{{ $message->embed(public_path('img/instagram_naranja.png')) }}" 
-                                                            onmouseover="this.src='{{ $message->embed(public_path('img/instagram_blanco.png')) }}';" 
-                                                            onmouseout="this.src='{{ $message->embed(public_path('img/instagram_naranja.png')) }}';" 
-                                                            alt="Descripción"
-                                                        >
+                                                    <a href="TU_LINK_IG">
+                                                        <img style="width: 32px; height: auto; border:0; display: inline-block;" 
+                                                            src="{{ $message->embed(public_path('img/instagram_blanco.png')) }}" 
+                                                            alt="Instagram">
                                                     </a>
                                                 </td>
-                                                <td width="8"></td>
+                                                <td width="10"></td>
                                                 <td align="center">
-                                                    <a href="#" style="">
-                                                        <img style="width: 35px; height: auto;" 
-                                                            src="{{ $message->embed(public_path('img/tiktok_naranja.png')) }}" 
-                                                            onmouseover="this.src='{{ $message->embed(public_path('img/tiktok_blanco.png')) }}';" 
-                                                            onmouseout="this.src='{{ $message->embed(public_path('img/tiktok_naranja.png')) }}';" 
-                                                            alt="Descripción"
-                                                        >
+                                                    <a href="TU_LINK_TK">
+                                                        <img style="width: 32px; height: auto; border:0; display: inline-block;" 
+                                                            src="{{ $message->embed(public_path('img/tiktok_blanco.png')) }}" 
+                                                            alt="TikTok">
                                                     </a>
                                                 </td>
-                                                <td width="8"></td>
+                                                <td width="10"></td>
                                                 <td align="center">
-                                                    <a href="#" style="">
-                                                        <img style="width: 35px; height: auto;" 
-                                                            src="{{ $message->embed(public_path('img/facebook_naranja.png')) }}" 
-                                                            onmouseover="this.src='{{ $message->embed(public_path('img/facebook_blanco.png')) }}';" 
-                                                            onmouseout="this.src='{{ $message->embed(public_path('img/facebook_naranja.png')) }}';" 
-                                                            alt="Descripción"
-                                                        >
+                                                    <a href="TU_LINK_FB">
+                                                        <img style="width: 32px; height: auto; border:0; display: inline-block;" 
+                                                            src="{{ $message->embed(public_path('img/facebook_blanco.png')) }}" 
+                                                            alt="Facebook">
                                                     </a>
                                                 </td>
                                             </tr>
@@ -90,17 +81,11 @@ IG<!DOCTYPE html>
                                         <div style="font-size: 11px; font-family: Arial, sans-serif; line-height: 1.6;">
                                             <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold;"><span> </span>
                                                         <img style="width: 20px; height: auto;" 
-                                                            src="{{ $message->embed(public_path('img/correo_naranja.png')) }}" 
-                                                            onmouseover="this.src='{{ $message->embed(public_path('img/correo_blanco.png')) }}';" 
-                                                            onmouseout="this.src='{{ $message->embed(public_path('img/correo_naranja.png')) }}';" 
-                                                            alt="Descripción"
+                                                            src="{{ $message->embed(public_path('img/correo_blanco.png')) }}" alt="Descripción"
                                                         >ventas@panexpres.com</a><br>
                                             <a href="https://panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold;">
                                                 <img style="width: 20px; height: auto;" 
-                                                            src="{{ $message->embed(public_path('img/internet_naranja.png')) }}" 
-                                                            onmouseover="this.src='{{ $message->embed(public_path('img/internet_blanco.png')) }}';" 
-                                                            onmouseout="this.src='{{ $message->embed(public_path('img/internet_naranja.png')) }}';" 
-                                                            alt="Descripción">panexpres.com</a>
+                                                            src="{{ $message->embed(public_path('img/internet_blanco.png')) }}" alt="Descripción">panexpres.com</a>
                                         </div>
                                     </td>
 
