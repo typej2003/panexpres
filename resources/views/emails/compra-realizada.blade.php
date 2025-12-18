@@ -14,8 +14,7 @@ IG<!DOCTYPE html>
                     
                     <tr>
                         <td style="padding: 40px 30px 20px 30px; text-align: center;">
-                            <!-- <img src="{{ $message->embed(public_path('img/logopanexpres_color.png')) }}" alt="Logo Pan Express" width="180" style="display: block; margin: 0 auto; max-width: 180px; height: auto;"> -->
-                             <img src="img/logopanexpres_color.png" alt="Logo Pan Express" width="200" style="display: block; margin: 0 auto; max-width: 220px; height: auto;">
+                            <img src="{{ $message->embed(public_path('img/logopanexpres_color.png')) }}" alt="Logo Pan Express" width="200" style="display: block; margin: 0 auto; max-width: 220px; height: auto;">
                             <hr style="width: 80%; border: 0; border-top: 5px solid #893e08; margin: 20px auto 0 auto; opacity: 1;">
                         </td>
                     </tr>
@@ -31,7 +30,7 @@ IG<!DOCTYPE html>
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 30px auto;">
                                 <tr>
                                     <td align="center" bgcolor="#f96b21" style="border-radius: 5px;">
-                                        <a href="#" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 12px 30px; display: inline-block; font-weight: bold;">
+                                        <a href="http#" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 12px 30px; display: inline-block; font-weight: bold;">
                                             Sigue tu pedido
                                         </a>
                                     </td>
@@ -39,7 +38,7 @@ IG<!DOCTYPE html>
                             </table>
 
                             <p style="font-size: 14px; color: #888888; text-align: center; margin-top: 20px;">
-                                Rastrea, reprograma o cancela tu pedido desde nuestro portal.
+                                Rastrea tu pedido desde nuestro portal.
                             </p>
                         </td>
                     </tr>
@@ -54,9 +53,9 @@ IG<!DOCTYPE html>
                                                 <td align="center">
                                                     <a href="#" style="">
                                                         <img style="width: 35px; height: auto;" 
-                                                            src="img/instagram_naranja.png" 
-                                                            onmouseover="this.src='img/instagram_blanco.png';" 
-                                                            onmouseout="this.src='img/instagram_naranja.png';" 
+                                                            src="{{ $message->embed(public_path('img/instagram_naranja.png')) }}" 
+                                                            onmouseover="this.src='{{ $message->embed(public_path('img/instagram_blanco.png')) }}';" 
+                                                            onmouseout="this.src='{{ $message->embed(public_path('img/instagram_naranja.png')) }}';" 
                                                             alt="Descripción"
                                                         >
                                                     </a>
@@ -65,9 +64,9 @@ IG<!DOCTYPE html>
                                                 <td align="center">
                                                     <a href="#" style="">
                                                         <img style="width: 35px; height: auto;" 
-                                                            src="img/tiktok_naranja.png" 
-                                                            onmouseover="this.src='img/tiktok_blanco.png';" 
-                                                            onmouseout="this.src='img/tiktok_naranja.png';" 
+                                                            src="{{ $message->embed(public_path('img/tiktok_naranja.png')) }}" 
+                                                            onmouseover="this.src='{{ $message->embed(public_path('img/tiktok_blanco.png')) }}';" 
+                                                            onmouseout="this.src='{{ $message->embed(public_path('img/tiktok_naranja.png')) }}';" 
                                                             alt="Descripción"
                                                         >
                                                     </a>
@@ -76,9 +75,9 @@ IG<!DOCTYPE html>
                                                 <td align="center">
                                                     <a href="#" style="">
                                                         <img style="width: 35px; height: auto;" 
-                                                            src="img/facebook_naranja.png" 
-                                                            onmouseover="this.src='img/facebook_blanco.png';" 
-                                                            onmouseout="this.src='img/facebook_naranja.png';" 
+                                                            src="{{ $message->embed(public_path('img/facebook_naranja.png')) }}" 
+                                                            onmouseover="this.src='{{ $message->embed(public_path('img/facebook_blanco.png')) }}';" 
+                                                            onmouseout="this.src='{{ $message->embed(public_path('img/facebook_naranja.png')) }}';" 
                                                             alt="Descripción"
                                                         >
                                                     </a>
@@ -91,16 +90,16 @@ IG<!DOCTYPE html>
                                         <div style="font-size: 11px; font-family: Arial, sans-serif; line-height: 1.6;">
                                             <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold;"><span> </span>
                                                         <img style="width: 20px; height: auto;" 
-                                                            src="img/correo_naranja.png" 
-                                                            onmouseover="this.src='img/correo_blanco.png';" 
-                                                            onmouseout="this.src='img/correo_naranja.png';" 
+                                                            src="{{ $message->embed(public_path('img/correo_naranja.png')) }}" 
+                                                            onmouseover="this.src='{{ $message->embed(public_path('img/correo_blanco.png')) }}';" 
+                                                            onmouseout="this.src='{{ $message->embed(public_path('img/correo_naranja.png')) }}';" 
                                                             alt="Descripción"
                                                         >ventas@panexpres.com</a><br>
                                             <a href="https://panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold;">
                                                 <img style="width: 20px; height: auto;" 
-                                                            src="img/internet_naranja.png" 
-                                                            onmouseover="this.src='img/internet_blanco.png';" 
-                                                            onmouseout="this.src='img/internet_naranja.png';" 
+                                                            src="{{ $message->embed(public_path('img/internet_naranja.png')) }}" 
+                                                            onmouseover="this.src='{{ $message->embed(public_path('img/internet_blanco.png')) }}';" 
+                                                            onmouseout="this.src='{{ $message->embed(public_path('img/internet_naranja.png')) }}';" 
                                                             alt="Descripción">panexpres.com</a>
                                         </div>
                                     </td>
@@ -110,9 +109,9 @@ IG<!DOCTYPE html>
                                             <div style="font-size: 18px; margin-bottom: 2px;"></div>
                                             <div style="font-size: 10px; font-weight: bold; text-transform: uppercase;">
                                                 <img style="width: 35px; height: auto;" 
-                                                            src="img/whatsapp_naranja.png" 
-                                                            onmouseover="this.src='img/whatsapp_blanco.png';" 
-                                                            onmouseout="this.src='img/whatsapp_naranja.png';" 
+                                                            src="{{ $message->embed(public_path('img/whatsapp_naranja.png')) }}" 
+                                                            onmouseover="this.src='{{ $message->embed(public_path('img/whatsapp_blanco.png')) }}';" 
+                                                            onmouseout="this.src='{{ $message->embed(public_path('img/whatsapp_naranja.png')) }}';" 
                                                             alt="Descripción"
                                                         ></div>
                                         </a>
