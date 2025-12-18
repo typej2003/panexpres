@@ -24,7 +24,7 @@ class Redireccionar extends Component
                 
                 break;
             
-            case 'resumenCompra':
+            case 'comprarealizada':
                 // 🔑 Verifica si el carrito tiene contenido ANTES de limpiarlo
                 if (\Cart::getContent()->isNotEmpty()) {
                     \Cart::clear();
@@ -35,7 +35,7 @@ class Redireccionar extends Component
                     session()->flash('cart_info', 'El carrito ya estaba vacío.');
                 }
 
-                return redirect()->to('/compraRealizada');
+                return redirect()->to('/comprarealizada');
                 
                 break;
         }
