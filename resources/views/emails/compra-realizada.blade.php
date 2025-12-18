@@ -94,10 +94,7 @@ IG<!DOCTYPE html>
                                             <div style="font-size: 18px; margin-bottom: 2px;"></div>
                                             <div style="font-size: 10px; font-weight: bold; text-transform: uppercase;">
                                                 <img style="width: 35px; height: auto;" 
-                                                            src="{{ $message->embed(public_path('img/whatsapp_naranja.png')) }}" 
-                                                            onmouseover="this.src='{{ $message->embed(public_path('img/whatsapp_blanco.png')) }}';" 
-                                                            onmouseout="this.src='{{ $message->embed(public_path('img/whatsapp_naranja.png')) }}';" 
-                                                            alt="Descripción"
+                                                            src="{{ $message->embed(public_path('img/whatsapp_naranja.png')) }}" alt="Descripción"
                                                         ></div>
                                         </a>
                                     </td>
