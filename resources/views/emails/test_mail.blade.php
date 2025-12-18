@@ -4,6 +4,7 @@
     <title>Laravel 11 Send Email with Attachment Example - Techsolutiontuff</title>
 </head>
 <body>
+    <h1>Prueba</h1>
     <h1>{{ $title }}</h1>
     <p>{{ $body }}</p>
      
