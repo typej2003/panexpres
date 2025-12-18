@@ -17,6 +17,25 @@ body {
     padding-top: 110px; 
 }
 
+a {
+    text-decoration: none;
+}
+
+label {
+    color: #893e08 !important;   /* El color café que solicitaste */
+    /* Configuración para títulos H4 */
+    display: block;              /* Asegura que tome su propia línea */
+    margin-bottom: 0rem;
+    
+    /* Tamaño de fuente fluido (Zoom-friendly) */
+    /* Mínimo 1.1rem, ideal 2vw del ancho, máximo 1.5rem */
+    font-size: clamp(0.8rem, 1.5vw, 1.5rem) !important;
+    
+    /* Mejora de legibilidad */
+    letter-spacing: 0.5px;       /* Espaciado ligero para mayúsculas */
+    line-height: 1.2;  
+}
+
 .logo-login {
     width: 100% !important;
 }

@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <div class="tab-content">
 
-                                <div class="tab-pane" :class="currentTab === 'changeEnvio' ? 'active' : ''" id="changeEnvio" wire:ignore.self>
+                                <div class="tab-pane active" :class="currentTab === 'changeEnvio' ? 'active' : ''" id="changeEnvio" wire:ignore.self>
                                     @livewire('afiliado.shipping-envio', ['nropedido' => $nropedido])
                                 </div>
 

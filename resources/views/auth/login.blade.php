@@ -20,7 +20,7 @@
   <div class="container-fluid d-flex ">
     <div class="card mx-auto my-3" style="width: 36rem !important;">
         <div class="card-body">
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-lg-12 titulo c-a text-center">
                     <a href="/">
                         <img class="logo-login mx-auto " src="{{ asset('/img/panexpres_banner.png') }}" alt="">
@@ -29,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 titulo c-a text-center">
-                    <p class="text-center textoreg">¿Todavía no te has registrado? <span><a href="/register" class="c-n">Crea tu cuenta Aquí</a></span></p>
+                    <p class="text-center textoreg text-subtitle">¿Todavía no te has registrado? <span><a href="/register" class="c-n">Clic aquí</a></span></p>
                 </div>
             </div>
     
@@ -39,7 +39,7 @@
                     <div class="row mx-auto" >
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <label for="email">Correo Electrónico</label>
-                            <input type="email" name="email" class="form-control inputForm" placeholder="Correo Electrónico" id="emailW">
+                            <input type="email" name="email" class="form-control inputForm " placeholder="Correo Electrónico" id="emailW">
                         </div>
                     </div>
                     @error('email')
