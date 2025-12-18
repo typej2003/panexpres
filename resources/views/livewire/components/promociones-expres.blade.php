@@ -326,5 +326,21 @@
     });
     </script>
 
-</div>
+    <script>
+        document.addEventListener('visibilitychange', function() {
 
+            
+            // Verificamos si la pestaña vuelve a estar visible
+            if (document.visibilityState === 'visible') {
+                // Seleccionamos el carrusel por su ID
+                var myCarousel = $('#carouselExampleControls');
+                
+                // Reiniciamos al primer slide (índice 0)
+                myCarousel.carousel(1);
+                
+                // Forzamos a que vuelva a iniciar el ciclo automático
+                myCarousel.carousel('cycle');
+            }
+        });
+    </script>
+</div>

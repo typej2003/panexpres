@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+IG<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
@@ -14,7 +14,8 @@
                     
                     <tr>
                         <td style="padding: 40px 30px 20px 30px; text-align: center;">
-                            <img src="{{ $message->embed(public_path('img/logopanexpres_color.png')) }}" alt="Logo Pan Express" width="180" style="display: block; margin: 0 auto; max-width: 180px; height: auto;">
+                            <!-- <img src="{{ $message->embed(public_path('img/logopanexpres_color.png')) }}" alt="Logo Pan Express" width="180" style="display: block; margin: 0 auto; max-width: 180px; height: auto;"> -->
+                             <img src="img/logopanexpres_color.png" alt="Logo Pan Express" width="200" style="display: block; margin: 0 auto; max-width: 220px; height: auto;">
                             <hr style="width: 80%; border: 0; border-top: 5px solid #893e08; margin: 20px auto 0 auto; opacity: 1;">
                         </td>
                     </tr>
@@ -50,16 +51,37 @@
                                     <td width="33%" align="center" style="vertical-align: middle;">
                                         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                             <tr>
-                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 32px; height: 32px;">
-                                                    <a href="#" style="display: block; text-decoration: none; color: #f07229; font-size: 12px; font-weight: bold; line-height: 32px;">IG</a>
+                                                <td align="center">
+                                                    <a href="#" style="">
+                                                        <img style="width: 35px; height: auto;" 
+                                                            src="img/instagram_naranja.png" 
+                                                            onmouseover="this.src='img/instagram_blanco.png';" 
+                                                            onmouseout="this.src='img/instagram_naranja.png';" 
+                                                            alt="Descripción"
+                                                        >
+                                                    </a>
                                                 </td>
                                                 <td width="8"></td>
-                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 32px; height: 32px;">
-                                                    <a href="#" style="display: block; text-decoration: none; color: #f07229; font-size: 12px; font-weight: bold; line-height: 32px;">TK</a>
+                                                <td align="center">
+                                                    <a href="#" style="">
+                                                        <img style="width: 35px; height: auto;" 
+                                                            src="img/tiktok_naranja.png" 
+                                                            onmouseover="this.src='img/tiktok_blanco.png';" 
+                                                            onmouseout="this.src='img/tiktok_naranja.png';" 
+                                                            alt="Descripción"
+                                                        >
+                                                    </a>
                                                 </td>
                                                 <td width="8"></td>
-                                                <td align="center" bgcolor="#ffffff" style="border-radius: 50%; width: 32px; height: 32px;">
-                                                    <a href="#" style="display: block; text-decoration: none; color: #f07229; font-size: 12px; font-weight: bold; line-height: 32px;">FB</a>
+                                                <td align="center">
+                                                    <a href="#" style="">
+                                                        <img style="width: 35px; height: auto;" 
+                                                            src="img/facebook_naranja.png" 
+                                                            onmouseover="this.src='img/facebook_blanco.png';" 
+                                                            onmouseout="this.src='img/facebook_naranja.png';" 
+                                                            alt="Descripción"
+                                                        >
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -67,15 +89,32 @@
 
                                     <td width="34%" align="center" style="vertical-align: middle; border-left: 1px solid rgba(255,255,255,0.3); border-right: 1px solid rgba(255,255,255,0.3);">
                                         <div style="font-size: 11px; font-family: Arial, sans-serif; line-height: 1.6;">
-                                            <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none;">ventas@panexpres.com</a><br>
-                                            <a href="https://panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold;">panexpres.com</a>
+                                            <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold;"><span> </span>
+                                                        <img style="width: 20px; height: auto;" 
+                                                            src="img/correo_naranja.png" 
+                                                            onmouseover="this.src='img/correo_blanco.png';" 
+                                                            onmouseout="this.src='img/correo_naranja.png';" 
+                                                            alt="Descripción"
+                                                        >ventas@panexpres.com</a><br>
+                                            <a href="https://panexpres.com" style="color: #ffffff; text-decoration: none; font-weight: bold;">
+                                                <img style="width: 20px; height: auto;" 
+                                                            src="img/internet_naranja.png" 
+                                                            onmouseover="this.src='img/internet_blanco.png';" 
+                                                            onmouseout="this.src='img/internet_naranja.png';" 
+                                                            alt="Descripción">panexpres.com</a>
                                         </div>
                                     </td>
 
                                     <td width="33%" align="center" style="vertical-align: middle;">
                                         <a href="https://wa.me/5804141869016" style="text-decoration: none; color: #ffffff; font-family: Arial, sans-serif;">
-                                            <div style="font-size: 18px; margin-bottom: 2px;">&#128222;</div>
-                                            <div style="font-size: 10px; font-weight: bold; text-transform: uppercase;">WhatsApp<br>Asesoría</div>
+                                            <div style="font-size: 18px; margin-bottom: 2px;"></div>
+                                            <div style="font-size: 10px; font-weight: bold; text-transform: uppercase;">
+                                                <img style="width: 35px; height: auto;" 
+                                                            src="img/whatsapp_naranja.png" 
+                                                            onmouseover="this.src='img/whatsapp_blanco.png';" 
+                                                            onmouseout="this.src='img/whatsapp_naranja.png';" 
+                                                            alt="Descripción"
+                                                        ></div>
                                         </a>
                                     </td>
                                 </tr>

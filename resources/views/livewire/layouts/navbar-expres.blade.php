@@ -139,7 +139,7 @@
                 @else
                     <a href="#" class="action-item profile dropdown-trigger">
                         <i class="fas fa-user-circle avatar-icon"></i>
-                        <span class="profile-text">Perfil</span>
+                        <span class="profile-text">Mi Cuenta</span>
                     </a>
                     <div class="dropdown-content profile-menu">
                         <a class="" href="/login">Acceso</a>
