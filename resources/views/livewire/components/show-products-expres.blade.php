@@ -18,6 +18,7 @@
         
         .carousel-container-pure {
             width: 100%; margin: 0; overflow: hidden; position: relative;
+            height: auto;
         }
         .carousel-inner-pure {
             display: flex; transition: transform 0.3s ease-out;
@@ -484,7 +485,7 @@
         /* Escritorio y Zoom estándar */
         @media (min-width: 1200px) {
             .carousel-container-pure { max-width: 1200px; }
-            .container-show-products { height: 15rem !important; margin-bottom: 1px; }
+            .container-show-products { height: auto !important; margin-bottom: 1px; }
             .buy-button-pure {
                 margin-left: 50%;
                 padding: 10px 25px;    /* Botón ancho y cómodo */
@@ -503,6 +504,8 @@
 
         /* Tablet o Zoom medio (768px - 1199px) */
         @media  (min-width: 768px) and (max-width: 1199px) {
+            .carousel-container-pure { height: 100%;}
+
             .carousel-control-pure {
                 width: 40px; /* Botones más pequeños para que no tapen el contenido */
                 font-size: 1.2rem;
@@ -524,6 +527,7 @@
         }
 
         @media (min-width: 768px) {
+            .carousel-container-pure { height: 100%;}
             .card-badge-pure {
                 bottom: -5px; /* Ajuste para darle un poco más de margen */
                 right: -10px; /* Ajuste para darle un poco más de margen */
@@ -535,6 +539,7 @@
 
         /* Móvil o Zoom extremo (< 768px) */
         @media (max-width: 767px) {
+            .carousel-container-pure { height: 100%;}
             .card-badge-pure {
                 width: 30px; /* Reducimos iconos flotantes */
             }
@@ -544,6 +549,9 @@
                 width: 80%;            /* Se vuelve ancho para que sea fácil de pulsar con el pulgar */
                 font-size: 1.1rem;     /* Aumentamos el texto ligeramente para lectura móvil */
                 border-radius: 8px;    /* Menos redondeado para que parezca más un botón de acción móvil */
+            }
+            .card-overlay-text h4 {
+                color: #000 !important;
             }
         }
     </style>
@@ -812,7 +820,7 @@
                                 </div>
                                 
                                 <div class="producto-parte col-desc">
-                                    <p class="text-white negrita">{{ $product->name }}</p>
+                                    <p class="text-blond negrita">{{ $product->name }}</p>
                                     <p class="description">{{ $product->description }}</p>
                                     <div class="p-0 my-0">
                                         <a class="btn btn-view" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
