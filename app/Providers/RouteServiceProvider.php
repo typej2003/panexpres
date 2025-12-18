@@ -48,6 +48,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 //->group(base_path('routes/web.php'));
                 ->group(function(){
+                    require base_path('routes/web/aliado.php');
                     require base_path('routes/web/afiliado.php');
                     require base_path('routes/web/cliente.php');
                     require base_path('routes/web/operacion.php');

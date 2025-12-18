@@ -30,7 +30,7 @@
                         
                             <a href="https://api.whatsapp.com/send?phone=+58{{'04141869016'}}&text={{ 'Hola, te asesoramos por  whatsapp.'}}" class="" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-whatsapp whatsapp-icon"></i>
-                                Contácto
+                                Contacto
                             </a>
                         
                         <!-- <form action="{{ route('contacto') }}" method="get" id="contacto">
@@ -39,7 +39,7 @@
                             <input type="hidden" name="msgcontact" value="msgcontact_value"> 
                             <input type="hidden" name="in_marcasproductos" value="1">
                             <input type="hidden" name="words" value="">
-                            <a class="menu-item" onclick="sendFormLink('contacto')" style="cursor:pointer;">Contáctos</a>
+                            <a class="menu-item" onclick="sendFormLink('contacto')" style="cursor:pointer;">Contactos</a>
                         </form> -->
                     </li>
                     <li>

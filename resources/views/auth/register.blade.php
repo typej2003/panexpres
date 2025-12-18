@@ -45,7 +45,7 @@
                 <label for="roleS">Tipo de usuario</label>
                 <select class="form-control" name="roleS" id="roleS">
                     <option value="cliente" selected>CLIENTE</option>
-                    <!-- <option value="afiliado">AFILIADO</option> -->
+                    <!-- <option value="aliado">ALIADO</option> -->
                 </select>
             </div>
             <input type="hidden" value="cliente" id="role" name="role">

@@ -52,6 +52,15 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="/allieduserWizard" class="nav-link {{ request()->is('allieduserWizard') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Probar Wizard Cliente Aliado
+                </p>
+              </a>
+            </li>
             
             <li class="nav-item">
               <a x-ref="profileLink" href="{{ route('admin.profile.edit') }}" class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}">
