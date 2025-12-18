@@ -45,38 +45,24 @@
                     </tr>
 
                     <tr>
-                        <td bgcolor="#8a3c10" style="padding: 30px 20px; color: #ffffff;">
-                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <td width="33%" align="center" style="vertical-align: middle;">
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tr>
-                                    <td width="33%" align="center" style="vertical-align: middle;">
-                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0">
-                                            <tr>
-                                                <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 32px; height: 32px;">
-                                                    <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold; font-size: 11px; line-height: 32px; display: block;">IG</a>
-                                                </td>
-                                                <td width="8"></td>
-                                                <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 32px; height: 32px;">
-                                                    <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold; font-size: 11px; line-height: 32px; display: block;">TK</a>
-                                                </td>
-                                                <td width="8"></td>
-                                                <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 32px; height: 32px;">
-                                                    <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold; font-size: 11px; line-height: 32px; display: block;">FB</a>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 35px; height: 35px;">
+                                        <a href="TU_LINK_INSTAGRAM" style="display: block; text-decoration: none;">
+                                            <img src="https://cdn-icons-png.flaticon.com/32/2111/2111463.png" alt="IG" width="18" height="18" style="display: block; margin: 0 auto; filter: brightness(0) invert(1);">
+                                        </a>
                                     </td>
-
-                                    <td width="33%" align="center" style="vertical-align: middle; border-left: 1px solid #a65b2e; border-right: 1px solid #a65b2e;">
-                                        <div style="font-size: 12px; font-family: Arial, sans-serif; line-height: 1.5;">
-                                            <a href="mailto:ventas@panexpres.com" style="color: #ffffff; text-decoration: none;">ventas@panexpres.com</a><br>
-                                            <a href="https://panexpres.com" style="color: #ffffff; text-decoration: none;">panexpres.com</a>
-                                        </div>
+                                    <td width="10"></td>
+                                    <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 35px; height: 35px;">
+                                        <a href="TU_LINK_TIKTOK" style="display: block; text-decoration: none;">
+                                            <img src="https://cdn-icons-png.flaticon.com/32/3046/3046121.png" alt="TK" width="18" height="18" style="display: block; margin: 0 auto; filter: brightness(0) invert(1);">
+                                        </a>
                                     </td>
-
-                                    <td width="33%" align="center" style="vertical-align: middle;">
-                                        <a href="https://wa.me/5804141869016" style="text-decoration: none; color: #ffffff; font-family: Arial, sans-serif;">
-                                            <span style="font-size: 20px;">&#128222;</span><br>
-                                            <span style="font-size: 11px; font-weight: bold; text-transform: uppercase;">WhatsApp</span>
+                                    <td width="10"></td>
+                                    <td align="center" bgcolor="#f07229" style="border-radius: 50%; width: 35px; height: 35px;">
+                                        <a href="TU_LINK_FACEBOOK" style="display: block; text-decoration: none;">
+                                            <img src="https://cdn-icons-png.flaticon.com/32/5968/5968764.png" alt="FB" width="18" height="18" style="display: block; margin: 0 auto; filter: brightness(0) invert(1);">
                                         </a>
                                     </td>
                                 </tr>
