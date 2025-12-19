@@ -75,8 +75,8 @@ class EmailController extends Component
         ];
 
         $remitente = $config[$dataManager['from_type']];
-        //$data = $dataManager;
-        
+
+
         $data = [
             "full_name" => $dataManager['full_name'],
             "email" => $dataManager['email'],

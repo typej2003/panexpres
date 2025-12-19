@@ -22,7 +22,7 @@
                     <tr>
                         <td style="padding: 20px 40px 30px 40px;">
                             <h1 style="color: #333333; font-size: 24px; margin-bottom: 20px; font-family: 'Segoe UI', Tahoma, sans-serif;">
-                                Hola, {{ $full_name }}
+                                Hola, 
                             </h1>
                         </td>
                     </tr>
