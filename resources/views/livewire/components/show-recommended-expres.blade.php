@@ -299,7 +299,7 @@
         }
 
     </style>
-    <div class="container-show-recommended">
+    <div class="container-show-recommended w-100 h-100">
         <h4>También te recomendamos</h4>
         <div class="carousel-container-pure" id="carouselContainer">
             <div class="carousel-inner-pure" id="carouselInner">
