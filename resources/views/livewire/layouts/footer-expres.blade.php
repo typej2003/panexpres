@@ -6,7 +6,7 @@
             <div class="footer-col footer-col-logo">
                 <img src="{{ asset('img/panexpres_logo_blanco.png') }}" alt="Logo Pan Expres Blanco" class="footer-logo">
                 <div class="social-links">
-                    <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/panexpres.ve/" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                     <a href="#" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
                     <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>

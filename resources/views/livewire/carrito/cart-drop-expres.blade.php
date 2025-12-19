@@ -1,6 +1,7 @@
 <a href="#" class="action-item cart dropdown-trigger">
     <i class="fas fa-shopping-cart cart-icon"></i>
-    <span class="cart-count">{{\Cart::getTotal()}}</span>
+    <!-- <span class="cart-count">{{\Cart::getTotal()}}</span> -->
+    <span class="cart-count">{{count(\Cart::getContent())}}</span>
 </a>
 <div class="dropdown-content cart-summary">
     @if( \Cart::getTotal() > 0)

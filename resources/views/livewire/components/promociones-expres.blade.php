@@ -1,4 +1,5 @@
-<style>
+<div>
+    <style>
     .carouselpromo-inner {
         display: flex !important; /* Fuerza el flujo horizontal */
         flex-wrap: nowrap !important;
@@ -10,7 +11,6 @@
         width: 100%; 
     }
 </style>
-<div>
     <style>
         /* ----------------------------------------------------------- */
         /* ✅ AJUSTE GLOBAL DE ROBUSTEZ */
@@ -97,10 +97,12 @@
         /* ----------------------------------------------------------- */
         .promo-overlay {
             position: absolute;
-            top: 20px; 
-            right: 20px; 
+            /* top: 20px;  */
+            bottom: 20px;
+            /* right: 20px;  */
+            left: 20px;
             padding: 10px 15px;
-            background-color: rgba(0, 0, 0, 0.7); 
+            background-color: rgba(146, 138, 138, 0.7); 
             color: #fff;
             font-size: 1.2rem;
             font-weight: bold;
@@ -214,7 +216,7 @@
                                 <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
                             @endif
                             <div class="promo-overlay">
-                                {{$currencyValue}}. {{ $promocion->product->price1 ?? '¡OFERTA!' }}
+                                {{$currencyValue}}. {{ $promocion->product->price1 ?? '' }}
                             </div>
                         </div>
                     @empty

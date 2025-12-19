@@ -99,8 +99,8 @@ class ListPromociones extends AdminComponent
 		$this->showEditModal = false;
 
         $this->state['active'] = 'active';
-
-		$this->dispatchBrowserEvent('show-form');
+		
+		$this->dispatchBrowserEvent('show-formPromocion');
 	}
 
 	public function createPromocion()
@@ -125,7 +125,7 @@ class ListPromociones extends AdminComponent
 
 		Promocion::create($validatedData);
 
-		$this->dispatchBrowserEvent('hide-form', ['message' => 'Promoción agregada satisfactoriamente!']);
+		$this->dispatchBrowserEvent('hide-formPromocion', ['message' => 'Promoción agregada satisfactoriamente!']);
 	}
 
 	public function edit(Promocion $promocion)
@@ -149,7 +149,7 @@ class ListPromociones extends AdminComponent
 
 		$this->products = Product::where('comercio_id', $this->comercio)->get();
 
-		$this->dispatchBrowserEvent('show-form');
+		$this->dispatchBrowserEvent('show-formPromocion');
 	}
 
 	public function updatePromocion()
@@ -169,7 +169,7 @@ class ListPromociones extends AdminComponent
 
 		$this->promocion->update($validatedData);
 
-		$this->dispatchBrowserEvent('hide-form', ['message' => 'Promocion actualizada satisfactoriamente!']);
+		$this->dispatchBrowserEvent('hide-formPromocion', ['message' => 'Promocion actualizada satisfactoriamente!']);
 	}
 
 	public function confirmPromocionRemoval($promocionId)

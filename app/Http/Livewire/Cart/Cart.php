@@ -48,6 +48,7 @@ class Cart extends AdminComponent
 
     public function convertir($value)
     {
+        return $value;
         if(request()->cookie('currency') == 'Bs')
         {
             $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->where('status', 'activo')->first();

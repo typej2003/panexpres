@@ -56,6 +56,26 @@
                     document.querySelector('#role').value = event.target.value;
                 });
             </script>
+
+            <div class="form-group mb-2">
+                <label for="documento">Teléfono </label>        
+                <div class="row ">
+                    <div class="col-xs-6 col-md-5 col-sm-4 col-4">
+                        <select class="form-control" name="cellphonecode" id="cellphonecode">
+                            <option value="0">Seleccione</option>
+                            <option value="0412">0412</option>
+                            <option value="0414">0414</option>
+                            <option value="0424">0424</option>
+                            <option value="0416">0416</option>
+                            <option value="0426">0426</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-md-7 col-sm-8 col-8">
+                        <input type="text" class="form-control" name="cellphone" id="cellphone">
+                    </div>
+                </div>                
+            </div>
+
             <div class="form-group">
                 <div class="row ">
                     <div class="col-xs-6 col-md-4 col-sm-4 col-4">
@@ -109,7 +129,7 @@
             <div class="form-group">
                 <label for="documento">Contraseña <span class="text-danger">*</span></label>            
                 <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password" value="">
+                    <input type="password" name="password" class="form-control" placeholder="Contraseña" value="">
                     <div class="input-group-append">
                     <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -124,7 +144,7 @@
             <div class="form-group">
                 <label for="documento">Repita la contraseña <span class="text-danger">*</span></label>        
                 <div class="input-group mb-3">
-                    <input type="password" name="password_confirmation" class="form-control" placeholder="password confirmation" value="">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirmar contraseña" value="">
                     <div class="input-group-append">
                     <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -134,25 +154,6 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="documento">Teléfono </label>        
-                <div class="row ">
-                    <div class="col-xs-6 col-md-5 col-sm-4 col-4">
-                        <select class="form-control" name="cellphonecode" id="cellphonecode">
-                            <option value="0">Seleccione</option>
-                            <option value="0412">0412</option>
-                            <option value="0414">0414</option>
-                            <option value="0424">0424</option>
-                            <option value="0416">0416</option>
-                            <option value="0426">0426</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-6 col-md-7 col-sm-8 col-8">
-                        <input type="text" class="form-control" name="cellphone" id="cellphone">
-                    </div>
-                </div>                
             </div>
 
             <div class="form-group my-3 d-flex">

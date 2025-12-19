@@ -18,7 +18,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row d-none">
                 <div class="col-md-12 d-flex">
                         <div class="card mx-auto" style="width: 100%;">
                             <label class="text-subtitle d-block fw-bold mb-1">¿Utilizará la misma dirección registrada?</label>                        

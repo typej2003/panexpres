@@ -64,7 +64,7 @@
                         </div>
                     </div>                
                 </div>
-                <p class="text-center c-a texto"><a href="#">¿Olvidé mi contraseña?</a></p>
+                <p class="text-center c-a texto d-none"><a href="#">¿Olvidé mi contraseña?</a></p>
                 
             </form>
         </div>

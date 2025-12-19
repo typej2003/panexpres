@@ -38,12 +38,12 @@ class ListTasas extends AdminComponent
     {
     	$this->comercioId = $comercioId;
 
-		$dolar = json_decode(file_get_contents("https://pydolarve.org/api/v1/dollar"), true);
+		// $dolar = json_decode(file_get_contents("https://pydolarve.org/api/v1/dollar"), true);
 
-        $dolar = $dolar['monitors']['bcv']['price'];
-        if($dolar !==''){
-			$this->dolar = $dolar;
-		}
+        // $dolar = $dolar['monitors']['bcv']['price'];
+        // if($dolar !==''){
+		// 	$this->dolar = $dolar;
+		// }
         
     	
     }

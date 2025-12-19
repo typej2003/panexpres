@@ -561,9 +561,15 @@
                 
                 <div class="carousel-item-pure">
                     <div class="card-content">
+                        <a class="bg-success" href="/routedetails/{{ $lastProduct->comercio_id }}/{{ $lastProduct->id }}">
                         <div class="card-single-body">
-                            <img src="{{ $lastProduct->image1_url }}" alt="{{ $lastProduct->name }} Clon">
+                            
+                            
+                                <img src="{{ $lastProduct->image1_url }}" alt="{{ $lastProduct->name }} Clon">
+                            
+                        
                         </div>
+                        
                         <div class="card-overlay-text">
                             <h4 class="text-white">{{ $lastProduct->name }}</h4>
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $lastProduct->price1 }}</span></p>
@@ -571,6 +577,7 @@
                         <div class="card-badge-pure">
                             <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                         </div>
+                        </a>
                         <a href="" wire:click.prevent="sendCard({{ $lastProduct->id }}, 1)" class="buy-button-pure">Comprar</a>
                     </div>
                     
@@ -579,9 +586,13 @@
                 @forelse ($products as $index => $product)
                     <div class="carousel-item-pure">
                         <div class="card-content">
+                            <a href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">
                             <div class="card-single-body">
-                                <img src="{{ $product->image1_url }}" alt="Imagen 1">
+                                
+                                    <img src="{{ $product->image1_url }}" alt="Imagen 1">
+                                
                             </div>
+                            
                             <div class="card-overlay-text">
                                 <h4 class="text-white">{{ $product->name }}</h4>
                                 <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price1 }}</span></p>
@@ -589,10 +600,11 @@
                             <div class="card-badge-pure">
                                 <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                             </div>
+                            </a>
                         </div>
                         <a href="" wire:click.prevent="sendCard({{ $product->id }}, 1)" class="buy-button-pure">Comprar</a>
                     </div>
-                @empty
+                @empty 
                     <div class="carousel-item-pure">
                         <div class="card-content">
                             <div class="card-single-body">
@@ -611,9 +623,13 @@
                 
                 <div class="carousel-item-pure">
                     <div class="card-content">
+                        <a href="/routedetails/{{ $firstProduct->comercio_id }}/{{ $firstProduct->id }}">
                         <div class="card-single-body">
-                            <img src="{{ $firstProduct->image1_url }}" alt="{{ $firstProduct->name }} Clon">
+                            
+                                <img src="{{ $firstProduct->image1_url }}" alt="{{ $firstProduct->name }} Clon">
+                            
                         </div>
+                        
                         <div class="card-overlay-text">
                             <h4 class="text-white">{{$firstProduct->name}}</h4>
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $firstProduct->price1 }}</span></p>
@@ -621,6 +637,7 @@
                         <div class="card-badge-pure">
                             <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                         </div>
+                        </a>
                     </div>
                     <a href="" wire:click.prevent="sendCard({{ $firstProduct->id }}, 1)" class="buy-button-pure">Comprar</a>
                 </div>

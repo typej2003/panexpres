@@ -4,12 +4,15 @@ namespace App\Http\Livewire\Afiliado;
 
 use Livewire\Component;
 use App\Models\PedidoTemporal;
+use App\Models\DatosDeliveryUser;
 
 class Shipping extends Component
 {
     public $nropedido;
 
     public $cambiar = false;
+
+    public $datosdeliveryuser;
 
     // Esto asegura que cuando el radio mande un string, se convierta a booleano real
 
@@ -27,6 +30,21 @@ class Shipping extends Component
     public function mount($nropedido = '')
     {
         $this->nropedido = $nropedido;
+
+        $pedido = PedidoTemporal::where('nropedido', $this->nropedido)->first();
+
+        $datosdeliveryuser = DatosDeliveryUser::where('user_id', auth()->user()->id)->first();
+
+        if($datosdeliveryuser !== null)
+        {
+            if($pedido->costeenvio !==null || $pedido->costeenvio !==0 )
+            {
+                $this->cambiar = false;
+            }
+        }else{
+            $this->cambiar = false;
+        }
+        $this->cambiar = true;
     }
 
     public function render()

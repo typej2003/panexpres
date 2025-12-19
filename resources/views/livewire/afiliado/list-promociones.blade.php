@@ -1,4 +1,5 @@
 <div>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -159,7 +160,7 @@
     <!-- /.content -->
 
     <!-- Modal -->
-    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+    <div class="modal fade" id="formPromocion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog" role="document">
             <form autocomplete="off" wire:submit.prevent="{{ $showEditModal ? 'updatePromocion' : 'createPromocion' }}">
                 <div class="modal-content">
@@ -295,7 +296,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+    <div class="modal fade" id="confirmationModalPromocion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-white">
@@ -336,5 +337,18 @@
             $('[x-ref="username"]').text(changedName);
         })
     });
+
+    window.addEventListener('hide-formPromocion', function (event) {
+        $('#formPromocion').modal('hide');
+        toastr.success(event.detail.message, 'Success!');
+    });
+
+
 </script>
 @endpush
+
+<script>
+        window.addEventListener('show-formPromocion', function (event) {
+        $('#formPromocion').modal('show');
+    });
+</script>

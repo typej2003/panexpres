@@ -18,7 +18,8 @@ class CartDropExpres extends Component
 
     public function changeQuantity()
     {
-        $this->totalQuantityCart = \Cart::getTotalQuantity();
+        // $this->totalQuantityCart = \Cart::getTotalQuantity();
+        $this->totalQuantityCart = count(\Cart::getContent());
     }
 
     public function mount()
