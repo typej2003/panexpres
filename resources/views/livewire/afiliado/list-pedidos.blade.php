@@ -59,14 +59,14 @@
                                     <tr>
                                         <th scope="row">{{ $pedidos->firstItem() + $index }}</th>
                                         <td>
-                                            <select class="form-control" wire:change="changeConfirmation({{ $pedido }}, $event.target.value)">
+                                            <select class="form-control px-3 {{ $this->getClaseConfirmed($pedido->confirmed) }}" wire:change="changeConfirmation({{ $pedido }}, $event.target.value)">
                                                 <option value="0" {{ ($pedido->confirmed === 0) ? 'selected' : '' }}>NO CONFIRMADO</option>
                                                 <option value="1" {{ ($pedido->confirmed === 1) ? 'selected' : '' }}>CONFIRMADO</option>
                                                 <option value="2" {{ ($pedido->confirmed === 2) ? 'selected' : '' }}>CONFIRMADO FALLIDA</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <select class="form-control" wire:change="changeEnvio({{ $pedido }}, $event.target.value)">
+                                            <select class="form-control px-3 {{ $this->getClaseStatus($pedido->status) }}" wire:change="changeEnvio({{ $pedido }}, $event.target.value)">
                                                 <option value="0" {{ ($pedido->status === 0) ? 'selected' : '' }}>EN ESPERA</option>
                                                 <option value="1" {{ ($pedido->status === 1) ? 'selected' : '' }}>EN CAMINO</option>
                                                 <option value="2" {{ ($pedido->status === 2) ? 'selected' : '' }}>ENTREGADO</option>
@@ -91,7 +91,7 @@
                                     </tr>
                                     @empty
                                     <tr class="text-center">
-                                        <td colspan="9">
+                                        <td colspan="10">
                                             <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/v2/assets/empty.svg" alt="No results found" style="width: 150px;">
                                             <p class="mt-2">No se encontro resultado</p>
                                         </td>
