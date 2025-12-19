@@ -63,6 +63,7 @@
                                         <th scope="col">Método de Pago</th>
                                         <th scope="col">Costo</th>
                                         <th scope="col">Método de Entrega</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Fecha de Registro</th>
                                         <th scope="col">Opciones</th>
                                     </tr>
@@ -77,6 +78,7 @@
                                         <td>{{ $compra->metodo }}</td>
                                         <td>{{ $compra->coste }} {{ $currencyValue }}</td>
                                         <td>{{ $compra->metodoentrega }}</td>
+                                        <td>{{$compra->getStatus()}}</td>
                                         <td>{{ $compra->created_at ?? 'N/A' }}</td>
                                         <td>
                                             <a href="" wire:click.prevent="sendNotificacion({{ $compra }})">

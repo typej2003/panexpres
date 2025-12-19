@@ -40,6 +40,14 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
+                                <span>Status: </span>
+                            </div>
+                            <div class="col-lg-6">
+                                <span>{{ $pedido->status }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
                                 <span>Fecha: </span>
                             </div>
                             <div class="col-lg-6">

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Components;
 
 use Livewire\Component;
 use App\Models\Promocion;
+
 class Promociones extends Component
 {
     public function render()

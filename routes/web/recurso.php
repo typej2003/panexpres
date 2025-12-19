@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Recursos\LectorQr;
 use App\Http\Livewire\Recursos\Redireccionar;
 
+use App\Http\Livewire\Components\Carousel;
+
 
 use App\Models\User;
 use App\Models\Pedido;
@@ -17,4 +19,6 @@ Route::get('/lectorQr', function(){
 });
 
 Route::get('/redireccionar/{opcion}', Redireccionar::class)->name('redireccionar')->middleware('auth');
+
+Route::get('/carousel', Carousel::class)->name('carousel')->middleware('auth');
 
