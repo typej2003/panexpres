@@ -55,9 +55,23 @@
             display: block;
             border-radius: 50%; 
         }
+
+        Para que la tarjeta de agradecimiento se vea perfecta en dispositivos móviles (ajustando márgenes, tamaños de fuente y quitando el centrado vertical excesivo que a veces incomoda en pantallas pequeñas), puedes agregar este bloque de CSS a tu vista:
+
+CSS de Adaptación Móvil
+HTML
+
+<style>
+    /* Estilo para pantallas pequeñas (Teléfonos) */
+    @media (max-width: 764px) {
+        .marcas-productos-flex
+        {
+            display: none !important;
+        }
+    }
     </style>
 
-    <div class="marcas-productos-container">
+    <div class="marcas-productos-container d-none d-lg-block">
         <div class="marcas-productos-flex">
             @foreach($manufacturers as $manufacturer )
                 <?php

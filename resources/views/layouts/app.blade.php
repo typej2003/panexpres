@@ -33,6 +33,32 @@
     }
     
 </style>
+<style>
+        /* Hacemos que el cuerpo ocupe el 100% de la altura de la ventana */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* El Header se queda fijo arriba */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1020; /* Para que esté por encima del contenido */
+        }
+
+        /* El Main crece para empujar al footer hacia abajo */
+        main {
+            flex: 1 0 auto; 
+        }
+
+        /* El Footer se queda abajo (opcionalmente fijo o al final del scroll) */
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
 @php
     // Define si el usuario es un rol que requiere la barra lateral
     $hasSidebar = Auth::check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'root');
@@ -45,19 +71,24 @@
     <div class="wrapper">
     
     @auth
+        <header>
         @if(auth()->user()->role=='cliente')
             <link rel="stylesheet" href="/css/styles_expres.css">
             @livewire('layouts.navbar-expres')
             <script src="/js/script_expres.js"></script>
         @else
+        
             @livewire('layouts.navbar-in-expres')
+        </header>            
         @endif
         @if ($hasSidebar)
             @include('layouts.partials.aside')
         @endif
-        <div class="content-wrapper">
-            {{ $slot }}
-        </div>
+        <main>
+            <div class="content-wrapper">
+                {{ $slot }}
+            </div>
+        </main>        
         @if ($hasSidebar)
             <aside class="control-sidebar control-sidebar-dark">
                 <div class="p-3">
@@ -66,8 +97,9 @@
                 </div>
             </aside>
             @endif
-        
-        @livewire('layouts.footer-expres')
+        <footer>
+            @livewire('layouts.footer-expres')
+        </footer>
 
     </div>
     @endauth

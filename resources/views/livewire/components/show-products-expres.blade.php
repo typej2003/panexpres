@@ -1,7 +1,7 @@
 <div>
     <style>
         .container-show-products {
-            height: auto !important;
+            height: auto;
         }
     </style>
     <style>
@@ -37,7 +37,7 @@
         .carousel-item-pure {
             flex: 0 0 calc(100% / var(--items-desktop));
             min-width: calc(100% / var(--items-desktop));
-            height: 450px; padding: 10px; box-sizing: border-box;
+            min-height: auto; padding: 10px; box-sizing: border-box;
             position: relative;
         }
         .card-content {
@@ -214,9 +214,6 @@
                 left: 50%; 
             }
 
-            .container-show-products {
-                
-            }
 
             .card-badge-pure {
                 bottom: -10px; /* Ajuste para darle un poco más de margen */
@@ -485,7 +482,7 @@
         /* Escritorio y Zoom estándar */
         @media (min-width: 1200px) {
             .carousel-container-pure { max-width: 1200px; }
-            .container-show-products { height: auto !important; margin-bottom: 1px; }
+            
             .buy-button-pure {
                 margin-left: 50%;
                 padding: 10px 25px;    /* Botón ancho y cómodo */
@@ -510,7 +507,7 @@
                 width: 40px; /* Botones más pequeños para que no tapen el contenido */
                 font-size: 1.2rem;
             }
-            .container-show-products { height: 22rem !important; margin-bottom: 1px;}
+            
             .buy-button-pure {
                 margin: auto;
                 margin-left: 50%;
@@ -808,58 +805,57 @@
         @else
             
             <div class="flex-row">
-                <div style="width: 100%;">
-                    
-                    
-                        @forelse ($products as $index => $product)
-                        <div class="cuadro m-3 h-auto" wire:key="product-{{ $product->id }}">
-                            <div class="producto-inner">
-                                
-                                <div class="producto-parte col-img centrar">
-                                    <img class = "imgProduct" src="{{ $product->image1_url }}" alt="{{ $product->name }}">
+                <div style="width: 100%;">                   
+                
+                    @forelse ($products as $index => $product)
+                    <div class="cuadro m-3 h-auto" wire:key="product-{{ $product->id }}">
+                        <div class="producto-inner">
+                            
+                            <div class="producto-parte col-img centrar">
+                                <img class = "imgProduct" src="{{ $product->image1_url }}" alt="{{ $product->name }}">
+                            </div>
+                            
+                            <div class="producto-parte col-desc">
+                                <p class="text-blond negrita">{{ $product->name }}</p>
+                                <p class="description">{{ $product->description }}</p>
+                                <div class="p-0 my-0">
+                                    <a class="btn btn-view" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
                                 </div>
+                            </div>
+                            
+                            <div class="producto-parte col-ctrl">
+                                <div class="centrar">Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</div>
                                 
-                                <div class="producto-parte col-desc">
-                                    <p class="text-blond negrita">{{ $product->name }}</p>
-                                    <p class="description">{{ $product->description }}</p>
-                                    <div class="p-0 my-0">
-                                        <a class="btn btn-view" href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">Ver</a>
-                                    </div>
-                                </div>
-                                
-                                <div class="producto-parte col-ctrl">
-                                    <div class="centrar">Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</div>
-                                    
-                                    <div class="centrar">
-                                        <div class="justify-content-between">
-                                            <div class="input-group input-number-group">
-                                                <div class="input-group-button">
-                                                    <span class="input-number-decrement" data-product-id="{{ $product->id }}">-</span>
-                                                </div>
-                                                <input name="quantity_{{ $product->id }}" class="input-number" type="number" value="1" min="1" max="1000">
-                                                <div class="input-group-button">
-                                                    <span class="input-number-increment" data-product-id="{{ $product->id }}">+</span>
-                                                </div>
+                                <div class="centrar">
+                                    <div class="justify-content-between">
+                                        <div class="input-group input-number-group d-none">
+                                            <div class="input-group-button">
+                                                <span class="input-number-decrement" data-product-id="{{ $product->id }}">-</span>
+                                            </div>
+                                            <input name="quantity_{{ $product->id }}" class="input-number" type="number" value="1" min="1" max="1000">
+                                            <div class="input-group-button">
+                                                <span class="input-number-increment" data-product-id="{{ $product->id }}">+</span>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <div class="centrar">
-                                        <button wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</button>
-                                    </div>
-                                    
-                                    <div class="centrar">
-                                        <img class ="logo-responsive" src="{{ $product->comercio->avatar_url }}" alt="Logo {{ $product->comercio->name }}">
-                                    </div>
-
                                 </div>
+                                
+                                <div class="centrar">
+                                    <button wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</button>
+                                </div>
+                                
+                                <div class="centrar">
+                                    <img class ="logo-responsive" src="{{ $product->comercio->avatar_url }}" alt="Logo {{ $product->comercio->name }}">
+                                </div>
+
                             </div>
                         </div>
-                        @empty
-                        <div class="cuadro m-3 h-auto" style="height: 50vh; display: flex; align-items: center; justify-content: center;">
-                            <span> No tiene resultado</span>
-                        </div>
-                        @endforelse
+                    </div>
+                    @empty
+                    <div class="cuadro m-3 h-auto" style="height: 50vh; display: flex; align-items: center; justify-content: center;">
+                        <span> No tiene resultado</span>
+                    </div>
+                    @endforelse
                     
                 </div>
             </div>

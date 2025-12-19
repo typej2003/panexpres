@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PanExpres</title>
+  <link rel="shortcut icon" type="x-icon" href="/img/panexpres_logo.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -20,7 +21,7 @@
   <!-- /.login-logo -->
   <div class="card mx-auto" style="width: 36rem !important;">
     <div class="card-body">
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-lg-12 titulo c-a text-center">
                 <a href="/">
                     <img class="logo-login mx-auto " src="{{ asset('/img/panexpres_banner.png') }}" alt="">
@@ -29,7 +30,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 titulo c-a text-center">
-                <p class="text-center textoreg">¿Ya tienes una cuenta? <span><a href="/login" class="c-n">click aquí</a></span></p>
+                <p class="text-center textoreg text-subtitle">¿Ya tienes una cuenta? <span><a href="/login" class="c-n">click aquí</a></span></p>
             </div>
         </div>
 
