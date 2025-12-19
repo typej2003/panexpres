@@ -1,8 +1,8 @@
 <div>
     <div class="wrapper-center">
-        <div class="card-form p-4 bg-white rounded shadow">
+        <div class="card-form p-4 bg-white rounded shadow col-12">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 ">
                     <span class="h1">Biopago</span>
                 </div>
                 <div class="col-md-6">
