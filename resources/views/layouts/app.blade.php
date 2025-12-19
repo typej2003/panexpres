@@ -8,7 +8,7 @@
     <meta name="keywords" content="vende, compra, Pan, Jamón, Pan de Jamón, Combos Navideños, Caracas, directo a tu mesa, @panexpres.vezla, Panexprés, Panexpres">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="shortcut icon" type="x-icon" href="/img/panexpres_logo.png.png" />
+    <link rel="shortcut icon" type="x-icon" href="/img/panexpres_logo.png" />
 
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/footer_expres.css">

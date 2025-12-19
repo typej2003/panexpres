@@ -3,10 +3,26 @@
 namespace App\Http\Livewire\Afiliado;
 
 use Livewire\Component;
+use App\Models\PedidoTemporal;
 
 class Shipping extends Component
 {
     public $nropedido;
+
+    public $cambiar = false;
+
+    // Esto asegura que cuando el radio mande un string, se convierta a booleano real
+
+    public function irPasarelaShipping()
+    {
+        $pedido = PedidoTemporal::where('nropedido', $this->nropedido)->first();
+        return redirect()->route('checkout.pasarela', ['nropedido' => $pedido->nropedido, 'comercioId' => $pedido->comercio_id]);
+    }
+
+    public function cambiarValor()
+    {
+        $this->cambiar = true;
+    }
 
     public function mount($nropedido = '')
     {

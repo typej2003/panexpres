@@ -408,7 +408,7 @@
                             </div>                
                         </div>
                         <div class="form-group">
-                            <label for="address" class="">Dirección postal (Calle, Nº de Casa) <span class="text-danger">*</span></label>
+                            <label for="address" class="">Dirección (Calle, Nº de Casa) <span class="text-danger">*</span></label>
                             <textarea wire:model.defer="state.address" type="text" class="form-control @error('address') is-invalid @enderror" id="inpuAddress" placeholder="Dirección"></textarea>
                             @error('address')
                             <div class="invalid-feedback">

@@ -22,7 +22,7 @@ class ComercioSeeder extends Seeder
             'name' => 'PanExpres',
             'avatar' => 'panexpres_logo.png',
             'banner' => 'panexpres_banner.png',
-            'contactcellphone' => '04265173538',
+            'contactcellphone' => '04141899016',
             'contactphone'  => '0212-578-44-68',
             'msgcontact'  => 'Hola, te asesoramos por  whatsapp gestiona tu compra por este canal.',
             'horario'  => 'Lunes a Domingo hora: 6:30 am a 8:00 pm',

@@ -30,31 +30,12 @@ class WelcomeController extends Controller
 
     public $currencyValue;
 
+    public $contactcellphone;
+
+    public $msgcontact;
+
     public function __invoke(Request $request)
     {
-
-        // $comercio = null;
-        // $existe = false;
-        // //->
-        // $peticion = explode('/', \Request::getRequestUri());
-
-        // if($peticion[1] !== ''){
-        //     $comercio = Comercio::where('name', $peticion[2])->first();
-        // }
-        
-        // if($comercio){
-        //     $existe = true;
-        // }else{
-        //     $categories = Category::where('comercio_id', 1)->get();
-        // }
-
-        // dd($request);
-
-        // return view('welcome', [
-        //     'existe' => $existe,
-        //     'comercio' => $comercio,
-        //     'categories' => $categories,
-        // ]);
         
     }
 
@@ -173,8 +154,10 @@ class WelcomeController extends Controller
 
         // Evaluar currency
         $minutes = 10;
-        $this->comercio = Comercio::find($comercio_id);
+        $this->comercio = Comercio::find(1);
+        
         $setting = Setting::where('user_id', $this->comercio->user_id)->first();    
+        
         if(auth()->user())
         {
             $settingUser = SettingUser::where('user_id', auth()->user()->id)->first(); 
@@ -192,6 +175,13 @@ class WelcomeController extends Controller
             $this->currencyValue = $setting->currency;
             
         }
+        // 
+        \Cookie::queue('contactcellphone', $this->comercio->contactcellphone, $minutes);
+        \Cookie::queue('msgcontact', $this->comercio->msgcontact, $minutes);
+        
+        $this->contactcellphone = 'Bs';
+        \Cookie::queue('currency', 'Bs', $minutes);
+        $this->currencyValue = 'Bs';
         // Fin evaluar currency
 
         return view('welcome', [

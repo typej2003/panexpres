@@ -1,5 +1,43 @@
 <div>
+
     <style>
+        .table-shadow {
+           box-shadow: 0 8px 8px rgba(0, 0, 0, 0.49); /* Sombra estándar */
+        }
+
+        /* Simulación de la clase .table */
+        .custom-table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            vertical-align: top;
+            border-color: #dee2e6;
+            border-collapse: collapse; /* Crucial para que los bordes se vean como en Bootstrap */
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6; /* Línea divisoria horizontal */
+        }
+
+        .custom-table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6; /* Línea más gruesa para el encabezado */
+            font-weight: bold;
+        }
+
+        /* Simulación de la clase .table-hover */
+        .custom-table-hover tbody tr:hover {
+            color: #212529;
+            background-color: rgba(0, 0, 0, 0.075); /* El gris sutil característico */
+            transition: background-color 0.2s ease-in-out; /* Transición suave */
+        }
+
+        .custom-table tbody {
+            background-color: #fff;
+        }
         /* ----------------------------------------------------------- */
         /* BASE Y AJUSTES GENERALES */
         /* ----------------------------------------------------------- */
@@ -49,36 +87,7 @@
         /* ----------------------------------------------------------- */
         /* ESTILOS DE TABLA (Reemplazo de .table, .thead-primary, .table-responsive) */
         /* ----------------------------------------------------------- */
-        .table-css {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1rem;
-            color: #212529;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .table-css th, .table-css td {
-            padding: 0.75rem;
-            vertical-align: top;
-            border-top: 1px solid #dee2e6;
-            text-align: left;
-        }
-
-        .table-css thead th {
-            vertical-align: bottom;
-            border-bottom: 2px solid #dee2e6;
-            background-color: #007bff; /* Color principal para thead-primary */
-            color: white;
-        }
-
-        .table-css tbody tr:nth-of-type(odd) {
-            background-color: rgba(0, 0, 0, 0.05); /* Rayado */
-        }
-
-        .table1 {
-            font-size: 1rem;
-        }
-
+        
         .col1 {
             width: 60%;
         }
@@ -129,12 +138,10 @@
         .btn-success { /* Reemplaza btn-success */
             color: #fff;
             background-color: #FC5E27!important;
-            border-color: #5a1e0aff;
             width: 100%;
         }
         .btn-success:hover {
             background-color: #fa8f6c;
-            border-color: #fa8f6c;
         }
 
         .btn-app { /* Estilo base para botones de app/accion si no tienen éxito/peligro */
@@ -260,9 +267,9 @@
 
         <div class="flex-row my-2"> 
             <div class="col-8"> 
-                <table class="table1 table-css"> 
+                <table class="custom-table custom-table-hover">
                     <thead class="thead-primary">
-                        <tr style="font-size: 12px">                      
+                        <tr>                      
                             <th scope="col"></th>
                             <th scope="col">Comercio</th>
                             <th scope="col">Nombre</th>
@@ -278,9 +285,9 @@
                             <td>
                                 <img src="{{ $item->attributes->image }}" class="img-thumb" width="80" height="80"> 
                             </td>
-                            <td><strong>{{ $item->attributes->comercio_id }}</strong></td>
+                            <td><strong>{{ $this->getComercio($item->attributes->comercio_id)->name }}</strong></td>
                             <td><strong>{{ $item->name }}</strong></td>
-                            <td>{{ $item->price }} USD</td>
+                            <td>{{ $item->price }} {{ $currencyValue }}</td>
                             <td>
                                 <div class="col-100 flex-between"> 
                                     <div class="input-group input-number-group">
@@ -294,7 +301,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>{{ \Cart::get($item->id)->getPriceSum() }} USD </td>
+                            <td>{{ \Cart::get($item->id)->getPriceSum() }} {{ $currencyValue }} </td>
                             <td>
                                 <form action="{{ route('cart.remove') }}"   method="POST">
                                     {{ csrf_field() }}
@@ -324,9 +331,8 @@
                     </div>
                 </div>                
             </div>
-            <div class="col-4"> 
-                <div class="h4">Su pedido (cant: {{ count($listpedidos)}})</div>
-                <table class="table-css"> 
+            <div class="col-4">                 
+                <table class="custom-table hover table-shadow"> 
                     <thead>
                         <tr>
                             <th scope="col">Precio total artículos</th>
@@ -347,7 +353,7 @@
                         </tr>
                         @endforeach
                         @if($currencyValue == 'Bs')
-                        <tr>
+                        <tr class="d-none">
                             <th scope="row">Impuestos</th>
                             <td>{{ $currencyValue }} {{ $this->getImpuestoIVA() }}</td>
                         </tr>
@@ -367,11 +373,11 @@
                                         <div class="accordion"> 
                                             <div class="accordion-item-css">
                                                 <h4 class="accordion-header-css" id="headingOne">
-                                                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    <a class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                         <strong>¿Ya Eres Usuario? </strong> 
                                                     </a>
                                                 </h4>
-                                                <div id="collapseOne" class="accordion-collapse collapse @error('showLogin') show @enderror" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div id="" class="accordion-collapse collapse @error('showLogin') show @enderror" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body-css">
                                                         <br>Nos gustaria que Colocaras tus credenciales
                                                         <br>
@@ -408,7 +414,7 @@
                                                             <div class="form-group-css"> 
                                                                 <div class="flex-row my-3"> 
                                                                     <div class="col-100 d-flex"> 
-                                                                        <button class="btn-base btn-app w-100 mx-auto">Iniciar Sesión</button> 
+                                                                        <button class="btn-success w-80 mx-auto">Iniciar Sesión</button> 
                                                                     </div>
                                                                 </div>                
                                                             </div>

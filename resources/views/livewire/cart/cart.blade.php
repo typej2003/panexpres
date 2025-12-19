@@ -72,6 +72,44 @@
     .table1 {
         font-size: 1rem;
     }
+
+    .table-shadow {
+           box-shadow: 0 8px 8px rgba(0, 0, 0, 0.49); /* Sombra estándar */
+        }
+
+        /* Simulación de la clase .table */
+        .custom-table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            vertical-align: top;
+            border-color: #dee2e6;
+            border-collapse: collapse; /* Crucial para que los bordes se vean como en Bootstrap */
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6; /* Línea divisoria horizontal */
+        }
+
+        .custom-table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6; /* Línea más gruesa para el encabezado */
+            font-weight: bold;
+        }
+
+        /* Simulación de la clase .table-hover */
+        .custom-table-hover tbody tr:hover {
+            color: #212529;
+            background-color: rgba(0, 0, 0, 0.075); /* El gris sutil característico */
+            transition: background-color 0.2s ease-in-out; /* Transición suave */
+        }
+
+        .custom-table tbody {
+            background-color: #fff;
+        }
     
 </style>
 <div class="container-fluid">
@@ -88,7 +126,7 @@
 
     <div class="row my-2">
         <div class="col-md-8">
-            <table class="table table1 table-responsive">
+            <table class="custom-table custom-table-hover"> 
                 <thead class="thead-primary">
                     <tr>                      
                         <th scope="col"></th>
@@ -154,8 +192,8 @@
             </div>                
         </div>
         <div class="col-md-4">
-            <div class="h4">Su pedido (cant: {{ count($listpedidos)}})</div>
-                <table class="table-css"> 
+            
+                <table class="custom-table custom-table-hover table-shadow"> 
                     <thead>
                         <tr>
                             <th scope="col">Precio total artículos</th>
@@ -176,7 +214,7 @@
                         </tr>
                         @endforeach
                         @if($currencyValue == 'Bs')
-                        <tr>
+                        <tr class="d-none">
                             <th scope="row">Impuestos</th>
                             <td>{{ $currencyValue }} {{ $this->getImpuestoIVA() }}</td>
                         </tr>

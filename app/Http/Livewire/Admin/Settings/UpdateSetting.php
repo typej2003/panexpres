@@ -20,11 +20,12 @@ class UpdateSetting extends Component
             $this->userId = auth()->user()->id;
         }
         
-        $this->setting = Setting::where('user_id', $this->userId)->first();
+        $this->setting = Setting::where('user_id', 1)->first();
         
         if ($this->setting) {
             $this->state = $this->setting->toArray();
         }
+
     }
 
     public function updateSetting()

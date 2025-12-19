@@ -43,7 +43,6 @@ class Cart1 extends AdminComponent
         $this->currencyValue = $request->cookie('currency');
     }
 
-    
     public function finalizarCompra()
     {        
         
@@ -384,8 +383,8 @@ class Cart1 extends AdminComponent
     public function getComercio($comercio_id)
     {
         $comercio = Comercio::find($comercio_id);
-        dd($comercio);
-        return $comercio->name;
+
+        return $comercio;
     }
 
     public function render()

@@ -4,8 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <!-- <h1><i class="fa fa-regular fa-paper-plane"></i> Envio / Pickup <img src="/img/envio_pickup_i.png" alt=""></h1> -->
-                     <h1><i class="fa fa-regular fa-paper-plane"></i> Delivery </h1>
+                    
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -20,13 +19,30 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-md-12 d-flex">
+                        <div class="card mx-auto" style="width: 52rem;">
+                            <label class="text-subtitle d-block fw-bold mb-1">¿Utilizará la misma dirección registrada?</label>                        
+                            <div class="btn-group mb-3" role="group">
+                                <button wire:click.prevent="irPasarelaShipping" class="btn btn-success col-1 mx-2 px-2 shadow">
+                                    Si
+                                </button>
+
+                                <button wire:click.prevent="cambiarValor" class="btn btn-success col-1 mx-2 px-2 shadow">
+                                    No
+                                </button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            @if($cambiar)
+            <div class="row">
                 <!-- /.col -->
                 <div class="col-md-12 d-flex">
                     <div class="card mx-auto" x-data="{ currentTab: $persist('changeEnvio') }" style="width: 52rem;">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills" wire:ignore>
                                 <!-- <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Envío</a></li> -->
-                                 <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Delivery</a></li>
+                                 <li @click.prevent="currentTab = 'changeEnvio'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changeEnvio' ? 'active' : ''" href="#changeEnvio" data-toggle="tab"><i class="fa fa-regular fa-paper-plane"></i> Dirección</a></li>
                                 <!-- <li @click.prevent="currentTab = 'changePickup'" class="nav-item"><a class="nav-link mx-3" :class="currentTab === 'changePickup' ? 'active' : ''" href="#changePickup" data-toggle="tab"><img style="width: 20px;" src="/img/envio_pickup_i.png" alt=""> Pickup</a></li> -->
                             </ul>
                         </div><!-- /.card-header -->
@@ -49,6 +65,7 @@
                 </div>
                 <!-- /.col -->
             </div>
+            @endif
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>

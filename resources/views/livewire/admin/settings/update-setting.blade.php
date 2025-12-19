@@ -58,7 +58,7 @@
 
                                 <div class="form-group">
                                     <label for="footerText">Moneda del Sitio</label>
-                                    <select wire:model.defer="state.currency" class="form-control">
+                                    <select wire:model.defer="state.currency" class="form-control" disabled>
                                         <option value="Bs">BS</option>
                                         <option value="$">$</option>
                                         <option value="€">€</option>
@@ -67,7 +67,7 @@
 
                                 <div class="form-group">
                                     <label for="footerText">Usar por defecto API BCV ($)</label>
-                                    <select wire:model.defer="state.api_bcv" class="form-control">
+                                    <select wire:model.defer="state.api_bcv" class="form-control" disabled>
                                         <option value="NO">NO</option>
                                         <option value="SI">SI</option>
                                     </select>
