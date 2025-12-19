@@ -74,6 +74,8 @@ class EmailController extends Component
             'ventas'  => ['email' => 'ventas@panexpres.com', 'name' => 'Ventas Pan Express'],
         ];
 
+        dd($dataManager);
+
         $remitente = $config[$dataManager['from_type']];
         $data = $dataManager;
 
