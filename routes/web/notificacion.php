@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\User;
+use App\Models\Pedido;
+
 // Notificaciones
 
 use App\Http\Livewire\Notificacion\EmailExample;
@@ -41,7 +44,7 @@ Route::get('/probarEmailCompra', function() {
 Route::get('/probarEmailAdmin', function() {
 
     $user = User::where('email', 'typej2003@gmail.com')->first();
-    
+
     $info = 'Mensaje del Administrador';
 
     $email = new EmailController();
