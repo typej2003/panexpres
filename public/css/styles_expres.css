@@ -976,3 +976,7 @@ section[id] {
     height: auto;            /* Mantiene la proporción */
     display: block;
 }
+
+.bg-primary {
+ background-color: var(--color-principal) !important;   
+}

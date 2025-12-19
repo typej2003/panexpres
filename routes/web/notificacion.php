@@ -14,6 +14,9 @@ use App\Http\Livewire\Notificacion\EmailController;
 use App\Http\Controllers\SmsTwilioController;
 
 use App\Http\Livewire\Notificacion\ListNotificaciones;
+use App\Http\Livewire\Notificacion\EmailManager;
+
+Route::get('/emailmanager', EmailManager::class)->name('emailmanager');
 
 Route::get('/sendemail/{index}', EmailController::class)->name('sendemail');
 

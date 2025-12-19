@@ -6,6 +6,8 @@
  :root {
     --main-bg-color:  #4447eb;
     --main-btn-color: #FC5E27;
+    --color-principal:#dd751a;
+    --color-secundario: #893e08; 
     --menu-background-overlay: #fa8f6c; 
     --main-footer-color: #FFCC2A;
     --grey-1: #dddddd;
@@ -469,4 +471,12 @@
     font-size: 1.2rem;
     /* Color Naranja para ícono de Carrito */
     color: #fc5e27; 
+}
+
+.bg-primary {
+ background-color: var(--color-principal) !important;   
+}
+
+.btn-primary {
+  background-color: var(--color-principal) !important;   
 }

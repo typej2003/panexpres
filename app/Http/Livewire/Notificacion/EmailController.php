@@ -65,6 +65,42 @@ class EmailController extends Component
         $this->dispatchBrowserEvent('updated', ['message' => "Notificación enviada."]);
     }
 
+    public function sendEmailManager($operacion, $dataManager)
+    {
+
+        $this->validate([
+            'state.from_type' => 'required',
+            'state.email'     => 'required|email',
+            'state.full_name' => 'required',
+            'state.subject'   => 'required',
+            'state.message'   => 'required',
+        ], [
+            'state.message.required' => 'El contenido del mensaje es obligatorio.'
+        ]);
+
+        $config = [
+            'admin'   => ['email' => 'admin@panexpres.com', 'name' => 'Administración Pan Express'],
+            'soporte' => ['email' => 'soporte@panexpres.com', 'name' => 'Soporte Pan Express'],
+            'ventas'  => ['email' => 'ventas@panexpres.com', 'name' => 'Ventas Pan Express'],
+        ];
+
+        $remitente = $config[$dataManager['from_type']];
+        $data = $dataManager;
+
+        $data = [
+            "email" => $dataManager['email'],
+            "title" => $dataManager['subject'],
+            "body"  => $dataManager['message'],
+        ];
+        
+        Mail::send('emails.admin-msj', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->from($remitente, $dataManager['from_type']. ' Pan Express') // <--- Aquí cambias el remitente
+                    ->subject($data["title"]);    
+        });
+
+    }
+
     public function sendEmailAdmin($operacion, User $user, $info )
     {
         switch ($operacion) {

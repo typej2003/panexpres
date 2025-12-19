@@ -36,6 +36,15 @@
         @auth
           @if(auth()->user()->role == 'admin')
             <li class="nav-item">
+              <a href="/emailmanager" class="nav-link {{ request()->is('emailmanager') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Email
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="/svgEjemplos" class="nav-link {{ request()->is('svgEjemplos') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
