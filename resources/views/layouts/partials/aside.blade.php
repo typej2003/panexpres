@@ -54,6 +54,15 @@
             </li>
 
             <li class="nav-item">
+              <a href="/probarEmailAdmin" class="nav-link {{ request()->is('probarEmailAdmin') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  EMAIL Admin
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="/allieduserWizard" class="nav-link {{ request()->is('allieduserWizard') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>

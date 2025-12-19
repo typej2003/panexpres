@@ -23,3 +23,31 @@ Route::get('sms/send', [SmsTwilioController::class, 'sendSms']);
 Route::get('/listNotificaciones/{comercioId}', ListNotificaciones::class)->name('listNotificaciones')->middleware('auth');
 
 Route::post('saveNotificacion', [ListNotificaciones::class, 'saveNotificacion'])->middleware('auth');
+
+Route::get('/probarEmailCompra', function() {
+
+    $user = User::where('name', 'cliente')->first();
+
+    $pedido = Pedido::where('id', 1)->first();
+
+    $emailwelcome = new EmailController();
+
+    $emailwelcome->sendEmail('compra', $user, $pedido->nropedido );
+
+    return redirect()->back();
+
+})->name('probarEmailCompra')->middleware('auth');
+
+Route::get('/probarEmailAdmin', function() {
+
+    $user = User::where('email', 'typej2003@gmail.com')->first();
+    
+    $info = 'Mensaje del Administrador';
+
+    $email = new EmailController();
+
+    $email->sendEmailAdmin('info', $user, $info );
+
+    return redirect()->back();
+
+})->name('probarEmailAdmin')->middleware('auth');

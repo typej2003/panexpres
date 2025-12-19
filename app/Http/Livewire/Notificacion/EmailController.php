@@ -65,6 +65,47 @@ class EmailController extends Component
         $this->dispatchBrowserEvent('updated', ['message' => "Notificación enviada."]);
     }
 
+    public function sendEmailAdmin($operacion, User $user, $info )
+    {
+        switch ($operacion) {
+            case 'info':
+                $this->sendMailInfo($user, $info);
+                break;            
+        }
+
+        $this->dispatchBrowserEvent('updated', ['message' => "Notificación enviada."]);
+    }
+
+    public function sendMailInfo(User $user, $info)
+    {
+        $data = [
+            "email" => $user->email,
+            "title" => 'Administrador - Pan Express',
+            "body"  => $info
+        ];
+        
+        Mail::send('emails.admin-msj', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->from('admin@panexpres.com', 'Soporte Pan Express') // <--- Aquí cambias el remitente
+                    ->subject($data["title"]);    
+        });
+    }
+
+    public function sendMailSoporte(User $user, $info)
+    {
+        $data = [
+            "email" => $user->email,
+            "title" => 'Soporte Técnico - Pan Express',
+            "body"  => $info
+        ];
+        
+        Mail::send('emails.soporte-msj', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->from('soporte@panexpres.com', 'Soporte Pan Express') // <--- Aquí cambias el remitente
+                    ->subject($data["title"]);    
+        });
+    }
+
     public function sendEmailComercio($operacion, Comercio $comercio, $nropedido = 0 )
     {
         switch ($operacion) {
