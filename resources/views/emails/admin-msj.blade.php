@@ -21,6 +21,14 @@
 
                     <tr>
                         <td style="padding: 20px 40px 30px 40px;">
+                            <h1 style="color: #333333; font-size: 24px; margin-bottom: 20px; font-family: 'Segoe UI', Tahoma, sans-serif;">
+                                Hola, {{ $names }} {{ $surnames }}
+                            </h1>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 20px 40px 30px 40px;">
                             <p style="color: #555555; font-size: 16px; line-height: 1.6;">{!! $body !!}</p>                            
                         </td>
                     </tr>
