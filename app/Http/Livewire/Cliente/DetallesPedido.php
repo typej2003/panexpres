@@ -32,7 +32,7 @@ class DetallesPedido extends Component
         }
     }
 
-    public function getClaseStatus()
+    public function getClaseStatus($value)
     {
         switch ($value) {
             case '0':
