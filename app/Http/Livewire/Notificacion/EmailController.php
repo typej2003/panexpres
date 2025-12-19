@@ -87,7 +87,7 @@ class EmailController extends Component
         
         Mail::send('emails.admin-msj', $data, function($message) use ($data) {
             $message->to($data["email"])
-                    ->from($remitente, $dataManager['from_type']. ' Pan Express') // <--- Aquí cambias el remitente
+                    ->from($remitente['email'], $remitente['name']) // <--- Aquí cambias el remitente
                     ->subject($data["title"]);    
         });
 
