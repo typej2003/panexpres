@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 d-flex">
-                        <div class="card mx-auto" style="width: 52rem;">
+                        <div class="card mx-auto" style="width: 100%;">
                             <label class="text-subtitle d-block fw-bold mb-1">¿Utilizará la misma dirección registrada?</label>                        
                             <div class="btn-group mb-3" role="group">
                                 <button wire:click.prevent="irPasarelaShipping" class="btn btn-success col-1 mx-2 px-2 shadow">
@@ -37,7 +37,7 @@
             @if($cambiar)
             <div class="row">
                 <!-- /.col -->
-                <div class="col-md-12 d-flex">
+                <div class="col-md-12 d-flex col-12">
                     <div class="card mx-auto" x-data="{ currentTab: $persist('changeEnvio') }" style="width: 52rem;">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills" wire:ignore>
