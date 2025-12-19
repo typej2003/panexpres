@@ -23,11 +23,11 @@
                         <div class="card mx-auto" style="width: 100%;">
                             <label class="text-subtitle d-block fw-bold mb-1">¿Utilizará la misma dirección registrada?</label>                        
                             <div class="btn-group mb-3" role="group">
-                                <button wire:click.prevent="irPasarelaShipping" class="btn btn-success col-1 mx-2 px-2 shadow">
+                                <button wire:click.prevent="irPasarelaShipping" class="btn btn-success col-6 mx-2 px-2 shadow">
                                     Si
                                 </button>
 
-                                <button wire:click.prevent="cambiarValor" class="btn btn-success col-1 mx-2 px-2 shadow">
+                                <button wire:click.prevent="cambiarValor" class="btn btn-success col-6 mx-2 px-2 shadow">
                                     No
                                 </button>
                             </div>
