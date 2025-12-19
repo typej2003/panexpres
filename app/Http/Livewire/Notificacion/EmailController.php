@@ -68,16 +68,6 @@ class EmailController extends Component
     public function sendEmailManager($operacion, $dataManager)
     {
 
-        $this->validate([
-            'state.from_type' => 'required',
-            'state.email'     => 'required|email',
-            'state.full_name' => 'required',
-            'state.subject'   => 'required',
-            'state.message'   => 'required',
-        ], [
-            'state.message.required' => 'El contenido del mensaje es obligatorio.'
-        ]);
-
         $config = [
             'admin'   => ['email' => 'admin@panexpres.com', 'name' => 'Administración Pan Express'],
             'soporte' => ['email' => 'soporte@panexpres.com', 'name' => 'Soporte Pan Express'],
