@@ -43,7 +43,7 @@
                                 <span>Situación de Pago: </span>
                             </div>
                             <div class="col-lg-6">
-                                <span class="p-3 {{ $this->getClaseConfirmed() }}">{{ $pedido->getConfirmed() }}</span>
+                                <span class="p-3 {{ $this->getClaseConfirmed($pedido->confirmed) }}">{{ $pedido->getConfirmed() }}</span>
                             </div>
                         </div>
                         <div class="row">
@@ -51,7 +51,7 @@
                                 <span>Status: </span>
                             </div>
                             <div class="col-lg-6">
-                                <span class="p-3 {{ $this->getClaseStatus() }}">{{ $pedido->getStatus() }}</span>
+                                <span class="p-3 {{ $this->getClaseStatus($pedido->status) }}">{{ $pedido->getStatus() }}</span>
                             </div>
                         </div>
                         <div class="row">
