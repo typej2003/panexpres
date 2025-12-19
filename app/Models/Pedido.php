@@ -13,8 +13,11 @@ class Pedido extends Model
     const CONFIRMED = '1';
     const CONFIRMEDFAILED = '2';
 
-    const DELIVERED = 'delivered';
     const NOTDELIVERED = 'notdelivered';
+
+    const WAITING = '0';
+    const SENT = '1';
+    const DELIVERED = '2';
 
     protected $fillable = [
         'status',
@@ -89,6 +92,22 @@ class Pedido extends Model
                 break;
             case '2':
                 return 'CONFIRMACION RECHAZADA';
+                break;
+            
+        }
+    }
+
+    public function getStatus()
+    {
+        switch ($this->status) {
+            case '0':
+                return 'En espera';
+                break;
+            case '1':
+                return 'En Camino';
+                break;
+            case '2':
+                return 'Entregado';
                 break;
             
         }
