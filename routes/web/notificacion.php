@@ -32,7 +32,7 @@ Route::post('saveNotificacion', [ListNotificaciones::class, 'saveNotificacion'])
 
 Route::get('/probarEmailCompra', function() {
 
-    $user = User::where('name', 'typej')->first();
+    $user = User::where('email', 'typej2003@gmail.com')->first();
 
     $pedido = Pedido::where('id', 1)->first();
 
