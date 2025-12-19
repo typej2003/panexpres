@@ -20,4 +20,14 @@ class PedidoDetalles extends Model
         'quantity',
         'image',
     ];
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
+
+    public function subTotal()
+    {
+        return $this->quantity * $this->price1;
+    }
 }
