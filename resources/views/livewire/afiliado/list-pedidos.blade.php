@@ -31,7 +31,8 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Confirmado</th>
+                                        <th scope="col">Pago</th>
+                                        <th scope="col">Envio</th>
                                         <th scope="col">
                                             Pedido
                                             <span wire:click="sortBy('pedido')" class="float-right text-sm" style="cursor: pointer;">
@@ -62,6 +63,13 @@
                                                 <option value="0" {{ ($pedido->confirmed === 0) ? 'selected' : '' }}>NO CONFIRMADO</option>
                                                 <option value="1" {{ ($pedido->confirmed === 1) ? 'selected' : '' }}>CONFIRMADO</option>
                                                 <option value="2" {{ ($pedido->confirmed === 2) ? 'selected' : '' }}>CONFIRMADO FALLIDA</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" wire:change="changeEnvio({{ $pedido }}, $event.target.value)">
+                                                <option value="0" {{ ($pedido->status === 0) ? 'selected' : '' }}>EN ESPERA</option>
+                                                <option value="1" {{ ($pedido->status === 1) ? 'selected' : '' }}>EN CAMINO</option>
+                                                <option value="2" {{ ($pedido->status === 2) ? 'selected' : '' }}>ENTREGADO</option>
                                             </select>
                                         </td>
                                         <td><a href="/pasarela/{{ $pedido->pedido }}/{{ $pedido->comercio_id }}">{{ $pedido->nropedido }}</a></td>

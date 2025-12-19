@@ -68,6 +68,34 @@ class ListPedidos extends AdminComponent
 		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$confirmed} satisfactoriamente."]);
 	}
 
+	public function changeEnvio(Pedido $pedido, $confirmed)
+	{
+		Validator::make(['confirmed' => $confirmed], [
+			'confirmed' => [
+				'required',
+				Rule::in(Pedido::CONFIRMED, Pedido::NOTCONFIRMED, Pedido::CONFIRMEDFAILED),
+			],
+		])->validate();
+
+		$pedido->update(['confirmed' => $confirmed]);
+
+		switch ($confirmed) {
+			case '0':
+				$confirmed = 'No Confirmado';
+				break;
+			case '1':
+				$confirmed = 'Confirmado';
+				$this->sendNotificacion('confirmacionPago', $pedido);
+				break;
+			case '2':
+				$confirmed = 'Confirmado Fallida';
+				$this->sendNotificacion('confirmacionFallida', $pedido);
+				break;
+		}
+
+		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$confirmed} satisfactoriamente."]);
+	}
+
 	public function sendNotificacion($notificacion, Pedido $pedido)
 	{
 	

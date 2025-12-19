@@ -18,6 +18,7 @@ class Administrator
     {
 
         if (auth()->check() && (auth()->user()->isAdmin() 
+            || auth()->user()->isRoot()
             || auth()->user()->isUser()
             || auth()->user()->isCliente()
             || auth()->user()->isAfil()
