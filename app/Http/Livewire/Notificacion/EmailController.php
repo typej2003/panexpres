@@ -83,7 +83,7 @@ class EmailController extends Component
             "body"  => $dataManager['message'],
         ];
         
-         Mail::send('emails.admin-msj', $data, function($message) use ($data, $remitente) {
+         Mail::send('emails.email-manager', $data, function($message) use ($data, $remitente) {
             $message->to($data["email"])
                     ->from($remitente['email'], $remitente['name']) // <--- Aquí cambias el remitente
                     ->subject($data["title"]);    
