@@ -68,32 +68,32 @@ class ListPedidos extends AdminComponent
 		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$confirmed} satisfactoriamente."]);
 	}
 
-	public function changeEnvio(Pedido $pedido, $confirmed)
+	public function changeEnvio(Pedido $pedido, $status)
 	{
-		Validator::make(['confirmed' => $confirmed], [
-			'confirmed' => [
+		Validator::make(['status' => $status], [
+			'status' => [
 				'required',
-				Rule::in(Pedido::CONFIRMED, Pedido::NOTCONFIRMED, Pedido::CONFIRMEDFAILED),
+				Rule::in(Pedido::WAITING, Pedido::SENT, Pedido::DELIVERED),
 			],
 		])->validate();
 
-		$pedido->update(['confirmed' => $confirmed]);
+		$pedido->update(['status' => $status]);
 
-		switch ($confirmed) {
+		switch ($status) {
 			case '0':
-				$confirmed = 'No Confirmado';
+				$status = 'En Espera';
 				break;
 			case '1':
-				$confirmed = 'Confirmado';
-				$this->sendNotificacion('confirmacionPago', $pedido);
+				$status = 'En Camino';
+				//$this->sendNotificacion('confirmacionPago', $pedido);
 				break;
 			case '2':
-				$confirmed = 'Confirmado Fallida';
-				$this->sendNotificacion('confirmacionFallida', $pedido);
+				$status = 'Entregado';
+				$this->sendNotificacion('confirmacionEntregado', $pedido);
 				break;
 		}
 
-		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$confirmed} satisfactoriamente."]);
+		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$status} satisfactoriamente."]);
 	}
 
 	public function sendNotificacion($notificacion, Pedido $pedido)
