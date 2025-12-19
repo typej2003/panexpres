@@ -69,7 +69,7 @@ class EmailManager extends Component
             $email->sendEmailManager('send', $data);
 
             session()->flash('success', 'Email enviado exitosamente desde ' . $remitente['name']);
-            $this->reset(['state.full_name', 'state.email', 'state.subject', 'state.message']);
+            //$this->reset(['state.full_name', 'state.email', 'state.subject', 'state.message']);
             
         } catch (\Exception $e) {
             session()->flash('error', 'Error al enviar el correo: ' . $e->getMessage());
