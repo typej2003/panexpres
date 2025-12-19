@@ -38,6 +38,14 @@
         .custom-table tbody {
             background-color: #fff;
         }
+
+        /* Simulación de .table-responsive */
+        .custom-table-container {
+            display: block;
+            width: 100%;
+            overflow-x: auto; /* Permite el scroll horizontal */
+            -webkit-overflow-scrolling: touch; /* Suavidad en dispositivos iOS */
+        }
         /* ----------------------------------------------------------- */
         /* BASE Y AJUSTES GENERALES */
         /* ----------------------------------------------------------- */
@@ -267,7 +275,7 @@
 
         <div class="flex-row my-2"> 
             <div class="col-8"> 
-                <table class="custom-table custom-table-hover">
+                <table class="custom-table custom-table-container custom-table-hover">
                     <thead class="thead-primary">
                         <tr>                      
                             <th scope="col"></th>
@@ -332,7 +340,7 @@
                 </div>                
             </div>
             <div class="col-4">                 
-                <table class="custom-table hover table-shadow"> 
+                <table class="custom-table custom-table-container hover table-shadow"> 
                     <thead>
                         <tr>
                             <th scope="col">Precio total artículos</th>
