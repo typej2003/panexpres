@@ -1,5 +1,5 @@
 <div>
-
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <style>
         .table-shadow {
            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.49); /* Sombra estándar */
