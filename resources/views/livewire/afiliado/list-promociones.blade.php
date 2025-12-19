@@ -338,17 +338,18 @@
         })
     });
 
-    window.addEventListener('hide-formPromocion', function (event) {
-        $('#formPromocion').modal('hide');
-        toastr.success(event.detail.message, 'Success!');
-    });
+    
 
 
 </script>
 @endpush
 
 <script>
-        window.addEventListener('show-formPromocion', function (event) {
+    window.addEventListener('hide-formPromocion', function (event) {
+        $('#formPromocion').modal('hide');
+        toastr.success(event.detail.message, 'Success!');
+    });
+    window.addEventListener('show-formPromocion', function (event) {
         $('#formPromocion').modal('show');
     });
 </script>

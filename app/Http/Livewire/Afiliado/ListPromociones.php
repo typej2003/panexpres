@@ -105,11 +105,12 @@ class ListPromociones extends AdminComponent
 
 	public function createPromocion()
 	{
+		
 		$validatedData = Validator::make($this->state, [
 			'title' => 'required',
 			'order' => 'required',
 			'active' => 'required',
-		])->validate();     
+		])->validate();
 
 		if ($this->photo) {
 			// 1. Obtener el nombre original del archivo
@@ -148,18 +149,21 @@ class ListPromociones extends AdminComponent
         $this->product = $this->state['product_id'];
 
 		$this->products = Product::where('comercio_id', $this->comercio)->get();
+		
 
 		$this->dispatchBrowserEvent('show-formPromocion');
 	}
 
 	public function updatePromocion()
 	{
+		
 		$validatedData = Validator::make($this->state, [
 			'title' => 'required',
 			'order' => 'required',
             'active' => 'required',
 		])->validate();
 
+		
         if ($this->photo) {
 			$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');            
 		}

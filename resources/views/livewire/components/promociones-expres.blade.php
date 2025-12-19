@@ -97,16 +97,16 @@
         /* ----------------------------------------------------------- */
         .promo-overlay {
             position: absolute;
-            /* top: 20px;  */
-            bottom: 20px;
-            /* right: 20px;  */
-            left: 20px;
-            padding: 10px 15px;
-            background-color: rgba(146, 138, 138, 0.7); 
+            top: 20px;  
+            /* bottom: 20px; */
+            right: 20px; 
+            /*left: 20px;*/
+            padding: 20px 30px;
+            background-color: #dd751a; 
             color: #fff;
             font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 50px;
             z-index: 5; 
         }
         /* ----------------------------------------------------------- */
@@ -212,12 +212,14 @@
                                 <a href="/routedetails/{{ $promocion->comercio_id }}/{{ $promocion->product_id }}">
                                     <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
                                 </a>
+
+                                <div class="promo-overlay">
+                                    {{$currencyValue}}. {{ $promocion->product->price1 ?? '' }}
+                                </div>
                             @else
                                 <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
                             @endif
-                            <div class="promo-overlay">
-                                {{$currencyValue}}. {{ $promocion->product->price1 ?? '' }}
-                            </div>
+                            
                         </div>
                     @empty
                         <div class="carouselpromo-item">
