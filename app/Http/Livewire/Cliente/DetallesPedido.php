@@ -17,6 +17,36 @@ class DetallesPedido extends Component
         $this->nropedido = $nroPedido;
     }
 
+    public function getClaseConfirmed($value)
+    {
+        switch ($value) {
+            case '0':
+                return 'bg-warning';
+                break;
+            case '1':
+                return 'bg-success';
+                break;
+            case '2':
+                return 'bg-danger';
+                break;
+        }
+    }
+
+    public function getClaseStatus()
+    {
+        switch ($value) {
+            case '0':
+                return 'bg-danger';
+                break;
+            case '1':
+                return 'bg-warning';
+                break;
+            case '2':
+                return 'bg-success';
+                break;
+        }
+    }
+
     public function render()
     {
         $pedido = Pedido::where('nropedido', $this->nropedido)->first();
