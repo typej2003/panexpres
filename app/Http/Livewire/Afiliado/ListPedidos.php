@@ -96,6 +96,37 @@ class ListPedidos extends AdminComponent
 		$this->dispatchBrowserEvent('updated', ['message' => "Pedido cambió a: {$status} satisfactoriamente."]);
 	}
 
+	public function getClaseConfirmed($value)
+    {
+        switch ($value) {
+            case '0':
+                return 'bg-warning';
+                break;
+            case '1':
+                return 'bg-success';
+                break;
+            case '2':
+                return 'bg-danger';
+                break;
+        }
+    }
+
+    public function getClaseStatus($value)
+    {
+        switch ($value) {
+            case '0':
+                return 'bg-danger';
+                break;
+            case '1':
+                return 'bg-warning';
+                break;
+            case '2':
+                return 'bg-success';
+                break;
+        }
+    }
+
+
 	public function sendNotificacion($notificacion, Pedido $pedido)
 	{
 	
