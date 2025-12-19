@@ -12,10 +12,10 @@ class EmailManager extends Component
     public $search = '';
     public $state = [
         'from_type' => 'ventas',
-        'full_name' => 'Jose Rosales',
-        'email' => 'typej2003@gmail.com',
-        'subject' => 'Mensaje de Prueba',
-        'message' => 'Contenido del mensaje de prueba',
+        'full_name' => '',
+        'email' => '',
+        'subject' => '',
+        'message' => '',
         'footer' => "Pan Express - Calidad en cada bocado.\nAtentamente, el equipo de Notificaciones."
     ];
 
@@ -72,6 +72,7 @@ class EmailManager extends Component
             $this->state['full_name'] = '';
             $this->state['email'] = '';
             $this->state['message'] = '';
+            $this->state['subject'] = '';
 
             //$this->reset(['state.full_name', 'state.email', 'state.subject', 'state.message']);
             
