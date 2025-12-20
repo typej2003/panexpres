@@ -12,7 +12,7 @@ class FormularioCita extends Component
 {
     public $mensaje = '';
 
-    public function store(Request $request)
+    public function mount(Request $request)
     {
         // 1. VALIDACIÓN de los datos
         $request->validate([
