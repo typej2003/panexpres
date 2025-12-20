@@ -1,7 +1,17 @@
-<div>
+<div>    
     <style>
         .container-show-products {
             height: auto;
+        }
+        .body {
+            margin: 0px !important;
+            padding: 0px !important;
+        }
+        .cuadro {
+            margin: auto 0px 5px 0px  !important;
+            /* margin-left: 0px !important;
+            margin-right: 0px !important; */
+            padding: 0px !important;
         }
     </style>
     <style>
@@ -292,8 +302,8 @@
         /* ----------------------------------------------------------- */
         /* MEJORA APLICADA A LA IMAGEN DEL PRODUCTO */
         .imgProduct {
-            width: 250px; 
-            height: 200px; 
+            width: 100%; 
+            min-height: 250px; 
             object-fit: cover; 
             border-radius: 8px; 
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15); 
@@ -471,8 +481,8 @@
             }
             
             .imgProduct1 {
-                width: 250px; 
-                height: auto; 
+                width: auto; 
+                height: 250px; 
                 box-shadow: 
                 0 0 10px #01380dff,   /* Brillo verde oscuro (base) */
                 0 0 20px #0e521dff,

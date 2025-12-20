@@ -24,9 +24,11 @@
             width: 100%; 
             height: auto;
             box-shadow: 5px 5px 15px gray;
-            margin-bottom: 10px;
             padding: 15px;
             border: 1px solid #ccc;
+            
+            margin: auto 0px 5px 0px  !important;
+            padding: 0px !important;
         }
         
         /* Contenedor interno del producto (usa flex para layout interno) */
@@ -53,8 +55,8 @@
         /* ----------------------------------------------------------- */
         /* MEJORA APLICADA A LA IMAGEN DEL PRODUCTO */
         .imgProduct {
-            width: 250px; 
-            height: 200px; 
+            width: 100%; 
+            min-height: 250px; 
             object-fit: cover; 
             border-radius: 8px; 
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15); 
@@ -70,7 +72,7 @@
         
         .centrar {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
         }
         
         .description {
@@ -249,8 +251,8 @@
             }
             
             .imgProduct1 {
-                width: 250px; 
-                height: auto; 
+                width: auto; 
+                height: 250px; 
                 box-shadow: 
                 0 0 10px #01380dff,   /* Brillo verde oscuro (base) */
                 0 0 20px #0e521dff,

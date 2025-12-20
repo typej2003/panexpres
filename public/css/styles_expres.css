@@ -522,7 +522,7 @@ label {
     
     /* --- PROPIEDADES PARA FIJAR --- */
     position: fixed;
-    top: 65px; /* AJUSTADO: Posiciona debajo del navbar principal (~70px) */
+    top: 55px; /* AJUSTADO: Posiciona debajo del navbar principal (~70px) */
     z-index: 1010; 
     
     box-sizing: border-box; 
