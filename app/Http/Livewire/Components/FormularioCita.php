@@ -45,7 +45,8 @@ class FormularioCita extends Component
         $emailcita->sendEmailAdmin('agenda', $user, $info );
         
         // 3. REDIRECCIONAR con un mensaje de éxito (flash)
-        return redirect()->route('agendar.cita')->with('success', 'Gracias por su información, pronto nos comunicaremos con usted.');
+        $this->mensaje = 'Gracias por su información, pronto nos comunicaremos con usted.';
+        // return redirect()->route('agendar.cita')->with('success', 'Gracias por su información, pronto nos comunicaremos con usted.');
         
         } catch (\Exception $e) {
             session()->flash('error', 'Error al enviar el correo: ' . $e->getMessage());
