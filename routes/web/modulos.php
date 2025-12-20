@@ -16,6 +16,8 @@ use App\Http\Livewire\Components\FormularioCita;
 
 use App\Http\Livewire\Components\ShowRecommendedExpres;
 
+Route::get('/agendarcitaya', HacerCita::class)->name('agendarcitaya');
+
 Route::get('/aliados', function (Request $request) {
     // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
     $in_cellphonecontact = $request->input('in_cellphonecontact');
@@ -121,7 +123,6 @@ Route::get('/politicadeprivacidad', function (Request $request) {
 })->name('politicadeprivacidad');
 
 
-
 Route::get('/agendar', function (Request $request) {
     // 1. Acceder a los parámetros usando $request->input('nombre_del_campo')
     $in_cellphonecontact = $request->input('in_cellphonecontact');
@@ -146,6 +147,7 @@ Route::get('/agendar', function (Request $request) {
 // Ejemplo en routes/web.php
 // Route::post('/cita-guardar', [FormularioCita::class, 'store'])->name('cita.guardar');
 // Route::GET('/agendarcita', Cita::class)->name('agendarcita');
-Route::get('/agendarcitaya', HacerCita::class)->name('agendarcitaya');
+
+Route::get('/loginformulario', HacerCita::class)->name('loginformulario');
 
 Route::get('/recomendados', ShowRecommendedExpres::class)->name('recomendados');

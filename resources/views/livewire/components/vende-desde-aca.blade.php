@@ -26,7 +26,7 @@
             Únete a PanExpres y descubre cómo podemos ayudarte a vender más y llegar más lejos.
         </p>
         
-        <a href="/agendarcitaya" class="btn btn-success btn-lg mb-5">
+        <a href="/agendar" class="btn btn-success btn-lg mb-5">
             Agenda tu Cita
         </a>
         
