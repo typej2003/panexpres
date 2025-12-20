@@ -40,6 +40,10 @@ label {
     width: 55% !important;
 }
 
+.logo-form {
+    width: 24rem !important;
+}
+
 /* 1. Estilos del Navbar Principal */
 .navbar {
     display: flex;

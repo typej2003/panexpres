@@ -480,3 +480,7 @@
 .btn-primary {
   background-color: var(--color-principal) !important;   
 }
+
+.logo-form {
+    width: 160px !important;
+}

@@ -4,8 +4,7 @@
         <div class="d-flex justify-content-center mb-4">
             <img src="/img/logopanexpres_color.png" 
                  alt="Logo PanExpres" 
-                 class="img-fluid w-60" 
-                 style="max-width: 60%;">
+                 class="img-fluid logo-form">
         </div>
         
         <p class="h4 w-75 mx-auto fw-bold">

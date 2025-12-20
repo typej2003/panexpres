@@ -139,7 +139,7 @@ Route::get('/agendar', function (Request $request) {
         'words'               => $words,
         'comercio_id'         => $comercio_id // Si tienes este dato de otra fuente
     ]);
-})->name('agendar.cita');
+})->name('agendar');
 
 
 

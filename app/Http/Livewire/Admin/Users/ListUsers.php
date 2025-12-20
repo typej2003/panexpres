@@ -6,8 +6,8 @@ use App\Http\Livewire\Admin\AdminComponent;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
+use Livewire\WithFileUploads;
 
 class ListUsers extends AdminComponent
 {
