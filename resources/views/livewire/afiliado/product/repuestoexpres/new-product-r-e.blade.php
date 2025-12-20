@@ -5,9 +5,9 @@
                 <div class="col-sm-6">
                         <h1 class="m-0 text-dark">
                         @if($controlActivity)
-                            <span>Editar Producto RepuestoExpres</span>
+                            <span>Editar Producto PanExpres</span>
                         @else
-                            <span>Crear Producto RepuestoExpres</span>
+                            <span>Crear Producto PanExpres</span>
                         @endif
                     </h1>
                 </div><!-- /.col -->
