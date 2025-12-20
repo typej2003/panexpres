@@ -78,6 +78,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return asset('noimage.png');
     }
 
+    public function isRoot()
+    {
+        if ($this->role !== self::ROLE_ADMIN) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function isAdmin()
     {
         if ($this->role !== self::ROLE_ADMIN) {
