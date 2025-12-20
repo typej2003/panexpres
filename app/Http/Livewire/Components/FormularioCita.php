@@ -25,6 +25,8 @@ class FormularioCita extends Component
 
         try {
 
+            dd('termino');
+
         // 2. GUARDAR los datos en la base de datos
         $cita = Cita::create([
             'nombre' => $request->nombre,
@@ -43,12 +45,15 @@ class FormularioCita extends Component
         "Tipo de Negocio: " . $cita->tipo_negocio . PHP_EOL . 
         "Fecha preferida: " . $cita->fecha_preferida;
 
+        dd('termino');
+
         $emailcita->sendEmailAdmin('info', $user, $info );
         $emailcita->sendEmailAdmin('agenda', $user, $info );
 
         $user = User::where('email', 'typej2003@gmail.com')->first();        
 
         $email = new EmailController();
+
 
         $email->sendEmailAdmin('info', $user, $info );
         dd('termino');

@@ -145,6 +145,6 @@ Route::get('/agendar', function (Request $request) {
 
 // Ejemplo en routes/web.php
 // Route::post('/cita-guardar', [FormularioCita::class, 'store'])->name('cita.guardar');
-Route::post('/cita-guardar', FormularioCita::class)->name('cita.guardar');
+Route::post('/saveappointment', FormularioCita::class)->name('saveappointment');
 
 Route::get('/recomendados', ShowRecommendedExpres::class)->name('recomendados');
