@@ -22,7 +22,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('cita.guardar') }}" method="POST">
+                        <form action="/cita-guardar" method="POST">
                             @csrf
                             
                             <div class="mb-3">
