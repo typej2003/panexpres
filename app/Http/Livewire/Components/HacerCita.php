@@ -65,7 +65,6 @@ class HacerCita extends Component
 
     public function render()
     {
-        dd('hola');
         return view('livewire.components.hacer-cita');
     }
 }

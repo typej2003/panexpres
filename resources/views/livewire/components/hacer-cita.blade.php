@@ -38,30 +38,29 @@
                             </div>
                         @endif
 
-                        <form wire:submit.prevent="store"> {{-- Cambiamos el action por wire:submit --}}
-                            @csrf
-                            
+                        <form wire:submit.prevent="store">
+                            @csrf                            
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre Completo</label>
-                                <input type="text" class="form-control" id="nombre" wire:model="nombre">
+                                <input type="text" class="form-control" id="nombre" wire:model.defer="nombre" >
                                 @error('nombre') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="email" wire:model="email">
+                                <input type="email" class="form-control" id="email" wire:model.defer="email">
                                 @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             
                             <div class="mb-3">
                                 <label for="telefono" class="form-label">Teléfono de Contacto</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="(Ej: 584121234567)" required  wire:model="telefono">
+                                <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="(Ej: 584121234567)" required  wire:model.defer="telefono">
                                 @error('telefono') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             
                             <div class="mb-3">
                                 <label for="negocio" class="form-label">Tipo de Aliado/Negocio</label>
-                                <select class="form-select" id="negocio" name="tipo_negocio" required  wire:model="tipo_negocio">
+                                <select class="form-select" id="negocio" name="tipo_negocio" required  wire:model.defer="tipo_negocio">
                                     <option value="" disabled selected>Selecciona una opción</option>
                                     <option value="Fabricante">Fabricante/Marca</option>
                                     <option value="aliado">Vendedor</option>
@@ -72,7 +71,7 @@
                             
                             <div class="mb-4">
                                 <label for="fecha" class="form-label">Fecha y Hora Preferida (Opcional)</label>
-                                <input type="datetime-local" class="form-control" id="fecha" name="fecha_preferida"  wire:model="fecha_preferida">
+                                <input type="datetime-local" class="form-control" id="fecha" name="fecha_preferida"  wire:model.defer="fecha_preferida">
                                 @error('fecha') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             
