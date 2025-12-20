@@ -21,7 +21,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Promo Compra 10+1 panes',
             'description' => 'Compra 10 Panes de Jamón de 700 gramos y regalamos 1 mas',
             'details1' => 'Compra 10 Pan de Jamón de 700 gramos y te regalamos 1 pan',
-            'image_path1' => 'promo10+1_panexpreso.jpg',
+            'image_path1' => 'promo101_panexpreso.jpg',
             'manufacturer_id' => '2', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
@@ -55,7 +55,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Combo Pan de Jamón + Refresco 1.5 l',
             'description' => '1 Pan de Jamón de 700 g + Pepsi 1.5 l',
             'details1' => '1 Pan de Jamón de 700 g + Pepsi 1.5 l',
-            'image_path1' => 'combopandejamon+refresco_panexpreso.jpg',
+            'image_path1' => 'combopandejamonrefresco_panexpreso.jpg',
             'manufacturer_id' => '2', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase
