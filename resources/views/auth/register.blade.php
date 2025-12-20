@@ -24,7 +24,7 @@
         <div class="row mb-3">
             <div class="col-lg-12 titulo c-a text-center">
                 <a href="/">
-                    <img class="logo-login mx-auto " src="{{ asset('/img/panexpres_banner.png') }}" alt="">
+                    <img class="logo-login mx-auto " src="{{ asset('/img/logopanexpres_color.png') }}" alt="">
                 </a>
             </div>
         </div>
