@@ -175,7 +175,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="model_id">Modelo</label>
                                                 <div class="input-group mb-3">
                                                     <select wire:model.defer="state.model_id"  id="model_id" class="font-costo form-control @error('model_id') is-invalid @enderror" autofocus >
@@ -197,7 +197,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="motor_id">Motor</label>
                                                 <div class="input-group mb-3">
                                                     <select wire:model.defer="state.motor_id"  id="motor_id" class="font-costo form-control @error('motor_id') is-invalid @enderror" autofocus >
@@ -364,7 +364,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="details2">Detalle 2</label>
                                                 <textarea wire:model.defer="state.details2" autofocus class="font-costo form-control @error('details2') is-invalid @enderror" id="details2" rows="5"></textarea>
                                                 @error('details2')
@@ -401,8 +401,8 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
+                                        <div class="col-md-4 d-none">
+                                            <div class="form-group d-none">
                                                 <label for="price2">Precio 2</label>
                                                 <input type="number" wire:model.defer="state.price2" autofocus class="font-costo form-control @error('price2') is-invalid @enderror" id="price2">
                                                 @error('price2')
@@ -412,7 +412,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 d-none">
                                             <div class="form-group">
                                                 <label for="profit_price">Ganancia (%)</label>
                                                 <input type="number" wire:model.defer="state.profit_price" autofocus class="font-costo form-control @error('profit_price') is-invalid @enderror" id="profit_price">
@@ -426,7 +426,7 @@
                                     </div>
                                     <!-- Precios al Mayor wholesaler  -->
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 d-none">
                                             <div class="form-group">
                                                 <label for="price_mayor">Precio al Mayor</label>
                                                 <input type="number" wire:model.defer="state.price_mayor" autofocus class="font-costo form-control @error('price_mayor') is-invalid @enderror" id="price_mayor">
@@ -438,7 +438,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="profit_mayor">Ganancia (%)</label>
                                                 <input type="number" wire:model.defer="state.profit_mayor" autofocus class="font-costo form-control @error('profit_mayor') is-invalid @enderror" id="profit_mayor">
                                                 @error('profit_mayor')
@@ -463,7 +463,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="profit_offer">Ganancia (%)</label>
                                                 <input type="number" wire:model.defer="state.profit_offer" autofocus class="font-costo form-control @error('profit_offer') is-invalid @enderror" id="profit_offer">
                                                 @error('profit_offer')
@@ -477,7 +477,7 @@
                                     <!-- Precios de Divisa  -->
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="price_divisa">Precio de la Divisa</label>
                                                 <input type="number" wire:model.defer="state.price_divisa" autofocus class="font-costo form-control @error('price_divisa') is-invalid @enderror" id="price_divisa">
                                                 @error('price_divisa')
@@ -491,9 +491,9 @@
                                     <!-- Delivery  -->
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group  d-none">
                                                 <label for="shipping_cost">Costo de Envio</label>
-                                                <input type="number" wire:model.defer="state.shipping_cost" autofocus class="font-costo form-control @error('shipping_cost') is-invalid @enderror" id="shipping_cost">
+                                                <input type="number" wire:model.defer="state.shipping_cost" autofocus class="font-costo form-control @error('shipping_cost') is-invalid @enderror" id="shipping_cost"  placeholder="Definido en las Areas de Envios">
                                                 @error('shipping_cost')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -592,7 +592,7 @@
                                     <!-- Caracteristica del paquete -->
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="pack_price">Precio del Paquete</label>
                                                 <input type="number" wire:model.defer="state.pack_price" autofocus class="font-costo form-control @error('pack_price') is-invalid @enderror" id="pack_price">
                                                 @error('pack_price')
@@ -639,7 +639,7 @@
                                     <!-- Caracteristica del paquete -->
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group  d-none">
                                                 <label for="tx_tamanio_carga">Tamaño de carga</label>
                                                 <input type="text" wire:model.defer="state.tx_tamanio_carga" autofocus class="font-costo form-control @error('tx_tamanio_carga') is-invalid @enderror" id="tx_tamanio_carga">
                                                 @error('tx_tamanio_carga')
@@ -650,7 +650,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group  d-none">
                                                 <label for="tx_tamanio_venta">Tamaño de Venta</label>
                                                 <input type="text" wire:model.defer="state.tx_tamanio_venta" autofocus class="font-costo form-control @error('tx_tamanio_venta') is-invalid @enderror" id="tx_tamanio_venta">
                                                 @error('tx_tamanio_venta')
@@ -661,7 +661,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group  d-none">
                                                 <label for="tx_contornos">Contorno</label>
                                                 <input type="text" wire:model.defer="state.tx_contornos" autofocus class="font-costo form-control @error('tx_contornos') is-invalid @enderror" id="tx_contornos">
                                                 @error('tx_contornos')
@@ -672,7 +672,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group  d-none">
                                                 <label for="tx_contiene">Contenido</label>
                                                 <input type="text" wire:model.defer="state.tx_contiene" autofocus class="font-costo form-control @error('tx_contiene') is-invalid @enderror" id="tx_contiene">
                                                 @error('tx_contiene')
@@ -708,7 +708,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="madein">Lugar de Elaboración</label>
                                                 <input type="text" wire:model.defer="state.madein" autofocus class="font-costo form-control @error('madein') is-invalid @enderror" id="madein">
                                                 @error('madein')
@@ -719,7 +719,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group  d-none">
                                                 <label for="tx_alergenos">Alergenos</label>
                                                 <input type="text" wire:model.defer="state.tx_alergenos" autofocus class="font-costo form-control @error('tx_alergenos') is-invalid @enderror" id="tx_alergenos">
                                                 @error('tx_alergenos')
@@ -730,7 +730,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <label for="tx_adicionales">Contenido Adicional</label>
                                                 <textarea wire:model.defer="state.tx_adicionales" autofocus class="font-costo form-control @error('tx_adicionales') is-invalid @enderror" id="tx_adicionales">
                                                 </textarea>
@@ -742,7 +742,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <input type="checkbox" wire:model.defer="state.in_pickup" autofocus class="my-2 @error('in_pickup') is-invalid @enderror" id="in_pickup"> <span class="font-costo my-2">Pickup</span>
                                                 @error('in_pickup')
                                                 <div class="invalid-feedback">
@@ -752,7 +752,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <input type="checkbox" wire:model.defer="state.in_envio_nacional" autofocus class="my-2 @error('in_envio_nacional') is-invalid @enderror" id="in_envio_nacional"> <span class="font-costo my-2">Envio Nacional</span>
                                                 @error('in_envio_nacional')
                                                 <div class="invalid-feedback">
@@ -787,7 +787,7 @@
                                     <div class="row">
                                         
                                         <div class="col-md-2">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <input type="checkbox" wire:model.defer="state.in_fragil" autofocus class="my-2 @error('in_fragil') is-invalid @enderror" id="in_fragil"> <span class="font-costo my-2">Es frágil</span>
                                                 @error('in_fragil')
                                                 <div class="invalid-feedback">
@@ -797,7 +797,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <div class="form-group">
+                                            <div class="form-group d-none">
                                                 <input type="checkbox" wire:model.defer="state.in_olor_fuerte" autofocus class="my-2 @error('in_olor_fuerte') is-invalid @enderror" id="in_olor_fuerte"> <span class="font-costo my-2">Olor Fuerte</span>
                                                 @error('in_olor_fuerte')
                                                 <div class="invalid-feedback">
@@ -821,7 +821,7 @@
                                     </div>
 
                                     <!-- Caracteristica del paquete -->
-                                    <div class="row">
+                                    <div class="row  d-none" >
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="tx_valores_nutricionales">Valores Nutricionales</label>
@@ -869,7 +869,7 @@
                                     </div>
 
                                     <!-- Caracteristica del paquete -->
-                                    <div class="row">
+                                    <div class="row  d-none">
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="tx_datos_vencimiento">Datos Vencimiento</label>
@@ -915,7 +915,7 @@
                                     </div>
 
                                     <!-- Caracteristica del paquete -->
-                                    <div class="row">
+                                    <div class="row  d-none">
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="tx_vencimiento">Vencimiento</label>

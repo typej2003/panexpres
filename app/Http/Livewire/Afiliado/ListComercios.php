@@ -70,6 +70,8 @@ class ListComercios extends AdminComponent
 
         $this->user_id = $user_id;
 
+		$this->state['area_id'] = 1;
+
 		$validatedData['user_id'] = $this->user_id;
 
 		$this->showEditModal = false;

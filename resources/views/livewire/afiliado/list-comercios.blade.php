@@ -163,7 +163,7 @@
 
                         <div class="form-group">
                             <label for="area_id">Área Económica</label>
-                            <select wire:model.defer="state.area_id" class="form-control @error('area_id') is-invalid @enderror" id="area_id">
+                            <select wire:model.defer="state.area_id" class="form-control @error('area_id') is-invalid @enderror" id="area_id" disabled>
                                 <option value="0">Seleccione una opción</option>
                                 @foreach($areas as $area)
                                     <option value="{{ $area->id }}">{{ $area->name }}</option>

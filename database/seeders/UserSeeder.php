@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        //id 1
         DB::table('users')->insert([
             'identificationNac' => 'V',
             'identificationNumber' => '12966576',
@@ -35,7 +36,7 @@ class UserSeeder extends Seeder
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
-
+        //id 2
         DB::table('users')->insert([
             'identificationNac' => 'V',
             'identificationNumber' => '99888777',
@@ -57,29 +58,57 @@ class UserSeeder extends Seeder
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
-
+        
+        //id 3
+        // 1er Aliado
         DB::table('users')->insert([
             'identificationNac' => 'V',
-            'identificationNumber' => '13053081',
-            'name' => 'jose',
-            'names' => 'José',
-            'surnames' => 'Rosales',
-            'email' => 'typej2003@gmail.com',
-            'password' => bcrypt('12345678'),
-            'role' => 'cliente',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
+            'identificationNumber' => '22222222',
+            'name' => 'dimary',
+            'names' => 'dimary',
+            'surnames' => 'dimary',
+            'email' => 'dimary@gmail.com',
+            'password' => bcrypt('1dimary2025.'),
+            'role' => 'aliado',
+            'created_at' => '2025-12-20 11:00:36',
+            'updated_at' => '2025-12-20 11:00:36'
         ]);
 
         DB::table('datos_basicos')->insert([
-            'user_id' => 3,
-            'cellphonecode' => '0416',
-            'cellphone' => '5800403',
+            'user_id' => 2,
+            'cellphonecode' => '0414',
+            'cellphone' => '1869016',
             'address' => 'Caracas, San Bernardino',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
+            'created_at' => '2025-12-20 11:00:36',
+            'updated_at' => '2025-12-20 11:00:36'
+        ]);
+        //Fin 1er aliado
+        //id 4
+        // 2do Aliado
+        DB::table('users')->insert([
+            'identificationNac' => 'V',
+            'identificationNumber' => '33333333',
+            'name' => 'loiradeparis',
+            'names' => 'loiradeparis',
+            'surnames' => 'loiradeparis',
+            'email' => 'panaderialoiradeparis@gmail.com',
+            'password' => bcrypt('1dimary2025.'),
+            'role' => 'aliado',
+            'created_at' => '2025-12-20 11:00:36',
+            'updated_at' => '2025-12-20 11:00:36'
         ]);
 
+        DB::table('datos_basicos')->insert([
+            'user_id' => 2,
+            'cellphonecode' => '0414',
+            'cellphone' => '1869016',
+            'address' => 'Caracas, San Bernardino',
+            'created_at' => '2025-12-20 11:00:36',
+            'updated_at' => '2025-12-20 11:00:36'
+        ]);
+        //Fin 2do aliado
+        //id 5
+        
        DB::table('users')->insert([
             'identificationNac' => 'V',
             'identificationNumber' => '11222333',
