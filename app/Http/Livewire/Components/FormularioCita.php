@@ -43,8 +43,6 @@ class FormularioCita extends Component
         "Tipo de Negocio: " . $cita->tipo_negocio . PHP_EOL . 
         "Fecha preferida: " . $cita->fecha_preferida;
 
-        dd('formulario');
-
         $emailcita->sendEmailAdmin('info', $user, $info );
         $emailcita->sendEmailAdmin('agenda', $user, $info );
 
