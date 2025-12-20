@@ -22,7 +22,7 @@
                             </div>
                         @endif
 
-                        <form action="/cita-guardar" method="POST">
+                        <form action="/saveappointment" method="POST">
                             @csrf
                             
                             <div class="mb-3">
