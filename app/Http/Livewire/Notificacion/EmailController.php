@@ -110,6 +110,8 @@ class EmailController extends Component
     {
         $data = [
             "email" => $user->email,
+            "names" => $user->names,
+            "surnames" => $user->surnames,
             "title" => 'Administrador - Pan Express',
             "body"  => $info
         ];
