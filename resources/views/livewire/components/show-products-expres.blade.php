@@ -77,7 +77,7 @@
             position: absolute; 
             top: 100px; 
             transform: translateY(-50%); 
-            left: 25px; 
+            left: 5px; 
             z-index: 5;
             width: 100%; padding: 10px 15px; color: white;
             background: rgba(255, 255, 255, 0); border-radius: 5px;
@@ -579,7 +579,7 @@
                         @if($lastProduct->in_offer == '1')
                         <div class="card-overlay-text">
                             <h4 class="text-white">{{ $lastProduct->name }}</h4>
-                            <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $lastProduct->price_offer }}</span></p>
+                            <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price_offer }}</span></p>
                         </div>
                         @else
                         <div class="card-overlay-text">
@@ -607,7 +607,7 @@
                             @if($product->in_offer == '1')
                             <div class="card-overlay-text">
                                 <h4 class="text-white">{{ $product->name }}</h4>
-                                <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price_offer }}</span></p>
+                                <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price_offer }}<del style="color:red; font-size:12px;"> antes: {{$currencyValue}}. {{ $product->price1 }}</del></span> </p>
                             </div>
                             @else
                             <div class="card-overlay-text">
@@ -649,7 +649,7 @@
                         @if($product->in_offer == '1')
                         <div class="card-overlay-text">
                             <h4 class="text-white">{{ $product->name }}</h4>
-                            <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price_offer }}</span></p>
+                            <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price_offer }} <del> antes: {{$currencyValue}}. {{ $product->price1 }}</del></span> </p>
                         </div>
                         @else
                         <div class="card-overlay-text">

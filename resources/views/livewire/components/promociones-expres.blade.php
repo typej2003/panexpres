@@ -10,6 +10,10 @@
         flex: 0 0 auto; /* Evita que los items se encojan */
         width: 100%; 
     }
+    del {
+        font-size: 12px !important;
+
+    }
 </style>
     <style>
         /* ----------------------------------------------------------- */
@@ -101,8 +105,8 @@
             /* bottom: 20px; */
             right: 20px; 
             /*left: 20px;*/
-            padding: 20px 30px;
-            background-color: #dd751a; 
+            padding: 10px 15px;
+            background-color: #ff572f; 
             color: #fff;
             font-size: 1.2rem;
             font-weight: bold;
@@ -212,10 +216,15 @@
                                 <a href="/routedetails/{{ $promocion->comercio_id }}/{{ $promocion->product_id }}">
                                     <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
                                 </a>
-
+                                @if($promocion->product->in_offer == '1')
+                                <div class="promo-overlay">
+                                    {{$currencyValue}}. {{ $promocion->product->price_offer ?? '' }} <del> antes {{ $promocion->product->price1 }}</del>
+                                </div>
+                                @else
                                 <div class="promo-overlay">
                                     {{$currencyValue}}. {{ $promocion->product->price1 ?? '' }}
                                 </div>
+                                @endif
                             @else
                                 <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
                             @endif
