@@ -10,6 +10,8 @@ use App\Http\Livewire\Notificacion\EmailController;
 
 class FormularioCita extends Component
 {
+    public $mensaje = '';
+    
     public function store(Request $request)
     {
         // 1. VALIDACIÓN de los datos
