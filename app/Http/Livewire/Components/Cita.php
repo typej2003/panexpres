@@ -58,8 +58,6 @@ class Cita extends Component
             // Limpiar el formulario
             $this->reset(['nombre', 'email', 'telefono', 'tipo_negocio', 'fecha_preferida']);
 
-            return redirect()->route('saveappointment');
-
         } catch (\Exception $e) {
             session()->flash('error', 'Ocurrió un error: ' . $e->getMessage());
         }
