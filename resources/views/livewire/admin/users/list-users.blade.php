@@ -67,7 +67,7 @@
                                                 <option value="admin" {{ ($user->role === 'admin') ? 'selected' : '' }}>ADMIN</option>
                                                 <option value="user" {{ ($user->role === 'user') ? 'selected' : '' }}>USUARIO</option>
                                                 <option value="user" {{ ($user->role === 'cliente') ? 'selected' : '' }}>CLIENTE</option>
-                                                <option value="afiliado" {{ ($user->role === 'afiliado') ? 'selected' : '' }}>AFILIADO</option>
+                                                <option value="aliado" {{ ($user->role === 'aliado') ? 'selected' : '' }}>ALIADO</option>
                                             </select>
                                         </td>
                                         <td>
