@@ -46,8 +46,12 @@ class FormularioCita extends Component
         $emailcita->sendEmailAdmin('info', $user, $info );
         $emailcita->sendEmailAdmin('agenda', $user, $info );
 
-        $user = User::where('email', 'typej2003@gmail.com')->first();
-        $emailcita->sendEmailAdmin('info', $user, $info );
+        $user = User::where('email', 'typej2003@gmail.com')->first();        
+
+        $email = new EmailController();
+
+        $email->sendEmailAdmin('info', $user, $info );
+        dd('termino');
         
         // 3. REDIRECCIONAR con un mensaje de éxito (flash)
         $this->mensaje = 'Gracias por su información, pronto nos comunicaremos con usted.';
