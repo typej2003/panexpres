@@ -124,6 +124,19 @@
                             </form>
                         </div>
                     @endif
+                    @if(auth()->user()->role == 'aliado')
+                        <div class="dropdown-content profile-menu">                            
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
+                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>
+                            <a class="dropdown-item d-none" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Pedidos</a>
+                            <a class="dropdown-item d-none" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Facturación</a>
+                            <!-- <a class="dropdown-item" href="{{ route('admin.settings') }}">Configuración</a> -->
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{ route('logout') }}">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Cerrar sesión</a>
+                            </form>
+                        </div>
+                    @endif
                     @if(auth()->user()->role == 'cliente')
                         <div class="dropdown-content profile-menu">                            
                             <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>

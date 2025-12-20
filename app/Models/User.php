@@ -20,7 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
     const ROLE_ADMIN = 'admin';
     const ROLE_USER = 'user';
     const ROLE_CLIENTE = 'cliente';
-    const ROLE_AFIL = 'afiliado';
+    const ROLE_ALIADO = 'aliado';
     const ROLE_DELIVERY = 'delivery';
 
     /**
@@ -114,9 +114,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return true;
     }
 
-    public function isAfil()
+    public function isAliado()
     {
-        if ($this->role !== self::ROLE_AFIL) {
+        if ($this->role !== self::ROLE_ALIADO) {
             return false;
         }
 

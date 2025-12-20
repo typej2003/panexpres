@@ -175,6 +175,22 @@
                             </div>
                             @enderror
                         </div>
+                        @if(auth()->user()->role=='root' || auth()->user()->role=='admin')
+                        <div class="form-group">
+                            <label for="area_id">Aliados</label>
+                            <select wire:model.defer="state.user_id" class="form-control @error('user_id') is-invalid @enderror" id="user_id">
+                                <option value="0">Seleccione una opción</option>
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('user_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        @endif
                         
                         <div class="form-group">
                             <label for="name">Nombre</label>
@@ -209,8 +225,6 @@
                                         document.querySelector('#keyword').value= keyword
                                     
                                     })
-                                    
-                                    
                                 })
                             </script>
                         </div>

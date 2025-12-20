@@ -494,7 +494,7 @@
             
           @endif
 
-          @if(auth()->user()->role == 'afiliado')
+          @if(auth()->user()->role == 'aliado')
             <li class="nav-item">
               <a href="{{ route('listComercios', auth()->user()->id) }}" class="nav-link {{ request()->is('listComercios') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-comments"></i>

@@ -21,7 +21,7 @@ class Administrator
             || auth()->user()->isRoot()
             || auth()->user()->isUser()
             || auth()->user()->isCliente()
-            || auth()->user()->isAfil()
+            || auth()->user()->isAliado()
             || auth()->user()->isDelivery())) 
         {
             return $next($request);

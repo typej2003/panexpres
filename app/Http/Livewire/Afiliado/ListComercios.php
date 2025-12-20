@@ -70,6 +70,8 @@ class ListComercios extends AdminComponent
 
         $this->user_id = $user_id;
 
+		$validatedData['user_id'] = $this->user_id;
+
 		$this->showEditModal = false;
 
 		$this->dispatchBrowserEvent('show-form');
@@ -85,12 +87,20 @@ class ListComercios extends AdminComponent
 
 	public function createComercio()
 	{
+		
 		$validatedData = Validator::make($this->state, [
 			'area_id'=> 'required|not_in:0',
 			'name' => 'required',
 			'cellphonecontact' => 'nullable',
-			'horario' => 'required',
+			'dominio' => 'nullable',
+			'user_id' => 'nullable',
+			// 'horario' => 'required',
 		])->validate();
+
+		if(auth()->user()->role=='aliado' )
+		{
+			$validatedData['user_id'] = auth()->user()->id;
+		}
 
 		if ($this->photo) {
 			// $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
@@ -109,7 +119,8 @@ class ListComercios extends AdminComponent
 
 		// resize image
 
-        $validatedData['user_id'] = $this->user_id;
+
+		// $validatedData['user_id'] = $this->user_id;
 
 		$validatedData['keyword'] = $this->state['keyword'];
 
@@ -278,9 +289,11 @@ class ListComercios extends AdminComponent
         $user = User::find($this->user_id);
 
 		$areas = Area::all();
+		$users = User::all();
 		
         return view('livewire.afiliado.list-comercios', [
             'user'  => $user,
+			'users'  => $users,
 			'areas'  => $areas,
         	'comercios' => $comercios,
         ]);
