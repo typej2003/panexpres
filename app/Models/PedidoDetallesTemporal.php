@@ -20,4 +20,9 @@ class PedidoDetallesTemporal extends Model
         'quantity',
         'image',
     ];
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }

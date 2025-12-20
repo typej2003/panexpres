@@ -41,11 +41,18 @@ class ShowProducts extends AdminComponent
     public function sendCard($product_id, $quantity )
     {
         $product = Product::find($product_id);
+
+        if($product->in_offer == '1')
+        {
+            $precio = $product->price_offer;
+        }else{
+            $precio = $product->price1;
+        }
         
         \Cart::add(array(
             'id' => $product->id,
             'name' => $product->name,
-            'price' => $product->price1,
+            'price' => $precio,
             'quantity' => $quantity,
             'attributes' => array(
                 'image' => $product->image1_url,

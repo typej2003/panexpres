@@ -57,7 +57,13 @@ class BioPago extends Component
 		$this->pedidoTemporal = PedidoTemporal::where('nropedido', $this->nropedido)->first();
 		if($this->pedidoTemporal)
 		{
-			$this->amount = $this->convertirDolar_a_Bolivar($this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio);
+			if( $this->llevaOfertaCantProductos())
+			{
+				$costoenvio = 0;
+			}else{
+				$costoenvio = $this->pedidoTemporal->costeenvio;
+			}
+			$this->amount = $this->convertirDolar_a_Bolivar($this->pedidoTemporal->coste + $costoenvio);
 			// $this->amount = $this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio;
 			$this->identificationNac = $this->pedidoTemporal->client->identificationNac;
 			$this->identificationNumber = $this->pedidoTemporal->client->identificationNumber;
@@ -79,6 +85,35 @@ class BioPago extends Component
 
     }
 
+	public function llevaOfertaCantProductos()
+	{
+	
+		$detalles = PedidoDetallesTemporal::where('nropedido' , $this->nropedido)->get();
+
+		foreach($detalles as $detalle)
+		{
+			if($detalle->product->in_offer == '1')
+			{
+				if($detalle->product->nroproductdelivery > 0){
+					if (intval($detalle->product->nroproductdelivery) <= intval($detalle->quantity))
+					{
+						return true;
+					}
+					else{
+						return false;
+					}
+				}else{
+					return false;
+				}
+			}
+			else{
+				return false;
+			}		
+		}
+		
+		return false;
+	}
+
 	public function convertirDolar_a_Bolivar($amount)
 	{
 		
@@ -87,7 +122,6 @@ class BioPago extends Component
 			
             $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->where('status', 'activo')->first();
             if(!$tasaValues){
-				dd('no si');
                 $tasa = 1;
             }else{
 				

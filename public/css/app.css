@@ -484,3 +484,7 @@
 .logo-form {
     width: 160px !important;
 }
+
+.tachado {
+    text-decoration: line-through;
+}

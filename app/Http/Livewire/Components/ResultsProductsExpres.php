@@ -63,8 +63,7 @@ class ResultsProductsExpres extends AdminComponent
         $elemento = \Cart::get($product_id);
 
         if($elemento)
-        {
-            
+        {            
             $total = floatval($elemento->quantity) + floatval($this->state['quantity']);
             //dd($quantity);
             \Cart::update($product_id,
@@ -78,11 +77,18 @@ class ResultsProductsExpres extends AdminComponent
             $total = floatval($this->state['quantity']);
 
             $product = Product::find($product_id); 
+
+            if($product->in_offer == '1')
+            {
+                $precio = $product->price_offer;
+            }else{
+                $precio = $product->price1;
+            }
             
             \Cart::add(array(
                 'id' => $product->id,
                 'name' => $product->name,
-                'price' => $product->price1,
+                'price' => $precio,
                 'quantity' => $total,
                 'attributes' => array(
                     'image' => $product->image1_url,

@@ -984,3 +984,7 @@ section[id] {
 .bg-primary {
  background-color: var(--color-principal) !important;   
 }
+
+.tachado {
+    text-decoration: line-through;
+}

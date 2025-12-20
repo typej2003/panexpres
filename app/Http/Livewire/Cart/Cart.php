@@ -14,6 +14,7 @@ use App\Models\PedidoDetallesTemporal;
 use App\Models\PedidoDetalles;
 use App\Http\Controllers\CartController;
 use App\Models\Comercio;
+use App\Models\Product;
 use App\Models\SettingComercio;
 use App\Models\Impuesto;
 use App\Models\Tasa;
@@ -405,6 +406,7 @@ class Cart extends AdminComponent
 
         foreach($contenido as $elemento)
         {
+            $product = Product::find($elemento->id);
 
             $pedido = PedidoDetallesTemporal::create([
                 'pedido_id' => $pedido_id,
