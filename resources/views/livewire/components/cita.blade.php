@@ -5,23 +5,7 @@
 }
     </style>
     <div class="container py-5">
-        @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-check-circle me-2"></i>
-                    <div>
-                        {{ session('success') }}
-                    </div>
-                </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-
-        @if (session()->has('error'))
-            <div class="alert alert-danger shadow-sm">
-                {{ session('error') }}
-            </div>
-        @endif
+        
         <div class="row justify-content-center">
             <div class="col-md-8">
                 
@@ -36,10 +20,21 @@
 
                 <div class="card shadow">
                     <div class="card-body p-4 p-md-5">
-                        @if(session('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('success') }}
+                        @if (session()->has('success'))
+                            <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    <div>
+                                        {{ session('success') }}
+                                    </div>
+                                </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger shadow-sm">
+                                {{ session('error') }}
                             </div>
                         @endif
 
