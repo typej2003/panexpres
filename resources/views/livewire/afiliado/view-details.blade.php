@@ -56,8 +56,15 @@
                         <div class="product-info-card p-4 shadow-sm rounded bg-white border">
                             <h3 class="fw-bold mb-1">{{ $product->name }} </h3>
                             <!-- <a href="#" class="text-muted small d-block mb-3 text-decoration-none">Ver más de este comercio</a> -->
-                            
+                            @if($product->in_offer)
+                            <h2 class="text-success fw-bold mb-4" id="product-price">{{ $product->price_offer }}{{ $currencyValue }}</h2>
+                            @else
                             <h2 class="text-success fw-bold mb-4" id="product-price">{{ $product->price1 }}{{ $currencyValue }}</h2>
+                            @endif
+
+                            @if($product->in_offer)
+                            <del><h5 class="text-success fw-bold mb-4 text-danger" id="product-price">antes: {{ $product->price1 }}{{ $currencyValue }}</h5><del>
+                            @endif
 
                             <div class="row align-items-end mb-4">
                                 <div class="col-sm-5 col-md-4 mb-3 mb-sm-0">

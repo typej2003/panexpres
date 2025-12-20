@@ -84,6 +84,17 @@
             font-size: 0.9rem; text-align: left;
             
         }
+        .card-overlay-text1 {
+            position: absolute; 
+            top: 100px; 
+            transform: translateY(-50%); 
+            left: 45px; 
+            z-index: 5;
+            width: 100%; padding: 10px 15px; color: white;
+            background: rgba(255, 255, 255, 0); border-radius: 5px;
+            font-size: 0.9rem; text-align: left;
+            
+        }
 
         .card-overlay-text h4 { margin: 0 0 5px 0; font-size: 1.1rem; }
 
@@ -563,17 +574,19 @@
                     <div class="card-content">
                         <a class="bg-success" href="/routedetails/{{ $lastProduct->comercio_id }}/{{ $lastProduct->id }}">
                         <div class="card-single-body">
-                            
-                            
                                 <img src="{{ $lastProduct->image1_url }}" alt="{{ $lastProduct->name }} Clon">
-                            
-                        
                         </div>
-                        
+                        @if($lastProduct->in_offer == '1')
+                        <div class="card-overlay-text">
+                            <h4 class="text-white">{{ $lastProduct->name }}</h4>
+                            <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $lastProduct->price_offer }}</span></p>
+                        </div>
+                        @else
                         <div class="card-overlay-text">
                             <h4 class="text-white">{{ $lastProduct->name }}</h4>
                             <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $lastProduct->price1 }}</span></p>
                         </div>
+                        @endif
                         <div class="card-badge-pure">
                             <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                         </div>
@@ -587,16 +600,21 @@
                     <div class="carousel-item-pure">
                         <div class="card-content">
                             <a href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}">
-                            <div class="card-single-body">
-                                
-                                    <img src="{{ $product->image1_url }}" alt="Imagen 1">
-                                
+                            <div class="card-single-body">                                
+                                    <img src="{{ $product->image1_url }}" alt="Imagen 1">                                
                             </div>
                             
+                            @if($product->in_offer == '1')
+                            <div class="card-overlay-text">
+                                <h4 class="text-white">{{ $product->name }}</h4>
+                                <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price_offer }}</span></p>
+                            </div>
+                            @else
                             <div class="card-overlay-text">
                                 <h4 class="text-white">{{ $product->name }}</h4>
                                 <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price1 }}</span></p>
                             </div>
+                            @endif
                             <div class="card-badge-pure">
                                 <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                             </div>
@@ -624,16 +642,21 @@
                 <div class="carousel-item-pure">
                     <div class="card-content">
                         <a href="/routedetails/{{ $firstProduct->comercio_id }}/{{ $firstProduct->id }}">
-                        <div class="card-single-body">
-                            
-                                <img src="{{ $firstProduct->image1_url }}" alt="{{ $firstProduct->name }} Clon">
-                            
+                        <div class="card-single-body">                            
+                                <img src="{{ $firstProduct->image1_url }}" alt="{{ $firstProduct->name }} Clon">                            
                         </div>
                         
+                        @if($product->in_offer == '1')
                         <div class="card-overlay-text">
-                            <h4 class="text-white">{{$firstProduct->name}}</h4>
-                            <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $firstProduct->price1 }}</span></p>
+                            <h4 class="text-white">{{ $product->name }}</h4>
+                            <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price_offer }}</span></p>
                         </div>
+                        @else
+                        <div class="card-overlay-text">
+                            <h4 class="text-white">{{ $product->name }}</h4>
+                            <p class="subtitle"><span class="bg-subtitle">{{$currencyValue}}. {{ $product->price1 }}</span></p>
+                        </div>
+                        @endif
                         <div class="card-badge-pure">
                             <img class="campana" src="img/campanas.png" alt="Icono de Campanas">
                         </div>
