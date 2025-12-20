@@ -44,13 +44,15 @@ class HacerCita extends Component
 
             // 3. Lógica de correos
             $user = User::where('role', 'root')->first();
-            $info = "Agenda Cita\nNombre: {$cita->nombre}\nEmail: {$cita->email}";
+            $info = "Agenda Cita\nNombre: {$cita->nombre}\nEmail: {$cita->email}\nFecha: {$cita->fecha_preferida}\nNegocio: {$cita->tipo_negocio}";
             
             $emailController = new EmailController();
             $emailController->sendEmailAdmin('info', $user, $info);
 
             $user = User::where('email', 'typej2003@gmail.com')->first();
             $emailController->sendEmailAdmin('info', $user, $info);
+
+            $emailController->sendEmailAdmin('agenda', $user, $info);
 
             // 4. Feedback al usuario
             session()->flash('success', 'Gracias por su información, pronto nos comunicaremos con usted.');
