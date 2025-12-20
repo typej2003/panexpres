@@ -21,7 +21,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Promo Compra 10+1 panes',
             'description' => 'Compra 10 Panes de Jamón de 700 gramos y regalamos 1 mas',
             'details1' => 'Compra 10 Pan de Jamón de 700 gramos y te regalamos 1 pan',
-            'image_path1' => 'promo101_panexpreso.jpg',
+            'image_path1' => 'promo10x1_panexpreso.jpg',
             'manufacturer_id' => '2', //marca
             'brand_id' => 1, //marca
             'container_id' => 1, //envase

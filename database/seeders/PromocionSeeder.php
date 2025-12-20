@@ -47,6 +47,29 @@ class PromocionSeeder extends Seeder
             'updated_at' => '2022-05-16 12:20:36'
         ]);
         
+        DB::table('promocions')->insert([   
+            'product_id' => null,
+            'comercio_id' => 1,
+            'title' => 'Pan de Jamón de 700 g',
+            'avatar' => 'banner_rigth_up.jpg',
+            'order' => 1,
+            'bannerside' => 2,
+            'active' => 'active',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('promocions')->insert([   
+            'product_id' => null,
+            'comercio_id' => 1,
+            'title' => 'Pan de Jamón de 700 g',
+            'avatar' => 'banner_rigth_down.jpg',
+            'order' => 1,
+            'bannerside' => 2,
+            'active' => 'active',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
         
     }
 }
