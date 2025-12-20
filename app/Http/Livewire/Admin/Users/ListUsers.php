@@ -155,10 +155,17 @@ class ListUsers extends AdminComponent
     {
 
     	$users = User::query()
-    		->where('name', 'like', '%'.$this->searchTerm.'%')
-    		->orWhere('email', 'like', '%'.$this->searchTerm.'%')
-            ->orderBy($this->sortColumnName, $this->sortDirection)
-            ->paginate(15);
+			// 1. Condición obligatoria: Que el rol NO sea root
+			->where('role', '!=', 'root') 
+			
+			// 2. Agrupamos la búsqueda para que el OR no rompa el filtro del rol
+			->where(function ($query) {
+				$query->where('name', 'like', '%' . $this->searchTerm . '%')
+					->orWhere('email', 'like', '%' . $this->searchTerm . '%');
+			})
+			
+			->orderBy($this->sortColumnName, $this->sortDirection)
+			->paginate(15);
 
         return view('livewire.admin.users.list-users', [
         	'users' => $users,
