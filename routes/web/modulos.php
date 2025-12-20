@@ -11,7 +11,7 @@ use App\Http\Livewire\Components\VendeDesdeAca;
 use App\Http\Livewire\Components\Nosotros;
 
 use App\Http\Livewire\Components\Contacto;
-use App\Http\Livewire\Components\Cita;
+use App\Http\Livewire\Components\HacerCita;
 use App\Http\Livewire\Components\FormularioCita;
 
 use App\Http\Livewire\Components\ShowRecommendedExpres;
