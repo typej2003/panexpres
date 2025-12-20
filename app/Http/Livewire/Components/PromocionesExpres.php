@@ -45,6 +45,7 @@ class PromocionesExpres extends Component
     {
         $promocionFirst= Promocion::query()
         ->where('active', 'active')
+        ->where('bannerside', '1')
         ->orderBy('order', 'asc')
         ->with('product')
         ->first();
@@ -60,6 +61,7 @@ class PromocionesExpres extends Component
 
         $promociones = Promocion::query()
 			->where('active', 'active')
+            ->where('bannerside', '1')
             ->orderBy('order', 'asc')
             ->with('product')
             ->get();
