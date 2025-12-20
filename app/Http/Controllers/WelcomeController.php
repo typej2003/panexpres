@@ -179,9 +179,9 @@ class WelcomeController extends Controller
         \Cookie::queue('contactcellphone', $this->comercio->contactcellphone, $minutes);
         \Cookie::queue('msgcontact', $this->comercio->msgcontact, $minutes);
         
-        $this->contactcellphone = 'Bs';
-        \Cookie::queue('currency', 'Bs', $minutes);
-        $this->currencyValue = 'Bs';
+        $this->contactcellphone = '04141869016';
+        //\Cookie::queue('currency', 'Bs', $minutes);
+        //$this->currencyValue = 'Bs';
         // Fin evaluar currency
 
         return view('welcome', [

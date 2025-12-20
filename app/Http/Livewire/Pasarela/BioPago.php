@@ -12,6 +12,7 @@ use App\Models\PedidoTemporal;
 use App\Models\PedidoDetallesTemporal;
 use App\Models\Transaccion;
 use App\Models\Pagomovil;
+use App\Models\Tasa;
 use Illuminate\Support\Facades\Session;
 use Cart;
 
@@ -32,6 +33,7 @@ class BioPago extends Component
     public $cellphone = '';
 
 	public $pedidoTemporal; 
+	public $comercio_id = 1;
     
     // Método para manejar la persistencia del formulario después del error
     public $showForm = true; // No lo usamos para el paso, pero sí para la visibilidad interna si es necesario.
@@ -50,15 +52,18 @@ class BioPago extends Component
         $this->nropedido = $request->input('nropedido');
 
         $this->comercioId = $request->input('comercioId');
+		$this->comercio_id = $this->comercioId;
 
 		$this->pedidoTemporal = PedidoTemporal::where('nropedido', $this->nropedido)->first();
 		if($this->pedidoTemporal)
 		{
-			$this->amount = $this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio;
+			$this->amount = $this->convertirDolar_a_Bolivar($this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio);
+			// $this->amount = $this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio;
 			$this->identificationNac = $this->pedidoTemporal->client->identificationNac;
 			$this->identificationNumber = $this->pedidoTemporal->client->identificationNumber;
 			$this->email  = $this->pedidoTemporal->client->email;
 			$this->currency = $this->pedidoTemporal->getMonedaAttributeN();
+			
 			$this->reference = $this->pedidoTemporal->nropedido;
 			$this->rifLetter  = '';
 			$this->rifNumber = '';
@@ -73,6 +78,33 @@ class BioPago extends Component
 		}
 
     }
+
+	public function convertirDolar_a_Bolivar($amount)
+	{
+		
+		if(request()->cookie('currency') == '$')
+        {
+			
+            $tasaValues = Tasa::where('comercio_id', $this->comercio_id)->where('status', 'activo')->first();
+            if(!$tasaValues){
+				dd('no si');
+                $tasa = 1;
+            }else{
+				
+                $tasa = $tasaValues->tasa;
+				
+            }
+			
+            $subtotal = round($amount*$tasa, 2);
+
+			return $subtotal;
+
+        }
+		if(request()->cookie('currency') == 'Bs')
+		{
+            return $amount;
+        }
+	}
 
     public function submitForm()
     {

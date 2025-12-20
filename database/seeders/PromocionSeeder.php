@@ -15,7 +15,7 @@ class PromocionSeeder extends Seeder
     public function run()
     {
         DB::table('promocions')->insert([   
-            'product_id' => null,
+            'product_id' => 1,
             'comercio_id' => 1,
             'title' => 'Promo Compra 10+1 panes',
             'avatar' => 'banner_promo10+1_panexpreso.jpg',
@@ -26,7 +26,7 @@ class PromocionSeeder extends Seeder
         ]);
 
         DB::table('promocions')->insert([   
-            'product_id' => null,
+            'product_id' => 2,
             'comercio_id' => 1,
             'title' => 'Combo Pan de Jamón + Refresco 1.5 l',
             'avatar' => 'combopandejamon+refresco_panexpreso.jpg',
@@ -37,7 +37,7 @@ class PromocionSeeder extends Seeder
         ]);
 
         DB::table('promocions')->insert([   
-            'product_id' => null,
+            'product_id' => 3,
             'comercio_id' => 1,
             'title' => 'Pan de Jamón de 700 g',
             'avatar' => 'banner_pandejamon_panexpreso.jpg',

@@ -4,7 +4,7 @@
         <li class="nav-item dropdown d-flex justify-content-between align-items-center">
             <div class="currency mx-1">
                 <select class="form-control" wire:change="changeCurrency($event.target.value)" style="cursor:pointer;">
-                    <option value="Bs" {{ ($currencyValue === 'Bs') ? 'selected' : '' }}>Bs</option>
+                    <!-- <option value="Bs" {{ ($currencyValue === 'Bs') ? 'selected' : '' }}>Bs</option> -->
                     <option value="$" {{ ($currencyValue === '$') ? 'selected' : '' }}>$</option>
                 </select>
             </div>            
