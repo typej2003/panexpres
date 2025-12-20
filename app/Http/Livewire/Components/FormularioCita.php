@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Components;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Cita; // Importar el Modelo Cita
+use App\Models\User;
 use App\Http\Livewire\Notificacion\EmailController;
 
 class FormularioCita extends Component

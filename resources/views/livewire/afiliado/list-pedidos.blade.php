@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Pedidos Solicitados</h1>
+                    <h1 class="m-0 text-primary">Pedidos Solicitados</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -60,16 +60,16 @@
                                         <th scope="row">{{ $pedidos->firstItem() + $index }}</th>
                                         <td>
                                             <select class="form-control px-3 {{ $this->getClaseConfirmed($pedido->confirmed) }}" wire:change="changeConfirmation({{ $pedido }}, $event.target.value)">
-                                                <option value="0" {{ ($pedido->confirmed === 0) ? 'selected' : '' }}>NO CONFIRMADO</option>
-                                                <option value="1" {{ ($pedido->confirmed === 1) ? 'selected' : '' }}>CONFIRMADO</option>
-                                                <option value="2" {{ ($pedido->confirmed === 2) ? 'selected' : '' }}>CONFIRMADO FALLIDA</option>
+                                                <option value="0" {{ ($pedido->confirmed == '0') ? 'selected' : '' }}>NO CONFIRMADO</option>
+                                                <option value="1" {{ ($pedido->confirmed == '1') ? 'selected' : '' }}>CONFIRMADO</option>
+                                                <option value="2" {{ ($pedido->confirmed == '2') ? 'selected' : '' }}>CONFIRMADO FALLIDA</option>
                                             </select>
                                         </td>
                                         <td>
                                             <select class="form-control px-3 {{ $this->getClaseStatus($pedido->status) }}" wire:change="changeEnvio({{ $pedido }}, $event.target.value)">
-                                                <option value="0" {{ ($pedido->status === 0) ? 'selected' : '' }}>EN ESPERA</option>
-                                                <option value="1" {{ ($pedido->status === 1) ? 'selected' : '' }}>EN CAMINO</option>
-                                                <option value="2" {{ ($pedido->status === 2) ? 'selected' : '' }}>ENTREGADO</option>
+                                                <option value="0" {{ ($pedido->status == '0') ? 'selected' : '' }}>EN ESPERA</option>
+                                                <option value="1" {{ ($pedido->status == '1') ? 'selected' : '' }}>EN CAMINO</option>
+                                                <option value="2" {{ ($pedido->status == '2') ? 'selected' : '' }}>ENTREGADO</option>
                                             </select>
                                         </td>
                                         <td><a href="/pasarela/{{ $pedido->pedido }}/{{ $pedido->comercio_id }}">{{ $pedido->nropedido }}</a></td>

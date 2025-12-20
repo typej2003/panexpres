@@ -57,11 +57,11 @@ class ListPedidos extends AdminComponent
 				break;
 			case '1':
 				$confirmed = 'Confirmado';
-				$this->sendNotificacion('confirmacionPago', $pedido);
+				//$this->sendNotificacion('confirmacionPago', $pedido);
 				break;
 			case '2':
 				$confirmed = 'Confirmado Fallida';
-				$this->sendNotificacion('confirmacionFallida', $pedido);
+				//$this->sendNotificacion('confirmacionFallida', $pedido);
 				break;
 		}
 
@@ -77,8 +77,9 @@ class ListPedidos extends AdminComponent
 			],
 		])->validate();
 
+		
 		$pedido->update(['status' => $status]);
-
+		
 		switch ($status) {
 			case '0':
 				$status = 'En Espera';
@@ -89,7 +90,7 @@ class ListPedidos extends AdminComponent
 				break;
 			case '2':
 				$status = 'Entregado';
-				$this->sendNotificacion('confirmacionEntregado', $pedido);
+				//$this->sendNotificacion('confirmacionEntregado', $pedido);
 				break;
 		}
 
@@ -100,13 +101,13 @@ class ListPedidos extends AdminComponent
     {
         switch ($value) {
             case '0':
-                return 'bg-warning';
+                return ' bg-warning ';
                 break;
             case '1':
-                return 'bg-success';
+                return ' bg-success ';
                 break;
             case '2':
-                return 'bg-danger';
+                return ' bg-danger ';
                 break;
         }
     }
@@ -115,13 +116,13 @@ class ListPedidos extends AdminComponent
     {
         switch ($value) {
             case '0':
-                return 'bg-danger';
+                return ' bg-danger ';
                 break;
             case '1':
-                return 'bg-warning';
+                return ' bg-warning ';
                 break;
             case '2':
-                return 'bg-success';
+                return ' bg-success ';
                 break;
         }
     }
