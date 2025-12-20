@@ -49,8 +49,8 @@ class Cita extends Component
             $emailController = new EmailController();
             $emailController->sendEmailAdmin('info', $user, $info);
 
-            $user = User::where('email', 'typej2003@gmail.com')->first();
-            $emailController->sendEmailAdmin('info', $user, $info);
+            // $user = User::where('email', 'typej2003@gmail.com')->first();
+            // $emailController->sendEmailAdmin('info', $user, $info);
 
             // 4. Feedback al usuario
             session()->flash('success', 'Gracias por su información, pronto nos comunicaremos con usted.');
