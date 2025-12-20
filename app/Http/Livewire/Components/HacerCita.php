@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Livewire\Notificacion\EmailController;
 
 use Livewire\Component;
-use App\Models\Cita as CitaModel; // Asegúrate de tener el modelo
+use App\Models\Cita; // Asegúrate de tener el modelo
 use App\Models\User;
 
 class HacerCita extends Component
@@ -34,7 +34,7 @@ class HacerCita extends Component
         try {
             // 2. Guardar en BD
             
-            $cita = CitaModel::create([
+            $cita = Cita::create([
                 'nombre' => $this->nombre,
                 'email' => $this->email,
                 'telefono' => $this->telefono,
@@ -65,6 +65,7 @@ class HacerCita extends Component
 
     public function render()
     {
+        dd('hola');
         return view('livewire.components.hacer-cita');
     }
 }

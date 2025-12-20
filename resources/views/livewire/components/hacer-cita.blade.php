@@ -1,8 +1,8 @@
 <div>
     <style>
         .logo-form {
-    width: 24rem !important;
-}
+                width: 24rem !important;
+            }
     </style>
     <div class="container py-5">
         
