@@ -1,4 +1,4 @@
-contacto<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -35,18 +35,9 @@ contacto<!DOCTYPE html>
         <div class="my-2"></div>    
         <section class="container-fluid">
             @livewire('components.aliados')
-            <div class="my-2"></div>                    
-            @if($words == '')    
-                <div class="my-2"></div>
-                @livewire('components.show-products-expres')
-            @endif
-            
-            @if($words != '' )   
-                @livewire('components.results-products-expres', [
-                    'comercioId' => $comercio_id, 
-                    'parametro' => $words,
-                    ])
-            @endif
+            <div class="my-2"></div>                  
+          
+          
         </section> 
 
         @livewire('layouts.footer-expres')
