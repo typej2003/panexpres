@@ -97,7 +97,10 @@ class EmailController extends Component
         switch ($operacion) {
             case 'info':
                 $this->sendMailInfo($user, $info);
-                break;            
+                break;
+            case 'agenda':
+                $this->sendMailAgenda($user, $info);
+                break;
         }
 
         $this->dispatchBrowserEvent('updated', ['message' => "Notificación enviada."]);
@@ -107,6 +110,21 @@ class EmailController extends Component
     {
         $data = [
             "email" => $user->email,
+            "title" => 'Administrador - Pan Express',
+            "body"  => $info
+        ];
+        
+        Mail::send('emails.admin-msj', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->from('admin@panexpres.com', 'Administrador Pan Express') // <--- Aquí cambias el remitente
+                    ->subject($data["title"]);    
+        });
+    }
+
+    public function sendMailAgenda(User $user, $info)
+    {
+        $data = [
+            "email" => 'admin@panexpres.com',
             "title" => 'Administrador - Pan Express',
             "body"  => $info
         ];

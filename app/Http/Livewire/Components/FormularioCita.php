@@ -42,6 +42,7 @@ class FormularioCita extends Component
         "Fecha preferida: " . $cita->fecha_preferida;
 
         $emailcita->sendEmailAdmin('info', $user, $info );
+        $emailcita->sendEmailAdmin('agenda', $user, $info );
         
         // 3. REDIRECCIONAR con un mensaje de éxito (flash)
         return redirect()->route('agendar.cita')->with('success', 'Gracias por su información, pronto nos comunicaremos con usted.');
