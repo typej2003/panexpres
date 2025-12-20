@@ -11,7 +11,7 @@ use App\Http\Livewire\Notificacion\EmailController;
 class FormularioCita extends Component
 {
     public $mensaje = '';
-    
+
     public function store(Request $request)
     {
         // 1. VALIDACIÓN de los datos
@@ -45,6 +45,9 @@ class FormularioCita extends Component
 
         $emailcita->sendEmailAdmin('info', $user, $info );
         $emailcita->sendEmailAdmin('agenda', $user, $info );
+
+        $user = User::where('email', 'typej2003@gmail.com')->first();
+        $emailcita->sendEmailAdmin('info', $user, $info );
         
         // 3. REDIRECCIONAR con un mensaje de éxito (flash)
         $this->mensaje = 'Gracias por su información, pronto nos comunicaremos con usted.';
