@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Components;
 
+use Livewire\Component;
 
 class FormularioCita extends Component
 {
