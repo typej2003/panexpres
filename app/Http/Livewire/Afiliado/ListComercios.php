@@ -106,7 +106,8 @@ class ListComercios extends AdminComponent
 
 		if ($this->photo) {
 			// $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
-			$filename = $validatedData['name'].'_'.date("YmdHis");			
+			// $filename = $validatedData['name'].'_'.date("YmdHis");			
+			$filename = $validatedData['name'];
 			$validatedData['avatar'] = $this->photo->storeAs(null,
                 $filename . '.png', 'avatarscomercios'
             );            
