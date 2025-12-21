@@ -64,6 +64,7 @@ class BioPago extends Component
 				$costoenvio = $this->pedidoTemporal->costeenvio;
 			}
 			$this->amount = $this->convertirDolar_a_Bolivar($this->pedidoTemporal->coste + $costoenvio);
+			$this->pedidoTemporal->update(['costeBs' => $this->amount]);
 
 			$this->pedidoTemporal->update(['costeBs' => $this->amount]);
 			// $this->amount = $this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio;
@@ -72,7 +73,7 @@ class BioPago extends Component
 			$this->email  = $this->pedidoTemporal->client->email;
 			$this->currency = $this->pedidoTemporal->getMonedaAttributeN();
 			
-			$this->reference = $this->pedidoTemporal->nropedido;
+			$this->reference = $this->pedidoTemporal->nropedido;			
 			$this->rifLetter  = '';
 			$this->rifNumber = '';
 			$this->title = 'Compra por Internet';
