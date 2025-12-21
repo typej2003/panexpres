@@ -322,6 +322,7 @@ class BioPago extends Component
 				'metodo' => 'BioPagoBdv',
 				'currency' => 'Bs',
 				'amount' => $datos->amount,
+				'amountUsd' => $pedidotemporal->coste,
           	]);
     
            	$pedidotemporal->update([

@@ -28,6 +28,7 @@ class Pedido extends Model
         'title',
         'description',
         'coste',
+        'costeBs',
         'costeenvio',
         'currency',
         'metodo',

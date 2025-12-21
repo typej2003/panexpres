@@ -39,6 +39,7 @@ class Transaccion extends Model
         'fechaPago',
         'fecha',
         'amount',
+        'amountUsd',
         'status',
     ];
 

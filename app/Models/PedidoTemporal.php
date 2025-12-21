@@ -18,6 +18,7 @@ class PedidoTemporal extends Model
         'title',
         'description',
         'coste',
+        'costeBs',
         'costeenvio',
         'currency',
         'metodo',
