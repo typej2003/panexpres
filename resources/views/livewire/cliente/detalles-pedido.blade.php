@@ -43,7 +43,7 @@
                                 <span>Bs: </span>
                             </div>
                             <div class="col-lg-6">
-                                <span>{{ $pedido->costeBs }} $</span>
+                                <span>{{ $pedido->costeBs }} Bs</span>
                             </div>
                         </div>
                         <div class="row">
