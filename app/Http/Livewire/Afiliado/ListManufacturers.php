@@ -83,7 +83,7 @@ class ListManufacturers extends AdminComponent
             // Opcional: Limpiar el nombre para que sea seguro en URLs (quita espacios y acentos)
             // $safeName = \Illuminate\Support\Str::slug(pathinfo($originalName, PATHINFO_FILENAME));
             $extension = $this->photo->getClientOriginalExtension();
-            $finalFilename = $safeName . '.' . $extension;
+            $finalFilename = $originalName;
 
 			$validatedData['avatar'] = $this->photo->storeAs(null,
                 $finalFilename, 'avatarsmanufacturers'
