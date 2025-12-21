@@ -32,7 +32,7 @@
                             <i class="fas fa-map-marker-alt me-1 text-danger"></i> {{ $aliado->address }}
                         </p>
 
-                        <div class="pt-3 border-top">
+                        <div class="pt-3 border-top d-none">
                             <a href="https://wa.me/{{ preg_replace('/\D/', '', $aliado->contactcellphone) }}" 
                                target="_blank" 
                                class="btn btn-outline-success w-100 rounded-pill">

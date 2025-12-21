@@ -303,7 +303,7 @@
         /* MEJORA APLICADA A LA IMAGEN DEL PRODUCTO */
         .imgProduct {
             width: 100%; 
-            min-height: 250px; 
+            min-height: 150px; 
             object-fit: cover; 
             border-radius: 8px; 
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15); 

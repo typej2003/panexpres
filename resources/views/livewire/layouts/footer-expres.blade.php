@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <div class="footer-col">
+            <div class="footer-col d-none d-md-block">
                 <h4 class="footer-title">Acerca de</h4>
                 <ul>
                     <li>
@@ -32,15 +32,7 @@
                                 <i class="fab fa-whatsapp whatsapp-icon"></i>
                                 Contacto
                             </a>
-                        
-                        <!-- <form action="{{ route('contacto') }}" method="get" id="contacto">
-                            <input type="hidden" name="contactcellphone" value="04141869016">
-                            <input type="hidden" name="in_cellphonecontact" value="1">
-                            <input type="hidden" name="msgcontact" value="msgcontact_value"> 
-                            <input type="hidden" name="in_marcasproductos" value="1">
-                            <input type="hidden" name="words" value="">
-                            <a class="menu-item" onclick="sendFormLink('contacto')" style="cursor:pointer;">Contactos</a>
-                        </form> -->
+                            
                     </li>
                     <li>
                         <form action="{{ route('politicadeprivacidad') }}" method="get" id="politicadeprivacidad">
@@ -56,7 +48,7 @@
                 </ul>
             </div>
 
-            <div class="footer-col">
+            <div class="footer-col d-none d-md-block">
                 <h4 class="footer-title">Categorías</h4>
                 <ul>
                     <li>
@@ -98,7 +90,7 @@
                 </ul>
             </div>
 
-            <div class="footer-col">
+            <div class="footer-col d-none d-md-block">
                 <h4 class="footer-title">Ayuda</h4>
                 <ul>
                     <li>
@@ -110,7 +102,7 @@
                 </ul>
             </div>
             @guest
-            <div class="footer-col">
+            <div class="footer-col d-none d-md-block">
                 <h4 class="footer-title">Mi Cuenta</h4>
                 <ul>
                     <li><a href="/register">Registrarse</a></li>
