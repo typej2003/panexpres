@@ -169,8 +169,9 @@ class NewProductRE extends AdminComponent
 
 		if ($this->photo1) {
             // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+            $originalName = $this->photo1->getClientOriginalName();
 			$validatedData['image_path1'] = $this->photo1->storeAs(null,
-                $filename . '-1.png', 'avatarsproducts'
+                $originalName, 'avatarsproducts'
             );     
 		}
         if ($this->photo2) {
@@ -271,11 +272,12 @@ class NewProductRE extends AdminComponent
 
         if ($this->photo1) {
             // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+            $originalName = $this->photo1->getClientOriginalName();
 			if (Storage::disk('avatarsproducts')->exists($this->product->image_path1)) {
 				Storage::disk('avatarsproducts')->delete($this->product->image_path1);
 			}
 			$validatedData['image_path1'] = $this->photo1->storeAs(null,
-                $filename . '-1.png', 'avatarsproducts'
+                $originalName, 'avatarsproducts'
             );     
 		}
 
