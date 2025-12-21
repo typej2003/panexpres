@@ -200,13 +200,9 @@ class ListPedidosCliente extends AdminComponent
 		// Se mantiene tu lógica original para Pedido
 		$pedidos = Pedido::query()
 			->where('user_id', auth()->user()->id)
-			->Where('reference', 'like', '%'.$this->searchTerm.'%')
+			
 			->orderBy($this->sortColumnName, $this->sortDirection)
-			// ->paginate(15);
-			->get();
-
-			dd($pedidos);
-		
+			->paginate(15);
 		
 		$pedidoTemporal = PedidoTemporal::query()
 			->where('user_id', auth()->user()->id)
