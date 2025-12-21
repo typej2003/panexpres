@@ -43,9 +43,16 @@ class ListPromociones extends AdminComponent
 	public function updatedComercio($value)
 	{
 		$this->comercio_id = $value;
-
-		$this->products = Product::where('comercio_id', $value)->get();
-		$this->product = $this->products->first()->id ?? null;
+		if($value !== '0')
+		{
+			if(Comercio::find($value)->name == 'PanExpres'){
+				$product = 0;
+			
+			}
+			$this->products = Product::where('comercio_id', $value)->get();
+			$this->product = $this->products->first()->id ?? null;
+		}
+		
 	}
 
     public function mount()
