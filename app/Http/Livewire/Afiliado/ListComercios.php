@@ -112,9 +112,10 @@ class ListComercios extends AdminComponent
                 $filename . '.png', 'avatarscomercios'
             );            
 		}
+		
 
 		if ($this->banner) {
-			$filename = $validatedData['name'].'_banner_'.date("YmdHis");			
+			$filename = $validatedData['name'];			
 			$validatedData['banner'] = $this->photo->storeAs(null,
                 $filename . '.png', 'bannerscomercios'
             );            

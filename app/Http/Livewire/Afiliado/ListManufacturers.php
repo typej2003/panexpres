@@ -75,7 +75,19 @@ class ListManufacturers extends AdminComponent
 		])->validate();
 
         if ($this->photo) {
-			$validatedData['avatar'] = $this->photo->store('/', 'avatarsmanufacturers');
+			// $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+
+			// $filename = $validatedData['name'].'_'.date("YmdHis");			
+            $originalName = $this->photo->getClientOriginalName();
+            
+            // Opcional: Limpiar el nombre para que sea seguro en URLs (quita espacios y acentos)
+            // $safeName = \Illuminate\Support\Str::slug(pathinfo($originalName, PATHINFO_FILENAME));
+            $extension = $this->photo->getClientOriginalExtension();
+            $finalFilename = $safeName . '.' . $extension;
+
+			$validatedData['avatar'] = $this->photo->storeAs(null,
+                $finalFilename, 'avatarsmanufacturers'
+            );            
 		}
         
         $validatedData['user_id'] = $this->user_id;
@@ -117,8 +129,29 @@ class ListManufacturers extends AdminComponent
 		])->validate();
 
         if ($this->photo) {
-			$validatedData['avatar'] = $this->photo->store('/', 'avatarsmanufacturers');
-		}
+            // 1. Obtener el nombre original del archivo (ejemplo: "mi_logo.png")
+            $originalName = $this->photo->getClientOriginalName();
+            
+            // Opcional: Limpiar el nombre para que sea seguro en URLs (quita espacios y acentos)
+            // $safeName = \Illuminate\Support\Str::slug(pathinfo($originalName, PATHINFO_FILENAME));
+            $extension = $this->photo->getClientOriginalExtension();
+            $finalFilename = $originalName;
+
+            // 2. ELIMINAR IMAGEN ANTERIOR
+            // Usamos $this->manufacturer->avatar (o el campo donde guardas la ruta)
+            if ($this->manufacturer && $this->manufacturer->avatar) {
+                if (Storage::disk('avatarsmanufacturers')->exists($this->manufacturer->avatar)) {
+                    Storage::disk('avatarsmanufacturers')->delete($this->manufacturer->avatar);
+                }
+            }
+
+            // 3. Guardar con el nombre original procesado
+            $validatedData['avatar'] = $this->photo->storeAs(
+                null, 
+                $finalFilename, 
+                'avatarsmanufacturers'
+            );            
+        }
 
 		$this->manufacturer->update($validatedData);
 
