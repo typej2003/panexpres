@@ -205,8 +205,8 @@ class ListPedidosCliente extends AdminComponent
 			->paginate(15);
 		
 		$pedidoTemporal = PedidoTemporal::query()
-			->where('user_id', auth()->user()->id)
-			->orWhere('reference', 'like', '%'.$this->searchTerm.'%')->latest()->first();
+			->where('user_id', auth()->user()->id)			
+			->latest()->first();
 
 		return view('livewire.cliente.list-pedidos-cliente', [
         	'pedidos' => $pedidos,
