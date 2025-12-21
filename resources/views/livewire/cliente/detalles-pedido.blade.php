@@ -32,10 +32,26 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <span>Monto: </span>
+                                <span>Usd: </span>
                             </div>
                             <div class="col-lg-6">
-                                <span>{{ $pedido->coste }} {{ $pedido->moneda }}</span>
+                                <span>{{ $pedido->coste }} $</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <span>Bs: </span>
+                            </div>
+                            <div class="col-lg-6">
+                                <span>{{ $pedido->costeBs }} $</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <span>Costo Envio: </span>
+                            </div>
+                            <div class="col-lg-6">
+                                <span>{{ $pedido->costeEnvio }} $</span>
                             </div>
                         </div>
                         <div class="row">
