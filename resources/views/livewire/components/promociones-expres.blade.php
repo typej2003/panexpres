@@ -112,7 +112,7 @@
                             </a>
                             <div class="promo-overlay">
                                 @if($promocion->product->in_offer == '1')
-                                    {{$currencyValue}}. {{ $promocion->product->price_offer }} <del>antes {{ $promocion->product->price1 }}</del>
+                                    {{$currencyValue}}. {{ $promocion->product->price_offer }} <span class="tachado">antes {{ $promocion->product->price1 }}</span>
                                 @else
                                     {{$currencyValue}}. {{ $promocion->product->price1 }}
                                 @endif
