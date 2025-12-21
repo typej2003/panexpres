@@ -1,359 +1,243 @@
-<div>
-    <style>
+<style>
+    /* ✅ Ajustes de Estructura */
+    .container-promociones {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .col-promociones { width: 100%; }
+    .col-promociones.col2 { display: none; }
+
+    /* ✅ Carrusel Proporción 16:9 */
+    .container-carouselpromo-full {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 */
+        overflow: hidden;
+        position: relative;
+        background-color: transparent;
+    }
+
     .carouselpromo-inner {
-        display: flex !important; /* Fuerza el flujo horizontal */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
         flex-wrap: nowrap !important;
         align-items: stretch;
+        will-change: transform;
     }
 
     .carouselpromo-item {
-        flex: 0 0 auto; /* Evita que los items se encojan */
-        width: 100%; 
+        flex: 0 0 100%; /* Cada item ocupa el 100% exacto */
+        width: 100%;
+        height: 100%;
+        position: relative;
     }
-    del {
-        font-size: 12px !important;
 
+    .carouselpromo-item img {
+        min-height: 210px;
+        width: 100%;
+        object-fit: cover; /* Asegura que la imagen llene el espacio */
+    }
+
+    /* ✅ Div Flotante (Overlay) - Se mantiene tu estilo */
+    .promo-overlay {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        background-color: #ff572f;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 50px;
+        z-index: 5;
+    }
+
+    del { font-size: 12px !important; }
+
+    /* ✅ Controles e Indicadores */
+    .carouselpromo-control {
+        position: absolute; top: 0; bottom: 0; z-index: 10; display: flex;
+        align-items: center; justify-content: center; width: 8%; color: #fff;
+        opacity: 0.6; background: none; border: none; cursor: pointer;
+        font-size: 2rem;
+    }
+    .carouselpromo-control:hover { opacity: 1; }
+    .carouselpromo-control-prev { left: 0; }
+    .carouselpromo-control-next { right: 0; }
+
+    .carouselpromo-indicators {
+        position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 15;
+        display: flex; padding: 0; list-style: none;
+    }
+    .carouselpromo-indicators button {
+        width: 10px; height: 10px; margin: 0 5px; background-color: #fff;
+        border: 1px solid #fff; border-radius: 50%; cursor: pointer;
+        opacity: 0.5; transition: opacity 0.6s ease;
+    }
+    .carouselpromo-indicators button.active { opacity: 1; }
+
+    /* ✅ Media Query Escritorio */
+    @media (min-width: 768px) {
+        .container-promociones { flex-direction: row; gap: 5px; height: 50vh; }
+        .col-promociones.col1 { flex-basis: 60%; height: 100%; }
+        .col-promociones.col2 { display: flex; flex-direction: column; flex-basis: 40%; height: 100%; }
+        .container-carouselpromo-full { height: 100%; padding-bottom: 0; }
+        .fila-promo { flex-grow: 1; height: 50vh; position: relative; overflow: hidden; }
+        .fila-promo img { height: 100%; width: 100%; object-fit: cover; }
+
+        .carouselpromo-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover; /* Asegura que la imagen llene el espacio */
+        }
     }
 </style>
-    <style>
-        /* ----------------------------------------------------------- */
-        /* ✅ AJUSTE GLOBAL DE ROBUSTEZ */
-        /* ----------------------------------------------------------- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
 
-        /* ----------------------------------------------------------- */
-        /* ✅ SECCIÓN 2: CONTENEDOR PROMOCIONES */
-        /* ----------------------------------------------------------- */
-        .container-promociones {
-            width: 100%; 
-            /* ALTURA ELIMINADA para que sea determinada por el contenido */
-            display: flex;
-            flex-direction: column; 
-            gap: 0;
-        }
-
-        /* ----------------------------------------------------------- */
-        /* COLUMNAS BASE (MÓVIL) */
-        /* ----------------------------------------------------------- */
-        .col-promociones {
-            /* ALTURA ELIMINADA O AUTOMÁTICA */
-            width: 100%; 
-        }
-        
-        .col-promociones.col1 {
-            flex-basis: 100%; 
-            flex-grow: 1; 
-            padding: 0; 
-        }
-
-        .col-promociones.col2 {
-            display: none; 
-        }
-        
-        /* ----------------------------------------------------------- */
-        /* ✅ CARRUSEL PROMO - Nueva técnica de Aspect Ratio (16:9) */
-        /* ----------------------------------------------------------- */
-        .container-carouselpromo-full {
-            width: 100%; 
-            /* Altura 0 y padding para mantener proporción 16:9 (o el que desees) */
-            height: 0;
-            padding-bottom: 56.25%; /* (9 / 16 * 100%) = Proporción 16:9 */
-            
-            overflow: hidden; 
-            position: relative;
-            background-color: transparent; 
-        }
-
-        .carouselpromo-inner {
-            /* Ocupa el 100% de la altura y ancho definido por el padding */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            flex-shrink: 0; 
-        }
-
-        .carouselpromo-item {
-            flex-shrink: 0; 
-            height: 100%;
-            position: relative; 
-            padding: 0px; 
-        }
-        
-        .carouselpromo-item img {
-            height: 100%; 
-            width: 100%; 
-            /* ⭐ CORRECCIÓN CLAVE: Asegura que la imagen se vea COMPLETA (sin recorte) y proporcional ⭐ */
-            
-        }
-        
-        /* ----------------------------------------------------------- */
-        /* ⭐ DIV FLOTANTE PARA PRECIO/TEXTO ⭐ */
-        /* Se mantiene position: absolute; para flotar dentro del item */
-        /* ----------------------------------------------------------- */
-        .promo-overlay {
-            position: absolute;
-            top: 20px;  
-            /* bottom: 20px; */
-            right: 20px; 
-            /*left: 20px;*/
-            padding: 10px 15px;
-            background-color: #ff572f; 
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 50px;
-            z-index: 5; 
-        }
-        /* ----------------------------------------------------------- */
-
-        /* [ ... Estilos de Controles e Indicadores se mantienen ... ] */
-        .carouselpromo-control {
-            position: absolute; top: 0; bottom: 0; z-index: 10; display: flex;
-            align-items: center; justify-content: center; width: 8%; color: #fff;
-            opacity: 0.6; background: none; border: none; cursor: pointer;
-            font-size: 2rem;
-        }
-        .carouselpromo-control:hover { opacity: 1; }
-        .carouselpromo-control-prev { left: 0; }
-        .carouselpromo-control-next { right: 0; }
-        
-        .carouselpromo-indicators {
-            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 15;
-            display: flex; padding: 0; list-style: none;
-        }
-        .carouselpromo-indicators button {
-            width: 10px; height: 10px; margin: 0 5px; background-color: #fff;
-            border: 1px solid #fff; border-radius: 50%; cursor: pointer;
-            opacity: 0.5; transition: opacity 0.6s ease;
-        }
-        .carouselpromo-indicators button.active { opacity: 1; }
-
-        /* ----------------------------------------------------------- */
-        /* FILAS INTERNAS DE COLUMNA 2 */
-        /* La columna 2 ahora debe definir su altura por media query */
-        /* ----------------------------------------------------------- */
-        .fila-promo {
-            flex-grow: 1; 
-            padding: 0; 
-            overflow: hidden; 
-            text-indent: 0; 
-            height: 50vh; /* Mantener la altura vh aquí para escritorio, pero en móvil no se usa */
-            position: relative; 
-        }
-        
-        .fila-promo img {
-            height: 100%;
-            width: 100%;
-        }
-        
-        /* ----------------------------------------------------------- */
-        /* ✅ MEDIA QUERY PARA ESCRITORIO (a partir de 768px) */
-        /* ----------------------------------------------------------- */
-        @media (min-width: 768px) {
-            
-            .container-promociones {
-                flex-direction: row; 
-                gap: 5px; 
-                height: 50vh; 
-
-            }
-            
-            .col-promociones.col1 {
-                flex-basis: 60%; 
-                height: 100%;
-            }
-            
-            /* Restablecer el carrusel a altura normal en escritorio (60vh) */
-            .container-carouselpromo-full {
-                height: 100%;
-                padding-bottom: 0;
-            }
-            
-            .carouselpromo-inner {
-                position: relative; /* Restablecer para que fluya normalmente */
-            }
-            
-            .col-promociones.col2 {
-                display: flex; 
-                flex-direction: column; 
-                flex-basis: 40%; 
-                height: 100%;
-            }
-            
-            /* En escritorio, se estira la imagen si es necesario */
-            .carouselpromo-item img {
-                width: 100%;
-                height: 100%;
-            }
-
-            @media (max-width: 768px) {
-                
-            }
-
-        }
-        
-    </style>
-    
-    <section class="container-promociones">
-
-        <div class="col-promociones col1">
-            
-            <div class="container-carouselpromo-full" id="mainCarouselpromoContainer">
-                
-                <div class="carouselpromo-inner" id="carouselpromoInner">
-                    @forelse($promociones as $promocion)
-                        <div class="carouselpromo-item" data-id="{{ $promocion->id }}">
-                            @if($promocion->product_id)
-                                <a href="/routedetails/{{ $promocion->comercio_id }}/{{ $promocion->product_id }}">
-                                    <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
-                                </a>
-                                @if($promocion->product->in_offer == '1')
-                                <div class="promo-overlay">
-                                    {{$currencyValue}}. {{ $promocion->product->price_offer ?? '' }} <del> antes {{ $promocion->product->price1 }}</del>
-                                </div>
-                                @else
-                                <div class="promo-overlay">
-                                    {{$currencyValue}}. {{ $promocion->product->price1 ?? '' }}
-                                </div>
-                                @endif
-                            @else
+<section class="container-promociones">
+    <div class="col-promociones col1">
+        <div class="container-carouselpromo-full" id="mainCarouselpromoContainer">
+            <div class="carouselpromo-inner" id="carouselpromoInner">
+                @forelse($promociones as $promocion)
+                    <div class="carouselpromo-item">
+                        @if($promocion->product_id)
+                            <a href="/routedetails/{{ $promocion->comercio_id }}/{{ $promocion->product_id }}">
                                 <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
-                            @endif
-                            
-                        </div>
-                    @empty
-                        <div class="carouselpromo-item">
-                            <h4>No existen promociones disponibles</h4>
-                        </div>
-                    @endforelse
-                </div>
-
-                <button class="carouselpromo-control carouselpromo-control-prev" type="button" data-direction="-1">&lt;</button>
-                <button class="carouselpromo-control carouselpromo-control-next" type="button" data-direction="1">&gt;</button>
-                
-                <div class="carouselpromo-indicators" id="carouselpromoIndicators">
-                    
-                    @php
-                        $isFirst = true;
-                    @endphp
-                    @foreach($promociones as $clave => $promocion)
-                        <button data-index="{{ $promocion->id }}" class="{{ $isFirst ? 'active' : '' }}"></button>
-                        @php $isFirst = false; @endphp
-                    @endforeach
-                </div>
-                
+                            </a>
+                            <div class="promo-overlay">
+                                @if($promocion->product->in_offer == '1')
+                                    {{$currencyValue}}. {{ $promocion->product->price_offer }} <del>antes {{ $promocion->product->price1 }}</del>
+                                @else
+                                    {{$currencyValue}}. {{ $promocion->product->price1 }}
+                                @endif
+                            </div>
+                        @else
+                            <img src="{{ $promocion->avatar_url }}" alt="{{ $promocion->name }}">
+                        @endif
+                    </div>
+                @empty
+                    <div class="carouselpromo-item">
+                        <h4 class="p-4">No existen promociones disponibles</h4>
+                    </div>
+                @endforelse
             </div>
+
+            <button class="carouselpromo-control carouselpromo-control-prev" data-direction="-1" type="button">&lt;</button>
+            <button class="carouselpromo-control carouselpromo-control-next" data-direction="1" type="button">&gt;</button>
             
+            <div class="carouselpromo-indicators" id="carouselpromoIndicators">
+                @foreach($promociones as $index => $promocion)
+                    <button class="{{ $loop->first ? 'active' : '' }}" data-index="{{ $index }}"></button>
+                @endforeach
+            </div>
         </div>
+    </div>
 
-        <div class="col-promociones col2">
-            
-            <div class="fila-promo superior">
-                <img src="{{$bannerRightUp}}" alt="Banner Empresa">    
-            </div>
-            
-            <div class="fila-promo inferior">
-                <img src="{{$bannerRightDown}}" alt="Banner Residencial">
-            </div>
-            
+    <div class="col-promociones col2">
+        <div class="fila-promo superior">
+            <img src="{{$bannerRightUp}}" alt="Banner Empresa">    
         </div>
-        
-    </section>
+        <div class="fila-promo inferior">
+            <img src="{{$bannerRightDown}}" alt="Banner Residencial">
+        </div>
+    </div>
+</section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
         const inner = document.getElementById('carouselpromoInner');
-        const items = Array.from(inner.querySelectorAll('.carouselpromo-item'));
-        const indicatorsContainer = document.getElementById('carouselpromoIndicators');
+        const container = document.getElementById('mainCarouselpromoContainer');
         
-        if (items.length <= 1) return;
+        if (!inner || !container) {
+            console.error("Error: No se encontraron los elementos del carrusel.");
+            return;
+        }
 
-        // 1. CLONACIÓN AUTOMÁTICA (Para evitar errores de Blade)
+        // 1. Obtener items y clonar
+        let items = Array.from(inner.getElementsByClassName('carouselpromo-item'));
+        if (items.length < 2) return;
+
         const firstClone = items[0].cloneNode(true);
         const lastClone = items[items.length - 1].cloneNode(true);
+        
         inner.appendChild(firstClone);
         inner.insertBefore(lastClone, items[0]);
 
-        // 2. RE-CALCULAR ITEMS CON CLONES
-        const allItems = inner.querySelectorAll('.carouselpromo-item');
-        const totalItems = allItems.length; // Originales + 2
-        let currentIndex = 1;
+        // 2. Variables de estado
+        let index = 1;
+        let isPaused = false;
+        const totalItems = items.length; // Cantidad original
 
-        // 3. ESTILOS DE ANCHO PRECISOS
-        inner.style.width = `${totalItems * 100}%`;
-        allItems.forEach(item => {
-            item.style.width = `${100 / totalItems}%`;
-        });
-
-        function updateCarousel(transition = true) {
-            inner.style.transition = transition ? 'transform 0.5s ease-in-out' : 'none';
-            const offset = -(currentIndex * (100 / totalItems));
-            inner.style.transform = `translateX(${offset}%)`;
-
-            // Actualizar indicadores
-            const realIndex = (currentIndex === 0) ? items.length - 1 : (currentIndex === totalItems - 1) ? 0 : currentIndex - 1;
-            const dots = indicatorsContainer.querySelectorAll('button');
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === realIndex));
+        // 3. Función de Movimiento
+        function mover(n, animar = true) {
+            index = n;
+            inner.style.transition = animar ? "transform 0.5s ease-in-out" : "none";
+            inner.style.transform = "translateX(" + (-index * 100) + "%)";
+            actualizarPuntos();
         }
 
-        // Posición inicial (en el primer elemento real, no el clon)
-        updateCarousel(false);
-
-        // 4. LÓGICA DE REBOTE INFINITO
-        inner.addEventListener('transitionend', () => {
-            if (currentIndex === 0) {
-                currentIndex = totalItems - 2;
-                updateCarousel(false);
-            }
-            if (currentIndex === totalItems - 1) {
-                currentIndex = 1;
-                updateCarousel(false);
-            }
-        });
-
-        // 5. CONTROLES
-        document.querySelectorAll('.carouselpromo-control').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const dir = parseInt(btn.getAttribute('data-direction'));
-                currentIndex += dir;
-                updateCarousel(true);
+        function actualizarPuntos() {
+            const dots = document.querySelectorAll('.carouselpromo-indicators button');
+            let realIdx = index - 1;
+            if (index === 0) realIdx = totalItems - 1;
+            if (index === totalItems + 1) realIdx = 0;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === realIdx);
             });
+        }
+
+        // 4. Salto Infinito
+        inner.addEventListener('transitionend', function() {
+            if (index <= 0) {
+                mover(totalItems, false);
+            }
+            if (index >= totalItems + 1) {
+                mover(1, false);
+            }
         });
 
-        // Autoplay
-        let interval = setInterval(() => { currentIndex++; updateCarousel(true); }, 4000);
-        const container = document.getElementById('mainCarouselpromoContainer');
-        container.addEventListener('mouseenter', () => clearInterval(interval));
-        container.addEventListener('mouseleave', () => {
-            interval = setInterval(() => { currentIndex++; updateCarousel(true); }, 4000);
+        // 5. Botones (Selectores directos)
+        const btnPrev = document.querySelector('.carouselpromo-control-prev');
+        const btnNext = document.querySelector('.carouselpromo-control-next');
+
+        if (btnPrev) {
+            btnPrev.onclick = function() {
+                mover(index - 1);
+            };
+        }
+        if (btnNext) {
+            btnNext.onclick = function() {
+                mover(index + 1);
+            };
+        }
+
+        // 6. Autoplay Robusto
+        setInterval(function() {
+            if (!isPaused) {
+                mover(index + 1);
+            }
+        }, 4000);
+
+        // Pausa al mouse
+        container.onmouseenter = function() { isPaused = true; };
+        container.onmouseleave = function() { isPaused = false; };
+
+        // Arreglo para pestaña en blanco
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'visible') {
+                mover(index, false);
+            }
         });
+
+        // Inicio
+        mover(1, false);
+        console.log("Carrusel PanExpres cargado correctamente.");
     });
     </script>
-
-    <script>
-        document.addEventListener('visibilitychange', function() {
-
-            
-            // Verificamos si la pestaña vuelve a estar visible
-            if (document.visibilityState === 'visible') {
-                // Seleccionamos el carrusel por su ID
-                var myCarousel = $('#carouselExampleControls');
-                
-                // Reiniciamos al primer slide (índice 0)
-                myCarousel.carousel(1);
-                
-                // Forzamos a que vuelva a iniciar el ciclo automático
-                myCarousel.carousel('cycle');
-            }
-        });
-    </script>
-</div>
