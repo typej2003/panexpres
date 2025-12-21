@@ -109,7 +109,6 @@
                                         <div class="accordion-body px-0 text-muted small">
                                             <p>Descripción: {{ $product->description }}</p>
                                             <p>Fabricante: {{ $product->manufacturer->name }}</p>
-                                            <p>Marca: {{ $product->brand->name }}</p>
                                             
                                         </div>
                                     </div>
