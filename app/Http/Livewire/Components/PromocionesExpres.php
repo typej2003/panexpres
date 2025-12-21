@@ -69,7 +69,7 @@ class PromocionesExpres extends Component
         $lastPromocion = $promociones->last();
         $firstPromocion = $promociones->first();
 
-        dd($promociones);
+        
 
         return view('livewire.components.promociones-expres', [
             'promociones' => $promociones,
