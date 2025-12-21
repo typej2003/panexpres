@@ -91,4 +91,20 @@ class PedidoTemporal extends Model
             
         }
     }
+
+    public function getStatus()
+    {
+        switch ($this->status) {
+            case '0':
+                return 'En espera';
+                break;
+            case '1':
+                return 'En Camino';
+                break;
+            case '2':
+                return 'Entregado';
+                break;
+            
+        }
+    }
 }
