@@ -202,7 +202,8 @@ class ListPedidosCliente extends AdminComponent
 			->where('user_id', auth()->user()->id)
 			->orWhere('reference', 'like', '%'.$this->searchTerm.'%')
 			->orderBy($this->sortColumnName, $this->sortDirection)
-			->paginate(15);
+			// ->paginate(15);
+			->get();
 
 			dd($pedidos);
 		
