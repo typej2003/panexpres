@@ -14,7 +14,7 @@ class AddAmountUsdToTransaccionsTable extends Migration
     public function up()
     {
         Schema::table('transaccions', function (Blueprint $table) {
-            $table->string('amountUsd')->after('amount');
+            $table->decimal('amountUsd', 12, 2)->default(0)->after('amount');
         });
     }
 

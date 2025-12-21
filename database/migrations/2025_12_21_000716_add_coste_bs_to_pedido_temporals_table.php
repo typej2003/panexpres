@@ -14,7 +14,7 @@ class AddCosteBsToPedidoTemporalsTable extends Migration
     public function up()
     {
         Schema::table('pedido_temporals', function (Blueprint $table) {
-            $table->string('costeBs')->after('coste');
+            $table->decimal('costeBs', 12, 2)->default(0)->after('coste');
         });
     }
 
