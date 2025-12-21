@@ -92,6 +92,7 @@
                                         <td>{{ $pedido->reference }}</td>
                                         <td>{{ $pedido->client->identificationNumber }}</td>
                                         <td>{{ $pedido->client->name }}</td>
+                                        <td>{{ $pedido->client->email }}</td>
                                         <td>{{ $pedido->metodo }}</td>
                                         <td>{{ $pedido->coste }} {{ $currencyValue }}</td>
                                         <td>{{ $pedido->metodoentrega }}</td>
