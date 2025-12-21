@@ -210,7 +210,7 @@
                     </thead>
                     <tbody>
                         @if($currencyValue == '$')
-                        <tr class="">
+                        <tr class="d-none">
                             <th scope="row">IGTF</th>
                             <td>{{ $currencyValue }} {{ $this->amountIGTF() }}</td>
                         </tr>
