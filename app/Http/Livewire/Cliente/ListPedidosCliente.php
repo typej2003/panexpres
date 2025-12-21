@@ -203,6 +203,8 @@ class ListPedidosCliente extends AdminComponent
 			->orWhere('reference', 'like', '%'.$this->searchTerm.'%')
 			->orderBy($this->sortColumnName, $this->sortDirection)
 			->paginate(15);
+
+			dd($pedidos);
 		
 		
 		$pedidoTemporal = PedidoTemporal::query()
