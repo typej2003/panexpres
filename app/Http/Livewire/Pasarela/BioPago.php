@@ -67,6 +67,8 @@ class BioPago extends Component
 			
 			$this->pedidoTemporal->update(['costeBs' => $this->amount]);
 
+			dd($this->pedidoTemporal);
+
 			// $this->amount = $this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio;
 			$this->identificationNac = $this->pedidoTemporal->client->identificationNac;
 			$this->identificationNumber = $this->pedidoTemporal->client->identificationNumber;
