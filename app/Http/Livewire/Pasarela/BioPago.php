@@ -64,6 +64,8 @@ class BioPago extends Component
 				$costoenvio = $this->pedidoTemporal->costeenvio;
 			}
 			$this->amount = $this->convertirDolar_a_Bolivar($this->pedidoTemporal->coste + $costoenvio);
+
+			$this->pedidoTemporal->update(['costeBs' => $this->amount]);
 			// $this->amount = $this->pedidoTemporal->coste + $this->pedidoTemporal->costeenvio;
 			$this->identificationNac = $this->pedidoTemporal->client->identificationNac;
 			$this->identificationNumber = $this->pedidoTemporal->client->identificationNumber;

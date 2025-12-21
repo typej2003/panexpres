@@ -45,10 +45,10 @@
             </li>
 
             <li class="nav-item">
-              <a href="/svgEjemplos" class="nav-link {{ request()->is('svgEjemplos') ? 'active' : '' }}">
+              <a href="{{ route('listManufacturers', 1) }}" class="nav-link">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
-                  SVG Ejemplos
+                  FABRICANTES
                 </p>
               </a>
             </li>

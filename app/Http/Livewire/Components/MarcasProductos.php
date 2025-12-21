@@ -15,7 +15,7 @@ class MarcasProductos extends AdminComponent
                                      ->where('mercado', 'original')
                                      ->has('products') // <--- CLAVE
                                      ->get();
-
+        
         return view('livewire.components.marcas-productos', [
             'manufacturers' => $manufacturers,
         ]);
