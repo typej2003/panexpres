@@ -75,7 +75,7 @@
                                         <td>{{ $pedidoTemporal->metodoentrega }}</td>
                                         <td>{{ $pedidoTemporal->created_at ?? 'N/A' }}</td>
                                         <td class="">
-                                            <a href="//shipping/{{$pedidoTemporal->nropedido}}" >
+                                            <a href="/shipping/{{$pedidoTemporal->nropedido}}" >
                                                 <i class="fas fa-shopping-cart mx-2 cart-icon-list"></i>
                                             </a>
 
