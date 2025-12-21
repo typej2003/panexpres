@@ -68,7 +68,13 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Comercio</th>
+                                        <th scope="col">
+                                            Comercio
+                                            <span wire:click="sortBy('nameComercio')" class="float-right text-sm" style="cursor: pointer;">
+                                                <i class="fa fa-arrow-up {{ $sortColumnName === 'nameComercio' && $sortDirection === 'asc' ? '' : 'text-muted' }}"></i>
+                                                <i class="fa fa-arrow-down {{ $sortColumnName === 'nameComercio' && $sortDirection === 'desc' ? '' : 'text-muted' }}"></i>
+                                            </span>
+                                        </th>
                                         <th scope="col">
                                             Nombre
                                             <span wire:click="sortBy('name')" class="float-right text-sm" style="cursor: pointer;">

@@ -80,6 +80,21 @@
                                                 @enderror
                                             </div>
 
+                                            <div class="form-group" wire:ignore>
+                                                <label for="comercio_id">Comercio<span class="text-danger">*</span></label>
+                                                <select wire:model.defer="state.comercio_id" class="form-control @error('comercio_id') is-invalid @enderror" id="comercio_id">
+                                                    <option value="0">Seleccione una opción</option>
+                                                    @foreach($comercios as $comercio)
+                                                        <option value="{{ $comercio->id }}">{{ $comercio->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('comercio_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="name">Categoría<span class="text-danger">*</span></label>
                                                 <select wire:model.defer="state.category_id" class="form-control @error('category_id') is-invalid @enderror" id="category_id" wire:change="changeCategory( $event.target.value, 0)">

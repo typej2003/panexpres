@@ -366,27 +366,34 @@ class ListProducts extends AdminComponent
 
     public function render()
     {
-        if($this->comercio_id > 1 ){
-            $products = Product::query()
-                ->where('comercio_id', $this->comercio_id);
-        }else{
-            $products = Product::query();
-        }
-        
-    	$products = $products
-            ->where(function($q){
-                $q->where('name', 'like', '%'.$this->searchTerm.'%');                
-            })
-    		->orderBy($this->sortColumnName, $this->sortDirection)
-            ->paginate(15);
-        
-        if($this->comercio_id > 0) {
-            $comercio = Comercio::find($this->comercio_id);
-            $user = User::find($comercio->user_id);
-        }else{
-            $comercio = Comercio::find(1);
-            $user = auth()->user();
-        }        
+        // 1. Iniciamos la consulta base con el Join
+$products = Product::query()
+    ->join('comercios', 'products.comercio_id', '=', 'comercios.id')
+    // Seleccionamos todos los campos del producto y el nombre del comercio con su alias
+    ->select('products.*', 'comercios.name as nameComercio');
+
+// 2. Filtramos por comercio si el ID es mayor a 1
+if($this->comercio_id > 1 ){
+    $products->where('products.comercio_id', $this->comercio_id);
+}
+
+// 3. Aplicamos el buscador y el resto de la lógica
+$products = $products
+    ->where(function($q){
+        // Especificamos 'products.name' para evitar ambigüedad con el name de comercios
+        $q->where('products.name', 'like', '%'.$this->searchTerm.'%');                
+    })
+    ->orderBy($this->sortColumnName, $this->sortDirection)
+    ->paginate(15);
+
+// Lógica de comercio y usuario (se mantiene igual)
+if($this->comercio_id > 0) {
+    $comercio = Comercio::find($this->comercio_id);
+    $user = User::find($comercio->user_id);
+} else {
+    $comercio = Comercio::find(1);
+    $user = auth()->user();
+}     
 		
         return view('livewire.afiliado.list-products', [
             'user'  => $user,

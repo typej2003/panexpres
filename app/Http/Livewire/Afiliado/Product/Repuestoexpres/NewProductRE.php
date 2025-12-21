@@ -135,6 +135,7 @@ class NewProductRE extends AdminComponent
             'stock_max' => 'nullable',
             'stock' => 'nullable',
             'area_id' => 'required|not_in:0',
+            'comercio_id' => 'required|not_in:0',
             'category_id' => 'required|not_in:0',
             'subcategory_id' => 'nullable',
             'supplier_id' => 'required|not_in:0',
@@ -196,7 +197,9 @@ class NewProductRE extends AdminComponent
         $validatedData['user_id'] = $comercio->user_id;
         $validatedData['userCreated_at'] = auth()->user()->id;
         $validatedData['userUpdated_at'] = auth()->user()->id;
-        $validatedData['comercio_id'] = $this->comercioId;
+
+        // $validatedData['comercio_id'] = $this->comercioId;
+        
 
 		Product::create($validatedData);
 
@@ -235,6 +238,7 @@ class NewProductRE extends AdminComponent
             'stock_max' => 'nullable',
             'stock' => 'nullable',
             'area_id' => 'required|not_in:0',
+            'comercio_id' => 'required|not_in:0',
             'category_id' => 'required|not_in:0',
             'subcategory_id' => 'nullable',
             'supplier_id' => 'required|not_in:0',
@@ -283,6 +287,14 @@ class NewProductRE extends AdminComponent
     public function render()
     {
         $areas = Area::all();
+        
+        
+        if(auth()->user()->role=='admin'){
+            $comercios = Comercio::where('area_id', $this->state['area_id'])->get(); 
+        }else{
+            $comercios = $this->comercio;
+        }
+        
         $comercio = Comercio::find($this->comercioId);
         $manufacturers = Manufacturer::where('comercio_id', $this->comercioId)->get();
         $brands = Brand::where('comercio_id', $this->comercioId)->get();
@@ -297,6 +309,7 @@ class NewProductRE extends AdminComponent
 
         return view('livewire.afiliado.product.repuestoexpres.new-product-r-e', [
             'areas' => $areas,
+            'comercios' => $comercios,
             'comercio' => $comercio,
             'categories' => $categories,
             'manufacturers' => $manufacturers,
