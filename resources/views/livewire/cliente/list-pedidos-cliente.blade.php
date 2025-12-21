@@ -51,7 +51,8 @@
                                         <th scope="col">Cliente</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Método de Pago</th>
-                                        <th scope="col">Costo</th>
+                                        <th scope="col">Costo($)</th>
+                                        <th scope="col">Costo(Bs)</th>
                                         <th scope="col">Método de Entrega</th>
                                         <th scope="col">Fecha de Registro</th>
                                         <th scope="col">Opciones</th>
@@ -69,6 +70,7 @@
                                         <td>{{ $pedidoTemporal->client->name }}</td>
                                         <td>{{ $pedidoTemporal->client->email }}</td>
                                         <td>{{ $pedidoTemporal->metodo }}</td>
+                                        <td></td>
                                         <td>{{ $pedidoTemporal->coste }} {{ $currencyValue }}</td>
                                         <td>{{ $pedidoTemporal->metodoentrega }}</td>
                                         <td>{{ $pedidoTemporal->created_at ?? 'N/A' }}</td>
@@ -94,6 +96,7 @@
                                         <td>{{ $pedido->client->name }}</td>
                                         <td>{{ $pedido->client->email }}</td>
                                         <td>{{ $pedido->metodo }}</td>
+                                        <td></td>
                                         <td>{{ $pedido->coste }} {{ $currencyValue }}</td>
                                         <td>{{ $pedido->metodoentrega }}</td>
                                         <td>{{ $pedido->created_at ?? 'N/A' }}</td>
