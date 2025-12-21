@@ -75,7 +75,7 @@
                                         <td>{{ $pedidoTemporal->metodoentrega }}</td>
                                         <td>{{ $pedidoTemporal->created_at ?? 'N/A' }}</td>
                                         <td class="">
-                                            <a href="" wire:click.prevent="irCart({{ $pedidoTemporal }})">
+                                            <a href="" wire:click.prevent="irPasarela({{ $pedidoTemporal }})">
                                                 <i class="fas fa-shopping-cart mx-2 cart-icon-list"></i>
                                             </a>
 
