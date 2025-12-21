@@ -14,7 +14,7 @@
                 <div class="card h-100 shadow-sm border-0 hover-lift transition">
                     <div class="card-body p-4 text-center">
                         <div class="mb-3 d-flex justify-content-center">
-                            @if($aliado->avatar_url)
+                            @if($aliado->avatar_url)                                
                                 <img src="{{ $aliado->avatar_url }}" 
                                      alt="Logo {{ $aliado->name }}" 
                                      class="rounded-circle border p-1 shadow-sm object-fit-cover"

@@ -13,10 +13,9 @@ class Aliados extends Component
         // Traemos solo a los usuarios que son aliados/vendedores
         $aliados = Comercio::query()
             ->where('name', '!=', 'PanExpres')
-            ->select('name', 'address', 'contactcellphone')
+            ->select('name', 'address', 'contactcellphone', 'avatar')
             ->orderBy('name', 'asc')
             ->paginate(12);
-
         return view('livewire.components.aliados', [
             'aliados' => $aliados,
         ]);
