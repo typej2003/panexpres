@@ -72,7 +72,7 @@
                                                 <option value="2" {{ ($pedido->status == '2') ? 'selected' : '' }}>ENTREGADO</option>
                                             </select>
                                         </td>
-                                        <td><a href="/pasarela/{{ $pedido->pedido }}/{{ $pedido->comercio_id }}">{{ $pedido->nropedido }}</a></td>
+                                        <td><a href="/detallespedido/{{ $pedido->nropedido }}">{{ $pedido->nropedido }}</a></td>
                                         <td>{{ $pedido->reference }}</td>
                                         <td>{{ $pedido->client->identificationNumber }}</td>
                                         <td>{{ $pedido->client->name }}</td>
