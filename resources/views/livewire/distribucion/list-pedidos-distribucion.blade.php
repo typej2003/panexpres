@@ -4,12 +4,12 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-solid fa-file-invoice-dollar"></i> Mis Pedidos</h1>
+                        <i class="fa fa-solid fa-file-invoice-dollar"></i> Procesar Pedidos</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admin/dashboard">Escritorio</a></li>
-                        <li class="breadcrumb-item active"><a href="">Mis Pedidos</a></li>
+                        <li class="breadcrumb-item active"><a href="">Procesar Pedidos</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->

@@ -222,10 +222,7 @@
                       Promociones
                     </p>
                   </a>
-                </li>
-
-                
-
+                </li> 
               </ul>
             </li>
             <!-- fin arbol -->
@@ -576,6 +573,17 @@
                 <i class="fa fa-solid fa-file-invoice-dollar"></i>
                 <p>
                   Mis Compras
+                </p>
+              </a>
+            </li>
+          @endif
+
+          @if(auth()->user()->role == 'root' || auth()->user()->role == 'admin' || auth()->user()->role == 'admindistribucion')
+            <li class="nav-item">
+              <a href="{{ route('listPedidosDistribucion', 1) }}" class="nav-link {{ request()->is('listPedidosDistribucion') ? 'active' : '' }}">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Procesar Pedidos
                 </p>
               </a>
             </li>

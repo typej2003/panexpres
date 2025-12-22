@@ -84,31 +84,31 @@
                                         <td>{{ $comercio->created_at->toFormattedDate() ?? 'N/A' }}</td>
                                         <td class="fs-2">
                                             <a href="/listTransacciones/{{$comercio->id }}">
-                                                <i class="fa fa-solid fa-file-invoice-dollar mx-2"></i>
+                                                Transacciṕn<i class="fa fa-solid fa-file-invoice-dollar mx-2"></i>
                                             </a>
 
                                             <a href="/listCategories/{{$comercio->id }}">
-                                                <i class="fa fa-solid fa-list mx-2"></i>
+                                                Categorías <i class="fa fa-solid fa-list mx-2"></i>
                                             </a>
 
                                             <a href="/listProducts/{{$comercio->id }}">
-                                                <img width="35px" src="/img/icon-motor.png" alt="">
+                                                Productos <img width="35px" src="/img/icon-motor.png" alt="">
                                             </a>
 
                                             <a href="/listProducts/{{$comercio->id }}">
-                                                <i class="fa fa-solid fa-motorcycle mx-2"></i>
+                                                productos<i class="fa fa-solid fa-motorcycle mx-2"></i>
                                             </a>
 
                                             <a href="/listMetodosPagosC/{{$comercio->id }}">
-                                                <i class="fa fa-regular fa-credit-card mx-2"></i>
+                                                MetodosPagos<i class="fa fa-regular fa-credit-card mx-2"></i>
                                             </a>
 
                                             <a href="/listMetodosPagosC/{{$comercio->id }}">
-                                                <i class="fa fa-solid fa-layer-group"></i>
+                                                MetodosPagos<i class="fa fa-solid fa-layer-group"></i>
                                             </a>
 
                                             <a href="/listCentrodistribucion/{{$comercio->id }}">
-                                                <i class="fa fa-solid fa-dolly mr-2 mx-2"></i>
+                                                Centros de Distribución<i class="fa fa-solid fa-dolly mr-2 mx-2"></i>
                                             </a>
 
                                             <a href="" wire:click.prevent="edit({{ $comercio }})">
