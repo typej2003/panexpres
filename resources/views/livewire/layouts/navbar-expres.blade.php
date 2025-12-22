@@ -185,11 +185,13 @@
                     </div>
                 @endauth
             </div>
+            @auth
             @if(auth()->user()->role == 'cliente')
             <div class="action-dropdown cart-dropdown">
                 @livewire('carrito.cart-drop-expres')
             </div>
             @endif
+            @endauth
         </div>
     </nav>
     
@@ -230,11 +232,13 @@
             </form>
             
         </div>
+        @auth
         @if(auth()->user()->role == 'cliente')
         <div class="currency-dropdown desktop-currency-right" wire:ignore>
             @livewire('components.currency-expres')
         </div>
         @endif
+        @endauth
     </nav>
 
     <nav class="main-menu-mobile">
