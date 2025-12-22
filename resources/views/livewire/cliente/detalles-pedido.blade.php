@@ -20,61 +20,61 @@
         <div class="container-fluid">
             @if($pedido)
             <div class="row">
-                <div class="col-lg-12 col-12">
-                    <div class="card w-50">
+                <div class="col-lg-12 col-12 d-flex">
+                    <div class="card w-100 mx-auto p-2">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-4">
                                 <span>Pedido: </span>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-8">
                                 <span>{{$pedido->nropedido}}</span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-4">
                                 <span>Usd: </span>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-8">
                                 <span>{{ $pedido->coste }} $</span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-4">
                                 <span>Bs: </span>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-8">
                                 <span>{{ $pedido->costeBs }} Bs</span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-4">
                                 <span>Costo Envio: </span>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-8">
                                 <span>{{ $pedido->costeEnvio }} $</span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-4">
                                 <span>Situación de Pago: </span>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-8">
                                 <div class="px-3 {{ $this->getClaseConfirmed($pedido->confirmed) }}">{{ $pedido->getConfirmed() }}</div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-4">
                                 <span>Status: </span>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-8">
                                 <div class="px-3 {{ $this->getClaseStatus($pedido->status) }}">{{ $pedido->getStatus() }}</div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-4">
                                 <span>Fecha: </span>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-8">
                                 <span>{{ $pedido->created_at ?? 'N/A' }}</span>
                             </div>
                         </div>
