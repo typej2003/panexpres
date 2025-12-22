@@ -63,22 +63,21 @@ class PedidoTemporal extends Model
 
     public function getMetodoEntregaAttribute()
     {
-        if($this->shipping !== null)
+        if($this->shipping == null)
 		{
+            return "No definido";
+        }
 			
-			switch ($this->shipping) {
-				case 'enviodelivery':
-					return "Envio Delivery";
-					# code...
-					break;
+        switch ($this->shipping) {
+            case 'enviodelivery':
+                return "Envio Delivery";
+                # code...
+                break;
 
-				default:
-					return "No definido";
-					break;
-			}
-		}else{
-			return "No definido";
-		}
+            default:
+                return "No definido";
+                break;
+        }	
 		
     }
 
