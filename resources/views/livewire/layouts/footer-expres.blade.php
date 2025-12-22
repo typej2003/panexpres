@@ -115,7 +115,7 @@
 
         <div class="footer-row footer-row-2">
             
-            <div class="footer-col-secondary footer-col-ddr">
+            <div class="footer-col-secondary footer-col-ddr d-none d-md-block">
                 <img src="{{ asset('/img/logo_ddr.png') }}" alt="Logo DDR" class="footer-logo1-small">
             </div>
 
@@ -123,7 +123,7 @@
                 <span>COPYRIGHT © 2025 DDR SISTEMAS C.A. RIF: J-31512955-8 V1.0.0 PV2</span>
             </div>
 
-            <div class="footer-col-secondary footer-col-bank">
+            <div class="footer-col-secondary footer-col-bank d-none d-md-block">
                 <img src="{{ asset('/img/bancos_01.png') }}" alt="Logo Banco" class="footer-logo2-small">
             </div>
 

@@ -883,6 +883,20 @@ label {
         right: 20px;
         font-size: 25px;
     }
+
+    .footer-logo1-small {
+        height: 80px; /* Aquí aumentas el tamaño al doble o lo que prefieras */
+        margin-bottom: 15px; /* Espacio extra si queda muy pegado */
+    }
+    
+    /* Opcional: Centrar la columna en móvil si no lo está */
+    .footer-col-ddr {
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
 }
 
 section[id] {
