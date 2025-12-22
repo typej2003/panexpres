@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Distribucion;
 use App\Http\Livewire\Admin\AdminComponent;
 use App\Http\Livewire\Notificacion\EmailController;
 use App\Models\User;
-use App\Models\UserComercio;
 use App\Models\Pedido;
 use App\Models\PedidoTemporal;
 use App\Models\Comercio;
@@ -14,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
 
-class ListPedidosDistribucion extends AdminComponent
+class ListPedidosDelivery extends AdminComponent
 {
 	use WithFileUploads;
 
@@ -42,16 +41,6 @@ class ListPedidosDistribucion extends AdminComponent
     {
 		$this->currencyValue = request()->cookie('currency');
     }
-
-	public function asignarDelivery(Pedido $pedido, $userdelivery_id)
-	{
-		
-		$pedido->update(['userdelivery_id' => $userdelivery_id]);
-
-		//Enviar Mensaje
-
-		$this->dispatchBrowserEvent('updated', ['message' => "Asignacion realizada satisfactoriamente."]);
-	}
 
 	public function irCart(PedidoTemporal $pedidoTemporal)
 	{
@@ -210,14 +199,13 @@ class ListPedidosDistribucion extends AdminComponent
 		// 1. **Consulta para los pedidos paginados (Modelo Pedido)**
 		// Se mantiene tu lógica original para Pedido
 		$pedidos = Pedido::query()
-            ->orderBy($this->sortColumnName, $this->sortDirection)
+			->where('userdelivery_id', auth()->user()->id)
+			
+			->orderBy($this->sortColumnName, $this->sortDirection)
 			->paginate(15);
-
-		$usersdelivery = UserComercio::where('rolecomercio', 'delivery')->get();
-
-		return view('livewire.distribucion.list-pedidos-distribucion', [
+		
+		return view('livewire.distribucion.list-pedidos-delivery', [
         	'pedidos' => $pedidos,
-			'usersdelivery' => $usersdelivery,
         ]);
     }
 }

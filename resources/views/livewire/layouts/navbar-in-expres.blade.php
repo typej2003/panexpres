@@ -263,6 +263,33 @@
                             </form>
                         </div>
                     @endif
+                    @if(auth()->user()->role == 'admindistribucion')
+                        <div class="dropdown-content profile-menu">                            
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
+                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>
+                            <a class="dropdown-item" href="{{ route('listPedidosDistribucion') }}" x-ref="profileLink">Procesar Pedidos</a>
+                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="changePasswordLink">Facturación</a>
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{ route('logout') }}">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Cerrar sesión</a>
+                            </form>
+                        </div>
+                    @endif
+                    
+                    @if(auth()->user()->role == 'user')
+                        <div class="dropdown-content profile-menu">                            
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
+                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>                            
+                            @if(auth()->user()->userComercio->rolecomercio)
+                            <a class="dropdown-item" href="{{ route('listPedidosDelivery') }}" x-ref="profileLink">Procesar Pedidos</a>
+                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="changePasswordLink">Facturación</a>
+                            @endif
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{ route('logout') }}">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Cerrar sesión</a>
+                            </form>
+                        </div>
+                    @endif
                     @if(auth()->user()->role == 'cliente')
                         <div class="dropdown-content profile-menu">                            
                             <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
@@ -289,7 +316,7 @@
             </div>
 
         </li>
-        
+        @if(auth()->user()->role == 'cliente')
         <li class="nav-item">
             <div class="action-dropdown cart-dropdown">
                 @livewire('carrito.cart-drop-expres')
@@ -301,7 +328,7 @@
                 @livewire('components.currency-expres')
             </div>
         </li>
-        
+        @endif
 
     </ul>
 

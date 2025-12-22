@@ -209,4 +209,9 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function userComercio()
+    {
+        return $this->hasOne(UserComercio::class, 'user_id', 'id');
+    }
+
 }

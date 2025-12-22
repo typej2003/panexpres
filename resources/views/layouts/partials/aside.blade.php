@@ -587,6 +587,37 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{ route('listUsuariosDistribucion', 1) }}" class="nav-link {{ request()->is('listUsuariosDistribucion') ? 'active' : '' }}">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Usuarios Distribucion
+                </p>
+              </a>
+            </li>
+          @endif
+        
+          @if(auth()->user()->role == 'user')
+            @if(auth()->user()->userComercio->rolecomercio == 'delivery')
+              <li class="nav-item">
+                <a href="{{ route('listPedidosDelivery', 1) }}" class="nav-link {{ request()->is('listPedidosDelivery') ? 'active' : '' }}">
+                  <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                  <p>
+                    Procesar Pedidos
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('listPedidosDelivery', 1) }}" class="nav-link {{ request()->is('listPedidosDelivery') ? 'active' : '' }}">
+                  <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                  <p>
+                    Facturacion
+                  </p>
+                </a>
+              </li>
+            @endif
           @endif
         @endauth
 

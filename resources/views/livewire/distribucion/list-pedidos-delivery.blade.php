@@ -33,7 +33,6 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Confirmado</th>
-                                        <th scope="col">Asignar</th>
                                         <th scope="col">
                                             Pedido
                                             <span wire:click="sortBy('pedido')" class="float-right text-sm" style="cursor: pointer;">
@@ -50,6 +49,10 @@
                                         </th>
                                         <th scope="col">Cédula</th>
                                         <th scope="col">Cliente</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Método de Pago</th>
+                                        <th scope="col">Costo($)</th>
+                                        <th scope="col">Costo(Bs)</th>
                                         <th scope="col">Método de Entrega</th>
                                         <th scope="col">Fecha de Registro</th>
                                         <th scope="col">Opciones</th>
@@ -60,35 +63,14 @@
                                     <tr>
                                         <th scope="row">{{ $pedidos->firstItem() + $index }}</th>
                                         <td>{{$pedido->getConfirmed()}}</td>
-                                        <td>
-                                            <select 
-                                                wire:change="asignarDelivery({{ $pedido->id }}, $event.target.value)" 
-                                                class="form-control {{ ($pedido->userdelivery_id && $pedido->userdelivery_id != 0) ? 'bg-success text-white' : '' }} @error('userdelivery_id') is-invalid @enderror" 
-                                                id="userdelivery_id_{{ $pedido->id }}"
-                                            >
-                                                <option value="0" {{ (!$pedido->userdelivery_id || $pedido->userdelivery_id == 0) ? 'selected' : '' }}>
-                                                    SELECCIONE..
-                                                </option>
-
-                                                @foreach($usersdelivery as $userdelivery)
-                                                    <option 
-                                                        value="{{ $userdelivery->user_id }}" 
-                                                        {{ $pedido->userdelivery_id == $userdelivery->user_id ? 'selected' : '' }}
-                                                    >
-                                                        {{ $userdelivery->user->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            @error('userdelivery_id')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </td>
                                         <td><a href="/detallespedido/{{ $pedido->nropedido }}">{{ $pedido->nropedido }}</a></td>
                                         <td>{{ $pedido->reference }}</td>
                                         <td>{{ $pedido->client->identificationNumber }}</td>
                                         <td>{{ $pedido->client->name }}</td>
+                                        <td>{{ $pedido->client->email }}</td>
+                                        <td>{{ $pedido->metodo }}</td>
+                                        <td>{{ $pedido->costeBs }} Bs</td>
+                                        <td>{{ $pedido->coste }} $ </td>
                                         <td>{{ $pedido->metodo_entrega }}</td>
                                         <td>{{ $pedido->created_at ?? 'N/A' }}</td>
                                         <td>

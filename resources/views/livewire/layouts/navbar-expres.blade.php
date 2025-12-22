@@ -106,11 +106,23 @@
 
             <div class="action-dropdown profile-dropdown">
                 @auth
-
                     <a href="#" class="action-item profile dropdown-trigger">
                         <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 45px; width: 45px;">
                         <span class="profile-text">{{ auth()->user()->name }}</span>
                     </a>
+                    @if(auth()->user()->role == 'aliado')
+                        <div class="dropdown-content profile-menu">                            
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
+                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>
+                            <a class="dropdown-item d-none" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Pedidos</a>
+                            <a class="dropdown-item d-none" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Facturación</a>
+                            <!-- <a class="dropdown-item" href="{{ route('admin.settings') }}">Configuración</a> -->
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{ route('logout') }}">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Cerrar sesión</a>
+                            </form>
+                        </div>
+                    @endif
                     @if(auth()->user()->role == 'admin' || auth()->user()->role == 'root')
                         <div class="dropdown-content profile-menu">                            
                             <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
@@ -136,13 +148,14 @@
                             </form>
                         </div>
                     @endif
-                    @if(auth()->user()->role == 'aliado')
+                    @if(auth()->user()->role == 'user')
                         <div class="dropdown-content profile-menu">                            
                             <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Mi Cuenta</a>
-                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>
-                            <a class="dropdown-item d-none" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Pedidos</a>
-                            <a class="dropdown-item d-none" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Facturación</a>
-                            <!-- <a class="dropdown-item" href="{{ route('admin.settings') }}">Configuración</a> -->
+                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>                            
+                            @if(auth()->user()->userComercio->rolecomercio)
+                            <a class="dropdown-item" href="{{ route('listPedidosDelivery') }}" x-ref="profileLink">Procesar Pedidos</a>
+                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="changePasswordLink">Facturación</a>
+                            @endif
                             <div class="dropdown-divider"></div>
                             <form method="POST" action="{{ route('logout') }}">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Cerrar sesión</a>
@@ -172,11 +185,11 @@
                     </div>
                 @endauth
             </div>
-
+            @if(auth()->user()->role == 'cliente')
             <div class="action-dropdown cart-dropdown">
                 @livewire('carrito.cart-drop-expres')
             </div>
-            
+            @endif
         </div>
     </nav>
     
@@ -217,11 +230,11 @@
             </form>
             
         </div>
-
+        @if(auth()->user()->role == 'cliente')
         <div class="currency-dropdown desktop-currency-right" wire:ignore>
             @livewire('components.currency-expres')
         </div>
-
+        @endif
     </nav>
 
     <nav class="main-menu-mobile">

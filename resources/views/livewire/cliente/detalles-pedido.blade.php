@@ -51,12 +51,12 @@
                                 <span>Costo Envio: </span>
                             </div>
                             <div class="col-lg-6 col-8">
-                                <span>{{ $pedido->costeEnvio }} $</span>
+                                <span>{{ $pedido->costeenvio }} $</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-4">
-                                <span>Situación de Pago: </span>
+                                <span>Situación del Pago: </span>
                             </div>
                             <div class="col-lg-6 col-8">
                                 <div class="px-3 {{ $this->getClaseConfirmed($pedido->confirmed) }}">{{ $pedido->getConfirmed() }}</div>
