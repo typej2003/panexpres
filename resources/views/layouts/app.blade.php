@@ -65,7 +65,7 @@
     </style>
 @php
     // Define si el usuario es un rol que requiere la barra lateral
-    $hasSidebar = Auth::check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'admindistribucion' || auth()->user()->role == 'root' || auth()->user()->role == 'aliado' || auth()->user()->userComercio->rolecomercio == 'delivery' );
+    $hasSidebar = Auth::check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'admindistribucion' || auth()->user()->role == 'root' || auth()->user()->role == 'aliado' || auth()->user()->role == 'user' );
     
     // Si NO tiene barra lateral, agregamos la clase que elimina el margen izquierdo
     $customBodyClass = $hasSidebar ? '' : 'no-sidebar';
