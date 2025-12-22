@@ -22,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
     const ROLE_CLIENTE = 'cliente';
     const ROLE_ALIADO = 'aliado';
     const ROLE_DELIVERY = 'delivery';
+    const ROLE_ADMINDISTRIBUCION = 'admindistribucion';
 
     /**
      * The attributes that are mass assignable.
@@ -126,6 +127,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isDelivery()
     {
         if ($this->role !== self::ROLE_DELIVERY) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function isAdminDistribucion()
+    {
+        if ($this->role !== self::ROLE_ADMINDISTRIBUCION) {
             return false;
         }
 

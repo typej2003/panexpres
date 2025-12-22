@@ -36,7 +36,7 @@ class ListUsers extends AdminComponent
 		Validator::make(['role' => $role], [
 			'role' => [
 				'required',
-				Rule::in(User::ROLE_ADMIN, User::ROLE_USER, User::ROLE_CLIENTE, User::ROLE_ALIADO),
+				Rule::in(User::ROLE_ADMIN, User::ROLE_ADMINDISTRIBUCION, User::ROLE_USER, User::ROLE_CLIENTE, User::ROLE_ALIADO),
 			],
 		])->validate();
 

@@ -20,7 +20,7 @@
         <div class="container-fluid">
             @if($pedido)
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-12">
                     <div class="card w-50">
                         <div class="row">
                             <div class="col-lg-6">
@@ -83,7 +83,7 @@
             </div>
             @endif
             <div class="row">
-            <table class="table table-hover table-bordered table-responsive">
+            <table class="table table-hover table-bordered table-responsive col-12">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

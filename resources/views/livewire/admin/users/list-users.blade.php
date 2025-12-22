@@ -129,8 +129,10 @@
                             <select name="" wire:model.defer="state.role" class="form-control @error('role') is-invalid @enderror" id="">
                                 <option value="0">SELECCIONE..</option>
                                 <option value="admin">ADMINISTRADOR</option>
+                                <option value="admindistribucion">ADMIN DISTRIBUCIÓN</option>
                                 <option value="aliado">ALIADO</option>
                                 <option value="user">USER</option>
+                                <option value="delivery">DELIVERY</option>
                             </select>
                             @error('role')
                             <div class="invalid-feedback">
