@@ -39,6 +39,7 @@
                                         const miObjeto = {
                                             'status': true,
                                             'message': 'Proceso Finalizado',
+                                            'nropedido': '{{ $nropedido }}'
                                         };
                                         
                                         // Envío del mensaje. Usamos '*' solo para pruebas iniciales; 
