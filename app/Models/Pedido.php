@@ -73,17 +73,23 @@ class Pedido extends Model
 
     public function getMetodoEntregaAttribute()
     {
-        
-        switch ($this->shipping) {
-            case 'enviodelivery':
-                return "Envio Delivery";
-                # code...
-                break;
-            
-            default:
-                return "No definido";
-                break;
-        }
+        if($this->shipping !== null)
+		{
+			
+			switch ($this->shipping) {
+				case 'enviodelivery':
+					return "Envio Delivery";
+					# code...
+					break;
+
+				default:
+					return "No definido";
+					break;
+			}
+		}else{
+			return "No definido";
+		}
+		
     }
 
     public function getMonedaAttribute()
