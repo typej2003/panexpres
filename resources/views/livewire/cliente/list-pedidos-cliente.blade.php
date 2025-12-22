@@ -96,8 +96,8 @@
                                         <td>{{ $pedido->client->name }}</td>
                                         <td>{{ $pedido->client->email }}</td>
                                         <td>{{ $pedido->metodo }}</td>
-                                        <td>{{ $pedidoTemporal->costeBs }} Bs</td>
-                                        <td>{{ $pedidoTemporal->coste }} $ </td>
+                                        <td>{{ $pedido->costeBs }} Bs</td>
+                                        <td>{{ $pedido->coste }} $ </td>
                                         <td>{{ $pedido->metodo_entrega }}</td>
                                         <td>{{ $pedido->created_at ?? 'N/A' }}</td>
                                         <td>
