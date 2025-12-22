@@ -48,6 +48,8 @@
                                                 <i class="fa fa-arrow-down {{ $sortColumnName === 'reference' && $sortDirection === 'desc' ? '' : 'text-muted' }}"></i>
                                             </span>
                                         </th>
+                                        <th scope="col">Origen</th>
+                                        <th scope="col">Destino</th>
                                         <th scope="col">Cédula</th>
                                         <th scope="col">Cliente</th>
                                         <th scope="col">Método de Entrega</th>
@@ -62,7 +64,7 @@
                                         <td>{{$pedido->getConfirmed()}}</td>
                                         <td>
                                             <select 
-                                                wire:change="asignarDelivery({{ $pedido->id }}, $event.target.value)" 
+                                                wire:change="asignarDelivery({{ $pedido }}, $event.target.value)" 
                                                 class="form-control {{ ($pedido->userdelivery_id && $pedido->userdelivery_id != 0) ? 'bg-success text-white' : '' }} @error('userdelivery_id') is-invalid @enderror" 
                                                 id="userdelivery_id_{{ $pedido->id }}"
                                             >
@@ -87,6 +89,62 @@
                                         </td>
                                         <td><a href="/detallespedido/{{ $pedido->nropedido }}">{{ $pedido->nropedido }}</a></td>
                                         <td>{{ $pedido->reference }}</td>
+                                        <td>
+                                            @php
+                                                // Buscamos el movimiento relacionado (ajusta esto según tu relación en el modelo)
+                                                $movimiento = \App\Models\MovimientoPedido::where('nropedido', $pedido->nropedido)->first();
+                                                
+                                                $claseEstado = '';
+                                                if ($movimiento) {
+                                                    if ($movimiento->origen == 'entregado') {
+                                                        $claseEstado = 'bg-success text-white';
+                                                    } elseif ($movimiento->origen == 'enespera') {
+                                                        $claseEstado = 'bg-warning text-dark';
+                                                    }
+                                                }
+                                            @endphp
+
+                                            <select 
+                                                wire:change="aprobarOrigen({{ $pedido->id }}, $event.target.value)" 
+                                                class="form-control {{ $claseEstado }} clase-{{ $pedido->id }}" 
+                                                id="status_origen_{{ $pedido->id }}"
+                                            >
+                                                <option value="enespera" {{ ($movimiento?->origen == 'enespera' ? 'selected' : '') }}>
+                                                    En Espera
+                                                </option>
+                                                <option value="entregado" {{ ($movimiento?->origen == 'entregado' ? 'selected' : '') }}>
+                                                    Entregado
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            @php
+                                                // Buscamos el movimiento relacionado (ajusta esto según tu relación en el modelo)
+                                                $movimiento = \App\Models\MovimientoPedido::where('nropedido', $pedido->nropedido)->first();
+                                                
+                                                $claseEstado = '';
+                                                if ($movimiento) {
+                                                    if ($movimiento->destino == 'entregado') {
+                                                        $claseEstado = 'bg-success text-white';
+                                                    } elseif ($movimiento->destino == 'enespera') {
+                                                        $claseEstado = 'bg-warning text-dark';
+                                                    }
+                                                }
+                                            @endphp
+
+                                            <select 
+                                                wire:change="aprobarDestino({{ $pedido->id }}, $event.target.value)" 
+                                                class="form-control {{ $claseEstado }}" 
+                                                id="status_origen_{{ $pedido->id }}"
+                                            >
+                                                <option value="enespera" {{ ($movimiento?->destino == 'enespera' ? 'selected' : '') }}>
+                                                    En Espera
+                                                </option>
+                                                <option value="entregado" {{ ($movimiento?->destino == 'entregado' ? 'selected' : '') }}>
+                                                    Entregado
+                                                </option>
+                                            </select>
+                                        </td>
                                         <td>{{ $pedido->client->identificationNumber }}</td>
                                         <td>{{ $pedido->client->name }}</td>
                                         <td>{{ $pedido->metodo_entrega }}</td>

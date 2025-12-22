@@ -9,6 +9,7 @@ use App\Models\UserComercio;
 use App\Models\Pedido;
 use App\Models\PedidoTemporal;
 use App\Models\Comercio;
+use App\Models\MovimientoPedido;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Livewire\WithFileUploads;
@@ -21,6 +22,8 @@ class ListPedidosDistribucion extends AdminComponent
 	public $state = [];
 
 	public $pedido;
+
+	public $movimiento;
 
 	public $comercioId;
 
@@ -46,11 +49,41 @@ class ListPedidosDistribucion extends AdminComponent
 	public function asignarDelivery(Pedido $pedido, $userdelivery_id)
 	{
 		
-		$pedido->update(['userdelivery_id' => $userdelivery_id]);
+		$this->movimiento = MovimientoPedido::where('nropedido', $pedido->nropedido)->first();
 
-		//Enviar Mensaje
+		if($userdelivery_id !== "0")
+		{
+			//Enviar Mensaje
 
-		$this->dispatchBrowserEvent('updated', ['message' => "Asignacion realizada satisfactoriamente."]);
+			if($this->movimiento == null)
+			{
+				MovimientoPedido::create([
+					'nropedido' => $pedido->nropedido,
+					'userdelivery_id' => $userdelivery_id,
+					'costeenvio'  => $pedido->costeenvio,
+					// 'condicion'  => $pedido->condicion,
+					'origen' => 'enespera',
+					'destino' => 'enespera',
+				]);
+			}
+			$this->dispatchBrowserEvent('updated', ['message' => "Asignacion realizada satisfactoriamente."]);
+
+		}else{
+			$this->movimiento->delete();
+			$this->dispatchBrowserEvent('updated', ['message' => "Asignacion eliminada satisfactoriamente."]);			
+		}		
+		$pedido->update(['userdelivery_id' => $userdelivery_id]);		
+	}
+
+	public function aprobarOrigen(Pedido $pedido, $opcion)
+	{
+		
+		$this->movimiento = MovimientoPedido::where('nropedido', $pedido->nropedido)->first();
+
+		if($opcion !== "0")
+		{
+			$this->movimiento->update(['origen' => $opcion]);
+		}
 	}
 
 	public function irCart(PedidoTemporal $pedidoTemporal)

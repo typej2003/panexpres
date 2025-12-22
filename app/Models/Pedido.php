@@ -88,8 +88,7 @@ class Pedido extends Model
 				default:
 					return "No definido";
 					break;
-			}
-		
+			}		
 		
     }
 
@@ -138,5 +137,10 @@ class Pedido extends Model
                 break;
             
         }
+    }
+
+    public function movimientopedido()
+    {
+        return $this->hasOne(MovimientoPedido::class, 'nropedido', 'nropedido');    
     }
 }
