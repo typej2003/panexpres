@@ -596,6 +596,15 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{ route('listDeliveryArea', 1) }}" class="nav-link {{ request()->is('listDeliveryArea') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Zona de entrega Delivery
+                </p>
+              </a>
+            </li>
           @endif
         
           @if(auth()->user()->role == 'user')
