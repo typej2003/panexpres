@@ -73,9 +73,11 @@ class Pedido extends Model
 
     public function getMetodoEntregaAttribute()
     {
-        if($this->shipping !== null)
+        if($this->shipping == null)
 		{
-			
+            return "No definido";
+        }
+        	
 			switch ($this->shipping) {
 				case 'enviodelivery':
 					return "Envio Delivery";
@@ -86,9 +88,7 @@ class Pedido extends Model
 					return "No definido";
 					break;
 			}
-		}else{
-			return "No definido";
-		}
+		
 		
     }
 
