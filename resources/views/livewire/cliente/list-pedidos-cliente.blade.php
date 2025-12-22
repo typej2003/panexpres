@@ -98,7 +98,7 @@
                                         <td>{{ $pedido->metodo }}</td>
                                         <td></td>
                                         <td>{{ $pedido->coste }} {{ $currencyValue }}</td>
-                                        <td>{{ $pedidoTemporal->metodo_entrega }}</td>
+                                        <td>{{ $pedido->metodo_entrega }}</td>
                                         <td>{{ $pedido->created_at ?? 'N/A' }}</td>
                                         <td>
                                             <a href="" wire:click.prevent="sendNotificacion({{ $pedido }})">
