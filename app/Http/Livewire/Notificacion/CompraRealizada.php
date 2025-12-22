@@ -10,10 +10,11 @@ class CompraRealizada extends Component
 {
     public $pedido;
 
-    public function mount($pedido_id=1)
+    public function mount($nropedido)
     {
-        $this->pedido = Pedido::find($pedido_id);
-        $this->pedidoDetalles = PedidoDetalles::where('pedido_id', $pedido_id)->get();
+        $this->pedido = Pedido::where('nropedido', $nropedido)->first();
+
+        $this->pedidoDetalles = PedidoDetalles::where('nropedido', $nropedido)->get();
     }
 
     public function render()

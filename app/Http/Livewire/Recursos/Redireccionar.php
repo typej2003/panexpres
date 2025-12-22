@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Redireccionar extends Component
 {
-    public function mount($opcion)
+    public function mount($opcion, $nropedido)
     {
         switch ($opcion) {
             case 'clearCart':
@@ -35,7 +35,7 @@ class Redireccionar extends Component
                     session()->flash('cart_info', 'El carrito ya estaba vacío.');
                 }
 
-                return redirect()->to('/comprarealizada');
+                return redirect()->to("/comprarealizada/{$nropedido}");
                 
                 break;
         }
