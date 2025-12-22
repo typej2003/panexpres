@@ -70,9 +70,9 @@
                                         <td>{{ $pedidoTemporal->client->name }}</td>
                                         <td>{{ $pedidoTemporal->client->email }}</td>
                                         <td>{{ $pedidoTemporal->metodo }}</td>
-                                        <td></td>
-                                        <td>{{ $pedidoTemporal->coste }} {{ $currencyValue }}</td>
-                                        <td>{{ $pedidoTemporal->metodoentrega }}</td>
+                                        <td>{{ $pedidoTemporal->costeBs }} Bs</td>
+                                        <td>{{ $pedidoTemporal->coste }} $ </td>
+                                        <td>{{ $pedidoTemporal->metodo_entrega }}</td>
                                         <td>{{ $pedidoTemporal->created_at ?? 'N/A' }}</td>
                                         <td class="">
                                             <a href="/checkout/shipping/{{$pedidoTemporal->nropedido}}" >
@@ -98,7 +98,7 @@
                                         <td>{{ $pedido->metodo }}</td>
                                         <td></td>
                                         <td>{{ $pedido->coste }} {{ $currencyValue }}</td>
-                                        <td>{{ $pedido->metodoentrega }}</td>
+                                        <td>{{ $pedidoTemporal->metodo_entrega }}</td>
                                         <td>{{ $pedido->created_at ?? 'N/A' }}</td>
                                         <td>
                                             <a href="" wire:click.prevent="sendNotificacion({{ $pedido }})">

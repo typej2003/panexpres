@@ -67,6 +67,25 @@ class Pedido extends Model
         'valoraciondelivery',
     ];
 
+    protected $appends = [
+        'metodo_entrega',
+    ];
+
+    public function getMetodoEntregaAttribute()
+    {
+        
+        switch ($this->shipping) {
+            case 'enviodelivery':
+                return "Envio Delivery";
+                # code...
+                break;
+            
+            default:
+                return "No definido";
+                break;
+        }
+    }
+
     public function getMonedaAttribute()
     {
         return ($this->currency == '1'?'Bs':'$');
