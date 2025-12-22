@@ -19,7 +19,7 @@ Route::get('/lectorQr', function(){
     return view('externalviews.lectorQr');
 });
 
-Route::get('/redireccionar/{opcion}', Redireccionar::class)->name('redireccionar')->middleware('auth');
+Route::get('/redireccionar/{opcion}/{nropedido}', Redireccionar::class)->name('redireccionar')->middleware('auth');
 
 Route::get('/carousel', Carousel::class)->name('carousel')->middleware('auth');
 
