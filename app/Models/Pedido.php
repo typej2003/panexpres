@@ -73,7 +73,7 @@ class Pedido extends Model
 
     public function getMetodoEntregaAttribute()
     {
-        dd($this->shipping);
+        
         if($this->shipping == null)
 		{
             return "No definido";
