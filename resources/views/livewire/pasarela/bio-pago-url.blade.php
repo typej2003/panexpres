@@ -47,7 +47,7 @@
                     let nropedido = event.data.nropedido
 
                     // window.location.href = '/redireccionar/comprarealizada';
-                    window.location.href = '/redireccionar/comprarealizada?nropedido=' + nropedido;
+                    window.location.href = '/redireccionar/comprarealizada/' + nropedido;
                     
                     // Intentar emitir inmediatamente, y si falla, el hook lo intentará después
                     if (typeof Livewire !== 'undefined') {
