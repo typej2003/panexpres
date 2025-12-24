@@ -408,7 +408,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="price1">Precio 1<span class="text-danger">*</span></label>
-                                                <input type="number" wire:model.defer="state.price1" autofocus class="font-costo form-control @error('price1') is-invalid @enderror" id="price1">
+                                                <input type="text" wire:model.defer="state.price1" autofocus class="font-costo form-control @error('price1') is-invalid @enderror" id="price1">
                                                 @error('price1')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -419,7 +419,7 @@
                                         <div class="col-md-4 d-none">
                                             <div class="form-group d-none">
                                                 <label for="price2">Precio 2</label>
-                                                <input type="number" wire:model.defer="state.price2" autofocus class="font-costo form-control @error('price2') is-invalid @enderror" id="price2">
+                                                <input type="text" wire:model.defer="state.price2" autofocus class="font-costo form-control @error('price2') is-invalid @enderror" id="price2">
                                                 @error('price2')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -444,7 +444,7 @@
                                         <div class="col-md-4 d-none">
                                             <div class="form-group">
                                                 <label for="price_mayor">Precio al Mayor</label>
-                                                <input type="number" wire:model.defer="state.price_mayor" autofocus class="font-costo form-control @error('price_mayor') is-invalid @enderror" id="price_mayor">
+                                                <input type="text" wire:model.defer="state.price_mayor" autofocus class="font-costo form-control @error('price_mayor') is-invalid @enderror" id="price_mayor">
                                                 @error('price_mayor')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -469,7 +469,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="price_offer">Precio de Oferta</label>
-                                                <input type="number" wire:model.defer="state.price_offer" autofocus class="font-costo form-control @error('price_offer') is-invalid @enderror" id="price_offer">
+                                                <input type="text" wire:model.defer="state.price_offer" autofocus class="font-costo form-control @error('price_offer') is-invalid @enderror" id="price_offer">
                                                 @error('price_offer')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -494,7 +494,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group d-none">
                                                 <label for="price_divisa">Precio de la Divisa</label>
-                                                <input type="number" wire:model.defer="state.price_divisa" autofocus class="font-costo form-control @error('price_divisa') is-invalid @enderror" id="price_divisa">
+                                                <input type="text" wire:model.defer="state.price_divisa" autofocus class="font-costo form-control @error('price_divisa') is-invalid @enderror" id="price_divisa">
                                                 @error('price_divisa')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -609,7 +609,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group d-none">
                                                 <label for="pack_price">Precio del Paquete</label>
-                                                <input type="number" wire:model.defer="state.pack_price" autofocus class="font-costo form-control @error('pack_price') is-invalid @enderror" id="pack_price">
+                                                <input type="text" wire:model.defer="state.pack_price" autofocus class="font-costo form-control @error('pack_price') is-invalid @enderror" id="pack_price">
                                                 @error('pack_price')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
