@@ -207,8 +207,11 @@
                                     <label class="form-check-label small fw-bold">Delivery Local</label>
                                 </div>
                                 <span class="badge bg-success fs-6">
-                                    
+                                    @if($this->llevaOfertaCantProductos() == true)
+                                    <span>Delivery Gratis</span>
+                                    @else
                                     {{ $currencyValue }} {{ $deliveryArea->coste ?? '0' }}
+                                    @endif
                                 </span>
                             </div>
                         </div>

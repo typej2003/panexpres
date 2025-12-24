@@ -12,6 +12,7 @@ use App\Models\Estado;
 use App\Models\Cities;
 use App\Models\DeliveryArea;
 use App\Models\PedidoTemporal;
+use App\Models\PedidoDetallesTemporal;
 use App\Models\DatosDeliveryUser;
 
 class DatosFacturacionCliente extends AdminComponent
@@ -133,11 +134,11 @@ class DatosFacturacionCliente extends AdminComponent
 			else{
 				
 				if(intval($detalle->quantity) >= intval($detalle->product->nroproductdelivery)){
-					dd('entro');
+					
 						return true;
 				}					
 				else{
-					dd('no entro');
+					
 					return false;
 				}				
 			}		
