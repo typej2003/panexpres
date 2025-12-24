@@ -110,9 +110,13 @@ class BioPago extends Component
 				}
 			}
 			else{
-				if($detalle->product->nroproductdelivery >= 3)
+				
+				if(intval($detalle->quantity) >= intval($detalle->product->nroproductdelivery)){
+					dd('entro');
 						return true;
+				}					
 				else{
+					dd('no entro');
 					return false;
 				}				
 			}		
