@@ -109,6 +109,43 @@ class DatosFacturacionCliente extends AdminComponent
         $this->currencyValue = request()->cookie('currency');
     }
 
+    public function llevaOfertaCantProductos()
+	{
+	
+		$detalles = PedidoDetallesTemporal::where('nropedido' , $this->nropedido)->get();
+
+		foreach($detalles as $detalle)
+		{
+			if($detalle->product->in_offer == '1')
+			{
+				if($detalle->product->nroproductdelivery > 0){
+					if (intval($detalle->product->nroproductdelivery) <= intval($detalle->quantity))
+					{
+						return true;
+					}
+					else{
+						return false;
+					}
+				}else{
+					return false;
+				}
+			}
+			else{
+				
+				if(intval($detalle->quantity) >= intval($detalle->product->nroproductdelivery)){
+					dd('entro');
+						return true;
+				}					
+				else{
+					dd('no entro');
+					return false;
+				}				
+			}		
+		}
+		
+		return false;
+	}
+
     public function changeZona($zona_id)
     {
         $zona = DeliveryArea::find($zona_id);

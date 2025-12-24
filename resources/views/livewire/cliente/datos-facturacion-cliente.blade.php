@@ -207,6 +207,7 @@
                                     <label class="form-check-label small fw-bold">Delivery Local</label>
                                 </div>
                                 <span class="badge bg-success fs-6">
+                                    
                                     {{ $currencyValue }} {{ $deliveryArea->coste ?? '0' }}
                                 </span>
                             </div>
