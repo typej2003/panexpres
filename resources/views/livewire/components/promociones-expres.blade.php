@@ -112,11 +112,7 @@
                             </a>
                             <div class="promo-overlay">
                                 @if($promocion->product->in_offer == '1')
-                                    <!-- @if($promocion->product->nroproductdelivery >= 3)
-                                        <span> +3 panes delivery gratis</span>
-                                    @else -->
-                                        {{$currencyValue}}. {{ $promocion->product->price_offer }} <span class="tachado">antes {{ $promocion->product->price1 }}</span>
-                                    <!-- @endif -->
+                                    {{$currencyValue}}. {{ $promocion->product->price_offer }} <span class="tachado">antes {{ $promocion->product->price1 }}</span>
                                 @else
                                     {{$currencyValue}}. {{ $promocion->product->price1 }}
                                 @endif 
