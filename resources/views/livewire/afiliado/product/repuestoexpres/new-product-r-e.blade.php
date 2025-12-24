@@ -831,7 +831,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="nroproductdelivery">Nro Productos para Oferta</label>
+                                                <input type="number" wire:model.defer="state.nroproductdelivery" autofocus class="font-costo form-control @error('nroproductdelivery') is-invalid @enderror" id="nroproductdelivery">
+                                                @error('nroproductdelivery')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         
                                     </div>
 

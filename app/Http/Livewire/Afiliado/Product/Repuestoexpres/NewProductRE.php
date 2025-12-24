@@ -260,6 +260,7 @@ class NewProductRE extends AdminComponent
             'in_delivery' => 'nullable',            
             'in_envio_gratis' => 'nullable',
             'in_offer' => 'nullable',
+            'nroproductdelivery' => 'nullable',
             'tx_recomendacion_consumo' => 'nullable',
             'in_fragil' => 'nullable',
             'in_por_encargo' => 'nullable',

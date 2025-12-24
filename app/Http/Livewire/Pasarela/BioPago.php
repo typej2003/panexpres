@@ -110,7 +110,11 @@ class BioPago extends Component
 				}
 			}
 			else{
-				return false;
+				if($detalle->product->nroproductdelivery >= 3)
+						return true;
+				else{
+					return false;
+				}				
 			}		
 		}
 		

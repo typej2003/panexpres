@@ -88,6 +88,7 @@ class Product extends Model
         'tx_adicionales',
         'tx_alergenos',        
         'in_offer',
+        'nroproductdelivery',
         'tx_datos_vencimiento',
         'tx_valores_nutricionales',
         'tx_conservacion',
