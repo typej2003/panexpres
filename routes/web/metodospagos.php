@@ -2,12 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Pasarela\Pasarela;
+use App\Http\Livewire\Pasarela\MainPayment;
 use App\Http\Livewire\Pasarela\BioPago;
 use App\Http\Livewire\Pasarela\BioPagoUrl;
 
 use App\Http\Livewire\Notificacion\CompraRealizada;
 
 Route::get('/pasarela', Pasarela::class)->name('pasarela');
+
+Route::get('/mainpayment/{nropedido}/{comercio_id}', MainPayment::class)->name('mainpayment');
 
 Route::get('/biopago', BioPago::class)->name('biopago');
 

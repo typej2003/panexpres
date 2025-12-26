@@ -35,16 +35,32 @@ class Shipping extends Component
 
         $datosdeliveryuser = DatosDeliveryUser::where('user_id', auth()->user()->id)->first();
 
-        if($datosdeliveryuser !== null)
-        {
-            if($pedido->costeenvio !==null || $pedido->costeenvio !==0 )
-            {
+        if ($datosdeliveryuser) {
+            // Convertimos a colección y filtramos los que están vacíos o null
+            $tieneCamposVacios = collect($datosdeliveryuser->toArray())->contains(fn($value) => empty($value));
+
+            if ($tieneCamposVacios) {
+                // Al menos uno es null, "" (string vacío) o []
+                $this->cambiar = true;
+                // return "Faltan datos por completar";
+            } else {
                 $this->cambiar = false;
+                // return "Todo está lleno";
             }
-        }else{
-            $this->cambiar = false;
+        } else {
+            return "El registro ni siquiera existe";
         }
-        $this->cambiar = true;
+
+        // if($datosdeliveryuser !== null)
+        // {
+        //     if($pedido->costeenvio !==null || $pedido->costeenvio !==0 )
+        //     {
+        //         $this->cambiar = false;
+        //     }
+        // }else{
+        //     $this->cambiar = false;
+        // }
+        // $this->cambiar = true;
     }
 
     public function render()

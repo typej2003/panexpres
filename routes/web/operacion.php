@@ -115,6 +115,12 @@ Route::get('/pagosatisfactorioPanexpres/{id}', function ( $id ) {
 });
 
 
+Route::get('/pagosatisfactorioZelle/{id}/{nropedido}/{comercio_id}', function ( $id, $nropedido, $comercio_id ) {
+    $comercio = Comercio::find($comercio_id);
+    return view('externalviews.pagosatisfactorioZelle', ['id_suc' => $id , 'comercio' => $comercio, 'nropedido' => $nropedido]);
+})->name('pagosatisfactorioZelle');
+
+
 Route::get('/procesadoC', Procesado::class,)->name('procesadoC');
 
 Route::get('/showCurrency', Currency::class,)->name('showCurrency');

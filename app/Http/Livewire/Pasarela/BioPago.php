@@ -34,6 +34,7 @@ class BioPago extends Component
 
 	public $pedidoTemporal; 
 	public $comercio_id = 1;
+	public $nropedido;
     
     // Método para manejar la persistencia del formulario después del error
     public $showForm = true; // No lo usamos para el paso, pero sí para la visibilidad interna si es necesario.
@@ -47,12 +48,11 @@ class BioPago extends Component
         'email' => 'required|email',
     ];
 
-	public function mount(Request $request)
+	public function mount($nropedido, $comercio_id)
     {
-        $this->nropedido = $request->input('nropedido');
-
-        $this->comercioId = $request->input('comercioId');
-		$this->comercio_id = $this->comercioId;
+        $this->nropedido = $nropedido;
+		
+        $this->comercio_id = $comercio_id;
 
 		$this->pedidoTemporal = PedidoTemporal::where('nropedido', $this->nropedido)->first();
 		if($this->pedidoTemporal)
@@ -272,9 +272,11 @@ class BioPago extends Component
     // Método que se llama al hacer clic en el botón "Volver"
     public function goBack()
     {
-        // Emitimos un evento al componente padre para que cambie de paso (Paso 2 -> Paso 1)
-        $this->dispatch('goBackToSelection');
-        $this->resetErrorBag();
+		
+        return redirect()->route('mainpayment', [
+				'nropedido' => $this->nropedido, 
+				'comercio_id' => $this->comercio_id,
+			]);
     }
 
     public function render()

@@ -264,9 +264,13 @@ class WelcomeController extends Controller
 		// 		'nropedido' => $nropedido, 
 		// 		'comercioId' => $comercioId,
 		// 	]);
-        return redirect()->route('biopago', [
+        // return redirect()->route('biopago', [
+		// 		'nropedido' => $nropedido, 
+		// 		'comercioId' => $comercioId,
+		// 	]);
+        return redirect()->route('mainpayment', [
 				'nropedido' => $nropedido, 
-				'comercioId' => $comercioId,
+				'comercio_id' => $comercioId,
 			]);
     }
 
