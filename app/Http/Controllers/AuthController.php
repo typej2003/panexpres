@@ -52,6 +52,8 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
+            return redirect()->intended('/');
+
             // return redirect()->route('welcome');
 
             // return redirect()->intended('admin/dashboard')->with('success','Bienvenido al panel de Administración');

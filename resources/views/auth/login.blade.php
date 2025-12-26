@@ -77,6 +77,17 @@
             </form>
         </div>
     </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const button = this.querySelector('button');
+            if (button.disabled) {
+                e.preventDefault();
+                return;
+            }
+            button.disabled = true;
+            button.innerHTML = 'Cargando...'; // Opcional: feedback visual
+        });
+    </script>
 </div>   
   <!-- /.card -->
 
