@@ -49,7 +49,7 @@ class ZelleReport extends Component
 
             $this->costeBs = $amount;
 			
-			$this->pedidoTemporal->update(['costeBs' => $amount]);
+			$this->pedidoTemporal->update(['costeBs' => $amount, 'costeenvio' => $costoenvio]);
 
             $this->state['amount'] = $this->pedidoTemporal->coste + $costoenvio;
 
