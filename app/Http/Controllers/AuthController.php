@@ -51,7 +51,7 @@ class AuthController extends Controller
         //Si es correcto, inicio sesión y login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
+            //regresar al welcome
             return redirect()->intended('/');
 
             // return redirect()->route('welcome');
