@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Afiliado;
 use Livewire\Component;
 use App\Models\PedidoTemporal;
 use App\Models\DatosDeliveryUser;
+use App\Models\DeliveryArea;
 
 class Shipping extends Component
 {
@@ -13,6 +14,8 @@ class Shipping extends Component
     public $cambiar = false;
 
     public $datosdeliveryuser;
+
+    public $pedidotemporal;
 
     // Esto asegura que cuando el radio mande un string, se convierta a booleano real
 
@@ -31,24 +34,34 @@ class Shipping extends Component
     {
         $this->nropedido = $nropedido;
 
-        $pedido = PedidoTemporal::where('nropedido', $this->nropedido)->first();
+        $this->pedidotemporal = PedidoTemporal::where('nropedido', $this->nropedido)->first();
 
         $datosdeliveryuser = DatosDeliveryUser::where('user_id', auth()->user()->id)->first();
 
         if ($datosdeliveryuser) {
             // Convertimos a colección y filtramos los que están vacíos o null
             $tieneCamposVacios = collect($datosdeliveryuser->toArray())->contains(fn($value) => empty($value));
-
-            if ($tieneCamposVacios) {
+            
+            if ($tieneCamposVacios || $datosdeliveryuser->deliveryarea_id == 0) {
                 // Al menos uno es null, "" (string vacío) o []
+                $datosdeliveryuser->update(['deliveryarea' => '', 'costeenvio' => 0]);
                 $this->cambiar = true;
                 // return "Faltan datos por completar";
             } else {
-                $this->cambiar = false;
+                if(($datosdeliveryuser->deliveryarea_id !== 0) || ($datosdeliveryuser->deliveryarea_id !== null)){
+                    $deliveryarea = DeliveryArea::where('id', $datosdeliveryuser->deliveryarea_id)->first();
+                    $this->pedidotemporal->costeenvio = $deliveryarea->coste;
+                    $this->cambiar = false;
+                }else{
+
+                    $datosdeliveryuser->deliveryarea = '';
+                    $this->cambiar = true;
+                }
                 // return "Todo está lleno";
             }
         } else {
-            return "El registro ni siquiera existe";
+            $this->cambiar = true;
+            // return "El registro ni siquiera existe";
         }
 
         // if($datosdeliveryuser !== null)
