@@ -53,9 +53,9 @@ class ZelleReport extends Component
 
             $this->state['amount'] = $this->pedidoTemporal->coste + $costoenvio;
 
-            $this->state['zelle_holder'] = $this->pedidoTemporal->names . ' ' . $this->pedidoTemporal->surnames;
+            $this->state['zelle_holder'] = auth()->user()->names . ' ' . auth()->user()->surnames;
 
-            $this->state['email'] = $this->pedidoTemporal->client->email;
+            $this->state['email'] = auth()->user()->email;
 
         }
     }
