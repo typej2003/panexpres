@@ -1,3 +1,4 @@
+<div>
 <div class="container py-5">
     <div class="text-center mb-5">
         <h2 class="display-5 text-primary fw-bold">Nuestros Aliados Comerciales</h2>
@@ -68,4 +69,8 @@
     .object-fit-cover {
         object-fit: cover;
     }
+    .card {
+        width: 250px !important;
+    }
 </style>
+</div>
