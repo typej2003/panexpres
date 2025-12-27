@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Compra y vende Pan de Jamón y Combos Navideños Caracas">
     <meta name="keywords" content="vende, compra, Pan, Jamón, Pan de Jamón, Combos Navideños, Caracas, directo a tu mesa, @panexpres.vezla, Panexprés, Panexpres">
-    <link rel="shortcut icon" type="x-icon" href="/img/panexpres_logo.png" />
+    <link rel="icon" type="image/png" href="{{ asset('android-chrome-192x192.png?v=1') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico?v=1') }}">
+    <meta name="theme-color" content="#ff572f"> 
+
     <title>PanExprés</title>
+    <title>@yield('title', 'PanExpres - Tu panadería a un clic')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('/css/styles_expres.css') }}">
