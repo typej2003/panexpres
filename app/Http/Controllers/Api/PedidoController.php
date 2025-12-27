@@ -56,6 +56,22 @@ class PedidoController extends Controller
         //
     }
 
+    public function actualizarEstado(Request $request)
+    {
+        // Buscamos el pedido por el nropedido enviado
+        $pedido = Pedido::where('nropedido', $request->nropedido)->first();
+
+        if ($pedido) {
+            $pedido->pedidoentregado = $request->valor; // 'atendido' o 'suspendido'
+            $pedido->fecha_entrega = $request->fecha_entrega; // La fecha enviada por el app
+            $pedido->save();
+
+            return response()->json(['message' => 'Estado actualizado correctamente'], 200);
+        }
+
+        return response()->json(['message' => 'Pedido no encontrado'], 404);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
