@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Aliado\AlliedUserCreationWizard;
 
+use App\Http\Livewire\Aliado\Mapa;
+
 Route::get('/allieduserWizard', AlliedUserCreationWizard::class)->name('allieduserWizard');
 
 // Route::get('/allieduserWizard', function() {
@@ -16,3 +18,5 @@ Route::get('/allieduserWizard', AlliedUserCreationWizard::class)->name('alliedus
 //     ];
 //     return view('livewire.aliado.allied-user-creation-wizard', ['currentStep' => 1, 'state' => $state ]);
 // })->name('allieduserWizard');
+
+Route::get('/mapa', Mapa::class)->name('mapa');
