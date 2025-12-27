@@ -162,7 +162,7 @@ class ListComercios extends AdminComponent
 			'name' => 'required',			
 			'area_id' => 'required',
 			'cellphonecontact' => 'nullable',
-			'horario' => 'required',
+			'horario' => 'nullable',
 		])->validate();
 
 		$validatedData['keyword'] = $this->state['keyword'];

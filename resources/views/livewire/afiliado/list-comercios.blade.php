@@ -294,6 +294,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="horario">Hora de trabajo</label>
+                            <input type="text" wire:model.defer="state.horario" class="form-control @error('horario') is-invalid @enderror" id="horario" aria-describedby="horarioHelp" placeholder="Horario">
+                            @error('horario')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="dominio">Dominio</label>
                             <input type="text" wire:model.defer="state.dominio" class="form-control @error('dominio') is-invalid @enderror" id="dominio" aria-describedby="dominioHelp" placeholder="Dominio">
                             @error('dominio')
