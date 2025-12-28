@@ -137,12 +137,44 @@
                         <div wire:loading wire:target="logo" class="small text-primary"><i class="fas fa-spinner fa-spin"></i> Cargando...</div>
                     </div>
                 </div>
-                <div class="mb-3"><label class="small fw-bold">Nombre del Comercio</label><input type="text" wire:model.defer="state.nameC" class="form-control"></div>
                 <div class="row g-2 mb-3">
-                    <div class="col-4"><label class="small fw-bold">RIF</label><select wire:model.defer="state.rifLetter" class="form-select"><option value="J">J</option><option value="G">G</option></select></div>
-                    <div class="col-8"><label>&nbsp;</label><input type="number" wire:model.defer="state.rifNumber" class="form-control"></div>
+                    <div class="col-md-12 col-12"><label class="small fw-bold">Area</label>
+                        <select wire:model.defer="area_id" class="form-select" disabled>
+                            @foreach($areas as $area)
+                                <option value="{{$area->id}}">{{$area->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-                <div class="mb-3"><label class="small fw-bold">Email Comercial</label><input type="email" wire:model.defer="state.comercio_email" class="form-control"></div>
+                <div class="mb-3">
+                <label class="small fw-bold">Nombre del Comercio</label>
+                    <input type="text" wire:model.defer="stateC.name" class="form-control @error('stateC.name') is-invalid @enderror">
+                    @error('stateC.name') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+                <div class="mb-3">
+                    <label class="small fw-bold">Keyword</label>
+                    <input type="text" 
+                        wire:model.defer="stateC.keyword" 
+                        class="form-control @error('stateC.keyword') is-invalid @enderror"
+                        placeholder="se-generara-solo" disabled>
+                    @error('stateC.keyword') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+                @error('keyword')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+                <div class="row g-2 mb-3">
+                    <div class="col-4"><label class="small fw-bold">RIF</label><select wire:model.defer="stateC.rifLetter" class="form-select"><option value="J">J</option><option value="G">G</option></select></div>
+                    <div class="col-8"><label>&nbsp;</label><input type="number" wire:model.defer="stateC.rifNumber" class="form-control"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="small fw-bold">Email Comercial</label>
+                    <input type="email" wire:model.defer="stateC.email" class="form-control @error('stateC.email') is-invalid @enderror">
+                    @error('stateC.email') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+                <div class="mb-3"><label class="small fw-bold">Teléfono de contacto</label><input type="text" wire:model.defer="stateC.contactcellphone" class="form-control"></div>
+                <div class="mb-3"><label class="small fw-bold">Horario</label><input type="text" wire:model.defer="stateC.horario" class="form-control"></div>
                 <button wire:click="saveStep4" class="btn btn-success w-100 py-2 shadow fw-bold">Finalizar Registro</button>
             </div>
             @endif
@@ -153,7 +185,7 @@
                 <i class="fas fa-check-circle text-success fa-5x mb-4"></i>
                 <h2 class="fw-bold mb-3">¡Registro Completo!</h2>
                 <p class="text-muted mb-4">Ya puedes empezar a gestionar tu panadería en la plataforma.</p>
-                <a href="/dashboard" class="btn btn-primary btn-lg rounded-pill px-5 shadow">Ir al Panel de Control</a>
+                <a href="/admin/dashboard" class="btn btn-primary btn-lg rounded-pill px-5 shadow">Ir al Panel de Control</a>
             </div>
             @endif
 

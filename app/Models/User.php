@@ -214,4 +214,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(UserComercio::class, 'user_id', 'id');
     }
 
+    public function comercioOnlyOne()
+    {
+        return Comercio::where('user_id', auth()->user()->id)->first();
+    }
+
 }

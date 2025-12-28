@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'logout' // exclude exact URL
+        'logout', // exclude exact URL
+        'api/zelle-webhook',
     ];
 }

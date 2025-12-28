@@ -2,9 +2,12 @@
 
 namespace App\Http\Livewire\Aliado;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Area;
 use App\Models\User;
 use App\Models\DatosBasicos;
 use App\Models\Comercio;
@@ -16,6 +19,7 @@ class AlliedUserCreationWizard extends Component
 
     public $currentStep = 1;
     public $logo;
+    public $area_id = 1;
 
     public $state = [
         // Paso 1: Registro
@@ -38,6 +42,18 @@ class AlliedUserCreationWizard extends Component
         'rifLetter' => 'J',
         'rifNumber' => '',
         'comercio_email' => '',
+        'contactcellphone' => '',
+        'contactphone' => '',
+        'msgcontact' => '',
+        'horario' => '',
+    ];
+
+    public $stateC = [
+        // Paso 4: Comercio
+        'name' => '',
+        'rifLetter' => 'J',
+        'rifNumber' => '',
+        'email' => '',
         'contactcellphone' => '',
         'contactphone' => '',
         'msgcontact' => '',
@@ -72,7 +88,8 @@ class AlliedUserCreationWizard extends Component
         }
 
         // PASO 4: Comercio
-        $comercio = $user->comercio;
+        $comercio = $user->comercioOnlyOne();
+
         if (!$comercio || $this->faltanDatosComercio($comercio)) {
             $this->currentStep = 4; return;
         }
@@ -169,13 +186,23 @@ class AlliedUserCreationWizard extends Component
         $this->determinarPaso();
     }
 
+    public function updatedStateCName($value)
+    {
+        // Esto convertirá "Café de Doña María" en "cafe-de-dona-maria"
+        // Si prefieres sin guiones, usa el str_replace después.
+        $slug = Str::slug($value, ''); 
+        $this->stateC['keyword'] = $slug;
+    }
+
     public function saveStep4()
     {
+        // Validamos directamente sobre la propiedad stateC
         $this->validate([
-            'state.nameC' => 'required',
-            'state.rifLetter' => 'required',
-            'state.rifNumber' => 'required',
-            'state.comercio_email' => 'required|email',
+            'stateC.name' => 'required',
+            'stateC.keyword' => 'required|unique:comercios,keyword', // Especifica la columna si es necesario           
+            'stateC.rifLetter' => 'required',
+            'stateC.rifNumber' => 'required',            
+            'stateC.email' => 'required', // Cambiado de comercio_email a email para coincidir con el modelo
             'logo' => 'nullable|image|max:1024',
         ]);
 
@@ -184,34 +211,34 @@ class AlliedUserCreationWizard extends Component
             $logoName = $this->logo->getClientOriginalName();
             $this->logo->storeAs('avatarscomercios', $logoName, 'public');
         }
+        
+        // Procesar la keyword antes de guardar
+        $this->stateC['area_id'] = $this->area_id;
+        $this->stateC['msgcontact'] = 'Hola, te asesoramos por  whatsapp gestiona tu compra por este canal.';
+        $this->stateC['keyword'] = strtolower(str_replace(' ', '', $this->stateC['name']));
+        $this->stateC['avatar'] = $logoName ?? (Auth::user()->comercio->logo ?? null);
 
-        Auth::user()->comercio()->updateOrCreate(
-            ['user_id' => Auth::id()],
-            [
-                'name' => $this->state['name'],
-                'rifLetter' => $this->state['rifLetter'],
-                'rifNumber' => $this->state['rifNumber'],
-                'email' => $this->state['comercio_email'],
-                'contactcellphone' => $this->state['contactcellphone'],
-                'contactphone' => $this->state['contactphone'],
-                'msgcontact' => $this->state['msgcontact'],
-                'horario' => $this->state['horario'],
-                'logo' => $logoName ?? (Auth::user()->comercio->logo ?? null)
-            ]
+        Auth::user()->comercios()->updateOrCreate(
+            ['user_id' => Auth::id()], 
+            $this->stateC // Guardamos el array stateC ya validado
         );
 
         $this->determinarPaso();
     }
 
     private function faltanDatosComercio($c) {
-        $campos = ['name', 'rifLetter', 'rifNumber', 'contactcellphone', 'contactphone', 'msgcontact', 'horario', 'email'];
+        //$campos = ['name', 'rifLetter', 'rifNumber', 'contactcellphone', 'contactphone', 'msgcontact', 'horario', 'email'];
+        $campos = ['name', 'rifLetter', 'rifNumber', 'contactcellphone', 'msgcontact', 'email'];
         foreach ($campos as $f) { if (empty($c->$f)) return true; }
         return false;
     }
 
     public function render()
     {
-        return view('livewire.aliado.allied-user-creation-wizard')
+        $areas = Area::all();
+        $this->state['area_id'] = 1;
+
+        return view('livewire.aliado.allied-user-creation-wizard', ['areas'=>$areas])
                ->layout('layouts.app1'); // Asegúrate que este sea tu layout
     }
 }

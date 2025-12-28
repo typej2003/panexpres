@@ -27,6 +27,7 @@ class Comercio extends Model
         'banner',
         'dominio',
         'contactcellphone',
+        'msgcontact',
         'contactphone',
         'email',
         'youtube',

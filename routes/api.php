@@ -29,6 +29,9 @@ use App\Models\GpsLog;
 // Fin de la app
 
 use App\Http\Livewire\Notificacion\SmsWhastappSender;
+
+// para recibir correo de gmail 
+use App\Http\Controllers\ZelleController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -165,3 +168,7 @@ Route::get('/pedidos', [PedidoController::class, 'index']);
 
 Route::post('/pedidos/actualizar-estado', [PedidoController::class, 'actualizarEstado']);
 
+// Recibir correo de gmail ddrsistemas@gmail.com
+//zelle-webhook
+// Esta será la URL: https://panexpres.com/api/zelle-webhook
+Route::post('/zelle-webhook', [ZelleController::class, 'receive']);
