@@ -242,10 +242,12 @@ class ZelleReport extends Component
         session()->flash('success', 'Reporte de Zelle enviado correctamente.');
 
         // Revisar si el pago existe
-        $pagozelle = PagoZelle::where('alias_identificador', $validatedData['reference'])->first();
-
+        $pagozelle = PagoZelle::where('referencia', $validatedData['reference'])->first();
+        
         if($pagozelle){
+            $nuevoPedido = Pedido::where('referencia', $validatedData['reference'])->first();
             $nuevoPedido->update(['confimed'=> 1]);
+            $transaccion = Transaccion::where('referencia', $validatedData['reference'])->first();
             $transaccion->update(['status'=> 1]);
         }
 
