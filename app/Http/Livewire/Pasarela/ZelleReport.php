@@ -245,9 +245,9 @@ class ZelleReport extends Component
         $pagozelle = PagoZelle::where('referencia', $validatedData['reference'])->first();
         
         if($pagozelle){
-            $nuevoPedido = Pedido::where('referencia', $validatedData['reference'])->first();
+            $nuevoPedido = Pedido::where('reference', $validatedData['reference'])->first();
             $nuevoPedido->update(['confimed'=> 1]);
-            $transaccion = Transaccion::where('referencia', $validatedData['reference'])->first();
+            $transaccion = Transaccion::where('reference', $validatedData['reference'])->first();
             $transaccion->update(['status'=> 1]);
         }
 
