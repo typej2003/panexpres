@@ -129,7 +129,7 @@ class ZelleReport extends Component
         $validatedData = Validator::make($this->state, [
             'zelle_holder' => 'required|string|min:3|max:50',
             'email' => 'required|email',
-            'reference' => 'required|numeric|digits_between:6,12',
+            'reference' => 'required',
             'amount' => 'required|numeric|min:1',
         ], [
             'zelle_holder.required' => 'El nombre del titular es obligatorio.',
