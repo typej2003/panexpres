@@ -10,6 +10,7 @@ use App\Models\PedidoDetalles;
 use App\Models\PedidoDetallesTemporal;
 use App\Models\Transaccion;
 use App\Models\Pagomovil;
+use App\Models\PagoZelle;
 use App\Models\Tasa;
 use Illuminate\Support\Facades\Session;
 use Cart;
@@ -166,7 +167,7 @@ class ZelleReport extends Component
             'fechaPago' => $paymentDate,
             'title' => $pedidotemporal->title,
             'description' => $pedidotemporal->description,
-            'status' => 1,
+            'status' => 0,
             'nropedido' => $this->nropedido,
             'cellphonecode' => $pedidotemporal->cellphonecode,
             'cellphone' => $pedidotemporal->cellphone,
@@ -238,6 +239,14 @@ class ZelleReport extends Component
         }
         
         session()->flash('success', 'Reporte de Zelle enviado correctamente.');
+
+        // Revisar si el pago existe
+        $pagozelle = PagoZelle::where('alias_identificador', $validatedData['reference'])->first();
+
+        if($pagozelle){
+            $nuevoPedido->update(['confimed'=> 1]);
+            $transaccion->update(['status'=> 1]);
+        }
 
         return redirect()->to('/redireccionar/comprarealizada/' . $this->nropedido);
 

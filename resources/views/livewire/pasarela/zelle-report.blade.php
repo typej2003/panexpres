@@ -7,6 +7,7 @@
                     <img src="/img/zelle_logo.png" alt="Zelle" class="img-fluid mb-2" style="max-width: 120px;">
                     <h3 class="fw-bold text-dark">Reportar Pago</h3>
                     <p class="text-muted">Complete los datos de su transferencia Zelle</p>
+                    <p class="text-muted bg-warning p-1">Confirmación automatica: Reporte a los 2 minutos de realizar el pago</p>
                 </div>
 
                 <form wire:submit.prevent="submitZelle">
