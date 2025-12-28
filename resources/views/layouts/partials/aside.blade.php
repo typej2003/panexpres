@@ -107,6 +107,15 @@
             </li>
 
             <li class="nav-item">
+              <a href="{{ route('listPagoZelle', 1) }}" class="nav-link {{ request()->is('listPagoZelle') ? 'active' : '' }}">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Ver pagos Zelle
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="{{ route('listPedidosCliente') }}" class="nav-link {{ request()->is('listPedidosCliente') ? 'active' : '' }}">
                 <i class="fa fa-solid fa-file-invoice-dollar"></i>
                 <p>
