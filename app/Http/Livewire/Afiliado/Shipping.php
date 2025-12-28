@@ -43,6 +43,7 @@ class Shipping extends Component
             $tieneCamposVacios = collect($datosdeliveryuser->toArray())->contains(fn($value) => empty($value));
             
             if ($tieneCamposVacios || $datosdeliveryuser->deliveryarea_id == 0) {
+                
                 // Al menos uno es null, "" (string vacío) o []
                 $datosdeliveryuser->update(['deliveryarea' => '', 'costeenvio' => 0]);
                 $this->cambiar = true;
@@ -50,7 +51,7 @@ class Shipping extends Component
             } else {
                 if(($datosdeliveryuser->deliveryarea_id !== 0) || ($datosdeliveryuser->deliveryarea_id !== null)){
                     $deliveryarea = DeliveryArea::where('id', $datosdeliveryuser->deliveryarea_id)->first();
-                    $this->pedidotemporal->costeenvio = $deliveryarea->coste;
+                    $this->pedidotemporal->update(['costeenvio' => $deliveryarea->coste]);
                     $this->cambiar = false;
                 }else{
 

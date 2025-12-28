@@ -46,6 +46,7 @@ class ZelleReport extends Component
 			}else{
 				$costoenvio = $this->pedidoTemporal->costeenvio;
 			}
+            
 			$amount = $this->convertirDolar_a_Bolivar($this->pedidoTemporal->coste + $costoenvio);
 
             $this->costeBs = $amount;
