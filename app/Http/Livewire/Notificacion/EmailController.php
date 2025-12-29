@@ -131,7 +131,7 @@ class EmailController extends Component
             "body"  => $info
         ];
         
-        Mail::send('emails.admin-msj', $data, function($message) use ($data) {
+        Mail::send('emails.agenda-msj', $data, function($message) use ($data) {
             $message->to($data["email"])
                     ->from('admin@panexpres.com', 'Administrador Pan Express') // <--- Aquí cambias el remitente
                     ->subject($data["title"]);    
