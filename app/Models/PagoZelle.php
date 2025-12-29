@@ -10,12 +10,12 @@ class PagoZelle extends Model
     use HasFactory;
 
     protected $fillable = [
-        'remitente',
-        'monto',
-        'referencia',
-        'estado',
-        'fecha_pago',
-        'alias_identificador',
-        'nota_memorandum',
+        'remitente', 
+        'monto', 
+        'referencia', 
+        'estado', 
+        'fecha_pago', 
+        'nota_memorandum', 
+        'alias_identificador'
     ];
 }

@@ -12,70 +12,58 @@ class ZelleController extends Controller
     public function receive(Request $request)
     {
         $body = $request->input('body');
-
-        // 1. FILTRO DE SEGURIDAD: Ignorar si es basura, links publicitarios o está vacío
-        if (empty(trim($body)) || str_contains($body, 'portaloficial.blog') || !str_contains($body, 'Confirmation')) {
-            return response()->json(['status' => 'ignored', 'message' => 'No es un correo de pago'], 200);
-        }
-
-        // 2. EXTRACCIÓN CON REGEX (Soporta asteriscos * del formato de Google)
         
-        // Extraer Referencia: Captura el código entre asteriscos o tras "Confirmation:"
-        preg_match('/Confirmation:\s*\*?([a-zA-Z0-9]+)\*?/i', $body, $refMatch);
-        
-        // Extraer Monto: Busca el número tras el signo $
-        preg_match('/\$([0-9,.]+)/', $body, $montoMatch);
-        
-        // Extraer Remitente: Todo antes de "sent you"
-        preg_match('/^(.*?)\s+sent\s+you/mi', $body, $nameMatch);
-        
-        // Extraer Fecha: Formato MM/DD/YYYY entre posibles asteriscos
-        preg_match('/Date:\s*\*?([\d\/]+)\*?/i', $body, $dateMatch);
-        
-        // Extraer Memo: El texto después de "Memo:"
-        preg_match('/Memo:\s*\*?(.*?)\*?\s*(?:\r?\n|$)/i', $body, $memoMatch);
+        // Limpieza inicial: eliminamos asteriscos y espacios dobles para facilitar la búsqueda
+        $cleanBody = str_replace('*', '', $body);
 
-        $referencia = $refMatch[1] ?? null;
+        // 1. Extraer Referencia: Buscamos después de "Confirmation:"
+        // Acepta códigos con letras y números
+        preg_match('/Confirmation:\s*([a-zA-Z0-9]+)/i', $cleanBody, $refMatch);
+        $referencia = isset($refMatch[1]) ? trim($refMatch[1]) : null;
 
-        // 3. VALIDACIÓN DE DATOS
-        if (!$referencia) {
-            // Solo logueamos si realmente parece un correo de Zelle pero falló la regex
-            if (str_contains($body, 'sent you')) {
-                Log::warning("Zelle: Falló extracción en correo legítimo. Cuerpo: " . substr($body, 0, 150));
-                return response()->json(['status' => 'error', 'message' => 'Referencia no hallada'], 400);
-            }
-            return response()->json(['status' => 'ignored'], 200);
-        }
-
-        // Limpieza final de variables
+        // 2. Extraer Monto
+        preg_match('/\$([0-9,.]+)/', $cleanBody, $montoMatch);
         $monto = isset($montoMatch[1]) ? (float) str_replace(',', '', $montoMatch[1]) : 0;
-        $remitente = trim(str_replace('*', '', $nameMatch[1] ?? 'Desconocido'));
-        $memo = trim(str_replace('*', '', $memoMatch[1] ?? ''));
-        
-        try {
-            $fecha = isset($dateMatch[1]) ? Carbon::parse($dateMatch[1]) : now();
-        } catch (\Exception $e) {
-            $fecha = now();
+
+        // 3. Extraer Remitente: Todo lo que esté antes de "sent you"
+        preg_match('/^(.*?)\s+sent\s+you/mi', $cleanBody, $nameMatch);
+        $remitente = isset($nameMatch[1]) ? trim($nameMatch[1]) : 'Desconocido';
+
+        // 4. Extraer Fecha y Memo
+        preg_match('/Date:\s*([\d\/]+)/i', $cleanBody, $dateMatch);
+        preg_match('/Memo:\s*(.*)/i', $cleanBody, $memoMatch);
+
+        // VALIDACIÓN CRÍTICA
+        if (!$referencia) {
+            Log::error("Zelle Error: No se detectó referencia. Cuerpo recibido: " . $body);
+            return response()->json(['status' => 'error', 'message' => 'Referencia no hallada'], 400);
         }
 
-        // 4. GUARDADO EN BASE DE DATOS
-        $pago = PagoZelle::updateOrCreate(
-            ['referencia' => $referencia],
-            [
-                'remitente' => $remitente,
-                'monto' => $monto,
-                'estado' => 'Completada',
-                'fecha_pago' => $fecha,
-                'nota_memorandum' => $memo,
-                'alias_identificador' => 'Wells Fargo Zelle',
-            ]
-        );
+        try {
+            $fecha = isset($dateMatch[1]) ? \Carbon\Carbon::parse($dateMatch[1]) : now();
+            
+            $pago = \App\Models\PagoZelle::updateOrCreate(
+                ['referencia' => $referencia], // Si la referencia ya existe, actualiza; si no, crea.
+                [
+                    'remitente' => $remitente,
+                    'monto' => $monto,
+                    'estado' => 'Completada',
+                    'fecha_pago' => $fecha,
+                    'nota_memorandum' => isset($memoMatch[1]) ? trim($memoMatch[1]) : '',
+                    'alias_identificador' => 'Wells Fargo Zelle',
+                ]
+            );
 
-        return response()->json([
-            'status' => 'success', 
-            'referencia' => $referencia,
-            'monto' => $monto
-        ], 200);
+            return response()->json([
+                'status' => 'success', 
+                'id_guardado' => $pago->id, 
+                'ref' => $referencia
+            ], 200);
+
+        } catch (\Exception $e) {
+            Log::error("Zelle DB Error: " . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function receive1(Request $request)
