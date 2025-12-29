@@ -7,8 +7,8 @@
                 <img src="{{ asset('img/panexpres_logo_blanco.png') }}" alt="Logo Pan Expres Blanco" class="footer-logo">
                 <div class="social-links">
                     <a href="https://www.instagram.com/panexpres.ve/" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=+58&text='Hola, te asesoramos por  whatsapp gestiona tu compra por este canal.'" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.tiktok.com/@panexpres.ve?_r=1&_d=ema2k8d2jgf43c&sec_uid=MS4wLjABAAAAsBozWZAzY6F8I_I5DDljXZOu_VGJsF8mbqyxv72mqVTEFH8y-tcBCIQSg7mTHt9P&share_author_id=7588182916595172363&sharer_language=es&source=h5_m&u_code=f16037fcd4e3b5&timestamp=1767018600&user_id=7588182916595172363&sec_user_id=MS4wLjABAAAAsBozWZAzY6F8I_I5DDljXZOu_VGJsF8mbqyxv72mqVTEFH8y-tcBCIQSg7mTHt9P&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7588072740390782776&share_link_id=4d54fb73-f5b6-4a6b-b172-5014d49e57ab&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
                     <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
