@@ -150,4 +150,6 @@ Route::get('/agendar', function (Request $request) {
 
 Route::get('/loginformulario', HacerCita::class)->name('loginformulario');
 
+Route::get('/respuestaAgenga', FormularioCita::class)->name('respuestaAgenga');
+
 Route::get('/recomendados', ShowRecommendedExpres::class)->name('recomendados');

@@ -54,9 +54,11 @@ class Cita extends Component
 
             // Limpiar el formulario
             $this->reset(['nombre', 'email', 'telefono', 'tipo_negocio', 'fecha_preferida']);
-            
+
             // 4. Feedback al usuario
             session()->flash('success', 'Gracias por su información, pronto nos comunicaremos con usted.');
+
+            return redirect()->route('respuestaAgenda');
             
 
         } catch (\Exception $e) {
