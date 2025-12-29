@@ -11,33 +11,38 @@ class ZelleController extends Controller
 {
     public function receive(Request $request)
     {
-        // Capturamos el cuerpo y lo limpiamos de posibles espacios raros
         $body = $request->input('body');
+
+        // 1. Extraer Referencia: Ahora ignora asteriscos (*) y otros símbolos
+        // Buscamos "Confirmation:" seguido de cualquier cosa hasta encontrar el código alfanumérico
+        preg_match('/Confirmation:\s*\*?([a-zA-Z0-9]+)\*?/i', $body, $refMatch);
         
-        // 1. Extraer Referencia (Mejorado: Busca cualquier cadena de texto tras 'Confirmation')
-        // Captura: "Confirmation: BAsqr..." o "Confirmation Number: BAsqr..."
-        preg_match('/Confirmation\s*(?:#|Number|:)?\s*([a-zA-Z0-9]+)/i', $body, $refMatch);
-        
-        // 2. Extraer Monto (Busca el número después del $)
+        // 2. Extraer Monto: Buscamos el número tras el $ (ignorando posibles asteriscos)
         preg_match('/\$([0-9,.]+)/', $body, $montoMatch);
         
-        // 3. Extraer Remitente (Todo antes de "sent you")
+        // 3. Extraer Remitente: Todo antes de "sent you"
         preg_match('/^(.*?)\s+sent\s+you/mi', $body, $nameMatch);
         
-        // 4. Extraer Fecha (Formato MM/DD/YYYY)
-        preg_match('/Date:\s*([\d\/]+)/', $body, $dateMatch);
+        // 4. Extraer Fecha: Buscamos la fecha ignorando asteriscos
+        preg_match('/Date:\s*\*?([\d\/]+)\*?/i', $body, $dateMatch);
 
         $referencia = $refMatch[1] ?? null;
 
         if (!$referencia) {
-            // Si vuelve a fallar, este log será corto ahora y podrás leerlo
-            Log::warning("Zelle: No se halló referencia. Cuerpo: " . substr($body, 0, 200));
+            // Log de depuración por si acaso
+            Log::warning("Zelle: No se halló referencia. Revisar formato: " . substr($body, 0, 150));
             return response()->json(['status' => 'error', 'message' => 'Datos incompletos'], 400);
         }
 
         $monto = isset($montoMatch[1]) ? (float) str_replace(',', '', $montoMatch[1]) : 0;
-        $remitente = trim($nameMatch[1] ?? 'Desconocido');
-        $fecha = isset($dateMatch[1]) ? \Carbon\Carbon::parse($dateMatch[1]) : now();
+        $remitente = trim(str_replace('*', '', $nameMatch[1] ?? 'Desconocido')); // Limpiamos asteriscos del nombre
+        $fechaRaw = isset($dateMatch[1]) ? $dateMatch[1] : now();
+
+        try {
+            $fecha = \Carbon\Carbon::parse($fechaRaw);
+        } catch (\Exception $e) {
+            $fecha = now();
+        }
 
         $pago = \App\Models\PagoZelle::updateOrCreate(
             ['referencia' => $referencia],
@@ -46,11 +51,11 @@ class ZelleController extends Controller
                 'monto' => $monto,
                 'estado' => 'Completada',
                 'fecha_pago' => $fecha,
-                'nota_memorandum' => 'Procesado vía Script Google',
+                'nota_memorandum' => 'Procesado automáticamente',
             ]
         );
 
-        return response()->json(['status' => 'success'], 200);
+        return response()->json(['status' => 'success', 'ref' => $referencia], 200);
     }
 
     public function receive1(Request $request)
