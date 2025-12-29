@@ -52,11 +52,12 @@ class Cita extends Component
             $user = User::where('email', 'typej2003@gmail.com')->first();
             $emailController->sendEmailAdmin('agenda', $user, $info);
 
+            // Limpiar el formulario
+            $this->reset(['nombre', 'email', 'telefono', 'tipo_negocio', 'fecha_preferida']);
+            
             // 4. Feedback al usuario
             session()->flash('success', 'Gracias por su información, pronto nos comunicaremos con usted.');
             
-            // Limpiar el formulario
-            $this->reset(['nombre', 'email', 'telefono', 'tipo_negocio', 'fecha_preferida']);
 
         } catch (\Exception $e) {
             session()->flash('error', 'Ocurrió un error: ' . $e->getMessage());
