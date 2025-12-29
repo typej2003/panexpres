@@ -11,43 +11,42 @@ class ZelleController extends Controller
 {
     public function receive(Request $request)
     {
-        $body = $request->input('body'); 
-
-        // 1. Extraer Monto (Soporta formatos con y sin comas)
+        // Capturamos el cuerpo y lo limpiamos de posibles espacios raros
+        $body = $request->input('body');
+        
+        // 1. Extraer Referencia (Mejorado: Busca cualquier cadena de texto tras 'Confirmation')
+        // Captura: "Confirmation: BAsqr..." o "Confirmation Number: BAsqr..."
+        preg_match('/Confirmation\s*(?:#|Number|:)?\s*([a-zA-Z0-9]+)/i', $body, $refMatch);
+        
+        // 2. Extraer Monto (Busca el número después del $)
         preg_match('/\$([0-9,.]+)/', $body, $montoMatch);
         
-        // 2. Extraer Confirmación (Buscamos "Confirmation", "Confirmación" o solo el código)
-        preg_match('/(?:Confirmation|Confirmación|Confirmacion):\s*(\w+)/i', $body, $refMatch);
-        
-        // 3. Extraer Remitente (Mejorado para capturar nombres largos antes de "sent you")
+        // 3. Extraer Remitente (Todo antes de "sent you")
         preg_match('/^(.*?)\s+sent\s+you/mi', $body, $nameMatch);
-
-        // 4. Extraer Fecha
+        
+        // 4. Extraer Fecha (Formato MM/DD/YYYY)
         preg_match('/Date:\s*([\d\/]+)/', $body, $dateMatch);
 
         $referencia = $refMatch[1] ?? null;
 
         if (!$referencia) {
-            // ¡ESTO ES CLAVE! Si falla, revisa storage/logs/laravel.log
-            Log::error("Fallo de extracción Zelle. Cuerpo recibido: " . $body);
-            return response()->json([
-                'status' => 'error', 
-                'message' => 'Datos incompletos',
-                'debug' => 'No se encontró la referencia'
-            ], 400);
+            // Si vuelve a fallar, este log será corto ahora y podrás leerlo
+            Log::warning("Zelle: No se halló referencia. Cuerpo: " . substr($body, 0, 200));
+            return response()->json(['status' => 'error', 'message' => 'Datos incompletos'], 400);
         }
 
         $monto = isset($montoMatch[1]) ? (float) str_replace(',', '', $montoMatch[1]) : 0;
-        $remitente = trim($nameMatch[1] ?? 'Remitente no detectado');
+        $remitente = trim($nameMatch[1] ?? 'Desconocido');
+        $fecha = isset($dateMatch[1]) ? \Carbon\Carbon::parse($dateMatch[1]) : now();
 
-        $pago = PagoZelle::updateOrCreate(
+        $pago = \App\Models\PagoZelle::updateOrCreate(
             ['referencia' => $referencia],
             [
                 'remitente' => $remitente,
                 'monto' => $monto,
                 'estado' => 'Completada',
-                'fecha_pago' => isset($dateMatch[1]) ? \Carbon\Carbon::parse($dateMatch[1]) : now(),
-                'nota_memorandum' => 'Procesado vía API',
+                'fecha_pago' => $fecha,
+                'nota_memorandum' => 'Procesado vía Script Google',
             ]
         );
 
