@@ -67,8 +67,8 @@
                         @error('reference') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm" wire:loading.attr="disabled">
+                    <div class="d-flex d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm mx-auto" wire:loading.attr="disabled">
                             <span wire:loading.remove>Confirmar Reporte</span>
                             <span wire:loading>Procesando...</span>
                         </button>
