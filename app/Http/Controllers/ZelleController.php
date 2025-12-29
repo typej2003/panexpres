@@ -13,49 +13,69 @@ class ZelleController extends Controller
     {
         $body = $request->input('body');
 
-        // 1. Extraer Referencia: Ahora ignora asteriscos (*) y otros símbolos
-        // Buscamos "Confirmation:" seguido de cualquier cosa hasta encontrar el código alfanumérico
+        // 1. FILTRO DE SEGURIDAD: Ignorar si es basura, links publicitarios o está vacío
+        if (empty(trim($body)) || str_contains($body, 'portaloficial.blog') || !str_contains($body, 'Confirmation')) {
+            return response()->json(['status' => 'ignored', 'message' => 'No es un correo de pago'], 200);
+        }
+
+        // 2. EXTRACCIÓN CON REGEX (Soporta asteriscos * del formato de Google)
+        
+        // Extraer Referencia: Captura el código entre asteriscos o tras "Confirmation:"
         preg_match('/Confirmation:\s*\*?([a-zA-Z0-9]+)\*?/i', $body, $refMatch);
         
-        // 2. Extraer Monto: Buscamos el número tras el $ (ignorando posibles asteriscos)
+        // Extraer Monto: Busca el número tras el signo $
         preg_match('/\$([0-9,.]+)/', $body, $montoMatch);
         
-        // 3. Extraer Remitente: Todo antes de "sent you"
+        // Extraer Remitente: Todo antes de "sent you"
         preg_match('/^(.*?)\s+sent\s+you/mi', $body, $nameMatch);
         
-        // 4. Extraer Fecha: Buscamos la fecha ignorando asteriscos
+        // Extraer Fecha: Formato MM/DD/YYYY entre posibles asteriscos
         preg_match('/Date:\s*\*?([\d\/]+)\*?/i', $body, $dateMatch);
+        
+        // Extraer Memo: El texto después de "Memo:"
+        preg_match('/Memo:\s*\*?(.*?)\*?\s*(?:\r?\n|$)/i', $body, $memoMatch);
 
         $referencia = $refMatch[1] ?? null;
 
+        // 3. VALIDACIÓN DE DATOS
         if (!$referencia) {
-            // Log de depuración por si acaso
-            Log::warning("Zelle: No se halló referencia. Revisar formato: " . substr($body, 0, 150));
-            return response()->json(['status' => 'error', 'message' => 'Datos incompletos'], 400);
+            // Solo logueamos si realmente parece un correo de Zelle pero falló la regex
+            if (str_contains($body, 'sent you')) {
+                Log::warning("Zelle: Falló extracción en correo legítimo. Cuerpo: " . substr($body, 0, 150));
+                return response()->json(['status' => 'error', 'message' => 'Referencia no hallada'], 400);
+            }
+            return response()->json(['status' => 'ignored'], 200);
         }
 
+        // Limpieza final de variables
         $monto = isset($montoMatch[1]) ? (float) str_replace(',', '', $montoMatch[1]) : 0;
-        $remitente = trim(str_replace('*', '', $nameMatch[1] ?? 'Desconocido')); // Limpiamos asteriscos del nombre
-        $fechaRaw = isset($dateMatch[1]) ? $dateMatch[1] : now();
-
+        $remitente = trim(str_replace('*', '', $nameMatch[1] ?? 'Desconocido'));
+        $memo = trim(str_replace('*', '', $memoMatch[1] ?? ''));
+        
         try {
-            $fecha = \Carbon\Carbon::parse($fechaRaw);
+            $fecha = isset($dateMatch[1]) ? Carbon::parse($dateMatch[1]) : now();
         } catch (\Exception $e) {
             $fecha = now();
         }
 
-        $pago = \App\Models\PagoZelle::updateOrCreate(
+        // 4. GUARDADO EN BASE DE DATOS
+        $pago = PagoZelle::updateOrCreate(
             ['referencia' => $referencia],
             [
                 'remitente' => $remitente,
                 'monto' => $monto,
                 'estado' => 'Completada',
                 'fecha_pago' => $fecha,
-                'nota_memorandum' => 'Procesado automáticamente',
+                'nota_memorandum' => $memo,
+                'alias_identificador' => 'Wells Fargo Zelle',
             ]
         );
 
-        return response()->json(['status' => 'success', 'ref' => $referencia], 200);
+        return response()->json([
+            'status' => 'success', 
+            'referencia' => $referencia,
+            'monto' => $monto
+        ], 200);
     }
 
     public function receive1(Request $request)
